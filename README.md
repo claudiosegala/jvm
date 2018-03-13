@@ -1,2 +1,2 @@
 # jvm
-little JVM made in C99
+simple JVM made in C++11
