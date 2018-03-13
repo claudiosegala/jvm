@@ -1,2 +1,2 @@
-# jvm
-simple JVM made in C++11
+# JVM
+A simple JVM made in C++11
