@@ -1,5 +1,8 @@
-#include <stdio.h>
+#include <iostream>
+
+using namespace std;
 
 int main () {
-  printf("JVM");
+	cout << "JVM" << endl;
+	return 0;
 }
