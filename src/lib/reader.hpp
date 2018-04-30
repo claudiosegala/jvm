@@ -1,4 +1,5 @@
 #include <bit/stdc++.h>
+#include "bit.hpp"
 
 class ByteCodeReader {
 	private:
