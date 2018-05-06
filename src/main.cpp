@@ -2,9 +2,55 @@
 #include <iostream>
 #include <reader.hpp>
 #include <bit.hpp>
+#include "constant_pool.hpp"
 #include "bit.hpp"
 
 #define W(x) std::cerr << "\033[35m" << #x << "=" << x << "\033[0m" << "\n";
+
+/**
+ * Read the constant pool data
+ * @param file The file to extract the data
+ * @param count How many constants to extract
+ */
+void read_cp (jvm::Reader& file, int count) {
+	for (int i = 0; i < count; ++i) {
+		auto aux = file.getNextByte();
+		auto tag = (jvm::CP_TAGS) aux.value.number;
+
+		switch (tag) {
+			case jvm::CP_TAGS::Class:
+				std::cout << "\t Tag: Class"                      << std::endl;
+			case jvm::CP_TAGS::Fieldref:
+				std::cout << "\t Tag: Field Reference"            << std::endl;
+			case jvm::CP_TAGS::Methodref:
+				std::cout << "\t Tag: Method Reference"           << std::endl;
+			case jvm::CP_TAGS::InterfaceMethodref:
+				std::cout << "\t Tag: Interface Method Reference" << std::endl;
+			case jvm::CP_TAGS::String:
+				std::cout << "\t Tag: String"                     << std::endl;
+			case jvm::CP_TAGS::Integer:
+				std::cout << "\t Tag: Integer"                    << std::endl;
+			case jvm::CP_TAGS::Float:
+				std::cout << "\t Tag: Float"                      << std::endl;
+			case jvm::CP_TAGS::Long:
+				std::cout << "\t Tag: Long"                       << std::endl;
+			case jvm::CP_TAGS::Double:
+				std::cout << "\t Tag: Double"                     << std::endl;
+			case jvm::CP_TAGS::NameAndType:
+				std::cout << "\t Tag: Name And Type"              << std::endl;
+			case jvm::CP_TAGS::Utf8:
+				std::cout << "\t Tag: UTF-8"                      << std::endl;
+			case jvm::CP_TAGS::MethodHandle:
+				std::cout << "\t Tag: Method Handle"              << std::endl;
+			case jvm::CP_TAGS::MethodType:
+				std::cout << "\t Tag: Method Type"                << std::endl;
+			case jvm::CP_TAGS::InvokeDynamic:
+				std::cout << "\t Tag: Invoke Dynamic"             << std::endl;
+			default:
+				throw "Invalid conversion, file is wrong";
+		}
+	}
+}
 
 /**
  * Iniciate reading the .class file
@@ -26,11 +72,7 @@ void init (std::string filename) {
 	std::cout << "CP count: " << cp_count.value.number - 1 << std::endl;
 
 	if (cp_count.value.number != 0) {
-		for (int i = 0; i < cp_count.value.number; ++i) {
-			auto tag = file.getNextByte();
-			std::cout << "\t Tag: " << tag.value.number << std::endl;
-			//TODO verifiacr se tag é válida
-		}
+		read_cp(file, cp_count.value.number);
 	}
 
 	file.close();
