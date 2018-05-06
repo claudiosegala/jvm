@@ -15,7 +15,7 @@
 void read_cp (jvm::Reader& file, int count) {
 	for (int i = 0; i < count; ++i) {
 		auto aux = file.getNextByte();
-		auto tag = (jvm::CP_TAGS) aux.value.number;
+		auto tag = static_cast<jvm::CP_TAGS>(aux.value.number);
 
 		switch (tag) {
 			case jvm::CP_TAGS::Class:
