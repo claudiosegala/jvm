@@ -10,42 +10,50 @@ namespace jvm {
 
 		//< stream with the .class file
 		std::ifstream _class;
+		std::vector<uint8_t> bytes;
+		uint64_t index;
 
 		/**
-		* @brief  Check if it is a .class file
+		* Check if it is a .class file
 		* @retval TRUE Has CAFEBABE as initial word in the file
 		* @retval FALSE Has not CAFEBABE as initial word in the file
 		*/
 		bool isValid();
 
+		/**
+		* .class file size
+		* @retval Size of the .class file
+		*/
+		uint64_t size();
+
 	public:
 
 		/**
-		* @brief  Open a .class file
+		* Open a .class file
 		* @param  filename The name of the .class we are opening
 		*/
 		void open(std::string filename);
 
 		/**
-		* @brief  Get the next byte in the file
+		* Get the next byte in the file
 		* @retval The next Byte
 		*/
 		jvm::Byte getNextByte();
 
 		/**
-		* @brief  Get the next half word in the file
+		* Get the next half word in the file
 		* @retval The next Half Word
 		*/
 		jvm::HalfWord getNextHalfWord();
 
 		/**
-		* @brief  Get the next word in the file
+		* Get the next word in the file
 		* @retval The next Word
 		*/
 		jvm::Word getNextWord();
 
 		/**
-		* @brief  Close the .class file
+		* Close the .class file
 		*/
 		void close();
 	};

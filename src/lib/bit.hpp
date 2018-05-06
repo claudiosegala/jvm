@@ -39,6 +39,8 @@ namespace jvm {
 
 		Data<T> &operator=(const Data<T> &d);
 
+		bool operator== (const Data<T> &d);
+
 		int operator[] (int index);
 
 		void Print();
@@ -47,7 +49,7 @@ namespace jvm {
 
 	};
 
-	typedef Data<uint8_t> Byte;
+	typedef Data<uint8_t>  Byte;
 	typedef Data<uint16_t> HalfWord;
 	typedef Data<uint32_t> Word;
 

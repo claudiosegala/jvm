@@ -1,5 +1,4 @@
 //
-// Created by Ricardo on 04-May-18.
 // THIS FILE MUST *NOT* BE INCLUDED IN CMakeLists.txt
 //
 
@@ -7,6 +6,7 @@
 
 #include <cstdio>
 #include <string>
+#include <bit.hpp>
 #include "bit.hpp"
 
 namespace jvm {
@@ -49,6 +49,7 @@ namespace jvm {
 			(*first) ^= (*last);
 			first++, last--;
 		}
+
 		m_endianness = new_endianness;
 
 		return *this;
@@ -67,6 +68,17 @@ namespace jvm {
 	void Data<T>::Print(std::string &s) {
 		printf("%s\n", s.c_str());
 		Print();
+	}
+
+	template<typename T>
+	bool Data<T>::operator==(const Data <T> &d) {
+		auto _d = d;
+
+		if (m_endianness != d.m_endianness) {
+			_d = _d.toEndianness(m_endianness);
+		}
+
+		return (value.number == _d.value.number);
 	}
 
 }

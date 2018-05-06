@@ -13,6 +13,6 @@ int main () {
 	for (int i = 31; i >= 0; --i) {
 		printf("%d", w[i]);
 	}
-	getchar();
+
 	return 0;
 }
