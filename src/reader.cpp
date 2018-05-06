@@ -24,7 +24,7 @@ namespace jvm {
 		return (firstWord == init);
 	}
 
-	void jvm::Reader::open(std::string filename) {
+	void jvm::Reader::open(std::string &filename) {
 		index = 0;
 
 		_class.open(filename, std::ios::binary);
@@ -60,7 +60,7 @@ namespace jvm {
 		auto aux = 0;
 		for (auto i = 0; i < 2; i++) {
 			int32_t byte = bytes[index + i];
-			byte <<= (BYTESIZE * (3 - i));
+			byte <<= (BYTESIZE * (1 - i));
 			aux |= byte;
 		}
 
