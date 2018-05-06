@@ -33,6 +33,8 @@ namespace jvm {
 
 		explicit Data(Endianness = SYSTEM_ENDIANNESS);
 
+		explicit Data(T number, Endianness = SYSTEM_ENDIANNESS);
+
 		Data<T> &toEndianness(Endianness new_endianness);
 
 		Data<T> &operator=(T number);
