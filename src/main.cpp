@@ -18,7 +18,7 @@ void init (std::string filename) {
 
 int main (int argc, char *argv[ ]) {
 	if (argc < 2) {
-        std::cout << "Numero de argumentos insuficientes" << std::endl;
+        std::cout << "Número de argumentos insuficientes" << std::endl;
         return 0;
     }
 
