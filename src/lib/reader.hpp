@@ -21,12 +21,6 @@ namespace jvm {
 		*/
 		bool isValid();
 
-		/**
-		* .class file size
-		* @retval Size of the .class file
-		*/
-		uint64_t size();
-
 	public:
 
 		/**
@@ -34,6 +28,17 @@ namespace jvm {
 		* @param  filename The name of the .class we are opening
 		*/
 		void open(std::string filename);
+
+		/**
+		* Close the .class file
+		*/
+		void close();
+
+		/**
+		* .class file size
+		* @retval Size of the .class file
+		*/
+		uint64_t size();
 
 		/**
 		* Get the next byte in the file
@@ -52,11 +57,6 @@ namespace jvm {
 		* @retval The next Word
 		*/
 		jvm::Word getNextWord();
-
-		/**
-		* Close the .class file
-		*/
-		void close();
 	};
 
 }
