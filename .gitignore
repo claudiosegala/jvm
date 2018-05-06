@@ -34,6 +34,9 @@
 # VS Code settings
 .vscode
 
+# VS files
+.vs
+
 # CMake build files
 CMakeCache.txt
 CMakeFiles
@@ -46,6 +49,10 @@ compile_commands.json
 CTestTestfile.cmake
 cmake-build-debug/
 cmake-build-release/
+cmake-build-debug-32/
+cmake-build-release-32/
+cmake-build-debug-64/
+cmake-build-release-64/
 
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
