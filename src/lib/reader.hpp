@@ -1,6 +1,7 @@
 #pragma once
 
 #include <fstream>
+#include <vector>
 #include "bit.hpp"
 
 namespace jvm {
