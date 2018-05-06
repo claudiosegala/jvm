@@ -11,7 +11,7 @@ namespace jvm {
 		//< stream with the .class file
 		std::ifstream _class;
 		std::vector<uint8_t> bytes;
-		uint64_t index;
+		int32_t index;
 
 		/**
 		* Check if it is a .class file

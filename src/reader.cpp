@@ -43,17 +43,43 @@ namespace jvm {
 	}
 
 	jvm::Byte jvm::ByteCodeReader::getNextByte() {
-		auto byte = Byte();
-		byte = bytes[index];
-		return byte;
+		auto b = Byte();
+
+		b = bytes[index++];
+
+		return b;
 	}
-//
-//	jvm::HalfWord jvm::ByteCodeReader::getNextHalfWord() {
-//		return nullptr;
-//	}
-//
+
+	jvm::HalfWord jvm::ByteCodeReader::getNextHalfWord() {
+		auto hw = HalfWord();
+
+		auto aux = 0;
+		for (auto i = 0; i < 2; i++) {
+			int32_t byte = bytes[index];
+			byte <<= (BYTESIZE * i);
+			aux |= byte;
+		}
+
+		hw = aux;
+		index += 2;
+
+		return hw;
+	}
+
 	jvm::Word jvm::ByteCodeReader::getNextWord() {
-		return bytes[];
+		auto w = Word();
+
+		auto aux = 0;
+		for (auto i = 0; i < 4; i++) {
+			int32_t byte = bytes[index];
+			byte <<= (BYTESIZE * i);
+			aux |= byte;
+		}
+
+		w = aux;
+		index += 4;
+
+		return w;
 	}
 
 	void jvm::ByteCodeReader::close() {
