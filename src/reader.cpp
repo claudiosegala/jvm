@@ -11,7 +11,7 @@ namespace jvm {
 	uint64_t jvm::ByteCodeReader::size() {
 		_class.seekg(0, _class.end);
 		auto len = _class.tellg();
-		_class.seekg(0, _class.end);
+		_class.seekg(0, _class.beg);
 		return len;
 	}
 
@@ -59,8 +59,8 @@ namespace jvm {
 
 		auto aux = 0;
 		for (auto i = 0; i < 2; i++) {
-			int32_t byte = bytes[index];
-			byte <<= (BYTESIZE * i);
+			int32_t byte = bytes[index + i];
+			byte <<= (BYTESIZE * (3 - i));
 			aux |= byte;
 		}
 
@@ -75,8 +75,8 @@ namespace jvm {
 
 		auto aux = 0;
 		for (auto i = 0; i < 4; i++) {
-			int32_t byte = bytes[index];
-			byte <<= (BYTESIZE * i);
+			int32_t byte = bytes[index + i];
+			byte <<= (BYTESIZE * (3 - i));
 			aux |= byte;
 		}
 

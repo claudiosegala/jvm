@@ -3,6 +3,8 @@
 #include <reader.hpp>
 #include "bit.hpp"
 
+#define W(x) std::cerr << "\033[35m" << #x << "=" << x << "\033[0m" << "\n";
+
 /**
  * Iniciate reading the .class file
  */
@@ -21,20 +23,8 @@ int main (int argc, char *argv[ ]) {
     }
 
     try {
-		init(std::string(argv[1]));
+		init(argv[1]);
 	} catch (std::string error) {
 	    std::cout << error << std::endl;
 	}
 }
-
-//	jvm::Data<uint32_t> w;
-//	w = 0x1234ABCD;
-//	w.Print();
-//	w.toEndianness(jvm::Endianness::BIG);
-//	w.Print();
-//	w.toEndianness(jvm::Endianness::LITTLE);
-//	w.Print();
-//
-//	for (int i = 31; i >= 0; --i) {
-//		printf("%d", w[i]);
-//	}
