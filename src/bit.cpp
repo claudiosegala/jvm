@@ -23,7 +23,7 @@ namespace jvm {
 	}
 
 	template<typename T>
-	Data<T>& Data<T>::operator=(const Data <T> &d) {
+	Data<T>& Data<T>::operator=(const Data<T> &d) {
 		m_endianness = d.m_endianness;
 		value = d.value;
 		return *this;
@@ -44,7 +44,7 @@ namespace jvm {
 		auto last = value.bytes.end() - 1;
 		while (first < last) {
 			(*first) ^= (*last);
-			(*last) ^= (*first);
+			(*last)  ^= (*first);
 			(*first) ^= (*last);
 			first++, last--;
 		}
