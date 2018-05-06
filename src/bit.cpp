@@ -6,6 +6,7 @@
 #pragma once
 
 #include <cstdio>
+#include <string>
 #include "bit.hpp"
 
 namespace jvm {
@@ -64,7 +65,7 @@ namespace jvm {
 
 	template<typename T>
 	void Data<T>::Print(std::string &s) {
-		printf("%s\n", s);
+		printf("%s\n", s.c_str());
 		Print();
 	}
 
