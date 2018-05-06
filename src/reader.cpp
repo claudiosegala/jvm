@@ -8,14 +8,14 @@
 
 namespace jvm {
 
-	uint64_t jvm::ByteCodeReader::size() {
+	uint64_t jvm::Reader::size() {
 		_class.seekg(0, _class.end);
 		auto len = _class.tellg();
 		_class.seekg(0, _class.beg);
 		return len;
 	}
 
-	bool jvm::ByteCodeReader::isValid() {
+	bool jvm::Reader::isValid() {
 		auto init = Word();
 		auto firstWord = getNextWord();
 
@@ -24,7 +24,7 @@ namespace jvm {
 		return (firstWord == init);
 	}
 
-	void jvm::ByteCodeReader::open(std::string filename) {
+	void jvm::Reader::open(std::string filename) {
 		index = 0;
 
 		_class.open(filename, std::ios::binary);
@@ -46,7 +46,7 @@ namespace jvm {
 		}
 	}
 
-	jvm::Byte jvm::ByteCodeReader::getNextByte() {
+	jvm::Byte jvm::Reader::getNextByte() {
 		auto b = Byte();
 
 		b = bytes[index++];
@@ -54,7 +54,7 @@ namespace jvm {
 		return b;
 	}
 
-	jvm::HalfWord jvm::ByteCodeReader::getNextHalfWord() {
+	jvm::HalfWord jvm::Reader::getNextHalfWord() {
 		auto hw = HalfWord();
 
 		auto aux = 0;
@@ -70,7 +70,7 @@ namespace jvm {
 		return hw;
 	}
 
-	jvm::Word jvm::ByteCodeReader::getNextWord() {
+	jvm::Word jvm::Reader::getNextWord() {
 		auto w = Word();
 
 		auto aux = 0;
@@ -86,7 +86,7 @@ namespace jvm {
 		return w;
 	}
 
-	void jvm::ByteCodeReader::close() {
+	void jvm::Reader::close() {
 		_class.close();
 	}
 }

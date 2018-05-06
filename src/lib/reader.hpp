@@ -6,7 +6,7 @@
 
 namespace jvm {
 
-	class ByteCodeReader {
+	class Reader {
 	private:
 
 		//< stream with the .class file

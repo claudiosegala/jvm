@@ -9,7 +9,7 @@
  * Iniciate reading the .class file
  */
 void init (std::string filename) {
-	auto file = jvm::ByteCodeReader();
+	auto file = jvm::Reader();
 
 	file.open(filename);
 
