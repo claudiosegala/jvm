@@ -27,7 +27,7 @@ namespace jvm {
 		* Open a .class file
 		* @param  filename The name of the .class we are opening
 		*/
-		void open(std::string filename);
+		void open(std::string &filename);
 
 		/**
 		* Close the .class file
