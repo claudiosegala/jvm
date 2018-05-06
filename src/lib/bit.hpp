@@ -7,6 +7,8 @@
 #define HALFSIZE 16
 #define WORDSIZE 32
 
+#define SYSTEM_ENDIANNESS jvm::Endianness::LITTLE
+
 namespace jvm {
 
 	enum class Endianness : uint8_t {
@@ -29,7 +31,7 @@ namespace jvm {
 			std::array<uint8_t, sizeof(T)> bytes;
 		} value;
 
-		explicit Data(Endianness = Endianness::LITTLE);
+		explicit Data(Endianness = SYSTEM_ENDIANNESS);
 
 		Data<T> &toEndianness(Endianness new_endianness);
 
@@ -37,7 +39,7 @@ namespace jvm {
 
 		Data<T> &operator=(const Data<T> &d);
 
-		bool operator[](int index);
+		int operator[] (int index);
 
 		void Print();
 

@@ -9,6 +9,10 @@ int main () {
     w.Print();
     w.toEndianness(jvm::Endianness::LITTLE);
     w.Print();
+
+    for (int i = 31; i >= 0; --i) {
+        printf("%d", w[i]);
+    }
     getchar();
     return 0;
 }

@@ -30,9 +30,9 @@ namespace jvm {
     }
 
 	template<typename T>
-	bool Data<T>::operator[](int index)
+    int Data<T>::operator[] (int index)
 	{
-		return reinterpret_cast<bool>((value.number >> index) & 1);
+		return (value.number >> index) & 1;
 	}
 
     template<typename T>
