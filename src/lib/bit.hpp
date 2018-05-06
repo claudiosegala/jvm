@@ -1,84 +1,54 @@
-#include <bits/stdc++.h>
+#pragma once
+
+#include <array>
+#include <cstdint>
 
 #define BYTESIZE 8
 #define HALFSIZE 16
 #define WORDSIZE 32
 
-class Byte {
+namespace jvm {
+
+	enum class Endianness : uint8_t {
+		BIG,
+		LITTLE
+	};
+
+	/**
+	 * @brief Stores a number and its endianness information,
+	 * providing utilities for bit access and endianness conversion
+	 * @tparam T underlying data type
+	 */
+	template<typename T>
+	class Data {
 	private:
-	
-	///< the byte
-	std::bitset<BYTESIZE>;
-	
-	///< the endian type of the 
-	bool isLittleEndian; 
-	
+		Endianness m_endianness;
 	public:
-	
-	Byte ();
-		
-	/**
-	* @brief Transform a Big Endian Byte in Little Endian
-	* Transform a Big Endian Byte of this instance in Little Endian Byte.
-	*/
-	void toLittleEndian ();
+		union {
+			T number;
+			std::array<uint8_t, sizeof(T)> bytes;
+		} value;
 
-	/**
-	* @brief Transform a Little Endian Byte in Big Endian
-	* Transform a Little Endian Byte of this instance in Big Endian Byte.
-	*/
-	void toBigEndian ();
-};
+		explicit Data(Endianness = Endianness::LITTLE);
 
-class HalfWord {
-	private:
-	
-	///< the half word
-	std::bitset<HALFSIZE>;
-	
-	///< the endian type of the 
-	bool isLittleEndian; 
-	
-	public:
-	
-	HalfWord ();
-	
-	/**
-	* @brief Transform a Big Endian Half Word in Little Endian
-	* Transform a Big Endian Half Word of this instance in Little Endian Half Word.
-	*/
-	void toLittleEndian ();
+		Data<T> &toEndianness(Endianness new_endianness);
 
-	/**
-	* @brief Transform a Little Endian Half Word in Big Endian
-	* Transform a Little Endian Half Word of this instance in Big Endian Half Word.
-	*/
-	void toBigEndian ();
-};
+		Data<T> &operator=(T number);
 
+		Data<T> &operator=(const Data<T> &d);
 
-class Word {
-	private:
-	
-	///< the word
-	std::bitset<WORDSIZE>;
-	
-	///< the endian type of the 
-	bool isLittleEndian; 
-	
-	public:
-	
-	Word ();
-		
-	/**
-	* @brief Transform a Big Endian Word in Little Endian
-	* Transform a Big Endian Word of this instance in Little Endian Word.
-	*/
-	void toLittleEndian ();
+		bool operator[](int index);
 
-	/**
-	* @brief Transform a Little Endian Word in Big Endian
-	* Transform a Little Endian Word of this instance in Big Endian Word.
-	*/
-	void toBigEndian ();
-};
+		void Print();
+
+		void Print(std::string &s);
+
+	};
+
+	typedef Data<uint8_t> Byte;
+	typedef Data<uint16_t> HalfWord;
+	typedef Data<uint32_t> Word;
+
+}
+
+#include "../bit.cpp" // Templates require this
