@@ -65,7 +65,7 @@ namespace jvm {
 
     template<typename T>
     void Data<T>::Print(std::string &s) {
-        std::cout << s << std::endl;
+        printf("%s\n", s);
         Print();
     }
 
