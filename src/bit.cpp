@@ -6,7 +6,6 @@
 
 #include <cstdio>
 #include <string>
-#include <bit.hpp>
 #include "bit.hpp"
 
 namespace jvm {
@@ -14,6 +13,12 @@ namespace jvm {
 	template<typename T>
 	Data<T>::Data(Endianness endianness) {
 		m_endianness = endianness;
+	}
+
+	template<typename T>
+	Data<T>::Data(T number, Endianness endianness) {
+		m_endianness = endianness;
+		value.number = number;
 	}
 
 	template<typename T>
