@@ -7,21 +7,21 @@
 
 namespace jvm {
 
-	uint64_t jvm::Reader::size() {
+	uint64_t Reader::size() {
 		_class.seekg(0, _class.end);
 		auto len = _class.tellg();
 		_class.seekg(0, _class.beg);
 		return len;
 	}
 
-	bool jvm::Reader::isValid() {
+	bool Reader::isValid() {
 		auto init = Word(MAGIC_NUMBER);
 		auto firstWord = getNextWord();
 		
 		return (firstWord == init);
 	}
 
-	void jvm::Reader::open(std::string &filename) {
+	void Reader::open(std::string &filename) {
 		index = 0;
 
 		_class.open(filename, std::ios::binary);
@@ -43,7 +43,7 @@ namespace jvm {
 		}
 	}
 
-	jvm::Byte jvm::Reader::getNextByte() {
+	Byte Reader::getNextByte() {
 		auto b = Byte();
 
 		b = bytes[index++];
@@ -51,7 +51,7 @@ namespace jvm {
 		return b;
 	}
 
-	jvm::HalfWord jvm::Reader::getNextHalfWord() {
+	HalfWord Reader::getNextHalfWord() {
 		auto hw = HalfWord();
 
 		auto aux = 0;
@@ -67,7 +67,7 @@ namespace jvm {
 		return hw;
 	}
 
-	jvm::Word jvm::Reader::getNextWord() {
+	Word Reader::getNextWord() {
 		auto w = Word();
 
 		auto aux = 0;
@@ -83,7 +83,7 @@ namespace jvm {
 		return w;
 	}
 
-	void jvm::Reader::close() {
+	void Reader::close() {
 		_class.close();
 	}
 }

@@ -38,11 +38,14 @@ namespace jvm {
 
 	class CP_Entry {
 	public:
-		static CP_TAGS tag;
+		virtual CP_TAGS getTag() = 0;
 	};
 
 	struct CP_Class : public CP_Entry {
+		CP_TAGS getTag() override;
+
 		HalfWord name_index;
+
 	};
 
 	struct CP_Fieldref : public CP_Entry {

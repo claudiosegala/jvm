@@ -5,7 +5,7 @@
 
 namespace jvm {
 
-	_Class::_Class() {}
+	_Class::_Class() = default;
 
 	void _Class::read_attributes (jvm::Reader &file) {}
 
@@ -188,7 +188,6 @@ namespace jvm {
 		std::cout << "> .class" << std::endl;
 		std::cout << "Min Version: " << min_version.value.number << std::endl;
 		std::cout << "Max Version: " << max_version.value.number << std::endl;
-		std::cout << "Constant Pool Count: " << cp_count.value.number - 1 << std::endl;
 		std::cout << "Constant Pool Count: " << cp_count.value.number - 1 << std::endl;
 		std::cout << "Interfaces Count: " << interfaces_count.value.number - 1 << std::endl;
 		print_flags();

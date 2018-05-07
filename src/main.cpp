@@ -11,7 +11,7 @@ int main (int argc, char *argv[ ]) {
 		auto cl = jvm::_Class();
 		cl.read(std::string(argv[1]));
 		cl.show();
-	} catch (std::string error) {
+	} catch (std::string& error) {
 	    std::cout << error << std::endl;
 	}
 }
