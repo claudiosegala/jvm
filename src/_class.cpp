@@ -7,7 +7,13 @@ namespace jvm {
 
 	_Class::_Class() {}
 
-	void _Class::read_if (jvm::Reader& file) {}
+	void _Class::read_attributes (jvm::Reader &file) {}
+
+	void _Class::read_methods (jvm::Reader &file) {}
+
+	void _Class::read_fields (jvm::Reader &file) {}
+
+	void _Class::read_interfaces (jvm::Reader &file) {}
 
 	void _Class::read_cp (jvm::Reader& file) {
 		for (int i = 1; i <= cp_count.value.number - 1; ++i) {
@@ -121,22 +127,34 @@ namespace jvm {
 		magic_number = MAGIC_NUMBER;
 		min_version = file.getNextHalfWord();
 		max_version = file.getNextHalfWord();
-		cp_count = file.getNextHalfWord(); // TODO: verify if it needs to do -1
 
+		cp_count = file.getNextHalfWord(); // TODO: verify if it needs to do -1
 		if (cp_count.value.number != 0) {
 			read_cp(file);
 		}
 
 		access_flags = file.getNextHalfWord();
-
 		this_class = file.getNextHalfWord();
-
 		super_class = file.getNextHalfWord();
 
 		interfaces_count = file.getNextHalfWord();
-
 		if(interfaces_count.value.number != 0) {
-			read_if(file);
+			read_interfaces(file);
+		}
+
+		fields_count = file.getNextHalfWord();
+		if(fields_count.value.number != 0) {
+			read_fields(file);
+		}
+
+		methods_count = file.getNextHalfWord();
+		if(methods_count.value.number != 0) {
+			read_methods(file);
+		}
+
+		attributes_count = file.getNextHalfWord();
+		if(attributes_count.value.number != 0) {
+			read_attributes(file);
 		}
 
 		file.close();
