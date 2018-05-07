@@ -48,13 +48,15 @@ namespace jvm {
 
 		void read (std::basic_string<char> filename);
 
+		void show ();
+
+	private:
 		void print_flags ();
 
 		void read_cp (jvm::Reader& file);
 
 		void read_if (jvm::Reader& file);
 
-		void show ();
 	};
 
 }

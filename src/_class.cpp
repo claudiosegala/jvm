@@ -1,12 +1,11 @@
 #include <iostream>
 #include <string>
+#include "macros.hpp"
 #include "_class.hpp"
 
 namespace jvm {
 
 	_Class::_Class() {}
-
-	#define W(x) std::cerr << "\033[35m" << #x << "=" << x << "\033[0m" << "\n";
 
 	void _Class::read_if (jvm::Reader& file) {}
 
@@ -109,50 +108,6 @@ namespace jvm {
 
 	}
 
-	void _Class::print_flags () {
-		auto flag = (uint32_t) access_flags.value.number;
-
-		if (flag & jvm::FLAGS::PUBLIC){
-			std::cout << "\t Access: Public"					<< std::endl;
-		}
-		if (flag & jvm::FLAGS::PRIVATE){
-			std::cout << "\t Access: Private"					<< std::endl;
-		}
-		if (flag & jvm::FLAGS::PROTECTED){
-			std::cout << "\t Access: Protected"					<< std::endl;
-		}
-		if (flag & jvm::FLAGS::STATIC){
-			std::cout << "\t Access: Static"					<< std::endl;
-		}
-		if (flag & jvm::FLAGS::FINAL){
-			std::cout << "\t Access: Final"						<< std::endl;
-		}
-		if (flag & jvm::FLAGS::SUPER){
-			std::cout << "\t Access: Super"						<< std::endl;
-		}
-		if (flag & jvm::FLAGS::VOLATILE){
-			std::cout << "\t Access: Volatile"					<< std::endl;
-		}
-		if (flag & jvm::FLAGS::TRANSIENT){
-			std::cout << "\t Access: Transient"					<< std::endl;
-		}
-		if (flag & jvm::FLAGS::INTERFACE){
-			std::cout << "\t Access: Interface"					<< std::endl;
-		}
-		if (flag & jvm::FLAGS::ABSTRACT){
-			std::cout << "\t Access: Abstract"					<< std::endl;
-		}
-		if (flag & jvm::FLAGS::SYNTHETIC){
-			std::cout << "\t Access: Synthetic"					<< std::endl;
-		}
-		if (flag & jvm::FLAGS::ANNOTATION){
-			std::cout << "\t Access: Annotation"				<< std::endl;
-		}
-		if (flag & jvm::FLAGS::ENUM){
-			std::cout << "\t Access: Enum"						<< std::endl;
-		}
-	}
-
 	/**
 	 * Read the constant pool data
 	 * @param file The file to extract the data
@@ -163,6 +118,7 @@ namespace jvm {
 
 		file.open(filename);
 
+		magic_number = MAGIC_NUMBER;
 		min_version = file.getNextHalfWord();
 		max_version = file.getNextHalfWord();
 		cp_count = file.getNextHalfWord(); // TODO: verify if it needs to do -1
@@ -172,8 +128,6 @@ namespace jvm {
 		}
 
 		access_flags = file.getNextHalfWord();
-
-		print_flags();
 
 		this_class = file.getNextHalfWord();
 
@@ -188,6 +142,29 @@ namespace jvm {
 		file.close();
 	}
 
+	void _Class::print_flags () {
+		auto flag = (uint32_t) access_flags.value.number;
+
+		if (flag == 0) {
+			return;
+		}
+
+		std::cout << "Access Flags:" << std::endl;
+
+		if (flag & jvm::FLAGS::PUBLIC)     std::cout << "\tPublic"     << std::endl;
+		if (flag & jvm::FLAGS::PRIVATE)    std::cout << "\tPrivate"    << std::endl;
+		if (flag & jvm::FLAGS::PROTECTED)  std::cout << "\tProtected"  << std::endl;
+		if (flag & jvm::FLAGS::STATIC)     std::cout << "\tStatic"     << std::endl;
+		if (flag & jvm::FLAGS::FINAL)      std::cout << "\tFinal"      << std::endl;
+		if (flag & jvm::FLAGS::SUPER)      std::cout << "\tSuper"      << std::endl;
+		if (flag & jvm::FLAGS::VOLATILE)   std::cout << "\tVolatile"   << std::endl;
+		if (flag & jvm::FLAGS::TRANSIENT)  std::cout << "\tTransient"  << std::endl;
+		if (flag & jvm::FLAGS::INTERFACE)  std::cout << "\tInterface"  << std::endl;
+		if (flag & jvm::FLAGS::ABSTRACT)   std::cout << "\tAbstract"   << std::endl;
+		if (flag & jvm::FLAGS::SYNTHETIC)  std::cout << "\tSynthetic"  << std::endl;
+		if (flag & jvm::FLAGS::ANNOTATION) std::cout << "\tAnnotation" << std::endl;
+		if (flag & jvm::FLAGS::ENUM)       std::cout << "\tEnum"       << std::endl;
+	}
 
 	void _Class::show () {
 		std::cout << "> .class" << std::endl;
@@ -196,6 +173,7 @@ namespace jvm {
 		std::cout << "Constant Pool Count: " << cp_count.value.number - 1 << std::endl;
 		std::cout << "Constant Pool Count: " << cp_count.value.number - 1 << std::endl;
 		std::cout << "Interfaces Count: " << interfaces_count.value.number - 1 << std::endl;
+		print_flags();
 	}
 
 }

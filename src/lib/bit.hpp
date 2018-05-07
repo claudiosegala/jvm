@@ -3,10 +3,6 @@
 #include <array>
 #include <cstdint>
 
-#define BYTESIZE 8
-#define HALFSIZE 16
-#define WORDSIZE 32
-
 #define SYSTEM_ENDIANNESS jvm::Endianness::LITTLE
 
 namespace jvm {

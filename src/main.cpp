@@ -1,9 +1,4 @@
-#include <cstdio>
 #include <iostream>
-#include <vector>
-#include "reader.hpp"
-#include "constant_pool.hpp"
-#include "bit.hpp"
 #include "_class.hpp"
 
 int main (int argc, char *argv[ ]) {

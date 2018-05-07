@@ -2,9 +2,8 @@
 #include <fstream>
 #include <bit.hpp>
 #include <vector>
+#include "macros.hpp"
 #include "reader.hpp"
-
-#define MAGIC_NUMBER 0xCAFEBABE
 
 namespace jvm {
 
@@ -16,10 +15,8 @@ namespace jvm {
 	}
 
 	bool jvm::Reader::isValid() {
-		auto init = Word();
+		auto init = Word(MAGIC_NUMBER);
 		auto firstWord = getNextWord();
-
-		init = MAGIC_NUMBER;
 		
 		return (firstWord == init);
 	}
