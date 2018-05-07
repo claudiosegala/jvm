@@ -118,48 +118,44 @@ void read_cp (jvm::Reader& file, jvm::_Class& cl) {
 }
 
 void print_access (uint32_t flag) {
-	switch (flag) {
-		case jvm::FLAGS::PUBLIC:
-			std::cout << "\t Access: Public"					<< std::endl;
-			break;
-		case jvm::FLAGS::PRIVATE:
-			std::cout << "\t Access: Private"					<< std::endl;
-			break;
-		case jvm::FLAGS::PROTECTED:
-			std::cout << "\t Access: Protected"					<< std::endl;
-			break;
-		case jvm::FLAGS::STATIC:
-			std::cout << "\t Access: Static"					<< std::endl;
-			break;
-		case jvm::FLAGS::FINAL:
-			std::cout << "\t Access: Final"						<< std::endl;
-			break;
-		case jvm::FLAGS::SUPER:
-			std::cout << "\t Access: Super"						<< std::endl;
-			break;
-		case jvm::FLAGS::VOLATILE:
-			std::cout << "\t Access: Volatile"					<< std::endl;
-			break;
-		case jvm::FLAGS::TRANSIENT:
-			std::cout << "\t Access: Transient"					<< std::endl;
-			break;
-		case jvm::FLAGS::INTERFACE:
-			std::cout << "\t Access: Interface"					<< std::endl;
-			break;
-		case jvm::FLAGS::ABSTRACT:
-			std::cout << "\t Access: Abstract"					<< std::endl;
-			break;
-		case jvm::FLAGS::SYNTHETIC:
-			std::cout << "\t Access: Synthetic"					<< std::endl;
-			break;
-		case jvm::FLAGS::ANNOTATION:
-			std::cout << "\t Access: Annotation"				<< std::endl;
-			break;
-		case jvm::FLAGS::ENUM:
-			std::cout << "\t Access: Enum"						<< std::endl;
-			break;
-		default:
-			throw "Invalid conversion, file is wrong";
+	if (flag & jvm::FLAGS::PUBLIC){
+		std::cout << "\t Access: Public"					<< std::endl;
+	}
+	if (flag & jvm::FLAGS::PRIVATE){
+		std::cout << "\t Access: Private"					<< std::endl;
+	}
+	if (flag & jvm::FLAGS::PROTECTED){
+		std::cout << "\t Access: Protected"					<< std::endl;
+	}
+	if (flag & jvm::FLAGS::STATI){
+		std::cout << "\t Access: Static"					<< std::endl;
+	}
+	if (flag & jvm::FLAGS::FINAL){
+		std::cout << "\t Access: Final"						<< std::endl;
+	}
+	if (flag & jvm::FLAGS::SUPER){
+		std::cout << "\t Access: Super"						<< std::endl;
+	}
+	if (flag & jvm::FLAGS::VOLATILE){
+		std::cout << "\t Access: Volatile"					<< std::endl;
+	}
+	if (flag & jvm::FLAGS::TRANSIENT){
+		std::cout << "\t Access: Transient"					<< std::endl;
+	}
+	if (flag & jvm::FLAGS::INTERFACE){
+		std::cout << "\t Access: Interface"					<< std::endl;
+	}
+	if (flag & jvm::FLAGS::ABSTRACT){
+		std::cout << "\t Access: Abstract"					<< std::endl;
+	}
+	if (flag & jvm::FLAGS::SYNTHETIC){
+		std::cout << "\t Access: Synthetic"					<< std::endl;
+	}
+	if (flag & jvm::FLAGS::ANNOTATION){
+		std::cout << "\t Access: Annotation"				<< std::endl;
+	}
+	if (flag & jvm::FLAGS::ENUM){
+		std::cout << "\t Access: Enum"						<< std::endl;
 	}
 }
 
