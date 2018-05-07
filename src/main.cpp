@@ -178,7 +178,7 @@ void init (std::string filename) {
 	auto super_class = file.getNextHalfWord();
 
 	auto interfaces_count = file.getNextHalfWord();
-	
+
 	if(interfaces_count.value.number != 0) {
 		read_interfaces(file, interfaces_count.value.number);
 	}
