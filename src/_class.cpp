@@ -7,13 +7,29 @@ namespace jvm {
 
 	_Class::_Class() {}
 
-	void _Class::read_attributes (jvm::Reader &file) {}
+	void _Class::read_attributes (jvm::Reader &file) {
+		for (int i = 0; i < attributes_count.value.number; ++i) {
 
-	void _Class::read_methods (jvm::Reader &file) {}
+		}
+	}
 
-	void _Class::read_fields (jvm::Reader &file) {}
+	void _Class::read_methods (jvm::Reader &file) {
+		for (int i = 0; i < methods_count.value.number; ++i) {
 
-	void _Class::read_interfaces (jvm::Reader &file) {}
+		}
+	}
+
+	void _Class::read_fields (jvm::Reader &file) {
+		for (int i = 0; i < fields_count.value.number; ++i) {
+
+		}
+	}
+
+	void _Class::read_interfaces (jvm::Reader &file) {
+		for (int i = 0; i < interfaces_count.value.number; ++i) {
+
+		}
+	}
 
 	void _Class::read_cp (jvm::Reader& file) {
 		for (int i = 1; i <= cp_count.value.number - 1; ++i) {
