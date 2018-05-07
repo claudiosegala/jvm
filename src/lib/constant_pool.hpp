@@ -3,6 +3,7 @@
 #include "bit.hpp"
 
 namespace jvm {
+
 	enum class CP_TAGS {
 		Class = 7,
 		Fieldref = 9,
@@ -22,7 +23,7 @@ namespace jvm {
 
 	class CP_Entry {
 	public:
-		static CP_TAGS tag;
+		static virtual CP_TAGS tag;
 	};
 
 	struct CP_Class : public CP_Entry {
@@ -30,55 +31,65 @@ namespace jvm {
 	};
 
 	struct CP_Fieldref : public CP_Entry {
-		HalfWord name_index;
+		HalfWord class_index;
+		HalfWord name_and_class_index;
 	};
 
 	struct CP_Methodref : public CP_Entry {
-		HalfWord name_index;
+		HalfWord class_index;
+		HalfWord name_and_class_index;
 	};
 
 	struct CP_InterfaceMethodref : public CP_Entry {
-		HalfWord name_index;
+		HalfWord class_index;
+		HalfWord name_and_class_index;
 	};
 
 	struct CP_String : public CP_Entry {
-		HalfWord name_index;
+		HalfWord string_index;
 	};
 
 	struct CP_Integer : public CP_Entry {
-		HalfWord name_index;
+		Word _bytes;
 	};
 
 	struct CP_Float : public CP_Entry {
-		HalfWord name_index;
+		Word _bytes;
 	};
 
 	struct CP_Long : public CP_Entry {
-		HalfWord name_index;
+		Word high_bytes;
+		Word low_bytes;
 	};
 
 	struct CP_Double : public CP_Entry {
-		HalfWord name_index;
+		Word high_bytes;
+		Word low_bytes;
 	};
 
 	struct CP_NameAndType : public CP_Entry {
 		HalfWord name_index;
+		HalfWord descriptor_index;
 	};
 
 	struct CP_Utf8 : public CP_Entry {
-		HalfWord name_index;
+		HalfWord _length;
+		Byte _bytes[];
 	};
 
 	struct CP_MethodHandle : public CP_Entry {
-		HalfWord name_index;
+		Byte reference_kind;
+		HalfWord reference_index;
 	};
 
 	struct CP_MethodType : public CP_Entry {
-		HalfWord name_index;
+		HalfWord descriptor_index;
 	};
 
 	struct CP_InvokeDynamic : public CP_Entry {
-		HalfWord name_index;
+		HalfWord bootstrap_method_attr_index;
+		HalfWord name_and_type_index;
 	};
 
 }
+
