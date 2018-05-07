@@ -105,6 +105,7 @@ void read_cp (jvm::Reader& file, int count) {
 				throw "Invalid conversion, file is wrong";
 		}
 	}
+	
 }
 
 /**
@@ -129,7 +130,37 @@ void init (std::string filename) {
 	if (cp_count.value.number != 0) {
 		read_cp(file, cp_count.value.number);
 	}
-
+	
+	
+	switch (access_flags) {
+		case 0x0001:
+			std::cout << "\t Access: Public"					<< std::endl;
+			break;
+		case 0x0010:
+			std::cout << "\t Access: Final"						<< std::endl;
+			break;
+		case 0x0020:
+			std::cout << "\t Access: Super"						<< std::endl;
+			break;
+		case 0x0200:
+			std::cout << "\t Access: Interface"					<< std::endl;
+			break;
+		case 0x0400:
+			std::cout << "\t Access: Abstract"					<< std::endl;
+			break;
+		case 0x1000:
+			std::cout << "\t Access: Synthetic"					<< std::endl;
+			break;
+		case 0x2000:
+			std::cout << "\t Access: Annotation"				<< std::endl;
+			break;
+		case 0x4000:
+			std::cout << "\t Access: Enum"						<< std::endl;
+			break;
+		default:
+			throw "Invalid conversion, file is wrong";
+	}
+	
 	file.close();
 }
 
