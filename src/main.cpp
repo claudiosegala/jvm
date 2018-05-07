@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <iostream>
 #include <vector>
+#include <bit.hpp>
 #include "reader.hpp"
 #include "constant_pool.hpp"
 #include "bit.hpp"
@@ -12,7 +13,7 @@
  * @param file The file to extract the data
  * @param count How many constants to extract
  */
- void read_interfaces(jvm::Reader& file,int count) {
+ void read_interfaces(jvm::Reader& file, uint32_t count) {
 
 
 }
@@ -177,12 +178,9 @@ void init (std::string filename) {
 	auto super_class = file.getNextHalfWord();
 
 	auto interfaces_count = file.getNextHalfWord();
-
-
-	if(interfaces_count != 0) {
-
-		read_cp()
-
+	
+	if(interfaces_count.value.number != 0) {
+		read_interfaces(file, interfaces_count.value.number);
 	}
 
 	file.close();
