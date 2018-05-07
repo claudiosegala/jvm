@@ -184,13 +184,67 @@ namespace jvm {
 		if (flag & jvm::FLAGS::ENUM)       std::cout << "\tEnum"       << std::endl;
 	}
 
-	void _Class::show () {
-		std::cout << "> .class" << std::endl;
+	void _Class::print_attributes () {
+		std::cout << "Attributes Count: " << attributes_count.value.number << std::endl;
+
+		if (attributes_count.value.number == 0) {
+			return;
+		}
+	}
+
+	void _Class::print_methods () {
+		std::cout << "Methods Count: " << methods_count.value.number << std::endl;
+
+		if (methods_count.value.number == 0) {
+			return;
+		}
+	}
+
+	void _Class::print_fields () {
+		std::cout << "Fields Count: " << fields_count.value.number << std::endl;
+
+		if (fields_count.value.number - 1 == 0) {
+			return;
+		}
+	}
+
+	void _Class::print_interfaces () {
+		std::cout << "Interfaces Count: " << interfaces_count.value.number << std::endl;
+
+		if (interfaces_count.value.number == 0) {
+			return;
+		}
+	}
+
+	void _Class::print_this_class () {}
+
+	void _Class::print_super_class () {}
+
+	void _Class::print_cp () {
+		std::cout << "Constant Pool Count: " << cp_count.value.number - 1 << std::endl;
+
+		if (cp_count.value.number - 1 == 0) {
+			return;
+		}
+	}
+
+	void _Class::print_version () {
 		std::cout << "Min Version: " << min_version.value.number << std::endl;
 		std::cout << "Max Version: " << max_version.value.number << std::endl;
-		std::cout << "Constant Pool Count: " << cp_count.value.number - 1 << std::endl;
-		std::cout << "Interfaces Count: " << interfaces_count.value.number - 1 << std::endl;
+	}
+
+	void _Class::show () {
+		std::cout << "> .class" << std::endl;
+
+		print_version();
+		print_cp();
 		print_flags();
+		print_this_class();
+		print_super_class();
+		print_interfaces();
+		print_fields();
+		print_methods();
+		print_attributes();
 	}
 
 }
