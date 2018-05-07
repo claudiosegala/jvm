@@ -114,30 +114,45 @@ void read_cp (jvm::Reader& file, jvm::_Class& cl) {
 	
 }
 
-void read_access (uint32_t flag) {
+void print_access (uint32_t flag) {
 	switch (flag) {
-		case jvm::ACC_FLAGS::PUBLIC:
+		case jvm::FLAGS::PUBLIC:
 			std::cout << "\t Access: Public"					<< std::endl;
 			break;
-		case jvm::ACC_FLAGS::FINAL:
+		case jvm::FLAGS::PRIVATE:
+			std::cout << "\t Access: Private"					<< std::endl;
+			break;
+		case jvm::FLAGS::PROTECTED:
+			std::cout << "\t Access: Protected"					<< std::endl;
+			break;
+		case jvm::FLAGS::STATIC:
+			std::cout << "\t Access: Static"					<< std::endl;
+			break;
+		case jvm::FLAGS::FINAL:
 			std::cout << "\t Access: Final"						<< std::endl;
 			break;
-		case jvm::ACC_FLAGS::SUPER:
+		case jvm::FLAGS::SUPER:
 			std::cout << "\t Access: Super"						<< std::endl;
 			break;
-		case jvm::ACC_FLAGS::INTERFACE:
+		case jvm::FLAGS::VOLATILE:
+			std::cout << "\t Access: Volatile"					<< std::endl;
+			break;
+		case jvm::FLAGS::TRANSIENT:
+			std::cout << "\t Access: Transient"					<< std::endl;
+			break;
+		case jvm::FLAGS::INTERFACE:
 			std::cout << "\t Access: Interface"					<< std::endl;
 			break;
-		case jvm::ACC_FLAGS::ABSTRACT:
+		case jvm::FLAGS::ABSTRACT:
 			std::cout << "\t Access: Abstract"					<< std::endl;
 			break;
-		case jvm::ACC_FLAGS::SYNTHETIC:
+		case jvm::FLAGS::SYNTHETIC:
 			std::cout << "\t Access: Synthetic"					<< std::endl;
 			break;
-		case jvm::ACC_FLAGS::ANNOTATION:
+		case jvm::FLAGS::ANNOTATION:
 			std::cout << "\t Access: Annotation"				<< std::endl;
 			break;
-		case jvm::ACC_FLAGS::ENUM:
+		case jvm::FLAGS::ENUM:
 			std::cout << "\t Access: Enum"						<< std::endl;
 			break;
 		default:
