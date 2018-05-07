@@ -108,35 +108,7 @@ void read_cp (jvm::Reader& file, int count) {
 	
 }
 
-/**
- * Iniciate reading the .class file
- */
-void init (std::string filename) {
-	auto file = jvm::Reader();
-
-	file.open(filename);
-
-	std::cout << "> .class" << std::endl;
-
-	auto min_version = file.getNextHalfWord();
-	std::cout << "Min Version: " << min_version.value.number << std::endl;
-
-	auto max_version = file.getNextHalfWord();
-	std::cout << "Max Version: " << max_version.value.number << std::endl;
-
-	auto cp_count = file.getNextHalfWord();
-	std::cout << "CP count: " << cp_count.value.number - 1 << std::endl;
-
-	if (cp_count.value.number != 0) {
-		read_cp(file, cp_count.value.number);
-	}
-	jvm::HalfWord access_flags,this_class,super_class,interfaces_count;
-	access_flags = file.getNextHalfWord();
-	this_class = file.getNextHalfWord();
-	super_class = file.getNextHalfWord();
-	interfaces_count = file.getNextHalfWord();
-
-	
+void print_flags (jvm:HalfWord access_flags){
 	switch (access_flags) {
 		case 0x0001:
 			std::cout << "\t Access: Public"					<< std::endl;
@@ -165,6 +137,37 @@ void init (std::string filename) {
 		default:
 			throw "Invalid conversion, file is wrong";
 	}
+}
+
+
+/**
+ * Iniciate reading the .class file
+ */
+void init (std::string filename) {
+	auto file = jvm::Reader();
+
+	file.open(filename);
+
+	std::cout << "> .class" << std::endl;
+
+	auto min_version = file.getNextHalfWord();
+	std::cout << "Min Version: " << min_version.value.number << std::endl;
+
+	auto max_version = file.getNextHalfWord();
+	std::cout << "Max Version: " << max_version.value.number << std::endl;
+
+	auto cp_count = file.getNextHalfWord();
+	std::cout << "CP count: " << cp_count.value.number - 1 << std::endl;
+
+	if (cp_count.value.number != 0) {
+		read_cp(file, cp_count.value.number);
+	}
+	jvm::HalfWord access_flags,this_class,super_class,interfaces_count;
+	access_flags = file.getNextHalfWord();
+	this_class = file.getNextHalfWord();
+	super_class = file.getNextHalfWord();
+	interfaces_count = file.getNextHalfWord();
+
 	
 	file.close();
 }
