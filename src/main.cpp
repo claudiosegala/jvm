@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <iostream>
 #include <vector>
-#include <bit.hpp>
 #include "reader.hpp"
 #include "constant_pool.hpp"
 #include "bit.hpp"
+#include "_class.hpp"
 
 #define W(x) std::cerr << "\033[35m" << #x << "=" << x << "\033[0m" << "\n";
 
@@ -13,13 +13,13 @@
  * @param file The file to extract the data
  * @param count How many constants to extract
  */
- void read_interfaces(jvm::Reader& file, uint32_t count) {
+ void read_interfaces(jvm::Reader& file, jvm::_Class& cl) {
 
 
 }
 
-void read_cp (jvm::Reader& file, uint32_t count) {
-	for (int i = 0; i < count; ++i) {
+void read_cp (jvm::Reader& file, jvm::_Class& cl) {
+	for (int i = 0; i < cl.cp_count.value.number; ++i) {
 		auto aux = file.getNextByte();
 		auto tag = aux.value.number;
 
@@ -166,32 +166,33 @@ void init (std::string filename) {
 
 	std::cout << "> .class" << std::endl;
 
-	auto min_version = file.getNextHalfWord();
-	std::cout << "Min Version: " << min_version.value.number << std::endl;
+	auto cl = jvm::_Class();
 
-	auto max_version = file.getNextHalfWord();
-	std::cout << "Max Version: " << max_version.value.number << std::endl;
+	cl.min_version = file.getNextHalfWord();
+	std::cout << "Min Version: " << cl.min_version.value.number << std::endl;
 
-	auto cp_count = file.getNextHalfWord();
-	std::cout << "CP count: " << cp_count.value.number - 1 << std::endl;
+	cl.max_version = file.getNextHalfWord();
+	std::cout << "Max Version: " << cl.max_version.value.number << std::endl;
 
-	if (cp_count.value.number != 0) {
-		read_cp(file, cp_count.value.number);
+	cl.cp_count = file.getNextHalfWord();
+	std::cout << "CP count: " << cl.cp_count.value.number - 1 << std::endl;
+
+	if (cl.cp_count.value.number != 0) {
+		read_cp(file, cl);
 	}
 
-	auto access_flags = file.getNextHalfWord();
+	cl.access_flags = file.getNextHalfWord();
 
-	read_access(access_flags.value.number);
+	read_access(cl.access_flags.value.number);
 
-	auto this_class = file.getNextHalfWord();
+	cl.this_class = file.getNextHalfWord();
 
+	cl.super_class = file.getNextHalfWord();
 
-	auto super_class = file.getNextHalfWord();
-
-	auto interfaces_count = file.getNextHalfWord();
+	cl.interfaces_count = file.getNextHalfWord();
 	
-	if(interfaces_count.value.number != 0) {
-		read_interfaces(file, interfaces_count.value.number);
+	if(cl.interfaces_count.value.number != 0) {
+		read_interfaces(file, cl);
 	}
 
 	file.close();
