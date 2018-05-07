@@ -19,69 +19,71 @@
 }
 
 void read_cp (jvm::Reader& file, jvm::_Class& cl) {
-	for (int i = 0; i < cl.cp_count.value.number; ++i) {
+	for (int i = 1; i <= cl.cp_count.value.number - 1; ++i) {
 		auto aux = file.getNextByte();
 		auto tag = aux.value.number;
-
+		W(i);
 		switch (tag) {
 			case jvm::CP_TAGS::Class: {
-				std::cout << "\t Tag: Class"                      << std::endl;
+				//std::cout << "\t Tag: Class"                      << std::endl;
 				auto name_index = file.getNextHalfWord();
 				break;
 			}
 			case jvm::CP_TAGS::FieldRef: {
-				std::cout << "\t Tag: Field Reference" << std::endl;
+				//std::cout << "\t Tag: Field Reference" << std::endl;
 				auto name_index = file.getNextHalfWord();
 				auto name_type_index = file.getNextHalfWord();
 				break;
 			}
 			case jvm::CP_TAGS::MethodRef: {
-				std::cout << "\t Tag: Method Reference"           << std::endl;
+				//std::cout << "\t Tag: Method Reference"           << std::endl;
 				auto name_index = file.getNextHalfWord();
 				auto name_type_index = file.getNextHalfWord();
 				break;
 			}
 			case jvm::CP_TAGS::InterfaceMethodRef: {
-				std::cout << "\t Tag: Interface Method Reference" << std::endl;
+				//std::cout << "\t Tag: Interface Method Reference" << std::endl;
 				auto name_index = file.getNextHalfWord();
 				auto name_type_index = file.getNextHalfWord();
 				break;
 			}
 			case jvm::CP_TAGS::String: {
-				std::cout << "\t Tag: String"                     << std::endl;
+				//std::cout << "\t Tag: String"                     << std::endl;
 				auto string_index = file.getNextHalfWord();
 				break;
 			}
 			case jvm::CP_TAGS::Integer: {
-				std::cout << "\t Tag: Integer"                    << std::endl;
+				//std::cout << "\t Tag: Integer"                    << std::endl;
 				auto bytes = file.getNextHalfWord();
 				break;
 			}
 			case jvm::CP_TAGS::Float: {
-				std::cout << "\t Tag: Float"                      << std::endl;
+				//std::cout << "\t Tag: Float"                      << std::endl;
 				auto bytes = file.getNextHalfWord();
 				break;
 			}
 			case jvm::CP_TAGS::Long: {
-				std::cout << "\t Tag: Long"                       << std::endl;
+				//std::cout << "\t Tag: Long"                       << std::endl;
 				auto high_bytes = file.getNextWord();
 				auto low_bytes = file.getNextWord();
+				++i;
 				break;
 			}
 			case jvm::CP_TAGS::Double: {
-				std::cout << "\t Tag: Double"                     << std::endl;
+				//std::cout << "\t Tag: Double"                     << std::endl;
 				auto high_bytes = file.getNextWord();
 				auto low_bytes = file.getNextWord();
+				++i;
 				break;
 			}
 			case jvm::CP_TAGS::NameAndType: {
-				std::cout << "\t Tag: Name And Type"              << std::endl;
+				//std::cout << "\t Tag: Name And Type"              << std::endl;
 				auto name_index = file.getNextHalfWord();
 				auto descriptor_index = file.getNextHalfWord();
 				break;
 			}
 			case jvm::CP_TAGS::Utf8: {
-				std::cout << "\t Tag: UTF-8"                      << std::endl;
+				//std::cout << "\t Tag: UTF-8"                      << std::endl;
 				auto len = file.getNextHalfWord().value.number;
 				auto bytes = std::vector<jvm::Byte>(len);
 
@@ -92,24 +94,25 @@ void read_cp (jvm::Reader& file, jvm::_Class& cl) {
 				break;
 			}
 			case jvm::CP_TAGS::MethodHandle: {
-				std::cout << "\t Tag: Method Handle"              << std::endl;
+				//std::cout << "\t Tag: Method Handle"              << std::endl;
 				auto reference_kind = file.getNextByte();
 				auto reference_index = file.getNextHalfWord();
 				break;
 			}
 			case jvm::CP_TAGS::MethodType: {
-				std::cout << "\t Tag: Method Type"                << std::endl;
+				//std::cout << "\t Tag: Method Type"                << std::endl;
 				auto descriptor_index = file.getNextHalfWord();
 				break;
 			}
 			case jvm::CP_TAGS::InvokeDynamic: {
-				std::cout << "\t Tag: Invoke Dynamic"             << std::endl;
+				//std::cout << "\t Tag: Invoke Dynamic"             << std::endl;
 				auto bootstrap_method_attr_index = file.getNextHalfWord();
 				auto name_and_type_index = file.getNextHalfWord();
 			}
 			default:
 				throw "Invalid conversion, file is wrong";
 		}
+		// TODO: fix this!!! It is crashing on the last one
 	}
 	
 }
@@ -163,31 +166,25 @@ void print_access (uint32_t flag) {
 /**
  * Iniciate reading the .class file
  */
-void init (std::string filename) {
+jvm::_Class read (std::string filename) {
 	auto file = jvm::Reader();
 
 	file.open(filename);
 
-	std::cout << "> .class" << std::endl;
-
 	auto cl = jvm::_Class();
 
 	cl.min_version = file.getNextHalfWord();
-	std::cout << "Min Version: " << cl.min_version.value.number << std::endl;
-
 	cl.max_version = file.getNextHalfWord();
-	std::cout << "Max Version: " << cl.max_version.value.number << std::endl;
-
-	cl.cp_count = file.getNextHalfWord();
-	std::cout << "CP count: " << cl.cp_count.value.number - 1 << std::endl;
+	cl.cp_count = file.getNextHalfWord(); // TODO: verify if it needs to do -1
 
 	if (cl.cp_count.value.number != 0) {
 		read_cp(file, cl);
+
 	}
 
 	cl.access_flags = file.getNextHalfWord();
 
-	read_access(cl.access_flags.value.number);
+	print_access(cl.access_flags.value.number);
 
 	cl.this_class = file.getNextHalfWord();
 
@@ -200,6 +197,17 @@ void init (std::string filename) {
 	}
 
 	file.close();
+
+	return cl;
+}
+
+void show (jvm::_Class cl) {
+	std::cout << "> .class" << std::endl;
+	std::cout << "Min Version: " << cl.min_version.value.number << std::endl;
+	std::cout << "Max Version: " << cl.max_version.value.number << std::endl;
+	std::cout << "Constant Pool Count: " << cl.cp_count.value.number - 1 << std::endl;
+	std::cout << "Constant Pool Count: " << cl.cp_count.value.number - 1 << std::endl;
+	std::cout << "Interfaces Count: " << cl.interfaces_count.value.number - 1 << std::endl;
 }
 
 int main (int argc, char *argv[ ]) {
@@ -209,7 +217,8 @@ int main (int argc, char *argv[ ]) {
     }
 
     try {
-		init(argv[1]);
+		auto cl = read(argv[1]);
+		show(cl);
 	} catch (std::string error) {
 	    std::cout << error << std::endl;
 	}
