@@ -114,7 +114,7 @@ void read_cp (jvm::Reader& file, jvm::_Class& cl) {
 	
 }
 
-void print_access (uint32_t flag) {
+void print_flags (uint32_t flag) {
 	if (flag & jvm::FLAGS::PUBLIC){
 		std::cout << "\t Access: Public"					<< std::endl;
 	}
@@ -183,7 +183,7 @@ void init (std::string filename) {
 
 	cl.access_flags = file.getNextHalfWord();
 
-	read_access(cl.access_flags.value.number);
+	print_flags(cl.access_flags.value.number);
 
 	cl.this_class = file.getNextHalfWord();
 
