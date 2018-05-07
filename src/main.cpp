@@ -43,29 +43,52 @@ void read_cp (jvm::Reader& file, int count) {
 			}
 			case jvm::CP_TAGS::String: {
 				std::cout << "\t Tag: String"                     << std::endl;
-				auto name_index = file.getNextHalfWord();
+				auto string_index = file.getNextHalfWord();
 				break;
 			}
 			case jvm::CP_TAGS::Integer: {
 				std::cout << "\t Tag: Integer"                    << std::endl;
+				auto bytes = file.getNextHalfWord();
+				break;
 			}
 			case jvm::CP_TAGS::Float: {
 				std::cout << "\t Tag: Float"                      << std::endl;
+				auto bytes = file.getNextHalfWord();
+				break;
 			}
 			case jvm::CP_TAGS::Long: {
 				std::cout << "\t Tag: Long"                       << std::endl;
+				auto high_bytes = file.getNextWord();
+				auto low_bytes = file.getNextWord();
+				break;
 			}
 			case jvm::CP_TAGS::Double: {
 				std::cout << "\t Tag: Double"                     << std::endl;
+				auto high_bytes = file.getNextWord();
+				auto low_bytes = file.getNextWord();
+				break;
 			}
 			case jvm::CP_TAGS::NameAndType: {
 				std::cout << "\t Tag: Name And Type"              << std::endl;
+				auto name_index = file.getNextHalfWord();
+				auto descriptor_index = file.getNextHalfWord();
+				break;
 			}
 			case jvm::CP_TAGS::Utf8: {
 				std::cout << "\t Tag: UTF-8"                      << std::endl;
+				auto len = file.getNextHalfWord().value.number;
+				auto bytes = vector<jvm::Byte>(len);
+
+				for (int i = 0; i < len; i++) {
+					bytes[i] = file.getNextByte();
+				}
+
+				break;
 			}
 			case jvm::CP_TAGS::MethodHandle: {
 				std::cout << "\t Tag: Method Handle"              << std::endl;
+				u1 reference_kind;
+				u2 reference_index;
 			}
 			case jvm::CP_TAGS::MethodType: {
 				std::cout << "\t Tag: Method Type"                << std::endl;
