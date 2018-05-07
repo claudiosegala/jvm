@@ -12,13 +12,12 @@
  * @param file The file to extract the data
  * @param count How many constants to extract
  */
-
- void read_interfaces(jvm::Reader& file,int count)
-{
+ void read_interfaces(jvm::Reader& file,int count) {
 
 
 }
-void read_cp (jvm::Reader& file, int count) {
+
+void read_cp (jvm::Reader& file, uint32_t count) {
 	for (int i = 0; i < count; ++i) {
 		auto aux = file.getNextByte();
 		auto tag = aux.value.number;
@@ -114,37 +113,36 @@ void read_cp (jvm::Reader& file, int count) {
 	
 }
 
-void print_flags (jvm:HalfWord access_flags){
-	switch (access_flags) {
-		case 0x0001:
+void read_access (uint32_t flag) {
+	switch (flag) {
+		case jvm::ACC_FLAGS::PUBLIC:
 			std::cout << "\t Access: Public"					<< std::endl;
 			break;
-		case 0x0010:
+		case jvm::ACC_FLAGS::FINAL:
 			std::cout << "\t Access: Final"						<< std::endl;
 			break;
-		case 0x0020:
+		case jvm::ACC_FLAGS::SUPER:
 			std::cout << "\t Access: Super"						<< std::endl;
 			break;
-		case 0x0200:
+		case jvm::ACC_FLAGS::INTERFACE:
 			std::cout << "\t Access: Interface"					<< std::endl;
 			break;
-		case 0x0400:
+		case jvm::ACC_FLAGS::ABSTRACT:
 			std::cout << "\t Access: Abstract"					<< std::endl;
 			break;
-		case 0x1000:
+		case jvm::ACC_FLAGS::SYNTHETIC:
 			std::cout << "\t Access: Synthetic"					<< std::endl;
 			break;
-		case 0x2000:
+		case jvm::ACC_FLAGS::ANNOTATION:
 			std::cout << "\t Access: Annotation"				<< std::endl;
 			break;
-		case 0x4000:
+		case jvm::ACC_FLAGS::ENUM:
 			std::cout << "\t Access: Enum"						<< std::endl;
 			break;
 		default:
 			throw "Invalid conversion, file is wrong";
 	}
 }
-
 
 /**
  * Iniciate reading the .class file
@@ -171,15 +169,17 @@ void init (std::string filename) {
 
 	auto access_flags = file.getNextHalfWord();
 
+	read_access(access_flags.value.number);
+
 	auto this_class = file.getNextHalfWord();
+
 
 	auto super_class = file.getNextHalfWord();
 
 	auto interfaces_count = file.getNextHalfWord();
 
 
-	if(interfaces_count != 0)
-	{
+	if(interfaces_count != 0) {
 
 		read_cp()
 
