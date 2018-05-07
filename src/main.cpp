@@ -127,7 +127,7 @@ void print_access (uint32_t flag) {
 	if (flag & jvm::FLAGS::PROTECTED){
 		std::cout << "\t Access: Protected"					<< std::endl;
 	}
-	if (flag & jvm::FLAGS::STATI){
+	if (flag & jvm::FLAGS::STATIC){
 		std::cout << "\t Access: Static"					<< std::endl;
 	}
 	if (flag & jvm::FLAGS::FINAL){
