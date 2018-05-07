@@ -12,6 +12,12 @@
  * @param file The file to extract the data
  * @param count How many constants to extract
  */
+
+ void read_interfaces(jvm::Reader& file,int count)
+{
+
+
+}
 void read_cp (jvm::Reader& file, int count) {
 	for (int i = 0; i < count; ++i) {
 		auto aux = file.getNextByte();
@@ -162,13 +168,23 @@ void init (std::string filename) {
 	if (cp_count.value.number != 0) {
 		read_cp(file, cp_count.value.number);
 	}
-	jvm::HalfWord access_flags,this_class,super_class,interfaces_count;
-	access_flags = file.getNextHalfWord();
-	this_class = file.getNextHalfWord();
-	super_class = file.getNextHalfWord();
-	interfaces_count = file.getNextHalfWord();
 
-	
+	auto access_flags = file.getNextHalfWord();
+
+	auto this_class = file.getNextHalfWord();
+
+	auto super_class = file.getNextHalfWord();
+
+	auto interfaces_count = file.getNextHalfWord();
+
+
+	if(interfaces_count != 0)
+	{
+
+		read_cp()
+
+	}
+
 	file.close();
 }
 
