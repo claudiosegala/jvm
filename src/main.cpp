@@ -12,7 +12,7 @@
  * @param file The file to extract the data
  * @param count How many constants to extract
  */
-void read_cp (jvm::Reader& file, int count) {
+void read_cp (jvm::Reader& file, uint32_t count) {
 	for (int i = 0; i < count; ++i) {
 		auto aux = file.getNextByte();
 		auto tag = aux.value.number;
@@ -108,33 +108,8 @@ void read_cp (jvm::Reader& file, int count) {
 	
 }
 
-<<<<<<< HEAD
-/**
- * Iniciate reading the .class file
- */
-void init (std::string filename) {
-	auto file = jvm::Reader();
-
-	file.open(filename);
-
-	std::cout << "> .class" << std::endl;
-
-	auto min_version = file.getNextHalfWord();
-	std::cout << "Min Version: " << min_version.value.number << std::endl;
-
-	auto max_version = file.getNextHalfWord();
-	std::cout << "Max Version: " << max_version.value.number << std::endl;
-
-	auto cp_count = file.getNextHalfWord();
-	std::cout << "CP count: " << cp_count.value.number - 1 << std::endl;
-
-	if (cp_count.value.number != 0) {
-		read_cp(file, cp_count.value.number);
-	}
-
-	auto access_flags = file.getNextHalfWord();
-	
-	switch (access_flags.value.number) {
+void read_access (uint32_t flag) {
+	switch (flag) {
 		case jvm::ACC_FLAGS::PUBLIC:
 			std::cout << "\t Access: Public"					<< std::endl;
 			break;
@@ -162,12 +137,7 @@ void init (std::string filename) {
 		default:
 			throw "Invalid conversion, file is wrong";
 	}
-
-	auto this_class = file.getNextHalfWord();
-	auto super_class = file.getNextHalfWord();
-	auto interfaces_count = file.getNextHalfWord();
 }
-
 
 /**
  * Iniciate reading the .class file
@@ -191,15 +161,14 @@ void init (std::string filename) {
 	if (cp_count.value.number != 0) {
 		read_cp(file, cp_count.value.number);
 	}
-	jvm::HalfWord access_flags,this_class,super_class,interfaces_count;
-	access_flags = file.getNextHalfWord();
-	this_class = file.getNextHalfWord();
-	super_class = file.getNextHalfWord();
-	interfaces_count = file.getNextHalfWord();
 
->>>>>>> df330647d7c3e3009fc545d2f590183efdff7e24
-	
-	file.close();
+	auto access_flags = file.getNextHalfWord();
+
+	read_access(access_flags.value.number);
+
+	auto this_class = file.getNextHalfWord();
+	auto super_class = file.getNextHalfWord();
+	auto interfaces_count = file.getNextHalfWord();
 }
 
 int main (int argc, char *argv[ ]) {
