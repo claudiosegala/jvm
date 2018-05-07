@@ -86,8 +86,9 @@ namespace jvm {
 		return (value.number == _d.value.number);
 	}
 
-	template<typename T, typename U>
-	<U> Data<T>::as_type() {
+	template<typename T>
+	template<typename U>
+	U Data<T>::as_type() {
 		return reinterpret_cast<U>(value.number);
 	}
 

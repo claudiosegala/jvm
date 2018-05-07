@@ -38,7 +38,7 @@ namespace jvm {
 
 	class CP_Entry {
 	public:
-		static virtual CP_TAGS tag;
+		static CP_TAGS tag;
 	};
 
 	struct CP_Class : public CP_Entry {
