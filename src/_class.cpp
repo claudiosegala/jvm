@@ -5,7 +5,7 @@
 
 namespace jvm {
 
-	_Class::_Class() {}
+	_Class::_Class() = default;
 
 	void _Class::read_attributes (jvm::Reader &file) {
 		for (int i = 0; i < attributes_count.value.number; ++i) {
