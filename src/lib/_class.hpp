@@ -14,13 +14,12 @@ namespace jvm {
 		Word magic_number;
 
 		HalfWord min_version;
+
 		HalfWord max_version;
 
 		HalfWord cp_count;
 
 		//std::vector<jvm::cp_info> cp;
-
-		HalfWord acess_flags;
 
 		HalfWord access_flags;
 
@@ -55,7 +54,13 @@ namespace jvm {
 
 		void read_cp (jvm::Reader& file);
 
-		void read_if (jvm::Reader& file);
+		void read_interfaces (jvm::Reader &file);
+
+		void read_fields (jvm::Reader &file);
+
+		void read_methods (jvm::Reader &file);
+
+		void read_attributes (jvm::Reader &file);
 
 	};
 
