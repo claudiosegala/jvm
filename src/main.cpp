@@ -130,7 +130,12 @@ void init (std::string filename) {
 	if (cp_count.value.number != 0) {
 		read_cp(file, cp_count.value.number);
 	}
-	
+	jvm::HalfWord access_flags,this_class,super_class,interfaces_count;
+	access_flags = file.getNextHalfWord();
+	this_class = file.getNextHalfWord();
+	super_class = file.getNextHalfWord();
+	interfaces_count = file.getNextHalfWord();
+
 	
 	switch (access_flags) {
 		case 0x0001:
