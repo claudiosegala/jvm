@@ -3,7 +3,7 @@
 #include "bit.hpp"
 
 namespace jvm {
-	enum class CP_TAGS : uint16_t {
+	enum CP_TAGS : uint16_t {
 		Class              = 7,
 		FieldRef           = 9,
 		MethodRef          = 10,

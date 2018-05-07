@@ -87,7 +87,7 @@ namespace jvm {
 	}
 
 	template<typename T, typename U>
-	bool Data<T>::as_type<U>() {
+	<U> Data<T>::as_type() {
 		return reinterpret_cast<U>(value.number);
 	}
 
