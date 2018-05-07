@@ -50,6 +50,22 @@ namespace jvm {
 		void show ();
 
 	private:
+		void print_interfaces ();
+
+		void print_fields ();
+
+		void print_methods ();
+
+		void print_attributes ();
+
+		void print_this_class ();
+
+		void print_super_class ();
+
+		void print_version ();
+
+		void print_cp ();
+
 		void print_flags ();
 
 		void read_cp (jvm::Reader& file);
