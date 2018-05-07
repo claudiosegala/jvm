@@ -3,15 +3,20 @@
 #include "bit.hpp"
 
 namespace jvm {
-	enum ACC_FLAGS : uint16_t {
-		PUBLIC     = 1,     // Declared public; may be accessed = from outside its package.
-		FINAL      = 16,	// Declared final; no subclasses allowed.
-		SUPER      = 32,	// Treat superclass methods specially when invoked by the invokespecial instruction.
-		INTERFACE  = 512,   // Is an interface, not a class.
-		ABSTRACT   = 1024,  // Declared abstract; must not be instantiated.
-		SYNTHETIC  = 4096,  // Declared synthetic; not present in the source code.
-		ANNOTATION = 8192,  // Declared as an annotation type.
-		ENUM       = 16382, // Declared as an enum type.
+	enum FLAGS : uint16_t {
+		PUBLIC     = 0x0001,    // Declared public; may be accessed = from outside its package.
+		PRIVATE	   = 0x0002,
+		PROTECTED  = 0x0004,
+		STATIC     = 0x0008,
+		FINAL      = 0x0010,	// Declared final; no subclasses allowed.
+		SUPER      = 0x0020,	// Treat superclass methods specially when invoked by the invokespecial instruction.
+		VOLATILE   = 0x0040,
+		TRANSIENT  = 0x0080,
+		INTERFACE  = 0x0200,    // Is an interface, not a class.
+		ABSTRACT   = 0x0400,    // Declared abstract; must not be instantiated.
+		SYNTHETIC  = 0x1000,    // Declared synthetic; not present in the source code.
+		ANNOTATION = 0x2000,    // Declared as an annotation type.
+		ENUM       = 0x4000,    // Declared as an enum type.
 	};
 	
 	enum CP_TAGS : uint16_t {
