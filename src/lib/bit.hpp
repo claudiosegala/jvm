@@ -45,6 +45,9 @@ namespace jvm {
 
 		int operator[] (int index);
 
+		template<typename U>
+		bool Data<T>::as_type<U>();
+
 		void Print();
 
 		void Print(std::string &s);
