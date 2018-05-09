@@ -178,12 +178,12 @@ namespace jvm {
 
 	void _Class::print_flags () {
 		auto flag = (uint32_t) access_flags.value.number;
+		std::cout << "Access Flags:" << std::endl;
 
 		if (flag == 0) {
+			std::cout << "\tNone" << std::endl;
 			return;
 		}
-
-		std::cout << "Access Flags:" << std::endl;
 
 		if (flag & jvm::FLAGS::PUBLIC)     std::cout << "\tPublic"     << std::endl;
 		if (flag & jvm::FLAGS::PRIVATE)    std::cout << "\tPrivate"    << std::endl;

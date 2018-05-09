@@ -1,4 +1,4 @@
-#define W(x) std::cerr << "\033[35m" << #x << "=" << x << "\033[0m" << "\n";
+#define W(x) std::cerr << "\033[35m" << #x << "=" << (x) << "\033[0m" << "\n";
 
 #define BYTESIZE 8
 #define HALFSIZE 16

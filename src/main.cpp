@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "_class.hpp"
 
 int main (int argc, char *argv[ ]) {
@@ -14,4 +15,5 @@ int main (int argc, char *argv[ ]) {
 	} catch (std::string& error) {
 	    std::cout << error << std::endl;
 	}
+
 }
