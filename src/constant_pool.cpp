@@ -1,4 +1,5 @@
 #include <bit.hpp>
+#include <iostream>
 #include "constant_pool.hpp"
 
 namespace jvm {
@@ -6,13 +7,46 @@ namespace jvm {
 	ConstantPool::ConstantPool() = default;
 
 	ConstantPool::ConstantPool(Reader &reader, size_type size) : vector(size) {
-		for (auto i = size; i > 0; --i) {
-			push_back(getNextEntry(reader));
+		fill(reader, size);
+	}
+
+	ConstantPool::~ConstantPool() {
+		for (auto& entry : *this) {
+			delete entry;
 		}
 	}
 
-	CP_Entry * ConstantPool::getNextEntry(Reader &reader) {
-		uint16_t tag = reader.getNextHalfWord().value.number;
+	void ConstantPool::fill(Reader &reader, size_type size) {
+		reserve(size);
+		for (auto i = size; i > 0; --i) {
+			auto tag = reader.getNextByte().value.number;
+			push_back(getNextEntry(reader, tag));
+			if (tag == CP_TAGS::Double || tag == CP_TAGS::Long) {
+				// these take two CP entries, the next entry is valid but unusable
+				push_back(nullptr);
+				--i;
+			}
+		}
+		shrink_to_fit();
+	}
+
+	void ConstantPool::printToStream(std::ostream& os) {
+		if (empty()) {
+			os << "Constant Pool is empty" << std::endl;
+			return;
+		}
+		int i = 0;
+		for (CP_Entry* entry : *this) {
+			os << '[' << ++i << "] ";
+			if (entry == nullptr) {
+				os << "Large numeric continued" << std::endl;
+			} else {
+				entry->printToStream(os, *this);
+			}
+		}
+	}
+
+	CP_Entry * ConstantPool::getNextEntry(Reader &reader, uint8_t tag) {
 		switch (tag) {
 			case CP_TAGS::Class:              return new CP_Class(reader);
 			case CP_TAGS::FieldRef:           return new CP_Fieldref(reader);
@@ -30,6 +64,10 @@ namespace jvm {
 			case CP_TAGS::InvokeDynamic:      return new CP_InvokeDynamic(reader);
 			default:                          throw "Invalid Constant Pool Tag";
 		}
+	}
+
+	CP_Entry *&ConstantPool::operator[](unsigned long index) {
+		return vector::operator[](index - 1);
 	}
 
 	// TAGS
@@ -99,13 +137,25 @@ namespace jvm {
 		name_and_class_index = reader.getNextHalfWord();
 	}
 
+	void CP_Fieldref::printToStream(std::ostream &os, ConstantPool &cp) {
+
+	}
+
 	CP_Methodref::CP_Methodref(Reader &reader) {
 		class_index = reader.getNextHalfWord();
 		name_and_class_index = reader.getNextHalfWord();
 	}
 
+	void CP_Methodref::printToStream(std::ostream &os, ConstantPool &cp) {
+
+	}
+
 	CP_Float::CP_Float(Reader &reader) {
 		_bytes = reader.getNextWord();
+	}
+
+	void CP_Float::printToStream(std::ostream &os, ConstantPool &cp) {
+
 	}
 
 	CP_Long::CP_Long(Reader &reader) {
@@ -113,9 +163,17 @@ namespace jvm {
 		low_bytes = reader.getNextWord();
 	}
 
+	void CP_Long::printToStream(std::ostream &os, ConstantPool &cp) {
+
+	}
+
 	CP_Double::CP_Double(Reader &reader) {
 		high_bytes = reader.getNextWord();
 		low_bytes = reader.getNextWord();
+	}
+
+	void CP_Double::printToStream(std::ostream &os, ConstantPool &cp) {
+
 	}
 
 	CP_MethodHandle::CP_MethodHandle(Reader &reader) {
@@ -123,16 +181,33 @@ namespace jvm {
 		reference_index = reader.getNextHalfWord();
 	}
 
+	void CP_MethodHandle::printToStream(std::ostream &os, ConstantPool &cp) {
+
+	}
+
 	CP_InterfaceMethodref::CP_InterfaceMethodref(Reader &reader) {
 		class_index = reader.getNextHalfWord();
 		name_and_class_index = reader.getNextHalfWord();
 	}
 
+	void CP_InterfaceMethodref::printToStream(std::ostream &os, ConstantPool &cp) {
+
+	}
+
 	CP_String::CP_String(Reader &reader) {
 		string_index = reader.getNextHalfWord();
 	}
+
+	void CP_String::printToStream(std::ostream &os, ConstantPool &cp) {
+
+	}
+
 	CP_Integer::CP_Integer(Reader &reader) {
 		_bytes = reader.getNextWord();
+	}
+
+	void CP_Integer::printToStream(std::ostream &os, ConstantPool &cp) {
+
 	}
 
 	CP_NameAndType::CP_NameAndType(Reader &reader) {
@@ -140,28 +215,67 @@ namespace jvm {
 		descriptor_index = reader.getNextHalfWord();
 	}
 
+	void CP_NameAndType::printToStream(std::ostream &os, ConstantPool &cp) {
+
+	}
+
 	CP_InvokeDynamic::CP_InvokeDynamic(Reader &reader) {
 		bootstrap_method_attr_index = reader.getNextHalfWord();
 		name_and_type_index = reader.getNextHalfWord();
 	}
 
+	void CP_InvokeDynamic::printToStream(std::ostream &os, ConstantPool &cp) {
+
+	}
+
 	CP_Utf8::CP_Utf8(Reader &reader) {
 		_length = reader.getNextHalfWord();
-		_bytes = new Byte[_length.value.number];
+		_bytes = new uint8_t[_length.value.number];
+		for (int i = 0; i < _length.value.number; ++i) {
+			_bytes[i] = reader.getNextByte().value.number;
+		}
 	}
 
 	CP_Utf8::~CP_Utf8() {
 		delete[] _bytes;
 	}
 
+	void CP_Utf8::printToStream(std::ostream &os, ConstantPool &cp) {
+		os << "UTF-8:" << std::endl << "\t" << *this << std::endl;
+	}
+
 	CP_Class::CP_Class(Reader &reader) {
 		name_index = reader.getNextHalfWord();
+	}
+
+	void CP_Class::printToStream(std::ostream &os, ConstantPool &cp) {
+		CP_Entry* name = cp[name_index.value.number];
+		auto& characters = name->as<CP_Utf8>();
+		os << "Class:" << std::endl;
+		os << "\tName: " << characters << std::endl;
 	}
 
 	CP_MethodType::CP_MethodType(Reader &reader) {
 		descriptor_index = reader.getNextHalfWord();
 	}
 
+	void CP_MethodType::printToStream(std::ostream &os, ConstantPool &cp) {
+
+	}
+
 	// END CONSTRUCTORS AND DESTRUCTORS
+
+	// STREAM OPERATORS
+
+	std::ostream& operator<< (std::ostream& os, const CP_Utf8& utf8) {
+		auto end = utf8._bytes + utf8._length.value.number;
+		auto current = utf8._bytes;
+		while (current < end) {
+			os << *current++;
+		}
+		return os;
+	}
+
+	// END STREAM OPERATORS
 
 }
