@@ -26,7 +26,7 @@ namespace jvm {
 
 		_class.open(filename, std::ios::binary);
 
-		if (not _class.is_open()) {
+		if (!_class.is_open()) {
 			throw "Couldn't open file";
 		}
 
@@ -38,7 +38,7 @@ namespace jvm {
 			_class.read((char*) &bytes[i], 1);
 		}
 
-		if (not isValid()) {
+		if (!isValid()) {
 			throw "This file isn't a valid .class file";
 		}
 	}

@@ -19,6 +19,8 @@ namespace jvm {
 
 		HalfWord cp_count;
 
+		ConstantPool constant_pool;
+
 		//std::vector<jvm::cp_info> cp;
 
 		HalfWord access_flags;
