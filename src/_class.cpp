@@ -26,8 +26,9 @@ namespace jvm {
 	}
 
 	void _Class::read_interfaces (jvm::Reader &file) {
+		interfaces = new HalfWord(interfaces_count.value.number)
 		for (int i = 0; i < interfaces_count.value.number; ++i) {
-
+			interfaces[i] = file.getNextHalfWord();
 		}
 	}
 
@@ -230,6 +231,7 @@ namespace jvm {
 		if (interfaces_count.value.number == 0) {
 			return;
 		}
+
 	}
 
 	void _Class::print_this_class () {}
