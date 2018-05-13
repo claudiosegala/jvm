@@ -23,8 +23,6 @@ namespace jvm {
 
 		ConstantPool constant_pool;
 
-		//std::vector<jvm::cp_info> cp;
-
 		HalfWord access_flags;
 
 		HalfWord this_class;
@@ -87,5 +85,25 @@ namespace jvm {
 		void read_attributes (jvm::Reader&);
 
 	};
+
+	namespace _class {
+
+		enum Flags : uint16_t {
+			PUBLIC     = 0x0001,    // Declared public; may be accessed from outside its package.
+			PRIVATE	   = 0x0002,    // Declared private; accessible only within the defining class.
+			PROTECTED  = 0x0004,    // Declared protected; may be accessed within subclasses.
+			STATIC     = 0x0008,    // Declared static.
+			FINAL      = 0x0010,	// Declared final; no subclasses allowed.
+			SUPER      = 0x0020,	// Treat superclass methods specially when invoked by the invokespecial instruction.
+			VOLATILE   = 0x0040,
+			TRANSIENT  = 0x0080,
+			INTERFACE  = 0x0200,    // Is an interface, not a class.
+			ABSTRACT   = 0x0400,    // Declared abstract; must not be instantiated.
+			SYNTHETIC  = 0x1000,    // Declared synthetic; not present in the source code.
+			ANNOTATION = 0x2000,    // Declared as an annotation type.
+			ENUM       = 0x4000     // Declared as an enum type.
+		};
+
+	}
 
 }

@@ -131,19 +131,23 @@ namespace jvm {
 			return;
 		}
 
-		if (flag & jvm::FLAGS::PUBLIC)     std::cout << "\tPublic"     << std::endl;
-		if (flag & jvm::FLAGS::PRIVATE)    std::cout << "\tPrivate"    << std::endl;
-		if (flag & jvm::FLAGS::PROTECTED)  std::cout << "\tProtected"  << std::endl;
-		if (flag & jvm::FLAGS::STATIC)     std::cout << "\tStatic"     << std::endl;
-		if (flag & jvm::FLAGS::FINAL)      std::cout << "\tFinal"      << std::endl;
-		if (flag & jvm::FLAGS::SUPER)      std::cout << "\tSuper"      << std::endl;
-		if (flag & jvm::FLAGS::VOLATILE)   std::cout << "\tVolatile"   << std::endl;
-		if (flag & jvm::FLAGS::TRANSIENT)  std::cout << "\tTransient"  << std::endl;
-		if (flag & jvm::FLAGS::INTERFACE)  std::cout << "\tInterface"  << std::endl;
-		if (flag & jvm::FLAGS::ABSTRACT)   std::cout << "\tAbstract"   << std::endl;
-		if (flag & jvm::FLAGS::SYNTHETIC)  std::cout << "\tSynthetic"  << std::endl;
-		if (flag & jvm::FLAGS::ANNOTATION) std::cout << "\tAnnotation" << std::endl;
-		if (flag & jvm::FLAGS::ENUM)       std::cout << "\tEnum"       << std::endl;
+		{
+			using namespace jvm::_class;
+
+			if (flag & Flags::PUBLIC)     std::cout << "\tPublic"     << std::endl;
+			if (flag & Flags::PRIVATE)    std::cout << "\tPrivate"    << std::endl;
+			if (flag & Flags::PROTECTED)  std::cout << "\tProtected"  << std::endl;
+			if (flag & Flags::STATIC)     std::cout << "\tStatic"     << std::endl;
+			if (flag & Flags::FINAL)      std::cout << "\tFinal"      << std::endl;
+			if (flag & Flags::SUPER)      std::cout << "\tSuper"      << std::endl;
+			if (flag & Flags::VOLATILE)   std::cout << "\tVolatile"   << std::endl;
+			if (flag & Flags::TRANSIENT)  std::cout << "\tTransient"  << std::endl;
+			if (flag & Flags::INTERFACE)  std::cout << "\tInterface"  << std::endl;
+			if (flag & Flags::ABSTRACT)   std::cout << "\tAbstract"   << std::endl;
+			if (flag & Flags::SYNTHETIC)  std::cout << "\tSynthetic"  << std::endl;
+			if (flag & Flags::ANNOTATION) std::cout << "\tAnnotation" << std::endl;
+			if (flag & Flags::ENUM)       std::cout << "\tEnum"       << std::endl;
+		}
 	}
 
 	void _Class::print_attributes () {
