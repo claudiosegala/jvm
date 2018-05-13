@@ -41,7 +41,18 @@ namespace jvm {
 		}
 
 		for (int i = 0; i < fields_count.value.number; ++i) {
+			FieldsInfo field;
 
+			field.access_flags = file.getNextHalfWord();
+			field.name_index = file.getNextHalfWord();
+			field.descriptor_index = file.getNextHalfWord();
+			field.attributes_count = file.getNextHalfWord();
+
+			for (int j = 0; j < field.attributes_count.value.number; ++j) {
+				field.attributes.push_back(file.getNextHalfWord());
+			}
+
+			fields.push_back(field);
 		}
 	}
 
@@ -53,7 +64,7 @@ namespace jvm {
 		}
 
 		for (int i = 0; i < interfaces_count.value.number; ++i) {
-			interfaces[i] = file.getNextHalfWord();
+			interfaces.push_back(file.getNextHalfWord());
 		}
 	}
 
