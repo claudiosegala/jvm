@@ -12,7 +12,7 @@ if(BUILD_32)
 endif(BUILD_32)
 
 include_directories("src/lib")
-set(SOURCES src/main.cpp src/reader.cpp src/constant_pool.cpp src/_class.cpp src/lib/methods.hpp)
+set(SOURCES src/main.cpp src/reader.cpp src/constant_pool.cpp src/_class.cpp)
 #file(GLOB SOURCES "src/*.cpp")
 
 add_executable(jvm ${SOURCES})

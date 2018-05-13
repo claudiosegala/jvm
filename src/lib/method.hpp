@@ -27,7 +27,7 @@ namespace jvm {
 		/**
 		 * An attribute structure
 		 */
-		std::vector<HalfWord> attributes;
+		std::vector<Byte> attributes;
 	};
 
 	namespace methods {

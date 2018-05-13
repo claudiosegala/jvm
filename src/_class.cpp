@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <bit.hpp>
+#include "bit.hpp"
 #include "macros.hpp"
 #include "_class.hpp"
 
@@ -38,14 +38,17 @@ namespace jvm {
 
 		for (int i = 0; i < methods_count.value.number; ++i) {
 			MethodInfo method;
+			AttributeInfo attribut;
 
 			method.access_flags = file.getNextHalfWord();
 			method.name_index = file.getNextHalfWord();
 			method.descriptor_index = file.getNextHalfWord();
 			method.attributes_count = file.getNextHalfWord();
+			
 
-			for (int j = 0; j < method.attributes_count.value.number; ++j) {
-				method.attributes.push_back(file.getNextHalfWord());
+				for (int j = 0; j < method.attributes_count.value.number; ++j)
+			{
+				method.attributes.push_back(file.getNextByte());
 			}
 
 			methods.push_back(method);
@@ -68,7 +71,7 @@ namespace jvm {
 			field.attributes_count = file.getNextHalfWord();
 
 			for (int j = 0; j < field.attributes_count.value.number; ++j) {
-				field.attributes.push_back(file.getNextHalfWord());
+				field.attributes.push_back(file.getNextByte());
 			}
 
 			fields.push_back(field);

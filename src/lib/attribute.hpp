@@ -1,5 +1,5 @@
 #pragma once
-
+#include <cstdint>
 #include <vector>
 #include "bit.hpp"
 
@@ -20,7 +20,7 @@ namespace jvm {
 		/**
 		 * Info
 		 */
-		std::vector<Byte> info;
+		std::vector<uint8_t> info;
 	};
 
 }
