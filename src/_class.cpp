@@ -10,32 +10,74 @@ namespace jvm {
 	_Class::_Class() = default;
 
 	void _Class::read_attributes (jvm::Reader &file) {
+		attributes_count = file.getNextHalfWord();
+
+		if(attributes_count.value.number == 0) {
+			return;
+		}
+
 		for (int i = 0; i < attributes_count.value.number; ++i) {
 
 		}
 	}
 
 	void _Class::read_methods (jvm::Reader &file) {
+		methods_count = file.getNextHalfWord();
+
+		if(methods_count.value.number == 0) {
+			return;
+		}
+
 		for (int i = 0; i < methods_count.value.number; ++i) {
 
 		}
 	}
 
 	void _Class::read_fields (jvm::Reader &file) {
+		fields_count = file.getNextHalfWord();
+
+		if(fields_count.value.number == 0) {
+			return;
+		}
+
 		for (int i = 0; i < fields_count.value.number; ++i) {
 
 		}
 	}
 
 	void _Class::read_interfaces (jvm::Reader &file) {
-		interfaces = new HalfWord(interfaces_count.value.number)
+		interfaces_count = file.getNextHalfWord();
+
+		if(interfaces_count.value.number == 0) {
+			return;
+		}
+
 		for (int i = 0; i < interfaces_count.value.number; ++i) {
 			interfaces[i] = file.getNextHalfWord();
 		}
 	}
 
+	void _Class::read_flags (jvm::Reader &file) {
+		access_flags = file.getNextHalfWord();
+		this_class = file.getNextHalfWord();
+		super_class = file.getNextHalfWord();
+	}
+
 	void _Class::read_cp (jvm::Reader& file) {
+		cp_count = file.getNextHalfWord();
+		cp_count.value.number--;
+
+		if (cp_count.value.number <= 0) {
+			return;
+		}
+
 		constant_pool.fill(file, cp_count.value.number);
+	}
+
+	void _Class::read_version (jvm::Reader& file) {
+		magic_number = MAGIC_NUMBER;
+		min_version = file.getNextHalfWord();
+		max_version = file.getNextHalfWord();
 	}
 
 	/**
@@ -48,39 +90,13 @@ namespace jvm {
 
 		file.open(filename);
 
-		magic_number = MAGIC_NUMBER;
-		min_version = file.getNextHalfWord();
-		max_version = file.getNextHalfWord();
-
-		cp_count = file.getNextHalfWord();
-		cp_count.value.number--;
-		if (cp_count.value.number != 0) {
-			read_cp(file);
-		}
-
-		access_flags = file.getNextHalfWord();
-		this_class = file.getNextHalfWord();
-		super_class = file.getNextHalfWord();
-
-		interfaces_count = file.getNextHalfWord();
-		if(interfaces_count.value.number != 0) {
-			read_interfaces(file);
-		}
-
-		fields_count = file.getNextHalfWord();
-		if(fields_count.value.number != 0) {
-			read_fields(file);
-		}
-
-		methods_count = file.getNextHalfWord();
-		if(methods_count.value.number != 0) {
-			read_methods(file);
-		}
-
-		attributes_count = file.getNextHalfWord();
-		if(attributes_count.value.number != 0) {
-			read_attributes(file);
-		}
+		read_version(file);
+		read_cp(file);
+		read_flags(file);
+		read_interfaces(file);
+		read_fields(file);
+		read_methods(file);
+		read_attributes(file);
 
 		file.close();
 	}

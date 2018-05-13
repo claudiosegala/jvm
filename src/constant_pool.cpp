@@ -18,6 +18,7 @@ namespace jvm {
 
 	void ConstantPool::fill(Reader &reader, size_type size) {
 		reserve(size);
+
 		for (auto i = size; i > 0; --i) {
 			auto tag = reader.getNextByte().value.number;
 			push_back(getNextEntry(reader, tag));
@@ -27,6 +28,7 @@ namespace jvm {
 				--i;
 			}
 		}
+
 		shrink_to_fit();
 	}
 
@@ -35,7 +37,8 @@ namespace jvm {
 			os << "Constant Pool is empty" << std::endl;
 			return;
 		}
-		int i = 0;
+
+		auto i = 0;
 		for (CP_Entry* entry : *this) {
 			os << '[' << ++i << "] ";
 			if (entry == nullptr) {

@@ -47,7 +47,7 @@ namespace jvm {
 
 		_Class ();
 
-		void read (std::basic_string<char> filename);
+		void read (std::basic_string<char>);
 
 		void show ();
 
@@ -70,15 +70,19 @@ namespace jvm {
 
 		void print_flags ();
 
-		void read_cp (jvm::Reader& file);
+		void read_version (jvm::Reader&);
 
-		void read_interfaces (jvm::Reader &file);
+		void read_cp (jvm::Reader&);
 
-		void read_fields (jvm::Reader &file);
+		void read_flags(jvm::Reader&);
 
-		void read_methods (jvm::Reader &file);
+		void read_interfaces (jvm::Reader&);
 
-		void read_attributes (jvm::Reader &file);
+		void read_fields (jvm::Reader&);
+
+		void read_methods (jvm::Reader&);
+
+		void read_attributes (jvm::Reader&);
 
 	};
 
