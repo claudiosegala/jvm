@@ -1,8 +1,5 @@
 #pragma once
 
-#include <vector>
-#include "bit.hpp"
-
 namespace jvm {
 
 	class MethodInfo {

@@ -74,7 +74,11 @@ namespace jvm {
 		}
 
 		for (int i = 0; i < interfaces_count.value.number; ++i) {
-			interfaces.push_back(file.getNextHalfWord());
+			InterfaceInfo interface;
+
+			interface.info = file.getNextHalfWord();
+
+			interfaces.push_back(interface);
 		}
 	}
 

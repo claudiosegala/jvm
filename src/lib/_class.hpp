@@ -6,6 +6,7 @@
 #include "bit.hpp"
 #include "reader.hpp"
 #include "constant_pool.hpp"
+#include "interface.hpp"
 #include "field.hpp"
 #include "method.hpp"
 #include "attribute.hpp"
@@ -32,7 +33,7 @@ namespace jvm {
 
 		HalfWord interfaces_count;
 
-		std::vector<HalfWord> interfaces;
+		std::vector<jvm::InterfaceInfo> interfaces;
 
 		HalfWord fields_count;
 
