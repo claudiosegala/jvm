@@ -6,8 +6,9 @@
 #include "bit.hpp"
 #include "reader.hpp"
 #include "constant_pool.hpp"
-#include "fields.hpp"
-#include "methods.hpp"
+#include "field.hpp"
+#include "method.hpp"
+#include "attribute.hpp"
 
 namespace jvm {
 
@@ -35,15 +36,15 @@ namespace jvm {
 
 		HalfWord fields_count;
 
-		std::vector<jvm::FieldsInfo> fields;
+		std::vector<jvm::FieldInfo> fields;
 
 		HalfWord methods_count;
 
-		std::vector<jvm::MethodsInfo> methods;
+		std::vector<jvm::MethodInfo> methods;
 
 		HalfWord attributes_count;
 
-		//std::vector<jvm::attribute_info> attributes;
+		std::vector<jvm::AttributeInfo> attributes;
 
 		_Class ();
 
@@ -68,7 +69,7 @@ namespace jvm {
 
 		void print_cp ();
 
-		void print_flags ();
+		void print_class_flags();
 
 		void read_version (jvm::Reader&);
 

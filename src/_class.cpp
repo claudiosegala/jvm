@@ -28,7 +28,7 @@ namespace jvm {
 		}
 
 		for (int i = 0; i < methods_count.value.number; ++i) {
-			MethodsInfo method;
+			MethodInfo method;
 
 			method.access_flags = file.getNextHalfWord();
 			method.name_index = file.getNextHalfWord();
@@ -51,7 +51,7 @@ namespace jvm {
 		}
 
 		for (int i = 0; i < fields_count.value.number; ++i) {
-			FieldsInfo field;
+			FieldInfo field;
 
 			field.access_flags = file.getNextHalfWord();
 			field.name_index = file.getNextHalfWord();
@@ -122,7 +122,7 @@ namespace jvm {
 		file.close();
 	}
 
-	void _Class::print_flags () {
+	void _Class::print_class_flags() {
 		auto flag = (uint32_t) access_flags.value.number;
 		std::cout << "Access Flags:" << std::endl;
 
@@ -203,7 +203,7 @@ namespace jvm {
 
 		print_version();
 		print_cp();
-		print_flags();
+		print_class_flags();
 		print_this_class();
 		print_super_class();
 		print_interfaces();
