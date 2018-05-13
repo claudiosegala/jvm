@@ -16,7 +16,16 @@ namespace jvm {
 		}
 
 		for (int i = 0; i < attributes_count.value.number; ++i) {
+			AttributeInfo attribute;
 
+			attribute.name_index = file.getNextHalfWord();
+			attribute.length = file.getNextWord();
+
+			for (int j = 0; j < attribute.length.value.number; ++j) {
+				attribute.info.push_back(file.getNextByte());
+			}
+
+			attributes.push_back(attribute);
 		}
 	}
 
