@@ -7,6 +7,7 @@
 #include "reader.hpp"
 #include "constant_pool.hpp"
 #include "fields.hpp"
+#include "methods.hpp"
 
 namespace jvm {
 
@@ -40,7 +41,7 @@ namespace jvm {
 
 		HalfWord methods_count;
 
-		//std::vector<jvm::method_info> methods;
+		std::vector<jvm::MethodsInfo> methods;
 
 		HalfWord attributes_count;
 

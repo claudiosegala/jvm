@@ -5,7 +5,7 @@
 
 namespace jvm {
 
-	class FieldsInfo {
+	class MethodsInfo {
 	public:
 		/**
 		 *  Access permission to and properties of this field

@@ -4,7 +4,6 @@
 #include "macros.hpp"
 #include "_class.hpp"
 
-
 namespace jvm {
 
 	_Class::_Class() = default;
@@ -29,7 +28,18 @@ namespace jvm {
 		}
 
 		for (int i = 0; i < methods_count.value.number; ++i) {
+			MethodsInfo method;
 
+			method.access_flags = file.getNextHalfWord();
+			method.name_index = file.getNextHalfWord();
+			method.descriptor_index = file.getNextHalfWord();
+			method.attributes_count = file.getNextHalfWord();
+
+			for (int j = 0; j < method.attributes_count.value.number; ++j) {
+				method.attributes.push_back(file.getNextHalfWord());
+			}
+
+			methods.push_back(method);
 		}
 	}
 
