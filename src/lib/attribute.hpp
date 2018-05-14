@@ -8,11 +8,6 @@ namespace jvm {
 
 	class AttributeInfo {
 	public:
-		AttributeInfo() = default;
-		explicit AttributeInfo(Reader &reader);
-
-		void printToStream(std::ostream &os, ConstantPool &cp);
-
 		/**
 		 *  Valid index into the constant pool table
 		 */
@@ -27,6 +22,12 @@ namespace jvm {
 		 * Info
 		 */
 		std::vector<uint8_t > info;
+
+		AttributeInfo() = default;
+
+		explicit AttributeInfo(Reader &reader);
+
+		void printToStream(std::ostream&, ConstantPool&, std::string);
 
 		void Read(Reader &reader);
 

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <bit.hpp>
 #include "bit.hpp"
@@ -29,19 +30,7 @@ namespace jvm {
 		}
 
 		for (int i = 0; i < methods_count.value.number; ++i) {
-			MethodInfo method;
-
-			method.access_flags = file.getNextHalfWord();
-			method.name_index = file.getNextHalfWord();
-			method.descriptor_index = file.getNextHalfWord();
-			method.attributes_count = file.getNextHalfWord();
-			
-
-			for (int j = 0; j < method.attributes_count.value.number; ++j) {
-				method.attributes.emplace_back(AttributeInfo(file));
-			}
-
-			methods.push_back(method);
+			methods.emplace_back(MethodInfo(file));
 		}
 	}
 
@@ -53,18 +42,7 @@ namespace jvm {
 		}
 
 		for (int i = 0; i < fields_count.value.number; ++i) {
-			FieldInfo field;
-
-			field.access_flags = file.getNextHalfWord();
-			field.name_index = file.getNextHalfWord();
-			field.descriptor_index = file.getNextHalfWord();
-			field.attributes_count = file.getNextHalfWord();
-
-			for (int j = 0; j < field.attributes_count.value.number; ++j) {
-				field.attributes.emplace_back(AttributeInfo(file));
-			}
-
-			fields.push_back(field);
+			fields.emplace_back(FieldInfo(file));
 		}
 	}
 
@@ -156,55 +134,6 @@ namespace jvm {
 		}
 	}
 
-	void _Class::print_method_flags(uint32_t flag) {
-		std::cout << "\tFlags:" << std::endl;
-
-		if (flag == 0) {
-			std::cout << "\t\t -o-" << std::endl;
-			return;
-		}
-
-		{
-			using namespace jvm::methods;
-
-			if (flag & Flags::PUBLIC)       std::cout << "\t\tPublic"             << std::endl;
-			if (flag & Flags::PRIVATE)      std::cout << "\t\tPrivate"            << std::endl;
-			if (flag & Flags::PROTECTED)    std::cout << "\t\tProtected"          << std::endl;
-			if (flag & Flags::STATIC)       std::cout << "\t\tStatic"             << std::endl;
-			if (flag & Flags::FINAL)        std::cout << "\t\tFinal"              << std::endl;
-			if (flag & Flags::SYNCHRONIZED) std::cout << "\t\tSynchronized"       << std::endl;
-			if (flag & Flags::BRIDGE)       std::cout << "\t\tBridge"             << std::endl;
-			if (flag & Flags::VARARGS)      std::cout << "\t\tVariable Arguments" << std::endl;
-			if (flag & Flags::NATIVE)       std::cout << "\t\tNative"             << std::endl;
-			if (flag & Flags::ABSTRACT)     std::cout << "\t\tAbstract"           << std::endl;
-			if (flag & Flags::STRICT)       std::cout << "\t\tStrict"             << std::endl;
-			if (flag & Flags::SYNTHETIC)    std::cout << "\t\tSynthetic"          << std::endl;
-		}
-	}
-
-	void _Class::print_field_flags(uint32_t flag) {
-		std::cout << "\tFlags:" << std::endl;
-
-		if (flag == 0) {
-			std::cout << "\t\t -o-" << std::endl;
-			return;
-		}
-
-		{
-			using namespace jvm::fields;
-
-			if (flag & Flags::PUBLIC)     std::cout << "\t\tPublic"     << std::endl;
-			if (flag & Flags::PRIVATE)    std::cout << "\t\tPrivate"    << std::endl;
-			if (flag & Flags::PROTECTED)  std::cout << "\t\tProtected"  << std::endl;
-			if (flag & Flags::STATIC)     std::cout << "\t\tStatic"     << std::endl;
-			if (flag & Flags::FINAL)      std::cout << "\t\tFinal"      << std::endl;
-			if (flag & Flags::VOLATILE)   std::cout << "\t\tVolatile"   << std::endl;
-			if (flag & Flags::TRANSIENT)  std::cout << "\t\tTransient"  << std::endl;
-			if (flag & Flags::SYNTHETIC)  std::cout << "\t\tSynthetic"  << std::endl;
-			if (flag & Flags::ENUM)       std::cout << "\t\tEnum"       << std::endl;
-		}
-	}
-
 	void _Class::print_attributes () {
 		std::cout << "Attributes Count: " << attributes_count.value.number << std::endl;
 
@@ -212,10 +141,12 @@ namespace jvm {
 			return;
 		}
 
-		std::cout << "Attributes:" << std::endl << std::endl;
+		std::cout << "Attributes:";
 
+		auto i = 0;
 		for (auto& attribute : attributes) {
-			attribute.printToStream(std::cout, constant_pool);
+			std::cout << std::endl << "\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
+			attribute.printToStream(std::cout, constant_pool, "\t");
 		}
 	}
 
@@ -226,12 +157,12 @@ namespace jvm {
 			return;
 		}
 
-		std::cout << "Methods:" << std::endl << std::endl;
+		std::cout << "Methods:";
 
-
+		auto i = 0;
 		for (auto& method : methods) {
-			method.printToStream(std::cout, constant_pool);
-
+			std::cout << std::endl << "\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
+			method.PrintToStream(std::cout, constant_pool);
 		}
 	}
 
@@ -242,10 +173,12 @@ namespace jvm {
 			return;
 		}
 
-		std::cout << "Fields:" << std::endl << std::endl;
+		std::cout << "Fields:";
 
+		auto i = 0;
 		for (auto& field : fields) {
-			field.printToStream(std::cout, constant_pool);
+			std::cout << std::endl << "\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
+			field.PrintToStream(std::cout, constant_pool);
 		}
 	}
 
@@ -270,7 +203,7 @@ namespace jvm {
 			return;
 		}
 
-		std::cout << "Constant Pool:" << std::endl << std::endl;
+		std::cout << "Constant Pool:";
 
 		constant_pool.printToStream(std::cout);
 	}

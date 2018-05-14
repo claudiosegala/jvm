@@ -47,12 +47,19 @@ namespace jvm {
 		/**
 		 * Print the content of the class
 		 */
-		void printToStream (std::ostream&, ConstantPool&);
+		void PrintToStream(std::ostream &, ConstantPool &);
 
 		/**
 		 * Read from a file
 		 */
 		void Read(Reader&);
+
+	private:
+
+		/**
+		 * Print the content the flags of the method
+		 */
+		void PrintFlags(std::ostream &, uint32_t);
 	};
 
 	namespace methods {

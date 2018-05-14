@@ -1,57 +1,69 @@
 #include <iostream>
+#include <iomanip>
 #include <bit.hpp>
 #include "reader.hpp"
 #include "method.hpp"
 #include "attribute.hpp"
-namespace jvm {
-	MethodInfo::MethodInfo(jvm::Reader &reader) {
-		Read(reader);
-	}
 
-	void MethodInfo::printToStream(std::ostream &os, ConstantPool &cp) {
+namespace jvm  {
 
-		os << "\tAccess flags: " << access_flags.value.number << std::endl;
-		os << "\tName index: " << name_index.value.number<< std::endl;
-		os << "\tDescriptor index: " << descriptor_index.value.number << std::endl;
-		os << "\tAttributes_count: " << attributes_count.value.number << std::endl;
-	}
+    MethodInfo::MethodInfo (Reader &reader) {
+        Read(reader);
+    }
 
-	void MethodInfo::Read(Reader &reader) {
-		access_flags = reader.getNextHalfWord();
-		name_index = reader.getNextHalfWord();
-		descriptor_index = reader.getNextHalfWord();
-		attributes_count = reader.getNextHalfWord();
-		AttributeInfo::AttributeInfo(reader);
-	}
+    void MethodInfo::PrintFlags (std::ostream &os, uint32_t flag) {
+        std::cout << "\t\tFlags:" << std::endl;
 
-	AttributeInfo::AttributeInfo(Reader &reader) {
-		Read(reader);
-	}
+        if (flag == 0) {
+            std::cout << "\t\t\t -o-" << std::endl;
+            return;
+        }
 
-	void AttributeInfo::printToStream(std::ostream &os, ConstantPool &cp) {
-		char buffer[5];
-		auto name = cp[name_index.value.number];
-		auto &characters = name->as<CP_Utf8>();
+        {
+            using namespace jvm::methods;
 
-		os << "\tAttribute: " << characters << std::endl;
-		os << "\tLength: " << length.value.number << std::endl;
-		os << "\tBytes:  ";
+            if (flag & Flags::PUBLIC)       std::cout << "\t\t\tPublic"             << std::endl;
+            if (flag & Flags::PRIVATE)      std::cout << "\t\t\tPrivate"            << std::endl;
+            if (flag & Flags::PROTECTED)    std::cout << "\t\t\tProtected"          << std::endl;
+            if (flag & Flags::STATIC)       std::cout << "\t\t\tStatic"             << std::endl;
+            if (flag & Flags::FINAL)        std::cout << "\t\t\tFinal"              << std::endl;
+            if (flag & Flags::SYNCHRONIZED) std::cout << "\t\t\tSynchronized"       << std::endl;
+            if (flag & Flags::BRIDGE)       std::cout << "\t\t\tBridge"             << std::endl;
+            if (flag & Flags::VARARGS)      std::cout << "\t\t\tVariable Arguments" << std::endl;
+            if (flag & Flags::NATIVE)       std::cout << "\t\t\tNative"             << std::endl;
+            if (flag & Flags::ABSTRACT)     std::cout << "\t\t\tAbstract"           << std::endl;
+            if (flag & Flags::STRICT)       std::cout << "\t\t\tStrict"             << std::endl;
+            if (flag & Flags::SYNTHETIC)    std::cout << "\t\t\tSynthetic"          << std::endl;
+        }
+    }
 
-		for (auto &byte : info) {
-			sprintf(buffer, "%.2X ", byte);
-			os << buffer;
-		}
+    void MethodInfo::PrintToStream (std::ostream &os, ConstantPool &cp) {
+        auto& name = cp[name_index.value.number]->as<CP_Utf8>();
+        auto& descriptor = cp[descriptor_index.value.number]->as<CP_Utf8>();
 
-		os << std::endl
-		   << std::endl;
-	}
+        os << name << std::endl;
+        os << "\t\tDescriptor: " << descriptor << std::endl;
 
-	void AttributeInfo::Read(Reader &reader) {
-		name_index = reader.getNextHalfWord();
-		length = reader.getNextWord();
+        PrintFlags(os, access_flags.value.number);
 
-		for (int i = 0; i < length.value.number; ++i) {
-			info.push_back(reader.getNextByte().value.number);
-		}
-	}
+        os << "\t\tAttributes Count: " << attributes_count.value.number << std::endl;
+        os << "\t\tAttributes: ";
+
+        auto i = 0;
+        for (auto& attribute : attributes) {
+	        std::cout << std::endl << "\t\t\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
+            attribute.printToStream(os, cp, "\t\t\t");
+        }
+    }
+
+    void MethodInfo::Read (Reader &reader) {
+        access_flags = reader.getNextHalfWord();
+        name_index = reader.getNextHalfWord();
+        descriptor_index = reader.getNextHalfWord();
+        attributes_count = reader.getNextHalfWord();
+
+        for (int j = 0; j < attributes_count.value.number; ++j) {
+            attributes.emplace_back(AttributeInfo(reader));
+        }
+    }
 }
