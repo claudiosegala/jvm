@@ -11,7 +11,7 @@ namespace jvm {
 	void _Class::read_attributes (jvm::Reader &file) {
 		attributes_count = file.getNextHalfWord();
 
-		if(attributes_count.value.number == 0) {
+		if (attributes_count.value.number == 0) {
 			return;
 		}
 
@@ -23,7 +23,7 @@ namespace jvm {
 	void _Class::read_methods (jvm::Reader &file) {
 		methods_count = file.getNextHalfWord();
 
-		if(methods_count.value.number == 0) {
+		if (methods_count.value.number == 0) {
 			return;
 		}
 
@@ -36,8 +36,7 @@ namespace jvm {
 			method.attributes_count = file.getNextHalfWord();
 			
 
-			for (int j = 0; j < method.attributes_count.value.number; ++j)
-			{
+			for (int j = 0; j < method.attributes_count.value.number; ++j) {
 				method.attributes.emplace_back(AttributeInfo(file));
 			}
 
@@ -48,7 +47,7 @@ namespace jvm {
 	void _Class::read_fields (jvm::Reader &file) {
 		fields_count = file.getNextHalfWord();
 
-		if(fields_count.value.number == 0) {
+		if (fields_count.value.number == 0) {
 			return;
 		}
 
@@ -71,7 +70,7 @@ namespace jvm {
 	void _Class::read_interfaces (jvm::Reader &file) {
 		interfaces_count = file.getNextHalfWord();
 
-		if(interfaces_count.value.number == 0) {
+		if (interfaces_count.value.number == 0) {
 			return;
 		}
 
