@@ -11,12 +11,10 @@ namespace jvm {
 		os << "\tName: " << name << std::endl;
 		os << "\tDescriptor: " << descriptor << std::endl;
 		os << "\tLength: " << attributes_count.value.number << std::endl;
-		os << "\tBytes:  ";
+		os << "\tAttributes: ";
 
-		char buffer[5];
-		for (auto& byte : attributes) {
-			sprintf(buffer, "%.2X ", byte);
-			os << buffer;
+		for (auto& attribute : attributes) {
+			attribute.printToStream(os, cp);
 		}
 
 		os << std::endl << std::endl;

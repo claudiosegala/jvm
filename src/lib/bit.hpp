@@ -50,10 +50,12 @@ namespace jvm {
 
 	};
 
+	template<typename T>
+	std::ostream& operator<< (std::ostream& os, Data<T>& data);
+
 	typedef Data<uint8_t>  Byte;
 	typedef Data<uint16_t> HalfWord;
 	typedef Data<uint32_t> Word;
-
 }
 
 #include "../bit.cpp" // Templates require this

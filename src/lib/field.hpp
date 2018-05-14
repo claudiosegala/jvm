@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "constant_pool.hpp"
+#include "attribute.hpp"
 
 namespace jvm {
 
@@ -30,7 +31,7 @@ namespace jvm {
 		/**
 		 * An attribute structure
 		 */
-		std::vector<Byte> attributes;
+		std::vector<AttributeInfo> attributes;
 
 		void printToStream(std::ostream &os, ConstantPool &cp);
 	};

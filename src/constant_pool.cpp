@@ -41,6 +41,7 @@ namespace jvm {
 			} else {
 				entry->printToStream(os, *this);
 			}
+			os << std::endl;
 		}
 	}
 
@@ -64,8 +65,19 @@ namespace jvm {
 		}
 	}
 
+	void ConstantPool::PrintUtf8(std::ostream &os, int index) {
+		auto& utf8 = ((*this)[index])->as<CP_Utf8>();
+		os << utf8 << std::endl;
+	}
+
 	CP_Entry *&ConstantPool::operator[](unsigned long index) {
 		return vector::operator[](index - 1);
+	}
+
+	std::ostream& operator<<(std::ostream &os, CP_Entry &entry) {
+		auto& utf8 = entry.as<CP_Utf8>();
+		os << utf8;
+		return os;
 	}
 
 	// TAGS
@@ -132,34 +144,24 @@ namespace jvm {
 
 	CP_Fieldref::CP_Fieldref(Reader &reader) {
 		class_index = reader.getNextHalfWord();
-		name_and_class_index = reader.getNextHalfWord();
+		name_and_type_index = reader.getNextHalfWord();
 	}
 
 	void CP_Fieldref::printToStream(std::ostream &os, ConstantPool &cp) {
-		CP_Entry* name1 = cp[class_index.value.number];
-		CP_Entry* name2 = cp[name_and_class_index.value.number];
-		auto& characters1 = name1->as<CP_Utf8>();
-		auto& characters2 = name2->as<CP_Utf8>();
-		os << "\tField Reference :" << std::endl;
-		os << "\tClass Name: " << characters1 << std::endl;
-		os << "\tName and Type: " << characters2 << std::endl;
-
+		os << "Field Reference" << std::endl;
+		os << "\t\tClass index: " << class_index << std::endl;
+		os << "\t\tName and Type index: " << name_and_type_index << std::endl;
 	}
 
 	CP_Methodref::CP_Methodref(Reader &reader) {
 		class_index = reader.getNextHalfWord();
-		name_and_class_index = reader.getNextHalfWord();
-
+		name_and_type_index = reader.getNextHalfWord();
 	}
 
 	void CP_Methodref::printToStream(std::ostream &os, ConstantPool &cp) {
-		CP_Entry* name1 = cp[class_index.value.number];
-		CP_Entry* name2 = cp[name_and_class_index.value.number];
-		auto& characters1 = name1->as<CP_Utf8>();
-		auto& characters2 = name2->as<CP_Utf8>();
-		os << "\tMethod Reference :" << std::endl;
-		os << "\tClass Name: " << characters1 << std::endl;
-		os << "\tName and type: " << characters2 << std::endl;
+		os << "Method Reference" << std::endl;
+		os << "\t\tClass index: " << class_index << std::endl;
+		os << "\t\tName and type index: " << name_and_type_index << std::endl;
 	}
 
 	CP_Float::CP_Float(Reader &reader) {
@@ -167,8 +169,8 @@ namespace jvm {
 	}
 
 	void CP_Float::printToStream(std::ostream &os, ConstantPool &cp) {
-		os << "\tCP_FLOAT: "<< std::endl;
-		os << reinterpret_cast<float&>(_bytes.value.number) << std::endl;
+		os << "Float" << std::endl;
+		os << "\t\t" << reinterpret_cast<float&>(_bytes.value.number) << std::endl;
 	}
 
 	CP_Long::CP_Long(Reader &reader) {
@@ -177,8 +179,10 @@ namespace jvm {
 	}
 
 	void CP_Long::printToStream(std::ostream &os, ConstantPool &cp) {
-		os << "\tCP_LONG: " << std::endl;
-
+		uint64_t number = high_bytes.value.number;
+		number = (number << 32) | low_bytes.value.number;
+		os << "Long" << std::endl;
+		os << "\t\t" << number << std::endl;
 	}
 
 	CP_Double::CP_Double(Reader &reader) {
@@ -187,7 +191,11 @@ namespace jvm {
 	}
 
 	void CP_Double::printToStream(std::ostream &os, ConstantPool &cp) {
-
+		uint64_t number = high_bytes.value.number;
+		number = (number << 32) | low_bytes.value.number;
+		double d_number = reinterpret_cast<double&>(number);
+		os << "Double" << std::endl;
+		os << "\t\t" << d_number << std::endl;
 	}
 
 	CP_MethodHandle::CP_MethodHandle(Reader &reader) {
@@ -198,7 +206,7 @@ namespace jvm {
 	void CP_MethodHandle::printToStream(std::ostream &os, ConstantPool &cp) {
 	    CP_Entry* name1  = cp[reference_index.value.number];
 	    auto& nam1 = name1->as<CP_Utf8>();
-		os << "\tMethod Handle:" << std::endl;
+		os << "Method Handle" << std::endl;
 		os << "\tReference Kind: ";
 
 		switch(reference_kind.value.number) {
@@ -228,7 +236,7 @@ namespace jvm {
 		auto& nam1 = name1->as<CP_Utf8>();
 		auto& nam2 = name2->as<CP_Utf8>();
 
-		os << "Interface_Methodref:" << std::endl;
+		os << "Interface Method Reference" << std::endl;
 		os << "\tClass name: " << nam1 << std::endl;
 		os << "\tName and type: " << nam2 << std::endl;
 	}
@@ -238,10 +246,10 @@ namespace jvm {
 	}
 
 	void CP_String::printToStream(std::ostream &os, ConstantPool &cp) {
-			os << "CP_String : " << std::endl;
+			os << "String" << std::endl;
 			CP_Entry* name1 = cp[string_index.value.number];
 			auto& nam1 = name1->as<CP_Utf8>();
-			os << nam1 << std::endl;
+			os << "\t\t" << nam1 << std::endl;
 	}
 
 	CP_Integer::CP_Integer(Reader &reader) {
@@ -249,8 +257,8 @@ namespace jvm {
 	}
 
 	void CP_Integer::printToStream(std::ostream &os, ConstantPool &cp) {
-		os << "CP_Integer : " << std::endl;
-		os << reinterpret_cast<int32_t&>(_bytes.value.number) << std::endl;
+		os << "Integer" << std::endl;
+		os << "\t\t" << reinterpret_cast<int32_t&>(_bytes.value.number) << std::endl;
 	}
 
 	CP_NameAndType::CP_NameAndType(Reader &reader) {
@@ -264,9 +272,9 @@ namespace jvm {
 		auto& nam1 = name1->as<CP_Utf8>();
 		auto& nam2 = name2->as<CP_Utf8>();
 
-		os << "NameandType: " << std::endl;
-		os << "\tName: " <<nam1 << std::endl;
-		os << "\tDescriptor: " <<nam2 << std::endl;
+		os << "Name and Type" << std::endl;
+		os << "\t\tName: " <<nam1 << std::endl;
+		os << "\t\tDescriptor: " <<nam2 << std::endl;
 	}
 
 	CP_InvokeDynamic::CP_InvokeDynamic(Reader &reader) {
@@ -279,9 +287,9 @@ namespace jvm {
 		CP_Entry* name2 = cp[name_and_type_index.value.number];
 		auto& nam1 = name1->as<CP_Utf8>();
 		auto& nam2 = name2->as<CP_Utf8>();
-		os << "InvokeDynamic: " << std::endl;
-		os << "\tBootstrap_method: " << nam1 <<std::endl;
-		os << "\tName and Type: " << nam2 <<std::endl;
+		os << "InvokeDynamic" << std::endl;
+		os << "\t\tBootstrap_method: " << nam1 <<std::endl;
+		os << "\t\tName and Type: " << nam2 <<std::endl;
 	}
 
 	CP_Utf8::CP_Utf8(Reader &reader) {
@@ -297,7 +305,8 @@ namespace jvm {
 	}
 
 	void CP_Utf8::printToStream(std::ostream &os, ConstantPool &cp) {
-		os << "UTF-8:" << std::endl << "\t" << *this << std::endl;
+		os << "UTF-8" << std::endl;
+		os << "\t\t" << *this << std::endl;
 	}
 
 	CP_Class::CP_Class(Reader &reader) {
@@ -307,8 +316,8 @@ namespace jvm {
 	void CP_Class::printToStream(std::ostream &os, ConstantPool &cp) {
 		CP_Entry* name = cp[name_index.value.number];
 		auto& characters = name->as<CP_Utf8>();
-		os << "Class:" << std::endl;
-		os << "\tName: " << characters << std::endl;
+		os << "Class" << std::endl;
+		os << "\t\tName: " << characters << std::endl;
 	}
 
 	CP_MethodType::CP_MethodType(Reader &reader) {

@@ -61,7 +61,7 @@ namespace jvm {
 			field.attributes_count = file.getNextHalfWord();
 
 			for (int j = 0; j < field.attributes_count.value.number; ++j) {
-				field.attributes.push_back(file.getNextByte());
+				field.attributes.emplace_back(AttributeInfo(file));
 			}
 
 			fields.push_back(field);

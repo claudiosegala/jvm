@@ -6,6 +6,7 @@
 
 #include <cstdio>
 #include <string>
+#include <bit.hpp>
 #include "bit.hpp"
 
 namespace jvm {
@@ -92,4 +93,9 @@ namespace jvm {
 		return reinterpret_cast<U>(value.number);
 	}
 
+	template<typename T>
+	std::ostream &operator<<(std::ostream &os, Data <T> &data) {
+		os << data.value.number;
+		return os;
+	}
 }
