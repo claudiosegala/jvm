@@ -11,7 +11,7 @@ namespace jvm {
 		char buffer[5];
 		auto name = cp[name_index.value.number];
 		auto& characters = name->as<CP_Utf8>();
-		
+
 		os << "Attribute: " << characters << std::endl;
 		os << "\tLength: " << length.value.number << std::endl;
 		os << "\tBytes:  ";

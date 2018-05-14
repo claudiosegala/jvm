@@ -1,5 +1,4 @@
 #pragma once
-
 #include <cstdint>
 #include <vector>
 #include "bit.hpp"
@@ -8,7 +7,6 @@
 namespace jvm {
 
 	class AttributeInfo {
-
 	public:
 		AttributeInfo() = default;
 		explicit AttributeInfo(Reader &reader);
@@ -28,9 +26,10 @@ namespace jvm {
 		/**
 		 * Info
 		 */
-		std::vector<uint8_t> info;
+		std::vector<uint8_t > info;
 
 		void Read(Reader &reader);
+
 	};
 
 }

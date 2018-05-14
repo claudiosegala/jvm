@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <bit.hpp>
 #include "bit.hpp"
 #include "macros.hpp"
 #include "_class.hpp"
@@ -206,6 +207,10 @@ namespace jvm {
 
 	void _Class::print_attributes () {
 		std::cout << "Attributes Count: " << attributes_count.value.number << std::endl;
+
+		if (attributes_count.value.number == 0) {
+			return;
+		}
 
 		for (auto& attribute : attributes) {
 			attribute.printToStream(std::cout, constant_pool);
