@@ -1,5 +1,7 @@
 #pragma once
 
+#include "attribute.hpp"
+
 namespace jvm {
 
 	class MethodInfo {
@@ -27,7 +29,7 @@ namespace jvm {
 		/**
 		 * An attribute structure
 		 */
-		std::vector<Byte> attributes;
+		std::vector<AttributeInfo> attributes;
 	};
 
 	namespace methods {

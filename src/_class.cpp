@@ -16,16 +16,7 @@ namespace jvm {
 		}
 
 		for (int i = 0; i < attributes_count.value.number; ++i) {
-			AttributeInfo attribute;
-
-			attribute.name_index = file.getNextHalfWord();
-			attribute.length = file.getNextWord();
-
-			for (int j = 0; j < attribute.length.value.number; ++j) {
-				attribute.info.push_back(file.getNextByte());
-			}
-
-			attributes.push_back(attribute);
+			attributes.emplace_back(AttributeInfo(file));
 		}
 	}
 
@@ -38,7 +29,6 @@ namespace jvm {
 
 		for (int i = 0; i < methods_count.value.number; ++i) {
 			MethodInfo method;
-			AttributeInfo attribut;
 
 			method.access_flags = file.getNextHalfWord();
 			method.name_index = file.getNextHalfWord();
@@ -46,9 +36,9 @@ namespace jvm {
 			method.attributes_count = file.getNextHalfWord();
 			
 
-				for (int j = 0; j < method.attributes_count.value.number; ++j)
+			for (int j = 0; j < method.attributes_count.value.number; ++j)
 			{
-				method.attributes.push_back(file.getNextByte());
+				method.attributes.emplace_back(AttributeInfo(file));
 			}
 
 			methods.push_back(method);
@@ -168,9 +158,8 @@ namespace jvm {
 
 	void _Class::print_attributes () {
 		std::cout << "Attributes Count: " << attributes_count.value.number << std::endl;
-
-		if (attributes_count.value.number == 0) {
-			return;
+		for (auto& attribute : attributes) {
+			attribute.PrintToStream(std::cout, constant_pool);
 		}
 	}
 
