@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <bit.hpp>
 #include "bit.hpp"
 #include "macros.hpp"
 #include "_class.hpp"
@@ -132,7 +133,7 @@ namespace jvm {
 		std::cout << "Access Flags:" << std::endl;
 
 		if (flag == 0) {
-			std::cout << "\tNone" << std::endl;
+			std::cout << "\t -o-" << std::endl;
 			return;
 		}
 
@@ -155,54 +156,52 @@ namespace jvm {
 		}
 	}
 
-	void _Class::print_method_flags() {
-		auto flag = (uint32_t) access_flags.value.number;
-		std::cout << "Access Flags:" << std::endl;
+	void _Class::print_method_flags(uint32_t flag) {
+		std::cout << "\tFlags:" << std::endl;
 
 		if (flag == 0) {
-			std::cout << "\tNone" << std::endl;
+			std::cout << "\t\t -o-" << std::endl;
 			return;
 		}
 
 		{
 			using namespace jvm::methods;
 
-			if (flag & Flags::PUBLIC)       std::cout << "\tPublic"             << std::endl;
-			if (flag & Flags::PRIVATE)      std::cout << "\tPrivate"            << std::endl;
-			if (flag & Flags::PROTECTED)    std::cout << "\tProtected"          << std::endl;
-			if (flag & Flags::STATIC)       std::cout << "\tStatic"             << std::endl;
-			if (flag & Flags::FINAL)        std::cout << "\tFinal"              << std::endl;
-			if (flag & Flags::SYNCHRONIZED) std::cout << "\tSynchronized"       << std::endl;
-			if (flag & Flags::BRIDGE)       std::cout << "\tBridge"             << std::endl;
-			if (flag & Flags::VARARGS)      std::cout << "\tVariable Arguments" << std::endl;
-			if (flag & Flags::NATIVE)       std::cout << "\tNative"             << std::endl;
-			if (flag & Flags::ABSTRACT)     std::cout << "\tAbstract"           << std::endl;
-			if (flag & Flags::STRICT)       std::cout << "\tStrict"             << std::endl;
-			if (flag & Flags::SYNTHETIC)    std::cout << "\tSynthetic"          << std::endl;
+			if (flag & Flags::PUBLIC)       std::cout << "\t\tPublic"             << std::endl;
+			if (flag & Flags::PRIVATE)      std::cout << "\t\tPrivate"            << std::endl;
+			if (flag & Flags::PROTECTED)    std::cout << "\t\tProtected"          << std::endl;
+			if (flag & Flags::STATIC)       std::cout << "\t\tStatic"             << std::endl;
+			if (flag & Flags::FINAL)        std::cout << "\t\tFinal"              << std::endl;
+			if (flag & Flags::SYNCHRONIZED) std::cout << "\t\tSynchronized"       << std::endl;
+			if (flag & Flags::BRIDGE)       std::cout << "\t\tBridge"             << std::endl;
+			if (flag & Flags::VARARGS)      std::cout << "\t\tVariable Arguments" << std::endl;
+			if (flag & Flags::NATIVE)       std::cout << "\t\tNative"             << std::endl;
+			if (flag & Flags::ABSTRACT)     std::cout << "\t\tAbstract"           << std::endl;
+			if (flag & Flags::STRICT)       std::cout << "\t\tStrict"             << std::endl;
+			if (flag & Flags::SYNTHETIC)    std::cout << "\t\tSynthetic"          << std::endl;
 		}
 	}
 
-	void _Class::print_field_flags() {
-		auto flag = (uint32_t) access_flags.value.number;
-		std::cout << "Access Flags:" << std::endl;
+	void _Class::print_field_flags(uint32_t flag) {
+		std::cout << "\tFlags:" << std::endl;
 
 		if (flag == 0) {
-			std::cout << "\tNone" << std::endl;
+			std::cout << "\t\t -o-" << std::endl;
 			return;
 		}
 
 		{
 			using namespace jvm::fields;
 
-			if (flag & Flags::PUBLIC)     std::cout << "\tPublic"     << std::endl;
-			if (flag & Flags::PRIVATE)    std::cout << "\tPrivate"    << std::endl;
-			if (flag & Flags::PROTECTED)  std::cout << "\tProtected"  << std::endl;
-			if (flag & Flags::STATIC)     std::cout << "\tStatic"     << std::endl;
-			if (flag & Flags::FINAL)      std::cout << "\tFinal"      << std::endl;
-			if (flag & Flags::VOLATILE)   std::cout << "\tVolatile"   << std::endl;
-			if (flag & Flags::TRANSIENT)  std::cout << "\tTransient"  << std::endl;
-			if (flag & Flags::SYNTHETIC)  std::cout << "\tSynthetic"  << std::endl;
-			if (flag & Flags::ENUM)       std::cout << "\tEnum"       << std::endl;
+			if (flag & Flags::PUBLIC)     std::cout << "\t\tPublic"     << std::endl;
+			if (flag & Flags::PRIVATE)    std::cout << "\t\tPrivate"    << std::endl;
+			if (flag & Flags::PROTECTED)  std::cout << "\t\tProtected"  << std::endl;
+			if (flag & Flags::STATIC)     std::cout << "\t\tStatic"     << std::endl;
+			if (flag & Flags::FINAL)      std::cout << "\t\tFinal"      << std::endl;
+			if (flag & Flags::VOLATILE)   std::cout << "\t\tVolatile"   << std::endl;
+			if (flag & Flags::TRANSIENT)  std::cout << "\t\tTransient"  << std::endl;
+			if (flag & Flags::SYNTHETIC)  std::cout << "\t\tSynthetic"  << std::endl;
+			if (flag & Flags::ENUM)       std::cout << "\t\tEnum"       << std::endl;
 		}
 	}
 
@@ -227,6 +226,10 @@ namespace jvm {
 
 		if (fields_count.value.number == 0) {
 			return;
+		}
+
+		for (auto field : fields) {
+			print_field_flags(field.access_flags.value.number);
 		}
 	}
 
