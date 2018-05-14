@@ -33,7 +33,32 @@ namespace jvm {
 		 */
 		std::vector<AttributeInfo> attributes;
 
-		void printToStream(std::ostream &os, ConstantPool &cp);
+		/**
+		 * Constructor default
+		 */
+		FieldInfo () = default;
+
+		/**
+		 * Reader
+		 */
+		explicit FieldInfo (Reader&);
+
+		/**
+		 * Print the content of the class
+		 */
+		void PrintToStream (std::ostream&, ConstantPool&);
+
+		/**
+		 * Read from a file
+		 */
+		void Read (Reader&);
+
+	private:
+
+		/**
+		 * Print the content the flags of the method
+		 */
+		void PrintFlags(std::ostream &, uint32_t);
 	};
 
 	namespace fields {

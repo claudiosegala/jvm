@@ -7,21 +7,21 @@ namespace jvm {
 		Read(reader);
 	}
 
-	void AttributeInfo::printToStream(std::ostream &os, ConstantPool &cp) {
+	void AttributeInfo::printToStream(std::ostream &os, ConstantPool &cp, std::string tabs) {
 		char buffer[5];
 		auto name = cp[name_index.value.number];
 		auto& characters = name->as<CP_Utf8>();
 
-		os << "\tAttribute: " << characters << std::endl;
-		os << "\tLength: " << length.value.number << std::endl;
-		os << "\tBytes:  ";
+		os << std::endl;
+		os << tabs << "Attribute: " << characters << std::endl;
+		os << tabs << "Length: " << length.value.number << std::endl;
+		os << tabs << "Bytes: ";
 
 		for (auto& byte : info) {
 			sprintf(buffer, "%.2X ", byte);
 			os << buffer;
 		}
-
-		os << std::endl << std::endl;
+		os << std::endl;
 	}
 
 	void AttributeInfo::Read(Reader &reader) {

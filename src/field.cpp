@@ -4,7 +4,38 @@
 
 namespace jvm {
 
-	void FieldInfo::printToStream(std::ostream &os, ConstantPool &cp) {
+	FieldInfo::FieldInfo (Reader &reader) {
+		Read(reader);
+	}
+
+	void FieldInfo::PrintFlags(std::ostream &os, uint32_t flag) {
+		std::cout << "\tFlags:" << std::endl;
+
+		if (flag == 0) {
+			std::cout << "\t\t -o-" << std::endl;
+			return;
+		}
+
+		{
+			using namespace jvm::fields;
+
+			if (flag & Flags::PUBLIC)     std::cout << "\t\tPublic"     << std::endl;
+			if (flag & Flags::PRIVATE)    std::cout << "\t\tPrivate"    << std::endl;
+			if (flag & Flags::PROTECTED)  std::cout << "\t\tProtected"  << std::endl;
+			if (flag & Flags::STATIC)     std::cout << "\t\tStatic"     << std::endl;
+			if (flag & Flags::FINAL)      std::cout << "\t\tFinal"      << std::endl;
+			if (flag & Flags::VOLATILE)   std::cout << "\t\tVolatile"   << std::endl;
+			if (flag & Flags::TRANSIENT)  std::cout << "\t\tTransient"  << std::endl;
+			if (flag & Flags::SYNTHETIC)  std::cout << "\t\tSynthetic"  << std::endl;
+			if (flag & Flags::ENUM)       std::cout << "\t\tEnum"       << std::endl;
+		}
+	}
+
+	void FieldInfo::PrintToStream(std::ostream &os, ConstantPool &cp) {
+		os << std::endl;
+
+		PrintFlags(os, access_flags.value.number);
+
 		auto& name = cp[name_index.value.number]->as<CP_Utf8>();
 		auto& descriptor = cp[descriptor_index.value.number]->as<CP_Utf8>();
 
@@ -14,10 +45,19 @@ namespace jvm {
 		os << "\tAttributes: ";
 
 		for (auto& attribute : attributes) {
-			attribute.printToStream(os, cp);
+			attribute.printToStream(os, cp, "\t\t");
 		}
+	}
 
-		os << std::endl << std::endl;
+	void FieldInfo::Read (Reader &reader) {
+		access_flags = reader.getNextHalfWord();
+		name_index = reader.getNextHalfWord();
+		descriptor_index = reader.getNextHalfWord();
+		attributes_count = reader.getNextHalfWord();
+
+		for (int j = 0; j < attributes_count.value.number; ++j) {
+			attributes.emplace_back(AttributeInfo(reader));
+		}
 	}
 
 }

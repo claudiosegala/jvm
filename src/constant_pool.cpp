@@ -36,13 +36,13 @@ namespace jvm {
 	void ConstantPool::printToStream(std::ostream& os) {
 		auto i = 0;
 		for (CP_Entry* entry : *this) {
+			os << std::endl;
 			os << "\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
 			if (entry == nullptr) {
 				os << "Large numeric continued" << std::endl;
 			} else {
 				entry->printToStream(os, *this);
 			}
-			os << std::endl;
 		}
 	}
 
