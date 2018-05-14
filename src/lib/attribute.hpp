@@ -20,7 +20,7 @@ namespace jvm {
 		/**
 		 * Info
 		 */
-		std::vector<uint8_t> info;
+		std::vector<Byte> info;
 	};
 
 }
