@@ -212,7 +212,7 @@ namespace jvm {
 			return;
 		}
 
-		std::cout << "Attributes: " << std::endl << std::endl;
+		std::cout << "Attributes:" << std::endl << std::endl;
 
 		for (auto& attribute : attributes) {
 			attribute.printToStream(std::cout, constant_pool);
@@ -226,7 +226,7 @@ namespace jvm {
 			return;
 		}
 
-		std::cout << "Methods: " << std::endl << std::endl;
+		std::cout << "Methods:" << std::endl << std::endl;
 
 		for (auto& method : methods) {
 			//method.printToStream(std::cout, constant_pool);
@@ -240,7 +240,7 @@ namespace jvm {
 			return;
 		}
 
-		std::cout << "Fields: " << std::endl << std::endl;
+		std::cout << "Fields:" << std::endl << std::endl;
 
 		for (auto& field : fields) {
 			field.printToStream(std::cout, constant_pool);
@@ -254,7 +254,7 @@ namespace jvm {
 			return;
 		}
 
-		std::cout << "Interfaces: " << std::endl << std::endl;
+		std::cout << "Interfaces:" << std::endl << std::endl;
 	}
 
 	void _Class::print_this_class () {}
@@ -263,6 +263,12 @@ namespace jvm {
 
 	void _Class::print_cp () {
 		std::cout << "Constant Pool Count: " << cp_count.value.number << std::endl;
+
+		if (cp_count.value.number == 0) {
+			return;
+		}
+
+		std::cout << "Constant Pool:" << std::endl << std::endl;
 
 		constant_pool.printToStream(std::cout);
 	}
