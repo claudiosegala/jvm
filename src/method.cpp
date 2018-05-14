@@ -41,8 +41,8 @@ namespace jvm  {
         auto& name = cp[name_index.value.number]->as<CP_Utf8>();
         auto& descriptor = cp[descriptor_index.value.number]->as<CP_Utf8>();
 
-        os << name << std::endl;
-        os << "\t\tDescriptor: " << descriptor << std::endl;
+        os << name << " (" << name_index.value.number << ")" << std::endl;
+        os << "\t\tDescriptor: " << descriptor << " (" << descriptor_index.value.number << ")" << std::endl;
 
         PrintFlags(os, access_flags.value.number);
 
