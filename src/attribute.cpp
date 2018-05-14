@@ -221,13 +221,13 @@ namespace jvm {
 		char buffer[5];
 		auto& name = cp[name_index.value.number]->as<CP_Utf8>();
 
-		os << name << std::endl;
+		os << name << " (" << name_index.value.number << ")" << std::endl;
 		os << tabs << "\tLength: " << length.value.number << std::endl;
 
 		if (name_index.value.number == 12) { // Code
 			os << tabs << "\tInstruction:" << std::endl;
 			for (auto byte : info) {
-				os << tabs << "\t\t" << instructions[byte] << std::endl;
+				os << tabs << "\t\t" << " (" << (int)byte << ") " << instructions[byte] << std::endl;
 			}
 		} else {
 			os << tabs << "\tBytes: ";

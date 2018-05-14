@@ -15,7 +15,7 @@ namespace jvm  {
 	void InterfaceInfo::PrintToStream (std::ostream &os, ConstantPool &cp) {
 		auto& value = cp[info.value.number]->as<CP_Utf8>();
 
-		os << value << std::endl;
+		os << value << " (" << info.value.number << ")" << std::endl;
 	}
 
 	void InterfaceInfo::Read (Reader &reader) {
