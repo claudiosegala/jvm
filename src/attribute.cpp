@@ -13,8 +13,8 @@ namespace jvm {
 		auto& characters = name->as<CP_Utf8>();
 
 		os << characters << std::endl;
-		os << tabs << "Length: " << length.value.number << std::endl;
-		os << tabs << "Bytes: ";
+		os << tabs << "\tLength: " << length.value.number << std::endl;
+		os << tabs << "\tBytes: ";
 
 		for (auto& byte : info) {
 			sprintf(buffer, "%.2X ", byte);
