@@ -174,7 +174,7 @@ namespace jvm {
 	void CP_Float::printToStream(std::ostream &os, ConstantPool &cp) {
 
 		os << "CP_FLOAT: "<< std::endl;
-		os << reinterpret_cast<float>(_bytes.value.number)<< std::endl;
+		os << reinterpret_cast<float&>(_bytes.value.number) << std::endl;
 
 	}
 
@@ -206,60 +206,42 @@ namespace jvm {
 		    CP_Entry* name1  = cp[reference_index.value.number];
 		    auto& nam1 = name1->as<CP_Utf8>();
 			os << "Method Handle" << std::endl;
-			os << "\tReference_kind: " << std::endl;
-			char*  strc = " ";
+			os << "\tReference_kind: ";
+			std::string strc;
 
-			switch(reference_kind.value.number)
-			{
+			switch(reference_kind.value.number) {
 				case 0x01:
-				{
 					strc = "REF_getField";
 					break;
-				}
 				case 0x02:
-				{
 					strc = "REF_getStatic";
 					break;
-				}
 				case 0x03:
-				{
 					strc ="REF_putField";
 					break;
-				}
 				case 0x04:
-				{
 					strc ="REF_putStatic";
 					break;
-				}
 				case 0x05:
-				{
 					strc ="REF_invokeVirtual";
 					break;
-				}
 				case 0x06:
-				{
 					strc = "REF_invokeStatic";
 					break;
-				}
 				case 0x07:
-				{
 					strc = "REF_invokeSpecial";
 					break;
-				}
 				case 0x08:
-				{
 					strc= "REF_newInvokeSpecial";
 					break;
-				}
 				case 0x09:
-				{
 					strc = "REF_invokeInterface";
 					break;
-				}
-
+				default:
+					strc = "REF_Unknown";
 			}
 		os << strc << std::endl;
-		os << "\tReference : " << nam1 << std::endl;
+		os << "\tReference: " << nam1 << std::endl;
 
 
 	}
@@ -297,7 +279,7 @@ namespace jvm {
 
 	void CP_Integer::printToStream(std::ostream &os, ConstantPool &cp) {
 		os << "CP_Integer : " << std::endl;
-		os << reinterpret_cast<int32_t>(_bytes) << std::endl;
+		os << reinterpret_cast<int32_t&>(_bytes.value.number) << std::endl;
 	}
 
 	CP_NameAndType::CP_NameAndType(Reader &reader) {
