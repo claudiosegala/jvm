@@ -155,8 +155,60 @@ namespace jvm {
 		}
 	}
 
+	void _Class::print_method_flags() {
+		auto flag = (uint32_t) access_flags.value.number;
+		std::cout << "Access Flags:" << std::endl;
+
+		if (flag == 0) {
+			std::cout << "\tNone" << std::endl;
+			return;
+		}
+
+		{
+			using namespace jvm::methods;
+
+			if (flag & Flags::PUBLIC)       std::cout << "\tPublic"             << std::endl;
+			if (flag & Flags::PRIVATE)      std::cout << "\tPrivate"            << std::endl;
+			if (flag & Flags::PROTECTED)    std::cout << "\tProtected"          << std::endl;
+			if (flag & Flags::STATIC)       std::cout << "\tStatic"             << std::endl;
+			if (flag & Flags::FINAL)        std::cout << "\tFinal"              << std::endl;
+			if (flag & Flags::SYNCHRONIZED) std::cout << "\tSynchronized"       << std::endl;
+			if (flag & Flags::BRIDGE)       std::cout << "\tBridge"             << std::endl;
+			if (flag & Flags::VARARGS)      std::cout << "\tVariable Arguments" << std::endl;
+			if (flag & Flags::NATIVE)       std::cout << "\tNative"             << std::endl;
+			if (flag & Flags::ABSTRACT)     std::cout << "\tAbstract"           << std::endl;
+			if (flag & Flags::STRICT)       std::cout << "\tStrict"             << std::endl;
+			if (flag & Flags::SYNTHETIC)    std::cout << "\tSynthetic"          << std::endl;
+		}
+	}
+
+	void _Class::print_field_flags() {
+		auto flag = (uint32_t) access_flags.value.number;
+		std::cout << "Access Flags:" << std::endl;
+
+		if (flag == 0) {
+			std::cout << "\tNone" << std::endl;
+			return;
+		}
+
+		{
+			using namespace jvm::fields;
+
+			if (flag & Flags::PUBLIC)     std::cout << "\tPublic"     << std::endl;
+			if (flag & Flags::PRIVATE)    std::cout << "\tPrivate"    << std::endl;
+			if (flag & Flags::PROTECTED)  std::cout << "\tProtected"  << std::endl;
+			if (flag & Flags::STATIC)     std::cout << "\tStatic"     << std::endl;
+			if (flag & Flags::FINAL)      std::cout << "\tFinal"      << std::endl;
+			if (flag & Flags::VOLATILE)   std::cout << "\tVolatile"   << std::endl;
+			if (flag & Flags::TRANSIENT)  std::cout << "\tTransient"  << std::endl;
+			if (flag & Flags::SYNTHETIC)  std::cout << "\tSynthetic"  << std::endl;
+			if (flag & Flags::ENUM)       std::cout << "\tEnum"       << std::endl;
+		}
+	}
+
 	void _Class::print_attributes () {
 		std::cout << "Attributes Count: " << attributes_count.value.number << std::endl;
+
 		for (auto& attribute : attributes) {
 			attribute.PrintToStream(std::cout, constant_pool);
 		}
@@ -173,7 +225,7 @@ namespace jvm {
 	void _Class::print_fields () {
 		std::cout << "Fields Count: " << fields_count.value.number << std::endl;
 
-		if (fields_count.value.number - 1 == 0) {
+		if (fields_count.value.number == 0) {
 			return;
 		}
 	}

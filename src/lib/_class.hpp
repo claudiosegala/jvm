@@ -72,6 +72,10 @@ namespace jvm {
 
 		void print_class_flags();
 
+		void print_method_flags();
+
+		void print_field_flags();
+
 		void read_version (jvm::Reader&);
 
 		void read_cp (jvm::Reader&);
