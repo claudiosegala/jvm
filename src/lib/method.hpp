@@ -2,14 +2,13 @@
 #include <cstdint>
 #include <vector>
 #include "bit.hpp"
+#include "attribute.hpp"
 #include "constant_pool.hpp"
+
 namespace jvm {
 
 	class MethodInfo {
 	public:
-		MethodInfo() = default;
-		explicit MethodInfo(Reader &reader);
-		void printToStream(std::ostream &os, ConstantPool &cp);
 		/**
 		 *  Access permission to and properties of this field
 		 */
@@ -34,6 +33,26 @@ namespace jvm {
 		 * An attribute structure
 		 */
 		std::vector<AttributeInfo> attributes;
+
+		/**
+		 * Constructor default
+		 */
+		MethodInfo() = default;
+
+		/**
+		 * Reader
+		 */
+		explicit MethodInfo (Reader&);
+
+		/**
+		 * Print the content of the class
+		 */
+		void printToStream (std::ostream&, ConstantPool&);
+
+		/**
+		 * Read from a file
+		 */
+		void Read(Reader&);
 	};
 
 	namespace methods {
