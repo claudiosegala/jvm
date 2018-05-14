@@ -69,8 +69,19 @@ namespace jvm {
 		}
 	}
 
+	void ConstantPool::PrintUtf8(std::ostream &os, int index) {
+		auto& utf8 = ((*this)[index])->as<CP_Utf8>();
+		os << utf8 << std::endl;
+	}
+
 	CP_Entry *&ConstantPool::operator[](unsigned long index) {
 		return vector::operator[](index - 1);
+	}
+
+	std::ostream& operator<<(std::ostream &os, CP_Entry &entry) {
+		auto& utf8 = entry.as<CP_Utf8>();
+		os << utf8;
+		return os;
 	}
 
 	// TAGS
@@ -160,7 +171,7 @@ namespace jvm {
 	void CP_Methodref::printToStream(std::ostream &os, ConstantPool &cp) {
 		CP_Entry* name1 = cp[class_index.value.number];
 		CP_Entry* name2 = cp[name_and_class_index.value.number];
-		auto& characters1 = name1->as<CP_Utf8>();
+		auto& characters1 = name1->as<CP_Class>();
 		auto& characters2 = name2->as<CP_Utf8>();
 		os << "Methodref :" << std::endl;
 		os << "\tClass_name: " << characters1 << std::endl;

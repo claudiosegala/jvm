@@ -37,11 +37,19 @@ namespace jvm {
 
 		void printToStream(std::ostream& os);
 
+		void PrintUtf8(std::ostream &os, int index);
+
 		CP_Entry* &operator[](size_type index);
 
 	private:
 		CP_Entry *getNextEntry(Reader &reader, uint8_t tag);
 	};
+
+	/**
+	 * Converts entry to CP_Utf8 and prints it to os.
+	 * Throws exception if entry is not CP_Utf8
+	 */
+	std::ostream& operator<< (std::ostream& os, CP_Entry& entry);
 
 	class CP_Entry {
 	public:
