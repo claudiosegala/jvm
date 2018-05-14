@@ -318,9 +318,8 @@ namespace jvm {
 	void CP_Class::printToStream(std::ostream &os, ConstantPool &cp) {
 		CP_Entry* name = cp[name_index.value.number];
 		auto& characters = name->as<CP_Utf8>();
-		auto value = name_index.value.number; as<CP_Class>();
 		os << "Class" << std::endl;
-		os << "\t\t Name index:" << value;
+		os << "\t\t Name index:" << name_index.value.number;
 		os << "\t\t Name: "  <<characters << std::endl;
 	}
 
@@ -329,6 +328,11 @@ namespace jvm {
 	}
 
 	void CP_MethodType::printToStream(std::ostream &os, ConstantPool &cp) {
+		CP_Entry* name1 = cp[descriptor_index.value.number];
+		auto& characters = name1->as<CP_Utf8>();
+		os << "Method Type" << std:endl;
+		os << "\t\t Descriptor_index: " << descriptor_index.value.number;
+		os << "\t\t Descriptor_name: " << characters << std::endl;
 
 	}
 

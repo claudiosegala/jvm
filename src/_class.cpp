@@ -228,8 +228,10 @@ namespace jvm {
 
 		std::cout << "Methods:" << std::endl << std::endl;
 
+
 		for (auto& method : methods) {
-			//method.printToStream(std::cout, constant_pool);
+			method.printToStream(std::cout, constant_pool);
+
 		}
 	}
 

@@ -1,11 +1,15 @@
 #pragma once
-
-#include "attribute.hpp"
-
+#include <cstdint>
+#include <vector>
+#include "bit.hpp"
+#include "constant_pool.hpp"
 namespace jvm {
 
 	class MethodInfo {
 	public:
+		MethodInfo() = default;
+		explicit MethodInfo(Reader &reader);
+		void printToStream(std::ostream &os, ConstantPool &cp);
 		/**
 		 *  Access permission to and properties of this field
 		 */
