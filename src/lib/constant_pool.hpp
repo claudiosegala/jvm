@@ -89,7 +89,7 @@ namespace jvm {
 
 		HalfWord class_index;
 
-		HalfWord name_and_class_index;
+		HalfWord name_and_type_index;
 	};
 
 	struct CP_Methodref : public CP_Entry {
@@ -101,7 +101,7 @@ namespace jvm {
 
 		HalfWord class_index;
 
-		HalfWord name_and_class_index;
+		HalfWord name_and_type_index;
 	};
 
 	struct CP_InterfaceMethodref : public CP_Entry {

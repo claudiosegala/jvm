@@ -7,15 +7,13 @@ namespace jvm {
 	void FieldInfo::printToStream(std::ostream &os, ConstantPool &cp) {
 		char buffer[5];
 		auto name = cp[name_index.value.number];
-		auto& characters = name->as<CP_Utf8>();
 
-		os << "Attribute: " << characters << std::endl;
+		os << "Field: " << *name << std::endl;
 		os << "\tLength: " << attributes_count.value.number << std::endl;
-		os << "\tBytes:  ";
+		os << "\tAttributes: ";
 
-		for (auto& byte : attributes) {
-			sprintf(buffer, "%.2X ", byte);
-			os << buffer;
+		for (auto& attribute : attributes) {
+			attribute.printToStream(os, cp);
 		}
 
 		os << std::endl;

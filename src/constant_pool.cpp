@@ -148,34 +148,25 @@ namespace jvm {
 
 	CP_Fieldref::CP_Fieldref(Reader &reader) {
 		class_index = reader.getNextHalfWord();
-		name_and_class_index = reader.getNextHalfWord();
+		name_and_type_index = reader.getNextHalfWord();
 	}
 
 	void CP_Fieldref::printToStream(std::ostream &os, ConstantPool &cp) {
-		CP_Entry* name1 = cp[class_index.value.number];
-		CP_Entry* name2 = cp[name_and_class_index.value.number];
-		auto& characters1 = name1->as<CP_Utf8>();
-		auto& characters2 = name2->as<CP_Utf8>();
 		os << "Fieldref :" << std::endl;
-		os << "\tClass_name: " << characters1 << std::endl;
-		os << "\tName and Type: " << characters2 << std::endl;
-
+		os << "\tClass index: " << class_index << std::endl;
+		os << "\tName and Type index: " << name_and_type_index << std::endl;
 	}
 
 	CP_Methodref::CP_Methodref(Reader &reader) {
 		class_index = reader.getNextHalfWord();
-		name_and_class_index = reader.getNextHalfWord();
+		name_and_type_index = reader.getNextHalfWord();
 
 	}
 
 	void CP_Methodref::printToStream(std::ostream &os, ConstantPool &cp) {
-		CP_Entry* name1 = cp[class_index.value.number];
-		CP_Entry* name2 = cp[name_and_class_index.value.number];
-		auto& characters1 = name1->as<CP_Class>();
-		auto& characters2 = name2->as<CP_Utf8>();
 		os << "Methodref :" << std::endl;
-		os << "\tClass_name: " << characters1 << std::endl;
-		os << "\tName and type: " << characters2 << std::endl;
+		os << "\tClass index: " << class_index << std::endl;
+		os << "\tName and type index: " << name_and_type_index << std::endl;
 	}
 
 	CP_Float::CP_Float(Reader &reader) {
@@ -183,10 +174,7 @@ namespace jvm {
 	}
 
 	void CP_Float::printToStream(std::ostream &os, ConstantPool &cp) {
-
-		os << "CP_FLOAT: "<< std::endl;
-		os << reinterpret_cast<float&>(_bytes.value.number) << std::endl;
-
+		os << "Float: " << reinterpret_cast<float&>(_bytes.value.number) << std::endl;
 	}
 
 	CP_Long::CP_Long(Reader &reader) {
@@ -195,7 +183,9 @@ namespace jvm {
 	}
 
 	void CP_Long::printToStream(std::ostream &os, ConstantPool &cp) {
-		os << "CP_LONG: " << std::endl;
+		uint64_t number = high_bytes.value.number;
+		number = (number << 32) | low_bytes.value.number;
+		os << "Long: " << number << std::endl;
 
 	}
 
@@ -205,7 +195,10 @@ namespace jvm {
 	}
 
 	void CP_Double::printToStream(std::ostream &os, ConstantPool &cp) {
-
+		uint64_t number = high_bytes.value.number;
+		number = (number << 32) | low_bytes.value.number;
+		double d_number = reinterpret_cast<double&>(number);
+		os << "Double: " << d_number << std::endl;
 	}
 
 	CP_MethodHandle::CP_MethodHandle(Reader &reader) {
