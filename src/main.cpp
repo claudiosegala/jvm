@@ -8,7 +8,17 @@ int main (int argc, char *argv[ ]) {
         return 0;
     }
 
+	if (argc > 3) {
+		std::cout << "O senhor ta pedindo demais" << std::endl;
+		return 0;
+	}
+
     try {
+		if (argc == 3) {
+			std::string s = argv[2];
+			freopen (argv[2], "w", stdout);
+		}
+
 		auto cl = jvm::_Class();
 		cl.read(std::string(argv[1]));
 		cl.show();

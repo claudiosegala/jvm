@@ -1,5 +1,6 @@
 #include <bit.hpp>
 #include <iostream>
+#include <iomanip>
 #include "constant_pool.hpp"
 
 namespace jvm {
@@ -35,7 +36,7 @@ namespace jvm {
 	void ConstantPool::printToStream(std::ostream& os) {
 		auto i = 0;
 		for (CP_Entry* entry : *this) {
-			os << "\t[" << ++i << "] ";
+			os << "\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
 			if (entry == nullptr) {
 				os << "Large numeric continued" << std::endl;
 			} else {
