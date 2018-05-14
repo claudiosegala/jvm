@@ -12,7 +12,7 @@ namespace jvm {
 		auto name = cp[name_index.value.number];
 		auto& characters = name->as<CP_Utf8>();
 
-		os << "Attribute: " << characters << std::endl;
+		os << "\tAttribute: " << characters << std::endl;
 		os << "\tLength: " << length.value.number << std::endl;
 		os << "\tBytes:  ";
 
@@ -21,7 +21,7 @@ namespace jvm {
 			os << buffer;
 		}
 
-		os << std::endl;
+		os << std::endl << std::endl;
 	}
 
 	void AttributeInfo::Read(Reader &reader) {

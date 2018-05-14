@@ -56,6 +56,7 @@ namespace jvm {
 			if (toReturn == nullptr) {
 				throw "Invalid CP_Entry cast";
 			}
+
 			return *toReturn;
 		}
 	};

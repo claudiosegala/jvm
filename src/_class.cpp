@@ -212,6 +212,8 @@ namespace jvm {
 			return;
 		}
 
+		std::cout << "Attributes: " << std::endl << std::endl;
+
 		for (auto& attribute : attributes) {
 			attribute.printToStream(std::cout, constant_pool);
 		}
@@ -223,6 +225,12 @@ namespace jvm {
 		if (methods_count.value.number == 0) {
 			return;
 		}
+
+		std::cout << "Methods: " << std::endl << std::endl;
+
+		for (auto& method : methods) {
+			//method.printToStream(std::cout, constant_pool);
+		}
 	}
 
 	void _Class::print_fields () {
@@ -232,7 +240,9 @@ namespace jvm {
 			return;
 		}
 
-		for (auto field : fields) {
+		std::cout << "Fields: " << std::endl << std::endl;
+
+		for (auto& field : fields) {
 			field.printToStream(std::cout, constant_pool);
 		}
 	}
@@ -244,6 +254,7 @@ namespace jvm {
 			return;
 		}
 
+		std::cout << "Interfaces: " << std::endl << std::endl;
 	}
 
 	void _Class::print_this_class () {}
@@ -262,7 +273,7 @@ namespace jvm {
 	}
 
 	void _Class::show () {
-		std::cout << "> .class" << std::endl;
+		std::cout << "> .class" << std::endl << std::endl;
 
 		print_version();
 		print_cp();

@@ -33,14 +33,9 @@ namespace jvm {
 	}
 
 	void ConstantPool::printToStream(std::ostream& os) {
-		if (empty()) {
-			os << "Constant Pool is empty" << std::endl;
-			return;
-		}
-
 		auto i = 0;
 		for (CP_Entry* entry : *this) {
-			os << '[' << ++i << "] ";
+			os << "\t[" << ++i << "] ";
 			if (entry == nullptr) {
 				os << "Large numeric continued" << std::endl;
 			} else {
@@ -145,8 +140,8 @@ namespace jvm {
 		CP_Entry* name2 = cp[name_and_class_index.value.number];
 		auto& characters1 = name1->as<CP_Utf8>();
 		auto& characters2 = name2->as<CP_Utf8>();
-		os << "Fieldref :" << std::endl;
-		os << "\tClass_name: " << characters1 << std::endl;
+		os << "\tField Reference :" << std::endl;
+		os << "\tClass Name: " << characters1 << std::endl;
 		os << "\tName and Type: " << characters2 << std::endl;
 
 	}
@@ -162,8 +157,8 @@ namespace jvm {
 		CP_Entry* name2 = cp[name_and_class_index.value.number];
 		auto& characters1 = name1->as<CP_Utf8>();
 		auto& characters2 = name2->as<CP_Utf8>();
-		os << "Methodref :" << std::endl;
-		os << "\tClass_name: " << characters1 << std::endl;
+		os << "\tMethod Reference :" << std::endl;
+		os << "\tClass Name: " << characters1 << std::endl;
 		os << "\tName and type: " << characters2 << std::endl;
 	}
 
@@ -172,10 +167,8 @@ namespace jvm {
 	}
 
 	void CP_Float::printToStream(std::ostream &os, ConstantPool &cp) {
-
-		os << "CP_FLOAT: "<< std::endl;
+		os << "\tCP_FLOAT: "<< std::endl;
 		os << reinterpret_cast<float&>(_bytes.value.number) << std::endl;
-
 	}
 
 	CP_Long::CP_Long(Reader &reader) {
@@ -184,7 +177,7 @@ namespace jvm {
 	}
 
 	void CP_Long::printToStream(std::ostream &os, ConstantPool &cp) {
-		os << "CP_LONG: " << std::endl;
+		os << "\tCP_LONG: " << std::endl;
 
 	}
 
@@ -203,47 +196,25 @@ namespace jvm {
 	}
 
 	void CP_MethodHandle::printToStream(std::ostream &os, ConstantPool &cp) {
-		    CP_Entry* name1  = cp[reference_index.value.number];
-		    auto& nam1 = name1->as<CP_Utf8>();
-			os << "Method Handle" << std::endl;
-			os << "\tReference_kind: ";
-			std::string strc;
+	    CP_Entry* name1  = cp[reference_index.value.number];
+	    auto& nam1 = name1->as<CP_Utf8>();
+		os << "\tMethod Handle:" << std::endl;
+		os << "\tReference Kind: ";
 
-			switch(reference_kind.value.number) {
-				case 0x01:
-					strc = "REF_getField";
-					break;
-				case 0x02:
-					strc = "REF_getStatic";
-					break;
-				case 0x03:
-					strc ="REF_putField";
-					break;
-				case 0x04:
-					strc ="REF_putStatic";
-					break;
-				case 0x05:
-					strc ="REF_invokeVirtual";
-					break;
-				case 0x06:
-					strc = "REF_invokeStatic";
-					break;
-				case 0x07:
-					strc = "REF_invokeSpecial";
-					break;
-				case 0x08:
-					strc= "REF_newInvokeSpecial";
-					break;
-				case 0x09:
-					strc = "REF_invokeInterface";
-					break;
-				default:
-					strc = "REF_Unknown";
-			}
-		os << strc << std::endl;
+		switch(reference_kind.value.number) {
+			case 0x01: os << "REF_getField"<< std::endl;         break;
+			case 0x02: os << "REF_getStatic"<< std::endl;        break;
+			case 0x03: os << "REF_putField"<< std::endl;         break;
+			case 0x04: os << "REF_putStatic"<< std::endl;        break;
+			case 0x05: os << "REF_invokeVirtual"<< std::endl;    break;
+			case 0x06: os << "REF_invokeStatic"<< std::endl;     break;
+			case 0x07: os << "REF_invokeSpecial"<< std::endl;    break;
+			case 0x08: os << "REF_newInvokeSpecial"<< std::endl; break;
+			case 0x09: os << "REF_invokeInterface"<< std::endl;  break;
+			default:   os << "REF_Unknown"<< std::endl;
+		}
+
 		os << "\tReference: " << nam1 << std::endl;
-
-
 	}
 
 	CP_InterfaceMethodref::CP_InterfaceMethodref(Reader &reader) {
