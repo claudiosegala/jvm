@@ -1,5 +1,8 @@
 #pragma once
 
+#include <vector>
+#include "constant_pool.hpp"
+
 namespace jvm {
 
 	class FieldInfo {
@@ -28,6 +31,8 @@ namespace jvm {
 		 * An attribute structure
 		 */
 		std::vector<Byte> attributes;
+
+		void printToStream(std::ostream &os, ConstantPool &cp);
 	};
 
 	namespace fields {

@@ -1,4 +1,3 @@
-#include <bit.hpp>
 #include <iostream>
 #include "reader.hpp"
 #include "attribute.hpp"
@@ -8,17 +7,20 @@ namespace jvm {
 		Read(reader);
 	}
 
-	void AttributeInfo::PrintToStream(std::ostream &os, ConstantPool &cp) {
+	void AttributeInfo::printToStream(std::ostream &os, ConstantPool &cp) {
 		char buffer[5];
 		auto name = cp[name_index.value.number];
 		auto& characters = name->as<CP_Utf8>();
+		
 		os << "Attribute: " << characters << std::endl;
 		os << "\tLength: " << length.value.number << std::endl;
 		os << "\tBytes:  ";
+
 		for (auto& byte : info) {
 			sprintf(buffer, "%.2X ", byte);
 			os << buffer;
 		}
+
 		os << std::endl;
 	}
 

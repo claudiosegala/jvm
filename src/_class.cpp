@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <bit.hpp>
 #include "bit.hpp"
 #include "macros.hpp"
 #include "_class.hpp"
@@ -209,7 +208,7 @@ namespace jvm {
 		std::cout << "Attributes Count: " << attributes_count.value.number << std::endl;
 
 		for (auto& attribute : attributes) {
-			attribute.PrintToStream(std::cout, constant_pool);
+			attribute.printToStream(std::cout, constant_pool);
 		}
 	}
 
@@ -229,7 +228,7 @@ namespace jvm {
 		}
 
 		for (auto field : fields) {
-			print_field_flags(field.access_flags.value.number);
+			field.printToStream(std::cout, constant_pool);
 		}
 	}
 
