@@ -148,6 +148,7 @@ namespace jvm {
 	}
 
 	void CP_Fieldref::printToStream(std::ostream &os, ConstantPool &cp) {
+
 		os << "Field Reference" << std::endl;
 		os << "\t\tClass index: " << class_index << std::endl;
 		os << "\t\tName and Type index: " << name_and_type_index << std::endl;
@@ -205,11 +206,11 @@ namespace jvm {
 
 	void CP_MethodHandle::printToStream(std::ostream &os, ConstantPool &cp) {
 	    CP_Entry* name1  = cp[reference_index.value.number];
-	    auto& nam1 = name1->as<CP_Utf8>();
+	    auto& nam1 = name1->as<CP_MethodHandle>();
 		os << "Method Handle" << std::endl;
 		os << "\tReference Kind: ";
 
-		switch(reference_kind.value.number) {
+		switch(nam1.reference_kind.value.number) {
 			case 0x01: os << "REF_getField"<< std::endl;         break;
 			case 0x02: os << "REF_getStatic"<< std::endl;        break;
 			case 0x03: os << "REF_putField"<< std::endl;         break;
@@ -222,7 +223,7 @@ namespace jvm {
 			default:   os << "REF_Unknown"<< std::endl;
 		}
 
-		os << "\tReference: " << nam1 << std::endl;
+		os << "\tReference: " << nam1.reference_index << std::endl;
 	}
 
 	CP_InterfaceMethodref::CP_InterfaceMethodref(Reader &reader) {
@@ -316,8 +317,10 @@ namespace jvm {
 	void CP_Class::printToStream(std::ostream &os, ConstantPool &cp) {
 		CP_Entry* name = cp[name_index.value.number];
 		auto& characters = name->as<CP_Utf8>();
+		auto value = name_index.value.number; as<CP_Class>();
 		os << "Class" << std::endl;
-		os << "\t\tName: " << characters << std::endl;
+		os << "\t\t Name index:" << value;
+		os << "\t\t Name: "  <<characters << std::endl;
 	}
 
 	CP_MethodType::CP_MethodType(Reader &reader) {
