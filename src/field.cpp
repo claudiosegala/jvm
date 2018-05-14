@@ -1,5 +1,6 @@
 #include <bit.hpp>
 #include <iostream>
+#include <iomanip>
 #include "field.hpp"
 
 namespace jvm {
@@ -32,19 +33,20 @@ namespace jvm {
 	}
 
 	void FieldInfo::PrintToStream(std::ostream &os, ConstantPool &cp) {
-		os << std::endl;
-
-		PrintFlags(os, access_flags.value.number);
-
 		auto& name = cp[name_index.value.number]->as<CP_Utf8>();
 		auto& descriptor = cp[descriptor_index.value.number]->as<CP_Utf8>();
 
-		os << "\tName: " << name << std::endl;
+		os << name << std::endl;
 		os << "\tDescriptor: " << descriptor << std::endl;
-		os << "\tLength: " << attributes_count.value.number << std::endl;
+
+		PrintFlags(os, access_flags.value.number);
+
+		os << "\tAttributes Count: " << attributes_count.value.number << std::endl;
 		os << "\tAttributes: ";
 
+		auto i = 0;
 		for (auto& attribute : attributes) {
+			std::cout << std::endl << "\t\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
 			attribute.printToStream(os, cp, "\t\t");
 		}
 	}

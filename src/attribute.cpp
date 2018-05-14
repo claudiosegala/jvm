@@ -12,8 +12,7 @@ namespace jvm {
 		auto name = cp[name_index.value.number];
 		auto& characters = name->as<CP_Utf8>();
 
-		os << std::endl;
-		os << tabs << "Attribute: " << characters << std::endl;
+		os << characters << std::endl;
 		os << tabs << "Length: " << length.value.number << std::endl;
 		os << tabs << "Bytes: ";
 

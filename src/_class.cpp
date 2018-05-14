@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <bit.hpp>
 #include "bit.hpp"
@@ -142,7 +143,9 @@ namespace jvm {
 
 		std::cout << "Attributes:";
 
+		auto i = 0;
 		for (auto& attribute : attributes) {
+			std::cout << std::endl << "\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
 			attribute.printToStream(std::cout, constant_pool, "\t");
 		}
 	}
@@ -156,8 +159,9 @@ namespace jvm {
 
 		std::cout << "Methods:";
 
-
+		auto i = 0;
 		for (auto& method : methods) {
+			std::cout << std::endl << "\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
 			method.PrintToStream(std::cout, constant_pool);
 		}
 	}
@@ -171,7 +175,9 @@ namespace jvm {
 
 		std::cout << "Fields:";
 
+		auto i = 0;
 		for (auto& field : fields) {
+			std::cout << std::endl << "\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
 			field.PrintToStream(std::cout, constant_pool);
 		}
 	}
