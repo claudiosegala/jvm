@@ -12,7 +12,7 @@ namespace jvm {
 	void _Class::read_attributes (jvm::Reader &file) {
 		attributes_count = file.getNextHalfWord();
 
-		if(attributes_count.value.number == 0) {
+		if (attributes_count.value.number == 0) {
 			return;
 		}
 
@@ -24,7 +24,7 @@ namespace jvm {
 	void _Class::read_methods (jvm::Reader &file) {
 		methods_count = file.getNextHalfWord();
 
-		if(methods_count.value.number == 0) {
+		if (methods_count.value.number == 0) {
 			return;
 		}
 
@@ -37,8 +37,7 @@ namespace jvm {
 			method.attributes_count = file.getNextHalfWord();
 			
 
-			for (int j = 0; j < method.attributes_count.value.number; ++j)
-			{
+			for (int j = 0; j < method.attributes_count.value.number; ++j) {
 				method.attributes.emplace_back(AttributeInfo(file));
 			}
 
@@ -49,7 +48,7 @@ namespace jvm {
 	void _Class::read_fields (jvm::Reader &file) {
 		fields_count = file.getNextHalfWord();
 
-		if(fields_count.value.number == 0) {
+		if (fields_count.value.number == 0) {
 			return;
 		}
 
@@ -72,7 +71,7 @@ namespace jvm {
 	void _Class::read_interfaces (jvm::Reader &file) {
 		interfaces_count = file.getNextHalfWord();
 
-		if(interfaces_count.value.number == 0) {
+		if (interfaces_count.value.number == 0) {
 			return;
 		}
 
@@ -134,7 +133,7 @@ namespace jvm {
 		std::cout << "Access Flags:" << std::endl;
 
 		if (flag == 0) {
-			std::cout << "\tNone" << std::endl;
+			std::cout << "\t -o-" << std::endl;
 			return;
 		}
 
@@ -157,11 +156,64 @@ namespace jvm {
 		}
 	}
 
+	void _Class::print_method_flags(uint32_t flag) {
+		std::cout << "\tFlags:" << std::endl;
+
+		if (flag == 0) {
+			std::cout << "\t\t -o-" << std::endl;
+			return;
+		}
+
+		{
+			using namespace jvm::methods;
+
+			if (flag & Flags::PUBLIC)       std::cout << "\t\tPublic"             << std::endl;
+			if (flag & Flags::PRIVATE)      std::cout << "\t\tPrivate"            << std::endl;
+			if (flag & Flags::PROTECTED)    std::cout << "\t\tProtected"          << std::endl;
+			if (flag & Flags::STATIC)       std::cout << "\t\tStatic"             << std::endl;
+			if (flag & Flags::FINAL)        std::cout << "\t\tFinal"              << std::endl;
+			if (flag & Flags::SYNCHRONIZED) std::cout << "\t\tSynchronized"       << std::endl;
+			if (flag & Flags::BRIDGE)       std::cout << "\t\tBridge"             << std::endl;
+			if (flag & Flags::VARARGS)      std::cout << "\t\tVariable Arguments" << std::endl;
+			if (flag & Flags::NATIVE)       std::cout << "\t\tNative"             << std::endl;
+			if (flag & Flags::ABSTRACT)     std::cout << "\t\tAbstract"           << std::endl;
+			if (flag & Flags::STRICT)       std::cout << "\t\tStrict"             << std::endl;
+			if (flag & Flags::SYNTHETIC)    std::cout << "\t\tSynthetic"          << std::endl;
+		}
+	}
+
+	void _Class::print_field_flags(uint32_t flag) {
+		std::cout << "\tFlags:" << std::endl;
+
+		if (flag == 0) {
+			std::cout << "\t\t -o-" << std::endl;
+			return;
+		}
+
+		{
+			using namespace jvm::fields;
+
+			if (flag & Flags::PUBLIC)     std::cout << "\t\tPublic"     << std::endl;
+			if (flag & Flags::PRIVATE)    std::cout << "\t\tPrivate"    << std::endl;
+			if (flag & Flags::PROTECTED)  std::cout << "\t\tProtected"  << std::endl;
+			if (flag & Flags::STATIC)     std::cout << "\t\tStatic"     << std::endl;
+			if (flag & Flags::FINAL)      std::cout << "\t\tFinal"      << std::endl;
+			if (flag & Flags::VOLATILE)   std::cout << "\t\tVolatile"   << std::endl;
+			if (flag & Flags::TRANSIENT)  std::cout << "\t\tTransient"  << std::endl;
+			if (flag & Flags::SYNTHETIC)  std::cout << "\t\tSynthetic"  << std::endl;
+			if (flag & Flags::ENUM)       std::cout << "\t\tEnum"       << std::endl;
+		}
+	}
+
 	void _Class::print_attributes () {
 		std::cout << "Attributes Count: " << attributes_count.value.number << std::endl;
 
 		if (attributes_count.value.number == 0) {
 			return;
+		}
+
+		for (auto& attribute : attributes) {
+			attribute.printToStream(std::cout, constant_pool);
 		}
 	}
 
@@ -176,8 +228,12 @@ namespace jvm {
 	void _Class::print_fields () {
 		std::cout << "Fields Count: " << fields_count.value.number << std::endl;
 
-		if (fields_count.value.number - 1 == 0) {
+		if (fields_count.value.number == 0) {
 			return;
+		}
+
+		for (auto field : fields) {
+			field.printToStream(std::cout, constant_pool);
 		}
 	}
 

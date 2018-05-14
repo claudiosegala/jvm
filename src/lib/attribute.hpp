@@ -11,7 +11,7 @@ namespace jvm {
 		AttributeInfo() = default;
 		explicit AttributeInfo(Reader &reader);
 
-		void PrintToStream(std::ostream &os, ConstantPool &cp);
+		void printToStream(std::ostream &os, ConstantPool &cp);
 
 		/**
 		 *  Valid index into the constant pool table
