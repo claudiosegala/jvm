@@ -195,11 +195,17 @@ namespace jvm {
 	}
 
 	void _Class::print_this_class () {
-
+//		auto& value = constant_pool[this_class.value.number]->as<CP_Utf8>();
+//		std::cout << value << std::endl;
 	}
 
 	void _Class::print_super_class () {
-
+		if (super_class.value.number == 0) {
+			std::cout << "Object" << std::endl;
+		} else {
+//			auto& value = constant_pool[super_class.value.number]->as<CP_Utf8>();
+//			std::cout << value << std::endl;
+		}
 	}
 
 	void _Class::print_cp () {
