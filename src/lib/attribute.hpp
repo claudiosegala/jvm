@@ -1,6 +1,7 @@
 #pragma once
 #include <cstdint>
 #include <vector>
+#include <map>
 #include "bit.hpp"
 #include "constant_pool.hpp"
 
@@ -22,6 +23,9 @@ namespace jvm {
 		 * Info
 		 */
 		std::vector<uint8_t > info;
+
+		typedef std::map<int, std::string> Instructions;
+		static Instructions instructions;
 
 		AttributeInfo() = default;
 
