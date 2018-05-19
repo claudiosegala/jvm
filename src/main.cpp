@@ -3,25 +3,60 @@
 #include "_class.hpp"
 
 int main (int argc, char *argv[ ]) {
-	if (argc < 2) {
-        std::cout << "Número de argumentos insuficientes" << std::endl;
-        return 0;
-    }
+	auto cl = jvm::_Class();
+	std::string show;
+	try {
+	if(argc == 1)
+	{
+		std::string programa;
+		std::cout << "Digite o nome do arquivo ou o caminho para o arquivo:" << std::endl;
+		std::cin >> programa;
+		cl.read(std::string(programa));
+		std::cout << "Digite S caso queria exiber o arquivo e N caso nao queira" << std::endl;
+		std::cin >> show;
+		show[0] = std::toupper(show[0]);
+ 	}
+	else if(argc == 2)
+	{
+		if(std::string(argv[1]) == "-l")
+		{
+			std::string programa;
+			std::cout << "Digite o nome do arquivo ou o caminho para o arquivo:" << std::endl;
+			std::cin >> programa;
+			cl.read(std::string(programa));
 
-	if (argc > 3) {
+			show = "S";
+			
+		}   
+		else if(std::string(argv[1]) != "-l")
+		{
+
+			cl.read(std::string(argv[1]));
+			show = "N";
+		}
+	}
+
+
+	else if (argc == 3) {
+
+		if (std::string(argv[2]) == "-l") {
+			cl.read(std::string(argv[1]));
+			show = "S";
+		} else if (std::string(argv[1]) == "-l") {
+			cl.read(std::string(argv[2]));
+			show = "S";
+		}
+	}
+	else if (argc > 3) {
 		std::cout << "O senhor ta pedindo demais" << std::endl;
+		show = "N";
 		return 0;
 	}
 
-    try {
-		if (argc == 3) {
-			std::string s = argv[2];
-			freopen (argv[2], "w", stdout);
-		}
 
-		auto cl = jvm::_Class();
-		cl.read(std::string(argv[1]));
-		cl.show();
+
+		if(show != "N")
+			cl.show();
 	} catch (std::string& error) {
 	    std::cout << error << std::endl;
 	}
