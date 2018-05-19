@@ -20,6 +20,7 @@ int main (int argc, char *argv[ ]) {
 	{
 		if(std::string(argv[1]) == "-l")
 		{
+
 			std::string programa;
 			std::cout << "Digite o nome do arquivo ou o caminho para o arquivo:" << std::endl;
 			std::cin >> programa;
