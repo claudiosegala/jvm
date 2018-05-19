@@ -223,22 +223,14 @@ namespace jvm {
 
 		os << name << " (" << name_index.value.number << ")" << std::endl;
 		os << tabs << "\tLength: " << length.value.number << std::endl;
+		os << tabs << "\tBytes: ";
 
-		if (name_index.value.number == 12) { // Code
-			os << tabs << "\tInstruction:" << std::endl;
-			for (auto byte : info) {
-				os << tabs << "\t\t" << " (" << (int)byte << ") " << instructions[byte] << std::endl;
-			}
-		} else {
-			os << tabs << "\tBytes: ";
-
-			for (auto& byte : info) {
-				sprintf(buffer, "%.2X ", byte);
-				os << buffer;
-			}
-
-			os << std::endl;
+		for (auto& byte : info) {
+			sprintf(buffer, "%.2X ", byte);
+			os << buffer;
 		}
+
+		os << std::endl;
 	}
 
 	void AttributeInfo::Read(Reader &reader) {
