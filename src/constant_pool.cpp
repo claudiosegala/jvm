@@ -150,9 +150,13 @@ namespace jvm {
 
 	void CP_Fieldref::printToStream(std::ostream &os, ConstantPool &cp) {
 
+		auto _class = cp[class_index.value.number];
+		auto _nameAndType = cp[name_and_type_index.value.number];
 		os << "Field Reference" << std::endl;
-		os << "\t\tClass index: " << class_index << std::endl;
-		os << "\t\tName and Type index: " << name_and_type_index << std::endl;
+		os << "\t\tClass index: " << class_index << std::endl << "\t";
+		_class->printToStream(os, cp);
+		os << "\t\tName and Type index: " << name_and_type_index << std::endl << "\t";
+		_nameAndType->printToStream(os, cp);
 	}
 
 	CP_Methodref::CP_Methodref(Reader &reader) {
@@ -161,9 +165,13 @@ namespace jvm {
 	}
 
 	void CP_Methodref::printToStream(std::ostream &os, ConstantPool &cp) {
+		auto _class = cp[class_index.value.number];
+		auto _nameAndType = cp[name_and_type_index.value.number];
 		os << "Method Reference" << std::endl;
-		os << "\t\tClass index: " << class_index << std::endl;
-		os << "\t\tName and type index: " << name_and_type_index << std::endl;
+		os << "\t\tClass index: " << class_index << std::endl << "\t";
+		_class->printToStream(os, cp);
+		os << "\t\tName and type index: " << name_and_type_index << std::endl << "\t";
+		_nameAndType->printToStream(os, cp);
 	}
 
 	CP_Float::CP_Float(Reader &reader) {

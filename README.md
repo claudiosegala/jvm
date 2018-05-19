@@ -1,9 +1,23 @@
 # JVM
 A simple JVM made in C++11
 
-# Testing
-We´re using Catch2 as test framework, see link below for usage tutorial:
-https://github.com/catchorg/Catch2/blob/master/docs/tutorial.md
+## Integrantes
++ Ricardo Arôso Mendes Kury - 14/0161082
++ Claudio Segala Rodrigues Silva Filho - 15/0032552
++ Nícolas Machado Schumacher - 13/0047660
++ Luís Eduardo Luz Silva - 15/0137885
++ Lincoln Abreu Barbosa - 14/0045023
+
+# Usage
+
+```
+cd jvm
+mkdir out
+cd out
+cmake ..
+make
+./jvm "../../samples/double_aritmetica.class" > output.txt
+```
 
 # Usefull Links
 

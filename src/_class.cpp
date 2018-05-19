@@ -54,11 +54,7 @@ namespace jvm {
 		}
 
 		for (int i = 0; i < interfaces_count.value.number; ++i) {
-			InterfaceInfo interface;
-
-			interface.info = file.getNextHalfWord();
-
-			interfaces.push_back(interface);
+			interfaces.push_back(InterfaceInfo(file));
 		}
 	}
 
@@ -189,12 +185,32 @@ namespace jvm {
 			return;
 		}
 
-		std::cout << "Interfaces:" << std::endl << std::endl;
+		std::cout << "Interfaces:";
+
+		auto i = 0;
+		for (auto& interface : interfaces) {
+			std::cout << std::endl << "\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
+			interface.PrintToStream(std::cout, constant_pool);
+		}
 	}
 
-	void _Class::print_this_class () {}
+	void _Class::print_this_class () {
+		CP_Entry* value = constant_pool[this_class.value.number];
+		std::cout << "Classes:"<< std::endl;
+		std::cout << "\t";
+		value->printToStream(std::cout, constant_pool);
+	}
 
-	void _Class::print_super_class () {}
+	void _Class::print_super_class () {
+		if (super_class.value.number == 0) {
+			std::cout << "Object" << std::endl;
+		} else {
+			CP_Entry* value = constant_pool[super_class.value.number];
+			std::cout << "Super Classes:"<< std::endl;
+			std::cout << "\t";
+			value->printToStream(std::cout, constant_pool);
+		}
+	}
 
 	void _Class::print_cp () {
 		std::cout << "Constant Pool Count: " << cp_count.value.number << std::endl;
