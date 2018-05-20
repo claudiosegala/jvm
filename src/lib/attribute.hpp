@@ -12,12 +12,12 @@ namespace jvm {
 		/**
 		 *  Valid index into the constant pool table
 		 */
-		HalfWord name_index;
+		uint16_t name_index;
 
 		/**
 		 * Length of info
 		 */
-		Word length;
+		uint32_t length;
 
 		/**
 		 * Info

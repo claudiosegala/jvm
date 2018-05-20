@@ -44,19 +44,19 @@ namespace jvm {
 		* Get the next byte in the file
 		* @retval The next Byte
 		*/
-		jvm::Byte getNextByte();
+		uint8_t getNextByte();
 
 		/**
 		* Get the next half word in the file
 		* @retval The next Half Word
 		*/
-		jvm::HalfWord getNextHalfWord();
+		uint16_t getNextHalfWord();
 
 		/**
 		* Get the next word in the file
 		* @retval The next Word
 		*/
-		jvm::Word getNextWord();
+		uint32_t getNextWord();
 	};
 
 }

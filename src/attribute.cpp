@@ -219,10 +219,10 @@ namespace jvm {
 
 	void AttributeInfo::printToStream(std::ostream &os, ConstantPool &cp, std::string tabs) {
 		char buffer[5];
-		auto& name = cp[name_index.value.number]->as<CP_Utf8>();
+		auto& name = cp[name_index]->as<CP_Utf8>();
 
-		os << name << " (" << name_index.value.number << ")" << std::endl;
-		os << tabs << "\tLength: " << length.value.number << std::endl;
+		os << name << " (" << name_index << ")" << std::endl;
+		os << tabs << "\tLength: " << length << std::endl;
 		os << tabs << "\tBytes: ";
 
 		for (auto& byte : info) {
@@ -237,8 +237,8 @@ namespace jvm {
 		name_index = reader.getNextHalfWord();
 		length = reader.getNextWord();
 
-		for (int i = 0; i < length.value.number; ++i) {
-			info.push_back(reader.getNextByte().value.number);
+		for (int i = 0; i < length; ++i) {
+			info.push_back(reader.getNextByte());
 		}
 	}
 }

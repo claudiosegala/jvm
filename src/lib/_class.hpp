@@ -15,35 +15,35 @@ namespace jvm {
 
 	class _Class {
 	public:
-		Word magic_number;
+		uint32_t magic_number;
 
-		HalfWord min_version;
+		uint16_t min_version;
 
-		HalfWord max_version;
+		uint16_t max_version;
 
-		HalfWord cp_count;
+		uint16_t cp_count;
 
 		ConstantPool constant_pool;
 
-		HalfWord access_flags;
+		uint16_t access_flags;
 
-		HalfWord this_class;
+		uint16_t this_class;
 
-		HalfWord super_class;
+		uint16_t super_class;
 
-		HalfWord interfaces_count;
+		uint16_t interfaces_count;
 
 		std::vector<jvm::InterfaceInfo> interfaces;
 
-		HalfWord fields_count;
+		uint16_t fields_count;
 
 		std::vector<jvm::FieldInfo> fields;
 
-		HalfWord methods_count;
+		uint16_t methods_count;
 
 		std::vector<jvm::MethodInfo> methods;
 
-		HalfWord attributes_count;
+		uint16_t attributes_count;
 
 		std::vector<jvm::AttributeInfo> attributes;
 

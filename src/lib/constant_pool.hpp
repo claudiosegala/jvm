@@ -76,7 +76,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		HalfWord name_index;
+		uint16_t name_index;
 	};
 
 	struct CP_Fieldref : public CP_Entry {
@@ -88,9 +88,9 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		HalfWord class_index;
+		uint16_t class_index;
 
-		HalfWord name_and_type_index;
+		uint16_t name_and_type_index;
 	};
 
 	struct CP_Methodref : public CP_Entry {
@@ -100,9 +100,9 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		HalfWord class_index;
+		uint16_t class_index;
 
-		HalfWord name_and_type_index;
+		uint16_t name_and_type_index;
 	};
 
 	struct CP_InterfaceMethodref : public CP_Entry {
@@ -112,9 +112,9 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		HalfWord class_index;
+		uint16_t class_index;
 
-		HalfWord name_and_class_index;
+		uint16_t name_and_class_index;
 	};
 
 	struct CP_String : public CP_Entry {
@@ -124,7 +124,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		HalfWord string_index;
+		uint16_t string_index;
 	};
 
 	struct CP_Integer : public CP_Entry {
@@ -134,7 +134,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		Word _bytes;
+		uint32_t _bytes;
 	};
 
 	struct CP_Float : public CP_Entry {
@@ -144,7 +144,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		Word _bytes;
+		uint32_t _bytes;
 	};
 
 	struct CP_Long : public CP_Entry {
@@ -154,9 +154,9 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		Word high_bytes;
+		uint32_t high_bytes;
 
-		Word low_bytes;
+		uint32_t low_bytes;
 	};
 
 	struct CP_Double : public CP_Entry {
@@ -166,9 +166,9 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		Word high_bytes;
+		uint32_t high_bytes;
 
-		Word low_bytes;
+		uint32_t low_bytes;
 	};
 
 	struct CP_NameAndType : public CP_Entry {
@@ -178,9 +178,9 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		HalfWord name_index;
+		uint16_t name_index;
 
-		HalfWord descriptor_index;
+		uint16_t descriptor_index;
 	};
 
 	struct CP_Utf8 : public CP_Entry {
@@ -192,7 +192,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		HalfWord _length;
+		uint16_t _length;
 
 		uint8_t *_bytes;
 	};
@@ -206,9 +206,9 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		Byte reference_kind;
+		uint8_t reference_kind;
 
-		HalfWord reference_index;
+		uint16_t reference_index;
 	};
 
 	struct CP_MethodType : public CP_Entry {
@@ -218,7 +218,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		HalfWord descriptor_index;
+		uint16_t descriptor_index;
 	};
 
 	struct CP_InvokeDynamic : public CP_Entry {
@@ -228,9 +228,9 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		HalfWord bootstrap_method_attr_index;
+		uint16_t bootstrap_method_attr_index;
 
-		HalfWord name_and_type_index;
+		uint16_t name_and_type_index;
 	};
 
 }

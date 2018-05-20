@@ -38,15 +38,15 @@ namespace jvm  {
     }
 
     void MethodInfo::PrintToStream (std::ostream &os, ConstantPool &cp) {
-        auto& name = cp[name_index.value.number]->as<CP_Utf8>();
-        auto& descriptor = cp[descriptor_index.value.number]->as<CP_Utf8>();
+        auto& name = cp[name_index]->as<CP_Utf8>();
+        auto& descriptor = cp[descriptor_index]->as<CP_Utf8>();
 
-        os << name << " (" << name_index.value.number << ")" << std::endl;
-        os << "\t\tDescriptor: " << descriptor << " (" << descriptor_index.value.number << ")" << std::endl;
+        os << name << " (" << name_index << ")" << std::endl;
+        os << "\t\tDescriptor: " << descriptor << " (" << descriptor_index << ")" << std::endl;
 
-        PrintFlags(os, access_flags.value.number);
+        PrintFlags(os, access_flags);
 
-        os << "\t\tAttributes Count: " << attributes_count.value.number << std::endl;
+        os << "\t\tAttributes Count: " << attributes_count << std::endl;
         os << "\t\tAttributes: ";
 
         auto i = 0;
@@ -62,7 +62,7 @@ namespace jvm  {
         descriptor_index = reader.getNextHalfWord();
         attributes_count = reader.getNextHalfWord();
 
-        for (int j = 0; j < attributes_count.value.number; ++j) {
+        for (int j = 0; j < attributes_count; ++j) {
             attributes.emplace_back(AttributeInfo(reader));
         }
     }

@@ -15,10 +15,8 @@ namespace jvm {
 	}
 
 	bool Reader::isValid() {
-		auto init = Word(MAGIC_NUMBER);
 		auto firstWord = getNextWord();
-		
-		return (firstWord == init);
+		return (firstWord == MAGIC_NUMBER);
 	}
 
 	void Reader::open(std::string &filename) {
@@ -43,44 +41,34 @@ namespace jvm {
 		}
 	}
 
-	Byte Reader::getNextByte() {
-		auto b = Byte();
-
-		b = bytes[index++];
-
-		return b;
+	uint8_t Reader::getNextByte() {
+		return bytes[index++];
 	}
 
-	HalfWord Reader::getNextHalfWord() {
-		auto hw = HalfWord();
-
-		auto aux = 0;
+	uint16_t Reader::getNextHalfWord() {
+		uint16_t result = 0;
 		for (auto i = 0; i < 2; i++) {
 			int32_t byte = bytes[index + i];
 			byte <<= (BYTESIZE * (1 - i));
-			aux |= byte;
+			result |= byte;
 		}
 
-		hw = aux;
 		index += 2;
 
-		return hw;
+		return result;
 	}
 
-	Word Reader::getNextWord() {
-		auto w = Word();
-
-		auto aux = 0;
+	uint32_t Reader::getNextWord() {
+		uint32_t result = 0;
 		for (auto i = 0; i < 4; i++) {
 			int32_t byte = bytes[index + i];
 			byte <<= (BYTESIZE * (3 - i));
-			aux |= byte;
+			result |= byte;
 		}
 
-		w = aux;
 		index += 4;
 
-		return w;
+		return result;
 	}
 
 	void Reader::close() {

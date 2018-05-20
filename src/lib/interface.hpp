@@ -13,7 +13,7 @@ namespace jvm {
 		/**
 		 * An index in the constant pool
 		 */
-		HalfWord info;
+		uint16_t info;
 
 		/**
 		 * Constructor default

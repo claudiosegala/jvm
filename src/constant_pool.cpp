@@ -21,7 +21,7 @@ namespace jvm {
 		reserve(size);
 
 		for (auto i = size; i > 0; --i) {
-			auto tag = reader.getNextByte().value.number;
+			auto tag = reader.getNextByte();
 			push_back(getNextEntry(reader, tag));
 			if (tag == CP_TAGS::Double || tag == CP_TAGS::Long) {
 				// these take two CP entries, the next entry is valid but unusable
@@ -150,8 +150,8 @@ namespace jvm {
 
 	void CP_Fieldref::printToStream(std::ostream &os, ConstantPool &cp) {
 
-		auto _class = cp[class_index.value.number];
-		auto _nameAndType = cp[name_and_type_index.value.number];
+		auto _class = cp[class_index];
+		auto _nameAndType = cp[name_and_type_index];
 		os << "Field Reference" << std::endl;
 		os << "\t\tClass index: " << class_index << std::endl << "\t";
 		_class->printToStream(os, cp);
@@ -165,8 +165,8 @@ namespace jvm {
 	}
 
 	void CP_Methodref::printToStream(std::ostream &os, ConstantPool &cp) {
-		auto _class = cp[class_index.value.number];
-		auto _nameAndType = cp[name_and_type_index.value.number];
+		auto _class = cp[class_index];
+		auto _nameAndType = cp[name_and_type_index];
 		os << "Method Reference" << std::endl;
 		os << "\t\tClass index: " << class_index << std::endl << "\t";
 		_class->printToStream(os, cp);
@@ -180,7 +180,7 @@ namespace jvm {
 
 	void CP_Float::printToStream(std::ostream &os, ConstantPool &cp) {
 		os << "Float" << std::endl;
-		os << "\t\t" << reinterpret_cast<float&>(_bytes.value.number) << std::endl;
+		os << "\t\t" << reinterpret_cast<float&>(_bytes) << std::endl;
 	}
 
 	CP_Long::CP_Long(Reader &reader) {
@@ -189,8 +189,8 @@ namespace jvm {
 	}
 
 	void CP_Long::printToStream(std::ostream &os, ConstantPool &cp) {
-		uint64_t number = high_bytes.value.number;
-		number = (number << 32) | low_bytes.value.number;
+		uint64_t number = high_bytes;
+		number = (number << 32) | low_bytes;
 		os << "Long" << std::endl;
 		os << "\t\t" << number << std::endl;
 	}
@@ -201,8 +201,8 @@ namespace jvm {
 	}
 
 	void CP_Double::printToStream(std::ostream &os, ConstantPool &cp) {
-		uint64_t number = high_bytes.value.number;
-		number = (number << 32) | low_bytes.value.number;
+		uint64_t number = high_bytes;
+		number = (number << 32) | low_bytes;
 		double d_number = reinterpret_cast<double&>(number);
 		os << "Double" << std::endl;
 		os << "\t\t" << d_number << std::endl;
@@ -214,12 +214,12 @@ namespace jvm {
 	}
 
 	void CP_MethodHandle::printToStream(std::ostream &os, ConstantPool &cp) {
-	    CP_Entry* name1  = cp[reference_index.value.number];
+	    CP_Entry* name1  = cp[reference_index];
 	    auto& nam1 = name1->as<CP_MethodHandle>();
 		os << "Method Handle" << std::endl;
 		os << "\tReference Kind: ";
 
-		switch(nam1.reference_kind.value.number) {
+		switch(nam1.reference_kind) {
 			case 0x01: os << "REF_getField"<< std::endl;         break;
 			case 0x02: os << "REF_getStatic"<< std::endl;        break;
 			case 0x03: os << "REF_putField"<< std::endl;         break;
@@ -241,8 +241,8 @@ namespace jvm {
 	}
 
 	void CP_InterfaceMethodref::printToStream(std::ostream &os, ConstantPool &cp) {
-		CP_Entry* name1 = cp[class_index.value.number];
-		CP_Entry* name2 = cp[name_and_class_index.value.number];
+		CP_Entry* name1 = cp[class_index];
+		CP_Entry* name2 = cp[name_and_class_index];
 		auto& nam1 = name1->as<CP_Utf8>();
 		auto& nam2 = name2->as<CP_Utf8>();
 
@@ -257,7 +257,7 @@ namespace jvm {
 
 	void CP_String::printToStream(std::ostream &os, ConstantPool &cp) {
 			os << "String" << std::endl;
-			CP_Entry* name1 = cp[string_index.value.number];
+			CP_Entry* name1 = cp[string_index];
 			auto& nam1 = name1->as<CP_Utf8>();
 			os << "\t\t" << nam1 << std::endl;
 	}
@@ -268,7 +268,7 @@ namespace jvm {
 
 	void CP_Integer::printToStream(std::ostream &os, ConstantPool &cp) {
 		os << "Integer" << std::endl;
-		os << "\t\t" << reinterpret_cast<int32_t&>(_bytes.value.number) << std::endl;
+		os << "\t\t" << reinterpret_cast<int32_t&>(_bytes) << std::endl;
 	}
 
 	CP_NameAndType::CP_NameAndType(Reader &reader) {
@@ -277,8 +277,8 @@ namespace jvm {
 	}
 
 	void CP_NameAndType::printToStream(std::ostream &os, ConstantPool &cp) {
-		CP_Entry* name1 = cp[name_index.value.number];
-		CP_Entry* name2 = cp[descriptor_index.value.number];
+		CP_Entry* name1 = cp[name_index];
+		CP_Entry* name2 = cp[descriptor_index];
 		auto& nam1 = name1->as<CP_Utf8>();
 		auto& nam2 = name2->as<CP_Utf8>();
 
@@ -293,8 +293,8 @@ namespace jvm {
 	}
 
 	void CP_InvokeDynamic::printToStream(std::ostream &os, ConstantPool &cp) {
-		CP_Entry* name1 = cp[bootstrap_method_attr_index.value.number];
-		CP_Entry* name2 = cp[name_and_type_index.value.number];
+		CP_Entry* name1 = cp[bootstrap_method_attr_index];
+		CP_Entry* name2 = cp[name_and_type_index];
 		auto& nam1 = name1->as<CP_Utf8>();
 		auto& nam2 = name2->as<CP_Utf8>();
 		os << "InvokeDynamic" << std::endl;
@@ -304,9 +304,9 @@ namespace jvm {
 
 	CP_Utf8::CP_Utf8(Reader &reader) {
 		_length = reader.getNextHalfWord();
-		_bytes = new uint8_t[_length.value.number];
-		for (int i = 0; i < _length.value.number; ++i) {
-			_bytes[i] = reader.getNextByte().value.number;
+		_bytes = new uint8_t[_length];
+		for (int i = 0; i < _length; ++i) {
+			_bytes[i] = reader.getNextByte();
 		}
 	}
 
@@ -324,10 +324,10 @@ namespace jvm {
 	}
 
 	void CP_Class::printToStream(std::ostream &os, ConstantPool &cp) {
-		CP_Entry* name = cp[name_index.value.number];
+		CP_Entry* name = cp[name_index];
 		auto& characters = name->as<CP_Utf8>();
 		os << "Class" << std::endl;
-		os << "\t\t Name index:" << name_index.value.number;
+		os << "\t\t Name index:" << name_index;
 		os << "\t\t Name: "  <<characters << std::endl;
 	}
 
@@ -336,10 +336,10 @@ namespace jvm {
 	}
 
 	void CP_MethodType::printToStream(std::ostream &os, ConstantPool &cp) {
-		CP_Entry* name1 = cp[descriptor_index.value.number];
+		CP_Entry* name1 = cp[descriptor_index];
 		auto& characters = name1->as<CP_Utf8>();
 		os << "Method Type" << std::endl;
-		os << "\t\t Descriptor_index: " << descriptor_index.value.number;
+		os << "\t\t Descriptor_index: " << descriptor_index;
 		os << "\t\t Descriptor_name: " << characters << std::endl;
 
 	}
@@ -349,7 +349,7 @@ namespace jvm {
 	// STREAM OPERATORS
 
 	std::ostream& operator<< (std::ostream& os, const CP_Utf8& utf8) {
-		auto end = utf8._bytes + utf8._length.value.number;
+		auto end = utf8._bytes + utf8._length;
 		auto current = utf8._bytes;
 		while (current < end) {
 			os << *current++;

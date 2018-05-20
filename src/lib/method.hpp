@@ -12,22 +12,22 @@ namespace jvm {
 		/**
 		 *  Access permission to and properties of this field
 		 */
-		HalfWord access_flags;
+		uint16_t access_flags;
 
 		/**
 		 *  Valid index into the constant pool table
 		 */
-		HalfWord name_index;
+		uint16_t name_index;
 
 		/**
 		 * Type of a class, instance, or local variable
 		 */
-		HalfWord descriptor_index;
+		uint16_t descriptor_index;
 
 		/**
 		 * The number of additional attributes
 		 */
-		HalfWord attributes_count;
+		uint16_t attributes_count;
 
 		/**
 		 * An attribute structure
