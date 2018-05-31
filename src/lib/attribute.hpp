@@ -9,30 +9,33 @@ namespace jvm {
 
 	class AttributeInfo {
 	public:
-		/**
-		 *  Valid index into the constant pool table
-		 */
-		uint16_t name_index;
+		uint16_t name_index;                             ///< Valid index into the constant pool table
 
-		/**
-		 * Length of info
-		 */
-		uint32_t length;
+		uint32_t length;                                 ///< Length of info
 
-		/**
-		 * Info
-		 */
-		std::vector<uint8_t > info;
+		std::vector<uint8_t > info;                      ///< Info
 
-		typedef std::map<int, std::string> Instructions;
-		static Instructions instructions;
+		typedef std::map<int, std::string> Instructions; ///< struct for static
+		static Instructions instructions;                ///<  All instructions
 
 		AttributeInfo() = default;
 
-		explicit AttributeInfo(Reader &reader);
+		/**
+		 * Constructor
+		 * @param reader The current reading method
+		 */
+		explicit AttributeInfo(Reader& reader);
 
+
+		/**
+		 *
+		 */
 		void printToStream(std::ostream&, ConstantPool&, std::string);
 
+		/**
+		 *
+		 * @param reader
+		 */
 		void Read(Reader &reader);
 
 	};

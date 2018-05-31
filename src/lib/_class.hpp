@@ -15,79 +15,141 @@ namespace jvm {
 
 	class _Class {
 	public:
-		uint32_t magic_number;
+		uint32_t magic_number;                      ///< The magic number
 
-		uint16_t min_version;
+		uint16_t min_version;                       ///<
 
-		uint16_t max_version;
+		uint16_t max_version;                       ///<
 
-		uint16_t cp_count;
+		uint16_t cp_count;                          ///<
 
-		ConstantPool constant_pool;
+		ConstantPool constant_pool;                 ///<
 
-		uint16_t access_flags;
+		uint16_t access_flags;                      ///<
 
-		uint16_t this_class;
+		uint16_t this_class;                        ///<
 
-		uint16_t super_class;
+		uint16_t super_class;                       ///<
 
-		uint16_t interfaces_count;
+		uint16_t interfaces_count;                  ///<
 
-		std::vector<jvm::InterfaceInfo> interfaces;
+		std::vector<jvm::InterfaceInfo> interfaces; ///<
 
-		uint16_t fields_count;
+		uint16_t fields_count;                      ///<
 
-		std::vector<jvm::FieldInfo> fields;
+		std::vector<jvm::FieldInfo> fields;         ///<
 
-		uint16_t methods_count;
+		uint16_t methods_count;                     ///<
 
-		std::vector<jvm::MethodInfo> methods;
+		std::vector<jvm::MethodInfo> methods;       ///<
 
-		uint16_t attributes_count;
+		uint16_t attributes_count;                  ///<
 
-		std::vector<jvm::AttributeInfo> attributes;
+		std::vector<jvm::AttributeInfo> attributes; ///<
 
+		/**
+		 *
+		 */
 		_Class ();
 
+		/**
+		 *
+		 */
 		void read (std::basic_string<char>);
 
+		/**
+		 *
+		 */
 		void show ();
 
 	private:
+		/**
+		 *
+		 */
 		void print_interfaces ();
 
+		/**
+		 *
+		 */
 		void print_fields ();
 
+		/**
+		 *
+		 */
 		void print_methods ();
 
+		/**
+		 *
+		 */
 		void print_attributes ();
 
+		/**
+		 *
+		 */
 		void print_this_class ();
 
+		/**
+		 *
+		 */
 		void print_super_class ();
 
+		/**
+		 *
+		 */
 		void print_version ();
 
+		/**
+		 *
+		 */
 		void print_cp ();
 
+		/**
+		 *
+		 */
 		void print_class_flags();
 
+		/**
+		 *
+		 */
 		void print_method_flags(uint32_t);
-
+		/**
+		 *
+		 */
 		void print_field_flags(uint32_t);
 
+		/**
+		 *
+		 */
 		void read_version (jvm::Reader&);
 
+		/**
+		 *
+		 */
 		void read_cp (jvm::Reader&);
 
+		/**
+		 *
+		 */
 		void read_flags(jvm::Reader&);
 
+		/**
+		 *
+		 */
 		void read_interfaces (jvm::Reader&);
 
+		/**
+		 *
+		 */
 		void read_fields (jvm::Reader&);
 
+		/**
+		 *
+		 */
 		void read_methods (jvm::Reader&);
 
+		/**
+		 *
+		 */
 		void read_attributes (jvm::Reader&);
 
 	};

@@ -9,30 +9,15 @@ namespace jvm {
 
 	class MethodInfo {
 	public:
-		/**
-		 *  Access permission to and properties of this field
-		 */
-		uint16_t access_flags;
+		uint16_t access_flags;                 ///< Access permission to and properties of this field
 
-		/**
-		 *  Valid index into the constant pool table
-		 */
-		uint16_t name_index;
+		uint16_t name_index;                   ///< Valid index into the constant pool table
 
-		/**
-		 * Type of a class, instance, or local variable
-		 */
-		uint16_t descriptor_index;
+		uint16_t descriptor_index;             ///< Type of a class, instance, or local variable
 
-		/**
-		 * The number of additional attributes
-		 */
-		uint16_t attributes_count;
+		uint16_t attributes_count;             ///< The number of additional attributes
 
-		/**
-		 * An attribute structure
-		 */
-		std::vector<AttributeInfo> attributes;
+		std::vector<AttributeInfo> attributes; ///< An attribute structure
 
 		/**
 		 * Constructor default
@@ -46,11 +31,14 @@ namespace jvm {
 
 		/**
 		 * Print the content of the class
+		 * @param
+		 * @param
 		 */
 		void PrintToStream(std::ostream &, ConstantPool &);
 
 		/**
 		 * Read from a file
+		 * @param
 		 */
 		void Read(Reader&);
 
@@ -58,6 +46,8 @@ namespace jvm {
 
 		/**
 		 * Print the content the flags of the method
+		 * @param
+		 * @param
 		 */
 		void PrintFlags(std::ostream &, uint32_t);
 	};
