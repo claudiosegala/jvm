@@ -192,7 +192,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString();
+		std::string toString() const;
 
 		uint16_t _length;
 
@@ -200,6 +200,8 @@ namespace jvm {
 	};
 
 	std::ostream& operator<< (std::ostream&, const CP_Utf8&);
+	bool operator== (const std::string&, const CP_Utf8&);
+	bool operator== (const CP_Utf8&, const std::string&);
 
 	struct CP_MethodHandle : public CP_Entry {
 		explicit CP_MethodHandle(Reader& reader);

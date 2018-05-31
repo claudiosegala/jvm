@@ -320,7 +320,7 @@ namespace jvm {
 		os << "\t\t" << *this << std::endl;
 	}
 
-	std::string CP_Utf8::toString() {
+	std::string CP_Utf8::toString() const {
 		std::ostringstream stream;
 		stream << *this;
 		return stream.str();
@@ -353,7 +353,7 @@ namespace jvm {
 
 	// END CONSTRUCTORS AND DESTRUCTORS
 
-	// STREAM OPERATORS
+	// OPERATORS
 
 	std::ostream& operator<< (std::ostream& os, const CP_Utf8& utf8) {
 		auto end = utf8._bytes + utf8._length;
@@ -364,6 +364,14 @@ namespace jvm {
 		return os;
 	}
 
-	// END STREAM OPERATORS
+	bool operator==(const std::string& str, const CP_Utf8& utf8) {
+		return str == utf8.toString();
+	}
+
+	bool operator==(const CP_Utf8& utf8, const std::string& str) {
+		return str == utf8;
+	}
+
+	// END OPERATORS
 
 }
