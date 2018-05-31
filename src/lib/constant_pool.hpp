@@ -192,6 +192,8 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
+		std::string toString();
+
 		uint16_t _length;
 
 		uint8_t *_bytes;

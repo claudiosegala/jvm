@@ -1,6 +1,7 @@
 #include <bit.hpp>
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 #include "constant_pool.hpp"
 
 namespace jvm {
@@ -317,6 +318,12 @@ namespace jvm {
 	void CP_Utf8::printToStream(std::ostream &os, ConstantPool &cp) {
 		os << "UTF-8" << std::endl;
 		os << "\t\t" << *this << std::endl;
+	}
+
+	std::string CP_Utf8::toString() {
+		std::ostringstream stream;
+		stream << *this;
+		return stream.str();
 	}
 
 	CP_Class::CP_Class(Reader &reader) {
