@@ -92,6 +92,8 @@ int main (int argc, char *argv[ ]) {
 
 	} catch (std::string& error) {
 	    std::cout << error << std::endl;
+	} catch (const char* error) {
+		std::cout << error << std::endl;
 	}
 
 }
