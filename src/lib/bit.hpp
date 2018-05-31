@@ -20,7 +20,8 @@ namespace jvm {
 	template<typename T>
 	class Data {
 	private:
-		Endianness m_endianness;
+		Endianness m_endianness; ///<
+
 	public:
 		union {
 			T number;

@@ -10,10 +10,7 @@ namespace jvm {
 
 	class InterfaceInfo {
 	public:
-		/**
-		 * An index in the constant pool
-		 */
-		uint16_t info;
+		uint16_t info; ///< An index in the constant pool
 
 		/**
 		 * Constructor default
@@ -22,16 +19,20 @@ namespace jvm {
 
 		/**
 		 * Reader
+		 * @param
 		 */
 		explicit InterfaceInfo (Reader&);
 
 		/**
 		 * Print the content of the class
+		 * @param
+		 * @param
 		 */
 		void PrintToStream(std::ostream &, ConstantPool &);
 
 		/**
 		 * Read from a file
+		 * @param
 		 */
 		void Read(Reader&);
 	};

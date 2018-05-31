@@ -8,16 +8,15 @@ namespace jvm {
 
 	class Reader {
 	private:
+		std::ifstream _class;       ///< Stream with the .class file
 
-		//< stream with the .class file
-		std::ifstream _class;
-		std::vector<uint8_t> bytes;
-		int32_t index;
+		std::vector<uint8_t> bytes; ///< Bytes read from file
+
+		int32_t index;              ///< Index in the vector
 
 		/**
 		* Check if it is a .class file
-		* @retval TRUE Has CAFEBABE as initial word in the file
-		* @retval FALSE Has not CAFEBABE as initial word in the file
+		* @return If it has or not CAFEBABE as initial word
 		*/
 		bool isValid();
 
@@ -26,6 +25,7 @@ namespace jvm {
 		/**
 		* Open a .class file
 		* @param  filename The name of the .class we are opening
+		* @see isValid()
 		*/
 		void open(std::string &filename);
 
@@ -36,25 +36,25 @@ namespace jvm {
 
 		/**
 		* .class file size
-		* @retval Size of the .class file
+		* @return Size of the .class file
 		*/
 		uint64_t size();
 
 		/**
 		* Get the next byte in the file
-		* @retval The next Byte
+		* @return The next Byte
 		*/
 		uint8_t getNextByte();
 
 		/**
 		* Get the next half word in the file
-		* @retval The next Half Word
+		* @return The next Half Word
 		*/
 		uint16_t getNextHalfWord();
 
 		/**
 		* Get the next word in the file
-		* @retval The next Word
+		* @return The next Word
 		*/
 		uint32_t getNextWord();
 	};

@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include "_class.hpp"
+#include "vm.hpp"
 
 void showCommands () {
 	std::cout << "--describe or -d => descrevem o .class" << std::endl;
@@ -22,22 +23,23 @@ int main (int argc, char *argv[ ]) {
 		bool isHelp = false;
 		std::string filename;
 
-		for (int i = 0; i < commands.size(); i++) {
-			if (commands[i] == "--describe" or commands[i] == "-d") {
+		for (const auto &command : commands) {
+			if (command == "--describe" or command == "-d") {
 				isToDescribe = true;
-			} else if (commands[i] == "--run" or commands[i] == "-r") {
+			} else if (command == "--run" or command == "-r") {
 				isToRun = true;
-			} else if (commands[i] == "--help" or commands[i] == "-h") {
+			} else if (command == "--help" or command == "-h") {
 				isHelp = true;
 			} else if (not hasName) {
 				hasName = true;
-				filename = commands[i];
+				filename = command;
 			} else {
-				throw std::string{"Os comandos ficaram confusos de entender, use o comando \'--help\' para entender melhor"};
+				throw "Os comandos ficaram confusos de entender, use o comando \'--help\' para entender melhor";
 			}
 		}
 
 		jvm::_Class cl;
+		jvm::VM vm;
 
 		if (isHelp) {
 			showCommands();
@@ -73,7 +75,7 @@ int main (int argc, char *argv[ ]) {
 					isToRun = true;
 					break;
 				default:
-					throw std::string{"Cara... Você tinha um trabalho, escolher entre 3 números..."};
+					throw "Cara... Você tinha um trabalho, escolher entre 3 números...";
 			}
 		}
 
@@ -84,8 +86,8 @@ int main (int argc, char *argv[ ]) {
 		}
 
 		if (isToRun) {
-			// jvm::JVM vm(cl);
-			// vm.run();
+			vm.classLoader(cl);
+			vm.run();
 		}
 
 	} catch (std::string& error) {
