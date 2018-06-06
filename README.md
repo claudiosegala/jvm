@@ -2,11 +2,11 @@
 A simple JVM made in C++11
 
 ## Integrantes
-+ Ricardo Arôso Mendes Kury - 14/0161082
 + Claudio Segala Rodrigues Silva Filho - 15/0032552
-+ Nícolas Machado Schumacher - 13/0047660
-+ Luís Eduardo Luz Silva - 15/0137885
 + Lincoln Abreu Barbosa - 14/0045023
++ Luís Eduardo Luz Silva - 15/0137885
++ Nícolas Machado Schumacher - 13/0047660
++ Ricardo Arôso Mendes Kury - 14/0161082
 
 # Usage
 
