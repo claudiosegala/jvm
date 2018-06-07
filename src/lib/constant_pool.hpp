@@ -12,7 +12,7 @@ namespace jvm {
 		MethodRef          = 10,
 		InterfaceMethodRef = 11,
 		String             = 8,
-		Integer	           = 3,
+		Integer	          = 3,
 		Float              = 4,
 		Long               = 5,
 		Double             = 6,
