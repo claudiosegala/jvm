@@ -8,8 +8,8 @@ namespace jvm {
 
 	ConstantPool::ConstantPool() = default;
 
-	ConstantPool::ConstantPool(Reader &reader, size_type size) : vector(size) {
-		fill(reader, size);
+	ConstantPool::ConstantPool(Reader &reader, size_type cp_count) : vector(cp_count) {
+		fill(reader, cp_count);
 	}
 
 	ConstantPool::~ConstantPool() {
@@ -18,10 +18,10 @@ namespace jvm {
 		}
 	}
 
-	void ConstantPool::fill(Reader &reader, size_type size) {
-		reserve(size);
+	void ConstantPool::fill(Reader &reader, size_type cp_count) {
+		reserve(cp_count);
 
-		for (auto i = size; i > 0; --i) {
+		for (auto i = cp_count; i > 0; --i) {
 			auto tag = reader.getNextByte();
 			push_back(getNextEntry(reader, tag));
 			if (tag == CP_TAGS::Double || tag == CP_TAGS::Long) {
@@ -65,11 +65,6 @@ namespace jvm {
 			case CP_TAGS::InvokeDynamic:      return new CP_InvokeDynamic(reader);
 			default:                          throw "Invalid Constant Pool Tag";
 		}
-	}
-
-	void ConstantPool::PrintUtf8(std::ostream &os, int index) {
-		auto& utf8 = ((*this)[index])->as<CP_Utf8>();
-		os << utf8 << std::endl;
 	}
 
 	CP_Entry *&ConstantPool::operator[](unsigned long index) {
