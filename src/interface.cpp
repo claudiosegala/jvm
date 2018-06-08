@@ -8,6 +8,8 @@
 
 namespace jvm  {
 
+	InterfaceInfo::InterfaceInfo () = default;
+
 	InterfaceInfo::InterfaceInfo (Reader &reader) {
 		Read(reader);
 	}
