@@ -213,7 +213,7 @@ namespace jvm {
 		{ std::stoi("11000100", nullptr, 2), std::string("wide") }
 	};
 
-	AttributeInfo () = default;
+	AttributeInfo::AttributeInfo () = default;
 
 	AttributeInfo::AttributeInfo(Reader &reader) {
 		Read(reader);
