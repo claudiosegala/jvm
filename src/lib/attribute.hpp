@@ -18,22 +18,25 @@ namespace jvm {
 		typedef std::map<int, std::string> Instructions; ///< struct for static
 		static Instructions instructions;                ///<  All instructions
 
-		AttributeInfo() = default;
+		/**
+		 * Default constructor.
+		 */
+		AttributeInfo ();
 
 		/**
-		 * Constructor
-		 * @param reader The current reading method
+		 * Constructor that calls Read() method.
+		 * @param reader The current reading method.
 		 */
 		explicit AttributeInfo(Reader& reader);
 
 
 		/**
-		 *
+		 * Prints the index, length and the bytes of this AttributeInfo.
 		 */
 		void printToStream(std::ostream&, ConstantPool&, std::string);
 
 		/**
-		 *
+		 * Reads the whole AttributeInfo from the class file.
 		 * @param reader
 		 */
 		void Read(Reader &reader);

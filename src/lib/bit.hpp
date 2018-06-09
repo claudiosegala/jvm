@@ -14,13 +14,13 @@ namespace jvm {
 
 	/**
 	 * @brief Stores a number and its endianness information,
-	 * providing utilities for bit access and endianness conversion
-	 * @tparam T underlying data type
+	 * providing utilities for bit access and endianness conversion.
+	 * @tparam T underlying data type.
 	 */
 	template<typename T>
 	class Data {
 	private:
-		Endianness m_endianness; ///<
+		Endianness m_endianness; ///< Stores the endianness of this Data.
 
 	public:
 		union {
@@ -28,10 +28,19 @@ namespace jvm {
 			std::array<uint8_t, sizeof(T)> bytes;
 		} value;
 
+		/**
+		 * Constructor that stores the endianness.
+		 */
 		explicit Data(Endianness = SYSTEM_ENDIANNESS);
 
+		/**
+		 * Constructor that stores the endianness and a value.
+		 */
 		explicit Data(T number, Endianness = SYSTEM_ENDIANNESS);
 
+		/**
+		 * Changes the endianness of this data and returns a reference to it.
+		 */
 		Data<T> &toEndianness(Endianness new_endianness);
 
 		Data<T> &operator=(T number);
@@ -45,8 +54,14 @@ namespace jvm {
 		template<typename U>
 		U as_type();
 
+		/**
+		 * Prints the actual endianness and the value of this Data.
+		 */
 		void Print();
 
+		/**
+		 * Prints the string and calls method Print().
+		 */
 		void Print(std::string &s);
 
 	};
