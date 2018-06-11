@@ -6,13 +6,13 @@
 
 namespace jvm {
 
-	enum CP_TAGS : uint16_t {
+	enum CP_TAGS : uint8_t {
 		Class              = 7,
 		FieldRef           = 9,
 		MethodRef          = 10,
 		InterfaceMethodRef = 11,
 		String             = 8,
-		Integer	           = 3,
+		Integer	          = 3,
 		Float              = 4,
 		Long               = 5,
 		Double             = 6,
@@ -27,21 +27,51 @@ namespace jvm {
 
 	class ConstantPool : public std::vector<CP_Entry*> {
 	public:
+	
+		/**
+		 * Default ConstantPool's constructor
+		 */
 		ConstantPool();
 
-		ConstantPool(Reader &reader, size_type size);
+		/**
+		 * ConstantPool's constructor that calls the method fill, reading all of the cp entries
+		 * @param reader Reader of the class file
+		 * @param cp_count Number of elements of the constant pool
+		 */
+		ConstantPool(Reader &reader, size_type cp_count);
 
+		/**
+		 * Default ConstantPool's destructor
+		 */
 		~ConstantPool();
 
-		void fill(Reader &reader, size_type size);
+		/**
+		 * Fills this ConstantPool with it's entries
+		 * @param reader Reader of the class file
+		 * @param cp_count Number of elements of the constant pool
+		 */
+		void fill(Reader &reader, size_type cp_count);
 
+		/**
+		 * Prints this ConstantPool's entries to the console
+		 * @param os Reference to ostream
+		 */
 		void printToStream(std::ostream& os);
 
-		void PrintUtf8(std::ostream &os, int index);
-
+		/**
+		 * 
+		 */
 		CP_Entry* &operator[](size_type index);
 
 	private:
+
+		/**
+		 * Gets the next entry of the ConstantPool, ad it must be of the kind of the given tag
+		 * @param reader A reference to the Reader of the class file
+		 * @param tag An identifyer of the cp_info's kind
+		 * @return Pointer to the next CP_Entry according to the given tag
+		 * @throw Exception when invalid tag's value
+		 */
 		CP_Entry *getNextEntry(Reader &reader, uint8_t tag);
 	};
 

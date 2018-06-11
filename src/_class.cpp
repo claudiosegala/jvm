@@ -73,9 +73,8 @@ namespace jvm {
 	}
 
 	/**
-	 * Read the constant pool data
+	 * Reads all the class file
 	 * @param file The file to extract the data
-	 * @param count How many constants to extract
 	 */
 	void _Class::read (std::basic_string<char> filename) {
 		auto file = jvm::Reader();
@@ -185,7 +184,7 @@ namespace jvm {
 			std::cout << "Object" << std::endl;
 		} else {
 			CP_Entry* value = constant_pool[super_class];
-			std::cout << "Super Classes:"<< std::endl;
+			std::cout << "Super Class:"<< std::endl;
 			std::cout << "\t";
 			value->printToStream(std::cout, constant_pool);
 		}
