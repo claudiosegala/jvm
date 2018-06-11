@@ -24,38 +24,33 @@ namespace jvm {
 	protected:
 		Attr_Entry() = default;
 	public:
-		uint16_t name_index;                             ///< Valid index into the constant pool table
+		template<class T>
+		static Attr_Entry* Instantiate(Reader &reader, ConstantPool &cp) {
+			return new T(reader, cp);
+		}
 
-		uint32_t length;                                 ///< Length of info
+		virtual ~Attr_Entry() = default;
 
-		std::vector<uint8_t > info;                      ///< Info
+		virtual void printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix) = 0;
 
-		typedef std::map<int, std::string> Instructions; ///< struct for static
-		static Instructions instructions;                ///<  All instructions
+	};
 
-		/**
-		 * Default constructor.
-		 */
-		AttributeInfo ();
+	struct Attr_Code : public Attr_Entry {
+		typedef struct {
+			u2 start_pc;
+			u2 end_pc;
+			u2 handler_pc;
+			u2 catch_type;
+		} exception_table_entry;
 
-		/**
-		 * Constructor that calls Read() method.
-		 * @param reader The current reading method.
-		 */
-		explicit AttributeInfo(Reader& reader);
+		u2 max_stack;
+		u2 max_locals;
+		std::vector<u1> code;
+		std::vector<exception_table_entry> exception_table;
+		AttributeInfo attributes;
 
-
-		/**
-		 * Prints the index, length and the bytes of this AttributeInfo.
-		 */
-		void printToStream(std::ostream&, ConstantPool&, std::string);
-
-		/**
-		 * Reads the whole AttributeInfo from the class file.
-		 * @param reader
-		 */
-		void Read(Reader &reader);
-
+		explicit Attr_Code(Reader &reader, ConstantPool &cp);
+		void printToStream(std::ostream &ostream, ConstantPool &pool, const std::string &prefix) override;
 	};
 
 }
