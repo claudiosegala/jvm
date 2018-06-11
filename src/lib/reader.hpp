@@ -57,6 +57,11 @@ namespace jvm {
 		* @return The next Word
 		*/
 		uint32_t getNextWord();
+
+		void skipBytes(int n);
 	};
 
+	uint8_t  operator<<(uint8_t  &num, Reader &reader);
+	uint16_t operator<<(uint16_t &num, Reader &reader);
+	uint32_t operator<<(uint32_t &num, Reader &reader);
 }

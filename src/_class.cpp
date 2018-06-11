@@ -11,15 +11,7 @@ namespace jvm {
 	_Class::_Class() = default;
 
 	void _Class::read_attributes (jvm::Reader &file) {
-		attributes_count = file.getNextHalfWord();
-
-		if (attributes_count == 0) {
-			return;
-		}
-
-		for (int i = 0; i < attributes_count; ++i) {
-			attributes.emplace_back(AttributeInfo(file));
-		}
+		attributes.fill(file, constant_pool);
 	}
 
 	void _Class::read_methods (jvm::Reader &file) {
@@ -30,7 +22,7 @@ namespace jvm {
 		}
 
 		for (int i = 0; i < methods_count; ++i) {
-			methods.emplace_back(MethodInfo(file));
+			methods.emplace_back(file, constant_pool);
 		}
 	}
 
@@ -42,7 +34,7 @@ namespace jvm {
 		}
 
 		for (int i = 0; i < fields_count; ++i) {
-			fields.emplace_back(FieldInfo(file));
+			fields.emplace_back(file, constant_pool);
 		}
 	}
 
@@ -54,7 +46,7 @@ namespace jvm {
 		}
 
 		for (int i = 0; i < interfaces_count; ++i) {
-			interfaces.push_back(InterfaceInfo(file));
+			interfaces.emplace_back(file);
 		}
 	}
 
@@ -65,7 +57,7 @@ namespace jvm {
 	}
 
 	void _Class::read_cp (jvm::Reader& file) {
-		cp_count = file.getNextHalfWord() - 1;
+		cp_count = (uint16_t)(file.getNextHalfWord() - 1);
 
 		if (cp_count <= 0) {
 			return;
@@ -130,19 +122,7 @@ namespace jvm {
 	}
 
 	void _Class::print_attributes () {
-		std::cout << "Attributes Count: " << attributes_count << std::endl;
-
-		if (attributes_count == 0) {
-			return;
-		}
-
-		std::cout << "Attributes:";
-
-		auto i = 0;
-		for (auto& attribute : attributes) {
-			std::cout << std::endl << "\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
-			attribute.printToStream(std::cout, constant_pool, "\t");
-		}
+		attributes.printToStream(std::cout, constant_pool, "");
 	}
 
 	void _Class::print_methods () {
@@ -157,7 +137,7 @@ namespace jvm {
 		auto i = 0;
 		for (auto& method : methods) {
 			std::cout << std::endl << "\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
-			method.PrintToStream(std::cout, constant_pool);
+			method.PrintToStream(std::cout, constant_pool, "");
 		}
 	}
 

@@ -15,9 +15,7 @@ namespace jvm {
 
 		uint16_t descriptor_index;             ///< Type of a class, instance, or local variable
 
-		uint16_t attributes_count;             ///< The number of additional attributes
-
-		std::vector<AttributeInfo> attributes; ///< An attribute structure
+		AttributeInfo attributes;              ///< An attribute structure
 
 		/**
 		 * Constructor default
@@ -27,20 +25,20 @@ namespace jvm {
 		/**
 		 * Reader
 		 */
-		explicit MethodInfo (Reader&);
+		explicit MethodInfo(Reader &, ConstantPool &cp);
 
 		/**
 		 * Print the content of the class
 		 * @param
 		 * @param
 		 */
-		void PrintToStream(std::ostream &, ConstantPool &);
+		void PrintToStream(std::ostream &, ConstantPool &, const std::string &prefix);
 
 		/**
 		 * Read from a file
 		 * @param
 		 */
-		void Read(Reader&);
+		void Read(Reader &, ConstantPool &cp);
 
 	private:
 

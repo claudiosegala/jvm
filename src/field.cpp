@@ -5,8 +5,8 @@
 
 namespace jvm {
 
-	FieldInfo::FieldInfo (Reader &reader) {
-		Read(reader);
+	FieldInfo::FieldInfo(Reader &reader, ConstantPool &cp) {
+		Read(reader, cp);
 	}
 
 	void FieldInfo::PrintFlags(std::ostream &os, uint32_t flag) {
@@ -41,25 +41,14 @@ namespace jvm {
 
 		PrintFlags(os, access_flags);
 
-		os << "\t\tAttributes Count: " << attributes_count << std::endl;
-		os << "\t\tAttributes: ";
-
-		auto i = 0;
-		for (auto& attribute : attributes) {
-			std::cout << std::endl << "\t\t\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
-			attribute.printToStream(os, cp, "\t\t\t");
-		}
+		attributes.printToStream(os, cp, "\t\t\t");
 	}
 
-	void FieldInfo::Read (Reader &reader) {
+	void FieldInfo::Read(Reader &reader, ConstantPool &cp) {
 		access_flags = reader.getNextHalfWord();
 		name_index = reader.getNextHalfWord();
 		descriptor_index = reader.getNextHalfWord();
-		attributes_count = reader.getNextHalfWord();
-
-		for (int j = 0; j < attributes_count; ++j) {
-			attributes.emplace_back(AttributeInfo(reader));
-		}
+		attributes.fill(reader, cp);
 	}
 
 }

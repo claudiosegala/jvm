@@ -7,8 +7,8 @@
 
 namespace jvm  {
 
-    MethodInfo::MethodInfo (Reader &reader) {
-        Read(reader);
+    MethodInfo::MethodInfo(Reader &reader, ConstantPool &cp) {
+        Read(reader, cp);
     }
 
     void MethodInfo::PrintFlags (std::ostream &os, uint32_t flag) {
@@ -37,7 +37,7 @@ namespace jvm  {
         }
     }
 
-    void MethodInfo::PrintToStream (std::ostream &os, ConstantPool &cp) {
+    void MethodInfo::PrintToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix) {
         auto& name = cp[name_index]->as<CP_Utf8>();
         auto& descriptor = cp[descriptor_index]->as<CP_Utf8>();
 
@@ -46,24 +46,13 @@ namespace jvm  {
 
         PrintFlags(os, access_flags);
 
-        os << "\t\tAttributes Count: " << attributes_count << std::endl;
-        os << "\t\tAttributes: ";
-
-        auto i = 0;
-        for (auto& attribute : attributes) {
-	        std::cout << std::endl << "\t\t\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
-            attribute.printToStream(os, cp, "\t\t\t");
-        }
+        attributes.printToStream(os, cp, "\t\t");
     }
 
-    void MethodInfo::Read (Reader &reader) {
+    void MethodInfo::Read(Reader &reader, ConstantPool &cp) {
         access_flags = reader.getNextHalfWord();
         name_index = reader.getNextHalfWord();
         descriptor_index = reader.getNextHalfWord();
-        attributes_count = reader.getNextHalfWord();
-
-        for (int j = 0; j < attributes_count; ++j) {
-            attributes.emplace_back(AttributeInfo(reader));
-        }
+        attributes.fill(reader, cp);
     }
 }

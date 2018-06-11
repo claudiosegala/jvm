@@ -4,10 +4,25 @@
 #include <map>
 #include "bit.hpp"
 #include "constant_pool.hpp"
+#include "macros.hpp"
 
 namespace jvm {
 
-	class AttributeInfo {
+	class Attr_Entry;
+
+	// This maps a string to a function that returns an instance of the corresponding attribute
+	typedef std::map<std::string, Attr_Entry*(*)(Reader&, ConstantPool&)> AttributeMap;
+
+	class AttributeInfo : public std::vector<Attr_Entry*> {
+	public:
+		void fill(Reader &reader, ConstantPool &cp);
+		void printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix);
+		~AttributeInfo();
+	};
+
+	class Attr_Entry {
+	protected:
+		Attr_Entry() = default;
 	public:
 		uint16_t name_index;                             ///< Valid index into the constant pool table
 

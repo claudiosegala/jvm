@@ -45,7 +45,7 @@ namespace jvm {
 
 		uint16_t attributes_count;                  ///<
 
-		std::vector<jvm::AttributeInfo> attributes; ///<
+		jvm::AttributeInfo attributes;              ///<
 
 		/**
 		 *

@@ -74,4 +74,21 @@ namespace jvm {
 	void Reader::close() {
 		_class.close();
 	}
+
+	void Reader::skipBytes(int n) {
+		_class.seekg(n, std::ifstream::cur);
+		index += n;
+	}
+
+	uint8_t operator<<(uint8_t &num, Reader &reader) {
+		return num = reader.getNextByte();
+	}
+
+	uint16_t operator<<(uint16_t &num, Reader &reader) {
+		return num = reader.getNextHalfWord();
+	}
+
+	uint32_t operator<<(uint32_t &num, Reader &reader) {
+		return num = reader.getNextWord();
+	}
 }

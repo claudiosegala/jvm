@@ -31,7 +31,7 @@ namespace jvm {
 		/**
 		 * An attribute structure
 		 */
-		std::vector<AttributeInfo> attributes;
+		AttributeInfo attributes;
 
 		/**
 		 * Constructor default
@@ -41,7 +41,7 @@ namespace jvm {
 		/**
 		 * Reader
 		 */
-		explicit FieldInfo (Reader&);
+		explicit FieldInfo(Reader &, ConstantPool &cp);
 
 		/**
 		 * Print the content of the class
@@ -51,7 +51,7 @@ namespace jvm {
 		/**
 		 * Read from a file
 		 */
-		void Read (Reader&);
+		void Read(Reader &, ConstantPool &cp);
 
 	private:
 

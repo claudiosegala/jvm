@@ -233,12 +233,9 @@ namespace jvm {
 		os << std::endl;
 	}
 
-	void AttributeInfo::Read(Reader &reader) {
-		name_index = reader.getNextHalfWord();
-		length = reader.getNextWord();
-
-		for (int i = 0; i < length; ++i) {
-			info.push_back(reader.getNextByte());
-		}
+	void Attr_Code::printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix) {
+		os << prefix << "Code:" << std::endl;
+		// TODO print mnemonics from "code" array
 	}
+
 }
