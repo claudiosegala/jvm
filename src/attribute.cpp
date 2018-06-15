@@ -229,7 +229,7 @@ namespace jvm {
 
 			if (it == m.end()) { // In this case, the attribute's name is not in the map
 				// Add a nullptr and skip the attribute's bytes
-				push_back(nullptr);
+				emplace_back();
 				reader.skipBytes(attr_length);
 			} else { // Instantiate the attribute and initialize with data from reader
 				auto attr = (*(it->second))(reader, cp);
@@ -240,17 +240,14 @@ namespace jvm {
 
 	void AttributeInfo::printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix) {
 		os << prefix << "Count:" << size() << std::endl;
-		for (Attr_Entry* attr : *this) {
+		for (std::shared_ptr<Attr_Entry>& ptr : *this) {
+			auto attr = ptr.get();
 			if (attr == nullptr) {
 				os << prefix << "Undefined attribute" << std::endl;
 			} else {
 				attr->printToStream(os, cp, prefix + "\t");
 			}
 		}
-	}
-
-	AttributeInfo::~AttributeInfo() {
-
 	}
 
 	Attr_Code::Attr_Code(Reader &reader, ConstantPool &cp) {

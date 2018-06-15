@@ -67,7 +67,7 @@ namespace jvm {
 		}
 	}
 
-	CP_Entry *&ConstantPool::operator[](unsigned long index) {
+	CP_Entry* ConstantPool::operator[](size_t index) {
 		return vector::operator[](index - 1);
 	}
 

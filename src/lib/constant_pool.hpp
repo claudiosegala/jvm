@@ -61,7 +61,7 @@ namespace jvm {
 		/**
 		 * 
 		 */
-		CP_Entry* &operator[](size_type index);
+		CP_Entry* operator[](size_type index);
 
 	private:
 

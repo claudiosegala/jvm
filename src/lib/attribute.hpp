@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <vector>
 #include <map>
+#include <memory>
 #include "bit.hpp"
 #include "constant_pool.hpp"
 #include "macros.hpp"
@@ -11,13 +12,12 @@ namespace jvm {
 	class Attr_Entry;
 
 	// This maps a string to a function that returns an instance of the corresponding attribute
-	typedef std::map<std::string, Attr_Entry*(*)(Reader&, ConstantPool&)> AttributeMap;
+	typedef std::map<std::string, std::shared_ptr<Attr_Entry>(*)(Reader&, ConstantPool&)> AttributeMap;
 
-	class AttributeInfo : public std::vector<Attr_Entry*> {
+class AttributeInfo : public std::vector<std::shared_ptr<Attr_Entry>> {
 	public:
 		void fill(Reader &reader, ConstantPool &cp);
 		void printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix);
-		~AttributeInfo();
 	};
 
 	class Attr_Entry {
@@ -25,8 +25,8 @@ namespace jvm {
 		Attr_Entry() = default;
 	public:
 		template<class T>
-		static Attr_Entry* Instantiate(Reader &reader, ConstantPool &cp) {
-			return new T(reader, cp);
+		static std::shared_ptr<Attr_Entry> Instantiate(Reader &reader, ConstantPool &cp) {
+			return std::make_shared<T>(reader, cp);
 		}
 
 		virtual ~Attr_Entry() = default;
@@ -49,8 +49,7 @@ namespace jvm {
 		std::vector<exception_table_entry> exception_table;
 		AttributeInfo attributes;
 
-		explicit Attr_Code(Reader &reader, ConstantPool &cp);
+		Attr_Code(Reader &reader, ConstantPool &cp);
 		void printToStream(std::ostream &ostream, ConstantPool &pool, const std::string &prefix) override;
 	};
-
 }
