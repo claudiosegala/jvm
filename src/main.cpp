@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "_class.hpp"
-#include "vm.hpp"
+#include "_class/_class.hpp"
+#include "vm/vm.hpp"
 
 void showCommands () {
 	std::cout << "--describe or -d => descrevem o .class" << std::endl;

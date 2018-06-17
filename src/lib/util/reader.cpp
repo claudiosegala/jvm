@@ -1,9 +1,9 @@
 #include <iostream>
 #include <fstream>
-#include <bit.hpp>
+#include <util/bit.hpp>
 #include <vector>
-#include "macros.hpp"
-#include "reader.hpp"
+#include "_class/macros.hpp"
+#include "util/reader.hpp"
 
 namespace jvm {
 

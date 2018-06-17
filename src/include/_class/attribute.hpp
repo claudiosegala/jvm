@@ -3,7 +3,7 @@
 #include <vector>
 #include <map>
 #include <memory>
-#include "bit.hpp"
+#include "util/bit.hpp"
 #include "constant_pool.hpp"
 #include "macros.hpp"
 

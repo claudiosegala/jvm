@@ -74,4 +74,4 @@ namespace jvm {
 	typedef Data<uint32_t> Word;
 }
 
-#include "../bit.cpp" // Templates require this
+#include "../../lib/util/bit.cpp" // Templates require this

@@ -3,8 +3,8 @@
 #include <fstream>
 #include <vector>
 #include <string>
-#include "bit.hpp"
-#include "reader.hpp"
+#include "util/bit.hpp"
+#include "util/reader.hpp"
 #include "constant_pool.hpp"
 #include "interface.hpp"
 #include "field.hpp"

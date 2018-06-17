@@ -11,8 +11,8 @@ if(BUILD_32)
     set(CMAKE_C_FLAGS ${CMAKE_C_FLAGS} -m32)
 endif(BUILD_32)
 
-include_directories("src/lib")
-set(SOURCES src/main.cpp src/reader.cpp src/constant_pool.cpp src/_class.cpp src/attribute.cpp src/field.cpp src/method.cpp src/interface.cpp src/vm.cpp)
+include_directories("src/include")
+set(SOURCES src/main.cpp src/lib/util/reader.cpp src/lib/_class/constant_pool.cpp src/lib/_class/_class.cpp src/lib/_class/attribute.cpp src/lib/_class/field.cpp src/lib/_class/method.cpp src/lib/_class/interface.cpp src/lib/vm/vm.cpp src/include/vm/frame.hpp)
 #file(GLOB SOURCES "src/*.cpp")
 
 add_executable(jvm ${SOURCES})

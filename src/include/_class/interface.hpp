@@ -2,7 +2,7 @@
 
 #include <cstdint>
 #include <vector>
-#include "bit.hpp"
+#include "util/bit.hpp"
 #include "attribute.hpp"
 #include "constant_pool.hpp"
 

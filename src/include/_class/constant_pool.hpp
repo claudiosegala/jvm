@@ -1,8 +1,8 @@
 #pragma once
 
 #include <vector>
-#include "bit.hpp"
-#include "reader.hpp"
+#include "util/bit.hpp"
+#include "util/reader.hpp"
 
 namespace jvm {
 

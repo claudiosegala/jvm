@@ -1,10 +1,10 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include <bit.hpp>
-#include "bit.hpp"
-#include "macros.hpp"
-#include "_class.hpp"
+#include <util/bit.hpp>
+#include "util/bit.hpp"
+#include "_class/macros.hpp"
+#include "_class/_class.hpp"
 
 namespace jvm {
 

@@ -8,7 +8,7 @@ A simple JVM made in C++11
 + Nícolas Machado Schumacher - 13/0047660
 + Ricardo Arôso Mendes Kury - 14/0161082
 
-# Usage
+## Usage
 
 ```
 cd jvm
@@ -19,6 +19,18 @@ make
 ./jvm "../../samples/double_aritmetica.class" > output.txt
 ```
 
-# Usefull Links
+## Directory Organization
+
+    .
+    ├── build                # Stuff
+    ├── doc                  # Documentation
+    ├── samples              # .class samples for testing
+    └── src                  # Code
+        ├── include          # Includes (.hpp)
+        ├── lib              # Implementation of includes (.cpp)
+        └── tests            # Some tests on the libs
+
+
+## Usefull Links
 
 + [Documentation of .class](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html)

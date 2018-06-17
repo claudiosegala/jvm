@@ -1,10 +1,10 @@
 #include <iostream>
 #include <iomanip>
-#include <bit.hpp>
-#include "reader.hpp"
-#include "method.hpp"
-#include "attribute.hpp"
-#include "interface.hpp"
+#include <util/bit.hpp>
+#include "util/reader.hpp"
+#include "_class/method.hpp"
+#include "_class/attribute.hpp"
+#include "_class/interface.hpp"
 
 namespace jvm  {
 

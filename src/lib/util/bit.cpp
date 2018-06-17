@@ -6,8 +6,8 @@
 
 #include <cstdio>
 #include <string>
-#include <bit.hpp>
-#include "bit.hpp"
+#include <util/bit.hpp>
+#include "util/bit.hpp"
 
 namespace jvm {
 

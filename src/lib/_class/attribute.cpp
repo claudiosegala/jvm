@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
 #include <map>
-#include "reader.hpp"
-#include "attribute.hpp"
+#include "util/reader.hpp"
+#include "_class/attribute.hpp"
 
 namespace jvm {
 //	Attr_Entry::Instructions Attr_Entry::instructions = {

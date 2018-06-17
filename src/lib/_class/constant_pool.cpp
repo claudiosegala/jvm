@@ -1,8 +1,8 @@
-#include <bit.hpp>
+#include <util/bit.hpp>
 #include <iostream>
 #include <iomanip>
 #include <sstream>
-#include "constant_pool.hpp"
+#include "_class/constant_pool.hpp"
 
 namespace jvm {
 
