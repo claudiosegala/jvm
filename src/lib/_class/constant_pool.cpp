@@ -173,6 +173,11 @@ namespace jvm {
 		_nameAndType->printToStream(os, cp);
 	}
 
+	std::string CP_Methodref::toString(ConstantPool &cp) const {
+		auto _nameAndType = cp[name_and_type_index];
+		return _nameAndType->toString(cp);
+	}
+
 	CP_Float::CP_Float(Reader &reader) {
 		_bytes = reader.getNextWord();
 	}
@@ -181,6 +186,10 @@ namespace jvm {
 		os << "Float" << std::endl;
 		os << "\t\t" << reinterpret_cast<float&>(_bytes) << std::endl;
 	}
+
+    std::string CP_Float::toString(ConstantPool &cp) const {
+        return std::to_string(reinterpret_cast<float&>(_bytes));
+    }
 
 	CP_Long::CP_Long(Reader &reader) {
 		high_bytes = reader.getNextWord();
@@ -194,6 +203,12 @@ namespace jvm {
 		os << "\t\t" << number << std::endl;
 	}
 
+    std::string CP_Long::toString(ConstantPool &cp) const {
+        uint64_t number = high_bytes;
+        number = (number << 32) | low_bytes;
+        return std::to_string(number);
+    }
+
 	CP_Double::CP_Double(Reader &reader) {
 		high_bytes = reader.getNextWord();
 		low_bytes = reader.getNextWord();
@@ -206,6 +221,12 @@ namespace jvm {
 		os << "Double" << std::endl;
 		os << "\t\t" << d_number << std::endl;
 	}
+
+    std::string CP_Double::toString(ConstantPool &cp) const {
+        uint64_t number = high_bytes;
+        number = (number << 32) | low_bytes;
+        return std::to_string(reinterpret_cast<double&>(number));
+    }
 
 	CP_MethodHandle::CP_MethodHandle(Reader &reader) {
 		reference_kind = reader.getNextByte();
@@ -234,6 +255,11 @@ namespace jvm {
 		os << "\tReference: " << nam1.reference_index << std::endl;
 	}
 
+	// TODO
+    std::string CP_MethodHandle::toString(ConstantPool &cp) const {
+        return "";
+    }
+
 	CP_InterfaceMethodref::CP_InterfaceMethodref(Reader &reader) {
 		class_index = reader.getNextHalfWord();
 		name_and_class_index = reader.getNextHalfWord();
@@ -250,6 +276,12 @@ namespace jvm {
 		os << "\tName and type: " << nam2 << std::endl;
 	}
 
+    std::string CP_InterfaceMethodref::toString(ConstantPool &cp) const {
+        CP_Entry* name2 = cp[name_and_class_index];
+        auto& nam2 = name2->as<CP_Utf8>();
+        return nam2.toString(cp);
+    }
+
 	CP_String::CP_String(Reader &reader) {
 		string_index = reader.getNextHalfWord();
 	}
@@ -261,6 +293,12 @@ namespace jvm {
 			os << "\t\t" << nam1 << std::endl;
 	}
 
+    std::string CP_String::toString(ConstantPool &cp) const {
+        CP_Entry* name1 = cp[string_index];
+        auto& nam1 = name1->as<CP_Utf8>();
+        return nam1.toString(cp);
+    }
+
 	CP_Integer::CP_Integer(Reader &reader) {
 		_bytes = reader.getNextWord();
 	}
@@ -269,6 +307,10 @@ namespace jvm {
 		os << "Integer" << std::endl;
 		os << "\t\t" << reinterpret_cast<int32_t&>(_bytes) << std::endl;
 	}
+
+    std::string CP_Integer::toString(ConstantPool &cp) const {
+        return std::to_string(reinterpret_cast<int32_t&>(_bytes));
+    }
 
 	CP_NameAndType::CP_NameAndType(Reader &reader) {
 		name_index = reader.getNextHalfWord();
@@ -286,6 +328,12 @@ namespace jvm {
 		os << "\t\tDescriptor: " <<nam2 << std::endl;
 	}
 
+    std::string CP_NameAndType::toString(ConstantPool &cp) const {
+        CP_Entry* name1 = cp[name_index];
+        auto& nam1 = name1->as<CP_Utf8>();
+        return nam1.toString(cp);
+    }
+
 	CP_InvokeDynamic::CP_InvokeDynamic(Reader &reader) {
 		bootstrap_method_attr_index = reader.getNextHalfWord();
 		name_and_type_index = reader.getNextHalfWord();
@@ -300,6 +348,12 @@ namespace jvm {
 		os << "\t\tBootstrap_method: " << nam1 <<std::endl;
 		os << "\t\tName and Type: " << nam2 <<std::endl;
 	}
+
+    std::string CP_InvokeDynamic::toString(ConstantPool &cp) const {
+        CP_Entry* name1 = cp[bootstrap_method_attr_index];
+        auto& nam1 = name1->as<CP_Utf8>();
+        return nam1.toString(cp);
+    }
 
 	CP_Utf8::CP_Utf8(Reader &reader) {
 		_length = reader.getNextHalfWord();
@@ -352,6 +406,12 @@ namespace jvm {
 
 	}
 
+    std::string CP_MethodType::toString(ConstantPool &cp) const {
+        CP_Entry* name1 = cp[descriptor_index];
+        auto& characters = name1->as<CP_Utf8>();
+        return characters.toString(cp);
+    }
+
 	// END CONSTRUCTORS AND DESTRUCTORS
 
 	// OPERATORS
@@ -366,7 +426,7 @@ namespace jvm {
 	}
 
 	bool operator==(const std::string& str, const CP_Utf8& utf8) {
-		return str == utf8.toString(<#initializer#>);
+		return str == utf8.toString();
 	}
 
 	bool operator==(const CP_Utf8& utf8, const std::string& str) {
