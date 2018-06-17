@@ -224,7 +224,7 @@ namespace jvm {
 		while(attr_count--) {
 			auto name_index = reader.getNextHalfWord();
 			auto attr_length = reader.getNextWord();
-			auto name = cp[name_index]->as<CP_Utf8>().toString();
+			auto name = cp[name_index]->as<CP_Utf8>().toString(<#initializer#>);
 			auto it = m.find(name);
 
 			if (it == m.end()) { // In this case, the attribute's name is not in the map
@@ -277,4 +277,11 @@ namespace jvm {
 		// TODO print mnemonics from "code" array
 	}
 
+	Attr_ConstantValue::Attr_ConstantValue(Reader &reader, ConstantPool &cp) {
+		constantvalue_index = reader.getNextHalfWord();
+	}
+
+	void Attr_ConstantValue::printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix) {
+		os << prefix << "Constant Value: " << cp[constantvalue_index]->toString(cp) << std::endl;
+	}
 }

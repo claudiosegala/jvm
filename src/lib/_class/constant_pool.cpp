@@ -147,12 +147,15 @@ namespace jvm {
 	void CP_Fieldref::printToStream(std::ostream &os, ConstantPool &cp) {
 
 		auto _class = cp[class_index];
-		auto _nameAndType = cp[name_and_type_index];
 		os << "Field Reference" << std::endl;
 		os << "\t\tClass index: " << class_index << std::endl << "\t";
 		_class->printToStream(os, cp);
 		os << "\t\tName and Type index: " << name_and_type_index << std::endl << "\t";
-		_nameAndType->printToStream(os, cp);
+	}
+
+	std::string CP_Fieldref::toString(ConstantPool &cp) const {
+		auto _nameAndType = cp[name_and_type_index];
+		_nameAndType->toString(cp);
 	}
 
 	CP_Methodref::CP_Methodref(Reader &reader) {
@@ -315,7 +318,7 @@ namespace jvm {
 		os << "\t\t" << *this << std::endl;
 	}
 
-	std::string CP_Utf8::toString() const {
+	std::string CP_Utf8::toString(ConstantPool &cp) const {
 		std::ostringstream stream;
 		stream << *this;
 		return stream.str();
@@ -326,11 +329,14 @@ namespace jvm {
 	}
 
 	void CP_Class::printToStream(std::ostream &os, ConstantPool &cp) {
-		CP_Entry* name = cp[name_index];
-		auto& characters = name->as<CP_Utf8>();
 		os << "Class" << std::endl;
 		os << "\t\t Name index:" << name_index;
-		os << "\t\t Name: "  <<characters << std::endl;
+		os << "\t\t Name: "  << toString(cp) << std::endl;
+	}
+
+	std::string CP_Class::toString(ConstantPool &cp) const {
+		CP_Entry* name = cp[name_index];
+		return name->toString(cp);
 	}
 
 	CP_MethodType::CP_MethodType(Reader &reader) {
@@ -360,7 +366,7 @@ namespace jvm {
 	}
 
 	bool operator==(const std::string& str, const CP_Utf8& utf8) {
-		return str == utf8.toString();
+		return str == utf8.toString(<#initializer#>);
 	}
 
 	bool operator==(const CP_Utf8& utf8, const std::string& str) {
