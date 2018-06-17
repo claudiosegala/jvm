@@ -12,7 +12,7 @@ namespace jvm {
 		MethodRef          = 10,
 		InterfaceMethodRef = 11,
 		String             = 8,
-		Integer	          = 3,
+		Integer	           = 3,
 		Float              = 4,
 		Long               = 5,
 		Double             = 6,
@@ -89,6 +89,8 @@ namespace jvm {
 
 		virtual void printToStream(std::ostream &os, jvm::ConstantPool &cp) = 0;
 
+		virtual std::string toString(ConstantPool &cp) const = 0;
+
 		template<class T> T& as() {
 			auto toReturn = dynamic_cast<T*>(this);
 			if (toReturn == nullptr) {
@@ -106,6 +108,8 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
+		std::string toString(ConstantPool &cp) const override;
+
 		uint16_t name_index;
 	};
 
@@ -117,6 +121,8 @@ namespace jvm {
 		inline CP_TAGS getTag() override;
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
+
+		std::string toString(ConstantPool &cp) const override;
 
 		uint16_t class_index;
 
@@ -130,6 +136,8 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
+		std::string toString(ConstantPool &cp) const override;
+
 		uint16_t class_index;
 
 		uint16_t name_and_type_index;
@@ -141,6 +149,8 @@ namespace jvm {
 		inline CP_TAGS getTag() override;
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
+
+		std::string toString(ConstantPool &cp) const override;
 
 		uint16_t class_index;
 
@@ -154,6 +164,8 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
+		std::string toString(ConstantPool &cp) const override;
+
 		uint16_t string_index;
 	};
 
@@ -163,6 +175,8 @@ namespace jvm {
 		inline CP_TAGS getTag() override;
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
+
+		std::string toString(ConstantPool &cp) const override;
 
 		uint32_t _bytes;
 	};
@@ -174,6 +188,8 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
+		std::string toString(ConstantPool &cp) const override;
+
 		uint32_t _bytes;
 	};
 
@@ -183,6 +199,8 @@ namespace jvm {
 		inline CP_TAGS getTag() override;
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
+
+		std::string toString(ConstantPool &cp) const override;
 
 		uint32_t high_bytes;
 
@@ -196,6 +214,8 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
+		std::string toString(ConstantPool &cp) const override;
+
 		uint32_t high_bytes;
 
 		uint32_t low_bytes;
@@ -207,6 +227,8 @@ namespace jvm {
 		inline CP_TAGS getTag() override;
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
+
+		std::string toString(ConstantPool &cp) const override;
 
 		uint16_t name_index;
 
@@ -222,7 +244,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString() const;
+		std::string toString(ConstantPool &cp) const override;
 
 		uint16_t _length;
 
@@ -240,6 +262,8 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
+		std::string toString(ConstantPool &cp) const override;
+
 		uint8_t reference_kind;
 
 		uint16_t reference_index;
@@ -252,6 +276,8 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
+		std::string toString(ConstantPool &cp) const override;
+
 		uint16_t descriptor_index;
 	};
 
@@ -261,6 +287,8 @@ namespace jvm {
 		inline CP_TAGS getTag() override;
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
+
+		std::string toString(ConstantPool &cp) const override;
 
 		uint16_t bootstrap_method_attr_index;
 
