@@ -22,6 +22,7 @@ namespace jvm {
 
 		//> Local Variables
 		std::vector<u4> variables;
+
 	};
 
 }

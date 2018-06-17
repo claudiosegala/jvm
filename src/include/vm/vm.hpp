@@ -18,29 +18,26 @@ namespace jvm {
 		/**
 		* Constructor
 		*/
-		VM() = default;
-
-		/**
-		* Load .class.
-		* @param cl an .class structure.
-		* @see getCode()
-		* @return The test results
-		*/
-		void classLoader (_Class);
+		VM();
 
 		/**
 		* Engine Execution.
 		* @see execute()
 		* @return The test results
 		*/
-		void run ();
+		void run (std::vector<_Class>&);
 
 	private:
 		//> PC Register
 		uint64_t PC;
 
 		//> Frame Stack
-		std::vector<Frame> frame;
+		std::vector<Frame> frames;
+
+		//> Method Area
+		// TODO: understand
+
+		void runMethod(_Class&);
 	};
 
 }
