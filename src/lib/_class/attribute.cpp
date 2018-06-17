@@ -282,6 +282,6 @@ namespace jvm {
 	}
 
 	void Attr_ConstantValue::printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix) {
-		os << prefix << "Constant Value: " << cp[constantvalue_index]->as<() << std::endl;
+		os << prefix << "Constant Value: " << cp[constantvalue_index]->toString(cp) << std::endl;
 	}
 }
