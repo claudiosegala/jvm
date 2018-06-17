@@ -2,7 +2,7 @@
 #include <fstream>
 #include <util/bit.hpp>
 #include <vector>
-#include "_class/macros.hpp"
+#include "util/macros.hpp"
 #include "util/reader.hpp"
 
 namespace jvm {
