@@ -58,4 +58,10 @@ namespace jvm {
 		Attr_ConstantValue(Reader &reader, ConstantPool &cp);
 		void printToStream(std::ostream &ostream, ConstantPool &pool, const std::string &prefix) override;
 	};
+
+	struct Attr_Exception : public Attr_Entry {
+		std::vector<u2> exception_index_table;
+		Attr_Exception(Reader &reader, ConstantPool &cp);
+		void printToStream(std::ostream &os, ConstantPool &pool, const std::string &prefix) override;
+	};
 }

@@ -284,4 +284,16 @@ namespace jvm {
 	void Attr_ConstantValue::printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix) {
 		os << prefix << "Constant Value: " << cp[constantvalue_index]->toString(cp) << std::endl;
 	}
+
+	Attr_Exception::Attr_Exception(Reader &reader, ConstantPool &cp) {
+		auto count = reader.getNextHalfWord();
+		exception_index_table.reserve(count);
+		while (count--) {
+			exception_index_table.push_back(reader.getNextHalfWord());
+		}
+	}
+
+	void Attr_Exception::printToStream(std::ostream &os, ConstantPool &pool, const std::string &prefix) {
+		os << prefix << "Exception (count: " << exception_index_table.size() << ")" << std::endl;
+	}
 }
