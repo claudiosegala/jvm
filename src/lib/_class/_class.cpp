@@ -3,7 +3,7 @@
 #include <string>
 #include <util/bit.hpp>
 #include "util/bit.hpp"
-#include "_class/macros.hpp"
+#include "util/macros.hpp"
 #include "_class/_class.hpp"
 
 namespace jvm {

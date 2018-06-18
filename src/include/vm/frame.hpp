@@ -1,28 +1,23 @@
 #pragma once
 
-#include <cstdint>
-#include "util/bit.hpp"
 #include <vector>
-#include "_class/constant_pool.hpp"
-#include "_class/attribute.hpp"
-#include "_class/_class.hpp"
+#include <stack>
 
 namespace jvm {
 
 	class Frame {
 	public:
 		/**
-		* Constructor
+		* Constructor Default
 		*/
 		Frame() = default;
 
 	private:
 		//> Operands Stack
-		std::vector<u4> operands;
+		std::stack<u4> operands;
 
-		//> Local Variables
+		//> Local Variables Stack
 		std::vector<u4> variables;
-
 	};
 
 }

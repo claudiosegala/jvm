@@ -5,7 +5,7 @@
 #include <memory>
 #include "util/bit.hpp"
 #include "constant_pool.hpp"
-#include "macros.hpp"
+#include "util/macros.hpp"
 
 namespace jvm {
 
