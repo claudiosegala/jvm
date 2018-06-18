@@ -36,7 +36,8 @@ namespace jvm {
 
 	void ConstantPool::printToStream(std::ostream& os) {
 		auto i = 0;
-		for (CP_Entry* entry : *this) {
+		for (std::shared_ptr<CP_Entry> ptr : *this) {
+			auto entry = ptr.get();
 			os << std::endl;
 			os << "\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
 			if (entry == nullptr) {
@@ -47,28 +48,28 @@ namespace jvm {
 		}
 	}
 
-	CP_Entry * ConstantPool::getNextEntry(Reader &reader, uint8_t tag) {
+	std::shared_ptr<CP_Entry> ConstantPool::getNextEntry(Reader &reader, uint8_t tag) {
 		switch (tag) {
-			case CP_TAGS::Class:              return new CP_Class(reader);
-			case CP_TAGS::FieldRef:           return new CP_Fieldref(reader);
-			case CP_TAGS::MethodRef:          return new CP_Methodref(reader);
-			case CP_TAGS::InterfaceMethodRef: return new CP_InterfaceMethodref(reader);
-			case CP_TAGS::String:             return new CP_String(reader);
-			case CP_TAGS::Integer:            return new CP_Integer(reader);
-			case CP_TAGS::Float:              return new CP_Float(reader);
-			case CP_TAGS::Long:               return new CP_Long(reader);
-			case CP_TAGS::Double:             return new CP_Double(reader);
-			case CP_TAGS::NameAndType:        return new CP_NameAndType(reader);
-			case CP_TAGS::Utf8:               return new CP_Utf8(reader);
-			case CP_TAGS::MethodHandle:       return new CP_MethodHandle(reader);
-			case CP_TAGS::MethodType:         return new CP_MethodType(reader);
-			case CP_TAGS::InvokeDynamic:      return new CP_InvokeDynamic(reader);
+			case CP_TAGS::Class:              return std::make_shared<CP_Class>(reader);
+			case CP_TAGS::FieldRef:           return std::make_shared<CP_Fieldref>(reader);
+			case CP_TAGS::MethodRef:          return std::make_shared<CP_Methodref>(reader);
+			case CP_TAGS::InterfaceMethodRef: return std::make_shared<CP_InterfaceMethodref>(reader);
+			case CP_TAGS::String:             return std::make_shared<CP_String>(reader);
+			case CP_TAGS::Integer:            return std::make_shared<CP_Integer>(reader);
+			case CP_TAGS::Float:              return std::make_shared<CP_Float>(reader);
+			case CP_TAGS::Long:               return std::make_shared<CP_Long>(reader);
+			case CP_TAGS::Double:             return std::make_shared<CP_Double>(reader);
+			case CP_TAGS::NameAndType:        return std::make_shared<CP_NameAndType>(reader);
+			case CP_TAGS::Utf8:               return std::make_shared<CP_Utf8>(reader);
+			case CP_TAGS::MethodHandle:       return std::make_shared<CP_MethodHandle>(reader);
+			case CP_TAGS::MethodType:         return std::make_shared<CP_MethodType>(reader);
+			case CP_TAGS::InvokeDynamic:      return std::make_shared<CP_InvokeDynamic>(reader);
 			default:                          throw "Invalid Constant Pool Tag";
 		}
 	}
 
 	CP_Entry* ConstantPool::operator[](size_t index) {
-		return vector::operator[](index - 1);
+		return vector::operator[](index - 1).get();
 	}
 
 	std::ostream& operator<<(std::ostream &os, CP_Entry &entry) {
