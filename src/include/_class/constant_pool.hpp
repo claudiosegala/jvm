@@ -25,6 +25,7 @@ namespace jvm {
 
 	class CP_Entry;
 
+	//TODO change this to use std::shared_ptr
 	class ConstantPool : public std::vector<CP_Entry*> {
 	public:
 	
@@ -243,6 +244,8 @@ namespace jvm {
 		inline CP_TAGS getTag() override;
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
+
+		std::string toString() const;
 
 		std::string toString(ConstantPool &cp) const override;
 

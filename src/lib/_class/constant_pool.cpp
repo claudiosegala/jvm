@@ -13,9 +13,9 @@ namespace jvm {
 	}
 
 	ConstantPool::~ConstantPool() {
-		for (auto& entry : *this) {
-			delete entry;
-		}
+//		for (auto& entry : *this) {
+//			delete entry;
+//		}
 	}
 
 	void ConstantPool::fill(Reader &reader, size_type cp_count) {
@@ -184,11 +184,11 @@ namespace jvm {
 
 	void CP_Float::printToStream(std::ostream &os, ConstantPool &cp) {
 		os << "Float" << std::endl;
-		os << "\t\t" << reinterpret_cast<float&>(_bytes) << std::endl;
+		os << "\t\t" << toString(cp) << std::endl;
 	}
 
     std::string CP_Float::toString(ConstantPool &cp) const {
-        return std::to_string(reinterpret_cast<float&>(_bytes));
+        std::to_string(reinterpret_cast<const float&>(_bytes));
     }
 
 	CP_Long::CP_Long(Reader &reader) {
@@ -305,11 +305,11 @@ namespace jvm {
 
 	void CP_Integer::printToStream(std::ostream &os, ConstantPool &cp) {
 		os << "Integer" << std::endl;
-		os << "\t\t" << reinterpret_cast<int32_t&>(_bytes) << std::endl;
+		os << "\t\t" << toString(cp) << std::endl;
 	}
 
     std::string CP_Integer::toString(ConstantPool &cp) const {
-        return std::to_string(reinterpret_cast<int32_t&>(_bytes));
+        return std::to_string(reinterpret_cast<const int32_t&>(_bytes));
     }
 
 	CP_NameAndType::CP_NameAndType(Reader &reader) {
@@ -373,6 +373,10 @@ namespace jvm {
 	}
 
 	std::string CP_Utf8::toString(ConstantPool &cp) const {
+		return toString();
+	}
+
+	std::string CP_Utf8::toString() const {
 		std::ostringstream stream;
 		stream << *this;
 		return stream.str();

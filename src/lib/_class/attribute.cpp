@@ -217,6 +217,8 @@ namespace jvm {
 		// This maps a string to a function that returns an instance of the corresponding attribute
 		static const AttributeMap m = {
 				{"Code", Attr_Entry::Instantiate<Attr_Code>},
+				{"Exceptions", Attr_Entry::Instantiate<Attr_Exceptions>},
+				{"ConstantValue", Attr_Entry::Instantiate<Attr_ConstantValue>}
 		};
 
 		auto attr_count = reader.getNextHalfWord();
@@ -224,7 +226,7 @@ namespace jvm {
 		while(attr_count--) {
 			auto name_index = reader.getNextHalfWord();
 			auto attr_length = reader.getNextWord();
-			auto name = cp[name_index]->as<CP_Utf8>().toString(<#initializer#>);
+			auto name = cp[name_index]->toString(cp);
 			auto it = m.find(name);
 
 			if (it == m.end()) { // In this case, the attribute's name is not in the map
@@ -285,7 +287,7 @@ namespace jvm {
 		os << prefix << "Constant Value: " << cp[constantvalue_index]->toString(cp) << std::endl;
 	}
 
-	Attr_Exception::Attr_Exception(Reader &reader, ConstantPool &cp) {
+	Attr_Exceptions::Attr_Exceptions(Reader &reader, ConstantPool &cp) {
 		auto count = reader.getNextHalfWord();
 		exception_index_table.reserve(count);
 		while (count--) {
@@ -293,7 +295,7 @@ namespace jvm {
 		}
 	}
 
-	void Attr_Exception::printToStream(std::ostream &os, ConstantPool &pool, const std::string &prefix) {
+	void Attr_Exceptions::printToStream(std::ostream &os, ConstantPool &pool, const std::string &prefix) {
 		os << prefix << "Exception (count: " << exception_index_table.size() << ")" << std::endl;
 	}
 }
