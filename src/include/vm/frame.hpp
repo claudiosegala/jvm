@@ -12,6 +12,10 @@ namespace jvm {
 		*/
 		Frame() = default;
 
+		void run();
+
+		
+
 	private:
 		//> Operands Stack
 		std::stack<u4> operands;
