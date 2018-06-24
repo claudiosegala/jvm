@@ -2,14 +2,43 @@
 
 #include <string>
 #include <iostream>
+#include "class_loader/constant_pool.hpp"
 
 namespace jvm {
 
-	class Instruction {
+	class Instruction;
+
+	class OpCode : public std::vector<std::shared_ptr<Instruction>> {
 	public:
+		void fill(Reader &reader);
+		void printToStream(std::ostream&, std::string&);
+	};
 
-	private:
+	class Instruction {
+	protected:
+		Instruction() = default;
+	public:
+		template<class T>
+		static std::shared_ptr<Instruction> instantiate() {
+			return std::make_shared<T>();
+		}
 
+		virtual ~Instruction() = default;
+
+		/**
+		 * The execution of this instruction
+		 */
+		virtual void execute() = 0;
+
+		/**
+		 * Print in the stream the name
+		 */
+		virtual void printToStream(std::ostream&, std::string&) = 0;
+
+		/**
+		 * Get the name of the class
+		 */
+		virtual std::string getName() = 0;
 	};
 
 
@@ -24,17 +53,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class aconst_null : Instruction {  // 0x01 --01
@@ -47,17 +76,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class iconst_m1 : Instruction {  // 0x02 -- 02
@@ -70,17 +99,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class iconst_0 : Instruction {  // 0x03 -- 03
@@ -93,17 +122,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class iconst_1 : Instruction {  // 0x04 -- 04
@@ -116,17 +145,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class iconst_2 : Instruction {  // 0x05 -- 05
@@ -139,17 +168,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class iconst_3 : Instruction {  // 0x06 -- 06
@@ -162,17 +191,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class iconst_4 : Instruction {  // 0x07 -- 07
@@ -185,17 +214,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class iconst_5 : Instruction {  // 0x08 -- 08
@@ -208,17 +237,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lconst_0 : Instruction {  // 0x09 -- 09
@@ -231,17 +260,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lconst_1 : Instruction {  // 0x0A -- 10
@@ -254,17 +283,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class fconst_0 : Instruction {  // 0x0B -- 11
@@ -277,17 +306,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class fconst_1 : Instruction {  // 0x0C -- 12
@@ -300,17 +329,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class fconst_2 : Instruction {  // 0x0D -- 13
@@ -323,17 +352,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dconst_0 : Instruction {  // 0x0E -- 14
@@ -346,17 +375,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dconst_1 : Instruction {  // 0x0F -- 15
@@ -369,17 +398,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class bipush : Instruction {  // 0x10 -- 16
@@ -392,17 +421,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class sipush : Instruction {  // 0x11 -- 17
@@ -415,17 +444,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class ldc : Instruction {  // 0x12 -- 18
@@ -438,17 +467,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class ldc_w : Instruction {  // 0x13 -- 19
@@ -461,17 +490,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class ldc2_w : Instruction {  // 0x14 -- 20
@@ -484,17 +513,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	//Loads opcodes 0x15,21 -- 0x35,53
@@ -508,17 +537,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lload : Instruction {  // 0x16 -- 22
@@ -531,17 +560,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class fload : Instruction {  // 0x17 -- 23
@@ -554,17 +583,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dload : Instruction {  // 0x18 -- 24
@@ -577,17 +606,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class aload : Instruction {  // 0x19 -- 25
@@ -600,17 +629,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class iload_0 : Instruction {  // 0x1A -- 26
@@ -623,17 +652,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class iload_1 : Instruction {  // 0x1B -- 27
@@ -646,17 +675,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class iload_2 : Instruction {  // 0x1C -- 28
@@ -669,17 +698,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class iload_3 : Instruction {  // 0x1D -- 29
@@ -692,17 +721,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lload_0 : Instruction {  // 0x1E -- 30
@@ -715,17 +744,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lload_1 : Instruction {  // 0x1F -- 31
@@ -738,17 +767,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lload_2 : Instruction {  // 0x20 -- 32
@@ -761,17 +790,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lload_3 : Instruction {  // 0x21 -- 33
@@ -784,17 +813,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class fload_0 : Instruction {  // 0x22 -- 34
@@ -807,17 +836,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class fload_1 : Instruction {  // 0x23 -- 35
@@ -830,17 +859,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class fload_2 : Instruction {  // 0x24 -- 36
@@ -853,17 +882,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class fload_3 : Instruction {  // 0x25 -- 37
@@ -876,17 +905,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dload_0 : Instruction {  // 0x26 -- 38
@@ -899,17 +928,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dload_1 : Instruction {  // 0x27 -- 39
@@ -922,17 +951,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dload_2 : Instruction {  // 0x28 -- 40
@@ -945,17 +974,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dload_3 : Instruction {  // 0x29 -- 41
@@ -968,17 +997,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class aload_0 : Instruction {  // 0x2A -- 42
@@ -991,17 +1020,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class aload_1 : Instruction {  // 0x2B -- 43
@@ -1014,17 +1043,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class aload_2 : Instruction {  // 0x2C -- 44
@@ -1037,17 +1066,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class aload_3 : Instruction {  // 0x2D -- 45
@@ -1060,17 +1089,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class iaload : Instruction {   // 0x2E -- 46
@@ -1083,17 +1112,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class laload : Instruction {   // 0x2F -- 47
@@ -1106,17 +1135,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class faload : Instruction {   // 0x30 -- 48
@@ -1129,17 +1158,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class daload : Instruction {   // 0x31 -- 49
@@ -1152,17 +1181,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class aaload : Instruction {   // 0x32 -- 50
@@ -1175,17 +1204,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class baload : Instruction {   // 0x33 -- 51
@@ -1198,17 +1227,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class caload : Instruction {   // 0x34 -- 52
@@ -1221,17 +1250,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class saload : Instruction {  // 0x35 -- 53
@@ -1244,17 +1273,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	//Stores 0x36,54 -> 0x56,86
@@ -1268,17 +1297,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lstore : Instruction {  // 0x37 -- 55
@@ -1291,17 +1320,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class fstore : Instruction {  // 0x38 -- 56
@@ -1314,17 +1343,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dstore : Instruction {  // 0x39 -- 57
@@ -1337,17 +1366,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class astore : Instruction {  // 0x3A -- 58
@@ -1360,17 +1389,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class istore_0 : Instruction {  // 0x3B -- 59
@@ -1383,17 +1412,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class istore_1 : Instruction {  // 0x3C -- 60
@@ -1406,17 +1435,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class istore_2 : Instruction {  // 0x3D -- 61
@@ -1429,17 +1458,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class istore_3 : Instruction {  // 0x3E -- 62
@@ -1452,17 +1481,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lstore_0 : Instruction {  // 0x3F -- 63
@@ -1475,17 +1504,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lstore_1 : Instruction {  // 0x40 -- 64
@@ -1498,17 +1527,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lstore_2 : Instruction {  // 0x41 -- 65
@@ -1521,17 +1550,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lstore_3 : Instruction {  // 0x42 -- 66
@@ -1544,17 +1573,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class fstore_0 : Instruction {  // 0x43 -- 67
@@ -1567,17 +1596,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class fstore_1 : Instruction {  // 0x44 -- 68
@@ -1590,17 +1619,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class fstore_2 : Instruction {  // 0x45 -- 69
@@ -1613,17 +1642,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class fstore_3 : Instruction {  // 0x46 -- 70
@@ -1636,17 +1665,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dstore_0 : Instruction {  // 0x47 -- 71
@@ -1659,17 +1688,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dstore_1 : Instruction {  // 0x48 -- 72
@@ -1682,17 +1711,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dstore_2 : Instruction {  // 0x49 -- 73
@@ -1705,17 +1734,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dstore_3 : Instruction {  // 0x4A -- 74
@@ -1728,17 +1757,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class astore_0 : Instruction { // 0x4B -- 75
@@ -1751,17 +1780,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class astore_1 : Instruction {  // 0x4C -- 76
@@ -1774,17 +1803,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class astore_2 : Instruction {  // 0x4D -- 77
@@ -1797,17 +1826,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class astore_3 : Instruction {  // 0x4E -- 78
@@ -1820,17 +1849,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class iastore : Instruction {  // 0x4F -- 79
@@ -1843,17 +1872,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lastore : Instruction {  // 0x50 -- 80
@@ -1866,17 +1895,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class fastore : Instruction {  // 0x51 -- 81
@@ -1889,17 +1918,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dastore : Instruction {  // 0x52 -- 82
@@ -1912,17 +1941,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class aastore : Instruction {  // 0x53 -- 83
@@ -1935,17 +1964,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class bastore : Instruction {  // 0x54 -- 84
@@ -1958,17 +1987,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class castore : Instruction {  // 0x55 -- 85
@@ -1981,17 +2010,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class sastore : Instruction {  // 0x56 -- 86
@@ -2004,17 +2033,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	// Stack 0x57,87 -> 0x5F,95
@@ -2028,17 +2057,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class pop2 : Instruction {  //0x58 -- 88
@@ -2051,17 +2080,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dup : Instruction {  //0x59 -- 89
@@ -2074,17 +2103,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dup_x1 : Instruction {  //0x5A -- 90
@@ -2097,17 +2126,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dup_x2 : Instruction {  //0x5B -- 91
@@ -2120,17 +2149,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dup2 : Instruction {  //0x5C -- 92
@@ -2143,17 +2172,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dup2_x1 : Instruction {  //0x5D -- 93
@@ -2166,17 +2195,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dup2_x2 : Instruction {  //0x5E -- 94
@@ -2189,17 +2218,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class swap : Instruction {  //0x5F -- 95
@@ -2212,17 +2241,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	// Math 0x60,96 -> 0x84,132
@@ -2236,17 +2265,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class ladd : Instruction {  //0x61 -- 97
@@ -2259,17 +2288,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class fadd : Instruction {  //0x62 -- 98
@@ -2282,17 +2311,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dadd : Instruction {  //0x63 -- 99
@@ -2305,17 +2334,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class isub : Instruction {  //0x64 -- 100
@@ -2328,17 +2357,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lsub : Instruction {  //0x65 -- 101
@@ -2351,17 +2380,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class fsub : Instruction {  //0x66 -- 102
@@ -2374,17 +2403,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dsub : Instruction {  //0x67 -- 103
@@ -2397,17 +2426,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class imul : Instruction {  //0x68 -- 104
@@ -2420,17 +2449,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lmul : Instruction {  //0x69 -- 105
@@ -2443,17 +2472,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class fmul : Instruction {  //0x6A -- 106
@@ -2466,17 +2495,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dmul : Instruction {  //0x6B -- 107
@@ -2489,17 +2518,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class idiv : Instruction {  //0x6C -- 108
@@ -2512,17 +2541,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class ldiv : Instruction {  //0x6D -- 109
@@ -2535,17 +2564,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class fdiv : Instruction {  //0x6E -- 110
@@ -2558,17 +2587,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class ddiv : Instruction {  //0x6F -- 111
@@ -2581,17 +2610,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class irem : Instruction {  //0x70 -- 112
@@ -2604,17 +2633,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lrem : Instruction {  //0x71 -- 113
@@ -2627,17 +2656,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class frem : Instruction {  //0x72 -- 114
@@ -2650,17 +2679,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class drem : Instruction {  //0x73 -- 115
@@ -2673,17 +2702,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class ineg : Instruction {  //0x74 -- 116
@@ -2696,17 +2725,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lneg : Instruction {  //0x75 -- 117
@@ -2719,17 +2748,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class fneg : Instruction {  //0x76 -- 118
@@ -2742,17 +2771,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dneg : Instruction {  //0x77 -- 119
@@ -2765,17 +2794,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class ishl : Instruction {  //0x78 -- 120
@@ -2788,17 +2817,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lshl : Instruction {  //0x79 -- 121
@@ -2811,17 +2840,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class ishr : Instruction {  //0x7A -- 122
@@ -2834,17 +2863,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lshr : Instruction {  //0x7B -- 123
@@ -2857,17 +2886,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class iushr : Instruction {  //0x7C -- 124
@@ -2880,17 +2909,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lushr : Instruction {  //0x7D -- 125
@@ -2903,17 +2932,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class iand : Instruction {  //0x7E -- 126
@@ -2926,17 +2955,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class land : Instruction {  // 0x7F -- 127
@@ -2949,17 +2978,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class ior : Instruction {  // 0x80 -- 128
@@ -2972,17 +3001,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lor : Instruction {  // 0x81 --129
@@ -2995,17 +3024,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class ixor : Instruction {  // 0x82 -- 130
@@ -3018,17 +3047,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lxor : Instruction {  // 0x83 -- 131
@@ -3041,17 +3070,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class iinc : Instruction {  // 0x84 -- 132
@@ -3064,17 +3093,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	//Conversations 0x85,133 -> 0x93,147
@@ -3088,17 +3117,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class i2f : Instruction {  // 0x86 -- 134
@@ -3111,17 +3140,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class i2d : Instruction {  // 0x87 -- 135
@@ -3134,17 +3163,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class l2i : Instruction {  // 0x88 -- 136
@@ -3157,17 +3186,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class l2f : Instruction {  // 0x89 -- 137
@@ -3180,17 +3209,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class l2d : Instruction {  // 0x8A -- 138
@@ -3203,17 +3232,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class f2i : Instruction {  // 0x8B -- 139
@@ -3226,17 +3255,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class f2l : Instruction {  // 0x8C -- 140
@@ -3249,17 +3278,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class f2d : Instruction {  // 0x8D -- 141
@@ -3272,17 +3301,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class d2i : Instruction {  // 0x8E -- 142
@@ -3295,17 +3324,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class d2l : Instruction {  // 0x8F -- 143
@@ -3318,17 +3347,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class d2f : Instruction {  // 0x90 -- 144
@@ -3341,17 +3370,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class i2b : Instruction {  // 0x91 -- 145
@@ -3364,17 +3393,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class i2c : Instruction {  // 0x92 -- 146
@@ -3387,17 +3416,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class i2s : Instruction {  // 0x93 -- 147
@@ -3410,17 +3439,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	// Comparisons 0x94,148 -> 0xA6,166
@@ -3434,17 +3463,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class fcmpl : Instruction {  // 0x95 -- 149
@@ -3457,17 +3486,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class fcmpg : Instruction {  // 0x96 -- 150
@@ -3480,17 +3509,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dcmpl : Instruction {  // 0x97 -- 151
@@ -3503,17 +3532,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dcmpg : Instruction {  // 0x98 -- 152
@@ -3526,17 +3555,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class ifeq : Instruction {  // 0x99 -- 153
@@ -3549,17 +3578,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class ifne : Instruction {  // 0x9A -- 154
@@ -3572,17 +3601,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class iflt : Instruction {  // 0x9B -- 155
@@ -3595,17 +3624,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class ifge : Instruction {  // 0x9C -- 156
@@ -3618,17 +3647,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class ifgt : Instruction {  //0x9D -- 157
@@ -3641,17 +3670,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class ifle : Instruction {  //0x9E -- 158
@@ -3664,17 +3693,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class if_icmpeq : Instruction {  // 0x9F -- 159
@@ -3687,17 +3716,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class if_icmpne : Instruction {  // 0xA0 -- 160
@@ -3710,17 +3739,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class if_icmplt : Instruction {  // 0xA1 - 161
@@ -3733,17 +3762,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class if_icmpge : Instruction {  // 0xA2 -- 162
@@ -3756,17 +3785,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class if_icmpgt : Instruction {  // 0xA3 -- 163
@@ -3779,17 +3808,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class if_icmple : Instruction {  // 0xA4 -- 164
@@ -3802,17 +3831,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class if_acmpeq : Instruction {  // 0xA5 -- 165
@@ -3825,17 +3854,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class if_acmpne : Instruction {  // 0xA6 -- 166
@@ -3848,17 +3877,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	//Control 0xA7,167 -> 0xB1,177
@@ -3872,17 +3901,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class jsr : Instruction {  // 0xA8 -- 168
@@ -3895,17 +3924,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class ret : Instruction {  // 0xA9 -- 169
@@ -3918,17 +3947,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class tableswitch : Instruction {  // 0xAA -- 170
@@ -3941,17 +3970,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class ireturn : Instruction {  // 0xAB -- 171
@@ -3964,17 +3993,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class lreturn : Instruction {  // 0xAC -- 172
@@ -3987,17 +4016,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class freturn : Instruction {  // 0xAD -- 173
@@ -4010,17 +4039,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class dreturn : Instruction {  // 0xAE -- 174
@@ -4033,17 +4062,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class areturn : Instruction {  // 0xAF -- 175
@@ -4056,17 +4085,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class return_jvm : Instruction {  // 0xB0 -- 176
@@ -4079,17 +4108,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	//References 0xB2,178 -> 0xC3,195
@@ -4103,17 +4132,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 
@@ -4127,17 +4156,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class getfield : Instruction {  // 0xB4 -- 180
@@ -4150,17 +4179,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class putfield : Instruction {  // 0xB5 -- 181
@@ -4173,17 +4202,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class invokevirtual : Instruction {  // 0xB6 -- 182
@@ -4196,17 +4225,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class invokespecial : Instruction {  // 0xB7 -- 183
@@ -4219,17 +4248,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class invokestatic : Instruction {  // 0xB8 -- 184
@@ -4242,17 +4271,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class invokeinterface : Instruction {  // 0xB9 -- 185
@@ -4265,17 +4294,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class invokedynamic : Instruction {  // 0xBA - - 186
@@ -4288,17 +4317,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class new_jvm : Instruction {  // 0xBB -- 187
@@ -4311,17 +4340,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class newarray : Instruction {  // 0xBC -- 188
@@ -4334,17 +4363,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class anewarray : Instruction {  // 0xBD -- 189
@@ -4357,17 +4386,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class arraylength : Instruction { // 0xBE -- 190
@@ -4380,17 +4409,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class athrow : Instruction {        // 0xBF -- 191
@@ -4403,17 +4432,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class checkcast : Instruction {     // 0xC0 -- 192
@@ -4426,17 +4455,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class instanceof : Instruction {     //0xC1 -- 193
@@ -4449,17 +4478,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class monitorenter : Instruction {   // 0xC2 -- 194
@@ -4472,17 +4501,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class monitorexit : Instruction {   // 0xC3 -- 195
@@ -4495,17 +4524,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	//Extended 0xC4,196 -> 0xC9,201
@@ -4519,17 +4548,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class multianewarray : Instruction {  // 0xC5 -- 197
@@ -4542,17 +4571,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class ifnull : Instruction {  // 0xC6 -- 198
@@ -4565,17 +4594,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class ifnonnull : Instruction {  // 0xC7 -- 199
@@ -4588,17 +4617,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class goto_w : Instruction {  // 0xC8 -- 200
@@ -4611,17 +4640,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class jsr_w : Instruction {  // 0xC9 -- 201
@@ -4634,17 +4663,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	//Reserved 0xca,202 -> 0xff,255
@@ -4658,17 +4687,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class impdep1 : Instruction {  // 0xFE -- 254
@@ -4681,17 +4710,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 	class impdep2 : Instruction {  // 0xFF -- 255
@@ -4704,17 +4733,17 @@ namespace jvm {
 		/**
 		 * The execution of this instruction
 		 */
-		virtual void execute();
+		void execute() override;
 
 		/**
 		 * Print in the stream the name
 		 */
-		virtual void printToStream(std::ostream&, std::string&);
+		void printToStream(std::ostream&, std::string&) override;
 
 		/**
 		 * Get the name of the class
 		 */
-		virtual std::string getName();
+		std::string getName() override;
 	};
 
 };

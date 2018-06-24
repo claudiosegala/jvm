@@ -3,6 +3,28 @@
 #include "instructions/instructions.hpp"
 
 namespace jvm {
+
+	// OpCode
+
+	void OpCode::fill(Reader &reader) {
+
+	}
+
+	void OpCode::printToStream(std::ostream &os, std::string &prefix) {
+		auto newPrefix = prefix + "\t";
+
+		os << prefix << "Opcodes:" << std::endl;
+
+		for (std::shared_ptr<Instruction>& ptr : *this) {
+			auto instr = ptr.get();
+
+			if (instr != nullptr) {
+				instr->printToStream(os, newPrefix);
+			}
+		}
+	}
+
+
 	// nop
 
 	nop::nop() {

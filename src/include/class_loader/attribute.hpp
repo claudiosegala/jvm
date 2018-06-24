@@ -25,7 +25,7 @@ namespace jvm {
 		Attr_Entry() = default;
 	public:
 		template<class T>
-		static std::shared_ptr<Attr_Entry> Instantiate(Reader &reader, ConstantPool &cp) {
+		static std::shared_ptr<Attr_Entry> instantiate(Reader &reader, ConstantPool &cp) {
 			return std::make_shared<T>(reader, cp);
 		}
 
