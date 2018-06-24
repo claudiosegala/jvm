@@ -2,11 +2,11 @@
 #include <string>
 #include <vector>
 #include "class_loader/class_loader.hpp"
-#include "vm/vm.hpp"
+#include "engine/engine.hpp"
 
-void showCommands () {
+void show_commands() {
 	std::cout << "--describe or -d => descrevem o .class" << std::endl;
-	std::cout << "--run or -r      => executa o código descrito no .class" << std::endl;
+	std::cout << "--execute or -r      => executa o código descrito no .class" << std::endl;
 	std::cout << "--help or -h     => descrevem os comandos válidos" << std::endl;
 }
 
@@ -25,7 +25,7 @@ int main (int argc, char *argv[ ]) {
 		for (const auto &command : commands) {
 			if (command == "--describe" or command == "-d") {
 				isToDescribe = true;
-			} else if (command == "--run" or command == "-r") {
+			} else if (command == "--execute" or command == "-r") {
 				isToRun = true;
 			} else if (command == "--help" or command == "-h") {
 				isHelp = true;
@@ -37,10 +37,9 @@ int main (int argc, char *argv[ ]) {
 		}
 
 		jvm::ClassLoader cl;
-		jvm::VM vm;
 
 		if (isHelp) {
-			showCommands();
+			show_commands();
 			return 0;
 		}
 
@@ -77,14 +76,13 @@ int main (int argc, char *argv[ ]) {
 			}
 		}
 
-		// clearScreen();
-
 		if (isToDescribe) {
 			cl.show();
 		}
 
 		if (isToRun) {
-			vm.run(cl);
+			jvm::Engine engine(cl);
+			engine.execute();
 		}
 
 	} catch (std::string& error) {
