@@ -2,7 +2,7 @@
 #include <string>
 #include <map>
 #include "util/reader.hpp"
-#include "_class/attribute.hpp"
+#include "class_loader/attribute.hpp"
 
 namespace jvm {
 //	Attr_Entry::Instructions Attr_Entry::instructions = {

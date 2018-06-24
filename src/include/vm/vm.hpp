@@ -3,9 +3,9 @@
 #include <cstdint>
 #include "util/bit.hpp"
 #include <vector>
-#include "_class/constant_pool.hpp"
-#include "_class/attribute.hpp"
-#include "_class/_class.hpp"
+#include "class_loader/constant_pool.hpp"
+#include "class_loader/attribute.hpp"
+#include "class_loader/class_loader.hpp"
 #include "vm/frame.hpp"
 
 namespace jvm {
@@ -19,13 +19,13 @@ namespace jvm {
 		 * Constructor
 		 * @params address to all .classes
 		 */
-		VM(std::vector<_Class>&));
+		VM();
 
 		/**
 		 * Engine Execution.
 		 * @see execute()
 		 */
-		void run ();
+		void run (std::vector<ClassLoader>&);
 
 	private:
 		//> PC Register

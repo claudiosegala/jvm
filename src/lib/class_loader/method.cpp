@@ -2,8 +2,8 @@
 #include <iomanip>
 #include <util/bit.hpp>
 #include "util/reader.hpp"
-#include "_class/method.hpp"
-#include "_class/attribute.hpp"
+#include "class_loader/method.hpp"
+#include "class_loader/attribute.hpp"
 
 namespace jvm  {
 

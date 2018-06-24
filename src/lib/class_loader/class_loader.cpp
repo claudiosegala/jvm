@@ -4,17 +4,17 @@
 #include <util/bit.hpp>
 #include "util/bit.hpp"
 #include "util/macros.hpp"
-#include "_class/_class.hpp"
+#include "class_loader/class_loader.hpp"
 
 namespace jvm {
 
-	_Class::_Class() = default;
+	ClassLoader::ClassLoader() = default;
 
-	void _Class::read_attributes (jvm::Reader &file) {
+	void ClassLoader::read_attributes (jvm::Reader &file) {
 		attributes.fill(file, constant_pool);
 	}
 
-	void _Class::read_methods (jvm::Reader &file) {
+	void ClassLoader::read_methods (jvm::Reader &file) {
 		methods_count = file.getNextHalfWord();
 
 		if (methods_count == 0) {
@@ -26,7 +26,7 @@ namespace jvm {
 		}
 	}
 
-	void _Class::read_fields (jvm::Reader &file) {
+	void ClassLoader::read_fields (jvm::Reader &file) {
 		fields_count = file.getNextHalfWord();
 
 		if (fields_count == 0) {
@@ -38,7 +38,7 @@ namespace jvm {
 		}
 	}
 
-	void _Class::read_interfaces (jvm::Reader &file) {
+	void ClassLoader::read_interfaces (jvm::Reader &file) {
 		interfaces_count = file.getNextHalfWord();
 
 		if (interfaces_count == 0) {
@@ -50,13 +50,13 @@ namespace jvm {
 		}
 	}
 
-	void _Class::read_flags (jvm::Reader &file) {
+	void ClassLoader::read_flags (jvm::Reader &file) {
 		access_flags = file.getNextHalfWord();
 		this_class = file.getNextHalfWord();
 		super_class = file.getNextHalfWord();
 	}
 
-	void _Class::read_cp (jvm::Reader& file) {
+	void ClassLoader::read_cp (jvm::Reader& file) {
 		cp_count = (uint16_t)(file.getNextHalfWord() - 1);
 
 		if (cp_count <= 0) {
@@ -66,7 +66,7 @@ namespace jvm {
 		constant_pool.fill(file, cp_count);
 	}
 
-	void _Class::read_version (jvm::Reader& file) {
+	void ClassLoader::read_version (jvm::Reader& file) {
 		magic_number = MAGIC_NUMBER;
 		min_version = file.getNextHalfWord();
 		max_version = file.getNextHalfWord();
@@ -76,7 +76,7 @@ namespace jvm {
 	 * Reads all the class file
 	 * @param file The file to extract the data
 	 */
-	void _Class::read (std::basic_string<char> filename) {
+	void ClassLoader::read (std::basic_string<char> filename) {
 		auto file = jvm::Reader();
 
 		file.open(filename);
@@ -92,7 +92,7 @@ namespace jvm {
 		file.close();
 	}
 
-	void _Class::print_class_flags() {
+	void ClassLoader::print_class_flags() {
 		auto flag = (uint32_t) access_flags;
 		std::cout << "Access Flags:" << std::endl;
 
@@ -120,11 +120,11 @@ namespace jvm {
 		}
 	}
 
-	void _Class::print_attributes () {
+	void ClassLoader::print_attributes () {
 		attributes.printToStream(std::cout, constant_pool, "");
 	}
 
-	void _Class::print_methods () {
+	void ClassLoader::print_methods () {
 		std::cout << "Methods Count: " << methods_count << std::endl;
 
 		if (methods_count == 0) {
@@ -140,7 +140,7 @@ namespace jvm {
 		}
 	}
 
-	void _Class::print_fields () {
+	void ClassLoader::print_fields () {
 		std::cout << "Fields Count: " << fields_count << std::endl;
 
 		if (fields_count == 0) {
@@ -156,7 +156,7 @@ namespace jvm {
 		}
 	}
 
-	void _Class::print_interfaces () {
+	void ClassLoader::print_interfaces () {
 		std::cout << "Interfaces Count: " << interfaces_count << std::endl;
 
 		if (interfaces_count == 0) {
@@ -172,14 +172,14 @@ namespace jvm {
 		}
 	}
 
-	void _Class::print_this_class () {
+	void ClassLoader::print_this_class () {
 		CP_Entry* value = constant_pool[this_class];
 		std::cout << "Classes:"<< std::endl;
 		std::cout << "\t";
 		value->printToStream(std::cout, constant_pool);
 	}
 
-	void _Class::print_super_class () {
+	void ClassLoader::print_super_class () {
 		if (super_class == 0) {
 			std::cout << "Object" << std::endl;
 		} else {
@@ -190,7 +190,7 @@ namespace jvm {
 		}
 	}
 
-	void _Class::print_cp () {
+	void ClassLoader::print_cp () {
 		std::cout << "Constant Pool Count: " << cp_count << std::endl;
 
 		if (cp_count == 0) {
@@ -202,12 +202,12 @@ namespace jvm {
 		constant_pool.printToStream(std::cout);
 	}
 
-	void _Class::print_version () {
+	void ClassLoader::print_version () {
 		std::cout << "Min Version: " << min_version << std::endl;
 		std::cout << "Max Version: " << max_version << std::endl;
 	}
 
-	void _Class::show () {
+	void ClassLoader::show () {
 		std::cout << "> .class" << std::endl << std::endl;
 
 		print_version();

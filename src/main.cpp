@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "_class/_class.hpp"
+#include "class_loader/class_loader.hpp"
 #include "vm/vm.hpp"
 
 void showCommands () {
@@ -33,7 +33,7 @@ int main (int argc, char *argv[ ]) {
 			}
 		}
 
-		std::vector<jvm::_Class> cls(filenames.size(), jvm::_Class());
+		std::vector<jvm::ClassLoader> cls(filenames.size(), jvm::ClassLoader());
 		jvm::VM vm;
 
 		if (isHelp) {

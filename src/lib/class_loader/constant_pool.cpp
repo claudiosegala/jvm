@@ -2,7 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <sstream>
-#include "_class/constant_pool.hpp"
+#include "class_loader/constant_pool.hpp"
 
 namespace jvm {
 
@@ -156,7 +156,7 @@ namespace jvm {
 
 	std::string CP_Fieldref::toString(ConstantPool &cp) const {
 		auto _nameAndType = cp[name_and_type_index];
-		_nameAndType->toString(cp);
+		return _nameAndType->toString(cp);
 	}
 
 	CP_Methodref::CP_Methodref(Reader &reader) {
@@ -189,7 +189,7 @@ namespace jvm {
 	}
 
     std::string CP_Float::toString(ConstantPool &cp) const {
-        std::to_string(reinterpret_cast<const float&>(_bytes));
+        return std::to_string(reinterpret_cast<const float&>(_bytes));
     }
 
 	CP_Long::CP_Long(Reader &reader) {

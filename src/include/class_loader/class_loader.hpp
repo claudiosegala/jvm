@@ -13,7 +13,7 @@
 
 namespace jvm {
 
-	class _Class {
+	class ClassLoader {
 	public:
 		uint32_t magic_number;                      ///< Identifies that this is a class file format
 
@@ -50,7 +50,7 @@ namespace jvm {
 		/**
 		 * Default constructor
 		 */
-		_Class ();
+		ClassLoader ();
 
 		/**
 		 * Reads all the class file
