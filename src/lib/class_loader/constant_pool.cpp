@@ -148,6 +148,7 @@ namespace jvm {
 	void CP_Fieldref::printToStream(std::ostream &os, ConstantPool &cp) {
 		auto _class = cp[class_index];
 		auto _name_and_type = cp[name_and_type_index];
+		os << "Field Reference" << std::endl;
 		os << "\t\tClass name:\t#" << class_index << " ";
 		_class->printToStream(os, cp);
 		os << "\t\tName and Type:\t#" << name_and_type_index << " ";
