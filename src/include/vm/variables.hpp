@@ -9,7 +9,7 @@
 
 namespace jvm
 {
-    class variables : public std::vector<u4>
+    class Variables : public std::vector<u4>
     {
         public:
         /**

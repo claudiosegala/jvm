@@ -1,7 +1,7 @@
 #pragma once
 
-#include <vector>
 #include <stack>
+#include <vector>
 #include "util/macros.hpp"
 
 namespace jvm {
@@ -9,26 +9,17 @@ namespace jvm {
 	class Operands : public std::stack<u4> {
 	public:
 		/**
-		* Constructor Default
+		* Default constructor
 		*/
 		Operands() = default;
 
-		// TODO: make sure it wont break the vector
-		template<typename T>
-		T pop ();
+		u4 pop4();
 
-		template<typename T>
-		void push (T);
+		u8 pop8();
 
-		template<typename T>
+		void push4(u4 value);
 
-		void write_vector(T);
-
-		void Read_vector(T);
-
-	private:
-		//> Operands Stack
-		std::vector<u4> operands;
+		void push8(u8 value);
 	};
 
 }

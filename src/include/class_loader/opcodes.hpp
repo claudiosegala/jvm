@@ -1,5 +1,8 @@
 #pragma once
 
+#include <util/macros.hpp>
+#include <vector>
+
 namespace jvm
 {
     //Constants opcodes 0x00,00 -- 0x14,20
