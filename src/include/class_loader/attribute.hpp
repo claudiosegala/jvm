@@ -6,6 +6,7 @@
 #include "util/bit.hpp"
 #include "constant_pool.hpp"
 #include "util/macros.hpp"
+#include "instructions/instructions.hpp"
 
 namespace jvm {
 
@@ -45,7 +46,7 @@ namespace jvm {
 
 		u2 max_stack;
 		u2 max_locals;
-		std::vector<u1> code;
+		Code code;
 		std::vector<exception_table_entry> exception_table;
 		AttributeInfo attributes;
 

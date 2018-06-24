@@ -7178,7 +7178,7 @@ namespace Catch {
             // do not fill-in std::current_exception and thus lead to crash
             // when attempting rethrow.
             // /EHa switch also causes structured exceptions to be caught
-            // here, but they fill-in current_exception properly, so
+            // here, but they interpret-in current_exception properly, so
             // at worst the output should be a little weird, instead of
             // causing a crash.
             if (std::current_exception() == nullptr) {

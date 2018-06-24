@@ -3,6 +3,7 @@
 #include <map>
 #include "util/reader.hpp"
 #include "class_loader/attribute.hpp"
+#include "instructions/instructions.hpp"
 
 namespace jvm {
 
@@ -46,14 +47,18 @@ namespace jvm {
 	}
 
 	Attr_Code::Attr_Code(Reader &reader, ConstantPool &cp) {
+		std::vector<u1> codeData;
+
 		max_stack = reader.getNextHalfWord();
 		max_locals = reader.getNextHalfWord();
 
 		u4 code_length = reader.getNextWord();
-		code.reserve(code_length);
+		codeData.reserve(code_length);
 		while (code_length--) {
-			code.emplace_back(reader.getNextByte());
+			codeData.emplace_back(reader.getNextByte());
 		}
+
+		code.interpret(codeData);
 
 		u2 exception_table_length = reader.getNextHalfWord();
 		exception_table.resize(exception_table_length);

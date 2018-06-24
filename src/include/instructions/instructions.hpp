@@ -2,16 +2,31 @@
 
 #include <string>
 #include <iostream>
+#include "util/macros.hpp"
 #include "class_loader/constant_pool.hpp"
 
 namespace jvm {
 
 	class Instruction;
 
-	class OpCode : public std::vector<std::shared_ptr<Instruction>> {
+	typedef std::shared_ptr<Instruction> (* InstructionInstantiator) ();
+
+	class Code : public std::vector<std::shared_ptr<Instruction>> {
 	public:
-		void fill(Reader &reader);
+		void interpret(std::vector<u1>&);
+
 		void printToStream(std::ostream&, std::string&);
+
+	private:
+		//> The set of instantiators to the instruction
+		static const InstructionInstantiator instruction_set[256];
+
+		/**
+		 * Given an opcode, it will get the right instruction
+		 * @params u1 The opcode
+		 * @return the shared pointer to the instruction
+		 */
+		std::shared_ptr<Instruction> getInstr(const u1&);
 	};
 
 	class Instruction {
@@ -36,6 +51,11 @@ namespace jvm {
 		virtual void printToStream(std::ostream&, std::string&) = 0;
 
 		/**
+		 * Fill the params of this class
+		 */
+		virtual uint32_t fillParams(const uint32_t, const std::vector<u1>&) = 0;
+
+		/**
 		 * Get the name of the class
 		 */
 		virtual std::string getName() = 0;
@@ -43,12 +63,12 @@ namespace jvm {
 
 
 	//Constants opcodes 0x00,00 -- 0x14,20
-	class nop : Instruction {  // 0x00 - 00
+	class op_nop : public Instruction {  // 0x00 - 00
 	public:
 		/**
 		 * Constructor
 		 */
-		nop();
+		op_nop();
 
 		/**
 		 * The execution of this instruction
@@ -59,6 +79,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -66,12 +91,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class aconst_null : Instruction {  // 0x01 --01
+	class op_aconst_null : public Instruction {  // 0x01 --01
 	public:
 		/**
 		 * Constructor
 		 */
-		aconst_null();
+		op_aconst_null();
 
 		/**
 		 * The execution of this instruction
@@ -82,6 +107,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -89,12 +119,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class iconst_m1 : Instruction {  // 0x02 -- 02
+	class op_iconst_m1 : public Instruction {  // 0x02 -- 02
 	public:
 		/**
 		 * Constructor
 		 */
-		iconst_m1();
+		op_iconst_m1();
 
 		/**
 		 * The execution of this instruction
@@ -105,6 +135,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -112,12 +147,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class iconst_0 : Instruction {  // 0x03 -- 03
+	class op_iconst_0 : public Instruction {  // 0x03 -- 03
 	public:
 		/**
 		 * Constructor
 		 */
-		iconst_0();
+		op_iconst_0();
 
 		/**
 		 * The execution of this instruction
@@ -128,6 +163,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -135,12 +175,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class iconst_1 : Instruction {  // 0x04 -- 04
+	class op_iconst_1 : public Instruction {  // 0x04 -- 04
 	public:
 		/**
 		 * Constructor
 		 */
-		iconst_1();
+		op_iconst_1();
 
 		/**
 		 * The execution of this instruction
@@ -151,6 +191,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -158,12 +203,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class iconst_2 : Instruction {  // 0x05 -- 05
+	class op_iconst_2 : public Instruction {  // 0x05 -- 05
 	public:
 		/**
 		 * Constructor
 		 */
-		iconst_2();
+		op_iconst_2();
 
 		/**
 		 * The execution of this instruction
@@ -174,6 +219,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -181,12 +231,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class iconst_3 : Instruction {  // 0x06 -- 06
+	class op_iconst_3 : public Instruction {  // 0x06 -- 06
 	public:
 		/**
 		 * Constructor
 		 */
-		iconst_3();
+		op_iconst_3();
 
 		/**
 		 * The execution of this instruction
@@ -197,6 +247,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -204,12 +259,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class iconst_4 : Instruction {  // 0x07 -- 07
+	class op_iconst_4 : public Instruction {  // 0x07 -- 07
 	public:
 		/**
 		 * Constructor
 		 */
-		iconst_4();
+		op_iconst_4();
 
 		/**
 		 * The execution of this instruction
@@ -220,6 +275,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -227,12 +287,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class iconst_5 : Instruction {  // 0x08 -- 08
+	class op_iconst_5 : public Instruction {  // 0x08 -- 08
 	public:
 		/**
 		 * Constructor
 		 */
-		iconst_5();
+		op_iconst_5();
 
 		/**
 		 * The execution of this instruction
@@ -243,6 +303,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -250,12 +315,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lconst_0 : Instruction {  // 0x09 -- 09
+	class op_lconst_0 : public Instruction {  // 0x09 -- 09
 	public:
 		/**
 		 * Constructor
 		 */
-		lconst_0();
+		op_lconst_0();
 
 		/**
 		 * The execution of this instruction
@@ -266,6 +331,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -273,12 +343,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lconst_1 : Instruction {  // 0x0A -- 10
+	class op_lconst_1 : public Instruction {  // 0x0A -- 10
 	public:
 		/**
 		 * Constructor
 		 */
-		lconst_1();
+		op_lconst_1();
 
 		/**
 		 * The execution of this instruction
@@ -289,6 +359,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -296,12 +371,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class fconst_0 : Instruction {  // 0x0B -- 11
+	class op_fconst_0 : public Instruction {  // 0x0B -- 11
 	public:
 		/**
 		 * Constructor
 		 */
-		fconst_0();
+		op_fconst_0();
 
 		/**
 		 * The execution of this instruction
@@ -312,6 +387,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -319,12 +399,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class fconst_1 : Instruction {  // 0x0C -- 12
+	class op_fconst_1 : public Instruction {  // 0x0C -- 12
 	public:
 		/**
 		 * Constructor
 		 */
-		fconst_1();
+		op_fconst_1();
 
 		/**
 		 * The execution of this instruction
@@ -335,6 +415,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -342,12 +427,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class fconst_2 : Instruction {  // 0x0D -- 13
+	class op_fconst_2 : public Instruction {  // 0x0D -- 13
 	public:
 		/**
 		 * Constructor
 		 */
-		fconst_2();
+		op_fconst_2();
 
 		/**
 		 * The execution of this instruction
@@ -358,6 +443,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -365,12 +455,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dconst_0 : Instruction {  // 0x0E -- 14
+	class op_dconst_0 : public Instruction {  // 0x0E -- 14
 	public:
 		/**
 		 * Constructor
 		 */
-		dconst_0();
+		op_dconst_0();
 
 		/**
 		 * The execution of this instruction
@@ -381,6 +471,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -388,12 +483,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dconst_1 : Instruction {  // 0x0F -- 15
+	class op_dconst_1 : public Instruction {  // 0x0F -- 15
 	public:
 		/**
 		 * Constructor
 		 */
-		dconst_1();
+		op_dconst_1();
 
 		/**
 		 * The execution of this instruction
@@ -404,6 +499,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -411,12 +511,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class bipush : Instruction {  // 0x10 -- 16
+	class op_bipush : public Instruction {  // 0x10 -- 16
 	public:
 		/**
 		 * Constructor
 		 */
-		bipush();
+		op_bipush();
 
 		/**
 		 * The execution of this instruction
@@ -427,6 +527,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -434,12 +539,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class sipush : Instruction {  // 0x11 -- 17
+	class op_sipush : public Instruction {  // 0x11 -- 17
 	public:
 		/**
 		 * Constructor
 		 */
-		sipush();
+		op_sipush();
 
 		/**
 		 * The execution of this instruction
@@ -450,6 +555,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -457,12 +567,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class ldc : Instruction {  // 0x12 -- 18
+	class op_ldc : public Instruction {  // 0x12 -- 18
 	public:
 		/**
 		 * Constructor
 		 */
-		ldc();
+		op_ldc();
 
 		/**
 		 * The execution of this instruction
@@ -473,6 +583,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -480,12 +595,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class ldc_w : Instruction {  // 0x13 -- 19
+	class op_ldc_w : public Instruction {  // 0x13 -- 19
 	public:
 		/**
 		 * Constructor
 		 */
-		ldc_w();
+		op_ldc_w();
 
 		/**
 		 * The execution of this instruction
@@ -496,6 +611,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -503,12 +623,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class ldc2_w : Instruction {  // 0x14 -- 20
+	class op_ldc2_w : public Instruction {  // 0x14 -- 20
 	public:
 		/**
 		 * Constructor
 		 */
-		ldc2_w();
+		op_ldc2_w();
 
 		/**
 		 * The execution of this instruction
@@ -519,6 +639,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -527,12 +652,12 @@ namespace jvm {
 	};
 
 	//Loads opcodes 0x15,21 -- 0x35,53
-	class iload : Instruction {  //0x15 -- 21
+	class op_iload : public Instruction {  //0x15 -- 21
 	public:
 		/**
 		 * Constructor
 		 */
-		iload();
+		op_iload();
 
 		/**
 		 * The execution of this instruction
@@ -543,6 +668,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -550,12 +680,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lload : Instruction {  // 0x16 -- 22
+	class op_lload : public Instruction {  // 0x16 -- 22
 	public:
 		/**
 		 * Constructor
 		 */
-		lload();
+		op_lload();
 
 		/**
 		 * The execution of this instruction
@@ -566,6 +696,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -573,12 +708,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class fload : Instruction {  // 0x17 -- 23
+	class op_fload : public Instruction {  // 0x17 -- 23
 	public:
 		/**
 		 * Constructor
 		 */
-		fload();
+		op_fload();
 
 		/**
 		 * The execution of this instruction
@@ -589,6 +724,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -596,12 +736,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dload : Instruction {  // 0x18 -- 24
+	class op_dload : public Instruction {  // 0x18 -- 24
 	public:
 		/**
 		 * Constructor
 		 */
-		dload();
+		op_dload();
 
 		/**
 		 * The execution of this instruction
@@ -612,6 +752,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -619,12 +764,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class aload : Instruction {  // 0x19 -- 25
+	class op_aload : public Instruction {  // 0x19 -- 25
 	public:
 		/**
 		 * Constructor
 		 */
-		aload();
+		op_aload();
 
 		/**
 		 * The execution of this instruction
@@ -635,6 +780,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -642,12 +792,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class iload_0 : Instruction {  // 0x1A -- 26
+	class op_iload_0 : public Instruction {  // 0x1A -- 26
 	public:
 		/**
 		 * Constructor
 		 */
-		iload_0();
+		op_iload_0();
 
 		/**
 		 * The execution of this instruction
@@ -658,6 +808,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -665,12 +820,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class iload_1 : Instruction {  // 0x1B -- 27
+	class op_iload_1 : public Instruction {  // 0x1B -- 27
 	public:
 		/**
 		 * Constructor
 		 */
-		iload_1();
+		op_iload_1();
 
 		/**
 		 * The execution of this instruction
@@ -681,6 +836,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -688,12 +848,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class iload_2 : Instruction {  // 0x1C -- 28
+	class op_iload_2 : public Instruction {  // 0x1C -- 28
 	public:
 		/**
 		 * Constructor
 		 */
-		iload_2();
+		op_iload_2();
 
 		/**
 		 * The execution of this instruction
@@ -704,6 +864,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -711,12 +876,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class iload_3 : Instruction {  // 0x1D -- 29
+	class op_iload_3 : public Instruction {  // 0x1D -- 29
 	public:
 		/**
 		 * Constructor
 		 */
-		iload_3();
+		op_iload_3();
 
 		/**
 		 * The execution of this instruction
@@ -727,6 +892,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -734,12 +904,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lload_0 : Instruction {  // 0x1E -- 30
+	class op_lload_0 : public Instruction {  // 0x1E -- 30
 	public:
 		/**
 		 * Constructor
 		 */
-		lload_0();
+		op_lload_0();
 
 		/**
 		 * The execution of this instruction
@@ -750,6 +920,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -757,12 +932,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lload_1 : Instruction {  // 0x1F -- 31
+	class op_lload_1 : public Instruction {  // 0x1F -- 31
 	public:
 		/**
 		 * Constructor
 		 */
-		lload_1();
+		op_lload_1();
 
 		/**
 		 * The execution of this instruction
@@ -773,6 +948,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -780,12 +960,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lload_2 : Instruction {  // 0x20 -- 32
+	class op_lload_2 : public Instruction {  // 0x20 -- 32
 	public:
 		/**
 		 * Constructor
 		 */
-		lload_2();
+		op_lload_2();
 
 		/**
 		 * The execution of this instruction
@@ -796,6 +976,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -803,12 +988,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lload_3 : Instruction {  // 0x21 -- 33
+	class op_lload_3 : public Instruction {  // 0x21 -- 33
 	public:
 		/**
 		 * Constructor
 		 */
-		lload_3();
+		op_lload_3();
 
 		/**
 		 * The execution of this instruction
@@ -819,6 +1004,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -826,12 +1016,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class fload_0 : Instruction {  // 0x22 -- 34
+	class op_fload_0 : public Instruction {  // 0x22 -- 34
 	public:
 		/**
 		 * Constructor
 		 */
-		fload_0();
+		op_fload_0();
 
 		/**
 		 * The execution of this instruction
@@ -842,6 +1032,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -849,12 +1044,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class fload_1 : Instruction {  // 0x23 -- 35
+	class op_fload_1 : public Instruction {  // 0x23 -- 35
 	public:
 		/**
 		 * Constructor
 		 */
-		fload_1();
+		op_fload_1();
 
 		/**
 		 * The execution of this instruction
@@ -865,6 +1060,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -872,12 +1072,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class fload_2 : Instruction {  // 0x24 -- 36
+	class op_fload_2 : public Instruction {  // 0x24 -- 36
 	public:
 		/**
 		 * Constructor
 		 */
-		fload_2();
+		op_fload_2();
 
 		/**
 		 * The execution of this instruction
@@ -888,6 +1088,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -895,12 +1100,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class fload_3 : Instruction {  // 0x25 -- 37
+	class op_fload_3 : public Instruction {  // 0x25 -- 37
 	public:
 		/**
 		 * Constructor
 		 */
-		fload_3();
+		op_fload_3();
 
 		/**
 		 * The execution of this instruction
@@ -911,6 +1116,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -918,12 +1128,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dload_0 : Instruction {  // 0x26 -- 38
+	class op_dload_0 : public Instruction {  // 0x26 -- 38
 	public:
 		/**
 		 * Constructor
 		 */
-		dload_0();
+		op_dload_0();
 
 		/**
 		 * The execution of this instruction
@@ -934,6 +1144,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -941,12 +1156,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dload_1 : Instruction {  // 0x27 -- 39
+	class op_dload_1 : public Instruction {  // 0x27 -- 39
 	public:
 		/**
 		 * Constructor
 		 */
-		dload_1();
+		op_dload_1();
 
 		/**
 		 * The execution of this instruction
@@ -957,6 +1172,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -964,12 +1184,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dload_2 : Instruction {  // 0x28 -- 40
+	class op_dload_2 : public Instruction {  // 0x28 -- 40
 	public:
 		/**
 		 * Constructor
 		 */
-		dload_2();
+		op_dload_2();
 
 		/**
 		 * The execution of this instruction
@@ -980,6 +1200,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -987,12 +1212,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dload_3 : Instruction {  // 0x29 -- 41
+	class op_dload_3 : public Instruction {  // 0x29 -- 41
 	public:
 		/**
 		 * Constructor
 		 */
-		dload_3();
+		op_dload_3();
 
 		/**
 		 * The execution of this instruction
@@ -1003,6 +1228,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1010,12 +1240,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class aload_0 : Instruction {  // 0x2A -- 42
+	class op_aload_0 : public Instruction {  // 0x2A -- 42
 	public:
 		/**
 		 * Constructor
 		 */
-		aload_0();
+		op_aload_0();
 
 		/**
 		 * The execution of this instruction
@@ -1026,6 +1256,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1033,12 +1268,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class aload_1 : Instruction {  // 0x2B -- 43
+	class op_aload_1 : public Instruction {  // 0x2B -- 43
 	public:
 		/**
 		 * Constructor
 		 */
-		aload_1();
+		op_aload_1();
 
 		/**
 		 * The execution of this instruction
@@ -1049,6 +1284,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1056,12 +1296,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class aload_2 : Instruction {  // 0x2C -- 44
+	class op_aload_2 : public Instruction {  // 0x2C -- 44
 	public:
 		/**
 		 * Constructor
 		 */
-		aload_2();
+		op_aload_2();
 
 		/**
 		 * The execution of this instruction
@@ -1072,6 +1312,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1079,12 +1324,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class aload_3 : Instruction {  // 0x2D -- 45
+	class op_aload_3 : public Instruction {  // 0x2D -- 45
 	public:
 		/**
 		 * Constructor
 		 */
-		aload_3();
+		op_aload_3();
 
 		/**
 		 * The execution of this instruction
@@ -1095,6 +1340,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1102,12 +1352,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class iaload : Instruction {   // 0x2E -- 46
+	class op_iaload : public Instruction {   // 0x2E -- 46
 	public:
 		/**
 		 * Constructor
 		 */
-		iaload();
+		op_iaload();
 
 		/**
 		 * The execution of this instruction
@@ -1118,6 +1368,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1125,12 +1380,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class laload : Instruction {   // 0x2F -- 47
+	class op_laload : public Instruction {   // 0x2F -- 47
 	public:
 		/**
 		 * Constructor
 		 */
-		laload();
+		op_laload();
 
 		/**
 		 * The execution of this instruction
@@ -1141,6 +1396,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1148,12 +1408,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class faload : Instruction {   // 0x30 -- 48
+	class op_faload : public Instruction {   // 0x30 -- 48
 	public:
 		/**
 		 * Constructor
 		 */
-		faload();
+		op_faload();
 
 		/**
 		 * The execution of this instruction
@@ -1164,6 +1424,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1171,12 +1436,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class daload : Instruction {   // 0x31 -- 49
+	class op_daload : public Instruction {   // 0x31 -- 49
 	public:
 		/**
 		 * Constructor
 		 */
-		daload();
+		op_daload();
 
 		/**
 		 * The execution of this instruction
@@ -1187,6 +1452,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1194,12 +1464,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class aaload : Instruction {   // 0x32 -- 50
+	class op_aaload : public Instruction {   // 0x32 -- 50
 	public:
 		/**
 		 * Constructor
 		 */
-		aaload();
+		op_aaload();
 
 		/**
 		 * The execution of this instruction
@@ -1210,6 +1480,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1217,12 +1492,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class baload : Instruction {   // 0x33 -- 51
+	class op_baload : public Instruction {   // 0x33 -- 51
 	public:
 		/**
 		 * Constructor
 		 */
-		baload();
+		op_baload();
 
 		/**
 		 * The execution of this instruction
@@ -1233,6 +1508,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1240,12 +1520,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class caload : Instruction {   // 0x34 -- 52
+	class op_caload : public Instruction {   // 0x34 -- 52
 	public:
 		/**
 		 * Constructor
 		 */
-		caload();
+		op_caload();
 
 		/**
 		 * The execution of this instruction
@@ -1256,6 +1536,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1263,12 +1548,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class saload : Instruction {  // 0x35 -- 53
+	class op_saload : public Instruction {  // 0x35 -- 53
 	public:
 		/**
 		 * Constructor
 		 */
-		saload();
+		op_saload();
 
 		/**
 		 * The execution of this instruction
@@ -1279,6 +1564,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1287,12 +1577,12 @@ namespace jvm {
 	};
 
 	//Stores 0x36,54 -> 0x56,86
-	class istore : Instruction {  //0x36 -- 54
+	class op_istore : public Instruction {  //0x36 -- 54
 	public:
 		/**
 		 * Constructor
 		 */
-		istore();
+		op_istore();
 
 		/**
 		 * The execution of this instruction
@@ -1303,6 +1593,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1310,12 +1605,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lstore : Instruction {  // 0x37 -- 55
+	class op_lstore : public Instruction {  // 0x37 -- 55
 	public:
 		/**
 		 * Constructor
 		 */
-		lstore();
+		op_lstore();
 
 		/**
 		 * The execution of this instruction
@@ -1326,6 +1621,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1333,12 +1633,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class fstore : Instruction {  // 0x38 -- 56
+	class op_fstore : public Instruction {  // 0x38 -- 56
 	public:
 		/**
 		 * Constructor
 		 */
-		fstore();
+		op_fstore();
 
 		/**
 		 * The execution of this instruction
@@ -1349,6 +1649,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1356,12 +1661,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dstore : Instruction {  // 0x39 -- 57
+	class op_dstore : public Instruction {  // 0x39 -- 57
 	public:
 		/**
 		 * Constructor
 		 */
-		dstore();
+		op_dstore();
 
 		/**
 		 * The execution of this instruction
@@ -1372,6 +1677,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1379,12 +1689,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class astore : Instruction {  // 0x3A -- 58
+	class op_astore : public Instruction {  // 0x3A -- 58
 	public:
 		/**
 		 * Constructor
 		 */
-		astore();
+		op_astore();
 
 		/**
 		 * The execution of this instruction
@@ -1395,6 +1705,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1402,12 +1717,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class istore_0 : Instruction {  // 0x3B -- 59
+	class op_istore_0 : public Instruction {  // 0x3B -- 59
 	public:
 		/**
 		 * Constructor
 		 */
-		istore_0();
+		op_istore_0();
 
 		/**
 		 * The execution of this instruction
@@ -1418,6 +1733,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1425,12 +1745,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class istore_1 : Instruction {  // 0x3C -- 60
+	class op_istore_1 : public Instruction {  // 0x3C -- 60
 	public:
 		/**
 		 * Constructor
 		 */
-		istore_1();
+		op_istore_1();
 
 		/**
 		 * The execution of this instruction
@@ -1441,6 +1761,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1448,12 +1773,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class istore_2 : Instruction {  // 0x3D -- 61
+	class op_istore_2 : public Instruction {  // 0x3D -- 61
 	public:
 		/**
 		 * Constructor
 		 */
-		istore_2();
+		op_istore_2();
 
 		/**
 		 * The execution of this instruction
@@ -1464,6 +1789,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1471,12 +1801,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class istore_3 : Instruction {  // 0x3E -- 62
+	class op_istore_3 : public Instruction {  // 0x3E -- 62
 	public:
 		/**
 		 * Constructor
 		 */
-		istore_3();
+		op_istore_3();
 
 		/**
 		 * The execution of this instruction
@@ -1487,6 +1817,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1494,12 +1829,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lstore_0 : Instruction {  // 0x3F -- 63
+	class op_lstore_0 : public Instruction {  // 0x3F -- 63
 	public:
 		/**
 		 * Constructor
 		 */
-		lstore_0();
+		op_lstore_0();
 
 		/**
 		 * The execution of this instruction
@@ -1510,6 +1845,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1517,12 +1857,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lstore_1 : Instruction {  // 0x40 -- 64
+	class op_lstore_1 : public Instruction {  // 0x40 -- 64
 	public:
 		/**
 		 * Constructor
 		 */
-		lstore_1();
+		op_lstore_1();
 
 		/**
 		 * The execution of this instruction
@@ -1533,6 +1873,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1540,12 +1885,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lstore_2 : Instruction {  // 0x41 -- 65
+	class op_lstore_2 : public Instruction {  // 0x41 -- 65
 	public:
 		/**
 		 * Constructor
 		 */
-		lstore_2();
+		op_lstore_2();
 
 		/**
 		 * The execution of this instruction
@@ -1556,6 +1901,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1563,12 +1913,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lstore_3 : Instruction {  // 0x42 -- 66
+	class op_lstore_3 : public Instruction {  // 0x42 -- 66
 	public:
 		/**
 		 * Constructor
 		 */
-		lstore_3();
+		op_lstore_3();
 
 		/**
 		 * The execution of this instruction
@@ -1579,6 +1929,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1586,12 +1941,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class fstore_0 : Instruction {  // 0x43 -- 67
+	class op_fstore_0 : public Instruction {  // 0x43 -- 67
 	public:
 		/**
 		 * Constructor
 		 */
-		fstore_0();
+		op_fstore_0();
 
 		/**
 		 * The execution of this instruction
@@ -1602,6 +1957,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1609,12 +1969,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class fstore_1 : Instruction {  // 0x44 -- 68
+	class op_fstore_1 : public Instruction {  // 0x44 -- 68
 	public:
 		/**
 		 * Constructor
 		 */
-		fstore_1();
+		op_fstore_1();
 
 		/**
 		 * The execution of this instruction
@@ -1625,6 +1985,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1632,12 +1997,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class fstore_2 : Instruction {  // 0x45 -- 69
+	class op_fstore_2 : public Instruction {  // 0x45 -- 69
 	public:
 		/**
 		 * Constructor
 		 */
-		fstore_2();
+		op_fstore_2();
 
 		/**
 		 * The execution of this instruction
@@ -1648,6 +2013,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1655,12 +2025,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class fstore_3 : Instruction {  // 0x46 -- 70
+	class op_fstore_3 : public Instruction {  // 0x46 -- 70
 	public:
 		/**
 		 * Constructor
 		 */
-		fstore_3();
+		op_fstore_3();
 
 		/**
 		 * The execution of this instruction
@@ -1671,6 +2041,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1678,12 +2053,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dstore_0 : Instruction {  // 0x47 -- 71
+	class op_dstore_0 : public Instruction {  // 0x47 -- 71
 	public:
 		/**
 		 * Constructor
 		 */
-		dstore_0();
+		op_dstore_0();
 
 		/**
 		 * The execution of this instruction
@@ -1694,6 +2069,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1701,12 +2081,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dstore_1 : Instruction {  // 0x48 -- 72
+	class op_dstore_1 : public Instruction {  // 0x48 -- 72
 	public:
 		/**
 		 * Constructor
 		 */
-		dstore_1();
+		op_dstore_1();
 
 		/**
 		 * The execution of this instruction
@@ -1717,6 +2097,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1724,12 +2109,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dstore_2 : Instruction {  // 0x49 -- 73
+	class op_dstore_2 : public Instruction {  // 0x49 -- 73
 	public:
 		/**
 		 * Constructor
 		 */
-		dstore_2();
+		op_dstore_2();
 
 		/**
 		 * The execution of this instruction
@@ -1740,6 +2125,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1747,12 +2137,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dstore_3 : Instruction {  // 0x4A -- 74
+	class op_dstore_3 : public Instruction {  // 0x4A -- 74
 	public:
 		/**
 		 * Constructor
 		 */
-		dstore_3();
+		op_dstore_3();
 
 		/**
 		 * The execution of this instruction
@@ -1763,6 +2153,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1770,12 +2165,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class astore_0 : Instruction { // 0x4B -- 75
+	class op_astore_0 : public Instruction { // 0x4B -- 75
 	public:
 		/**
 		 * Constructor
 		 */
-		astore_0();
+		op_astore_0();
 
 		/**
 		 * The execution of this instruction
@@ -1786,6 +2181,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1793,12 +2193,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class astore_1 : Instruction {  // 0x4C -- 76
+	class op_astore_1 : public Instruction {  // 0x4C -- 76
 	public:
 		/**
 		 * Constructor
 		 */
-		astore_1();
+		op_astore_1();
 
 		/**
 		 * The execution of this instruction
@@ -1809,6 +2209,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1816,12 +2221,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class astore_2 : Instruction {  // 0x4D -- 77
+	class op_astore_2 : public Instruction {  // 0x4D -- 77
 	public:
 		/**
 		 * Constructor
 		 */
-		astore_2();
+		op_astore_2();
 
 		/**
 		 * The execution of this instruction
@@ -1832,6 +2237,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1839,12 +2249,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class astore_3 : Instruction {  // 0x4E -- 78
+	class op_astore_3 : public Instruction {  // 0x4E -- 78
 	public:
 		/**
 		 * Constructor
 		 */
-		astore_3();
+		op_astore_3();
 
 		/**
 		 * The execution of this instruction
@@ -1855,6 +2265,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1862,12 +2277,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class iastore : Instruction {  // 0x4F -- 79
+	class op_iastore : public Instruction {  // 0x4F -- 79
 	public:
 		/**
 		 * Constructor
 		 */
-		iastore();
+		op_iastore();
 
 		/**
 		 * The execution of this instruction
@@ -1878,6 +2293,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1885,12 +2305,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lastore : Instruction {  // 0x50 -- 80
+	class op_lastore : public Instruction {  // 0x50 -- 80
 	public:
 		/**
 		 * Constructor
 		 */
-		lastore();
+		op_lastore();
 
 		/**
 		 * The execution of this instruction
@@ -1901,6 +2321,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1908,12 +2333,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class fastore : Instruction {  // 0x51 -- 81
+	class op_fastore : public Instruction {  // 0x51 -- 81
 	public:
 		/**
 		 * Constructor
 		 */
-		fastore();
+		op_fastore();
 
 		/**
 		 * The execution of this instruction
@@ -1924,6 +2349,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1931,12 +2361,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dastore : Instruction {  // 0x52 -- 82
+	class op_dastore : public Instruction {  // 0x52 -- 82
 	public:
 		/**
 		 * Constructor
 		 */
-		dastore();
+		op_dastore();
 
 		/**
 		 * The execution of this instruction
@@ -1947,6 +2377,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1954,12 +2389,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class aastore : Instruction {  // 0x53 -- 83
+	class op_aastore : public Instruction {  // 0x53 -- 83
 	public:
 		/**
 		 * Constructor
 		 */
-		aastore();
+		op_aastore();
 
 		/**
 		 * The execution of this instruction
@@ -1970,6 +2405,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -1977,12 +2417,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class bastore : Instruction {  // 0x54 -- 84
+	class op_bastore : public Instruction {  // 0x54 -- 84
 	public:
 		/**
 		 * Constructor
 		 */
-		bastore();
+		op_bastore();
 
 		/**
 		 * The execution of this instruction
@@ -1993,6 +2433,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2000,12 +2445,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class castore : Instruction {  // 0x55 -- 85
+	class op_castore : public Instruction {  // 0x55 -- 85
 	public:
 		/**
 		 * Constructor
 		 */
-		castore();
+		op_castore();
 
 		/**
 		 * The execution of this instruction
@@ -2016,6 +2461,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2023,12 +2473,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class sastore : Instruction {  // 0x56 -- 86
+	class op_sastore : public Instruction {  // 0x56 -- 86
 	public:
 		/**
 		 * Constructor
 		 */
-		sastore();
+		op_sastore();
 
 		/**
 		 * The execution of this instruction
@@ -2039,6 +2489,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2047,12 +2502,12 @@ namespace jvm {
 	};
 
 	// Stack 0x57,87 -> 0x5F,95
-	class pop : Instruction {  //0x57 -- 87
+	class op_pop : public Instruction {  //0x57 -- 87
 	public:
 		/**
 		 * Constructor
 		 */
-		pop();
+		op_pop();
 
 		/**
 		 * The execution of this instruction
@@ -2063,6 +2518,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2070,12 +2530,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class pop2 : Instruction {  //0x58 -- 88
+	class op_pop2 : public Instruction {  //0x58 -- 88
 	public:
 		/**
 		 * Constructor
 		 */
-		pop2();
+		op_pop2();
 
 		/**
 		 * The execution of this instruction
@@ -2086,6 +2546,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2093,12 +2558,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dup : Instruction {  //0x59 -- 89
+	class op_dup : public Instruction {  //0x59 -- 89
 	public:
 		/**
 		 * Constructor
 		 */
-		dup();
+		op_dup();
 
 		/**
 		 * The execution of this instruction
@@ -2109,6 +2574,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2116,12 +2586,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dup_x1 : Instruction {  //0x5A -- 90
+	class op_dup_x1 : public Instruction {  //0x5A -- 90
 	public:
 		/**
 		 * Constructor
 		 */
-		dup_x1();
+		op_dup_x1();
 
 		/**
 		 * The execution of this instruction
@@ -2132,6 +2602,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2139,12 +2614,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dup_x2 : Instruction {  //0x5B -- 91
+	class op_dup_x2 : public Instruction {  //0x5B -- 91
 	public:
 		/**
 		 * Constructor
 		 */
-		dup_x2();
+		op_dup_x2();
 
 		/**
 		 * The execution of this instruction
@@ -2155,6 +2630,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2162,12 +2642,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dup2 : Instruction {  //0x5C -- 92
+	class op_dup2 : public Instruction {  //0x5C -- 92
 	public:
 		/**
 		 * Constructor
 		 */
-		dup2();
+		op_dup2();
 
 		/**
 		 * The execution of this instruction
@@ -2178,6 +2658,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2185,12 +2670,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dup2_x1 : Instruction {  //0x5D -- 93
+	class op_dup2_x1 : public Instruction {  //0x5D -- 93
 	public:
 		/**
 		 * Constructor
 		 */
-		dup2_x1();
+		op_dup2_x1();
 
 		/**
 		 * The execution of this instruction
@@ -2201,6 +2686,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2208,12 +2698,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dup2_x2 : Instruction {  //0x5E -- 94
+	class op_dup2_x2 : public Instruction {  //0x5E -- 94
 	public:
 		/**
 		 * Constructor
 		 */
-		dup2_x2();
+		op_dup2_x2();
 
 		/**
 		 * The execution of this instruction
@@ -2224,6 +2714,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2231,12 +2726,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class swap : Instruction {  //0x5F -- 95
+	class op_swap : public Instruction {  //0x5F -- 95
 	public:
 		/**
 		 * Constructor
 		 */
-		swap();
+		op_swap();
 
 		/**
 		 * The execution of this instruction
@@ -2247,6 +2742,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2255,12 +2755,12 @@ namespace jvm {
 	};
 
 	// Math 0x60,96 -> 0x84,132
-	class iadd : Instruction {  //0x60 -- 96
+	class op_iadd : public Instruction {  //0x60 -- 96
 	public:
 		/**
 		 * Constructor
 		 */
-		iadd();
+		op_iadd();
 
 		/**
 		 * The execution of this instruction
@@ -2271,6 +2771,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2278,12 +2783,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class ladd : Instruction {  //0x61 -- 97
+	class op_ladd : public Instruction {  //0x61 -- 97
 	public:
 		/**
 		 * Constructor
 		 */
-		ladd();
+		op_ladd();
 
 		/**
 		 * The execution of this instruction
@@ -2294,6 +2799,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2301,12 +2811,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class fadd : Instruction {  //0x62 -- 98
+	class op_fadd : public Instruction {  //0x62 -- 98
 	public:
 		/**
 		 * Constructor
 		 */
-		fadd();
+		op_fadd();
 
 		/**
 		 * The execution of this instruction
@@ -2317,6 +2827,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2324,12 +2839,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dadd : Instruction {  //0x63 -- 99
+	class op_dadd : public Instruction {  //0x63 -- 99
 	public:
 		/**
 		 * Constructor
 		 */
-		dadd();
+		op_dadd();
 
 		/**
 		 * The execution of this instruction
@@ -2340,6 +2855,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2347,12 +2867,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class isub : Instruction {  //0x64 -- 100
+	class op_isub : public Instruction {  //0x64 -- 100
 	public:
 		/**
 		 * Constructor
 		 */
-		isub();
+		op_isub();
 
 		/**
 		 * The execution of this instruction
@@ -2363,6 +2883,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2370,12 +2895,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lsub : Instruction {  //0x65 -- 101
+	class op_lsub : public Instruction {  //0x65 -- 101
 	public:
 		/**
 		 * Constructor
 		 */
-		lsub();
+		op_lsub();
 
 		/**
 		 * The execution of this instruction
@@ -2386,6 +2911,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2393,12 +2923,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class fsub : Instruction {  //0x66 -- 102
+	class op_fsub : public Instruction {  //0x66 -- 102
 	public:
 		/**
 		 * Constructor
 		 */
-		fsub();
+		op_fsub();
 
 		/**
 		 * The execution of this instruction
@@ -2409,6 +2939,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2416,12 +2951,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dsub : Instruction {  //0x67 -- 103
+	class op_dsub : public Instruction {  //0x67 -- 103
 	public:
 		/**
 		 * Constructor
 		 */
-		dsub();
+		op_dsub();
 
 		/**
 		 * The execution of this instruction
@@ -2432,6 +2967,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2439,12 +2979,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class imul : Instruction {  //0x68 -- 104
+	class op_imul : public Instruction {  //0x68 -- 104
 	public:
 		/**
 		 * Constructor
 		 */
-		imul();
+		op_imul();
 
 		/**
 		 * The execution of this instruction
@@ -2455,6 +2995,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2462,12 +3007,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lmul : Instruction {  //0x69 -- 105
+	class op_lmul : public Instruction {  //0x69 -- 105
 	public:
 		/**
 		 * Constructor
 		 */
-		lmul();
+		op_lmul();
 
 		/**
 		 * The execution of this instruction
@@ -2478,6 +3023,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2485,12 +3035,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class fmul : Instruction {  //0x6A -- 106
+	class op_fmul : public Instruction {  //0x6A -- 106
 	public:
 		/**
 		 * Constructor
 		 */
-		fmul();
+		op_fmul();
 
 		/**
 		 * The execution of this instruction
@@ -2501,6 +3051,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2508,12 +3063,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dmul : Instruction {  //0x6B -- 107
+	class op_dmul : public Instruction {  //0x6B -- 107
 	public:
 		/**
 		 * Constructor
 		 */
-		dmul();
+		op_dmul();
 
 		/**
 		 * The execution of this instruction
@@ -2524,6 +3079,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2531,12 +3091,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class idiv : Instruction {  //0x6C -- 108
+	class op_idiv : public Instruction {  //0x6C -- 108
 	public:
 		/**
 		 * Constructor
 		 */
-		idiv();
+		op_idiv();
 
 		/**
 		 * The execution of this instruction
@@ -2547,6 +3107,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2554,12 +3119,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class ldiv : Instruction {  //0x6D -- 109
+	class op_ldiv : public Instruction {  //0x6D -- 109
 	public:
 		/**
 		 * Constructor
 		 */
-		ldiv();
+		op_ldiv();
 
 		/**
 		 * The execution of this instruction
@@ -2570,6 +3135,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2577,12 +3147,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class fdiv : Instruction {  //0x6E -- 110
+	class op_fdiv : public Instruction {  //0x6E -- 110
 	public:
 		/**
 		 * Constructor
 		 */
-		fdiv();
+		op_fdiv();
 
 		/**
 		 * The execution of this instruction
@@ -2593,6 +3163,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2600,12 +3175,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class ddiv : Instruction {  //0x6F -- 111
+	class op_ddiv : public Instruction {  //0x6F -- 111
 	public:
 		/**
 		 * Constructor
 		 */
-		ddiv();
+		op_ddiv();
 
 		/**
 		 * The execution of this instruction
@@ -2616,6 +3191,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2623,12 +3203,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class irem : Instruction {  //0x70 -- 112
+	class op_irem : public Instruction {  //0x70 -- 112
 	public:
 		/**
 		 * Constructor
 		 */
-		irem();
+		op_irem();
 
 		/**
 		 * The execution of this instruction
@@ -2639,6 +3219,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2646,12 +3231,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lrem : Instruction {  //0x71 -- 113
+	class op_lrem : public Instruction {  //0x71 -- 113
 	public:
 		/**
 		 * Constructor
 		 */
-		lrem();
+		op_lrem();
 
 		/**
 		 * The execution of this instruction
@@ -2662,6 +3247,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2669,12 +3259,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class frem : Instruction {  //0x72 -- 114
+	class op_frem : public Instruction {  //0x72 -- 114
 	public:
 		/**
 		 * Constructor
 		 */
-		frem();
+		op_frem();
 
 		/**
 		 * The execution of this instruction
@@ -2685,6 +3275,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2692,12 +3287,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class drem : Instruction {  //0x73 -- 115
+	class op_drem : public Instruction {  //0x73 -- 115
 	public:
 		/**
 		 * Constructor
 		 */
-		drem();
+		op_drem();
 
 		/**
 		 * The execution of this instruction
@@ -2708,6 +3303,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2715,12 +3315,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class ineg : Instruction {  //0x74 -- 116
+	class op_ineg : public Instruction {  //0x74 -- 116
 	public:
 		/**
 		 * Constructor
 		 */
-		ineg();
+		op_ineg();
 
 		/**
 		 * The execution of this instruction
@@ -2731,6 +3331,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2738,12 +3343,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lneg : Instruction {  //0x75 -- 117
+	class op_lneg : public Instruction {  //0x75 -- 117
 	public:
 		/**
 		 * Constructor
 		 */
-		lneg();
+		op_lneg();
 
 		/**
 		 * The execution of this instruction
@@ -2754,6 +3359,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2761,12 +3371,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class fneg : Instruction {  //0x76 -- 118
+	class op_fneg : public Instruction {  //0x76 -- 118
 	public:
 		/**
 		 * Constructor
 		 */
-		fneg();
+		op_fneg();
 
 		/**
 		 * The execution of this instruction
@@ -2777,6 +3387,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2784,12 +3399,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dneg : Instruction {  //0x77 -- 119
+	class op_dneg : public Instruction {  //0x77 -- 119
 	public:
 		/**
 		 * Constructor
 		 */
-		dneg();
+		op_dneg();
 
 		/**
 		 * The execution of this instruction
@@ -2800,6 +3415,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2807,12 +3427,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class ishl : Instruction {  //0x78 -- 120
+	class op_ishl : public Instruction {  //0x78 -- 120
 	public:
 		/**
 		 * Constructor
 		 */
-		ishl();
+		op_ishl();
 
 		/**
 		 * The execution of this instruction
@@ -2823,6 +3443,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2830,12 +3455,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lshl : Instruction {  //0x79 -- 121
+	class op_lshl : public Instruction {  //0x79 -- 121
 	public:
 		/**
 		 * Constructor
 		 */
-		lshl();
+		op_lshl();
 
 		/**
 		 * The execution of this instruction
@@ -2846,6 +3471,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2853,12 +3483,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class ishr : Instruction {  //0x7A -- 122
+	class op_ishr : public Instruction {  //0x7A -- 122
 	public:
 		/**
 		 * Constructor
 		 */
-		ishr();
+		op_ishr();
 
 		/**
 		 * The execution of this instruction
@@ -2869,6 +3499,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2876,12 +3511,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lshr : Instruction {  //0x7B -- 123
+	class op_lshr : public Instruction {  //0x7B -- 123
 	public:
 		/**
 		 * Constructor
 		 */
-		lshr();
+		op_lshr();
 
 		/**
 		 * The execution of this instruction
@@ -2892,6 +3527,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2899,12 +3539,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class iushr : Instruction {  //0x7C -- 124
+	class op_iushr : public Instruction {  //0x7C -- 124
 	public:
 		/**
 		 * Constructor
 		 */
-		iushr();
+		op_iushr();
 
 		/**
 		 * The execution of this instruction
@@ -2915,6 +3555,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2922,12 +3567,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lushr : Instruction {  //0x7D -- 125
+	class op_lushr : public Instruction {  //0x7D -- 125
 	public:
 		/**
 		 * Constructor
 		 */
-		lushr();
+		op_lushr();
 
 		/**
 		 * The execution of this instruction
@@ -2938,6 +3583,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2945,12 +3595,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class iand : Instruction {  //0x7E -- 126
+	class op_iand : public Instruction {  //0x7E -- 126
 	public:
 		/**
 		 * Constructor
 		 */
-		iand();
+		op_iand();
 
 		/**
 		 * The execution of this instruction
@@ -2961,6 +3611,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2968,12 +3623,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class land : Instruction {  // 0x7F -- 127
+	class op_land : public Instruction {  // 0x7F -- 127
 	public:
 		/**
 		 * Constructor
 		 */
-		land();
+		op_land();
 
 		/**
 		 * The execution of this instruction
@@ -2984,6 +3639,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -2991,12 +3651,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class ior : Instruction {  // 0x80 -- 128
+	class op_ior : public Instruction {  // 0x80 -- 128
 	public:
 		/**
 		 * Constructor
 		 */
-		ior();
+		op_ior();
 
 		/**
 		 * The execution of this instruction
@@ -3007,6 +3667,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3014,12 +3679,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lor : Instruction {  // 0x81 --129
+	class op_lor : public Instruction {  // 0x81 --129
 	public:
 		/**
 		 * Constructor
 		 */
-		lor();
+		op_lor();
 
 		/**
 		 * The execution of this instruction
@@ -3030,6 +3695,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3037,12 +3707,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class ixor : Instruction {  // 0x82 -- 130
+	class op_ixor : public Instruction {  // 0x82 -- 130
 	public:
 		/**
 		 * Constructor
 		 */
-		ixor();
+		op_ixor();
 
 		/**
 		 * The execution of this instruction
@@ -3053,6 +3723,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3060,12 +3735,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lxor : Instruction {  // 0x83 -- 131
+	class op_lxor : public Instruction {  // 0x83 -- 131
 	public:
 		/**
 		 * Constructor
 		 */
-		lxor();
+		op_lxor();
 
 		/**
 		 * The execution of this instruction
@@ -3076,6 +3751,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3083,12 +3763,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class iinc : Instruction {  // 0x84 -- 132
+	class op_iinc : public Instruction {  // 0x84 -- 132
 	public:
 		/**
 		 * Constructor
 		 */
-		iinc();
+		op_iinc();
 
 		/**
 		 * The execution of this instruction
@@ -3099,6 +3779,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3107,12 +3792,12 @@ namespace jvm {
 	};
 
 	//Conversations 0x85,133 -> 0x93,147
-	class i2l : Instruction {  // 0x85 -- 133
+	class op_i2l : public Instruction {  // 0x85 -- 133
 	public:
 		/**
 		 * Constructor
 		 */
-		i2l();
+		op_i2l();
 
 		/**
 		 * The execution of this instruction
@@ -3123,6 +3808,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3130,12 +3820,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class i2f : Instruction {  // 0x86 -- 134
+	class op_i2f : public Instruction {  // 0x86 -- 134
 	public:
 		/**
 		 * Constructor
 		 */
-		i2f();
+		op_i2f();
 
 		/**
 		 * The execution of this instruction
@@ -3146,6 +3836,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3153,12 +3848,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class i2d : Instruction {  // 0x87 -- 135
+	class op_i2d : public Instruction {  // 0x87 -- 135
 	public:
 		/**
 		 * Constructor
 		 */
-		i2d();
+		op_i2d();
 
 		/**
 		 * The execution of this instruction
@@ -3169,6 +3864,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3176,12 +3876,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class l2i : Instruction {  // 0x88 -- 136
+	class op_l2i : public Instruction {  // 0x88 -- 136
 	public:
 		/**
 		 * Constructor
 		 */
-		l2i();
+		op_l2i();
 
 		/**
 		 * The execution of this instruction
@@ -3192,6 +3892,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3199,12 +3904,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class l2f : Instruction {  // 0x89 -- 137
+	class op_l2f : public Instruction {  // 0x89 -- 137
 	public:
 		/**
 		 * Constructor
 		 */
-		l2f();
+		op_l2f();
 
 		/**
 		 * The execution of this instruction
@@ -3215,6 +3920,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3222,12 +3932,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class l2d : Instruction {  // 0x8A -- 138
+	class op_l2d : public Instruction {  // 0x8A -- 138
 	public:
 		/**
 		 * Constructor
 		 */
-		l2d();
+		op_l2d();
 
 		/**
 		 * The execution of this instruction
@@ -3238,6 +3948,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3245,12 +3960,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class f2i : Instruction {  // 0x8B -- 139
+	class op_f2i : public Instruction {  // 0x8B -- 139
 	public:
 		/**
 		 * Constructor
 		 */
-		f2i();
+		op_f2i();
 
 		/**
 		 * The execution of this instruction
@@ -3261,6 +3976,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3268,12 +3988,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class f2l : Instruction {  // 0x8C -- 140
+	class op_f2l : public Instruction {  // 0x8C -- 140
 	public:
 		/**
 		 * Constructor
 		 */
-		f2l();
+		op_f2l();
 
 		/**
 		 * The execution of this instruction
@@ -3284,6 +4004,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3291,12 +4016,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class f2d : Instruction {  // 0x8D -- 141
+	class op_f2d : public Instruction {  // 0x8D -- 141
 	public:
 		/**
 		 * Constructor
 		 */
-		f2d();
+		op_f2d();
 
 		/**
 		 * The execution of this instruction
@@ -3307,6 +4032,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3314,12 +4044,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class d2i : Instruction {  // 0x8E -- 142
+	class op_d2i : public Instruction {  // 0x8E -- 142
 	public:
 		/**
 		 * Constructor
 		 */
-		d2i();
+		op_d2i();
 
 		/**
 		 * The execution of this instruction
@@ -3330,6 +4060,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3337,12 +4072,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class d2l : Instruction {  // 0x8F -- 143
+	class op_d2l : public Instruction {  // 0x8F -- 143
 	public:
 		/**
 		 * Constructor
 		 */
-		d2l();
+		op_d2l();
 
 		/**
 		 * The execution of this instruction
@@ -3353,6 +4088,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3360,12 +4100,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class d2f : Instruction {  // 0x90 -- 144
+	class op_d2f : public Instruction {  // 0x90 -- 144
 	public:
 		/**
 		 * Constructor
 		 */
-		d2f();
+		op_d2f();
 
 		/**
 		 * The execution of this instruction
@@ -3376,6 +4116,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3383,12 +4128,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class i2b : Instruction {  // 0x91 -- 145
+	class op_i2b : public Instruction {  // 0x91 -- 145
 	public:
 		/**
 		 * Constructor
 		 */
-		i2b();
+		op_i2b();
 
 		/**
 		 * The execution of this instruction
@@ -3399,6 +4144,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3406,12 +4156,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class i2c : Instruction {  // 0x92 -- 146
+	class op_i2c : public Instruction {  // 0x92 -- 146
 	public:
 		/**
 		 * Constructor
 		 */
-		i2c();
+		op_i2c();
 
 		/**
 		 * The execution of this instruction
@@ -3422,6 +4172,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3429,12 +4184,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class i2s : Instruction {  // 0x93 -- 147
+	class op_i2s : public Instruction {  // 0x93 -- 147
 	public:
 		/**
 		 * Constructor
 		 */
-		i2s();
+		op_i2s();
 
 		/**
 		 * The execution of this instruction
@@ -3445,6 +4200,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3453,12 +4213,12 @@ namespace jvm {
 	};
 
 	// Comparisons 0x94,148 -> 0xA6,166
-	class lcmp : Instruction {  // 0x94 -- 148
+	class op_lcmp : public Instruction {  // 0x94 -- 148
 	public:
 		/**
 		 * Constructor
 		 */
-		lcmp();
+		op_lcmp();
 
 		/**
 		 * The execution of this instruction
@@ -3469,6 +4229,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3476,12 +4241,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class fcmpl : Instruction {  // 0x95 -- 149
+	class op_fcmpl : public Instruction {  // 0x95 -- 149
 	public:
 		/**
 		 * Constructor
 		 */
-		fcmpl();
+		op_fcmpl();
 
 		/**
 		 * The execution of this instruction
@@ -3492,6 +4257,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3499,12 +4269,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class fcmpg : Instruction {  // 0x96 -- 150
+	class op_fcmpg : public Instruction {  // 0x96 -- 150
 	public:
 		/**
 		 * Constructor
 		 */
-		fcmpg();
+		op_fcmpg();
 
 		/**
 		 * The execution of this instruction
@@ -3515,6 +4285,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3522,12 +4297,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dcmpl : Instruction {  // 0x97 -- 151
+	class op_dcmpl : public Instruction {  // 0x97 -- 151
 	public:
 		/**
 		 * Constructor
 		 */
-		dcmpl();
+		op_dcmpl();
 
 		/**
 		 * The execution of this instruction
@@ -3538,6 +4313,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3545,12 +4325,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dcmpg : Instruction {  // 0x98 -- 152
+	class op_dcmpg : public Instruction {  // 0x98 -- 152
 	public:
 		/**
 		 * Constructor
 		 */
-		dcmpg();
+		op_dcmpg();
 
 		/**
 		 * The execution of this instruction
@@ -3561,6 +4341,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3568,12 +4353,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class ifeq : Instruction {  // 0x99 -- 153
+	class op_ifeq : public Instruction {  // 0x99 -- 153
 	public:
 		/**
 		 * Constructor
 		 */
-		ifeq();
+		op_ifeq();
 
 		/**
 		 * The execution of this instruction
@@ -3584,6 +4369,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3591,12 +4381,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class ifne : Instruction {  // 0x9A -- 154
+	class op_ifne : public Instruction {  // 0x9A -- 154
 	public:
 		/**
 		 * Constructor
 		 */
-		ifne();
+		op_ifne();
 
 		/**
 		 * The execution of this instruction
@@ -3607,6 +4397,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3614,12 +4409,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class iflt : Instruction {  // 0x9B -- 155
+	class op_iflt : public Instruction {  // 0x9B -- 155
 	public:
 		/**
 		 * Constructor
 		 */
-		iflt();
+		op_iflt();
 
 		/**
 		 * The execution of this instruction
@@ -3630,6 +4425,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3637,12 +4437,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class ifge : Instruction {  // 0x9C -- 156
+	class op_ifge : public Instruction {  // 0x9C -- 156
 	public:
 		/**
 		 * Constructor
 		 */
-		ifge();
+		op_ifge();
 
 		/**
 		 * The execution of this instruction
@@ -3653,6 +4453,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3660,12 +4465,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class ifgt : Instruction {  //0x9D -- 157
+	class op_ifgt : public Instruction {  //0x9D -- 157
 	public:
 		/**
 		 * Constructor
 		 */
-		ifgt();
+		op_ifgt();
 
 		/**
 		 * The execution of this instruction
@@ -3676,6 +4481,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3683,12 +4493,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class ifle : Instruction {  //0x9E -- 158
+	class op_ifle : public Instruction {  //0x9E -- 158
 	public:
 		/**
 		 * Constructor
 		 */
-		ifle();
+		op_ifle();
 
 		/**
 		 * The execution of this instruction
@@ -3699,6 +4509,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3706,12 +4521,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class if_icmpeq : Instruction {  // 0x9F -- 159
+	class op_if_icmpeq : public Instruction {  // 0x9F -- 159
 	public:
 		/**
 		 * Constructor
 		 */
-		if_icmpeq();
+		op_if_icmpeq();
 
 		/**
 		 * The execution of this instruction
@@ -3722,6 +4537,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3729,12 +4549,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class if_icmpne : Instruction {  // 0xA0 -- 160
+	class op_if_icmpne : public Instruction {  // 0xA0 -- 160
 	public:
 		/**
 		 * Constructor
 		 */
-		if_icmpne();
+		op_if_icmpne();
 
 		/**
 		 * The execution of this instruction
@@ -3745,6 +4565,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3752,12 +4577,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class if_icmplt : Instruction {  // 0xA1 - 161
+	class op_if_icmplt : public Instruction {  // 0xA1 - 161
 	public:
 		/**
 		 * Constructor
 		 */
-		if_icmplt();
+		op_if_icmplt();
 
 		/**
 		 * The execution of this instruction
@@ -3768,6 +4593,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3775,12 +4605,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class if_icmpge : Instruction {  // 0xA2 -- 162
+	class op_if_icmpge : public Instruction {  // 0xA2 -- 162
 	public:
 		/**
 		 * Constructor
 		 */
-		if_icmpge();
+		op_if_icmpge();
 
 		/**
 		 * The execution of this instruction
@@ -3791,6 +4621,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3798,12 +4633,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class if_icmpgt : Instruction {  // 0xA3 -- 163
+	class op_if_icmpgt : public Instruction {  // 0xA3 -- 163
 	public:
 		/**
 		 * Constructor
 		 */
-		if_icmpgt();
+		op_if_icmpgt();
 
 		/**
 		 * The execution of this instruction
@@ -3814,6 +4649,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3821,12 +4661,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class if_icmple : Instruction {  // 0xA4 -- 164
+	class op_if_icmple : public Instruction {  // 0xA4 -- 164
 	public:
 		/**
 		 * Constructor
 		 */
-		if_icmple();
+		op_if_icmple();
 
 		/**
 		 * The execution of this instruction
@@ -3837,6 +4677,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3844,12 +4689,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class if_acmpeq : Instruction {  // 0xA5 -- 165
+	class op_if_acmpeq : public Instruction {  // 0xA5 -- 165
 	public:
 		/**
 		 * Constructor
 		 */
-		if_acmpeq();
+		op_if_acmpeq();
 
 		/**
 		 * The execution of this instruction
@@ -3860,6 +4705,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3867,12 +4717,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class if_acmpne : Instruction {  // 0xA6 -- 166
+	class op_if_acmpne : public Instruction {  // 0xA6 -- 166
 	public:
 		/**
 		 * Constructor
 		 */
-		if_acmpne();
+		op_if_acmpne();
 
 		/**
 		 * The execution of this instruction
@@ -3883,6 +4733,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3891,12 +4746,12 @@ namespace jvm {
 	};
 
 	//Control 0xA7,167 -> 0xB1,177
-	class goto_jvm : Instruction {  // 0xA7 -- 167
+	class op_goto_jvm : public Instruction {  // 0xA7 -- 167
 	public:
 		/**
 		 * Constructor
 		 */
-		goto_jvm();
+		op_goto_jvm();
 
 		/**
 		 * The execution of this instruction
@@ -3907,6 +4762,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3914,12 +4774,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class jsr : Instruction {  // 0xA8 -- 168
+	class op_jsr : public Instruction {  // 0xA8 -- 168
 	public:
 		/**
 		 * Constructor
 		 */
-		jsr();
+		op_jsr();
 
 		/**
 		 * The execution of this instruction
@@ -3930,6 +4790,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3937,12 +4802,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class ret : Instruction {  // 0xA9 -- 169
+	class op_ret : public Instruction {  // 0xA9 -- 169
 	public:
 		/**
 		 * Constructor
 		 */
-		ret();
+		op_ret();
 
 		/**
 		 * The execution of this instruction
@@ -3953,6 +4818,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3960,12 +4830,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class tableswitch : Instruction {  // 0xAA -- 170
+	class op_tableswitch : public Instruction {  // 0xAA -- 170
 	public:
 		/**
 		 * Constructor
 		 */
-		tableswitch();
+		op_tableswitch();
 
 		/**
 		 * The execution of this instruction
@@ -3976,6 +4846,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -3983,12 +4858,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class ireturn : Instruction {  // 0xAB -- 171
+	class op_ireturn : public Instruction {  // 0xAB -- 171
 	public:
 		/**
 		 * Constructor
 		 */
-		ireturn();
+		op_ireturn();
 
 		/**
 		 * The execution of this instruction
@@ -3999,6 +4874,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4006,12 +4886,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class lreturn : Instruction {  // 0xAC -- 172
+	class op_lreturn : public Instruction {  // 0xAC -- 172
 	public:
 		/**
 		 * Constructor
 		 */
-		lreturn();
+		op_lreturn();
 
 		/**
 		 * The execution of this instruction
@@ -4022,6 +4902,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4029,12 +4914,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class freturn : Instruction {  // 0xAD -- 173
+	class op_freturn : public Instruction {  // 0xAD -- 173
 	public:
 		/**
 		 * Constructor
 		 */
-		freturn();
+		op_freturn();
 
 		/**
 		 * The execution of this instruction
@@ -4045,6 +4930,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4052,12 +4942,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class dreturn : Instruction {  // 0xAE -- 174
+	class op_dreturn : public Instruction {  // 0xAE -- 174
 	public:
 		/**
 		 * Constructor
 		 */
-		dreturn();
+		op_dreturn();
 
 		/**
 		 * The execution of this instruction
@@ -4068,6 +4958,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4075,12 +4970,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class areturn : Instruction {  // 0xAF -- 175
+	class op_areturn : public Instruction {  // 0xAF -- 175
 	public:
 		/**
 		 * Constructor
 		 */
-		areturn();
+		op_areturn();
 
 		/**
 		 * The execution of this instruction
@@ -4091,6 +4986,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4098,12 +4998,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class return_jvm : Instruction {  // 0xB0 -- 176
+	class op_return_jvm : public Instruction {  // 0xB0 -- 176
 	public:
 		/**
 		 * Constructor
 		 */
-		return_jvm();
+		op_return_jvm();
 
 		/**
 		 * The execution of this instruction
@@ -4114,6 +5014,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4122,12 +5027,12 @@ namespace jvm {
 	};
 
 	//References 0xB2,178 -> 0xC3,195
-	class getstatic : Instruction {  // 0xB2 -- 178
+	class op_getstatic : public Instruction {  // 0xB2 -- 178
 	public:
 		/**
 		 * Constructor
 		 */
-		getstatic();
+		op_getstatic();
 
 		/**
 		 * The execution of this instruction
@@ -4138,6 +5043,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4146,12 +5056,12 @@ namespace jvm {
 	};
 
 
-	class putstatic : Instruction {  // 0xB3 -- 179
+	class op_putstatic : public Instruction {  // 0xB3 -- 179
 	public:
 		/**
 		 * Constructor
 		 */
-		putstatic();
+		op_putstatic();
 
 		/**
 		 * The execution of this instruction
@@ -4162,6 +5072,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4169,12 +5084,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class getfield : Instruction {  // 0xB4 -- 180
+	class op_getfield : public Instruction {  // 0xB4 -- 180
 	public:
 		/**
 		 * Constructor
 		 */
-		getfield();
+		op_getfield();
 
 		/**
 		 * The execution of this instruction
@@ -4185,6 +5100,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4192,12 +5112,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class putfield : Instruction {  // 0xB5 -- 181
+	class op_putfield : public Instruction {  // 0xB5 -- 181
 	public:
 		/**
 		 * Constructor
 		 */
-		putfield();
+		op_putfield();
 
 		/**
 		 * The execution of this instruction
@@ -4208,6 +5128,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4215,12 +5140,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class invokevirtual : Instruction {  // 0xB6 -- 182
+	class op_invokevirtual : public Instruction {  // 0xB6 -- 182
 	public:
 		/**
 		 * Constructor
 		 */
-		invokevirtual();
+		op_invokevirtual();
 
 		/**
 		 * The execution of this instruction
@@ -4231,6 +5156,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4238,12 +5168,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class invokespecial : Instruction {  // 0xB7 -- 183
+	class op_invokespecial : public Instruction {  // 0xB7 -- 183
 	public:
 		/**
 		 * Constructor
 		 */
-		invokespecial();
+		op_invokespecial();
 
 		/**
 		 * The execution of this instruction
@@ -4254,6 +5184,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4261,12 +5196,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class invokestatic : Instruction {  // 0xB8 -- 184
+	class op_invokestatic : public Instruction {  // 0xB8 -- 184
 	public:
 		/**
 		 * Constructor
 		 */
-		invokestatic();
+		op_invokestatic();
 
 		/**
 		 * The execution of this instruction
@@ -4277,6 +5212,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4284,12 +5224,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class invokeinterface : Instruction {  // 0xB9 -- 185
+	class op_invokeinterface : public Instruction {  // 0xB9 -- 185
 	public:
 		/**
 		 * Constructor
 		 */
-		invokeinterface();
+		op_invokeinterface();
 
 		/**
 		 * The execution of this instruction
@@ -4300,6 +5240,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4307,12 +5252,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class invokedynamic : Instruction {  // 0xBA - - 186
+	class op_invokedynamic : public Instruction {  // 0xBA - - 186
 	public:
 		/**
 		 * Constructor
 		 */
-		invokedynamic();
+		op_invokedynamic();
 
 		/**
 		 * The execution of this instruction
@@ -4323,6 +5268,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4330,12 +5280,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class new_jvm : Instruction {  // 0xBB -- 187
+	class op_new_jvm : public Instruction {  // 0xBB -- 187
 	public:
 		/**
 		 * Constructor
 		 */
-		new_jvm();
+		op_new_jvm();
 
 		/**
 		 * The execution of this instruction
@@ -4346,6 +5296,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4353,12 +5308,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class newarray : Instruction {  // 0xBC -- 188
+	class op_newarray : public Instruction {  // 0xBC -- 188
 	public:
 		/**
 		 * Constructor
 		 */
-		newarray();
+		op_newarray();
 
 		/**
 		 * The execution of this instruction
@@ -4369,6 +5324,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4376,12 +5336,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class anewarray : Instruction {  // 0xBD -- 189
+	class op_anewarray : public Instruction {  // 0xBD -- 189
 	public:
 		/**
 		 * Constructor
 		 */
-		anewarray();
+		op_anewarray();
 
 		/**
 		 * The execution of this instruction
@@ -4392,6 +5352,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4399,12 +5364,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class arraylength : Instruction { // 0xBE -- 190
+	class op_arraylength : public Instruction { // 0xBE -- 190
 	public:
 		/**
 		 * Constructor
 		 */
-		arraylength();
+		op_arraylength();
 
 		/**
 		 * The execution of this instruction
@@ -4415,6 +5380,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4422,12 +5392,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class athrow : Instruction {        // 0xBF -- 191
+	class op_athrow : public Instruction {        // 0xBF -- 191
 	public:
 		/**
 		 * Constructor
 		 */
-		athrow();
+		op_athrow();
 
 		/**
 		 * The execution of this instruction
@@ -4438,6 +5408,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4445,12 +5420,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class checkcast : Instruction {     // 0xC0 -- 192
+	class op_checkcast : public Instruction {     // 0xC0 -- 192
 	public:
 		/**
 		 * Constructor
 		 */
-		checkcast();
+		op_checkcast();
 
 		/**
 		 * The execution of this instruction
@@ -4461,6 +5436,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4468,12 +5448,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class instanceof : Instruction {     //0xC1 -- 193
+	class op_instanceof : public Instruction {     //0xC1 -- 193
 	public:
 		/**
 		 * Constructor
 		 */
-		instanceof();
+		op_instanceof();
 
 		/**
 		 * The execution of this instruction
@@ -4484,6 +5464,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4491,12 +5476,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class monitorenter : Instruction {   // 0xC2 -- 194
+	class op_monitorenter : public Instruction {   // 0xC2 -- 194
 	public:
 		/**
 		 * Constructor
 		 */
-		monitorenter();
+		op_monitorenter();
 
 		/**
 		 * The execution of this instruction
@@ -4507,6 +5492,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4514,12 +5504,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class monitorexit : Instruction {   // 0xC3 -- 195
+	class op_monitorexit : public Instruction {   // 0xC3 -- 195
 	public:
 		/**
 		 * Constructor
 		 */
-		monitorexit();
+		op_monitorexit();
 
 		/**
 		 * The execution of this instruction
@@ -4530,6 +5520,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4538,12 +5533,12 @@ namespace jvm {
 	};
 
 	//Extended 0xC4,196 -> 0xC9,201
-	class wide : Instruction {  // 0xC4 -- 196
+	class op_wide : public Instruction {  // 0xC4 -- 196
 	public:
 		/**
 		 * Constructor
 		 */
-		wide();
+		op_wide();
 
 		/**
 		 * The execution of this instruction
@@ -4554,6 +5549,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4561,12 +5561,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class multianewarray : Instruction {  // 0xC5 -- 197
+	class op_multianewarray : public Instruction {  // 0xC5 -- 197
 	public:
 		/**
 		 * Constructor
 		 */
-		multianewarray();
+		op_multianewarray();
 
 		/**
 		 * The execution of this instruction
@@ -4577,6 +5577,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4584,12 +5589,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class ifnull : Instruction {  // 0xC6 -- 198
+	class op_ifnull : public Instruction {  // 0xC6 -- 198
 	public:
 		/**
 		 * Constructor
 		 */
-		ifnull();
+		op_ifnull();
 
 		/**
 		 * The execution of this instruction
@@ -4600,6 +5605,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4607,12 +5617,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class ifnonnull : Instruction {  // 0xC7 -- 199
+	class op_ifnonnull : public Instruction {  // 0xC7 -- 199
 	public:
 		/**
 		 * Constructor
 		 */
-		ifnonnull();
+		op_ifnonnull();
 
 		/**
 		 * The execution of this instruction
@@ -4623,6 +5633,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4630,12 +5645,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class goto_w : Instruction {  // 0xC8 -- 200
+	class op_goto_w : public Instruction {  // 0xC8 -- 200
 	public:
 		/**
 		 * Constructor
 		 */
-		goto_w();
+		op_goto_w();
 
 		/**
 		 * The execution of this instruction
@@ -4646,6 +5661,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4653,12 +5673,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class jsr_w : Instruction {  // 0xC9 -- 201
+	class op_jsr_w : public Instruction {  // 0xC9 -- 201
 	public:
 		/**
 		 * Constructor
 		 */
-		jsr_w();
+		op_jsr_w();
 
 		/**
 		 * The execution of this instruction
@@ -4669,6 +5689,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4677,12 +5702,12 @@ namespace jvm {
 	};
 
 	//Reserved 0xca,202 -> 0xff,255
-	class breakpoint : Instruction {  // 0xca -- 202
+	class op_breakpoint : public Instruction {  // 0xca -- 202
 	public:
 		/**
 		 * Constructor
 		 */
-		breakpoint();
+		op_breakpoint();
 
 		/**
 		 * The execution of this instruction
@@ -4693,6 +5718,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4700,12 +5730,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class impdep1 : Instruction {  // 0xFE -- 254
+	class op_impdep1 : public Instruction {  // 0xFE -- 254
 	public:
 		/**
 		 * Constructor
 		 */
-		impdep1();
+		op_impdep1();
 
 		/**
 		 * The execution of this instruction
@@ -4716,6 +5746,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
@@ -4723,12 +5758,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class impdep2 : Instruction {  // 0xFF -- 255
+	class op_impdep2 : public Instruction {  // 0xFF -- 255
 	public:
 		/**
 		 * Constructor
 		 */
-		impdep2();
+		op_impdep2();
 
 		/**
 		 * The execution of this instruction
@@ -4739,6 +5774,11 @@ namespace jvm {
 		 * Print in the stream the name
 		 */
 		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
 
 		/**
 		 * Get the name of the class
