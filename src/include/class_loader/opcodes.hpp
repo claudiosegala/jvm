@@ -5,7 +5,7 @@
 
 namespace jvm
 {
-    typedef void op_(*instruction)(Operands&, Variables&);
+    typedef void (*instruction)(Operands&, Variables&);
 
     instruction opcodes[256] = {
 		    op_nop,
