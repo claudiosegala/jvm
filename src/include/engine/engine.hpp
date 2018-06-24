@@ -35,7 +35,7 @@ namespace jvm {
 		uint64_t PC;
 
 		//> Frame Stack
-		std::vector<Frame> frames;
+		std::stack<Frame> frames;
 
 		//> Method Area
 		// TODO: understand
