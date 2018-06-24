@@ -146,12 +146,13 @@ namespace jvm {
 	}
 
 	void CP_Fieldref::printToStream(std::ostream &os, ConstantPool &cp) {
-
 		auto _class = cp[class_index];
+		auto _name_and_type = cp[name_and_type_index];
 		os << "Field Reference" << std::endl;
 		os << "\t\tClass index: " << class_index << std::endl << "\t";
 		_class->printToStream(os, cp);
 		os << "\t\tName and Type index: " << name_and_type_index << std::endl << "\t";
+		_name_and_type->printToStream(os, cp);
 	}
 
 	std::string CP_Fieldref::toString(ConstantPool &cp) const {
@@ -387,8 +388,8 @@ namespace jvm {
 
 	void CP_Class::printToStream(std::ostream &os, ConstantPool &cp) {
 		os << "Class" << std::endl;
-		os << "\t\t Name index:" << name_index;
-		os << "\t\t Name: "  << toString(cp) << std::endl;
+		os << "\t\tName index:" << name_index;
+		os << "\t\tName: "  << toString(cp) << std::endl;
 	}
 
 	std::string CP_Class::toString(ConstantPool &cp) const {
@@ -404,8 +405,8 @@ namespace jvm {
 		CP_Entry* name1 = cp[descriptor_index];
 		auto& characters = name1->as<CP_Utf8>();
 		os << "Method Type" << std::endl;
-		os << "\t\t Descriptor_index: " << descriptor_index;
-		os << "\t\t Descriptor_name: " << characters << std::endl;
+		os << "\t\tDescriptor_index: " << descriptor_index;
+		os << "\t\tDescriptor_name: " << characters << std::endl;
 
 	}
 
