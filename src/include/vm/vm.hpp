@@ -25,7 +25,7 @@ namespace jvm {
 		 * Engine Execution.
 		 * @see execute()
 		 */
-		void run (std::vector<ClassLoader>&);
+		void run (ClassLoader&);
 
 	private:
 		//> PC Register

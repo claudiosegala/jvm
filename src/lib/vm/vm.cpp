@@ -9,7 +9,7 @@ namespace jvm {
 		PC = 0;
 	}
 
-	void VM::run (std::vector<ClassLoader> &cl) {
+	void VM::run (ClassLoader& cl) {
 		load();
 		link();
 		init();
