@@ -184,7 +184,7 @@ namespace jvm {
 			Instruction::instantiate<op_dreturn>,           // 174
 			Instruction::instantiate<op_areturn>,           // 175
 			Instruction::instantiate<op_return_jvm>,        // 176
-			nullptr,                                     // 177
+			nullptr,                                        // 177
 			Instruction::instantiate<op_getstatic>,         // 178
 			Instruction::instantiate<op_putstatic>,         // 179
 			Instruction::instantiate<op_getfield>,          // 180
@@ -210,57 +210,57 @@ namespace jvm {
 			Instruction::instantiate<op_goto_w>,            // 200
 			Instruction::instantiate<op_jsr_w>,             // 201
 			Instruction::instantiate<op_breakpoint>,        // 202
-			nullptr,                                     // 203
-			nullptr,                                     // 204
-			nullptr,                                     // 205
-			nullptr,                                     // 206
-			nullptr,                                     // 207
-			nullptr,                                     // 208
-			nullptr,                                     // 209
-			nullptr,                                     // 210
-			nullptr,                                     // 211
-			nullptr,                                     // 212
-			nullptr,                                     // 213
-			nullptr,                                     // 214
-			nullptr,                                     // 215
-			nullptr,                                     // 216
-			nullptr,                                     // 217
-			nullptr,                                     // 218
-			nullptr,                                     // 219
-			nullptr,                                     // 220
-			nullptr,                                     // 221
-			nullptr,                                     // 222
-			nullptr,                                     // 223
-			nullptr,                                     // 224
-			nullptr,                                     // 225
-			nullptr,                                     // 226
-			nullptr,                                     // 227
-			nullptr,                                     // 228
-			nullptr,                                     // 229
-			nullptr,                                     // 230
-			nullptr,                                     // 231
-			nullptr,                                     // 232
-			nullptr,                                     // 233
-			nullptr,                                     // 234
-			nullptr,                                     // 235
-			nullptr,                                     // 236
-			nullptr,                                     // 237
-			nullptr,                                     // 238
-			nullptr,                                     // 239
-			nullptr,                                     // 240
-			nullptr,                                     // 241
-			nullptr,                                     // 242
-			nullptr,                                     // 243
-			nullptr,                                     // 244
-			nullptr,                                     // 245
-			nullptr,                                     // 246
-			nullptr,                                     // 247
-			nullptr,                                     // 248
-			nullptr,                                     // 249
-			nullptr,                                     // 250
-			nullptr,                                     // 251
-			nullptr,                                     // 252
-			nullptr,                                     // 253
+			nullptr,                                        // 203
+			nullptr,                                        // 204
+			nullptr,                                        // 205
+			nullptr,                                        // 206
+			nullptr,                                        // 207
+			nullptr,                                        // 208
+			nullptr,                                        // 209
+			nullptr,                                        // 210
+			nullptr,                                        // 211
+			nullptr,                                        // 212
+			nullptr,                                        // 213
+			nullptr,                                        // 214
+			nullptr,                                        // 215
+			nullptr,                                        // 216
+			nullptr,                                        // 217
+			nullptr,                                        // 218
+			nullptr,                                        // 219
+			nullptr,                                        // 220
+			nullptr,                                        // 221
+			nullptr,                                        // 222
+			nullptr,                                        // 223
+			nullptr,                                        // 224
+			nullptr,                                        // 225
+			nullptr,                                        // 226
+			nullptr,                                        // 227
+			nullptr,                                        // 228
+			nullptr,                                        // 229
+			nullptr,                                        // 230
+			nullptr,                                        // 231
+			nullptr,                                        // 232
+			nullptr,                                        // 233
+			nullptr,                                        // 234
+			nullptr,                                        // 235
+			nullptr,                                        // 236
+			nullptr,                                        // 237
+			nullptr,                                        // 238
+			nullptr,                                        // 239
+			nullptr,                                        // 240
+			nullptr,                                        // 241
+			nullptr,                                        // 242
+			nullptr,                                        // 243
+			nullptr,                                        // 244
+			nullptr,                                        // 245
+			nullptr,                                        // 246
+			nullptr,                                        // 247
+			nullptr,                                        // 248
+			nullptr,                                        // 249
+			nullptr,                                        // 250
+			nullptr,                                        // 251
+			nullptr,                                        // 252
+			nullptr,                                        // 253
 			Instruction::instantiate<op_impdep1>,           // 254
 			Instruction::instantiate<op_impdep2>            // 255
 	};
