@@ -276,11 +276,11 @@ namespace jvm {
 	}
 
 	std::shared_ptr<Instruction> Code::getInstr (const u1& opcode) {
-
 		auto instrInstantiator = instruction_set[opcode];
 
-		if (instrInstantiator) {
-			throw "This op-code does not exist!";
+		if (not instrInstantiator) {
+			std::string op = std::to_string(opcode);
+			throw "This op-code " + op + " does not exist!";
 		}
 
 		return instrInstantiator();
@@ -303,10 +303,6 @@ namespace jvm {
 
 	// nop
 
-	op_nop::op_nop() {
-
-	}
-
 	void op_nop::execute() {
 
 	}
@@ -325,10 +321,6 @@ namespace jvm {
 
 
 	// aconst_null
-
-	op_aconst_null::op_aconst_null() {
-
-	}
 
 	void op_aconst_null::execute() {
 
@@ -349,10 +341,6 @@ namespace jvm {
 
 	// iconst_m1
 
-	op_iconst_m1::op_iconst_m1() {
-
-	}
-
 	void op_iconst_m1::execute() {
 
 	}
@@ -371,10 +359,6 @@ namespace jvm {
 
 
 	// iconst_0
-
-	op_iconst_0::op_iconst_0() {
-
-	}
 
 	void op_iconst_0::execute() {
 
@@ -395,10 +379,6 @@ namespace jvm {
 
 	// iconst_1
 
-	op_iconst_1::op_iconst_1() {
-
-	}
-
 	void op_iconst_1::execute() {
 
 	}
@@ -417,10 +397,6 @@ namespace jvm {
 
 
 	// iconst_2
-
-	op_iconst_2::op_iconst_2() {
-
-	}
 
 	void op_iconst_2::execute() {
 
@@ -441,10 +417,6 @@ namespace jvm {
 
 	// iconst_3
 
-	op_iconst_3::op_iconst_3() {
-
-	}
-
 	void op_iconst_3::execute() {
 
 	}
@@ -463,10 +435,6 @@ namespace jvm {
 
 
 	// iconst_4
-
-	op_iconst_4::op_iconst_4() {
-
-	}
 
 	void op_iconst_4::execute() {
 
@@ -487,10 +455,6 @@ namespace jvm {
 
 	// iconst_5
 
-	op_iconst_5::op_iconst_5() {
-
-	}
-
 	void op_iconst_5::execute() {
 
 	}
@@ -509,10 +473,6 @@ namespace jvm {
 
 
 	// lconst_0
-
-	op_lconst_0::op_lconst_0() {
-
-	}
 
 	void op_lconst_0::execute() {
 
@@ -533,10 +493,6 @@ namespace jvm {
 
 	// lconst_1
 
-	op_lconst_1::op_lconst_1() {
-
-	}
-
 	void op_lconst_1::execute() {
 
 	}
@@ -555,10 +511,6 @@ namespace jvm {
 
 
 	// fconst_0
-
-	op_fconst_0::op_fconst_0() {
-
-	}
 
 	void op_fconst_0::execute() {
 
@@ -579,10 +531,6 @@ namespace jvm {
 
 	// fconst_1
 
-	op_fconst_1::op_fconst_1() {
-
-	}
-
 	void op_fconst_1::execute() {
 
 	}
@@ -601,10 +549,6 @@ namespace jvm {
 
 
 	// fconst_2
-
-	op_fconst_2::op_fconst_2() {
-
-	}
 
 	void op_fconst_2::execute() {
 
@@ -625,10 +569,6 @@ namespace jvm {
 
 	// dconst_0
 
-	op_dconst_0::op_dconst_0() {
-
-	}
-
 	void op_dconst_0::execute() {
 
 	}
@@ -647,10 +587,6 @@ namespace jvm {
 
 
 	// dconst_1
-
-	op_dconst_1::op_dconst_1() {
-
-	}
 
 	void op_dconst_1::execute() {
 
@@ -671,10 +607,6 @@ namespace jvm {
 
 	// bipush
 
-	op_bipush::op_bipush() {
-
-	}
-
 	void op_bipush::execute() {
 
 	}
@@ -693,10 +625,6 @@ namespace jvm {
 
 
 	// sipush
-
-	op_sipush::op_sipush() {
-
-	}
 
 	void op_sipush::execute() {
 
@@ -717,10 +645,6 @@ namespace jvm {
 
 	// ldc
 
-	op_ldc::op_ldc() {
-
-	}
-
 	void op_ldc::execute() {
 
 	}
@@ -739,10 +663,6 @@ namespace jvm {
 
 
 	// ldc_w
-
-	op_ldc_w::op_ldc_w() {
-
-	}
 
 	void op_ldc_w::execute() {
 
@@ -763,10 +683,6 @@ namespace jvm {
 
 	// ldc2_w
 
-	op_ldc2_w::op_ldc2_w() {
-
-	}
-
 	void op_ldc2_w::execute() {
 
 	}
@@ -785,10 +701,6 @@ namespace jvm {
 
 
 	// iload
-
-	op_iload::op_iload() {
-
-	}
 
 	void op_iload::execute() {
 
@@ -809,10 +721,6 @@ namespace jvm {
 
 	// lload
 
-	op_lload::op_lload() {
-
-	}
-
 	void op_lload::execute() {
 
 	}
@@ -831,10 +739,6 @@ namespace jvm {
 
 
 	// fload
-
-	op_fload::op_fload() {
-
-	}
 
 	void op_fload::execute() {
 
@@ -855,10 +759,6 @@ namespace jvm {
 
 	// dload
 
-	op_dload::op_dload() {
-
-	}
-
 	void op_dload::execute() {
 
 	}
@@ -877,10 +777,6 @@ namespace jvm {
 
 
 	// aload
-
-	op_aload::op_aload() {
-
-	}
 
 	void op_aload::execute() {
 
@@ -901,10 +797,6 @@ namespace jvm {
 
 	// iload_0
 
-	op_iload_0::op_iload_0() {
-
-	}
-
 	void op_iload_0::execute() {
 
 	}
@@ -923,10 +815,6 @@ namespace jvm {
 
 
 	// iload_1
-
-	op_iload_1::op_iload_1() {
-
-	}
 
 	void op_iload_1::execute() {
 
@@ -947,10 +835,6 @@ namespace jvm {
 
 	// iload_2
 
-	op_iload_2::op_iload_2() {
-
-	}
-
 	void op_iload_2::execute() {
 
 	}
@@ -969,10 +853,6 @@ namespace jvm {
 
 
 	// iload_3
-
-	op_iload_3::op_iload_3() {
-
-	}
 
 	void op_iload_3::execute() {
 
@@ -993,10 +873,6 @@ namespace jvm {
 
 	// lload_0
 
-	op_lload_0::op_lload_0() {
-
-	}
-
 	void op_lload_0::execute() {
 
 	}
@@ -1015,10 +891,6 @@ namespace jvm {
 
 
 	// lload_1
-
-	op_lload_1::op_lload_1() {
-
-	}
 
 	void op_lload_1::execute() {
 
@@ -1039,10 +911,6 @@ namespace jvm {
 
 	// lload_2
 
-	op_lload_2::op_lload_2() {
-
-	}
-
 	void op_lload_2::execute() {
 
 	}
@@ -1061,10 +929,6 @@ namespace jvm {
 
 
 	// lload_3
-
-	op_lload_3::op_lload_3() {
-
-	}
 
 	void op_lload_3::execute() {
 
@@ -1085,10 +949,6 @@ namespace jvm {
 
 	// fload_0
 
-	op_fload_0::op_fload_0() {
-
-	}
-
 	void op_fload_0::execute() {
 
 	}
@@ -1107,10 +967,6 @@ namespace jvm {
 
 
 	// fload_1
-
-	op_fload_1::op_fload_1() {
-
-	}
 
 	void op_fload_1::execute() {
 
@@ -1131,10 +987,6 @@ namespace jvm {
 
 	// fload_2
 
-	op_fload_2::op_fload_2() {
-
-	}
-
 	void op_fload_2::execute() {
 
 	}
@@ -1153,10 +1005,6 @@ namespace jvm {
 
 
 	// fload_3
-
-	op_fload_3::op_fload_3() {
-
-	}
 
 	void op_fload_3::execute() {
 
@@ -1177,10 +1025,6 @@ namespace jvm {
 
 	// dload_0
 
-	op_dload_0::op_dload_0() {
-
-	}
-
 	void op_dload_0::execute() {
 
 	}
@@ -1199,10 +1043,6 @@ namespace jvm {
 
 
 	// dload_1
-
-	op_dload_1::op_dload_1() {
-
-	}
 
 	void op_dload_1::execute() {
 
@@ -1223,10 +1063,6 @@ namespace jvm {
 
 	// dload_2
 
-	op_dload_2::op_dload_2() {
-
-	}
-
 	void op_dload_2::execute() {
 
 	}
@@ -1245,10 +1081,6 @@ namespace jvm {
 
 
 	// dload_3
-
-	op_dload_3::op_dload_3() {
-
-	}
 
 	void op_dload_3::execute() {
 
@@ -1269,10 +1101,6 @@ namespace jvm {
 
 	// aload_0
 
-	op_aload_0::op_aload_0() {
-
-	}
-
 	void op_aload_0::execute() {
 
 	}
@@ -1291,10 +1119,6 @@ namespace jvm {
 
 
 	// aload_1
-
-	op_aload_1::op_aload_1() {
-
-	}
 
 	void op_aload_1::execute() {
 
@@ -1315,10 +1139,6 @@ namespace jvm {
 
 	// aload_2
 
-	op_aload_2::op_aload_2() {
-
-	}
-
 	void op_aload_2::execute() {
 
 	}
@@ -1337,10 +1157,6 @@ namespace jvm {
 
 
 	// aload_3
-
-	op_aload_3::op_aload_3() {
-
-	}
 
 	void op_aload_3::execute() {
 
@@ -1361,10 +1177,6 @@ namespace jvm {
 
 	// iaload
 
-	op_iaload::op_iaload() {
-
-	}
-
 	void op_iaload::execute() {
 
 	}
@@ -1383,10 +1195,6 @@ namespace jvm {
 
 
 	// laload
-
-	op_laload::op_laload() {
-
-	}
 
 	void op_laload::execute() {
 
@@ -1407,10 +1215,6 @@ namespace jvm {
 
 	// faload
 
-	op_faload::op_faload() {
-
-	}
-
 	void op_faload::execute() {
 
 	}
@@ -1429,10 +1233,6 @@ namespace jvm {
 
 
 	// daload
-
-	op_daload::op_daload() {
-
-	}
 
 	void op_daload::execute() {
 
@@ -1453,10 +1253,6 @@ namespace jvm {
 
 	// aaload
 
-	op_aaload::op_aaload() {
-
-	}
-
 	void op_aaload::execute() {
 
 	}
@@ -1475,10 +1271,6 @@ namespace jvm {
 
 
 	// baload
-
-	op_baload::op_baload() {
-
-	}
 
 	void op_baload::execute() {
 
@@ -1499,10 +1291,6 @@ namespace jvm {
 
 	// caload
 
-	op_caload::op_caload() {
-
-	}
-
 	void op_caload::execute() {
 
 	}
@@ -1521,10 +1309,6 @@ namespace jvm {
 
 
 	// saload
-
-	op_saload::op_saload() {
-
-	}
 
 	void op_saload::execute() {
 
@@ -1545,10 +1329,6 @@ namespace jvm {
 
 	// istore
 
-	op_istore::op_istore() {
-
-	}
-
 	void op_istore::execute() {
 
 	}
@@ -1567,10 +1347,6 @@ namespace jvm {
 
 
 	// lstore
-
-	op_lstore::op_lstore() {
-
-	}
 
 	void op_lstore::execute() {
 
@@ -1591,10 +1367,6 @@ namespace jvm {
 
 	// fstore
 
-	op_fstore::op_fstore() {
-
-	}
-
 	void op_fstore::execute() {
 
 	}
@@ -1613,10 +1385,6 @@ namespace jvm {
 
 
 	// dstore
-
-	op_dstore::op_dstore() {
-
-	}
 
 	void op_dstore::execute() {
 
@@ -1637,10 +1405,6 @@ namespace jvm {
 
 	// astore
 
-	op_astore::op_astore() {
-
-	}
-
 	void op_astore::execute() {
 
 	}
@@ -1659,10 +1423,6 @@ namespace jvm {
 
 
 	// istore_0
-
-	op_istore_0::op_istore_0() {
-
-	}
 
 	void op_istore_0::execute() {
 
@@ -1683,10 +1443,6 @@ namespace jvm {
 
 	// istore_1
 
-	op_istore_1::op_istore_1() {
-
-	}
-
 	void op_istore_1::execute() {
 
 	}
@@ -1705,10 +1461,6 @@ namespace jvm {
 
 
 	// istore_2
-
-	op_istore_2::op_istore_2() {
-
-	}
 
 	void op_istore_2::execute() {
 
@@ -1729,10 +1481,6 @@ namespace jvm {
 
 	// istore_3
 
-	op_istore_3::op_istore_3() {
-
-	}
-
 	void op_istore_3::execute() {
 
 	}
@@ -1751,10 +1499,6 @@ namespace jvm {
 
 
 	// lstore_0
-
-	op_lstore_0::op_lstore_0() {
-
-	}
 
 	void op_lstore_0::execute() {
 
@@ -1775,10 +1519,6 @@ namespace jvm {
 
 	// lstore_1
 
-	op_lstore_1::op_lstore_1() {
-
-	}
-
 	void op_lstore_1::execute() {
 
 	}
@@ -1797,10 +1537,6 @@ namespace jvm {
 
 
 	// lstore_2
-
-	op_lstore_2::op_lstore_2() {
-
-	}
 
 	void op_lstore_2::execute() {
 
@@ -1821,10 +1557,6 @@ namespace jvm {
 
 	// lstore_3
 
-	op_lstore_3::op_lstore_3() {
-
-	}
-
 	void op_lstore_3::execute() {
 
 	}
@@ -1843,10 +1575,6 @@ namespace jvm {
 
 
 	// fstore_0
-
-	op_fstore_0::op_fstore_0() {
-
-	}
 
 	void op_fstore_0::execute() {
 
@@ -1867,10 +1595,6 @@ namespace jvm {
 
 	// fstore_1
 
-	op_fstore_1::op_fstore_1() {
-
-	}
-
 	void op_fstore_1::execute() {
 
 	}
@@ -1889,10 +1613,6 @@ namespace jvm {
 
 
 	// fstore_2
-
-	op_fstore_2::op_fstore_2() {
-
-	}
 
 	void op_fstore_2::execute() {
 
@@ -1913,10 +1633,6 @@ namespace jvm {
 
 	// fstore_3
 
-	op_fstore_3::op_fstore_3() {
-
-	}
-
 	void op_fstore_3::execute() {
 
 	}
@@ -1935,10 +1651,6 @@ namespace jvm {
 
 
 	// dstore_0
-
-	op_dstore_0::op_dstore_0() {
-
-	}
 
 	void op_dstore_0::execute() {
 
@@ -1959,10 +1671,6 @@ namespace jvm {
 
 	// dstore_1
 
-	op_dstore_1::op_dstore_1() {
-
-	}
-
 	void op_dstore_1::execute() {
 
 	}
@@ -1981,10 +1689,6 @@ namespace jvm {
 
 
 	// dstore_2
-
-	op_dstore_2::op_dstore_2() {
-
-	}
 
 	void op_dstore_2::execute() {
 
@@ -2005,10 +1709,6 @@ namespace jvm {
 
 	// dstore_3
 
-	op_dstore_3::op_dstore_3() {
-
-	}
-
 	void op_dstore_3::execute() {
 
 	}
@@ -2027,10 +1727,6 @@ namespace jvm {
 
 
 	// astore_0
-
-	op_astore_0::op_astore_0() {
-
-	}
 
 	void op_astore_0::execute() {
 
@@ -2051,10 +1747,6 @@ namespace jvm {
 
 	// astore_1
 
-	op_astore_1::op_astore_1() {
-
-	}
-
 	void op_astore_1::execute() {
 
 	}
@@ -2073,10 +1765,6 @@ namespace jvm {
 
 
 	// astore_2
-
-	op_astore_2::op_astore_2() {
-
-	}
 
 	void op_astore_2::execute() {
 
@@ -2097,10 +1785,6 @@ namespace jvm {
 
 	// astore_3
 
-	op_astore_3::op_astore_3() {
-
-	}
-
 	void op_astore_3::execute() {
 
 	}
@@ -2119,10 +1803,6 @@ namespace jvm {
 
 
 	// iastore
-
-	op_iastore::op_iastore() {
-
-	}
 
 	void op_iastore::execute() {
 
@@ -2143,10 +1823,6 @@ namespace jvm {
 
 	// lastore
 
-	op_lastore::op_lastore() {
-
-	}
-
 	void op_lastore::execute() {
 
 	}
@@ -2165,10 +1841,6 @@ namespace jvm {
 
 
 	// fastore
-
-	op_fastore::op_fastore() {
-
-	}
 
 	void op_fastore::execute() {
 
@@ -2189,10 +1861,6 @@ namespace jvm {
 
 	// dastore
 
-	op_dastore::op_dastore() {
-
-	}
-
 	void op_dastore::execute() {
 
 	}
@@ -2211,10 +1879,6 @@ namespace jvm {
 
 
 	// aastore
-
-	op_aastore::op_aastore() {
-
-	}
 
 	void op_aastore::execute() {
 
@@ -2235,10 +1899,6 @@ namespace jvm {
 
 	// bastore
 
-	op_bastore::op_bastore() {
-
-	}
-
 	void op_bastore::execute() {
 
 	}
@@ -2257,10 +1917,6 @@ namespace jvm {
 
 
 	// castore
-
-	op_castore::op_castore() {
-
-	}
 
 	void op_castore::execute() {
 
@@ -2281,10 +1937,6 @@ namespace jvm {
 
 	// sastore
 
-	op_sastore::op_sastore() {
-
-	}
-
 	void op_sastore::execute() {
 
 	}
@@ -2303,10 +1955,6 @@ namespace jvm {
 
 
 	// pop
-
-	op_pop::op_pop() {
-
-	}
 
 	void op_pop::execute() {
 
@@ -2327,10 +1975,6 @@ namespace jvm {
 
 	// pop2
 
-	op_pop2::op_pop2() {
-
-	}
-
 	void op_pop2::execute() {
 
 	}
@@ -2349,10 +1993,6 @@ namespace jvm {
 
 
 	// dup
-
-	op_dup::op_dup() {
-
-	}
 
 	void op_dup::execute() {
 
@@ -2373,10 +2013,6 @@ namespace jvm {
 
 	// dup_x1
 
-	op_dup_x1::op_dup_x1() {
-
-	}
-
 	void op_dup_x1::execute() {
 
 	}
@@ -2395,10 +2031,6 @@ namespace jvm {
 
 
 	// dup_x2
-
-	op_dup_x2::op_dup_x2() {
-
-	}
 
 	void op_dup_x2::execute() {
 
@@ -2419,10 +2051,6 @@ namespace jvm {
 
 	// dup2
 
-	op_dup2::op_dup2() {
-
-	}
-
 	void op_dup2::execute() {
 
 	}
@@ -2441,10 +2069,6 @@ namespace jvm {
 
 
 	// dup2_x1
-
-	op_dup2_x1::op_dup2_x1() {
-
-	}
 
 	void op_dup2_x1::execute() {
 
@@ -2465,10 +2089,6 @@ namespace jvm {
 
 	// dup2_x2
 
-	op_dup2_x2::op_dup2_x2() {
-
-	}
-
 	void op_dup2_x2::execute() {
 
 	}
@@ -2487,10 +2107,6 @@ namespace jvm {
 
 
 	// swap
-
-	op_swap::op_swap() {
-
-	}
 
 	void op_swap::execute() {
 
@@ -2511,10 +2127,6 @@ namespace jvm {
 
 	// iadd
 
-	op_iadd::op_iadd() {
-
-	}
-
 	void op_iadd::execute() {
 
 	}
@@ -2533,10 +2145,6 @@ namespace jvm {
 
 
 	// ladd
-
-	op_ladd::op_ladd() {
-
-	}
 
 	void op_ladd::execute() {
 
@@ -2557,10 +2165,6 @@ namespace jvm {
 
 	// fadd
 
-	op_fadd::op_fadd() {
-
-	}
-
 	void op_fadd::execute() {
 
 	}
@@ -2579,10 +2183,6 @@ namespace jvm {
 
 
 	// dadd
-
-	op_dadd::op_dadd() {
-
-	}
 
 	void op_dadd::execute() {
 
@@ -2603,10 +2203,6 @@ namespace jvm {
 
 	// isub
 
-	op_isub::op_isub() {
-
-	}
-
 	void op_isub::execute() {
 
 	}
@@ -2625,10 +2221,6 @@ namespace jvm {
 
 
 	// lsub
-
-	op_lsub::op_lsub() {
-
-	}
 
 	void op_lsub::execute() {
 
@@ -2649,10 +2241,6 @@ namespace jvm {
 
 	// fsub
 
-	op_fsub::op_fsub() {
-
-	}
-
 	void op_fsub::execute() {
 
 	}
@@ -2671,10 +2259,6 @@ namespace jvm {
 
 
 	// dsub
-
-	op_dsub::op_dsub() {
-
-	}
 
 	void op_dsub::execute() {
 
@@ -2695,10 +2279,6 @@ namespace jvm {
 
 	// imul
 
-	op_imul::op_imul() {
-
-	}
-
 	void op_imul::execute() {
 
 	}
@@ -2717,10 +2297,6 @@ namespace jvm {
 
 
 	// lmul
-
-	op_lmul::op_lmul() {
-
-	}
 
 	void op_lmul::execute() {
 
@@ -2741,10 +2317,6 @@ namespace jvm {
 
 	// fmul
 
-	op_fmul::op_fmul() {
-
-	}
-
 	void op_fmul::execute() {
 
 	}
@@ -2763,10 +2335,6 @@ namespace jvm {
 
 
 	// dmul
-
-	op_dmul::op_dmul() {
-
-	}
 
 	void op_dmul::execute() {
 
@@ -2787,10 +2355,6 @@ namespace jvm {
 
 	// idiv
 
-	op_idiv::op_idiv() {
-
-	}
-
 	void op_idiv::execute() {
 
 	}
@@ -2809,10 +2373,6 @@ namespace jvm {
 
 
 	// ldiv
-
-	op_ldiv::op_ldiv() {
-
-	}
 
 	void op_ldiv::execute() {
 
@@ -2833,10 +2393,6 @@ namespace jvm {
 
 	// fdiv
 
-	op_fdiv::op_fdiv() {
-
-	}
-
 	void op_fdiv::execute() {
 
 	}
@@ -2855,10 +2411,6 @@ namespace jvm {
 
 
 	// ddiv
-
-	op_ddiv::op_ddiv() {
-
-	}
 
 	void op_ddiv::execute() {
 
@@ -2879,10 +2431,6 @@ namespace jvm {
 
 	// irem
 
-	op_irem::op_irem() {
-
-	}
-
 	void op_irem::execute() {
 
 	}
@@ -2901,10 +2449,6 @@ namespace jvm {
 
 
 	// lrem
-
-	op_lrem::op_lrem() {
-
-	}
 
 	void op_lrem::execute() {
 
@@ -2925,10 +2469,6 @@ namespace jvm {
 
 	// frem
 
-	op_frem::op_frem() {
-
-	}
-
 	void op_frem::execute() {
 
 	}
@@ -2947,10 +2487,6 @@ namespace jvm {
 
 
 	// drem
-
-	op_drem::op_drem() {
-
-	}
 
 	void op_drem::execute() {
 
@@ -2971,10 +2507,6 @@ namespace jvm {
 
 	// ineg
 
-	op_ineg::op_ineg() {
-
-	}
-
 	void op_ineg::execute() {
 
 	}
@@ -2993,10 +2525,6 @@ namespace jvm {
 
 
 	// lneg
-
-	op_lneg::op_lneg() {
-
-	}
 
 	void op_lneg::execute() {
 
@@ -3017,10 +2545,6 @@ namespace jvm {
 
 	// fneg
 
-	op_fneg::op_fneg() {
-
-	}
-
 	void op_fneg::execute() {
 
 	}
@@ -3039,10 +2563,6 @@ namespace jvm {
 
 
 	// dneg
-
-	op_dneg::op_dneg() {
-
-	}
 
 	void op_dneg::execute() {
 
@@ -3063,10 +2583,6 @@ namespace jvm {
 
 	// ishl
 
-	op_ishl::op_ishl() {
-
-	}
-
 	void op_ishl::execute() {
 
 	}
@@ -3085,10 +2601,6 @@ namespace jvm {
 
 
 	// lshl
-
-	op_lshl::op_lshl() {
-
-	}
 
 	void op_lshl::execute() {
 
@@ -3109,10 +2621,6 @@ namespace jvm {
 
 	// ishr
 
-	op_ishr::op_ishr() {
-
-	}
-
 	void op_ishr::execute() {
 
 	}
@@ -3131,10 +2639,6 @@ namespace jvm {
 
 
 	// lshr
-
-	op_lshr::op_lshr() {
-
-	}
 
 	void op_lshr::execute() {
 
@@ -3155,10 +2659,6 @@ namespace jvm {
 
 	// iushr
 
-	op_iushr::op_iushr() {
-
-	}
-
 	void op_iushr::execute() {
 
 	}
@@ -3177,10 +2677,6 @@ namespace jvm {
 
 
 	// lushr
-
-	op_lushr::op_lushr() {
-
-	}
 
 	void op_lushr::execute() {
 
@@ -3201,10 +2697,6 @@ namespace jvm {
 
 	// iand
 
-	op_iand::op_iand() {
-
-	}
-
 	void op_iand::execute() {
 
 	}
@@ -3223,10 +2715,6 @@ namespace jvm {
 
 
 	// land
-
-	op_land::op_land() {
-
-	}
 
 	void op_land::execute() {
 
@@ -3247,10 +2735,6 @@ namespace jvm {
 
 	// ior
 
-	op_ior::op_ior() {
-
-	}
-
 	void op_ior::execute() {
 
 	}
@@ -3269,10 +2753,6 @@ namespace jvm {
 
 
 	// lor
-
-	op_lor::op_lor() {
-
-	}
 
 	void op_lor::execute() {
 
@@ -3293,10 +2773,6 @@ namespace jvm {
 
 	// ixor
 
-	op_ixor::op_ixor() {
-
-	}
-
 	void op_ixor::execute() {
 
 	}
@@ -3315,10 +2791,6 @@ namespace jvm {
 
 
 	// lxor
-
-	op_lxor::op_lxor() {
-
-	}
 
 	void op_lxor::execute() {
 
@@ -3339,10 +2811,6 @@ namespace jvm {
 
 	// iinc
 
-	op_iinc::op_iinc() {
-
-	}
-
 	void op_iinc::execute() {
 
 	}
@@ -3361,10 +2829,6 @@ namespace jvm {
 
 
 	// i2l
-
-	op_i2l::op_i2l() {
-
-	}
 
 	void op_i2l::execute() {
 
@@ -3385,10 +2849,6 @@ namespace jvm {
 
 	// i2f
 
-	op_i2f::op_i2f() {
-
-	}
-
 	void op_i2f::execute() {
 
 	}
@@ -3407,10 +2867,6 @@ namespace jvm {
 
 
 	// i2d
-
-	op_i2d::op_i2d() {
-
-	}
 
 	void op_i2d::execute() {
 
@@ -3431,10 +2887,6 @@ namespace jvm {
 
 	// l2i
 
-	op_l2i::op_l2i() {
-
-	}
-
 	void op_l2i::execute() {
 
 	}
@@ -3453,10 +2905,6 @@ namespace jvm {
 
 
 	// l2f
-
-	op_l2f::op_l2f() {
-
-	}
 
 	void op_l2f::execute() {
 
@@ -3477,10 +2925,6 @@ namespace jvm {
 
 	// l2d
 
-	op_l2d::op_l2d() {
-
-	}
-
 	void op_l2d::execute() {
 
 	}
@@ -3499,10 +2943,6 @@ namespace jvm {
 
 
 	// f2i
-
-	op_f2i::op_f2i() {
-
-	}
 
 	void op_f2i::execute() {
 
@@ -3523,10 +2963,6 @@ namespace jvm {
 
 	// f2l
 
-	op_f2l::op_f2l() {
-
-	}
-
 	void op_f2l::execute() {
 
 	}
@@ -3545,10 +2981,6 @@ namespace jvm {
 
 
 	// f2d
-
-	op_f2d::op_f2d() {
-
-	}
 
 	void op_f2d::execute() {
 
@@ -3569,10 +3001,6 @@ namespace jvm {
 
 	// d2i
 
-	op_d2i::op_d2i() {
-
-	}
-
 	void op_d2i::execute() {
 
 	}
@@ -3591,10 +3019,6 @@ namespace jvm {
 
 
 	// d2l
-
-	op_d2l::op_d2l() {
-
-	}
 
 	void op_d2l::execute() {
 
@@ -3615,10 +3039,6 @@ namespace jvm {
 
 	// d2f
 
-	op_d2f::op_d2f() {
-
-	}
-
 	void op_d2f::execute() {
 
 	}
@@ -3637,10 +3057,6 @@ namespace jvm {
 
 
 	// i2b
-
-	op_i2b::op_i2b() {
-
-	}
 
 	void op_i2b::execute() {
 
@@ -3661,10 +3077,6 @@ namespace jvm {
 
 	// i2c
 
-	op_i2c::op_i2c() {
-
-	}
-
 	void op_i2c::execute() {
 
 	}
@@ -3683,10 +3095,6 @@ namespace jvm {
 
 
 	// i2s
-
-	op_i2s::op_i2s() {
-
-	}
 
 	void op_i2s::execute() {
 
@@ -3707,10 +3115,6 @@ namespace jvm {
 
 	// lcmp
 
-	op_lcmp::op_lcmp() {
-
-	}
-
 	void op_lcmp::execute() {
 
 	}
@@ -3729,10 +3133,6 @@ namespace jvm {
 
 
 	// fcmpl
-
-	op_fcmpl::op_fcmpl() {
-
-	}
 
 	void op_fcmpl::execute() {
 
@@ -3753,10 +3153,6 @@ namespace jvm {
 
 	// fcmpg
 
-	op_fcmpg::op_fcmpg() {
-
-	}
-
 	void op_fcmpg::execute() {
 
 	}
@@ -3775,10 +3171,6 @@ namespace jvm {
 
 
 	// dcmpl
-
-	op_dcmpl::op_dcmpl() {
-
-	}
 
 	void op_dcmpl::execute() {
 
@@ -3799,10 +3191,6 @@ namespace jvm {
 
 	// dcmpg
 
-	op_dcmpg::op_dcmpg() {
-
-	}
-
 	void op_dcmpg::execute() {
 
 	}
@@ -3821,10 +3209,6 @@ namespace jvm {
 
 
 	// ifeq
-
-	op_ifeq::op_ifeq() {
-
-	}
 
 	void op_ifeq::execute() {
 
@@ -3845,10 +3229,6 @@ namespace jvm {
 
 	// ifne
 
-	op_ifne::op_ifne() {
-
-	}
-
 	void op_ifne::execute() {
 
 	}
@@ -3867,10 +3247,6 @@ namespace jvm {
 
 
 	// iflt
-
-	op_iflt::op_iflt() {
-
-	}
 
 	void op_iflt::execute() {
 
@@ -3891,10 +3267,6 @@ namespace jvm {
 
 	// ifge
 
-	op_ifge::op_ifge() {
-
-	}
-
 	void op_ifge::execute() {
 
 	}
@@ -3913,10 +3285,6 @@ namespace jvm {
 
 
 	// ifgt
-
-	op_ifgt::op_ifgt() {
-
-	}
 
 	void op_ifgt::execute() {
 
@@ -3937,10 +3305,6 @@ namespace jvm {
 
 	// ifle
 
-	op_ifle::op_ifle() {
-
-	}
-
 	void op_ifle::execute() {
 
 	}
@@ -3959,10 +3323,6 @@ namespace jvm {
 
 
 	// if_icmpeq
-
-	op_if_icmpeq::op_if_icmpeq() {
-
-	}
 
 	void op_if_icmpeq::execute() {
 
@@ -3983,10 +3343,6 @@ namespace jvm {
 
 	// if_icmpne
 
-	op_if_icmpne::op_if_icmpne() {
-
-	}
-
 	void op_if_icmpne::execute() {
 
 	}
@@ -4005,10 +3361,6 @@ namespace jvm {
 
 
 	// if_icmplt
-
-	op_if_icmplt::op_if_icmplt() {
-
-	}
 
 	void op_if_icmplt::execute() {
 
@@ -4029,10 +3381,6 @@ namespace jvm {
 
 	// if_icmpge
 
-	op_if_icmpge::op_if_icmpge() {
-
-	}
-
 	void op_if_icmpge::execute() {
 
 	}
@@ -4051,10 +3399,6 @@ namespace jvm {
 
 
 	// if_icmpgt
-
-	op_if_icmpgt::op_if_icmpgt() {
-
-	}
 
 	void op_if_icmpgt::execute() {
 
@@ -4075,10 +3419,6 @@ namespace jvm {
 
 	// if_icmple
 
-	op_if_icmple::op_if_icmple() {
-
-	}
-
 	void op_if_icmple::execute() {
 
 	}
@@ -4097,10 +3437,6 @@ namespace jvm {
 
 
 	// if_acmpeq
-
-	op_if_acmpeq::op_if_acmpeq() {
-
-	}
 
 	void op_if_acmpeq::execute() {
 
@@ -4121,10 +3457,6 @@ namespace jvm {
 
 	// if_acmpne
 
-	op_if_acmpne::op_if_acmpne() {
-
-	}
-
 	void op_if_acmpne::execute() {
 
 	}
@@ -4143,10 +3475,6 @@ namespace jvm {
 
 
 	// goto_jvm
-
-	op_goto_jvm::op_goto_jvm() {
-
-	}
 
 	void op_goto_jvm::execute() {
 
@@ -4167,10 +3495,6 @@ namespace jvm {
 
 	// jsr
 
-	op_jsr::op_jsr() {
-
-	}
-
 	void op_jsr::execute() {
 
 	}
@@ -4189,10 +3513,6 @@ namespace jvm {
 
 
 	// ret
-
-	op_ret::op_ret() {
-
-	}
 
 	void op_ret::execute() {
 
@@ -4213,10 +3533,6 @@ namespace jvm {
 
 	// tableswitch
 
-	op_tableswitch::op_tableswitch() {
-
-	}
-
 	void op_tableswitch::execute() {
 
 	}
@@ -4235,10 +3551,6 @@ namespace jvm {
 
 
 	// ireturn
-
-	op_ireturn::op_ireturn() {
-
-	}
 
 	void op_ireturn::execute() {
 
@@ -4259,10 +3571,6 @@ namespace jvm {
 
 	// lreturn
 
-	op_lreturn::op_lreturn() {
-
-	}
-
 	void op_lreturn::execute() {
 
 	}
@@ -4281,10 +3589,6 @@ namespace jvm {
 
 
 	// freturn
-
-	op_freturn::op_freturn() {
-
-	}
 
 	void op_freturn::execute() {
 
@@ -4305,10 +3609,6 @@ namespace jvm {
 
 	// dreturn
 
-	op_dreturn::op_dreturn() {
-
-	}
-
 	void op_dreturn::execute() {
 
 	}
@@ -4327,10 +3627,6 @@ namespace jvm {
 
 
 	// areturn
-
-	op_areturn::op_areturn() {
-
-	}
 
 	void op_areturn::execute() {
 
@@ -4351,10 +3647,6 @@ namespace jvm {
 
 	// return_jvm
 
-	op_return_jvm::op_return_jvm() {
-
-	}
-
 	void op_return_jvm::execute() {
 
 	}
@@ -4373,10 +3665,6 @@ namespace jvm {
 
 
 	// getstatic
-
-	op_getstatic::op_getstatic() {
-
-	}
 
 	void op_getstatic::execute() {
 
@@ -4397,10 +3685,6 @@ namespace jvm {
 
 	// putstatic
 
-	op_putstatic::op_putstatic() {
-
-	}
-
 	void op_putstatic::execute() {
 
 	}
@@ -4419,10 +3703,6 @@ namespace jvm {
 
 
 	// getfield
-
-	op_getfield::op_getfield() {
-
-	}
 
 	void op_getfield::execute() {
 
@@ -4443,10 +3723,6 @@ namespace jvm {
 
 	// putfield
 
-	op_putfield::op_putfield() {
-
-	}
-
 	void op_putfield::execute() {
 
 	}
@@ -4465,10 +3741,6 @@ namespace jvm {
 
 
 	// invokevirtual
-
-	op_invokevirtual::op_invokevirtual() {
-
-	}
 
 	void op_invokevirtual::execute() {
 
@@ -4489,10 +3761,6 @@ namespace jvm {
 
 	// invokespecial
 
-	op_invokespecial::op_invokespecial() {
-
-	}
-
 	void op_invokespecial::execute() {
 
 	}
@@ -4511,10 +3779,6 @@ namespace jvm {
 
 
 	// invokestatic
-
-	op_invokestatic::op_invokestatic() {
-
-	}
 
 	void op_invokestatic::execute() {
 
@@ -4535,10 +3799,6 @@ namespace jvm {
 
 	// invokeinterface
 
-	op_invokeinterface::op_invokeinterface() {
-
-	}
-
 	void op_invokeinterface::execute() {
 
 	}
@@ -4557,10 +3817,6 @@ namespace jvm {
 
 
 	// invokedynamic
-
-	op_invokedynamic::op_invokedynamic() {
-
-	}
 
 	void op_invokedynamic::execute() {
 
@@ -4581,10 +3837,6 @@ namespace jvm {
 
 	// new_jvm
 
-	op_new_jvm::op_new_jvm() {
-
-	}
-
 	void op_new_jvm::execute() {
 
 	}
@@ -4603,10 +3855,6 @@ namespace jvm {
 
 
 	// newarray
-
-	op_newarray::op_newarray() {
-
-	}
 
 	void op_newarray::execute() {
 
@@ -4627,10 +3875,6 @@ namespace jvm {
 
 	// anewarray
 
-	op_anewarray::op_anewarray() {
-
-	}
-
 	void op_anewarray::execute() {
 
 	}
@@ -4649,10 +3893,6 @@ namespace jvm {
 
 
 	// arraylength
-
-	op_arraylength::op_arraylength() {
-
-	}
 
 	void op_arraylength::execute() {
 
@@ -4673,10 +3913,6 @@ namespace jvm {
 
 	// athrow
 
-	op_athrow::op_athrow() {
-
-	}
-
 	void op_athrow::execute() {
 
 	}
@@ -4695,10 +3931,6 @@ namespace jvm {
 
 
 	// checkcast
-
-	op_checkcast::op_checkcast() {
-
-	}
 
 	void op_checkcast::execute() {
 
@@ -4719,10 +3951,6 @@ namespace jvm {
 
 	// instanceof
 
-	op_instanceof::op_instanceof() {
-
-	}
-
 	void op_instanceof::execute() {
 
 	}
@@ -4741,10 +3969,6 @@ namespace jvm {
 
 
 	// monitorenter
-
-	op_monitorenter::op_monitorenter() {
-
-	}
 
 	void op_monitorenter::execute() {
 
@@ -4765,10 +3989,6 @@ namespace jvm {
 
 	// monitorexit
 
-	op_monitorexit::op_monitorexit() {
-
-	}
-
 	void op_monitorexit::execute() {
 
 	}
@@ -4787,10 +4007,6 @@ namespace jvm {
 
 
 	// wide
-
-	op_wide::op_wide() {
-
-	}
 
 	void op_wide::execute() {
 
@@ -4811,10 +4027,6 @@ namespace jvm {
 
 	// multianewarray
 
-	op_multianewarray::op_multianewarray() {
-
-	}
-
 	void op_multianewarray::execute() {
 
 	}
@@ -4833,10 +4045,6 @@ namespace jvm {
 
 
 	// ifnull
-
-	op_ifnull::op_ifnull() {
-
-	}
 
 	void op_ifnull::execute() {
 
@@ -4857,10 +4065,6 @@ namespace jvm {
 
 	// ifnonnull
 
-	op_ifnonnull::op_ifnonnull() {
-
-	}
-
 	void op_ifnonnull::execute() {
 
 	}
@@ -4879,10 +4083,6 @@ namespace jvm {
 
 
 	// goto_w
-
-	op_goto_w::op_goto_w() {
-
-	}
 
 	void op_goto_w::execute() {
 
@@ -4903,10 +4103,6 @@ namespace jvm {
 
 	// jsr_w
 
-	op_jsr_w::op_jsr_w() {
-
-	}
-
 	void op_jsr_w::execute() {
 
 	}
@@ -4925,10 +4121,6 @@ namespace jvm {
 
 
 	// breakpoint
-
-	op_breakpoint::op_breakpoint() {
-
-	}
 
 	void op_breakpoint::execute() {
 
@@ -4949,10 +4141,6 @@ namespace jvm {
 
 	// impdep1
 
-	op_impdep1::op_impdep1() {
-
-	}
-
 	void op_impdep1::execute() {
 
 	}
@@ -4971,10 +4159,6 @@ namespace jvm {
 
 
 	// impdep2
-
-	op_impdep2::op_impdep2() {
-
-	}
 
 	void op_impdep2::execute() {
 
