@@ -29,8 +29,9 @@ int main (int argc, char *argv[ ]) {
 				isToRun = true;
 			} else if (command == "--help" or command == "-h") {
 				isHelp = true;
-			} else if (hasName) {
+			} else if (not hasName) {
 				filename = command;
+				hasName = true;
 			} else {
 				throw "Tem algum problema com os argumentos";
 			}
