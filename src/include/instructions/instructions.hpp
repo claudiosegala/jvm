@@ -68,7 +68,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_nop();
+		op_nop() = default;
 
 		/**
 		 * The execution of this instruction
@@ -96,7 +96,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_aconst_null();
+		op_aconst_null() = default;
 
 		/**
 		 * The execution of this instruction
@@ -124,7 +124,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_iconst_m1();
+		op_iconst_m1() = default;
 
 		/**
 		 * The execution of this instruction
@@ -152,7 +152,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_iconst_0();
+		op_iconst_0() = default;
 
 		/**
 		 * The execution of this instruction
@@ -180,7 +180,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_iconst_1();
+		op_iconst_1() = default;
 
 		/**
 		 * The execution of this instruction
@@ -208,7 +208,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_iconst_2();
+		op_iconst_2() = default;
 
 		/**
 		 * The execution of this instruction
@@ -236,7 +236,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_iconst_3();
+		op_iconst_3() = default;
 
 		/**
 		 * The execution of this instruction
@@ -264,7 +264,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_iconst_4();
+		op_iconst_4() = default;
 
 		/**
 		 * The execution of this instruction
@@ -292,7 +292,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_iconst_5();
+		op_iconst_5() = default;
 
 		/**
 		 * The execution of this instruction
@@ -320,7 +320,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lconst_0();
+		op_lconst_0() = default;
 
 		/**
 		 * The execution of this instruction
@@ -348,7 +348,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lconst_1();
+		op_lconst_1() = default;
 
 		/**
 		 * The execution of this instruction
@@ -376,7 +376,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_fconst_0();
+		op_fconst_0() = default;
 
 		/**
 		 * The execution of this instruction
@@ -404,7 +404,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_fconst_1();
+		op_fconst_1() = default;
 
 		/**
 		 * The execution of this instruction
@@ -432,7 +432,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_fconst_2();
+		op_fconst_2() = default;
 
 		/**
 		 * The execution of this instruction
@@ -460,7 +460,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dconst_0();
+		op_dconst_0() = default;
 
 		/**
 		 * The execution of this instruction
@@ -488,7 +488,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dconst_1();
+		op_dconst_1() = default;
 
 		/**
 		 * The execution of this instruction
@@ -516,7 +516,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_bipush();
+		op_bipush() = default;
 
 		/**
 		 * The execution of this instruction
@@ -544,7 +544,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_sipush();
+		op_sipush() = default;
 
 		/**
 		 * The execution of this instruction
@@ -572,7 +572,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_ldc();
+		op_ldc() = default;
 
 		/**
 		 * The execution of this instruction
@@ -600,7 +600,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_ldc_w();
+		op_ldc_w() = default;
 
 		/**
 		 * The execution of this instruction
@@ -628,7 +628,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_ldc2_w();
+		op_ldc2_w() = default;
 
 		/**
 		 * The execution of this instruction
@@ -657,7 +657,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_iload();
+		op_iload() = default;
 
 		/**
 		 * The execution of this instruction
@@ -685,7 +685,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lload();
+		op_lload() = default;
 
 		/**
 		 * The execution of this instruction
@@ -713,7 +713,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_fload();
+		op_fload() = default;
 
 		/**
 		 * The execution of this instruction
@@ -741,7 +741,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dload();
+		op_dload() = default;
 
 		/**
 		 * The execution of this instruction
@@ -769,7 +769,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_aload();
+		op_aload() = default;
 
 		/**
 		 * The execution of this instruction
@@ -797,7 +797,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_iload_0();
+		op_iload_0() = default;
 
 		/**
 		 * The execution of this instruction
@@ -825,7 +825,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_iload_1();
+		op_iload_1() = default;
 
 		/**
 		 * The execution of this instruction
@@ -853,7 +853,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_iload_2();
+		op_iload_2() = default;
 
 		/**
 		 * The execution of this instruction
@@ -881,7 +881,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_iload_3();
+		op_iload_3() = default;
 
 		/**
 		 * The execution of this instruction
@@ -909,7 +909,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lload_0();
+		op_lload_0() = default;
 
 		/**
 		 * The execution of this instruction
@@ -937,7 +937,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lload_1();
+		op_lload_1() = default;
 
 		/**
 		 * The execution of this instruction
@@ -965,7 +965,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lload_2();
+		op_lload_2() = default;
 
 		/**
 		 * The execution of this instruction
@@ -993,7 +993,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lload_3();
+		op_lload_3() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1021,7 +1021,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_fload_0();
+		op_fload_0() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1049,7 +1049,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_fload_1();
+		op_fload_1() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1077,7 +1077,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_fload_2();
+		op_fload_2() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1105,7 +1105,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_fload_3();
+		op_fload_3() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1133,7 +1133,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dload_0();
+		op_dload_0() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1161,7 +1161,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dload_1();
+		op_dload_1() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1189,7 +1189,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dload_2();
+		op_dload_2() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1217,7 +1217,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dload_3();
+		op_dload_3() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1245,7 +1245,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_aload_0();
+		op_aload_0() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1273,7 +1273,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_aload_1();
+		op_aload_1() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1301,7 +1301,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_aload_2();
+		op_aload_2() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1329,7 +1329,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_aload_3();
+		op_aload_3() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1357,7 +1357,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_iaload();
+		op_iaload() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1385,7 +1385,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_laload();
+		op_laload() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1413,7 +1413,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_faload();
+		op_faload() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1441,7 +1441,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_daload();
+		op_daload() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1469,7 +1469,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_aaload();
+		op_aaload() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1497,7 +1497,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_baload();
+		op_baload() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1525,7 +1525,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_caload();
+		op_caload() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1553,7 +1553,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_saload();
+		op_saload() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1582,7 +1582,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_istore();
+		op_istore() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1610,7 +1610,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lstore();
+		op_lstore() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1638,7 +1638,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_fstore();
+		op_fstore() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1666,7 +1666,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dstore();
+		op_dstore() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1694,7 +1694,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_astore();
+		op_astore() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1722,7 +1722,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_istore_0();
+		op_istore_0() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1750,7 +1750,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_istore_1();
+		op_istore_1() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1778,7 +1778,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_istore_2();
+		op_istore_2() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1806,7 +1806,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_istore_3();
+		op_istore_3() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1834,7 +1834,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lstore_0();
+		op_lstore_0() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1862,7 +1862,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lstore_1();
+		op_lstore_1() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1890,7 +1890,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lstore_2();
+		op_lstore_2() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1918,7 +1918,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lstore_3();
+		op_lstore_3() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1946,7 +1946,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_fstore_0();
+		op_fstore_0() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1974,7 +1974,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_fstore_1();
+		op_fstore_1() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2002,7 +2002,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_fstore_2();
+		op_fstore_2() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2030,7 +2030,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_fstore_3();
+		op_fstore_3() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2058,7 +2058,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dstore_0();
+		op_dstore_0() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2086,7 +2086,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dstore_1();
+		op_dstore_1() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2114,7 +2114,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dstore_2();
+		op_dstore_2() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2142,7 +2142,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dstore_3();
+		op_dstore_3() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2170,7 +2170,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_astore_0();
+		op_astore_0() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2198,7 +2198,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_astore_1();
+		op_astore_1() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2226,7 +2226,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_astore_2();
+		op_astore_2() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2254,7 +2254,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_astore_3();
+		op_astore_3() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2282,7 +2282,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_iastore();
+		op_iastore() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2310,7 +2310,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lastore();
+		op_lastore() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2338,7 +2338,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_fastore();
+		op_fastore() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2366,7 +2366,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dastore();
+		op_dastore() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2394,7 +2394,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_aastore();
+		op_aastore() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2422,7 +2422,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_bastore();
+		op_bastore() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2450,7 +2450,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_castore();
+		op_castore() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2478,7 +2478,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_sastore();
+		op_sastore() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2507,7 +2507,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_pop();
+		op_pop() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2535,7 +2535,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_pop2();
+		op_pop2() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2563,7 +2563,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dup();
+		op_dup() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2591,7 +2591,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dup_x1();
+		op_dup_x1() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2619,7 +2619,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dup_x2();
+		op_dup_x2() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2647,7 +2647,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dup2();
+		op_dup2() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2675,7 +2675,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dup2_x1();
+		op_dup2_x1() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2703,7 +2703,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dup2_x2();
+		op_dup2_x2() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2731,7 +2731,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_swap();
+		op_swap() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2760,7 +2760,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_iadd();
+		op_iadd() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2788,7 +2788,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_ladd();
+		op_ladd() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2816,7 +2816,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_fadd();
+		op_fadd() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2844,7 +2844,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dadd();
+		op_dadd() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2872,7 +2872,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_isub();
+		op_isub() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2900,7 +2900,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lsub();
+		op_lsub() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2928,7 +2928,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_fsub();
+		op_fsub() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2956,7 +2956,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dsub();
+		op_dsub() = default;
 
 		/**
 		 * The execution of this instruction
@@ -2984,7 +2984,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_imul();
+		op_imul() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3012,7 +3012,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lmul();
+		op_lmul() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3040,7 +3040,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_fmul();
+		op_fmul() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3068,7 +3068,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dmul();
+		op_dmul() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3096,7 +3096,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_idiv();
+		op_idiv() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3124,7 +3124,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_ldiv();
+		op_ldiv() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3152,7 +3152,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_fdiv();
+		op_fdiv() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3180,7 +3180,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_ddiv();
+		op_ddiv() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3208,7 +3208,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_irem();
+		op_irem() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3236,7 +3236,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lrem();
+		op_lrem() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3264,7 +3264,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_frem();
+		op_frem() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3292,7 +3292,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_drem();
+		op_drem() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3320,7 +3320,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_ineg();
+		op_ineg() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3348,7 +3348,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lneg();
+		op_lneg() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3376,7 +3376,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_fneg();
+		op_fneg() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3404,7 +3404,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dneg();
+		op_dneg() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3432,7 +3432,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_ishl();
+		op_ishl() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3460,7 +3460,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lshl();
+		op_lshl() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3488,7 +3488,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_ishr();
+		op_ishr() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3516,7 +3516,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lshr();
+		op_lshr() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3544,7 +3544,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_iushr();
+		op_iushr() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3572,7 +3572,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lushr();
+		op_lushr() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3600,7 +3600,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_iand();
+		op_iand() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3628,7 +3628,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_land();
+		op_land() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3656,7 +3656,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_ior();
+		op_ior() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3684,7 +3684,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lor();
+		op_lor() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3712,7 +3712,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_ixor();
+		op_ixor() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3740,7 +3740,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lxor();
+		op_lxor() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3768,7 +3768,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_iinc();
+		op_iinc() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3797,7 +3797,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_i2l();
+		op_i2l() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3825,7 +3825,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_i2f();
+		op_i2f() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3853,7 +3853,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_i2d();
+		op_i2d() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3881,7 +3881,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_l2i();
+		op_l2i() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3909,7 +3909,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_l2f();
+		op_l2f() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3937,7 +3937,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_l2d();
+		op_l2d() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3965,7 +3965,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_f2i();
+		op_f2i() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3993,7 +3993,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_f2l();
+		op_f2l() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4021,7 +4021,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_f2d();
+		op_f2d() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4049,7 +4049,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_d2i();
+		op_d2i() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4077,7 +4077,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_d2l();
+		op_d2l() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4105,7 +4105,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_d2f();
+		op_d2f() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4133,7 +4133,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_i2b();
+		op_i2b() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4161,7 +4161,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_i2c();
+		op_i2c() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4189,7 +4189,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_i2s();
+		op_i2s() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4218,7 +4218,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lcmp();
+		op_lcmp() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4246,7 +4246,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_fcmpl();
+		op_fcmpl() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4274,7 +4274,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_fcmpg();
+		op_fcmpg() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4302,7 +4302,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dcmpl();
+		op_dcmpl() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4330,7 +4330,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dcmpg();
+		op_dcmpg() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4358,7 +4358,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_ifeq();
+		op_ifeq() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4386,7 +4386,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_ifne();
+		op_ifne() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4414,7 +4414,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_iflt();
+		op_iflt() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4442,7 +4442,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_ifge();
+		op_ifge() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4470,7 +4470,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_ifgt();
+		op_ifgt() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4498,7 +4498,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_ifle();
+		op_ifle() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4526,7 +4526,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_if_icmpeq();
+		op_if_icmpeq() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4554,7 +4554,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_if_icmpne();
+		op_if_icmpne() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4582,7 +4582,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_if_icmplt();
+		op_if_icmplt() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4610,7 +4610,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_if_icmpge();
+		op_if_icmpge() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4638,7 +4638,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_if_icmpgt();
+		op_if_icmpgt() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4666,7 +4666,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_if_icmple();
+		op_if_icmple() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4694,7 +4694,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_if_acmpeq();
+		op_if_acmpeq() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4722,7 +4722,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_if_acmpne();
+		op_if_acmpne() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4751,7 +4751,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_goto_jvm();
+		op_goto_jvm() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4779,7 +4779,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_jsr();
+		op_jsr() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4807,7 +4807,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_ret();
+		op_ret() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4835,7 +4835,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_tableswitch();
+		op_tableswitch() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4863,7 +4863,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_ireturn();
+		op_ireturn() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4891,7 +4891,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_lreturn();
+		op_lreturn() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4919,7 +4919,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_freturn();
+		op_freturn() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4947,7 +4947,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_dreturn();
+		op_dreturn() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4975,7 +4975,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_areturn();
+		op_areturn() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5003,7 +5003,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_return_jvm();
+		op_return_jvm() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5032,7 +5032,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_getstatic();
+		op_getstatic() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5061,7 +5061,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_putstatic();
+		op_putstatic() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5089,7 +5089,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_getfield();
+		op_getfield() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5117,7 +5117,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_putfield();
+		op_putfield() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5145,7 +5145,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_invokevirtual();
+		op_invokevirtual() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5173,7 +5173,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_invokespecial();
+		op_invokespecial() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5201,7 +5201,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_invokestatic();
+		op_invokestatic() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5229,7 +5229,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_invokeinterface();
+		op_invokeinterface() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5257,7 +5257,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_invokedynamic();
+		op_invokedynamic() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5285,7 +5285,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_new_jvm();
+		op_new_jvm() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5313,7 +5313,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_newarray();
+		op_newarray() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5341,7 +5341,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_anewarray();
+		op_anewarray() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5369,7 +5369,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_arraylength();
+		op_arraylength() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5397,7 +5397,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_athrow();
+		op_athrow() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5425,7 +5425,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_checkcast();
+		op_checkcast() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5453,7 +5453,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_instanceof();
+		op_instanceof() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5481,7 +5481,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_monitorenter();
+		op_monitorenter() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5509,7 +5509,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_monitorexit();
+		op_monitorexit() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5538,7 +5538,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_wide();
+		op_wide() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5566,7 +5566,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_multianewarray();
+		op_multianewarray() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5594,7 +5594,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_ifnull();
+		op_ifnull() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5622,7 +5622,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_ifnonnull();
+		op_ifnonnull() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5650,7 +5650,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_goto_w();
+		op_goto_w() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5678,7 +5678,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_jsr_w();
+		op_jsr_w() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5707,7 +5707,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_breakpoint();
+		op_breakpoint() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5735,7 +5735,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_impdep1();
+		op_impdep1() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5763,7 +5763,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_impdep2();
+		op_impdep2() = default;
 
 		/**
 		 * The execution of this instruction
