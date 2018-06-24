@@ -11,21 +11,21 @@
 namespace jvm {
 
 	/**
-	 * Single Threaded Virtual Machine
+	 * Class that run a single thread virtual machine
 	 */
 	class VM {
 	public:
 		/**
-		* Constructor
-		*/
-		VM();
+		 * Constructor
+		 * @params address to all .classes
+		 */
+		VM(std::vector<_Class>&));
 
 		/**
-		* Engine Execution.
-		* @see execute()
-		* @return The test results
-		*/
-		void run (std::vector<_Class>&);
+		 * Engine Execution.
+		 * @see execute()
+		 */
+		void run ();
 
 	private:
 		//> PC Register
@@ -37,7 +37,11 @@ namespace jvm {
 		//> Method Area
 		// TODO: understand
 
-		void runMethod(_Class&);
+		void load();
+
+		void link();
+
+		void init();
 	};
 
 }

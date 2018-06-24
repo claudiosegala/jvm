@@ -6,7 +6,7 @@
 
 namespace jvm {
 
-	class Operands : public std::vector<u4> {
+	class Operands : public std::stack<u4> {
 	public:
 		/**
 		* Constructor Default

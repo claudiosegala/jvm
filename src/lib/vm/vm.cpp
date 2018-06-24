@@ -5,12 +5,26 @@
 
 namespace jvm {
 
-	VM::VM() {
+	VM::VM (std::vector<_Class> &cl) {
 		PC = 0;
 	}
 
-	void VM::run(std::vector<_Class> &cl) {}
+	void VM::run () {
+		load();
+		link();
+		init();
+	}
 
-	void VM::runMethod(_Class &) {}
+	void VM::load () {
+
+	}
+
+	void VM::link () {
+
+	}
+
+	void VM::init () {
+
+	}
 
 }
