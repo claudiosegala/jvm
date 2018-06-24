@@ -6,28 +6,31 @@
 #include "class_loader/constant_pool.hpp"
 #include "class_loader/attribute.hpp"
 #include "class_loader/class_loader.hpp"
-#include "vm/frame.hpp"
+#include "engine/frame.hpp"
 
 namespace jvm {
 
 	/**
 	 * Class that run a single thread virtual machine
 	 */
-	class VM {
+	class Engine {
 	public:
 		/**
 		 * Constructor
 		 * @params address to all .classes
 		 */
-		VM();
+		Engine(ClassLoader&);
 
 		/**
 		 * Engine Execution.
 		 * @see execute()
 		 */
-		void run (std::vector<ClassLoader>&);
+		void execute();
 
 	private:
+		//> Reference to .class that will be executed
+		ClassLoader& cl;
+
 		//> PC Register
 		uint64_t PC;
 
@@ -37,11 +40,15 @@ namespace jvm {
 		//> Method Area
 		// TODO: understand
 
-		void load();
+		/**
+		 * Run the clinit method
+		 */
+		void run_clinit();
 
-		void link();
-
-		void init();
+		/**
+		 * Run the init method
+		 */
+		void run_init();
 	};
 
 }

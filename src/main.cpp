@@ -2,11 +2,11 @@
 #include <string>
 #include <vector>
 #include "class_loader/class_loader.hpp"
-#include "vm/vm.hpp"
+#include "engine/engine.hpp"
 
-void showCommands () {
+void show_commands() {
 	std::cout << "--describe or -d => descrevem o .class" << std::endl;
-	std::cout << "--run or -r      => executa o código descrito no .class" << std::endl;
+	std::cout << "--execute or -r      => executa o código descrito no .class" << std::endl;
 	std::cout << "--help or -h     => descrevem os comandos válidos" << std::endl;
 }
 
@@ -19,45 +19,36 @@ int main (int argc, char *argv[ ]) {
 		bool isToDescribe = false;
 		bool isToRun = false;
 		bool isHelp = false;
-		std::vector<std::string> filenames;
+		bool hasName = false;
+		std::string filename;
 
 		for (const auto &command : commands) {
 			if (command == "--describe" or command == "-d") {
 				isToDescribe = true;
-			} else if (command == "--run" or command == "-r") {
+			} else if (command == "--execute" or command == "-r") {
 				isToRun = true;
 			} else if (command == "--help" or command == "-h") {
 				isHelp = true;
+			} else if (hasName) {
+				filename = command;
 			} else {
-				filenames.push_back(command);
+				throw "Tem algum problema com os argumentos";
 			}
 		}
 
-		std::vector<jvm::ClassLoader> cls(filenames.size(), jvm::ClassLoader());
-		jvm::VM vm;
+		jvm::ClassLoader cl;
 
 		if (isHelp) {
-			showCommands();
+			show_commands();
 			return 0;
 		}
 
-		if (filenames.empty()) {
-			auto n = 0;
-
-			std::cout << "Digite quantos .class serão lidos: ";
-			std::cin >> n;
-
-			filenames.resize(n);
-
-			for (auto& filename : filenames) {
-				std::cout << "Digite o nome do arquivo: ";
-				std::cin >> filename;
-			}
+		if (not hasName) {
+			std::cout << "Digite o nome do arquivo: ";
+			std::cin >> filename;
 		}
 
-		for (auto i = 0; i < filenames.size(); i++) {
-			cls[i].read(filenames[i]);
-		}
+		cl.read(filename);
 
 		if (not isToDescribe and not isToRun) {
 			int op;
@@ -85,16 +76,13 @@ int main (int argc, char *argv[ ]) {
 			}
 		}
 
-		// clearScreen();
-
 		if (isToDescribe) {
-			for (auto cl : cls) {
-				cl.show();
-			}
+			cl.show();
 		}
 
 		if (isToRun) {
-			vm.run(cls);
+			jvm::Engine engine(cl);
+			engine.execute();
 		}
 
 	} catch (std::string& error) {

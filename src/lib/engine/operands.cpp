@@ -1,8 +1,4 @@
-//
-// Created by Ricardo on 24-Jun-18.
-//
-
-#include "vm/operands.hpp"
+#include "engine/operands.hpp"
 
 namespace jvm {
 
@@ -13,14 +9,13 @@ namespace jvm {
 	}
 
 	u8 Operands::pop8() {
-		auto high_bytes = top();
-		pop();
-		auto low_bytes  = top();
+		u8 high_bytes = top();
 		pop();
 
-		u8 retval = (high_bytes << 32ul) | low_bytes;
+		u8 low_bytes  = top();
+		pop();
 
-		return retval;
+		return (high_bytes << 32ul) | low_bytes;
 	}
 
 	void Operands::push4(u4 value) {
