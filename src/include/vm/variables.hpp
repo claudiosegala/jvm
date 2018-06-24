@@ -1,36 +1,35 @@
 //
 // Created by Claudio  Segala Rodrigues Silva Filho on 6/17/18.
 //
+#pragma once
 
-#ifndef JVM_VARIABLES_CPP_H
-#define JVM_VARIABLES_CPP_H
+#include <util/macros.hpp>
+#include <vector>
 
-#endif //JVM_VARIABLES_CPP_H
 
 namespace jvm
 {
-    class Variables : public std::vector<u4>
-    {
-        public:
-        /**
-         * Constructor Default
-         */
-        Variables() = default;
+	class Variables : public std::vector<u4> {
+	public:
+		/**
+		 * Default constructor
+		 */
+		Variables() = default;
 
-        template<typename T>
-    void  Write_vector(index,T)
+		template<typename T>
+		void  Write_vector(index,T);
 
-        template<typename T>
+		template<typename T>
+		T Read_vector(index);
 
-       T Read_vector(index)
+	private:
 
-       private:
+		//>Variables Stack
 
-       //>Variables Stack
+		std:vector <u4> variables;
 
-       std:vector <u4> variables;
+	}
 
-    }
 
 
 
