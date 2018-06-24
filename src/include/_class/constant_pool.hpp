@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <memory>
 #include "util/bit.hpp"
 #include "util/reader.hpp"
 
@@ -25,7 +26,7 @@ namespace jvm {
 
 	class CP_Entry;
 
-	class ConstantPool : public std::vector<CP_Entry*> {
+	class ConstantPool : public std::vector<std::shared_ptr<CP_Entry>> {
 	public:
 	
 		/**
@@ -72,7 +73,7 @@ namespace jvm {
 		 * @return Pointer to the next CP_Entry according to the given tag
 		 * @throw Exception when invalid tag's value
 		 */
-		CP_Entry *getNextEntry(Reader &reader, uint8_t tag);
+		std::shared_ptr<CP_Entry> getNextEntry(Reader &reader, uint8_t tag);
 	};
 
 	/**
@@ -243,6 +244,8 @@ namespace jvm {
 		inline CP_TAGS getTag() override;
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
+
+		std::string toString() const;
 
 		std::string toString(ConstantPool &cp) const override;
 

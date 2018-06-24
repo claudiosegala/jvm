@@ -20,6 +20,12 @@ namespace jvm {
 		template<typename T>
 		void push (T);
 
+		template<typename T>
+
+		void write_vector(T);
+
+		void Read_vector(T);
+
 	private:
 		//> Operands Stack
 		std::vector<u4> operands;
