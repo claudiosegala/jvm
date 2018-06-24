@@ -148,10 +148,9 @@ namespace jvm {
 	void CP_Fieldref::printToStream(std::ostream &os, ConstantPool &cp) {
 		auto _class = cp[class_index];
 		auto _name_and_type = cp[name_and_type_index];
-		os << "Field Reference" << std::endl;
-		os << "\t\tClass index: " << class_index << std::endl << "\t";
+		os << "\t\tClass name:\t#" << class_index << " ";
 		_class->printToStream(os, cp);
-		os << "\t\tName and Type index: " << name_and_type_index << std::endl << "\t";
+		os << "\t\tName and Type:\t#" << name_and_type_index << " ";
 		_name_and_type->printToStream(os, cp);
 	}
 
@@ -169,9 +168,9 @@ namespace jvm {
 		auto _class = cp[class_index];
 		auto _nameAndType = cp[name_and_type_index];
 		os << "Method Reference" << std::endl;
-		os << "\t\tClass index: " << class_index << std::endl << "\t";
+		os << "\t\tClass name:\t#" << class_index << " ";
 		_class->printToStream(os, cp);
-		os << "\t\tName and type index: " << name_and_type_index << std::endl << "\t";
+		os << "\t\tName and type:\t#" << name_and_type_index << " ";
 		_nameAndType->printToStream(os, cp);
 	}
 
@@ -199,16 +198,15 @@ namespace jvm {
 	}
 
 	void CP_Long::printToStream(std::ostream &os, ConstantPool &cp) {
-		uint64_t number = high_bytes;
-		number = (number << 32) | low_bytes;
 		os << "Long" << std::endl;
-		os << "\t\t" << number << std::endl;
+		os << "\t\t" << toString(cp) << std::endl;
 	}
 
 	std::string CP_Long::toString(ConstantPool &cp) const {
 		uint64_t number = high_bytes;
 		number = (number << 32) | low_bytes;
-		return std::to_string(number);
+		auto number_signed = reinterpret_cast<int64_t&>(number);
+		return std::to_string(number_signed);
 	}
 
 	CP_Double::CP_Double(Reader &reader) {
@@ -217,11 +215,8 @@ namespace jvm {
 	}
 
 	void CP_Double::printToStream(std::ostream &os, ConstantPool &cp) {
-		uint64_t number = high_bytes;
-		number = (number << 32) | low_bytes;
-		double d_number = reinterpret_cast<double&>(number);
 		os << "Double" << std::endl;
-		os << "\t\t" << d_number << std::endl;
+		os << "\t\t" << toString(cp) << std::endl;
 	}
 
 	std::string CP_Double::toString(ConstantPool &cp) const {
@@ -323,9 +318,7 @@ namespace jvm {
 		auto& nam1 = name1->as<CP_Utf8>();
 		auto& nam2 = name2->as<CP_Utf8>();
 
-		os << "Name and Type" << std::endl;
-		os << "\t\tName: " <<nam1 << std::endl;
-		os << "\t\tDescriptor: " <<nam2 << std::endl;
+		os << nam1 << ": " << nam2 << std::endl;
 	}
 
 	std::string CP_NameAndType::toString(ConstantPool &cp) const {
@@ -387,9 +380,7 @@ namespace jvm {
 	}
 
 	void CP_Class::printToStream(std::ostream &os, ConstantPool &cp) {
-		os << "Class" << std::endl;
-		os << "\t\tName index:" << name_index;
-		os << "\t\tName: "  << toString(cp) << std::endl;
+		os << toString(cp) << std::endl;
 	}
 
 	std::string CP_Class::toString(ConstantPool &cp) const {
