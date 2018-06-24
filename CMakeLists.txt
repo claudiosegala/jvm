@@ -12,7 +12,7 @@ if(BUILD_32)
 endif(BUILD_32)
 
 include_directories("src/include")
-set(SOURCES src/main.cpp src/lib/util/reader.cpp src/lib/class_loader/constant_pool.cpp src/lib/class_loader/class_loader.cpp src/lib/class_loader/attribute.cpp src/lib/class_loader/field.cpp src/lib/class_loader/method.cpp src/lib/class_loader/interface.cpp src/lib/engine/engine.cpp src/include/engine/frame.hpp src/lib/engine/frame.cpp src/include/engine/operands.hpp src/include/engine/variables.hpp src/lib/engine/operands.cpp src/lib/engine/variables.cpp)
+set(SOURCES src/main.cpp src/lib/util/reader.cpp src/lib/class_loader/constant_pool.cpp src/lib/class_loader/class_loader.cpp src/lib/class_loader/attribute.cpp src/lib/class_loader/field.cpp src/lib/class_loader/method.cpp src/lib/class_loader/interface.cpp src/lib/engine/engine.cpp src/include/engine/frame.hpp src/lib/engine/frame.cpp src/lib/class_loader/opcodes.cpp src/lib/engine/operands.cpp src/lib/engine/variables.cpp)
 #file(GLOB SOURCES "src/*.cpp")
 
 add_executable(jvm ${SOURCES})
