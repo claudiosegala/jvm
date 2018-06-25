@@ -35,7 +35,7 @@ namespace jvm {
 		uint64_t PC;
 
 		//> Frame Stack
-		std::stack<Frame> frames;
+		std::stack<std::shared_ptr<Frame>> stack;
 
 		//> Method Area
 		// TODO: understand

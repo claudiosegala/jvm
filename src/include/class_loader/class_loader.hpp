@@ -43,6 +43,8 @@ namespace jvm {
 
 		std::vector<jvm::MethodInfo> methods;       ///< Vector of all MethodInfo structures declared by this class or interface type
 
+		std::map<std::string, MethodInfo> method_map;
+
 		uint16_t attributes_count;                  ///< Number of AttributeInfo in the attributes entity
 
 		jvm::AttributeInfo attributes;              ///< Vector of AttributeInfo structures
@@ -137,6 +139,8 @@ namespace jvm {
 		 * Reads methods_count and methods if any exists
 		 */
 		void read_methods (jvm::Reader&);
+
+
 
 		/**
 		 * Reads attributes_count and attributes if any exists

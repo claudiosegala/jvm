@@ -13,6 +13,7 @@ namespace jvm {
 	}
 
 	void Engine::run_clinit () {
+		Cp
 
 	}
 

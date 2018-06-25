@@ -24,6 +24,11 @@ namespace jvm {
 		for (int i = 0; i < methods_count; ++i) {
 			methods.emplace_back(file, constant_pool);
 		}
+
+		for (auto& method : methods) {
+			method_map.insert({constant_pool[method.name_index]->toString(constant_pool), method});
+		}
+
 	}
 
 	void ClassLoader::read_fields (jvm::Reader &file) {
