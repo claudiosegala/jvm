@@ -74,7 +74,11 @@ namespace jvm {
 
 	void Attr_Code::printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix) {
 		os << prefix << "Code:" << std::endl;
-		// TODO print mnemonics from "code" array
+
+		for (std::shared_ptr<Instruction> instr : code) {
+			auto prefix2 = prefix + "\t";
+			instr->printToStream(os, prefix2);
+		}
 	}
 
 	Attr_ConstantValue::Attr_ConstantValue(Reader &reader, ConstantPool &cp) {
