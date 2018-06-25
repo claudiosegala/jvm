@@ -620,6 +620,7 @@ namespace jvm {
 	}
 
 	uint32_t op_bipush::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		byte = data[idx+1];
 		return 1;
 	}
 
@@ -753,6 +754,7 @@ namespace jvm {
 	}
 
 	uint32_t op_fload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		index = data[idx+1];
 		return 1;
 	}
 
@@ -772,6 +774,7 @@ namespace jvm {
 	}
 
 	uint32_t op_dload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		index = data[idx+1];
 		return 1;
 	}
 
@@ -791,6 +794,7 @@ namespace jvm {
 	}
 
 	uint32_t op_aload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		index = data[idx+1];
 		return 1;
 	}
 
@@ -1380,6 +1384,7 @@ namespace jvm {
 	}
 
 	uint32_t op_fstore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		index = data[idx+1];
 		return 1;
 	}
 
@@ -1399,6 +1404,7 @@ namespace jvm {
 	}
 
 	uint32_t op_dstore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		index = data[idx+1];
 		return 1;
 	}
 
@@ -1418,6 +1424,7 @@ namespace jvm {
 	}
 
 	uint32_t op_astore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		index = data[idx+1];
 		return 1;
 	}
 
@@ -3223,6 +3230,8 @@ namespace jvm {
 	}
 
 	uint32_t op_ifeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		u2 aux = data[idx+1];
+		branchoffset = (aux << 8) | data[idx+2];
 		return 2;
 	}
 
@@ -3261,6 +3270,8 @@ namespace jvm {
 	}
 
 	uint32_t op_iflt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		u2 aux = data[idx+1];
+		branchoffset = (aux << 8) | data[idx+2];
 		return 2;
 	}
 
@@ -3280,6 +3291,8 @@ namespace jvm {
 	}
 
 	uint32_t op_ifge::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		u2 aux = data[idx+1];
+		branchoffset = (aux << 8) | data[idx+2];
 		return 2;
 	}
 
@@ -3299,6 +3312,8 @@ namespace jvm {
 	}
 
 	uint32_t op_ifgt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		u2 aux = data[idx+1];
+		branchoffset = (aux << 8) | data[idx+2];
 		return 2;
 	}
 
@@ -3318,6 +3333,8 @@ namespace jvm {
 	}
 
 	uint32_t op_ifle::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		u2 aux = data[idx+1];
+		branchoffset = (aux << 8) | data[idx+2];
 		return 2;
 	}
 
@@ -3337,6 +3354,8 @@ namespace jvm {
 	}
 
 	uint32_t op_if_icmpeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		u2 aux = data[idx+1];
+		branchoffset = (aux << 8) | data[idx+2];
 		return 2;
 	}
 
@@ -3356,6 +3375,8 @@ namespace jvm {
 	}
 
 	uint32_t op_if_icmpne::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		u2 aux = data[idx+1];
+		branchoffset = (aux << 8) | data[idx+2];
 		return 2;
 	}
 
@@ -3375,6 +3396,8 @@ namespace jvm {
 	}
 
 	uint32_t op_if_icmplt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		u2 aux = data[idx+1];
+		branchoffset = (aux << 8) | data[idx+2];
 		return 2;
 	}
 
@@ -3394,6 +3417,8 @@ namespace jvm {
 	}
 
 	uint32_t op_if_icmpge::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		u2 aux = data[idx+1];
+		branchoffset = (aux << 8) | data[idx+2];
 		return 2;
 	}
 
@@ -3413,6 +3438,8 @@ namespace jvm {
 	}
 
 	uint32_t op_if_icmpgt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		u2 aux = data[idx+1];
+		branchoffset = (aux << 8) | data[idx+2];
 		return 2;
 	}
 
@@ -3432,6 +3459,8 @@ namespace jvm {
 	}
 
 	uint32_t op_if_icmple::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		u2 aux = data[idx+1];
+		branchoffset = (aux << 8) | data[idx+2];
 		return 2;
 	}
 
@@ -3451,6 +3480,8 @@ namespace jvm {
 	}
 
 	uint32_t op_if_acmpeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		u2 aux = data[idx+1];
+		branchoffset = (aux << 8) | data[idx+2];
 		return 2;
 	}
 
@@ -3470,6 +3501,8 @@ namespace jvm {
 	}
 
 	uint32_t op_if_acmpne::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		u2 aux = data[idx+1];
+		branchoffset = (aux << 8) | data[idx+2];
 		return 2;
 	}
 
@@ -3481,7 +3514,7 @@ namespace jvm {
 	}
 
 	void op_goto::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
 	std::string op_goto::getName () {
@@ -3489,8 +3522,15 @@ namespace jvm {
 	}
 
 	uint32_t op_goto::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		u2 aux = data[idx+1];
+		branchoffset = (aux << 8) | data[idx+2];
 		return 2;
 	}
+
+// TODO: finish retrieve data in classes: continue implementation from iinc, see https://en.wikipedia.org/wiki/Java_bytecode_instruction_listings
+// TODO: print the data retrieved
+// TODO: implements variable arguments
+// TODO: verify if the data is retrieveing correct
 
 
 	// jsr
@@ -3697,6 +3737,8 @@ namespace jvm {
 	}
 
 	uint32_t op_getstatic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		u2 aux = data[idx+1];
+		index = (aux << 8) | data[idx+2];
 		return 2;
 	}
 
@@ -3735,6 +3777,8 @@ namespace jvm {
 	}
 
 	uint32_t op_getfield::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		u2 aux = data[idx+1];
+		index = (aux << 8) | data[idx+2];
 		return 2;
 	}
 
@@ -3906,6 +3950,8 @@ namespace jvm {
 	}
 
 	uint32_t op_anewarray::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		u2 aux = data[idx+1];
+		index = (aux << 8) | data[idx+2];
 		return 2;
 	}
 
@@ -3963,6 +4009,8 @@ namespace jvm {
 	}
 
 	uint32_t op_checkcast::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		u2 aux = data[idx+1];
+		index = (aux << 8) | data[idx+2];
 		return 2;
 	}
 
@@ -4077,6 +4125,8 @@ namespace jvm {
 	}
 
 	uint32_t op_ifnull::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		u2 aux = data[idx+1];
+		branchoffset = (aux << 8) | data[idx+2];
 		return 2;
 	}
 
@@ -4096,6 +4146,8 @@ namespace jvm {
 	}
 
 	uint32_t op_ifnonnull::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		u2 aux = data[idx+1];
+		branchoffset = (aux << 8) | data[idx+2];
 		return 2;
 	}
 
@@ -4115,6 +4167,10 @@ namespace jvm {
 	}
 
 	uint32_t op_goto_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		u4 aux1 = data[idx+1] << 24;
+		u3 aux1 = data[idx+2] << 16;
+		u2 aux1 = data[idx+3] << 8;
+		branchoffset = aux1 | aux2 | aux3 | data[idx+4];
 		return 4;
 	}
 
