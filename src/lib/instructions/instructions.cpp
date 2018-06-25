@@ -174,17 +174,17 @@ namespace jvm {
 			Instruction::instantiate<op_if_icmple>,         // 164
 			Instruction::instantiate<op_if_acmpeq>,         // 165
 			Instruction::instantiate<op_if_acmpne>,         // 166
-			Instruction::instantiate<op_goto_jvm>,          // 167
+			Instruction::instantiate<op_goto>,          // 167
 			Instruction::instantiate<op_jsr>,               // 168
 			Instruction::instantiate<op_ret>,               // 169
 			Instruction::instantiate<op_tableswitch>,       // 170
-			Instruction::instantiate<op_ireturn>,           // 171
-			Instruction::instantiate<op_lreturn>,           // 172
-			Instruction::instantiate<op_freturn>,           // 173
-			Instruction::instantiate<op_dreturn>,           // 174
-			Instruction::instantiate<op_areturn>,           // 175
-			Instruction::instantiate<op_return_jvm>,        // 176
-			nullptr,                                        // 177
+			Instruction::instantiate<op_lookupswitch>,      // 171
+			Instruction::instantiate<op_ireturn>,           // 172
+			Instruction::instantiate<op_lreturn>,           // 173
+			Instruction::instantiate<op_freturn>,           // 174
+			Instruction::instantiate<op_dreturn>,           // 175
+			Instruction::instantiate<op_areturn>,           // 176
+			Instruction::instantiate<op_return>,        // 177
 			Instruction::instantiate<op_getstatic>,         // 178
 			Instruction::instantiate<op_putstatic>,         // 179
 			Instruction::instantiate<op_getfield>,          // 180
@@ -194,7 +194,7 @@ namespace jvm {
 			Instruction::instantiate<op_invokestatic>,      // 184
 			Instruction::instantiate<op_invokeinterface>,   // 185
 			Instruction::instantiate<op_invokedynamic>,     // 186
-			Instruction::instantiate<op_new_jvm>,           // 187
+			Instruction::instantiate<op_new>,               // 187
 			Instruction::instantiate<op_newarray>,          // 188
 			Instruction::instantiate<op_anewarray>,         // 189
 			Instruction::instantiate<op_arraylength>,       // 190
@@ -619,7 +619,7 @@ namespace jvm {
 	}
 
 	uint32_t op_bipush::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 1;
 	}
 
 
@@ -638,7 +638,7 @@ namespace jvm {
 	}
 
 	uint32_t op_sipush::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -657,7 +657,7 @@ namespace jvm {
 	}
 
 	uint32_t op_ldc::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 1;
 	}
 
 
@@ -676,7 +676,7 @@ namespace jvm {
 	}
 
 	uint32_t op_ldc_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -695,7 +695,7 @@ namespace jvm {
 	}
 
 	uint32_t op_ldc2_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -714,7 +714,7 @@ namespace jvm {
 	}
 
 	uint32_t op_iload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 1;
 	}
 
 
@@ -752,7 +752,7 @@ namespace jvm {
 	}
 
 	uint32_t op_fload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 1;
 	}
 
 
@@ -771,7 +771,7 @@ namespace jvm {
 	}
 
 	uint32_t op_dload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 1;
 	}
 
 
@@ -790,7 +790,7 @@ namespace jvm {
 	}
 
 	uint32_t op_aload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 1;
 	}
 
 
@@ -1341,7 +1341,7 @@ namespace jvm {
 	}
 
 	uint32_t op_istore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 1;
 	}
 
 
@@ -1360,7 +1360,7 @@ namespace jvm {
 	}
 
 	uint32_t op_lstore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 1;
 	}
 
 
@@ -1379,7 +1379,7 @@ namespace jvm {
 	}
 
 	uint32_t op_fstore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 1;
 	}
 
 
@@ -1398,7 +1398,7 @@ namespace jvm {
 	}
 
 	uint32_t op_dstore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 1;
 	}
 
 
@@ -1417,7 +1417,7 @@ namespace jvm {
 	}
 
 	uint32_t op_astore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 1;
 	}
 
 
@@ -2823,7 +2823,7 @@ namespace jvm {
 	}
 
 	uint32_t op_iinc::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3222,7 +3222,7 @@ namespace jvm {
 	}
 
 	uint32_t op_ifeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3241,7 +3241,7 @@ namespace jvm {
 	}
 
 	uint32_t op_ifne::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3260,7 +3260,7 @@ namespace jvm {
 	}
 
 	uint32_t op_iflt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3279,7 +3279,7 @@ namespace jvm {
 	}
 
 	uint32_t op_ifge::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3298,7 +3298,7 @@ namespace jvm {
 	}
 
 	uint32_t op_ifgt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3317,7 +3317,7 @@ namespace jvm {
 	}
 
 	uint32_t op_ifle::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3336,7 +3336,7 @@ namespace jvm {
 	}
 
 	uint32_t op_if_icmpeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3355,7 +3355,7 @@ namespace jvm {
 	}
 
 	uint32_t op_if_icmpne::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3374,7 +3374,7 @@ namespace jvm {
 	}
 
 	uint32_t op_if_icmplt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3393,7 +3393,7 @@ namespace jvm {
 	}
 
 	uint32_t op_if_icmpge::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3412,7 +3412,7 @@ namespace jvm {
 	}
 
 	uint32_t op_if_icmpgt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3431,7 +3431,7 @@ namespace jvm {
 	}
 
 	uint32_t op_if_icmple::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3450,7 +3450,7 @@ namespace jvm {
 	}
 
 	uint32_t op_if_acmpeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3469,26 +3469,26 @@ namespace jvm {
 	}
 
 	uint32_t op_if_acmpne::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
-	// goto_jvm
+	// goto
 
-	void op_goto_jvm::execute() {
+	void op_goto::execute() {
 
 	}
 
-	void op_goto_jvm::printToStream(std::ostream& os, std::string& prefix) {
+	void op_goto::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_goto_jvm::getName () {
-		return "goto_jvm";
+	std::string op_goto::getName () {
+		return "goto";
 	}
 
-	uint32_t op_goto_jvm::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+	uint32_t op_goto::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		return 2;
 	}
 
 
@@ -3507,7 +3507,7 @@ namespace jvm {
 	}
 
 	uint32_t op_jsr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3526,7 +3526,7 @@ namespace jvm {
 	}
 
 	uint32_t op_ret::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 1;
 	}
 
 
@@ -3545,7 +3545,25 @@ namespace jvm {
 	}
 
 	uint32_t op_tableswitch::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 16; //16+
+	}
+
+	// op_lookupswitch
+
+	void op_lookupswitch::execute() {
+
+	}
+
+	void op_lookupswitch::printToStream(std::ostream& os, std::string& prefix) {
+		os << prefix << getName() << std::endl;
+	}
+
+	std::string op_lookupswitch::getName () {
+		return "lookupswitch";
+	}
+
+	uint32_t op_lookupswitch::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		return 8; //8+
 	}
 
 
@@ -3644,21 +3662,21 @@ namespace jvm {
 	}
 
 
-	// return_jvm
+	// return
 
-	void op_return_jvm::execute() {
+	void op_return::execute() {
 
 	}
 
-	void op_return_jvm::printToStream(std::ostream& os, std::string& prefix) {
+	void op_return::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_return_jvm::getName () {
-		return "return_jvm";
+	std::string op_return::getName () {
+		return "return";
 	}
 
-	uint32_t op_return_jvm::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t op_return::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3678,7 +3696,7 @@ namespace jvm {
 	}
 
 	uint32_t op_getstatic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3697,7 +3715,7 @@ namespace jvm {
 	}
 
 	uint32_t op_putstatic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3716,7 +3734,7 @@ namespace jvm {
 	}
 
 	uint32_t op_getfield::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3735,7 +3753,7 @@ namespace jvm {
 	}
 
 	uint32_t op_putfield::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3754,7 +3772,7 @@ namespace jvm {
 	}
 
 	uint32_t op_invokevirtual::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3773,7 +3791,7 @@ namespace jvm {
 	}
 
 	uint32_t op_invokespecial::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3792,7 +3810,7 @@ namespace jvm {
 	}
 
 	uint32_t op_invokestatic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3811,7 +3829,7 @@ namespace jvm {
 	}
 
 	uint32_t op_invokeinterface::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 4;
 	}
 
 
@@ -3830,26 +3848,26 @@ namespace jvm {
 	}
 
 	uint32_t op_invokedynamic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 4;
 	}
 
 
-	// new_jvm
+	// new
 
-	void op_new_jvm::execute() {
+	void op_new::execute() {
 
 	}
 
-	void op_new_jvm::printToStream(std::ostream& os, std::string& prefix) {
+	void op_new::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_new_jvm::getName () {
-		return "new_jvm";
+	std::string op_new::getName () {
+		return "new";
 	}
 
-	uint32_t op_new_jvm::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+	uint32_t op_new::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		return 2;
 	}
 
 
@@ -3868,7 +3886,7 @@ namespace jvm {
 	}
 
 	uint32_t op_newarray::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 1;
 	}
 
 
@@ -3887,7 +3905,7 @@ namespace jvm {
 	}
 
 	uint32_t op_anewarray::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3944,7 +3962,7 @@ namespace jvm {
 	}
 
 	uint32_t op_checkcast::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -3963,7 +3981,7 @@ namespace jvm {
 	}
 
 	uint32_t op_instanceof::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -4020,7 +4038,7 @@ namespace jvm {
 	}
 
 	uint32_t op_wide::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 3; //3+ (3 or 5 in this case)
 	}
 
 
@@ -4039,7 +4057,7 @@ namespace jvm {
 	}
 
 	uint32_t op_multianewarray::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 3;
 	}
 
 
@@ -4058,7 +4076,7 @@ namespace jvm {
 	}
 
 	uint32_t op_ifnull::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -4077,7 +4095,7 @@ namespace jvm {
 	}
 
 	uint32_t op_ifnonnull::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 2;
 	}
 
 
@@ -4096,7 +4114,7 @@ namespace jvm {
 	}
 
 	uint32_t op_goto_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 4;
 	}
 
 
@@ -4115,7 +4133,7 @@ namespace jvm {
 	}
 
 	uint32_t op_jsr_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 0;
+		return 4;
 	}
 
 

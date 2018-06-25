@@ -4746,12 +4746,12 @@ namespace jvm {
 	};
 
 	//Control 0xA7,167 -> 0xB1,177
-	class op_goto_jvm : public Instruction {  // 0xA7 -- 167
+	class op_goto : public Instruction {  // 0xA7 -- 167
 	public:
 		/**
 		 * Constructor
 		 */
-		op_goto_jvm() = default;
+		op_goto() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4836,6 +4836,34 @@ namespace jvm {
 		 * Constructor
 		 */
 		op_tableswitch() = default;
+
+		/**
+		 * The execution of this instruction
+		 */
+		void execute() override;
+
+		/**
+		 * Print in the stream the name
+		 */
+		void printToStream(std::ostream&, std::string&) override;
+
+		/**
+		 * Fill the params of this class
+		 */
+		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
+
+		/**
+		 * Get the name of the class
+		 */
+		std::string getName() override;
+	};
+
+	class op_lookupswitch : public Instruction {  // 0xAA -- 170
+	public:
+		/**
+		 * Constructor
+		 */
+		op_lookupswitch() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4998,12 +5026,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class op_return_jvm : public Instruction {  // 0xB0 -- 176
+	class op_return : public Instruction {  // 0xB0 -- 176
 	public:
 		/**
 		 * Constructor
 		 */
-		op_return_jvm() = default;
+		op_return() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5280,12 +5308,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
-	class op_new_jvm : public Instruction {  // 0xBB -- 187
+	class op_new : public Instruction {  // 0xBB -- 187
 	public:
 		/**
 		 * Constructor
 		 */
-		op_new_jvm() = default;
+		op_new() = default;
 
 		/**
 		 * The execution of this instruction
