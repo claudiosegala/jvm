@@ -138,9 +138,10 @@ namespace jvm {
 		std::cout << "Methods:";
 
 		auto i = 0;
-		for (auto& method : methods) {
+		for (auto& item : methods) {
+			auto& method = item.second;
 			std::cout << std::endl << "\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
-			method.second.PrintToStream(std::cout, constant_pool, "");
+			method.PrintToStream(std::cout, constant_pool, "");
 		}
 	}
 

@@ -35,7 +35,7 @@ namespace jvm {
 	}
 
 	void AttributeInfo::printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix) {
-		os << prefix << "Count:" << size() << std::endl;
+		os << prefix << "Attributes count:" << size() << std::endl;
 		for (std::shared_ptr<Attr_Entry>& ptr : *this) {
 			auto attr = ptr.get();
 			if (attr == nullptr) {
