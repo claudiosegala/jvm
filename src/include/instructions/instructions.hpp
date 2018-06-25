@@ -4453,12 +4453,12 @@ namespace jvm {
 		/**
 		 * Print in the stream the name
 		 */
-		void printToStream(std::ostream&, std::string&) override;
+		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Fill the params of this class
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1>&) override;
+		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4467,6 +4467,7 @@ namespace jvm {
 
 	private:
 		u2 branchoffset; ///< Offset to the next instruction
+	};
 
 	class op_ifge : public Instruction {  // 0x9C -- 156
 	public:

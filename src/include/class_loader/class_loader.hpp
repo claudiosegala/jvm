@@ -4,7 +4,6 @@
 #include <vector>
 #include <string>
 #include <unordered_map>
-#include <bits/unordered_map.h>
 #include "util/bit.hpp"
 #include "util/reader.hpp"
 #include "constant_pool.hpp"
@@ -113,39 +112,39 @@ namespace jvm {
 		/**
 		 * Reads the major and minor version of this class file
 		 */
-		void read_version (jvm::Reader&);
+		void read_version (Reader&);
 
 		/**
 		 * Reads the constant pool
 		 */
-		void read_cp (jvm::Reader&);
+		void read_cp (Reader&);
 
 		/**
 		 * Reads access_flags, this_class and super_class
 		 */
-		void read_flags(jvm::Reader&);
+		void read_flags(Reader&);
 
 		/**
 		 * Reads interfaces_count and interfaces if any exists
 		 */
-		void read_interfaces (jvm::Reader&);
+		void read_interfaces (Reader&);
 
 		/**
 		 * Reads fields_count and fields if any exists
 		 */
-		void read_fields (jvm::Reader&);
+		void read_fields (Reader&);
 
 		/**
 		 * Reads methods_count and methods if any exists
 		 */
-		void read_methods (jvm::Reader&);
+		void read_methods (Reader&);
 
 
 
 		/**
 		 * Reads attributes_count and attributes if any exists
 		 */
-		void read_attributes (jvm::Reader&);
+		void read_attributes (Reader&);
 
 	};
 

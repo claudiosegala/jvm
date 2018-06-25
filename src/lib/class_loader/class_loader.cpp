@@ -10,11 +10,11 @@ namespace jvm {
 
 	ClassLoader::ClassLoader() = default;
 
-	void ClassLoader::read_attributes (jvm::Reader &file) {
+	void ClassLoader::read_attributes (Reader &file) {
 		attributes.fill(file, constant_pool);
 	}
 
-	void ClassLoader::read_methods (jvm::Reader &file) {
+	void ClassLoader::read_methods (Reader &file) {
 		methods_count = file.getNextHalfWord();
 
 		if (methods_count == 0) {
@@ -30,7 +30,7 @@ namespace jvm {
 
 	}
 
-	void ClassLoader::read_fields (jvm::Reader &file) {
+	void ClassLoader::read_fields (Reader &file) {
 		fields_count = file.getNextHalfWord();
 
 		if (fields_count == 0) {
@@ -42,7 +42,7 @@ namespace jvm {
 		}
 	}
 
-	void ClassLoader::read_interfaces (jvm::Reader &file) {
+	void ClassLoader::read_interfaces (Reader &file) {
 		interfaces_count = file.getNextHalfWord();
 
 		if (interfaces_count == 0) {
@@ -54,13 +54,13 @@ namespace jvm {
 		}
 	}
 
-	void ClassLoader::read_flags (jvm::Reader &file) {
+	void ClassLoader::read_flags (Reader &file) {
 		access_flags = file.getNextHalfWord();
 		this_class = file.getNextHalfWord();
 		super_class = file.getNextHalfWord();
 	}
 
-	void ClassLoader::read_cp (jvm::Reader& file) {
+	void ClassLoader::read_cp (Reader& file) {
 		cp_count = (uint16_t)(file.getNextHalfWord() - 1);
 
 		if (cp_count <= 0) {
@@ -70,7 +70,7 @@ namespace jvm {
 		constant_pool.fill(file, cp_count);
 	}
 
-	void ClassLoader::read_version (jvm::Reader& file) {
+	void ClassLoader::read_version (Reader& file) {
 		magic_number = MAGIC_NUMBER;
 		min_version = file.getNextHalfWord();
 		max_version = file.getNextHalfWord();
@@ -81,7 +81,7 @@ namespace jvm {
 	 * @param file The file to extract the data
 	 */
 	void ClassLoader::read (std::basic_string<char> filename) {
-		auto file = jvm::Reader();
+		auto file = Reader();
 
 		file.open(filename);
 

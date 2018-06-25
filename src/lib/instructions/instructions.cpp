@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include "util/macros.hpp"
 #include "instructions/instructions.hpp"
 
 namespace jvm {
@@ -4168,8 +4169,8 @@ namespace jvm {
 
 	uint32_t op_goto_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		u4 aux1 = data[idx+1] << 24;
-		u3 aux1 = data[idx+2] << 16;
-		u2 aux1 = data[idx+3] << 8;
+		u4 aux2 = data[idx+2] << 16;
+		u4 aux3 = data[idx+3] << 8;
 		branchoffset = aux1 | aux2 | aux3 | data[idx+4];
 		return 4;
 	}
