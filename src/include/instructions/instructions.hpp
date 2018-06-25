@@ -537,6 +537,8 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+	private:
+		u1 byte; ///< Byte to be pushed as an integer to the stack
 	};
 
 	class op_sipush : public Instruction {  // 0x11 -- 17
@@ -734,6 +736,8 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+	private:
+		u1 index; ///< Index of the local float variable
 	};
 
 	class op_dload : public Instruction {  // 0x18 -- 24
@@ -762,6 +766,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u1 index; ///< Index to the local double variable
 	};
 
 	class op_aload : public Instruction {  // 0x19 -- 25
@@ -790,6 +797,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u1 index; ///< index of the reference to the local variable to be loaded
 	};
 
 	class op_iload_0 : public Instruction {  // 0x1A -- 26
@@ -1659,6 +1669,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u1 index; ///< Index of the local float variable
 	};
 
 	class op_dstore : public Instruction {  // 0x39 -- 57
@@ -1687,6 +1700,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u1 index; ///< Index to the local double variable
 	};
 
 	class op_astore : public Instruction {  // 0x3A -- 58
@@ -1715,6 +1731,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u1 index; ///< Index of the local variable that will store the reference
 	};
 
 	class op_istore_0 : public Instruction {  // 0x3B -- 59
@@ -3789,6 +3808,10 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u1 index;		///< 
+		u1 constant;	///< 
 	};
 
 	//Conversations 0x85,133 -> 0x93,147
@@ -4379,6 +4402,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class op_ifne : public Instruction {  // 0x9A -- 154
@@ -4407,6 +4433,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class op_iflt : public Instruction {  // 0x9B -- 155
@@ -4435,7 +4464,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
-	};
+
+	private:
+		u2 branchoffset; ///< Offset to the next instruction
 
 	class op_ifge : public Instruction {  // 0x9C -- 156
 	public:
@@ -4463,6 +4494,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class op_ifgt : public Instruction {  //0x9D -- 157
@@ -4491,6 +4525,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class op_ifle : public Instruction {  //0x9E -- 158
@@ -4519,6 +4556,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class op_if_icmpeq : public Instruction {  // 0x9F -- 159
@@ -4547,6 +4587,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class op_if_icmpne : public Instruction {  // 0xA0 -- 160
@@ -4575,6 +4618,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class op_if_icmplt : public Instruction {  // 0xA1 - 161
@@ -4603,6 +4649,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class op_if_icmpge : public Instruction {  // 0xA2 -- 162
@@ -4631,6 +4680,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class op_if_icmpgt : public Instruction {  // 0xA3 -- 163
@@ -4659,6 +4711,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class op_if_icmple : public Instruction {  // 0xA4 -- 164
@@ -4687,6 +4742,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class op_if_acmpeq : public Instruction {  // 0xA5 -- 165
@@ -4715,6 +4773,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class op_if_acmpne : public Instruction {  // 0xA6 -- 166
@@ -4743,6 +4804,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u2 branchoffset; ///< Offset to the next instruction
 	};
 
 	//Control 0xA7,167 -> 0xB1,177
@@ -4772,6 +4836,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class op_jsr : public Instruction {  // 0xA8 -- 168
@@ -5081,6 +5148,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u2 index; ///< Index to the field reference in the constant pool
 	};
 
 
@@ -5138,6 +5208,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u2 index; ///< Index to the field reference in the constant pool
 	};
 
 	class op_putfield : public Instruction {  // 0xB5 -- 181
@@ -5390,6 +5463,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u2 index; ///< index of the reference to the class that identifies the component type
 	};
 
 	class op_arraylength : public Instruction { // 0xBE -- 190
@@ -5474,6 +5550,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u2 index; ///< Index of the class reference in the constant pool
 	};
 
 	class op_instanceof : public Instruction {     //0xC1 -- 193
@@ -5643,6 +5722,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class op_ifnonnull : public Instruction {  // 0xC7 -- 199
@@ -5671,6 +5753,9 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+	private:
+		u2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class op_goto_w : public Instruction {  // 0xC8 -- 200
@@ -5699,6 +5784,8 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+	private:
+		u4 branchoffset; ///< Offset to the next instruction
 	};
 
 	class op_jsr_w : public Instruction {  // 0xC9 -- 201
@@ -5730,6 +5817,12 @@ namespace jvm {
 	};
 
 	//Reserved 0xca,202 -> 0xff,255
+	/**
+	 * This opcode have been reserved and may be used only inside a 
+	 * Java Virtual Machine implementation. It cannot appear in 
+	 * valid class files. In this case, we didn't implemented this
+	 * opcode.
+	 */
 	class op_breakpoint : public Instruction {  // 0xca -- 202
 	public:
 		/**
@@ -5758,6 +5851,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
+	/**
+	 * This opcode have been reserved and may be used only inside a 
+	 * Java Virtual Machine implementation. It cannot appear in 
+	 * valid class files. In this case, we didn't implemented this
+	 * opcode.
+	 */
 	class op_impdep1 : public Instruction {  // 0xFE -- 254
 	public:
 		/**
@@ -5786,6 +5885,12 @@ namespace jvm {
 		std::string getName() override;
 	};
 
+	/**
+	 * This opcode have been reserved and may be used only inside a 
+	 * Java Virtual Machine implementation. It cannot appear in 
+	 * valid class files. In this case, we didn't implemented this
+	 * opcode.
+	 */
 	class op_impdep2 : public Instruction {  // 0xFF -- 255
 	public:
 		/**
