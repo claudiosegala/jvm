@@ -17,23 +17,25 @@ namespace jvm {
 	};
 
 	union op8 {
-
+		double lf;
+		uint64_t ull;
+		int64_t ll;
 	};
 
-	class Operands : public std::stack<u4> {
+	class Operands : public std::stack<op4> {
 	public:
 		/**
 		* Default constructor
 		*/
 		Operands() = default;
 
-		u4 pop4();
+		op4 pop4();
 
-		u8 pop8();
+		op8 pop8();
 
-		void push4(u4 value);
+		void push4(op4 value);
 
-		void push8(u8 value);
+		void push8(op8 value);
 	};
 
 }

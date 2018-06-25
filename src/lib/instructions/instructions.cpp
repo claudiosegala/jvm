@@ -279,8 +279,7 @@ namespace jvm {
 		auto instrInstantiator = instruction_set[opcode];
 
 		if (not instrInstantiator) {
-			std::string op = std::to_string(opcode);
-			throw "This op-code " + op + " does not exist!";
+			throw "Opcode with number " + std::to_string(opcode) + " does not exist!";
 		}
 
 		return instrInstantiator();
