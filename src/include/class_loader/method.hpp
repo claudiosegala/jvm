@@ -40,6 +40,10 @@ namespace jvm {
 		 */
 		void Read(Reader &, ConstantPool &cp);
 
+		std::string getName(ConstantPool &cp);
+
+		std::string getDescriptor(ConstantPool &cp);
+
 	private:
 
 		/**

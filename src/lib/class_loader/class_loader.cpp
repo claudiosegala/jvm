@@ -22,11 +22,10 @@ namespace jvm {
 		}
 
 		for (int i = 0; i < methods_count; ++i) {
-			methods.emplace_back(file, constant_pool);
-		}
-
-		for (auto& method : methods) {
-			method_map.insert({constant_pool[method.name_index]->toString(constant_pool), method});
+			MethodInfo currentMethod(file, constant_pool);
+			auto name = currentMethod.getName(constant_pool);
+			auto descriptor = currentMethod.getDescriptor(constant_pool);
+			methods.insert({name + descriptor, currentMethod});
 		}
 
 	}
@@ -141,7 +140,7 @@ namespace jvm {
 		auto i = 0;
 		for (auto& method : methods) {
 			std::cout << std::endl << "\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
-			method.PrintToStream(std::cout, constant_pool, "");
+			method.second.PrintToStream(std::cout, constant_pool, "");
 		}
 	}
 

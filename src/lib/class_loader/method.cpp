@@ -55,4 +55,12 @@ namespace jvm  {
         descriptor_index = reader.getNextHalfWord();
         attributes.fill(reader, cp);
     }
+
+	std::string MethodInfo::getName(ConstantPool &cp) {
+		return cp[name_index]->toString(cp);
+	}
+
+    std::string MethodInfo::getDescriptor(ConstantPool &cp) {
+        return cp[descriptor_index]->toString(cp);
+    }
 }

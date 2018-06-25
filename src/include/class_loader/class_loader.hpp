@@ -3,6 +3,8 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <unordered_map>
+#include <bits/unordered_map.h>
 #include "util/bit.hpp"
 #include "util/reader.hpp"
 #include "constant_pool.hpp"
@@ -41,10 +43,8 @@ namespace jvm {
 
 		uint16_t methods_count;                     ///< Number of MethodInfo in the methods entity
 
-		std::vector<jvm::MethodInfo> methods;       ///< Vector of all MethodInfo structures declared by this class or interface type
-
-		std::map<std::string, MethodInfo> method_map;
-
+		std::unordered_map<std::string, MethodInfo> methods;       ///< Vector of all MethodInfo structures declared by this class or interface type
+		
 		uint16_t attributes_count;                  ///< Number of AttributeInfo in the attributes entity
 
 		jvm::AttributeInfo attributes;              ///< Vector of AttributeInfo structures
