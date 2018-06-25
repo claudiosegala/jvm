@@ -12,7 +12,7 @@ if(BUILD_32)
 endif(BUILD_32)
 
 include_directories("src/include")
-set(SOURCES src/main.cpp src/lib/util/reader.cpp src/lib/class_loader/constant_pool.cpp src/lib/class_loader/class_loader.cpp src/lib/class_loader/attribute.cpp src/lib/class_loader/field.cpp src/lib/class_loader/method.cpp src/lib/class_loader/interface.cpp src/lib/engine/engine.cpp src/lib/engine/operands.cpp src/lib/engine/variables.cpp src/lib/instructions/instructions.cpp)
+set(SOURCES src/main.cpp src/lib/util/reader.cpp src/lib/class_loader/constant_pool.cpp src/lib/class_loader/class_loader.cpp src/lib/class_loader/attribute.cpp src/lib/class_loader/field.cpp src/lib/class_loader/method.cpp src/lib/class_loader/interface.cpp src/lib/engine/engine.cpp src/lib/engine/operands.cpp src/lib/engine/variables.cpp src/lib/instructions/instructions.cpp src/include/util/converter.hpp src/lib/util/converter.cpp)
 #src/lib/engine/frame.cpp
 #file(GLOB SOURCES "src/*.cpp")
 

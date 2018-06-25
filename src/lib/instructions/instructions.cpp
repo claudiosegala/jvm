@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include "util/macros.hpp"
+#include "util/converter.hpp"
 #include "instructions/instructions.hpp"
 
 namespace jvm {
@@ -3231,8 +3232,7 @@ namespace jvm {
 	}
 
 	uint32_t op_ifeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		u2 aux = data[idx+1];
-		branchoffset = (aux << 8) | data[idx+2];
+		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
 
@@ -3271,8 +3271,7 @@ namespace jvm {
 	}
 
 	uint32_t op_iflt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		u2 aux = data[idx+1];
-		branchoffset = (aux << 8) | data[idx+2];
+		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
 
@@ -3292,8 +3291,7 @@ namespace jvm {
 	}
 
 	uint32_t op_ifge::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		u2 aux = data[idx+1];
-		branchoffset = (aux << 8) | data[idx+2];
+		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
 
@@ -3313,8 +3311,7 @@ namespace jvm {
 	}
 
 	uint32_t op_ifgt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		u2 aux = data[idx+1];
-		branchoffset = (aux << 8) | data[idx+2];
+		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
 
@@ -3334,8 +3331,7 @@ namespace jvm {
 	}
 
 	uint32_t op_ifle::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		u2 aux = data[idx+1];
-		branchoffset = (aux << 8) | data[idx+2];
+		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
 
@@ -3355,8 +3351,7 @@ namespace jvm {
 	}
 
 	uint32_t op_if_icmpeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		u2 aux = data[idx+1];
-		branchoffset = (aux << 8) | data[idx+2];
+		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
 
@@ -3376,8 +3371,7 @@ namespace jvm {
 	}
 
 	uint32_t op_if_icmpne::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		u2 aux = data[idx+1];
-		branchoffset = (aux << 8) | data[idx+2];
+		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
 
@@ -3397,8 +3391,7 @@ namespace jvm {
 	}
 
 	uint32_t op_if_icmplt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		u2 aux = data[idx+1];
-		branchoffset = (aux << 8) | data[idx+2];
+		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
 
@@ -3418,8 +3411,7 @@ namespace jvm {
 	}
 
 	uint32_t op_if_icmpge::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		u2 aux = data[idx+1];
-		branchoffset = (aux << 8) | data[idx+2];
+		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
 
@@ -3439,8 +3431,7 @@ namespace jvm {
 	}
 
 	uint32_t op_if_icmpgt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		u2 aux = data[idx+1];
-		branchoffset = (aux << 8) | data[idx+2];
+		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
 
@@ -3460,8 +3451,7 @@ namespace jvm {
 	}
 
 	uint32_t op_if_icmple::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		u2 aux = data[idx+1];
-		branchoffset = (aux << 8) | data[idx+2];
+		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
 
@@ -3481,8 +3471,7 @@ namespace jvm {
 	}
 
 	uint32_t op_if_acmpeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		u2 aux = data[idx+1];
-		branchoffset = (aux << 8) | data[idx+2];
+		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
 
@@ -3502,8 +3491,7 @@ namespace jvm {
 	}
 
 	uint32_t op_if_acmpne::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		u2 aux = data[idx+1];
-		branchoffset = (aux << 8) | data[idx+2];
+		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
 
@@ -3523,8 +3511,7 @@ namespace jvm {
 	}
 
 	uint32_t op_goto::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		u2 aux = data[idx+1];
-		branchoffset = (aux << 8) | data[idx+2];
+		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
 
@@ -3738,8 +3725,7 @@ namespace jvm {
 	}
 
 	uint32_t op_getstatic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		u2 aux = data[idx+1];
-		index = (aux << 8) | data[idx+2];
+		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
 
@@ -3778,8 +3764,7 @@ namespace jvm {
 	}
 
 	uint32_t op_getfield::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		u2 aux = data[idx+1];
-		index = (aux << 8) | data[idx+2];
+		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
 
@@ -3951,8 +3936,7 @@ namespace jvm {
 	}
 
 	uint32_t op_anewarray::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		u2 aux = data[idx+1];
-		index = (aux << 8) | data[idx+2];
+		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
 
@@ -4010,8 +3994,7 @@ namespace jvm {
 	}
 
 	uint32_t op_checkcast::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		u2 aux = data[idx+1];
-		index = (aux << 8) | data[idx+2];
+		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
 
@@ -4126,8 +4109,7 @@ namespace jvm {
 	}
 
 	uint32_t op_ifnull::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		u2 aux = data[idx+1];
-		branchoffset = (aux << 8) | data[idx+2];
+		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
 
@@ -4147,8 +4129,7 @@ namespace jvm {
 	}
 
 	uint32_t op_ifnonnull::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		u2 aux = data[idx+1];
-		branchoffset = (aux << 8) | data[idx+2];
+		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
 
@@ -4168,10 +4149,7 @@ namespace jvm {
 	}
 
 	uint32_t op_goto_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		u4 aux1 = data[idx+1] << 24;
-		u4 aux2 = data[idx+2] << 16;
-		u4 aux3 = data[idx+3] << 8;
-		branchoffset = aux1 | aux2 | aux3 | data[idx+4];
+		branchoffset = Converter::to_u4(data[idx+1], data[idx+2], data[idx+3], data[idx+4]);
 		return 4;
 	}
 
