@@ -1,7 +1,9 @@
 #pragma once
 
 #include <string> 
- 
+
+// TODO: put this on the converter class
+
 namespace jvm {
 	/**
 	* UTF-8 to UTF-16

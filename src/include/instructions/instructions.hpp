@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include "util/macros.hpp"
+#include "engine/framesStack.hpp"
 #include "class_loader/constant_pool.hpp"
 
 namespace jvm {
@@ -59,6 +60,10 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		virtual std::string getName() = 0;
+
+	private:
+		//> A static reference to the framestack of the program
+		static FramesStack& fs;
 	};
 
 
@@ -71,7 +76,7 @@ namespace jvm {
 		op_nop() = default;
 
 		/**
-		 * The execution of this instruction
+		 * Does nothing
 		 */
 		void execute() override;
 

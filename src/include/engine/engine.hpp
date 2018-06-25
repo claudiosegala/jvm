@@ -3,6 +3,7 @@
 #include <cstdint>
 #include "util/bit.hpp"
 #include <vector>
+#include "engine/framesStack.hpp"
 #include "class_loader/constant_pool.hpp"
 #include "class_loader/attribute.hpp"
 #include "class_loader/class_loader.hpp"
@@ -34,7 +35,7 @@ namespace jvm {
 		uint64_t PC;
 
 		//> Frame Stack
-//		std::stack<std::shared_ptr<Frame>> stack;
+		FramesStack st;
 
 		//> Method Area
 		// TODO: understand

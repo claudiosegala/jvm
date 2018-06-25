@@ -305,9 +305,7 @@ namespace jvm {
 
 	// nop
 
-	void op_nop::execute() {
-
-	}
+	void op_nop::execute() {}
 
 	void op_nop::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
