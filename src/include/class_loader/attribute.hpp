@@ -1,6 +1,5 @@
 #pragma once
 
-#include "util/macros.hpp"
 #include "constant_pool.hpp"
 #include "instructions/instructions.hpp"
 

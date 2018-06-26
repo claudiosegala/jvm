@@ -1,6 +1,5 @@
 #pragma once
 
-#include "util/macros.hpp"
 #include "attribute.hpp"
 
 namespace jvm {

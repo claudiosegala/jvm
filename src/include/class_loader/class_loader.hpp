@@ -1,7 +1,5 @@
 #pragma once
 
-#include "util/macros.hpp"
-#include "util/reader.hpp"
 #include "constant_pool.hpp"
 #include "interface.hpp"
 #include "field.hpp"

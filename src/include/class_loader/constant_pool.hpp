@@ -1,8 +1,6 @@
 #pragma once
 
-#include <vector>
-#include <memory>
-#include "util/bit.hpp"
+#include "util/macros.hpp"
 #include "util/reader.hpp"
 
 namespace jvm {

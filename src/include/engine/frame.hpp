@@ -1,6 +1,5 @@
 #pragma once
 
-#include "util/macros.hpp"
 #include "operands.hpp"
 #include "variables.hpp"
 

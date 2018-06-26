@@ -1,8 +1,6 @@
 #pragma once
 
-#include "util/bit.hpp"
-#include "util/macros.hpp"
-#include "engine/framesStack.hpp"
+#include "framesStack.hpp"
 #include "class_loader/class_loader.hpp"
 
 namespace jvm {

@@ -1,7 +1,5 @@
 #pragma once
 
-#include <vector>
-#include "constant_pool.hpp"
 #include "attribute.hpp"
 
 namespace jvm {
