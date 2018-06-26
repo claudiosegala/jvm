@@ -5849,7 +5849,7 @@ namespace jvm {
 		i4 npairs;
 
 		//> Jump Offsets
-		std::map<i4, i4> pairs; // TODO: maybe, just maybe would be nice to use a std::map instead of std::vector
+		std::map<i4, i4> pairs;
 	};
 
 	class OPireturn : public Instruction { // 0xAC -- 172
