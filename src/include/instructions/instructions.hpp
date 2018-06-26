@@ -6364,6 +6364,10 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		u2 index;	///< Index in the constant pool to the interface method
+		u1 count;	///< Count operand that must not be zero
 	};
 
 	class OPinvokedynamic : public Instruction { // 0xBA - - 186
@@ -6471,7 +6475,7 @@ namespace jvm {
 		uint32_t getOpCode() override;
 
 	private:
-		u1 atype; ///< TODO: encontrar o tamanho disso daqui
+		u1 atype; ///< Code that indicates the type of array to create
 	};
 
 	class OPanewarray : public Instruction { // 0xBD -- 189
@@ -6792,7 +6796,7 @@ namespace jvm {
 
 	private:
 		u2 index; ///< Index in the constant pool
-		// dimensions...
+		u1 dimensions; // Number of dimensions of the array to be created, must be greater than or equal to 1
 	};
 
 	class OPifnull : public Instruction { // 0xC6 -- 198

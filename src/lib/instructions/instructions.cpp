@@ -4661,6 +4661,15 @@ namespace jvm {
 	}
 
 	uint32_t OPinvokeinterface::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		index = Converter::to_u2(data[idx+1], data[idx+2]);
+		count = data[idx+3];
+
+		if(!counter)
+			throw "Invalid invokeinterface: the value of count must not be zero";
+
+		if(!data[idx+4])
+			throw "Invalid invokeinterface: the value of the last argument must be zero";
+
 		return 4;
 	}
 
@@ -4685,8 +4694,8 @@ namespace jvm {
 
 	uint32_t OPinvokedynamic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
-		if(data[idx+3] != 0x00 || data[idx+4] != 0x00 ) {
-			// TODO lançar uma exception?
+		if(!data[idx+3] || !data[idx+4]) {
+			throw "Invalid invokedynamic: the value of the last 2 arguments must be zero";
 		}
 		return 4;
 	}
@@ -4735,6 +4744,7 @@ namespace jvm {
 	}
 
 	uint32_t OPnewarray::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		atype = data[idx+1];
 		return 1;
 	}
 
@@ -4956,8 +4966,12 @@ namespace jvm {
 	}
 
 	uint32_t OPmultianewarray::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		index = Converter::to_u2(data[idx1], data[idx2]);
-		// TODO: terminar
+		index = Converter::to_u2(data[idx+1], data[idx+2]);
+		dimensions = data[idx+3];
+
+		if(dimensions < 1u)
+			throw "Invalid multianewarray: the number of dimensions of the array must be greater than or equal to 1";
+
 		return 3;
 	}
 
