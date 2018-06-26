@@ -9,16 +9,16 @@ namespace jvm {
 	// Code
 
 	const InstructionInstantiator Code::instruction_set[256] = {
-			Instruction::instantiate<op_nop>,               // 00
-			Instruction::instantiate<op_aconst_null>,       // 01
-			Instruction::instantiate<op_iconst_m1>,         // 02
-			Instruction::instantiate<op_iconst_0>,          // 03
-			Instruction::instantiate<op_iconst_1>,          // 04
-			Instruction::instantiate<op_iconst_2>,          // 05
-			Instruction::instantiate<op_iconst_3>,          // 06
-			Instruction::instantiate<op_iconst_4>,          // 07
-			Instruction::instantiate<op_iconst_5>,          // 08
-			Instruction::instantiate<op_lconst_0>,          // 09
+			Instruction::instantiate<op_nop>,               // 0
+			Instruction::instantiate<op_aconst_null>,       // 1
+			Instruction::instantiate<op_iconst_m1>,         // 2
+			Instruction::instantiate<op_iconst_0>,          // 3
+			Instruction::instantiate<op_iconst_1>,          // 4
+			Instruction::instantiate<op_iconst_2>,          // 5
+			Instruction::instantiate<op_iconst_3>,          // 6
+			Instruction::instantiate<op_iconst_4>,          // 7
+			Instruction::instantiate<op_iconst_5>,          // 8
+			Instruction::instantiate<op_lconst_0>,          // 9
 			Instruction::instantiate<op_lconst_1>,          // 10
 			Instruction::instantiate<op_fconst_0>,          // 11
 			Instruction::instantiate<op_fconst_1>,          // 12
@@ -176,7 +176,7 @@ namespace jvm {
 			Instruction::instantiate<op_if_icmple>,         // 164
 			Instruction::instantiate<op_if_acmpeq>,         // 165
 			Instruction::instantiate<op_if_acmpne>,         // 166
-			Instruction::instantiate<op_goto>,          // 167
+			Instruction::instantiate<op_goto>,              // 167
 			Instruction::instantiate<op_jsr>,               // 168
 			Instruction::instantiate<op_ret>,               // 169
 			Instruction::instantiate<op_tableswitch>,       // 170
@@ -186,7 +186,7 @@ namespace jvm {
 			Instruction::instantiate<op_freturn>,           // 174
 			Instruction::instantiate<op_dreturn>,           // 175
 			Instruction::instantiate<op_areturn>,           // 176
-			Instruction::instantiate<op_return>,        // 177
+			Instruction::instantiate<op_return>,            // 177
 			Instruction::instantiate<op_getstatic>,         // 178
 			Instruction::instantiate<op_putstatic>,         // 179
 			Instruction::instantiate<op_getfield>,          // 180
