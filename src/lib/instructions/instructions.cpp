@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <algorithm>
 #include "util/macros.hpp"
 #include "util/converter.hpp"
 #include "instructions/instructions.hpp"
@@ -4255,8 +4256,29 @@ namespace jvm {
 		return 170;
 	}
 
+	// TODO: check later for correctness
 	uint32_t OPtableswitch::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 16; //16+
+		uint32_t i = idx + 1;
+
+		i += (i % 4); // this jump is needed! A tableswitch is a variable-length instruction. Immediately after the tableswitch opcode, between zero and three bytes must act as padding, such that defaultbyte1 begins at an address that is a multiple of four bytes from the start of the current method (the opcode of its first instruction).
+
+		defaultbyte = Converter::to_i4(data[i], data[i+1], data[i+2], data[i+3]); i += 4;
+		low         = Converter::to_i4(data[i], data[i+1], data[i+2], data[i+3]); i += 4;
+		high        = Converter::to_i4(data[i], data[i+1], data[i+2], data[i+3]); i += 4;
+
+		auto n = high - low + 1;
+
+		if (low <= high) {
+			throw "Invalid tableswitch";
+		}
+
+		jumpOffsets.resize(n);
+
+		for (int j = 0; j < n; j++, i += 4) {
+			jumpOffsets[j] = Converter::to_i4(data[i], data[i+1], data[i+2], data[i+3]);
+		}
+
+		return i - idx; // 16+
 	}
 
 	// OPlookupswitch
@@ -4277,8 +4299,27 @@ namespace jvm {
 		return 171;
 	}
 
+	// TODO: check later for correctness
 	uint32_t OPlookupswitch::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 8; //8+
+		uint32_t i = idx + 1;
+
+		i += (i % 4); // this jump is needed! A tableswitch is a variable-length instruction. Immediately after the tableswitch opcode, between zero and three bytes must act as padding, such that defaultbyte1 begins at an address that is a multiple of four bytes from the start of the current method (the opcode of its first instruction).
+
+		defaultbyte = Converter::to_i4(data[i], data[i+1], data[i+2], data[i+3]); i += 4;
+		npairs      = Converter::to_i4(data[i], data[i+1], data[i+2], data[i+3]); i += 4;
+
+		if (npairs < 0) {
+			throw "Invalid tableswitch";
+		}
+
+		for (int j = 0; j < npairs; j++, i += 4) {
+			auto match  = Converter::to_i4(data[i], data[i+1], data[i+2], data[i+3]); i += 4;
+			auto value  = Converter::to_i4(data[i], data[i+1], data[i+2], data[i+3]);
+
+			pairs[match] = value;
+		}
+
+		return i - idx; // 8+
 	}
 
 

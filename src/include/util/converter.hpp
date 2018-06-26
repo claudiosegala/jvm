@@ -10,7 +10,11 @@ namespace jvm {
 
 		static u4 to_u4(u2, u2);
 
+		static i4 to_i4(u2, u2);
+
 		static u4 to_u4(u1, u1, u1, u1);
+
+		static i4 to_i4(u1, u1, u1, u1);
 
 		static u2 to_u2(u1, u1);
 

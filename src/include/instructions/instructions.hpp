@@ -2,6 +2,9 @@
 
 #include <string>
 #include <iostream>
+#include <vector>
+#include <map>
+#include <utility>
 #include "util/macros.hpp"
 #include "engine/framesStack.hpp"
 #include "class_loader/constant_pool.hpp"
@@ -5791,6 +5794,19 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		//> default
+		i4 defaultbyte;
+
+		//> low
+		i4 low;
+
+		//> high
+		i4 high;
+
+		//> Jump Offsets
+		std::vector<i4> jumpOffsets;
 	};
 
 	class OPlookupswitch : public Instruction { // 0xAB -- 171
@@ -5824,6 +5840,16 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		//> default
+		i4 defaultbyte;
+
+		//> qtd of pairs
+		i4 npairs;
+
+		//> Jump Offsets
+		std::map<i4, i4> pairs; // TODO: maybe, just maybe would be nice to use a std::map instead of std::vector
 	};
 
 	class OPireturn : public Instruction { // 0xAC -- 172

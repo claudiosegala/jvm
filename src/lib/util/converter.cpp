@@ -10,6 +10,14 @@ namespace jvm {
 		return aux;
 	}
 
+	i4 Converter::to_i4(u2 a, u2 b) {
+		u4 aux = a;
+
+		aux = (aux << 16ul) | b;
+
+		return static_cast<i4>(aux);
+	}
+
 	u4 Converter::to_u4(u1 a, u1 b, u1 c, u1 d) {
 		u4 aux = a;
 
@@ -18,6 +26,16 @@ namespace jvm {
 		aux = (aux << 8ul) | d;
 
 		return aux;
+	}
+
+	i4 Converter::to_i4(u1 a, u1 b, u1 c, u1 d) {
+		u4 aux = a;
+
+		aux = (aux << 8ul) | b;
+		aux = (aux << 8ul) | c;
+		aux = (aux << 8ul) | d;
+
+		return static_cast<i4>(aux);
 	}
 
 	u2 Converter::to_u2(u1 a, u1 b) {
