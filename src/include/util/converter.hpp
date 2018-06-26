@@ -1,13 +1,11 @@
 #pragma once
 
-#include <tuple>
 #include "macros.hpp"
 
 namespace jvm {
 
 	class Converter {
 	public:
-
 		static u4 to_u4(u2, u2);
 
 		static i4 to_i4(u2, u2);
@@ -26,4 +24,5 @@ namespace jvm {
 
 		static std::tuple<u1, u1, u1, u1> to_u1(u4);
 	};
+
 }

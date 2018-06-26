@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string> 
+#include "macros.hpp"
 
 // TODO: put this on the converter class
 

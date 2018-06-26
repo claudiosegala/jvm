@@ -1,12 +1,5 @@
-//
-// THIS FILE MUST *NOT* BE INCLUDED IN CMakeLists.txt
-//
-
 #pragma once
 
-#include <cstdio>
-#include <string>
-#include <util/bit.hpp>
 #include "util/bit.hpp"
 
 namespace jvm {

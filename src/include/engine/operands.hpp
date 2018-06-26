@@ -1,9 +1,6 @@
 #pragma once
 
-#include <stack>
-#include <vector>
 #include "util/macros.hpp"
-#include "util/structs.hpp"
 
 namespace jvm {
 

@@ -1,7 +1,4 @@
-#include <iostream>
-#include <iomanip>
-#include "engine/engine.hpp"
-#include "engine/frame.hpp"
+#include "engine/framesStack.hpp"
 
 namespace jvm {
 

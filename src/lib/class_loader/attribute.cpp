@@ -1,9 +1,4 @@
-#include <iostream>
-#include <string>
-#include <map>
-#include "util/reader.hpp"
 #include "class_loader/attribute.hpp"
-#include "instructions/instructions.hpp"
 
 namespace jvm {
 

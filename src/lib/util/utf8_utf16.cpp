@@ -1,6 +1,4 @@
 #include "util/utf8_utf16.hpp"
-#include <locale> 
-#include <codecvt> 
  
 namespace jvm {
 	//UTF-8 to UTF-16 

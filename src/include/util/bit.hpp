@@ -1,7 +1,6 @@
 #pragma once
 
-#include <array>
-#include <cstdint>
+#include "macros.hpp"
 
 #define SYSTEM_ENDIANNESS jvm::Endianness::LITTLE
 

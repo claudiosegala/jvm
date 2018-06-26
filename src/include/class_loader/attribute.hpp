@@ -1,11 +1,7 @@
 #pragma once
-#include <cstdint>
-#include <vector>
-#include <map>
-#include <memory>
-#include "util/bit.hpp"
-#include "constant_pool.hpp"
+
 #include "util/macros.hpp"
+#include "constant_pool.hpp"
 #include "instructions/instructions.hpp"
 
 namespace jvm {

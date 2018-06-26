@@ -1,7 +1,6 @@
 #pragma once
 
-#include <vector>
-#include <stack>
+#include "util/macros.hpp"
 #include "operands.hpp"
 #include "variables.hpp"
 

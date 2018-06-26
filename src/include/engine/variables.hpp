@@ -1,14 +1,8 @@
-//
-// Created by Claudio  Segala Rodrigues Silva Filho on 6/17/18.
-//
 #pragma once
 
-#include <util/macros.hpp>
-#include <vector>
+#include "util/macros.hpp"
 
-
-namespace jvm
-{
+namespace jvm {
 	class Variables : public std::vector<u4> {
 	public:
 		/**
@@ -24,15 +18,7 @@ namespace jvm
 		T Read_vector(u1);
 
 	private:
-
 		//>Variables Stack
-
 		std::vector <u4> variables;
-
 	};
-
-
-
-
-
 }

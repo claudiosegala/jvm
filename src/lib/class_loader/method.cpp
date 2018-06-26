@@ -1,9 +1,4 @@
-#include <iostream>
-#include <iomanip>
-#include <util/bit.hpp>
-#include "util/reader.hpp"
 #include "class_loader/method.hpp"
-#include "class_loader/attribute.hpp"
 
 namespace jvm  {
 

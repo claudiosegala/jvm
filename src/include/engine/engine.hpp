@@ -1,8 +1,7 @@
 #pragma once
 
-#include <cstdint>
 #include "util/bit.hpp"
-#include <vector>
+#include "util/macros.hpp"
 #include "engine/framesStack.hpp"
 #include "class_loader/constant_pool.hpp"
 #include "class_loader/attribute.hpp"

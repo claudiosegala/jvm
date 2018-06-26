@@ -1,5 +1,6 @@
 #include "../lib/util/utf8_utf16.cpp"
-#include "catch.hpp" 
+#include "catch.hpp"
+
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
  
 namespace jvm {

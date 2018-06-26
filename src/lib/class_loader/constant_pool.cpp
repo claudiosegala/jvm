@@ -1,7 +1,3 @@
-#include <util/bit.hpp>
-#include <iostream>
-#include <iomanip>
-#include <sstream>
 #include "class_loader/constant_pool.hpp"
 
 namespace jvm {

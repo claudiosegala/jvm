@@ -1,6 +1,3 @@
-#include <util/bit.hpp>
-#include <iostream>
-#include <iomanip>
 #include "class_loader/field.hpp"
 
 namespace jvm {

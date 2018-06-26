@@ -1,4 +1,3 @@
-#include "util/structs.hpp"
 #include "engine/operands.hpp"
 
 namespace jvm {
