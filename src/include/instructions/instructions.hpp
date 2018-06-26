@@ -73,12 +73,12 @@ namespace jvm {
 	};
 
 	//Constants opcodes 0x00,00 -- 0x14,20
-	class op_nop : public Instruction { // 0x00 -- 00
+	class OPnop : public Instruction { // 0x00 -- 00
 	public:
 		/**
 		 * Constructor
 		 */
-		op_nop() = default;
+		OPnop() = default;
 
 		/**
 		 * Nothing
@@ -106,12 +106,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_aconst_null : public Instruction { // 0x01 -- 01
+	class OPaconst_null : public Instruction { // 0x01 -- 01
 	public:
 		/**
 		 * Constructor
 		 */
-		op_aconst_null() = default;
+		OPaconst_null() = default;
 
 		/**
 		 * Push the null object reference onto the operand stack.
@@ -139,12 +139,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_iconst_m1 : public Instruction { // 0x02 -- 02
+	class OPiconst_m1 : public Instruction { // 0x02 -- 02
 	public:
 		/**
 		 * Constructor
 		 */
-		op_iconst_m1() = default;
+		OPiconst_m1() = default;
 
 		/**
 		 *Push the int constant <i> (-1, 0, 1, 2, 3, 4 or 5) onto the operand stack.
@@ -172,12 +172,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_iconst_0 : public Instruction { // 0x03 -- 03
+	class OPiconst_0 : public Instruction { // 0x03 -- 03
 	public:
 		/**
 		 * Constructor
 		 */
-		op_iconst_0() = default;
+		OPiconst_0() = default;
 
 		/**
 		 * Push the int constant <i> (-1, 0, 1, 2, 3, 4 or 5) onto the operand stack.
@@ -205,12 +205,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_iconst_1 : public Instruction { // 0x04 -- 04
+	class OPiconst_1 : public Instruction { // 0x04 -- 04
 	public:
 		/**
 		 * Constructor
 		 */
-		op_iconst_1() = default;
+		OPiconst_1() = default;
 
 		/**
 		 * Push the int constant <i> (-1, 0, 1, 2, 3, 4 or 5) onto the operand stack.
@@ -238,12 +238,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_iconst_2 : public Instruction { // 0x05 -- 05
+	class OPiconst_2 : public Instruction { // 0x05 -- 05
 	public:
 		/**
 		 * Constructor
 		 */
-		op_iconst_2() = default;
+		OPiconst_2() = default;
 
 		/**
 		 * Push the int constant <i> (-1, 0, 1, 2, 3, 4 or 5) onto the operand stack.
@@ -271,12 +271,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_iconst_3 : public Instruction { // 0x06 -- 06
+	class OPiconst_3 : public Instruction { // 0x06 -- 06
 	public:
 		/**
 		 * Constructor
 		 */
-		op_iconst_3() = default;
+		OPiconst_3() = default;
 
 		/**
 		 *  Push the int constant <i> (-1, 0, 1, 2, 3, 4 or 5) onto the operand stack.
@@ -304,12 +304,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_iconst_4 : public Instruction { // 0x07 -- 07
+	class OPiconst_4 : public Instruction { // 0x07 -- 07
 	public:
 		/**
 		 * Constructor
 		 */
-		op_iconst_4() = default;
+		OPiconst_4() = default;
 
 		/**
 		 * Push the int constant <i> (-1, 0, 1, 2, 3, 4 or 5) onto the operand stack.
@@ -337,12 +337,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_iconst_5 : public Instruction { // 0x08 -- 08
+	class OPiconst_5 : public Instruction { // 0x08 -- 08
 	public:
 		/**
 		 * Constructor
 		 */
-		op_iconst_5() = default;
+		OPiconst_5() = default;
 
 		/**
 		 * Push the int constant <i> (-1, 0, 1, 2, 3, 4 or 5) onto the operand stack.
@@ -370,12 +370,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lconst_0 : public Instruction { // 0x09 -- 09
+	class OPlconst_0 : public Instruction { // 0x09 -- 09
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lconst_0() = default;
+		OPlconst_0() = default;
 
 		/**
 		 * Push the long constant <l> (0 or 1) onto the operand stack.
@@ -403,12 +403,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lconst_1 : public Instruction { // 0x0A -- 10
+	class OPlconst_1 : public Instruction { // 0x0A -- 10
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lconst_1() = default;
+		OPlconst_1() = default;
 
 		/**
 		 *Push the long constant <l> (0 or 1) onto the operand stack.
@@ -436,12 +436,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_fconst_0 : public Instruction { // 0x0B -- 11
+	class OPfconst_0 : public Instruction { // 0x0B -- 11
 	public:
 		/**
 		 * Constructor
 		 */
-		op_fconst_0() = default;
+		OPfconst_0() = default;
 
 		/**
 		 * Push the float constant <f> (0.0, 1.0, or 2.0) onto the operand stack.
@@ -469,12 +469,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_fconst_1 : public Instruction { // 0x0C -- 12
+	class OPfconst_1 : public Instruction { // 0x0C -- 12
 	public:
 		/**
 		 * Constructor
 		 */
-		op_fconst_1() = default;
+		OPfconst_1() = default;
 
 		/**
 		 * Push the float constant <f> (0.0, 1.0, or 2.0) onto the operand stack.
@@ -502,12 +502,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_fconst_2 : public Instruction { // 0x0D -- 13
+	class OPfconst_2 : public Instruction { // 0x0D -- 13
 	public:
 		/**
 		 * Constructor
 		 */
-		op_fconst_2() = default;
+		OPfconst_2() = default;
 
 		/**
 		 * Push the float constant <f> (0.0, 1.0, or 2.0) onto the operand stack.
@@ -535,12 +535,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dconst_0 : public Instruction { // 0x0E -- 14
+	class OPdconst_0 : public Instruction { // 0x0E -- 14
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dconst_0() = default;
+		OPdconst_0() = default;
 
 		/**
 		 * Push the double constant <d> (0.0 or 1.0) onto the operand stack.
@@ -568,12 +568,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dconst_1 : public Instruction { // 0x0F -- 15
+	class OPdconst_1 : public Instruction { // 0x0F -- 15
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dconst_1() = default;
+		OPdconst_1() = default;
 
 		/**
 		 * Push the double constant <d> (0.0 or 1.0) onto the operand stack.
@@ -601,12 +601,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_bipush : public Instruction { // 0x10 -- 16
+	class OPbipush : public Instruction { // 0x10 -- 16
 	public:
 		/**
 		 * Constructor
 		 */
-		op_bipush() = default;
+		OPbipush() = default;
 
 		/**
 		 * Push byte
@@ -637,12 +637,12 @@ namespace jvm {
 		u1 byte; ///< Byte to be pushed as an integer to the stack
 	};
 
-	class op_sipush : public Instruction { // 0x11 -- 17
+	class OPsipush : public Instruction { // 0x11 -- 17
 	public:
 		/**
 		 * Constructor
 		 */
-		op_sipush() = default;
+		OPsipush() = default;
 
 		/**
 		 * Push short
@@ -670,12 +670,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_ldc : public Instruction { // 0x12 -- 18
+	class OPldc : public Instruction { // 0x12 -- 18
 	public:
 		/**
 		 * Constructor
 		 */
-		op_ldc() = default;
+		OPldc() = default;
 
 		/**
 		 * Push item from run-time constant pool
@@ -703,12 +703,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_ldc_w : public Instruction { // 0x13 -- 19
+	class OPldc_w : public Instruction { // 0x13 -- 19
 	public:
 		/**
 		 * Constructor
 		 */
-		op_ldc_w() = default;
+		OPldc_w() = default;
 
 		/**
 		 * Push item from run-time constant pool (wide index) (byte1 <<8 | byte2) são juntos em 16 bits para 1 index so
@@ -736,12 +736,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_ldc2_w : public Instruction { // 0x14 -- 20
+	class OPldc2_w : public Instruction { // 0x14 -- 20
 	public:
 		/**
 		 * Constructor
 		 */
-		op_ldc2_w() = default;
+		OPldc2_w() = default;
 
 		/**
 		 * Push long or double from run-time constant pool (wide index)
@@ -770,12 +770,12 @@ namespace jvm {
 	};
 
 	//Loads opcodes 0x15,21 -- 0x35,53
-	class op_iload : public Instruction { // 0x15 -- 21
+	class OPiload : public Instruction { // 0x15 -- 21
 	public:
 		/**
 		 * Constructor
 		 */
-		op_iload() = default;
+		OPiload() = default;
 
 		/**
 		 * Load int from local variable push to stack
@@ -803,12 +803,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lload : public Instruction { // 0x16 -- 22
+	class OPlload : public Instruction { // 0x16 -- 22
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lload() = default;
+		OPlload() = default;
 
 		/**
 		 * Load long from local variable
@@ -836,12 +836,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_fload : public Instruction { // 0x17 -- 23
+	class OPfload : public Instruction { // 0x17 -- 23
 	public:
 		/**
 		 * Constructor
 		 */
-		op_fload() = default;
+		OPfload() = default;
 
 		/**
 		 * Load float from local variable
@@ -872,12 +872,12 @@ namespace jvm {
 		u1 index; ///< Index of the local float variable
 	};
 
-	class op_dload : public Instruction { // 0x18 -- 24
+	class OPdload : public Instruction { // 0x18 -- 24
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dload() = default;
+		OPdload() = default;
 
 		/**
 		 * Load double from local variable
@@ -908,12 +908,12 @@ namespace jvm {
 		u1 index; ///< Index to the local double variable
 	};
 
-	class op_aload : public Instruction { // 0x19 -- 25
+	class OPaload : public Instruction { // 0x19 -- 25
 	public:
 		/**
 		 * Constructor
 		 */
-		op_aload() = default;
+		OPaload() = default;
 
 		/**
 		 * Load reference from local variable
@@ -944,12 +944,12 @@ namespace jvm {
 		u1 index; ///< index of the reference to the local variable to be loaded
 	};
 
-	class op_iload_0 : public Instruction { // 0x1A -- 26
+	class OPiload_0 : public Instruction { // 0x1A -- 26
 	public:
 		/**
 		 * Constructor
 		 */
-		op_iload_0() = default;
+		OPiload_0() = default;
 
 		/**
 		 * Load int from local variable index 1
@@ -977,12 +977,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_iload_1 : public Instruction { // 0x1B -- 27
+	class OPiload_1 : public Instruction { // 0x1B -- 27
 	public:
 		/**
 		 * Constructor
 		 */
-		op_iload_1() = default;
+		OPiload_1() = default;
 
 		/**
 		 * Load int from local variable index 2
@@ -1010,12 +1010,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_iload_2 : public Instruction { // 0x1C -- 28
+	class OPiload_2 : public Instruction { // 0x1C -- 28
 	public:
 		/**
 		 * Constructor
 		 */
-		op_iload_2() = default;
+		OPiload_2() = default;
 
 		/**
 		 * Load int from local variable index 3
@@ -1043,12 +1043,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_iload_3 : public Instruction { // 0x1D -- 29
+	class OPiload_3 : public Instruction { // 0x1D -- 29
 	public:
 		/**
 		 * Constructor
 		 */
-		op_iload_3() = default;
+		OPiload_3() = default;
 
 		/**
 		 * Load int from local variable index 4
@@ -1076,12 +1076,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lload_0 : public Instruction { // 0x1E -- 30
+	class OPlload_0 : public Instruction { // 0x1E -- 30
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lload_0() = default;
+		OPlload_0() = default;
 
 		/**
 		 * Load long from local variable from index 1
@@ -1109,12 +1109,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lload_1 : public Instruction { // 0x1F -- 31
+	class OPlload_1 : public Instruction { // 0x1F -- 31
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lload_1() = default;
+		OPlload_1() = default;
 
 		/**
 		 * Load long from local variable from index 2
@@ -1142,12 +1142,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lload_2 : public Instruction { // 0x20 -- 32
+	class OPlload_2 : public Instruction { // 0x20 -- 32
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lload_2() = default;
+		OPlload_2() = default;
 
 		/**
 		 * Load long from local variable from index 3
@@ -1175,12 +1175,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lload_3 : public Instruction { // 0x21 -- 33
+	class OPlload_3 : public Instruction { // 0x21 -- 33
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lload_3() = default;
+		OPlload_3() = default;
 
 		/**
 		 * Load long from local variable from index 4
@@ -1208,12 +1208,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_fload_0 : public Instruction { // 0x22 -- 34
+	class OPfload_0 : public Instruction { // 0x22 -- 34
 	public:
 		/**
 		 * Constructor
 		 */
-		op_fload_0() = default;
+		OPfload_0() = default;
 
 		/**
 		 * Load float from local variable index 1
@@ -1241,12 +1241,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_fload_1 : public Instruction { // 0x23 -- 35
+	class OPfload_1 : public Instruction { // 0x23 -- 35
 	public:
 		/**
 		 * Constructor
 		 */
-		op_fload_1() = default;
+		OPfload_1() = default;
 
 		/**
 		 * Load float from local variable index 2
@@ -1274,12 +1274,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_fload_2 : public Instruction { // 0x24 -- 36
+	class OPfload_2 : public Instruction { // 0x24 -- 36
 	public:
 		/**
 		 * Constructor
 		 */
-		op_fload_2() = default;
+		OPfload_2() = default;
 
 		/**
 		 * Load float from local variable index 3
@@ -1307,12 +1307,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_fload_3 : public Instruction { // 0x25 -- 37
+	class OPfload_3 : public Instruction { // 0x25 -- 37
 	public:
 		/**
 		 * Constructor
 		 */
-		op_fload_3() = default;
+		OPfload_3() = default;
 
 		/**
 		 * Load float from local variable index 4
@@ -1340,12 +1340,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dload_0 : public Instruction { // 0x26 -- 38
+	class OPdload_0 : public Instruction { // 0x26 -- 38
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dload_0() = default;
+		OPdload_0() = default;
 
 		/**
 		 * Load float from local variable index 1
@@ -1373,12 +1373,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dload_1 : public Instruction { // 0x27 -- 39
+	class OPdload_1 : public Instruction { // 0x27 -- 39
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dload_1() = default;
+		OPdload_1() = default;
 
 		/**
 		 * Load float from local variable index 2
@@ -1406,12 +1406,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dload_2 : public Instruction { // 0x28 -- 40
+	class OPdload_2 : public Instruction { // 0x28 -- 40
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dload_2() = default;
+		OPdload_2() = default;
 
 		/**
 		 * Load float from local variable index 3
@@ -1439,12 +1439,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dload_3 : public Instruction { // 0x29 -- 41
+	class OPdload_3 : public Instruction { // 0x29 -- 41
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dload_3() = default;
+		OPdload_3() = default;
 
 		/**
 		 * Load float from local variable index 4
@@ -1472,12 +1472,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_aload_0 : public Instruction { // 0x2A -- 42
+	class OPaload_0 : public Instruction { // 0x2A -- 42
 	public:
 		/**
 		 * Constructor
 		 */
-		op_aload_0() = default;
+		OPaload_0() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1505,12 +1505,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_aload_1 : public Instruction { // 0x2B -- 43
+	class OPaload_1 : public Instruction { // 0x2B -- 43
 	public:
 		/**
 		 * Constructor
 		 */
-		op_aload_1() = default;
+		OPaload_1() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1538,12 +1538,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_aload_2 : public Instruction { // 0x2C -- 44
+	class OPaload_2 : public Instruction { // 0x2C -- 44
 	public:
 		/**
 		 * Constructor
 		 */
-		op_aload_2() = default;
+		OPaload_2() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1571,12 +1571,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_aload_3 : public Instruction { // 0x2D -- 45
+	class OPaload_3 : public Instruction { // 0x2D -- 45
 	public:
 		/**
 		 * Constructor
 		 */
-		op_aload_3() = default;
+		OPaload_3() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1604,12 +1604,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_iaload : public Instruction { // 0x2E -- 46
+	class OPiaload : public Instruction { // 0x2E -- 46
 	public:
 		/**
 		 * Constructor
 		 */
-		op_iaload() = default;
+		OPiaload() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1637,12 +1637,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_laload : public Instruction { // 0x2F -- 47
+	class OPlaload : public Instruction { // 0x2F -- 47
 	public:
 		/**
 		 * Constructor
 		 */
-		op_laload() = default;
+		OPlaload() = default;
 
 		/**
 		 * The execution of this instruction
@@ -1670,12 +1670,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_faload : public Instruction { // 0x30 -- 48
+	class OPfaload : public Instruction { // 0x30 -- 48
 	public:
 		/**
 		 * Constructor
 		 */
-		op_faload() = default;
+		OPfaload() = default;
 
 		/**
 		 * Load float from array ,arrayref and index poped from stack acquired value is pushed onto the stack
@@ -1703,12 +1703,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_daload : public Instruction { // 0x31 -- 49
+	class OPdaload : public Instruction { // 0x31 -- 49
 	public:
 		/**
 		 * Constructor
 		 */
-		op_daload() = default;
+		OPdaload() = default;
 
 		/**
 		 * Load double from array arrayref,index
@@ -1736,12 +1736,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_aaload : public Instruction { // 0x32 -- 50
+	class OPaaload : public Instruction { // 0x32 -- 50
 	public:
 		/**
 		 * Constructor
 		 */
-		op_aaload() = default;
+		OPaaload() = default;
 
 		/**
 		 * Load reference from array arrayref,index type reference
@@ -1769,12 +1769,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_baload : public Instruction { // 0x33 -- 51
+	class OPbaload : public Instruction { // 0x33 -- 51
 	public:
 		/**
 		 * Constructor
 		 */
-		op_baload() = default;
+		OPbaload() = default;
 
 		/**
 		 * Load byte or boolean from array ,arrayref,index
@@ -1802,12 +1802,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_caload : public Instruction { // 0x34 -- 52
+	class OPcaload : public Instruction { // 0x34 -- 52
 	public:
 		/**
 		 * Constructor
 		 */
-		op_caload() = default;
+		OPcaload() = default;
 
 		/**
 		 * Load char from array ,arrayref,index
@@ -1835,12 +1835,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_saload : public Instruction { // 0x35 -- 53
+	class OPsaload : public Instruction { // 0x35 -- 53
 	public:
 		/**
 		 * Constructor
 		 */
-		op_saload() = default;
+		OPsaload() = default;
 
 		/**
 		 * Load short from array arrayref,index
@@ -1869,12 +1869,12 @@ namespace jvm {
 	};
 
 	//Stores 0x36,54 -> 0x56,86
-	class op_istore : public Instruction { // 0x36 -- 54
+	class OPistore : public Instruction { // 0x36 -- 54
 	public:
 		/**
 		 * Constructor
 		 */
-		op_istore() = default;
+		OPistore() = default;
 
 		/**
 		 * Store int into local variable pop from stack
@@ -1902,12 +1902,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lstore : public Instruction { // 0x37 -- 55
+	class OPlstore : public Instruction { // 0x37 -- 55
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lstore() = default;
+		OPlstore() = default;
 
 		/**
 		 * Store long into local variable
@@ -1935,12 +1935,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_fstore : public Instruction { // 0x38 -- 56
+	class OPfstore : public Instruction { // 0x38 -- 56
 	public:
 		/**
 		 * Constructor
 		 */
-		op_fstore() = default;
+		OPfstore() = default;
 
 		/**
 		 * Store float into local variable
@@ -1971,12 +1971,12 @@ namespace jvm {
 		u1 index; ///< Index of the local float variable
 	};
 
-	class op_dstore : public Instruction { // 0x39 -- 57
+	class OPdstore : public Instruction { // 0x39 -- 57
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dstore() = default;
+		OPdstore() = default;
 
 		/**
 		 * Store double into local variable
@@ -2007,12 +2007,12 @@ namespace jvm {
 		u1 index; ///< Index to the local double variable
 	};
 
-	class op_astore : public Instruction { // 0x3A -- 58
+	class OPastore : public Instruction { // 0x3A -- 58
 	public:
 		/**
 		 * Constructor
 		 */
-		op_astore() = default;
+		OPastore() = default;
 
 		/**
 		 * Store reference into local variable
@@ -2043,12 +2043,12 @@ namespace jvm {
 		u1 index; ///< Index of the local variable that will store the reference
 	};
 
-	class op_istore_0 : public Instruction { // 0x3B -- 59
+	class OPistore_0 : public Instruction { // 0x3B -- 59
 	public:
 		/**
 		 * Constructor
 		 */
-		op_istore_0() = default;
+		OPistore_0() = default;
 
 		/**
 		 * Store int into local variable index 1
@@ -2076,12 +2076,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_istore_1 : public Instruction { // 0x3C -- 60
+	class OPistore_1 : public Instruction { // 0x3C -- 60
 	public:
 		/**
 		 * Constructor
 		 */
-		op_istore_1() = default;
+		OPistore_1() = default;
 
 		/**
 		 * Store int into local variable index 2
@@ -2109,12 +2109,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_istore_2 : public Instruction { // 0x3D -- 61
+	class OPistore_2 : public Instruction { // 0x3D -- 61
 	public:
 		/**
 		 * Constructor
 		 */
-		op_istore_2() = default;
+		OPistore_2() = default;
 
 		/**
 		 * Store int into local variable index 3
@@ -2142,12 +2142,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_istore_3 : public Instruction { // 0x3E -- 62
+	class OPistore_3 : public Instruction { // 0x3E -- 62
 	public:
 		/**
 		 * Constructor
 		 */
-		op_istore_3() = default;
+		OPistore_3() = default;
 
 		/**
 		 * Store int into local variable index 4
@@ -2175,12 +2175,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lstore_0 : public Instruction { // 0x3F -- 63
+	class OPlstore_0 : public Instruction { // 0x3F -- 63
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lstore_0() = default;
+		OPlstore_0() = default;
 
 		/**
 		 * Store long into local variable index 1
@@ -2208,12 +2208,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lstore_1 : public Instruction { // 0x40 -- 64
+	class OPlstore_1 : public Instruction { // 0x40 -- 64
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lstore_1() = default;
+		OPlstore_1() = default;
 
 		/**
 		 * Store long into local variable index 2
@@ -2241,12 +2241,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lstore_2 : public Instruction { // 0x41 -- 65
+	class OPlstore_2 : public Instruction { // 0x41 -- 65
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lstore_2() = default;
+		OPlstore_2() = default;
 
 		/**
 		 * Store long into local variable index 3
@@ -2274,12 +2274,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lstore_3 : public Instruction { // 0x42 -- 66
+	class OPlstore_3 : public Instruction { // 0x42 -- 66
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lstore_3() = default;
+		OPlstore_3() = default;
 
 		/**
 		 * Store long into local variable index 4
@@ -2307,12 +2307,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_fstore_0 : public Instruction { // 0x43 -- 67
+	class OPfstore_0 : public Instruction { // 0x43 -- 67
 	public:
 		/**
 		 * Constructor
 		 */
-		op_fstore_0() = default;
+		OPfstore_0() = default;
 
 		/**
 		 * Store float into local variable index 1
@@ -2340,12 +2340,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_fstore_1 : public Instruction { // 0x44 -- 68
+	class OPfstore_1 : public Instruction { // 0x44 -- 68
 	public:
 		/**
 		 * Constructor
 		 */
-		op_fstore_1() = default;
+		OPfstore_1() = default;
 
 		/**
 		 * Store float into local variable index 2
@@ -2373,12 +2373,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_fstore_2 : public Instruction { // 0x45 -- 69
+	class OPfstore_2 : public Instruction { // 0x45 -- 69
 	public:
 		/**
 		 * Constructor
 		 */
-		op_fstore_2() = default;
+		OPfstore_2() = default;
 
 		/**
 		 * Store float into local variable index 3
@@ -2406,12 +2406,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_fstore_3 : public Instruction { // 0x46 -- 70
+	class OPfstore_3 : public Instruction { // 0x46 -- 70
 	public:
 		/**
 		 * Constructor
 		 */
-		op_fstore_3() = default;
+		OPfstore_3() = default;
 
 		/**
 		 * Store float into local variable index 4
@@ -2439,12 +2439,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dstore_0 : public Instruction { // 0x47 -- 71
+	class OPdstore_0 : public Instruction { // 0x47 -- 71
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dstore_0() = default;
+		OPdstore_0() = default;
 
 		/**
 		 * Store double into local variable index 1
@@ -2472,12 +2472,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dstore_1 : public Instruction { // 0x48 -- 72
+	class OPdstore_1 : public Instruction { // 0x48 -- 72
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dstore_1() = default;
+		OPdstore_1() = default;
 
 		/**
 		 * Store double into local variable index 2
@@ -2505,12 +2505,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dstore_2 : public Instruction { // 0x49 -- 73
+	class OPdstore_2 : public Instruction { // 0x49 -- 73
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dstore_2() = default;
+		OPdstore_2() = default;
 
 		/**
 		 * Store double into local variable index 3
@@ -2538,12 +2538,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dstore_3 : public Instruction { // 0x4A -- 74
+	class OPdstore_3 : public Instruction { // 0x4A -- 74
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dstore_3() = default;
+		OPdstore_3() = default;
 
 		/**
 		 * Store double into local variable index 4
@@ -2571,12 +2571,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_astore_0 : public Instruction { // 0x4B -- 75
+	class OPastore_0 : public Instruction { // 0x4B -- 75
 	public:
 		/**
 		 * Constructor
 		 */
-		op_astore_0() = default;
+		OPastore_0() = default;
 
 		/**
 		 * Store reference into local variable index 1
@@ -2604,12 +2604,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_astore_1 : public Instruction { // 0x4C -- 76
+	class OPastore_1 : public Instruction { // 0x4C -- 76
 	public:
 		/**
 		 * Constructor
 		 */
-		op_astore_1() = default;
+		OPastore_1() = default;
 
 		/**
 		 * Store reference into local variable index 2
@@ -2637,12 +2637,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_astore_2 : public Instruction { // 0x4D -- 77
+	class OPastore_2 : public Instruction { // 0x4D -- 77
 	public:
 		/**
 		 * Constructor
 		 */
-		op_astore_2() = default;
+		OPastore_2() = default;
 
 		/**
 		 * Store reference into local variable index 3
@@ -2670,12 +2670,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_astore_3 : public Instruction { // 0x4E -- 78
+	class OPastore_3 : public Instruction { // 0x4E -- 78
 	public:
 		/**
 		 * Constructor
 		 */
-		op_astore_3() = default;
+		OPastore_3() = default;
 
 		/**
 		 * Store reference into local variable index 4
@@ -2703,12 +2703,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_iastore : public Instruction { // 0x4F -- 79
+	class OPiastore : public Instruction { // 0x4F -- 79
 	public:
 		/**
 		 * Constructor
 		 */
-		op_iastore() = default;
+		OPiastore() = default;
 
 		/**
 		 * Store into int array opstack -> arrayref,index,value
@@ -2736,12 +2736,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lastore : public Instruction { // 0x50 -- 80
+	class OPlastore : public Instruction { // 0x50 -- 80
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lastore() = default;
+		OPlastore() = default;
 
 		/**
 		 * Store into long array arrayref,index,value
@@ -2769,12 +2769,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_fastore : public Instruction { // 0x51 -- 81
+	class OPfastore : public Instruction { // 0x51 -- 81
 	public:
 		/**
 		 * Constructor
 		 */
-		op_fastore() = default;
+		OPfastore() = default;
 
 		/**
 		 * Store into float array arrayref, index, value →
@@ -2802,12 +2802,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dastore : public Instruction { // 0x52 -- 82
+	class OPdastore : public Instruction { // 0x52 -- 82
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dastore() = default;
+		OPdastore() = default;
 
 		/**
 		 * Store into double array  arrayref, index, value →
@@ -2835,12 +2835,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_aastore : public Instruction { // 0x53 -- 83
+	class OPaastore : public Instruction { // 0x53 -- 83
 	public:
 		/**
 		 * Constructor
 		 */
-		op_aastore() = default;
+		OPaastore() = default;
 
 		/**
 		 * Store into reference array  arrayref, index, value →
@@ -2868,12 +2868,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_bastore : public Instruction { // 0x54 -- 84
+	class OPbastore : public Instruction { // 0x54 -- 84
 	public:
 		/**
 		 * Constructor
 		 */
-		op_bastore() = default;
+		OPbastore() = default;
 
 		/**
 		 * Store into byte or boolean array , arrayref, index, value →
@@ -2901,12 +2901,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_castore : public Instruction { // 0x55 -- 85
+	class OPcastore : public Instruction { // 0x55 -- 85
 	public:
 		/**
 		 * Constructor
 		 */
-		op_castore() = default;
+		OPcastore() = default;
 
 		/**
 		 * Store into char array ,  arrayref, index, value →
@@ -2934,12 +2934,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_sastore : public Instruction { // 0x56 -- 86
+	class OPsastore : public Instruction { // 0x56 -- 86
 	public:
 		/**
 		 * Constructor
 		 */
-		op_sastore() = default;
+		OPsastore() = default;
 
 		/**
 		 * Store into short array , arrayref, index, value →
@@ -2968,12 +2968,12 @@ namespace jvm {
 	};
 
 	// Stack 0x57,87 -> 0x5F,95
-	class op_pop : public Instruction { // 0x57 -- 87
+	class OPpop : public Instruction { // 0x57 -- 87
 	public:
 		/**
 		 * Constructor
 		 */
-		op_pop() = default;
+		OPpop() = default;
 
 		/**
 		 * Pop the top operand stack value
@@ -3001,12 +3001,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_pop2 : public Instruction { // 0x58 -- 88
+	class OPpop2 : public Instruction { // 0x58 -- 88
 	public:
 		/**
 		 * Constructor
 		 */
-		op_pop2() = default;
+		OPpop2() = default;
 
 		/**
 		 * Pop the top one or two operand stack values
@@ -3034,12 +3034,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dup : public Instruction { // 0x59 -- 89
+	class OPdup : public Instruction { // 0x59 -- 89
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dup() = default;
+		OPdup() = default;
 
 		/**
 		 * Duplicate the top operand stack value
@@ -3067,12 +3067,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dup_x1 : public Instruction { // 0x5A -- 90
+	class OPdup_x1 : public Instruction { // 0x5A -- 90
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dup_x1() = default;
+		OPdup_x1() = default;
 
 		/**
 		 * Duplicate the top operand stack value and insert two values down ,..., value2, value1 → ..., value1, value2, value1
@@ -3100,12 +3100,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dup_x2 : public Instruction { // 0x5B -- 91
+	class OPdup_x2 : public Instruction { // 0x5B -- 91
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dup_x2() = default;
+		OPdup_x2() = default;
 
 		/**
 		 * Duplicate the top operand stack value and insert two or three values down ..., value3, value2, value1 → ..., value1, value3, value2, value1
@@ -3133,12 +3133,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dup2 : public Instruction { // 0x5C -- 92
+	class OPdup2 : public Instruction { // 0x5C -- 92
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dup2() = default;
+		OPdup2() = default;
 
 		/**
 		 * Duplicate the top one or two operand stack values
@@ -3166,12 +3166,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dup2_x1 : public Instruction { // 0x5D -- 93
+	class OPdup2_x1 : public Instruction { // 0x5D -- 93
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dup2_x1() = default;
+		OPdup2_x1() = default;
 
 		/**
 		 * Duplicate the top one or two operand stack values and insert two or three values down
@@ -3199,12 +3199,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dup2_x2 : public Instruction { // 0x5E -- 94
+	class OPdup2_x2 : public Instruction { // 0x5E -- 94
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dup2_x2() = default;
+		OPdup2_x2() = default;
 
 		/**
 		 * Duplicate the top one or two operand stack values and insert two, three, or four values down
@@ -3232,12 +3232,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_swap : public Instruction { // 0x5F -- 95
+	class OPswap : public Instruction { // 0x5F -- 95
 	public:
 		/**
 		 * Constructor
 		 */
-		op_swap() = default;
+		OPswap() = default;
 
 		/**
 		 * Swap the top two operand stack values
@@ -3266,12 +3266,12 @@ namespace jvm {
 	};
 
 	// Math 0x60,96 -> 0x84,132
-	class op_iadd : public Instruction { // 0x60 -- 96
+	class OPiadd : public Instruction { // 0x60 -- 96
 	public:
 		/**
 		 * Constructor
 		 */
-		op_iadd() = default;
+		OPiadd() = default;
 
 		/**
 		 * Swap the top two operand stack values , ..., value1, value2 →..., result
@@ -3299,12 +3299,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_ladd : public Instruction { // 0x61 -- 97
+	class OPladd : public Instruction { // 0x61 -- 97
 	public:
 		/**
 		 * Constructor
 		 */
-		op_ladd() = default;
+		OPladd() = default;
 
 		/**
 		 * Add long ..., value1, value2 → ..., result
@@ -3332,12 +3332,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_fadd : public Instruction { // 0x62 -- 98
+	class OPfadd : public Instruction { // 0x62 -- 98
 	public:
 		/**
 		 * Constructor
 		 */
-		op_fadd() = default;
+		OPfadd() = default;
 
 		/**
 		 * Add float ..., value1, value2 → ..., result
@@ -3365,12 +3365,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dadd : public Instruction { // 0x63 -- 99
+	class OPdadd : public Instruction { // 0x63 -- 99
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dadd() = default;
+		OPdadd() = default;
 
 		/**
 		 * Add double , ..., value1, value2 → ..., result
@@ -3398,12 +3398,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_isub : public Instruction { // 0x64 -- 100
+	class OPisub : public Instruction { // 0x64 -- 100
 	public:
 		/**
 		 * Constructor
 		 */
-		op_isub() = default;
+		OPisub() = default;
 
 		/**
 		 * Subtract int ..., value1, value2 → ..., result
@@ -3431,12 +3431,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lsub : public Instruction { // 0x65 -- 101
+	class OPlsub : public Instruction { // 0x65 -- 101
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lsub() = default;
+		OPlsub() = default;
 
 		/**
 		 * Subtract long ..., value1, value2 → ..., result
@@ -3464,12 +3464,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_fsub : public Instruction { // 0x66 -- 102
+	class OPfsub : public Instruction { // 0x66 -- 102
 	public:
 		/**
 		 * Constructor
 		 */
-		op_fsub() = default;
+		OPfsub() = default;
 
 		/**
 		 * Subtract float ..., value1, value2 → ..., result
@@ -3497,12 +3497,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dsub : public Instruction { // 0x67 -- 103
+	class OPdsub : public Instruction { // 0x67 -- 103
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dsub() = default;
+		OPdsub() = default;
 
 		/**
 		 * Subtract double ..., value1, value2 → ..., result
@@ -3530,12 +3530,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_imul : public Instruction { // 0x68 -- 104
+	class OPimul : public Instruction { // 0x68 -- 104
 	public:
 		/**
 		 * Constructor
 		 */
-		op_imul() = default;
+		OPimul() = default;
 
 		/**
 		 * Multiply int ..., value1, value2 → ..., result
@@ -3563,12 +3563,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lmul : public Instruction { // 0x69 -- 105
+	class OPlmul : public Instruction { // 0x69 -- 105
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lmul() = default;
+		OPlmul() = default;
 
 		/**
 		 * Multiply long ..., value1, value2 → ..., result
@@ -3596,12 +3596,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_fmul : public Instruction { // 0x6A -- 106
+	class OPfmul : public Instruction { // 0x6A -- 106
 	public:
 		/**
 		 * Constructor
 		 */
-		op_fmul() = default;
+		OPfmul() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3629,12 +3629,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dmul : public Instruction { // 0x6B -- 107
+	class OPdmul : public Instruction { // 0x6B -- 107
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dmul() = default;
+		OPdmul() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3662,12 +3662,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_idiv : public Instruction { // 0x6C -- 108
+	class OPidiv : public Instruction { // 0x6C -- 108
 	public:
 		/**
 		 * Constructor
 		 */
-		op_idiv() = default;
+		OPidiv() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3695,12 +3695,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_ldiv : public Instruction { // 0x6D -- 109
+	class OPldiv : public Instruction { // 0x6D -- 109
 	public:
 		/**
 		 * Constructor
 		 */
-		op_ldiv() = default;
+		OPldiv() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3728,12 +3728,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_fdiv : public Instruction { // 0x6E -- 110
+	class OPfdiv : public Instruction { // 0x6E -- 110
 	public:
 		/**
 		 * Constructor
 		 */
-		op_fdiv() = default;
+		OPfdiv() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3761,12 +3761,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_ddiv : public Instruction { // 0x6F -- 111
+	class OPddiv : public Instruction { // 0x6F -- 111
 	public:
 		/**
 		 * Constructor
 		 */
-		op_ddiv() = default;
+		OPddiv() = default;
 
 		/**
 		 * The execution of this instruction
@@ -3794,12 +3794,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_irem : public Instruction { // 0x70 -- 112
+	class OPirem : public Instruction { // 0x70 -- 112
 	public:
 		/**
 		 * Constructor
 		 */
-		op_irem() = default;
+		OPirem() = default;
 
 		/**
 		 * Remainder int , ..., value1, value2 → ..., result
@@ -3827,12 +3827,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lrem : public Instruction { // 0x71 -- 113
+	class OPlrem : public Instruction { // 0x71 -- 113
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lrem() = default;
+		OPlrem() = default;
 
 		/**
 		 * Remainder long , ..., value1, value2 → ..., result
@@ -3860,12 +3860,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_frem : public Instruction { // 0x72 -- 114
+	class OPfrem : public Instruction { // 0x72 -- 114
 	public:
 		/**
 		 * Constructor
 		 */
-		op_frem() = default;
+		OPfrem() = default;
 
 		/**
 		 * Remainder float ..., value1, value2 → ..., result
@@ -3893,12 +3893,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_drem : public Instruction { // 0x73 -- 115
+	class OPdrem : public Instruction { // 0x73 -- 115
 	public:
 		/**
 		 * Constructor
 		 */
-		op_drem() = default;
+		OPdrem() = default;
 
 		/**
 		 * Remainder double ..., value1, value2 → ..., result
@@ -3926,12 +3926,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_ineg : public Instruction { // 0x74 -- 116
+	class OPineg : public Instruction { // 0x74 -- 116
 	public:
 		/**
 		 * Constructor
 		 */
-		op_ineg() = default;
+		OPineg() = default;
 
 		/**
 		 * Negate int , ..., value →..., result
@@ -3959,12 +3959,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lneg : public Instruction { // 0x75 -- 117
+	class OPlneg : public Instruction { // 0x75 -- 117
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lneg() = default;
+		OPlneg() = default;
 
 		/**
 		 * Negate long ..., value → ..., result
@@ -3992,12 +3992,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_fneg : public Instruction { // 0x76 -- 118
+	class OPfneg : public Instruction { // 0x76 -- 118
 	public:
 		/**
 		 * Constructor
 		 */
-		op_fneg() = default;
+		OPfneg() = default;
 
 		/**
 		 * Negate float, ..., value → ..., result
@@ -4025,12 +4025,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dneg : public Instruction { // 0x77 -- 119
+	class OPdneg : public Instruction { // 0x77 -- 119
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dneg() = default;
+		OPdneg() = default;
 
 		/**
 		 * Negate double , ..., value → ..., result
@@ -4058,12 +4058,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_ishl : public Instruction { // 0x78 -- 120
+	class OPishl : public Instruction { // 0x78 -- 120
 	public:
 		/**
 		 * Constructor
 		 */
-		op_ishl() = default;
+		OPishl() = default;
 
 		/**
 		 * Shift left int , ..., value1, value2 → ..., result
@@ -4091,12 +4091,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lshl : public Instruction { // 0x79 -- 121
+	class OPlshl : public Instruction { // 0x79 -- 121
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lshl() = default;
+		OPlshl() = default;
 
 		/**
 		 * Shift left long , ..., value1, value2 → ..., result
@@ -4124,12 +4124,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_ishr : public Instruction { // 0x7A -- 122
+	class OPishr : public Instruction { // 0x7A -- 122
 	public:
 		/**
 		 * Constructor
 		 */
-		op_ishr() = default;
+		OPishr() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4157,12 +4157,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lshr : public Instruction { // 0x7B -- 123
+	class OPlshr : public Instruction { // 0x7B -- 123
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lshr() = default;
+		OPlshr() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4190,12 +4190,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_iushr : public Instruction { // 0x7C -- 124
+	class OPiushr : public Instruction { // 0x7C -- 124
 	public:
 		/**
 		 * Constructor
 		 */
-		op_iushr() = default;
+		OPiushr() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4223,12 +4223,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lushr : public Instruction { // 0x7D -- 125
+	class OPlushr : public Instruction { // 0x7D -- 125
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lushr() = default;
+		OPlushr() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4256,12 +4256,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_iand : public Instruction { // 0x7E -- 126
+	class OPiand : public Instruction { // 0x7E -- 126
 	public:
 		/**
 		 * Constructor
 		 */
-		op_iand() = default;
+		OPiand() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4289,12 +4289,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_land : public Instruction { // 0x7F -- 127
+	class OPland : public Instruction { // 0x7F -- 127
 	public:
 		/**
 		 * Constructor
 		 */
-		op_land() = default;
+		OPland() = default;
 
 		/**
 		 * The execution of this instruction
@@ -4322,12 +4322,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_ior : public Instruction { // 0x80 -- 128
+	class OPior : public Instruction { // 0x80 -- 128
 	public:
 		/**
 		 * Constructor
 		 */
-		op_ior() = default;
+		OPior() = default;
 
 		/**
 		 *  Boolean OR int ,  ..., value1, value2 → ..., result
@@ -4355,12 +4355,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lor : public Instruction { // 0x81 --129
+	class OPlor : public Instruction { // 0x81 --129
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lor() = default;
+		OPlor() = default;
 
 		/**
 		 * Boolean OR long ,..., value1, value2 →..., result
@@ -4388,12 +4388,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_ixor : public Instruction { // 0x82 -- 130
+	class OPixor : public Instruction { // 0x82 -- 130
 	public:
 		/**
 		 * Constructor
 		 */
-		op_ixor() = default;
+		OPixor() = default;
 
 		/**
 		 * Boolean XOR int,..., value1, value2 → ..., result
@@ -4421,12 +4421,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lxor : public Instruction { // 0x83 -- 131
+	class OPlxor : public Instruction { // 0x83 -- 131
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lxor() = default;
+		OPlxor() = default;
 
 		/**
 		 * Boolean XOR long,..., value1, value2 → ..., result
@@ -4454,12 +4454,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_iinc : public Instruction { // 0x84 -- 132
+	class OPiinc : public Instruction { // 0x84 -- 132
 	public:
 		/**
 		 * Constructor
 		 */
-		op_iinc() = default;
+		OPiinc() = default;
 
 		/**
 		 * Increment local variable by constant
@@ -4492,12 +4492,12 @@ namespace jvm {
 	};
 
 	//Conversations 0x85,133 -> 0x93,147
-	class op_i2l : public Instruction { // 0x85 -- 133
+	class OPi2l : public Instruction { // 0x85 -- 133
 	public:
 		/**
 		 * Constructor
 		 */
-		op_i2l() = default;
+		OPi2l() = default;
 
 		/**
 		 * Convert int to long
@@ -4525,12 +4525,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_i2f : public Instruction { // 0x86 -- 134
+	class OPi2f : public Instruction { // 0x86 -- 134
 	public:
 		/**
 		 * Constructor
 		 */
-		op_i2f() = default;
+		OPi2f() = default;
 
 		/**
 		 * Convert int to float , ..., value →..., result
@@ -4558,12 +4558,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_i2d : public Instruction { // 0x87 -- 135
+	class OPi2d : public Instruction { // 0x87 -- 135
 	public:
 		/**
 		 * Constructor
 		 */
-		op_i2d() = default;
+		OPi2d() = default;
 
 		/**
 		 * Convert int to double , ..., value →..., result
@@ -4591,12 +4591,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_l2i : public Instruction { // 0x88 -- 136
+	class OPl2i : public Instruction { // 0x88 -- 136
 	public:
 		/**
 		 * Constructor
 		 */
-		op_l2i() = default;
+		OPl2i() = default;
 
 		/**
 		 * Convert long to int,..., value →..., result
@@ -4624,12 +4624,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_l2f : public Instruction { // 0x89 -- 137
+	class OPl2f : public Instruction { // 0x89 -- 137
 	public:
 		/**
 		 * Constructor
 		 */
-		op_l2f() = default;
+		OPl2f() = default;
 
 		/**
 		 * Convert long to float ,..., value →..., result
@@ -4657,12 +4657,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_l2d : public Instruction { // 0x8A -- 138
+	class OPl2d : public Instruction { // 0x8A -- 138
 	public:
 		/**
 		 * Constructor
 		 */
-		op_l2d() = default;
+		OPl2d() = default;
 
 		/**
 		 * Convert long to double , ..., value →..., result
@@ -4690,12 +4690,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_f2i : public Instruction { // 0x8B -- 139
+	class OPf2i : public Instruction { // 0x8B -- 139
 	public:
 		/**
 		 * Constructor
 		 */
-		op_f2i() = default;
+		OPf2i() = default;
 
 		/**
 		 * Convert float to int , ..., value → ..., result
@@ -4723,12 +4723,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_f2l : public Instruction { // 0x8C -- 140
+	class OPf2l : public Instruction { // 0x8C -- 140
 	public:
 		/**
 		 * Constructor
 		 */
-		op_f2l() = default;
+		OPf2l() = default;
 
 		/**
 		 * Convert float to long , ..., value → ..., result
@@ -4756,12 +4756,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_f2d : public Instruction { // 0x8D -- 141
+	class OPf2d : public Instruction { // 0x8D -- 141
 	public:
 		/**
 		 * Constructor
 		 */
-		op_f2d() = default;
+		OPf2d() = default;
 
 		/**
 		 * Convert float to double, ..., value →..., result
@@ -4789,12 +4789,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_d2i : public Instruction { // 0x8E -- 142
+	class OPd2i : public Instruction { // 0x8E -- 142
 	public:
 		/**
 		 * Constructor
 		 */
-		op_d2i() = default;
+		OPd2i() = default;
 
 		/**
 		 * Convert double to int , ..., value → ..., result
@@ -4822,12 +4822,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_d2l : public Instruction { // 0x8F -- 143
+	class OPd2l : public Instruction { // 0x8F -- 143
 	public:
 		/**
 		 * Constructor
 		 */
-		op_d2l() = default;
+		OPd2l() = default;
 
 		/**
 		 * Convert double to long , ..., value → ..., result
@@ -4855,12 +4855,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_d2f : public Instruction { // 0x90 -- 144
+	class OPd2f : public Instruction { // 0x90 -- 144
 	public:
 		/**
 		 * Constructor
 		 */
-		op_d2f() = default;
+		OPd2f() = default;
 
 		/**
 		 * Convert double to float , ..., value → ..., result
@@ -4888,12 +4888,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_i2b : public Instruction { // 0x91 -- 145
+	class OPi2b : public Instruction { // 0x91 -- 145
 	public:
 		/**
 		 * Constructor
 		 */
-		op_i2b() = default;
+		OPi2b() = default;
 
 		/**
 		 * Convert int to byte , ..., value →..., result
@@ -4921,12 +4921,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_i2c : public Instruction { // 0x92 -- 146
+	class OPi2c : public Instruction { // 0x92 -- 146
 	public:
 		/**
 		 * Constructor
 		 */
-		op_i2c() = default;
+		OPi2c() = default;
 
 		/**
 		 * Convert int to char ..., value → ..., result
@@ -4954,12 +4954,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_i2s : public Instruction { // 0x93 -- 147
+	class OPi2s : public Instruction { // 0x93 -- 147
 	public:
 		/**
 		 * Constructor
 		 */
-		op_i2s() = default;
+		OPi2s() = default;
 
 		/**
 		 * Convert int to short ..., value →..., result
@@ -4988,12 +4988,12 @@ namespace jvm {
 	};
 
 	// Comparisons 0x94,148 -> 0xA6,166
-	class op_lcmp : public Instruction { // 0x94 -- 148
+	class OPlcmp : public Instruction { // 0x94 -- 148
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lcmp() = default;
+		OPlcmp() = default;
 
 		/**
 		 * Compare long , ..., value1, value2 → ..., result
@@ -5021,12 +5021,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_fcmpl : public Instruction { // 0x95 -- 149
+	class OPfcmpl : public Instruction { // 0x95 -- 149
 	public:
 		/**
 		 * Constructor
 		 */
-		op_fcmpl() = default;
+		OPfcmpl() = default;
 
 		/**
 		 * Compare float , ..., value1, value2 → ..., result
@@ -5054,12 +5054,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_fcmpg : public Instruction { // 0x96 -- 150
+	class OPfcmpg : public Instruction { // 0x96 -- 150
 	public:
 		/**
 		 * Constructor
 		 */
-		op_fcmpg() = default;
+		OPfcmpg() = default;
 
 		/**
 		 * Compare float , ..., value1, value2 → ..., result
@@ -5087,12 +5087,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dcmpl : public Instruction { // 0x97 -- 151
+	class OPdcmpl : public Instruction { // 0x97 -- 151
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dcmpl() = default;
+		OPdcmpl() = default;
 
 		/**
 		 * Compare double , ..., value1, value2 → ..., result
@@ -5120,12 +5120,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dcmpg : public Instruction { // 0x98 -- 152
+	class OPdcmpg : public Instruction { // 0x98 -- 152
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dcmpg() = default;
+		OPdcmpg() = default;
 
 		/**
 		 * Compare double , ..., value1, value2 →..., result
@@ -5153,12 +5153,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_ifeq : public Instruction { // 0x99 -- 153
+	class OPifeq : public Instruction { // 0x99 -- 153
 	public:
 		/**
 		 * Constructor
 		 */
-		op_ifeq() = default;
+		OPifeq() = default;
 
 		/**
 		 * Branch if int comparison with zero succeeds
@@ -5189,12 +5189,12 @@ namespace jvm {
 		u2 branchoffset; ///< Offset to the next instruction
 	};
 
-	class op_ifne : public Instruction { // 0x9A -- 154
+	class OPifne : public Instruction { // 0x9A -- 154
 	public:
 		/**
 		 * Constructor
 		 */
-		op_ifne() = default;
+		OPifne() = default;
 
 		/**
 		 * Branch if int comparison with zero succeeds
@@ -5225,12 +5225,12 @@ namespace jvm {
 		u2 branchoffset; ///< Offset to the next instruction
 	};
 
-	class op_iflt : public Instruction { // 0x9B -- 155
+	class OPiflt : public Instruction { // 0x9B -- 155
 	public:
 		/**
 		 * Constructor
 		 */
-		op_iflt() = default;
+		OPiflt() = default;
 
 		/**
 		 * Branch if int comparison with zero succeeds
@@ -5261,12 +5261,12 @@ namespace jvm {
 		u2 branchoffset; ///< Offset to the next instruction
 	};
 
-	class op_ifge : public Instruction { // 0x9C -- 156
+	class OPifge : public Instruction { // 0x9C -- 156
 	public:
 		/**
 		 * Constructor
 		 */
-		op_ifge() = default;
+		OPifge() = default;
 
 		/**
 		 * Branch if int comparison with zero succeeds
@@ -5297,12 +5297,12 @@ namespace jvm {
 		u2 branchoffset; ///< Offset to the next instruction
 	};
 
-	class op_ifgt : public Instruction { // 0x9D -- 157
+	class OPifgt : public Instruction { // 0x9D -- 157
 	public:
 		/**
 		 * Constructor
 		 */
-		op_ifgt() = default;
+		OPifgt() = default;
 
 		/**
 		 * Branch if int comparison with zero succeeds
@@ -5333,12 +5333,12 @@ namespace jvm {
 		u2 branchoffset; ///< Offset to the next instruction
 	};
 
-	class op_ifle : public Instruction { // 0x9E -- 158
+	class OPifle : public Instruction { // 0x9E -- 158
 	public:
 		/**
 		 * Constructor
 		 */
-		op_ifle() = default;
+		OPifle() = default;
 
 		/**
 		 * Branch if int comparison with zero succeeds
@@ -5369,12 +5369,12 @@ namespace jvm {
 		u2 branchoffset; ///< Offset to the next instruction
 	};
 
-	class op_if_icmpeq : public Instruction { // 0x9F -- 159
+	class OPif_icmpeq : public Instruction { // 0x9F -- 159
 	public:
 		/**
 		 * Constructor
 		 */
-		op_if_icmpeq() = default;
+		OPif_icmpeq() = default;
 
 		/**
 		 *  Branch if int comparison succeeds
@@ -5405,12 +5405,12 @@ namespace jvm {
 		u2 branchoffset; ///< Offset to the next instruction
 	};
 
-	class op_if_icmpne : public Instruction { // 0xA0 -- 160
+	class OPif_icmpne : public Instruction { // 0xA0 -- 160
 	public:
 		/**
 		 * Constructor
 		 */
-		op_if_icmpne() = default;
+		OPif_icmpne() = default;
 
 		/**
 		 * Branch if int comparison succeeds
@@ -5441,12 +5441,12 @@ namespace jvm {
 		u2 branchoffset; ///< Offset to the next instruction
 	};
 
-	class op_if_icmplt : public Instruction { // 0xA1 - 161
+	class OPif_icmplt : public Instruction { // 0xA1 - 161
 	public:
 		/**
 		 * Constructor
 		 */
-		op_if_icmplt() = default;
+		OPif_icmplt() = default;
 
 		/**
 		 * Branch if int comparison succeeds
@@ -5477,12 +5477,12 @@ namespace jvm {
 		u2 branchoffset; ///< Offset to the next instruction
 	};
 
-	class op_if_icmpge : public Instruction { // 0xA2 -- 162
+	class OPif_icmpge : public Instruction { // 0xA2 -- 162
 	public:
 		/**
 		 * Constructor
 		 */
-		op_if_icmpge() = default;
+		OPif_icmpge() = default;
 
 		/**
 		 * Branch if int comparison succeeds
@@ -5513,12 +5513,12 @@ namespace jvm {
 		u2 branchoffset; ///< Offset to the next instruction
 	};
 
-	class op_if_icmpgt : public Instruction { // 0xA3 -- 163
+	class OPif_icmpgt : public Instruction { // 0xA3 -- 163
 	public:
 		/**
 		 * Constructor
 		 */
-		op_if_icmpgt() = default;
+		OPif_icmpgt() = default;
 
 		/**
 		 * Branch if int comparison succeeds
@@ -5549,12 +5549,12 @@ namespace jvm {
 		u2 branchoffset; ///< Offset to the next instruction
 	};
 
-	class op_if_icmple : public Instruction { // 0xA4 -- 164
+	class OPif_icmple : public Instruction { // 0xA4 -- 164
 	public:
 		/**
 		 * Constructor
 		 */
-		op_if_icmple() = default;
+		OPif_icmple() = default;
 
 		/**
 		 * Branch if int comparison succeeds
@@ -5585,12 +5585,12 @@ namespace jvm {
 		u2 branchoffset; ///< Offset to the next instruction
 	};
 
-	class op_if_acmpeq : public Instruction { // 0xA5 -- 165
+	class OPif_acmpeq : public Instruction { // 0xA5 -- 165
 	public:
 		/**
 		 * Constructor
 		 */
-		op_if_acmpeq() = default;
+		OPif_acmpeq() = default;
 
 		/**
 		 * Branch if reference comparison succeeds
@@ -5621,12 +5621,12 @@ namespace jvm {
 		u2 branchoffset; ///< Offset to the next instruction
 	};
 
-	class op_if_acmpne : public Instruction { // 0xA6 -- 166
+	class OPif_acmpne : public Instruction { // 0xA6 -- 166
 	public:
 		/**
 		 * Constructor
 		 */
-		op_if_acmpne() = default;
+		OPif_acmpne() = default;
 
 		/**
 		 * Branch if reference comparison succeeds
@@ -5658,12 +5658,12 @@ namespace jvm {
 	};
 
 	//Control 0xA7,167 -> 0xB1,177
-	class op_goto : public Instruction { // 0xA7 -- 167
+	class OPgoto : public Instruction { // 0xA7 -- 167
 	public:
 		/**
 		 * Constructor
 		 */
-		op_goto() = default;
+		OPgoto() = default;
 
 		/**
 		 * Branch always
@@ -5694,12 +5694,12 @@ namespace jvm {
 		u2 branchoffset; ///< Offset to the next instruction
 	};
 
-	class op_jsr : public Instruction { // 0xA8 -- 168
+	class OPjsr : public Instruction { // 0xA8 -- 168
 	public:
 		/**
 		 * Constructor
 		 */
-		op_jsr() = default;
+		OPjsr() = default;
 
 		/**
 		 * Jump subroutine
@@ -5727,12 +5727,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_ret : public Instruction { // 0xA9 -- 169
+	class OPret : public Instruction { // 0xA9 -- 169
 	public:
 		/**
 		 * Constructor
 		 */
-		op_ret() = default;
+		OPret() = default;
 
 		/**
 		 * Return from subroutine
@@ -5760,12 +5760,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_tableswitch : public Instruction { // 0xAA -- 170
+	class OPtableswitch : public Instruction { // 0xAA -- 170
 	public:
 		/**
 		 * Constructor
 		 */
-		op_tableswitch() = default;
+		OPtableswitch() = default;
 
 		/**
 		 * Access jump table by index and jump
@@ -5793,12 +5793,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lookupswitch : public Instruction { // 0xAB -- 171
+	class OPlookupswitch : public Instruction { // 0xAB -- 171
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lookupswitch() = default;
+		OPlookupswitch() = default;
 
 		/**
 		 * The execution of this instruction
@@ -5826,12 +5826,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_ireturn : public Instruction { // 0xAC -- 172
+	class OPireturn : public Instruction { // 0xAC -- 172
 	public:
 		/**
 		 * Constructor
 		 */
-		op_ireturn() = default;
+		OPireturn() = default;
 
 		/**
 		 * Return int from method
@@ -5859,12 +5859,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_lreturn : public Instruction { // 0xAD -- 173
+	class OPlreturn : public Instruction { // 0xAD -- 173
 	public:
 		/**
 		 * Constructor
 		 */
-		op_lreturn() = default;
+		OPlreturn() = default;
 
 		/**
 		 * Return long from method
@@ -5892,12 +5892,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_freturn : public Instruction { // 0xAE -- 174
+	class OPfreturn : public Instruction { // 0xAE -- 174
 	public:
 		/**
 		 * Constructor
 		 */
-		op_freturn() = default;
+		OPfreturn() = default;
 
 		/**
 		 * Return long from method
@@ -5925,12 +5925,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_dreturn : public Instruction { // 0xAF -- 175
+	class OPdreturn : public Instruction { // 0xAF -- 175
 	public:
 		/**
 		 * Constructor
 		 */
-		op_dreturn() = default;
+		OPdreturn() = default;
 
 		/**
 		 * Return double from method
@@ -5958,12 +5958,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_areturn : public Instruction { // 0xB0 -- 176
+	class OPareturn : public Instruction { // 0xB0 -- 176
 	public:
 		/**
 		 * Constructor
 		 */
-		op_areturn() = default;
+		OPareturn() = default;
 
 		/**
 		 * Return reference from method
@@ -5991,12 +5991,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_return : public Instruction { // 0xB1 -- 177
+	class OPreturn : public Instruction { // 0xB1 -- 177
 	public:
 		/**
 		 * Constructor
 		 */
-		op_return() = default;
+		OPreturn() = default;
 
 		/**
 		 * Return void from method
@@ -6025,12 +6025,12 @@ namespace jvm {
 	};
 
 	//References 0xB2,178 -> 0xC3,195
-	class op_getstatic : public Instruction { // 0xB2 -- 178
+	class OPgetstatic : public Instruction { // 0xB2 -- 178
 	public:
 		/**
 		 * Constructor
 		 */
-		op_getstatic() = default;
+		OPgetstatic() = default;
 
 		/**
 		 * Get static field from class
@@ -6061,12 +6061,12 @@ namespace jvm {
 		u2 index; ///< Index to the field reference in the constant pool
 	};
 
-	class op_putstatic : public Instruction { // 0xB3 -- 179
+	class OPputstatic : public Instruction { // 0xB3 -- 179
 	public:
 		/**
 		 * Constructor
 		 */
-		op_putstatic() = default;
+		OPputstatic() = default;
 
 		/**
 		 * Get static field from class
@@ -6094,12 +6094,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_getfield : public Instruction { // 0xB4 -- 180
+	class OPgetfield : public Instruction { // 0xB4 -- 180
 	public:
 		/**
 		 * Constructor
 		 */
-		op_getfield() = default;
+		OPgetfield() = default;
 
 		/**
 		 * Fetch field from object
@@ -6130,12 +6130,12 @@ namespace jvm {
 		u2 index; ///< Index to the field reference in the constant pool
 	};
 
-	class op_putfield : public Instruction { // 0xB5 -- 181
+	class OPputfield : public Instruction { // 0xB5 -- 181
 	public:
 		/**
 		 * Constructor
 		 */
-		op_putfield() = default;
+		OPputfield() = default;
 
 		/**
 		 * Set field in object
@@ -6163,12 +6163,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_invokevirtual : public Instruction { // 0xB6 -- 182
+	class OPinvokevirtual : public Instruction { // 0xB6 -- 182
 	public:
 		/**
 		 * Constructor
 		 */
-		op_invokevirtual() = default;
+		OPinvokevirtual() = default;
 
 		/**
 		 * Invoke instance method; dispatch based on class
@@ -6196,12 +6196,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_invokespecial : public Instruction { // 0xB7 -- 183
+	class OPinvokespecial : public Instruction { // 0xB7 -- 183
 	public:
 		/**
 		 * Constructor
 		 */
-		op_invokespecial() = default;
+		OPinvokespecial() = default;
 
 		/**
 		 * Invoke instance method; special handling for superclass, private, and instance initialization method invocations
@@ -6229,12 +6229,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_invokestatic : public Instruction { // 0xB8 -- 184
+	class OPinvokestatic : public Instruction { // 0xB8 -- 184
 	public:
 		/**
 		 * Constructor
 		 */
-		op_invokestatic() = default;
+		OPinvokestatic() = default;
 
 		/**
 		 * Invoke a class (static) method
@@ -6262,12 +6262,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_invokeinterface : public Instruction { // 0xB9 -- 185
+	class OPinvokeinterface : public Instruction { // 0xB9 -- 185
 	public:
 		/**
 		 * Constructor
 		 */
-		op_invokeinterface() = default;
+		OPinvokeinterface() = default;
 
 		/**
 		 * Invoke interface method
@@ -6295,12 +6295,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_invokedynamic : public Instruction { // 0xBA - - 186
+	class OPinvokedynamic : public Instruction { // 0xBA - - 186
 	public:
 		/**
 		 * Constructor
 		 */
-		op_invokedynamic() = default;
+		OPinvokedynamic() = default;
 
 		/**
 		 * Invoke dynamic method
@@ -6328,12 +6328,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_new : public Instruction { // 0xBB -- 187
+	class OPnew : public Instruction { // 0xBB -- 187
 	public:
 		/**
 		 * Constructor
 		 */
-		op_new() = default;
+		OPnew() = default;
 
 		/**
 		 * Create new object
@@ -6361,12 +6361,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_newarray : public Instruction { // 0xBC -- 188
+	class OPnewarray : public Instruction { // 0xBC -- 188
 	public:
 		/**
 		 * Constructor
 		 */
-		op_newarray() = default;
+		OPnewarray() = default;
 
 		/**
 		 * Create new array
@@ -6394,12 +6394,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_anewarray : public Instruction { // 0xBD -- 189
+	class OPanewarray : public Instruction { // 0xBD -- 189
 	public:
 		/**
 		 * Constructor
 		 */
-		op_anewarray() = default;
+		OPanewarray() = default;
 
 		/**
 		 * Create new array of reference
@@ -6430,12 +6430,12 @@ namespace jvm {
 		u2 index; ///< index of the reference to the class that identifies the component type
 	};
 
-	class op_arraylength : public Instruction { // 0xBE -- 190
+	class OParraylength : public Instruction { // 0xBE -- 190
 	public:
 		/**
 		 * Constructor
 		 */
-		op_arraylength() = default;
+		OParraylength() = default;
 
 		/**
 		 * Get length of array
@@ -6463,12 +6463,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_athrow : public Instruction { // 0xBF -- 191
+	class OPathrow : public Instruction { // 0xBF -- 191
 	public:
 		/**
 		 * Constructor
 		 */
-		op_athrow() = default;
+		OPathrow() = default;
 
 		/**
 		 * Throw exception or error
@@ -6496,12 +6496,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_checkcast : public Instruction { // 0xC0 -- 192
+	class OPcheckcast : public Instruction { // 0xC0 -- 192
 	public:
 		/**
 		 * Constructor
 		 */
-		op_checkcast() = default;
+		OPcheckcast() = default;
 
 		/**
 		 * Check whether object is of given type
@@ -6532,12 +6532,12 @@ namespace jvm {
 		u2 index; ///< Index of the class reference in the constant pool
 	};
 
-	class op_instanceof : public Instruction { // 0xC1 -- 193
+	class OPinstanceof : public Instruction { // 0xC1 -- 193
 	public:
 		/**
 		 * Constructor
 		 */
-		op_instanceof() = default;
+		OPinstanceof() = default;
 
 		/**
 		 * Determine if object is of given type
@@ -6565,12 +6565,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_monitorenter : public Instruction { // 0xC2 -- 194
+	class OPmonitorenter : public Instruction { // 0xC2 -- 194
 	public:
 		/**
 		 * Constructor
 		 */
-		op_monitorenter() = default;
+		OPmonitorenter() = default;
 
 		/**
 		 * Enter monitor for object
@@ -6598,12 +6598,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_monitorexit : public Instruction { // 0xC3 -- 195
+	class OPmonitorexit : public Instruction { // 0xC3 -- 195
 	public:
 		/**
 		 * Constructor
 		 */
-		op_monitorexit() = default;
+		OPmonitorexit() = default;
 
 		/**
 		 * Exit monitor for object
@@ -6632,12 +6632,12 @@ namespace jvm {
 	};
 
 	//Extended 0xC4,196 -> 0xC9,201
-	class op_wide : public Instruction { // 0xC4 -- 196
+	class OPwide : public Instruction { // 0xC4 -- 196
 	public:
 		/**
 		 * Constructor
 		 */
-		op_wide() = default;
+		OPwide() = default;
 
 		/**
 		 * Extend local variable index by additional bytes
@@ -6663,14 +6663,24 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		//> the opcode to execute wide
+		u1 opcode;
+
+		//> index
+		u2 index;
+
+		//> count byte
+		u2 countbyte;
 	};
 
-	class op_multianewarray : public Instruction { // 0xC5 -- 197
+	class OPmultianewarray : public Instruction { // 0xC5 -- 197
 	public:
 		/**
 		 * Constructor
 		 */
-		op_multianewarray() = default;
+		OPmultianewarray() = default;
 
 		/**
 		 * Create new multidimensional array
@@ -6698,12 +6708,12 @@ namespace jvm {
 		uint32_t getOpCode() override;
 	};
 
-	class op_ifnull : public Instruction { // 0xC6 -- 198
+	class OPifnull : public Instruction { // 0xC6 -- 198
 	public:
 		/**
 		 * Constructor
 		 */
-		op_ifnull() = default;
+		OPifnull() = default;
 
 		/**
 		 * Branch if reference is null
@@ -6734,12 +6744,12 @@ namespace jvm {
 		u2 branchoffset; ///< Offset to the next instruction
 	};
 
-	class op_ifnonnull : public Instruction { // 0xC7 -- 199
+	class OPifnonnull : public Instruction { // 0xC7 -- 199
 	public:
 		/**
 		 * Constructor
 		 */
-		op_ifnonnull() = default;
+		OPifnonnull() = default;
 
 		/**
 		 * Branch if reference not null
@@ -6770,12 +6780,12 @@ namespace jvm {
 		u2 branchoffset; ///< Offset to the next instruction
 	};
 
-	class op_goto_w : public Instruction { // 0xC8 -- 200
+	class OPgoto_w : public Instruction { // 0xC8 -- 200
 	public:
 		/**
 		 * Constructor
 		 */
-		op_goto_w() = default;
+		OPgoto_w() = default;
 
 		/**
 		 * Branch always (wide index)
@@ -6806,12 +6816,12 @@ namespace jvm {
 		u4 branchoffset; ///< Offset to the next instruction
 	};
 
-	class op_jsr_w : public Instruction { // 0xC9 -- 201
+	class OPjsr_w : public Instruction { // 0xC9 -- 201
 	public:
 		/**
 		 * Constructor
 		 */
-		op_jsr_w() = default;
+		OPjsr_w() = default;
 
 		/**
 		 * Jump subroutine (wide index)
@@ -6846,12 +6856,12 @@ namespace jvm {
 	 * valid class files. In this case, we didn't implemented this
 	 * opcode.
 	 */
-	class op_breakpoint : public Instruction { // 0xca -- 202
+	class OPbreakpoint : public Instruction { // 0xca -- 202
 	public:
 		/**
 		 * Constructor
 		 */
-		op_breakpoint() = default;
+		OPbreakpoint() = default;
 
 		/**
 		 * mnemonic breakpoint and is intended to be used by debuggers to implement breakpoints.
@@ -6885,12 +6895,12 @@ namespace jvm {
 	 * valid class files. In this case, we didn't implemented this
 	 * opcode.
 	 */
-	class op_impdep1 : public Instruction { // 0xFE -- 254
+	class OPimpdep1 : public Instruction { // 0xFE -- 254
 	public:
 		/**
 		 * Constructor
 		 */
-		op_impdep1() = default;
+		OPimpdep1() = default;
 
 		/**
 		 * These instructions are intended to provide "back doors" or traps to implementation-specific functionality implemented in software and hardware, respectively
@@ -6924,12 +6934,12 @@ namespace jvm {
 	 * valid class files. In this case, we didn't implemented this
 	 * opcode.
 	 */
-	class op_impdep2 : public Instruction { // 0xFF -- 255
+	class OPimpdep2 : public Instruction { // 0xFF -- 255
 	public:
 		/**
 		 * Constructor
 		 */
-		op_impdep2() = default;
+		OPimpdep2() = default;
 
 		/**
 		 * These instructions are intended to provide "back doors" or traps to implementation-specific functionality implemented in software and hardware, respectively

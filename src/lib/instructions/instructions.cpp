@@ -9,209 +9,209 @@ namespace jvm {
 	// Code
 
 	const InstructionInstantiator Code::instruction_set[256] = {
-			Instruction::instantiate<op_nop>,               // 0
-			Instruction::instantiate<op_aconst_null>,       // 1
-			Instruction::instantiate<op_iconst_m1>,         // 2
-			Instruction::instantiate<op_iconst_0>,          // 3
-			Instruction::instantiate<op_iconst_1>,          // 4
-			Instruction::instantiate<op_iconst_2>,          // 5
-			Instruction::instantiate<op_iconst_3>,          // 6
-			Instruction::instantiate<op_iconst_4>,          // 7
-			Instruction::instantiate<op_iconst_5>,          // 8
-			Instruction::instantiate<op_lconst_0>,          // 9
-			Instruction::instantiate<op_lconst_1>,          // 10
-			Instruction::instantiate<op_fconst_0>,          // 11
-			Instruction::instantiate<op_fconst_1>,          // 12
-			Instruction::instantiate<op_fconst_2>,          // 13
-			Instruction::instantiate<op_dconst_0>,          // 14
-			Instruction::instantiate<op_dconst_1>,          // 15
-			Instruction::instantiate<op_bipush>,            // 16
-			Instruction::instantiate<op_sipush>,            // 17
-			Instruction::instantiate<op_ldc>,               // 18
-			Instruction::instantiate<op_ldc_w>,             // 19
-			Instruction::instantiate<op_ldc2_w>,            // 20
-			Instruction::instantiate<op_iload>,             // 21
-			Instruction::instantiate<op_lload>,             // 22
-			Instruction::instantiate<op_fload>,             // 23
-			Instruction::instantiate<op_dload>,             // 24
-			Instruction::instantiate<op_aload>,             // 25
-			Instruction::instantiate<op_iload_0>,           // 26
-			Instruction::instantiate<op_iload_1>,           // 27
-			Instruction::instantiate<op_iload_2>,           // 28
-			Instruction::instantiate<op_iload_3>,           // 29
-			Instruction::instantiate<op_lload_0>,           // 30
-			Instruction::instantiate<op_lload_1>,           // 31
-			Instruction::instantiate<op_lload_2>,           // 32
-			Instruction::instantiate<op_lload_3>,           // 33
-			Instruction::instantiate<op_fload_0>,           // 34
-			Instruction::instantiate<op_fload_1>,           // 35
-			Instruction::instantiate<op_fload_2>,           // 36
-			Instruction::instantiate<op_fload_3>,           // 37
-			Instruction::instantiate<op_dload_0>,           // 38
-			Instruction::instantiate<op_dload_1>,           // 39
-			Instruction::instantiate<op_dload_2>,           // 40
-			Instruction::instantiate<op_dload_3>,           // 41
-			Instruction::instantiate<op_aload_0>,           // 42
-			Instruction::instantiate<op_aload_1>,           // 43
-			Instruction::instantiate<op_aload_2>,           // 44
-			Instruction::instantiate<op_aload_3>,           // 45
-			Instruction::instantiate<op_iaload>,            // 46
-			Instruction::instantiate<op_laload>,            // 47
-			Instruction::instantiate<op_faload>,            // 48
-			Instruction::instantiate<op_daload>,            // 49
-			Instruction::instantiate<op_aaload>,            // 50
-			Instruction::instantiate<op_baload>,            // 51
-			Instruction::instantiate<op_caload>,            // 52
-			Instruction::instantiate<op_saload>,            // 53
-			Instruction::instantiate<op_istore>,            // 54
-			Instruction::instantiate<op_lstore>,            // 55
-			Instruction::instantiate<op_fstore>,            // 56
-			Instruction::instantiate<op_dstore>,            // 57
-			Instruction::instantiate<op_astore>,            // 58
-			Instruction::instantiate<op_istore_0>,          // 59
-			Instruction::instantiate<op_istore_1>,          // 60
-			Instruction::instantiate<op_istore_2>,          // 61
-			Instruction::instantiate<op_istore_3>,          // 62
-			Instruction::instantiate<op_lstore_0>,          // 63
-			Instruction::instantiate<op_lstore_1>,          // 64
-			Instruction::instantiate<op_lstore_2>,          // 65
-			Instruction::instantiate<op_lstore_3>,          // 66
-			Instruction::instantiate<op_fstore_0>,          // 67
-			Instruction::instantiate<op_fstore_1>,          // 68
-			Instruction::instantiate<op_fstore_2>,          // 69
-			Instruction::instantiate<op_fstore_3>,          // 70
-			Instruction::instantiate<op_dstore_0>,          // 71
-			Instruction::instantiate<op_dstore_1>,          // 72
-			Instruction::instantiate<op_dstore_2>,          // 73
-			Instruction::instantiate<op_dstore_3>,          // 74
-			Instruction::instantiate<op_astore_0>,          // 75
-			Instruction::instantiate<op_astore_1>,          // 76
-			Instruction::instantiate<op_astore_2>,          // 77
-			Instruction::instantiate<op_astore_3>,          // 78
-			Instruction::instantiate<op_iastore>,           // 79
-			Instruction::instantiate<op_lastore>,           // 80
-			Instruction::instantiate<op_fastore>,           // 81
-			Instruction::instantiate<op_dastore>,           // 82
-			Instruction::instantiate<op_aastore>,           // 83
-			Instruction::instantiate<op_bastore>,           // 84
-			Instruction::instantiate<op_castore>,           // 85
-			Instruction::instantiate<op_sastore>,           // 86
-			Instruction::instantiate<op_pop>,               // 87
-			Instruction::instantiate<op_pop2>,              // 88
-			Instruction::instantiate<op_dup>,               // 89
-			Instruction::instantiate<op_dup_x1>,            // 90
-			Instruction::instantiate<op_dup_x2>,            // 91
-			Instruction::instantiate<op_dup2>,              // 92
-			Instruction::instantiate<op_dup2_x1>,           // 93
-			Instruction::instantiate<op_dup2_x2>,           // 94
-			Instruction::instantiate<op_swap>,              // 95
-			Instruction::instantiate<op_iadd>,              // 96
-			Instruction::instantiate<op_ladd>,              // 97
-			Instruction::instantiate<op_fadd>,              // 98
-			Instruction::instantiate<op_dadd>,              // 99
-			Instruction::instantiate<op_isub>,              // 100
-			Instruction::instantiate<op_lsub>,              // 101
-			Instruction::instantiate<op_fsub>,              // 102
-			Instruction::instantiate<op_dsub>,              // 103
-			Instruction::instantiate<op_imul>,              // 104
-			Instruction::instantiate<op_lmul>,              // 105
-			Instruction::instantiate<op_fmul>,              // 106
-			Instruction::instantiate<op_dmul>,              // 107
-			Instruction::instantiate<op_idiv>,              // 108
-			Instruction::instantiate<op_ldiv>,              // 109
-			Instruction::instantiate<op_fdiv>,              // 110
-			Instruction::instantiate<op_ddiv>,              // 111
-			Instruction::instantiate<op_irem>,              // 112
-			Instruction::instantiate<op_lrem>,              // 113
-			Instruction::instantiate<op_frem>,              // 114
-			Instruction::instantiate<op_drem>,              // 115
-			Instruction::instantiate<op_ineg>,              // 116
-			Instruction::instantiate<op_lneg>,              // 117
-			Instruction::instantiate<op_fneg>,              // 118
-			Instruction::instantiate<op_dneg>,              // 119
-			Instruction::instantiate<op_ishl>,              // 120
-			Instruction::instantiate<op_lshl>,              // 121
-			Instruction::instantiate<op_ishr>,              // 122
-			Instruction::instantiate<op_lshr>,              // 123
-			Instruction::instantiate<op_iushr>,             // 124
-			Instruction::instantiate<op_lushr>,             // 125
-			Instruction::instantiate<op_iand>,              // 126
-			Instruction::instantiate<op_land>,              // 127
-			Instruction::instantiate<op_ior>,               // 128
-			Instruction::instantiate<op_lor>,               // 129
-			Instruction::instantiate<op_ixor>,              // 130
-			Instruction::instantiate<op_lxor>,              // 131
-			Instruction::instantiate<op_iinc>,              // 132
-			Instruction::instantiate<op_i2l>,               // 133
-			Instruction::instantiate<op_i2f>,               // 134
-			Instruction::instantiate<op_i2d>,               // 135
-			Instruction::instantiate<op_l2i>,               // 136
-			Instruction::instantiate<op_l2f>,               // 137
-			Instruction::instantiate<op_l2d>,               // 138
-			Instruction::instantiate<op_f2i>,               // 139
-			Instruction::instantiate<op_f2l>,               // 140
-			Instruction::instantiate<op_f2d>,               // 141
-			Instruction::instantiate<op_d2i>,               // 142
-			Instruction::instantiate<op_d2l>,               // 143
-			Instruction::instantiate<op_d2f>,               // 144
-			Instruction::instantiate<op_i2b>,               // 145
-			Instruction::instantiate<op_i2c>,               // 146
-			Instruction::instantiate<op_i2s>,               // 147
-			Instruction::instantiate<op_lcmp>,              // 148
-			Instruction::instantiate<op_fcmpl>,             // 149
-			Instruction::instantiate<op_fcmpg>,             // 150
-			Instruction::instantiate<op_dcmpl>,             // 151
-			Instruction::instantiate<op_dcmpg>,             // 152
-			Instruction::instantiate<op_ifeq>,              // 153
-			Instruction::instantiate<op_ifne>,              // 154
-			Instruction::instantiate<op_iflt>,              // 155
-			Instruction::instantiate<op_ifge>,              // 156
-			Instruction::instantiate<op_ifgt>,              // 157
-			Instruction::instantiate<op_ifle>,              // 158
-			Instruction::instantiate<op_if_icmpeq>,         // 159
-			Instruction::instantiate<op_if_icmpne>,         // 160
-			Instruction::instantiate<op_if_icmplt>,         // 161
-			Instruction::instantiate<op_if_icmpge>,         // 162
-			Instruction::instantiate<op_if_icmpgt>,         // 163
-			Instruction::instantiate<op_if_icmple>,         // 164
-			Instruction::instantiate<op_if_acmpeq>,         // 165
-			Instruction::instantiate<op_if_acmpne>,         // 166
-			Instruction::instantiate<op_goto>,              // 167
-			Instruction::instantiate<op_jsr>,               // 168
-			Instruction::instantiate<op_ret>,               // 169
-			Instruction::instantiate<op_tableswitch>,       // 170
-			Instruction::instantiate<op_lookupswitch>,      // 171
-			Instruction::instantiate<op_ireturn>,           // 172
-			Instruction::instantiate<op_lreturn>,           // 173
-			Instruction::instantiate<op_freturn>,           // 174
-			Instruction::instantiate<op_dreturn>,           // 175
-			Instruction::instantiate<op_areturn>,           // 176
-			Instruction::instantiate<op_return>,            // 177
-			Instruction::instantiate<op_getstatic>,         // 178
-			Instruction::instantiate<op_putstatic>,         // 179
-			Instruction::instantiate<op_getfield>,          // 180
-			Instruction::instantiate<op_putfield>,          // 181
-			Instruction::instantiate<op_invokevirtual>,     // 182
-			Instruction::instantiate<op_invokespecial>,     // 183
-			Instruction::instantiate<op_invokestatic>,      // 184
-			Instruction::instantiate<op_invokeinterface>,   // 185
-			Instruction::instantiate<op_invokedynamic>,     // 186
-			Instruction::instantiate<op_new>,               // 187
-			Instruction::instantiate<op_newarray>,          // 188
-			Instruction::instantiate<op_anewarray>,         // 189
-			Instruction::instantiate<op_arraylength>,       // 190
-			Instruction::instantiate<op_athrow>,            // 191
-			Instruction::instantiate<op_checkcast>,         // 192
-			Instruction::instantiate<op_instanceof>,        // 193
-			Instruction::instantiate<op_monitorenter>,      // 194
-			Instruction::instantiate<op_monitorexit>,       // 195
-			Instruction::instantiate<op_wide>,              // 196
-			Instruction::instantiate<op_multianewarray>,    // 197
-			Instruction::instantiate<op_ifnull>,            // 198
-			Instruction::instantiate<op_ifnonnull>,         // 199
-			Instruction::instantiate<op_goto_w>,            // 200
-			Instruction::instantiate<op_jsr_w>,             // 201
-			Instruction::instantiate<op_breakpoint>,        // 202
+			Instruction::instantiate<OPnop>,               // 0
+			Instruction::instantiate<OPaconst_null>,       // 1
+			Instruction::instantiate<OPiconst_m1>,         // 2
+			Instruction::instantiate<OPiconst_0>,          // 3
+			Instruction::instantiate<OPiconst_1>,          // 4
+			Instruction::instantiate<OPiconst_2>,          // 5
+			Instruction::instantiate<OPiconst_3>,          // 6
+			Instruction::instantiate<OPiconst_4>,          // 7
+			Instruction::instantiate<OPiconst_5>,          // 8
+			Instruction::instantiate<OPlconst_0>,          // 9
+			Instruction::instantiate<OPlconst_1>,          // 10
+			Instruction::instantiate<OPfconst_0>,          // 11
+			Instruction::instantiate<OPfconst_1>,          // 12
+			Instruction::instantiate<OPfconst_2>,          // 13
+			Instruction::instantiate<OPdconst_0>,          // 14
+			Instruction::instantiate<OPdconst_1>,          // 15
+			Instruction::instantiate<OPbipush>,            // 16
+			Instruction::instantiate<OPsipush>,            // 17
+			Instruction::instantiate<OPldc>,               // 18
+			Instruction::instantiate<OPldc_w>,             // 19
+			Instruction::instantiate<OPldc2_w>,            // 20
+			Instruction::instantiate<OPiload>,             // 21
+			Instruction::instantiate<OPlload>,             // 22
+			Instruction::instantiate<OPfload>,             // 23
+			Instruction::instantiate<OPdload>,             // 24
+			Instruction::instantiate<OPaload>,             // 25
+			Instruction::instantiate<OPiload_0>,           // 26
+			Instruction::instantiate<OPiload_1>,           // 27
+			Instruction::instantiate<OPiload_2>,           // 28
+			Instruction::instantiate<OPiload_3>,           // 29
+			Instruction::instantiate<OPlload_0>,           // 30
+			Instruction::instantiate<OPlload_1>,           // 31
+			Instruction::instantiate<OPlload_2>,           // 32
+			Instruction::instantiate<OPlload_3>,           // 33
+			Instruction::instantiate<OPfload_0>,           // 34
+			Instruction::instantiate<OPfload_1>,           // 35
+			Instruction::instantiate<OPfload_2>,           // 36
+			Instruction::instantiate<OPfload_3>,           // 37
+			Instruction::instantiate<OPdload_0>,           // 38
+			Instruction::instantiate<OPdload_1>,           // 39
+			Instruction::instantiate<OPdload_2>,           // 40
+			Instruction::instantiate<OPdload_3>,           // 41
+			Instruction::instantiate<OPaload_0>,           // 42
+			Instruction::instantiate<OPaload_1>,           // 43
+			Instruction::instantiate<OPaload_2>,           // 44
+			Instruction::instantiate<OPaload_3>,           // 45
+			Instruction::instantiate<OPiaload>,            // 46
+			Instruction::instantiate<OPlaload>,            // 47
+			Instruction::instantiate<OPfaload>,            // 48
+			Instruction::instantiate<OPdaload>,            // 49
+			Instruction::instantiate<OPaaload>,            // 50
+			Instruction::instantiate<OPbaload>,            // 51
+			Instruction::instantiate<OPcaload>,            // 52
+			Instruction::instantiate<OPsaload>,            // 53
+			Instruction::instantiate<OPistore>,            // 54
+			Instruction::instantiate<OPlstore>,            // 55
+			Instruction::instantiate<OPfstore>,            // 56
+			Instruction::instantiate<OPdstore>,            // 57
+			Instruction::instantiate<OPastore>,            // 58
+			Instruction::instantiate<OPistore_0>,          // 59
+			Instruction::instantiate<OPistore_1>,          // 60
+			Instruction::instantiate<OPistore_2>,          // 61
+			Instruction::instantiate<OPistore_3>,          // 62
+			Instruction::instantiate<OPlstore_0>,          // 63
+			Instruction::instantiate<OPlstore_1>,          // 64
+			Instruction::instantiate<OPlstore_2>,          // 65
+			Instruction::instantiate<OPlstore_3>,          // 66
+			Instruction::instantiate<OPfstore_0>,          // 67
+			Instruction::instantiate<OPfstore_1>,          // 68
+			Instruction::instantiate<OPfstore_2>,          // 69
+			Instruction::instantiate<OPfstore_3>,          // 70
+			Instruction::instantiate<OPdstore_0>,          // 71
+			Instruction::instantiate<OPdstore_1>,          // 72
+			Instruction::instantiate<OPdstore_2>,          // 73
+			Instruction::instantiate<OPdstore_3>,          // 74
+			Instruction::instantiate<OPastore_0>,          // 75
+			Instruction::instantiate<OPastore_1>,          // 76
+			Instruction::instantiate<OPastore_2>,          // 77
+			Instruction::instantiate<OPastore_3>,          // 78
+			Instruction::instantiate<OPiastore>,           // 79
+			Instruction::instantiate<OPlastore>,           // 80
+			Instruction::instantiate<OPfastore>,           // 81
+			Instruction::instantiate<OPdastore>,           // 82
+			Instruction::instantiate<OPaastore>,           // 83
+			Instruction::instantiate<OPbastore>,           // 84
+			Instruction::instantiate<OPcastore>,           // 85
+			Instruction::instantiate<OPsastore>,           // 86
+			Instruction::instantiate<OPpop>,               // 87
+			Instruction::instantiate<OPpop2>,              // 88
+			Instruction::instantiate<OPdup>,               // 89
+			Instruction::instantiate<OPdup_x1>,            // 90
+			Instruction::instantiate<OPdup_x2>,            // 91
+			Instruction::instantiate<OPdup2>,              // 92
+			Instruction::instantiate<OPdup2_x1>,           // 93
+			Instruction::instantiate<OPdup2_x2>,           // 94
+			Instruction::instantiate<OPswap>,              // 95
+			Instruction::instantiate<OPiadd>,              // 96
+			Instruction::instantiate<OPladd>,              // 97
+			Instruction::instantiate<OPfadd>,              // 98
+			Instruction::instantiate<OPdadd>,              // 99
+			Instruction::instantiate<OPisub>,              // 100
+			Instruction::instantiate<OPlsub>,              // 101
+			Instruction::instantiate<OPfsub>,              // 102
+			Instruction::instantiate<OPdsub>,              // 103
+			Instruction::instantiate<OPimul>,              // 104
+			Instruction::instantiate<OPlmul>,              // 105
+			Instruction::instantiate<OPfmul>,              // 106
+			Instruction::instantiate<OPdmul>,              // 107
+			Instruction::instantiate<OPidiv>,              // 108
+			Instruction::instantiate<OPldiv>,              // 109
+			Instruction::instantiate<OPfdiv>,              // 110
+			Instruction::instantiate<OPddiv>,              // 111
+			Instruction::instantiate<OPirem>,              // 112
+			Instruction::instantiate<OPlrem>,              // 113
+			Instruction::instantiate<OPfrem>,              // 114
+			Instruction::instantiate<OPdrem>,              // 115
+			Instruction::instantiate<OPineg>,              // 116
+			Instruction::instantiate<OPlneg>,              // 117
+			Instruction::instantiate<OPfneg>,              // 118
+			Instruction::instantiate<OPdneg>,              // 119
+			Instruction::instantiate<OPishl>,              // 120
+			Instruction::instantiate<OPlshl>,              // 121
+			Instruction::instantiate<OPishr>,              // 122
+			Instruction::instantiate<OPlshr>,              // 123
+			Instruction::instantiate<OPiushr>,             // 124
+			Instruction::instantiate<OPlushr>,             // 125
+			Instruction::instantiate<OPiand>,              // 126
+			Instruction::instantiate<OPland>,              // 127
+			Instruction::instantiate<OPior>,               // 128
+			Instruction::instantiate<OPlor>,               // 129
+			Instruction::instantiate<OPixor>,              // 130
+			Instruction::instantiate<OPlxor>,              // 131
+			Instruction::instantiate<OPiinc>,              // 132
+			Instruction::instantiate<OPi2l>,               // 133
+			Instruction::instantiate<OPi2f>,               // 134
+			Instruction::instantiate<OPi2d>,               // 135
+			Instruction::instantiate<OPl2i>,               // 136
+			Instruction::instantiate<OPl2f>,               // 137
+			Instruction::instantiate<OPl2d>,               // 138
+			Instruction::instantiate<OPf2i>,               // 139
+			Instruction::instantiate<OPf2l>,               // 140
+			Instruction::instantiate<OPf2d>,               // 141
+			Instruction::instantiate<OPd2i>,               // 142
+			Instruction::instantiate<OPd2l>,               // 143
+			Instruction::instantiate<OPd2f>,               // 144
+			Instruction::instantiate<OPi2b>,               // 145
+			Instruction::instantiate<OPi2c>,               // 146
+			Instruction::instantiate<OPi2s>,               // 147
+			Instruction::instantiate<OPlcmp>,              // 148
+			Instruction::instantiate<OPfcmpl>,             // 149
+			Instruction::instantiate<OPfcmpg>,             // 150
+			Instruction::instantiate<OPdcmpl>,             // 151
+			Instruction::instantiate<OPdcmpg>,             // 152
+			Instruction::instantiate<OPifeq>,              // 153
+			Instruction::instantiate<OPifne>,              // 154
+			Instruction::instantiate<OPiflt>,              // 155
+			Instruction::instantiate<OPifge>,              // 156
+			Instruction::instantiate<OPifgt>,              // 157
+			Instruction::instantiate<OPifle>,              // 158
+			Instruction::instantiate<OPif_icmpeq>,         // 159
+			Instruction::instantiate<OPif_icmpne>,         // 160
+			Instruction::instantiate<OPif_icmplt>,         // 161
+			Instruction::instantiate<OPif_icmpge>,         // 162
+			Instruction::instantiate<OPif_icmpgt>,         // 163
+			Instruction::instantiate<OPif_icmple>,         // 164
+			Instruction::instantiate<OPif_acmpeq>,         // 165
+			Instruction::instantiate<OPif_acmpne>,         // 166
+			Instruction::instantiate<OPgoto>,              // 167
+			Instruction::instantiate<OPjsr>,               // 168
+			Instruction::instantiate<OPret>,               // 169
+			Instruction::instantiate<OPtableswitch>,       // 170
+			Instruction::instantiate<OPlookupswitch>,      // 171
+			Instruction::instantiate<OPireturn>,           // 172
+			Instruction::instantiate<OPlreturn>,           // 173
+			Instruction::instantiate<OPfreturn>,           // 174
+			Instruction::instantiate<OPdreturn>,           // 175
+			Instruction::instantiate<OPareturn>,           // 176
+			Instruction::instantiate<OPreturn>,            // 177
+			Instruction::instantiate<OPgetstatic>,         // 178
+			Instruction::instantiate<OPputstatic>,         // 179
+			Instruction::instantiate<OPgetfield>,          // 180
+			Instruction::instantiate<OPputfield>,          // 181
+			Instruction::instantiate<OPinvokevirtual>,     // 182
+			Instruction::instantiate<OPinvokespecial>,     // 183
+			Instruction::instantiate<OPinvokestatic>,      // 184
+			Instruction::instantiate<OPinvokeinterface>,   // 185
+			Instruction::instantiate<OPinvokedynamic>,     // 186
+			Instruction::instantiate<OPnew>,               // 187
+			Instruction::instantiate<OPnewarray>,          // 188
+			Instruction::instantiate<OPanewarray>,         // 189
+			Instruction::instantiate<OParraylength>,       // 190
+			Instruction::instantiate<OPathrow>,            // 191
+			Instruction::instantiate<OPcheckcast>,         // 192
+			Instruction::instantiate<OPinstanceof>,        // 193
+			Instruction::instantiate<OPmonitorenter>,      // 194
+			Instruction::instantiate<OPmonitorexit>,       // 195
+			Instruction::instantiate<OPwide>,              // 196
+			Instruction::instantiate<OPmultianewarray>,    // 197
+			Instruction::instantiate<OPifnull>,            // 198
+			Instruction::instantiate<OPifnonnull>,         // 199
+			Instruction::instantiate<OPgoto_w>,            // 200
+			Instruction::instantiate<OPjsr_w>,             // 201
+			Instruction::instantiate<OPbreakpoint>,        // 202
 			nullptr,                                        // 203
 			nullptr,                                        // 204
 			nullptr,                                        // 205
@@ -263,8 +263,8 @@ namespace jvm {
 			nullptr,                                        // 251
 			nullptr,                                        // 252
 			nullptr,                                        // 253
-			Instruction::instantiate<op_impdep1>,           // 254
-			Instruction::instantiate<op_impdep2>            // 255
+			Instruction::instantiate<OPimpdep1>,           // 254
+			Instruction::instantiate<OPimpdep2>            // 255
 	};
 
 	void Code::interpret(std::vector<u1>& data) {
@@ -305,389 +305,389 @@ namespace jvm {
 
 	// nop
 
-	void op_nop::execute() {}
+	void OPnop::execute() {}
 
-	void op_nop::printToStream(std::ostream& os, std::string& prefix) {
+	void OPnop::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_nop::getName () {
+	std::string OPnop::getName () {
 		return "nop";
 	}
 
-	uint32_t op_nop::getOpCode () {
+	uint32_t OPnop::getOpCode () {
 		return 00;
 	}
 
-	uint32_t op_nop::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPnop::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// aconst_null
 
-	void op_aconst_null::execute() {
+	void OPaconst_null::execute() {
 
 	}
 
-	void op_aconst_null::printToStream(std::ostream& os, std::string& prefix) {
+	void OPaconst_null::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_aconst_null::getName () {
+	std::string OPaconst_null::getName () {
 		return "aconst_null";
 	}
 
-	uint32_t op_aconst_null::getOpCode () {
+	uint32_t OPaconst_null::getOpCode () {
 		return 1;
 	}
 
-	uint32_t op_aconst_null::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPaconst_null::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// iconst_m1
 
-	void op_iconst_m1::execute() {
+	void OPiconst_m1::execute() {
 
 	}
 
-	void op_iconst_m1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPiconst_m1::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_iconst_m1::getName () {
+	std::string OPiconst_m1::getName () {
 		return "iconst_m1";
 	}
 
-	uint32_t op_iconst_m1::getOpCode () {
+	uint32_t OPiconst_m1::getOpCode () {
 		return 2;
 	}
 
-	uint32_t op_iconst_m1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPiconst_m1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// iconst_0
 
-	void op_iconst_0::execute() {
+	void OPiconst_0::execute() {
 
 	}
 
-	void op_iconst_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPiconst_0::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_iconst_0::getName () {
+	std::string OPiconst_0::getName () {
 		return "iconst_0";
 	}
 
-	uint32_t op_iconst_0::getOpCode () {
+	uint32_t OPiconst_0::getOpCode () {
 		return 3;
 	}
 
-	uint32_t op_iconst_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPiconst_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// iconst_1
 
-	void op_iconst_1::execute() {
+	void OPiconst_1::execute() {
 
 	}
 
-	void op_iconst_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPiconst_1::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_iconst_1::getName () {
+	std::string OPiconst_1::getName () {
 		return "iconst_1";
 	}
 
-	uint32_t op_iconst_1::getOpCode () {
+	uint32_t OPiconst_1::getOpCode () {
 		return 4;
 	}
 
-	uint32_t op_iconst_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPiconst_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// iconst_2
 
-	void op_iconst_2::execute() {
+	void OPiconst_2::execute() {
 
 	}
 
-	void op_iconst_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPiconst_2::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_iconst_2::getName () {
+	std::string OPiconst_2::getName () {
 		return "iconst_2";
 	}
 
-	uint32_t op_iconst_2::getOpCode () {
+	uint32_t OPiconst_2::getOpCode () {
 		return 5;
 	}
 
-	uint32_t op_iconst_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPiconst_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// iconst_3
 
-	void op_iconst_3::execute() {
+	void OPiconst_3::execute() {
 
 	}
 
-	void op_iconst_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPiconst_3::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_iconst_3::getName () {
+	std::string OPiconst_3::getName () {
 		return "iconst_3";
 	}
 
-	uint32_t op_iconst_3::getOpCode () {
+	uint32_t OPiconst_3::getOpCode () {
 		return 6;
 	}
 
-	uint32_t op_iconst_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPiconst_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// iconst_4
 
-	void op_iconst_4::execute() {
+	void OPiconst_4::execute() {
 
 	}
 
-	void op_iconst_4::printToStream(std::ostream& os, std::string& prefix) {
+	void OPiconst_4::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_iconst_4::getName () {
+	std::string OPiconst_4::getName () {
 		return "iconst_4";
 	}
 
-	uint32_t op_iconst_4::getOpCode () {
+	uint32_t OPiconst_4::getOpCode () {
 		return 7;
 	}
 
-	uint32_t op_iconst_4::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPiconst_4::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// iconst_5
 
-	void op_iconst_5::execute() {
+	void OPiconst_5::execute() {
 
 	}
 
-	void op_iconst_5::printToStream(std::ostream& os, std::string& prefix) {
+	void OPiconst_5::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_iconst_5::getName () {
+	std::string OPiconst_5::getName () {
 		return "iconst_5";
 	}
 
-	uint32_t op_iconst_5::getOpCode () {
+	uint32_t OPiconst_5::getOpCode () {
 		return 8;
 	}
 
-	uint32_t op_iconst_5::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPiconst_5::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// lconst_0
 
-	void op_lconst_0::execute() {
+	void OPlconst_0::execute() {
 
 	}
 
-	void op_lconst_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlconst_0::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lconst_0::getName () {
+	std::string OPlconst_0::getName () {
 		return "lconst_0";
 	}
 
-	uint32_t op_lconst_0::getOpCode () {
+	uint32_t OPlconst_0::getOpCode () {
 		return 9;
 	}
 
-	uint32_t op_lconst_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlconst_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// lconst_1
 
-	void op_lconst_1::execute() {
+	void OPlconst_1::execute() {
 
 	}
 
-	void op_lconst_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlconst_1::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lconst_1::getName () {
+	std::string OPlconst_1::getName () {
 		return "lconst_1";
 	}
 
-	uint32_t op_lconst_1::getOpCode () {
+	uint32_t OPlconst_1::getOpCode () {
 		return 10;
 	}
 
-	uint32_t op_lconst_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlconst_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// fconst_0
 
-	void op_fconst_0::execute() {
+	void OPfconst_0::execute() {
 
 	}
 
-	void op_fconst_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfconst_0::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_fconst_0::getName () {
+	std::string OPfconst_0::getName () {
 		return "fconst_0";
 	}
 
-	uint32_t op_fconst_0::getOpCode () {
+	uint32_t OPfconst_0::getOpCode () {
 		return 11;
 	}
 
-	uint32_t op_fconst_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfconst_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// fconst_1
 
-	void op_fconst_1::execute() {
+	void OPfconst_1::execute() {
 
 	}
 
-	void op_fconst_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfconst_1::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_fconst_1::getName () {
+	std::string OPfconst_1::getName () {
 		return "fconst_1";
 	}
 
-	uint32_t op_fconst_1::getOpCode () {
+	uint32_t OPfconst_1::getOpCode () {
 		return 12;
 	}
 
-	uint32_t op_fconst_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfconst_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// fconst_2
 
-	void op_fconst_2::execute() {
+	void OPfconst_2::execute() {
 
 	}
 
-	void op_fconst_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfconst_2::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_fconst_2::getName () {
+	std::string OPfconst_2::getName () {
 		return "fconst_2";
 	}
 
-	uint32_t op_fconst_2::getOpCode () {
+	uint32_t OPfconst_2::getOpCode () {
 		return 13;
 	}
 
-	uint32_t op_fconst_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfconst_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dconst_0
 
-	void op_dconst_0::execute() {
+	void OPdconst_0::execute() {
 
 	}
 
-	void op_dconst_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdconst_0::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dconst_0::getName () {
+	std::string OPdconst_0::getName () {
 		return "dconst_0";
 	}
 
-	uint32_t op_dconst_0::getOpCode () {
+	uint32_t OPdconst_0::getOpCode () {
 		return 14;
 	}
 
-	uint32_t op_dconst_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdconst_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dconst_1
 
-	void op_dconst_1::execute() {
+	void OPdconst_1::execute() {
 
 	}
 
-	void op_dconst_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdconst_1::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dconst_1::getName () {
+	std::string OPdconst_1::getName () {
 		return "dconst_1";
 	}
 
-	uint32_t op_dconst_1::getOpCode () {
+	uint32_t OPdconst_1::getOpCode () {
 		return 15;
 	}
 
-	uint32_t op_dconst_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdconst_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// bipush
 
-	void op_bipush::execute() {
+	void OPbipush::execute() {
 
 	}
 
-	void op_bipush::printToStream(std::ostream& os, std::string& prefix) {
+	void OPbipush::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_bipush::getName () {
+	std::string OPbipush::getName () {
 		return "bipush";
 	}
 
-	uint32_t op_bipush::getOpCode () {
+	uint32_t OPbipush::getOpCode () {
 		return 16;
 	}
 
-	uint32_t op_bipush::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPbipush::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		byte = data[idx+1];
 		return 1;
 	}
@@ -695,161 +695,161 @@ namespace jvm {
 
 	// sipush
 
-	void op_sipush::execute() {
+	void OPsipush::execute() {
 
 	}
 
-	void op_sipush::printToStream(std::ostream& os, std::string& prefix) {
+	void OPsipush::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_sipush::getName () {
+	std::string OPsipush::getName () {
 		return "sipush";
 	}
 
-	uint32_t op_sipush::getOpCode () {
+	uint32_t OPsipush::getOpCode () {
 		return 17;
 	}
 
-	uint32_t op_sipush::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPsipush::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 2;
 	}
 
 
 	// ldc
 
-	void op_ldc::execute() {
+	void OPldc::execute() {
 
 	}
 
-	void op_ldc::printToStream(std::ostream& os, std::string& prefix) {
+	void OPldc::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_ldc::getName () {
+	std::string OPldc::getName () {
 		return "ldc";
 	}
 
-	uint32_t op_ldc::getOpCode () {
+	uint32_t OPldc::getOpCode () {
 		return 18;
 	}
 
-	uint32_t op_ldc::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPldc::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 1;
 	}
 
 
 	// ldc_w
 
-	void op_ldc_w::execute() {
+	void OPldc_w::execute() {
 
 	}
 
-	void op_ldc_w::printToStream(std::ostream& os, std::string& prefix) {
+	void OPldc_w::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_ldc_w::getName () {
+	std::string OPldc_w::getName () {
 		return "ldc_w";
 	}
 
-	uint32_t op_ldc_w::getOpCode () {
+	uint32_t OPldc_w::getOpCode () {
 		return 19;
 	}
 
-	uint32_t op_ldc_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPldc_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 2;
 	}
 
 
 	// ldc2_w
 
-	void op_ldc2_w::execute() {
+	void OPldc2_w::execute() {
 
 	}
 
-	void op_ldc2_w::printToStream(std::ostream& os, std::string& prefix) {
+	void OPldc2_w::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_ldc2_w::getName () {
+	std::string OPldc2_w::getName () {
 		return "ldc2_w";
 	}
 
-	uint32_t op_ldc2_w::getOpCode () {
+	uint32_t OPldc2_w::getOpCode () {
 		return 20;
 	}
 
-	uint32_t op_ldc2_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPldc2_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 2;
 	}
 
 
 	// iload
 
-	void op_iload::execute() {
+	void OPiload::execute() {
 
 	}
 
-	void op_iload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPiload::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_iload::getName () {
+	std::string OPiload::getName () {
 		return "iload";
 	}
 
-	uint32_t op_iload::getOpCode () {
+	uint32_t OPiload::getOpCode () {
 		return 21;
 	}
 
-	uint32_t op_iload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPiload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 1;
 	}
 
 
 	// lload
 
-	void op_lload::execute() {
+	void OPlload::execute() {
 
 	}
 
-	void op_lload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlload::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lload::getName () {
+	std::string OPlload::getName () {
 		return "lload";
 	}
 
-	uint32_t op_lload::getOpCode () {
+	uint32_t OPlload::getOpCode () {
 		return 22;
 	}
 
-	uint32_t op_lload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// fload
 
-	void op_fload::execute() {
+	void OPfload::execute() {
 
 	}
 
-	void op_fload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfload::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_fload::getName () {
+	std::string OPfload::getName () {
 		return "fload";
 	}
 
-	uint32_t op_fload::getOpCode () {
+	uint32_t OPfload::getOpCode () {
 		return 23;
 	}
 
-	uint32_t op_fload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -857,23 +857,23 @@ namespace jvm {
 
 	// dload
 
-	void op_dload::execute() {
+	void OPdload::execute() {
 
 	}
 
-	void op_dload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdload::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dload::getName () {
+	std::string OPdload::getName () {
 		return "dload";
 	}
 
-	uint32_t op_dload::getOpCode () {
+	uint32_t OPdload::getOpCode () {
 		return 24;
 	}
 
-	uint32_t op_dload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -881,23 +881,23 @@ namespace jvm {
 
 	// aload
 
-	void op_aload::execute() {
+	void OPaload::execute() {
 
 	}
 
-	void op_aload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPaload::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_aload::getName () {
+	std::string OPaload::getName () {
 		return "aload";
 	}
 
-	uint32_t op_aload::getOpCode () {
+	uint32_t OPaload::getOpCode () {
 		return 25;
 	}
 
-	uint32_t op_aload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -905,713 +905,713 @@ namespace jvm {
 
 	// iload_0
 
-	void op_iload_0::execute() {
+	void OPiload_0::execute() {
 
 	}
 
-	void op_iload_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPiload_0::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_iload_0::getName () {
+	std::string OPiload_0::getName () {
 		return "iload_0";
 	}
 
-	uint32_t op_iload_0::getOpCode () {
+	uint32_t OPiload_0::getOpCode () {
 		return 26;
 	}
 
-	uint32_t op_iload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPiload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// iload_1
 
-	void op_iload_1::execute() {
+	void OPiload_1::execute() {
 
 	}
 
-	void op_iload_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPiload_1::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_iload_1::getName () {
+	std::string OPiload_1::getName () {
 		return "iload_1";
 	}
 
-	uint32_t op_iload_1::getOpCode () {
+	uint32_t OPiload_1::getOpCode () {
 		return 27;
 	}
 
-	uint32_t op_iload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPiload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// iload_2
 
-	void op_iload_2::execute() {
+	void OPiload_2::execute() {
 
 	}
 
-	void op_iload_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPiload_2::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_iload_2::getName () {
+	std::string OPiload_2::getName () {
 		return "iload_2";
 	}
 
-	uint32_t op_iload_2::getOpCode () {
+	uint32_t OPiload_2::getOpCode () {
 		return 28;
 	}
 
-	uint32_t op_iload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPiload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// iload_3
 
-	void op_iload_3::execute() {
+	void OPiload_3::execute() {
 
 	}
 
-	void op_iload_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPiload_3::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_iload_3::getName () {
+	std::string OPiload_3::getName () {
 		return "iload_3";
 	}
 
-	uint32_t op_iload_3::getOpCode () {
+	uint32_t OPiload_3::getOpCode () {
 		return 29;
 	}
 
-	uint32_t op_iload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPiload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// lload_0
 
-	void op_lload_0::execute() {
+	void OPlload_0::execute() {
 
 	}
 
-	void op_lload_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlload_0::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lload_0::getName () {
+	std::string OPlload_0::getName () {
 		return "lload_0";
 	}
 
-	uint32_t op_lload_0::getOpCode () {
+	uint32_t OPlload_0::getOpCode () {
 		return 30;
 	}
 
-	uint32_t op_lload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// lload_1
 
-	void op_lload_1::execute() {
+	void OPlload_1::execute() {
 
 	}
 
-	void op_lload_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlload_1::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lload_1::getName () {
+	std::string OPlload_1::getName () {
 		return "lload_1";
 	}
 
-	uint32_t op_lload_1::getOpCode () {
+	uint32_t OPlload_1::getOpCode () {
 		return 31;
 	}
 
-	uint32_t op_lload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// lload_2
 
-	void op_lload_2::execute() {
+	void OPlload_2::execute() {
 
 	}
 
-	void op_lload_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlload_2::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lload_2::getName () {
+	std::string OPlload_2::getName () {
 		return "lload_2";
 	}
 
-	uint32_t op_lload_2::getOpCode () {
+	uint32_t OPlload_2::getOpCode () {
 		return 32;
 	}
 
-	uint32_t op_lload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// lload_3
 
-	void op_lload_3::execute() {
+	void OPlload_3::execute() {
 
 	}
 
-	void op_lload_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlload_3::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lload_3::getName () {
+	std::string OPlload_3::getName () {
 		return "lload_3";
 	}
 
-	uint32_t op_lload_3::getOpCode () {
+	uint32_t OPlload_3::getOpCode () {
 		return 33;
 	}
 
-	uint32_t op_lload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// fload_0
 
-	void op_fload_0::execute() {
+	void OPfload_0::execute() {
 
 	}
 
-	void op_fload_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfload_0::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_fload_0::getName () {
+	std::string OPfload_0::getName () {
 		return "fload_0";
 	}
 
-	uint32_t op_fload_0::getOpCode () {
+	uint32_t OPfload_0::getOpCode () {
 		return 34;
 	}
 
-	uint32_t op_fload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// fload_1
 
-	void op_fload_1::execute() {
+	void OPfload_1::execute() {
 
 	}
 
-	void op_fload_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfload_1::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_fload_1::getName () {
+	std::string OPfload_1::getName () {
 		return "fload_1";
 	}
 
-	uint32_t op_fload_1::getOpCode () {
+	uint32_t OPfload_1::getOpCode () {
 		return 35;
 	}
 
-	uint32_t op_fload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// fload_2
 
-	void op_fload_2::execute() {
+	void OPfload_2::execute() {
 
 	}
 
-	void op_fload_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfload_2::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_fload_2::getName () {
+	std::string OPfload_2::getName () {
 		return "fload_2";
 	}
 
-	uint32_t op_fload_2::getOpCode () {
+	uint32_t OPfload_2::getOpCode () {
 		return 36;
 	}
 
-	uint32_t op_fload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// fload_3
 
-	void op_fload_3::execute() {
+	void OPfload_3::execute() {
 
 	}
 
-	void op_fload_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfload_3::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_fload_3::getName () {
+	std::string OPfload_3::getName () {
 		return "fload_3";
 	}
 
-	uint32_t op_fload_3::getOpCode () {
+	uint32_t OPfload_3::getOpCode () {
 		return 37;
 	}
 
-	uint32_t op_fload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dload_0
 
-	void op_dload_0::execute() {
+	void OPdload_0::execute() {
 
 	}
 
-	void op_dload_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdload_0::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dload_0::getName () {
+	std::string OPdload_0::getName () {
 		return "dload_0";
 	}
 
-	uint32_t op_dload_0::getOpCode () {
+	uint32_t OPdload_0::getOpCode () {
 		return 38;
 	}
 
-	uint32_t op_dload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dload_1
 
-	void op_dload_1::execute() {
+	void OPdload_1::execute() {
 
 	}
 
-	void op_dload_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdload_1::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dload_1::getName () {
+	std::string OPdload_1::getName () {
 		return "dload_1";
 	}
 
-	uint32_t op_dload_1::getOpCode () {
+	uint32_t OPdload_1::getOpCode () {
 		return 39;
 	}
 
-	uint32_t op_dload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dload_2
 
-	void op_dload_2::execute() {
+	void OPdload_2::execute() {
 
 	}
 
-	void op_dload_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdload_2::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dload_2::getName () {
+	std::string OPdload_2::getName () {
 		return "dload_2";
 	}
 
-	uint32_t op_dload_2::getOpCode () {
+	uint32_t OPdload_2::getOpCode () {
 		return 40;
 	}
 
-	uint32_t op_dload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dload_3
 
-	void op_dload_3::execute() {
+	void OPdload_3::execute() {
 
 	}
 
-	void op_dload_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdload_3::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dload_3::getName () {
+	std::string OPdload_3::getName () {
 		return "dload_3";
 	}
 
-	uint32_t op_dload_3::getOpCode () {
+	uint32_t OPdload_3::getOpCode () {
 		return 41;
 	}
 
-	uint32_t op_dload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// aload_0
 
-	void op_aload_0::execute() {
+	void OPaload_0::execute() {
 
 	}
 
-	void op_aload_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPaload_0::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_aload_0::getName () {
+	std::string OPaload_0::getName () {
 		return "aload_0";
 	}
 
-	uint32_t op_aload_0::getOpCode () {
+	uint32_t OPaload_0::getOpCode () {
 		return 42;
 	}
 
-	uint32_t op_aload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPaload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// aload_1
 
-	void op_aload_1::execute() {
+	void OPaload_1::execute() {
 
 	}
 
-	void op_aload_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPaload_1::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_aload_1::getName () {
+	std::string OPaload_1::getName () {
 		return "aload_1";
 	}
 
-	uint32_t op_aload_1::getOpCode () {
+	uint32_t OPaload_1::getOpCode () {
 		return 43;
 	}
 
-	uint32_t op_aload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPaload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// aload_2
 
-	void op_aload_2::execute() {
+	void OPaload_2::execute() {
 
 	}
 
-	void op_aload_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPaload_2::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_aload_2::getName () {
+	std::string OPaload_2::getName () {
 		return "aload_2";
 	}
 
-	uint32_t op_aload_2::getOpCode () {
+	uint32_t OPaload_2::getOpCode () {
 		return 44;
 	}
 
-	uint32_t op_aload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPaload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// aload_3
 
-	void op_aload_3::execute() {
+	void OPaload_3::execute() {
 
 	}
 
-	void op_aload_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPaload_3::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_aload_3::getName () {
+	std::string OPaload_3::getName () {
 		return "aload_3";
 	}
 
-	uint32_t op_aload_3::getOpCode () {
+	uint32_t OPaload_3::getOpCode () {
 		return 45;
 	}
 
-	uint32_t op_aload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPaload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// iaload
 
-	void op_iaload::execute() {
+	void OPiaload::execute() {
 
 	}
 
-	void op_iaload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPiaload::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_iaload::getName () {
+	std::string OPiaload::getName () {
 		return "iaload";
 	}
 
-	uint32_t op_iaload::getOpCode () {
+	uint32_t OPiaload::getOpCode () {
 		return 46;
 	}
 
-	uint32_t op_iaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPiaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// laload
 
-	void op_laload::execute() {
+	void OPlaload::execute() {
 
 	}
 
-	void op_laload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlaload::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_laload::getName () {
+	std::string OPlaload::getName () {
 		return "laload";
 	}
 
-	uint32_t op_laload::getOpCode () {
+	uint32_t OPlaload::getOpCode () {
 		return 47;
 	}
 
-	uint32_t op_laload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// faload
 
-	void op_faload::execute() {
+	void OPfaload::execute() {
 
 	}
 
-	void op_faload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfaload::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_faload::getName () {
+	std::string OPfaload::getName () {
 		return "faload";
 	}
 
-	uint32_t op_faload::getOpCode () {
+	uint32_t OPfaload::getOpCode () {
 		return 48;
 	}
 
-	uint32_t op_faload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// daload
 
-	void op_daload::execute() {
+	void OPdaload::execute() {
 
 	}
 
-	void op_daload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdaload::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_daload::getName () {
+	std::string OPdaload::getName () {
 		return "daload";
 	}
 
-	uint32_t op_daload::getOpCode () {
+	uint32_t OPdaload::getOpCode () {
 		return 49;
 	}
 
-	uint32_t op_daload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// aaload
 
-	void op_aaload::execute() {
+	void OPaaload::execute() {
 
 	}
 
-	void op_aaload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPaaload::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_aaload::getName () {
+	std::string OPaaload::getName () {
 		return "aaload";
 	}
 
-	uint32_t op_aaload::getOpCode () {
+	uint32_t OPaaload::getOpCode () {
 		return 50;
 	}
 
-	uint32_t op_aaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPaaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// baload
 
-	void op_baload::execute() {
+	void OPbaload::execute() {
 
 	}
 
-	void op_baload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPbaload::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_baload::getName () {
+	std::string OPbaload::getName () {
 		return "baload";
 	}
 
-	uint32_t op_baload::getOpCode () {
+	uint32_t OPbaload::getOpCode () {
 		return 51;
 	}
 
-	uint32_t op_baload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPbaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// caload
 
-	void op_caload::execute() {
+	void OPcaload::execute() {
 
 	}
 
-	void op_caload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPcaload::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_caload::getName () {
+	std::string OPcaload::getName () {
 		return "caload";
 	}
 
-	uint32_t op_caload::getOpCode () {
+	uint32_t OPcaload::getOpCode () {
 		return 52;
 	}
 
-	uint32_t op_caload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPcaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// saload
 
-	void op_saload::execute() {
+	void OPsaload::execute() {
 
 	}
 
-	void op_saload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPsaload::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_saload::getName () {
+	std::string OPsaload::getName () {
 		return "saload";
 	}
 
-	uint32_t op_saload::getOpCode () {
+	uint32_t OPsaload::getOpCode () {
 		return 53;
 	}
 
-	uint32_t op_saload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPsaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// istore
 
-	void op_istore::execute() {
+	void OPistore::execute() {
 
 	}
 
-	void op_istore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPistore::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_istore::getName () {
+	std::string OPistore::getName () {
 		return "istore";
 	}
 
-	uint32_t op_istore::getOpCode () {
+	uint32_t OPistore::getOpCode () {
 		return 54;
 	}
 
-	uint32_t op_istore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPistore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 1;
 	}
 
 
 	// lstore
 
-	void op_lstore::execute() {
+	void OPlstore::execute() {
 
 	}
 
-	void op_lstore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlstore::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lstore::getName () {
+	std::string OPlstore::getName () {
 		return "lstore";
 	}
 
-	uint32_t op_lstore::getOpCode () {
+	uint32_t OPlstore::getOpCode () {
 		return 55;
 	}
 
-	uint32_t op_lstore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlstore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 1;
 	}
 
 
 	// fstore
 
-	void op_fstore::execute() {
+	void OPfstore::execute() {
 
 	}
 
-	void op_fstore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfstore::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_fstore::getName () {
+	std::string OPfstore::getName () {
 		return "fstore";
 	}
 
-	uint32_t op_fstore::getOpCode () {
+	uint32_t OPfstore::getOpCode () {
 		return 56;
 	}
 
-	uint32_t op_fstore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfstore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -1619,23 +1619,23 @@ namespace jvm {
 
 	// dstore
 
-	void op_dstore::execute() {
+	void OPdstore::execute() {
 
 	}
 
-	void op_dstore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdstore::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dstore::getName () {
+	std::string OPdstore::getName () {
 		return "dstore";
 	}
 
-	uint32_t op_dstore::getOpCode () {
+	uint32_t OPdstore::getOpCode () {
 		return 57;
 	}
 
-	uint32_t op_dstore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdstore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -1643,23 +1643,23 @@ namespace jvm {
 
 	// astore
 
-	void op_astore::execute() {
+	void OPastore::execute() {
 
 	}
 
-	void op_astore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPastore::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_astore::getName () {
+	std::string OPastore::getName () {
 		return "astore";
 	}
 
-	uint32_t op_astore::getOpCode () {
+	uint32_t OPastore::getOpCode () {
 		return 58;
 	}
 
-	uint32_t op_astore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -1667,2185 +1667,2185 @@ namespace jvm {
 
 	// istore_0
 
-	void op_istore_0::execute() {
+	void OPistore_0::execute() {
 
 	}
 
-	void op_istore_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPistore_0::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_istore_0::getName () {
+	std::string OPistore_0::getName () {
 		return "istore_0";
 	}
 
-	uint32_t op_istore_0::getOpCode () {
+	uint32_t OPistore_0::getOpCode () {
 		return 59;
 	}
 
-	uint32_t op_istore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPistore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// istore_1
 
-	void op_istore_1::execute() {
+	void OPistore_1::execute() {
 
 	}
 
-	void op_istore_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPistore_1::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_istore_1::getName () {
+	std::string OPistore_1::getName () {
 		return "istore_1";
 	}
 
-	uint32_t op_istore_1::getOpCode () {
+	uint32_t OPistore_1::getOpCode () {
 		return 60;
 	}
 
-	uint32_t op_istore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPistore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// istore_2
 
-	void op_istore_2::execute() {
+	void OPistore_2::execute() {
 
 	}
 
-	void op_istore_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPistore_2::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_istore_2::getName () {
+	std::string OPistore_2::getName () {
 		return "istore_2";
 	}
 
-	uint32_t op_istore_2::getOpCode () {
+	uint32_t OPistore_2::getOpCode () {
 		return 61;
 	}
 
-	uint32_t op_istore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPistore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// istore_3
 
-	void op_istore_3::execute() {
+	void OPistore_3::execute() {
 
 	}
 
-	void op_istore_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPistore_3::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_istore_3::getName () {
+	std::string OPistore_3::getName () {
 		return "istore_3";
 	}
 
-	uint32_t op_istore_3::getOpCode () {
+	uint32_t OPistore_3::getOpCode () {
 		return 62;
 	}
 
-	uint32_t op_istore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPistore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// lstore_0
 
-	void op_lstore_0::execute() {
+	void OPlstore_0::execute() {
 
 	}
 
-	void op_lstore_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlstore_0::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lstore_0::getName () {
+	std::string OPlstore_0::getName () {
 		return "lstore_0";
 	}
 
-	uint32_t op_lstore_0::getOpCode () {
+	uint32_t OPlstore_0::getOpCode () {
 		return 63;
 	}
 
-	uint32_t op_lstore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlstore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// lstore_1
 
-	void op_lstore_1::execute() {
+	void OPlstore_1::execute() {
 
 	}
 
-	void op_lstore_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlstore_1::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lstore_1::getName () {
+	std::string OPlstore_1::getName () {
 		return "lstore_1";
 	}
 
-	uint32_t op_lstore_1::getOpCode () {
+	uint32_t OPlstore_1::getOpCode () {
 		return 64;
 	}
 
-	uint32_t op_lstore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlstore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// lstore_2
 
-	void op_lstore_2::execute() {
+	void OPlstore_2::execute() {
 
 	}
 
-	void op_lstore_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlstore_2::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lstore_2::getName () {
+	std::string OPlstore_2::getName () {
 		return "lstore_2";
 	}
 
-	uint32_t op_lstore_2::getOpCode () {
+	uint32_t OPlstore_2::getOpCode () {
 		return 65;
 	}
 
-	uint32_t op_lstore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlstore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// lstore_3
 
-	void op_lstore_3::execute() {
+	void OPlstore_3::execute() {
 
 	}
 
-	void op_lstore_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlstore_3::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lstore_3::getName () {
+	std::string OPlstore_3::getName () {
 		return "lstore_3";
 	}
 
-	uint32_t op_lstore_3::getOpCode () {
+	uint32_t OPlstore_3::getOpCode () {
 		return 66;
 	}
 
-	uint32_t op_lstore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlstore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// fstore_0
 
-	void op_fstore_0::execute() {
+	void OPfstore_0::execute() {
 
 	}
 
-	void op_fstore_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfstore_0::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_fstore_0::getName () {
+	std::string OPfstore_0::getName () {
 		return "fstore_0";
 	}
 
-	uint32_t op_fstore_0::getOpCode () {
+	uint32_t OPfstore_0::getOpCode () {
 		return 67;
 	}
 
-	uint32_t op_fstore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfstore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// fstore_1
 
-	void op_fstore_1::execute() {
+	void OPfstore_1::execute() {
 
 	}
 
-	void op_fstore_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfstore_1::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_fstore_1::getName () {
+	std::string OPfstore_1::getName () {
 		return "fstore_1";
 	}
 
-	uint32_t op_fstore_1::getOpCode () {
+	uint32_t OPfstore_1::getOpCode () {
 		return 68;
 	}
 
-	uint32_t op_fstore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfstore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// fstore_2
 
-	void op_fstore_2::execute() {
+	void OPfstore_2::execute() {
 
 	}
 
-	void op_fstore_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfstore_2::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_fstore_2::getName () {
+	std::string OPfstore_2::getName () {
 		return "fstore_2";
 	}
 
-	uint32_t op_fstore_2::getOpCode () {
+	uint32_t OPfstore_2::getOpCode () {
 		return 69;
 	}
 
-	uint32_t op_fstore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfstore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// fstore_3
 
-	void op_fstore_3::execute() {
+	void OPfstore_3::execute() {
 
 	}
 
-	void op_fstore_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfstore_3::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_fstore_3::getName () {
+	std::string OPfstore_3::getName () {
 		return "fstore_3";
 	}
 
-	uint32_t op_fstore_3::getOpCode () {
+	uint32_t OPfstore_3::getOpCode () {
 		return 70;
 	}
 
-	uint32_t op_fstore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfstore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dstore_0
 
-	void op_dstore_0::execute() {
+	void OPdstore_0::execute() {
 
 	}
 
-	void op_dstore_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdstore_0::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dstore_0::getName () {
+	std::string OPdstore_0::getName () {
 		return "dstore_0";
 	}
 
-	uint32_t op_dstore_0::getOpCode () {
+	uint32_t OPdstore_0::getOpCode () {
 		return 71;
 	}
 
-	uint32_t op_dstore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdstore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dstore_1
 
-	void op_dstore_1::execute() {
+	void OPdstore_1::execute() {
 
 	}
 
-	void op_dstore_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdstore_1::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dstore_1::getName () {
+	std::string OPdstore_1::getName () {
 		return "dstore_1";
 	}
 
-	uint32_t op_dstore_1::getOpCode () {
+	uint32_t OPdstore_1::getOpCode () {
 		return 72;
 	}
 
-	uint32_t op_dstore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdstore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dstore_2
 
-	void op_dstore_2::execute() {
+	void OPdstore_2::execute() {
 
 	}
 
-	void op_dstore_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdstore_2::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dstore_2::getName () {
+	std::string OPdstore_2::getName () {
 		return "dstore_2";
 	}
 
-	uint32_t op_dstore_2::getOpCode () {
+	uint32_t OPdstore_2::getOpCode () {
 		return 73;
 	}
 
-	uint32_t op_dstore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdstore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dstore_3
 
-	void op_dstore_3::execute() {
+	void OPdstore_3::execute() {
 
 	}
 
-	void op_dstore_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdstore_3::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dstore_3::getName () {
+	std::string OPdstore_3::getName () {
 		return "dstore_3";
 	}
 
-	uint32_t op_dstore_3::getOpCode () {
+	uint32_t OPdstore_3::getOpCode () {
 		return 74;
 	}
 
-	uint32_t op_dstore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdstore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// astore_0
 
-	void op_astore_0::execute() {
+	void OPastore_0::execute() {
 
 	}
 
-	void op_astore_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPastore_0::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_astore_0::getName () {
+	std::string OPastore_0::getName () {
 		return "astore_0";
 	}
 
-	uint32_t op_astore_0::getOpCode () {
+	uint32_t OPastore_0::getOpCode () {
 		return 75;
 	}
 
-	uint32_t op_astore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPastore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// astore_1
 
-	void op_astore_1::execute() {
+	void OPastore_1::execute() {
 
 	}
 
-	void op_astore_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPastore_1::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_astore_1::getName () {
+	std::string OPastore_1::getName () {
 		return "astore_1";
 	}
 
-	uint32_t op_astore_1::getOpCode () {
+	uint32_t OPastore_1::getOpCode () {
 		return 76;
 	}
 
-	uint32_t op_astore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPastore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// astore_2
 
-	void op_astore_2::execute() {
+	void OPastore_2::execute() {
 
 	}
 
-	void op_astore_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPastore_2::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_astore_2::getName () {
+	std::string OPastore_2::getName () {
 		return "astore_2";
 	}
 
-	uint32_t op_astore_2::getOpCode () {
+	uint32_t OPastore_2::getOpCode () {
 		return 77;
 	}
 
-	uint32_t op_astore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPastore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// astore_3
 
-	void op_astore_3::execute() {
+	void OPastore_3::execute() {
 
 	}
 
-	void op_astore_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPastore_3::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_astore_3::getName () {
+	std::string OPastore_3::getName () {
 		return "astore_3";
 	}
 
-	uint32_t op_astore_3::getOpCode () {
+	uint32_t OPastore_3::getOpCode () {
 		return 78;
 	}
 
-	uint32_t op_astore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPastore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// iastore
 
-	void op_iastore::execute() {
+	void OPiastore::execute() {
 
 	}
 
-	void op_iastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPiastore::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_iastore::getName () {
+	std::string OPiastore::getName () {
 		return "iastore";
 	}
 
-	uint32_t op_iastore::getOpCode () {
+	uint32_t OPiastore::getOpCode () {
 		return 79;
 	}
 
-	uint32_t op_iastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPiastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// lastore
 
-	void op_lastore::execute() {
+	void OPlastore::execute() {
 
 	}
 
-	void op_lastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlastore::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lastore::getName () {
+	std::string OPlastore::getName () {
 		return "lastore";
 	}
 
-	uint32_t op_lastore::getOpCode () {
+	uint32_t OPlastore::getOpCode () {
 		return 80;
 	}
 
-	uint32_t op_lastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// fastore
 
-	void op_fastore::execute() {
+	void OPfastore::execute() {
 
 	}
 
-	void op_fastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfastore::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_fastore::getName () {
+	std::string OPfastore::getName () {
 		return "fastore";
 	}
 
-	uint32_t op_fastore::getOpCode () {
+	uint32_t OPfastore::getOpCode () {
 		return 81;
 	}
 
-	uint32_t op_fastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dastore
 
-	void op_dastore::execute() {
+	void OPdastore::execute() {
 
 	}
 
-	void op_dastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdastore::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dastore::getName () {
+	std::string OPdastore::getName () {
 		return "dastore";
 	}
 
-	uint32_t op_dastore::getOpCode () {
+	uint32_t OPdastore::getOpCode () {
 		return 82;
 	}
 
-	uint32_t op_dastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// aastore
 
-	void op_aastore::execute() {
+	void OPaastore::execute() {
 
 	}
 
-	void op_aastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPaastore::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_aastore::getName () {
+	std::string OPaastore::getName () {
 		return "aastore";
 	}
 
-	uint32_t op_aastore::getOpCode () {
+	uint32_t OPaastore::getOpCode () {
 		return 83;
 	}
 
-	uint32_t op_aastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPaastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// bastore
 
-	void op_bastore::execute() {
+	void OPbastore::execute() {
 
 	}
 
-	void op_bastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPbastore::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_bastore::getName () {
+	std::string OPbastore::getName () {
 		return "bastore";
 	}
 
-	uint32_t op_bastore::getOpCode () {
+	uint32_t OPbastore::getOpCode () {
 		return 84;
 	}
 
-	uint32_t op_bastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPbastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// castore
 
-	void op_castore::execute() {
+	void OPcastore::execute() {
 
 	}
 
-	void op_castore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPcastore::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_castore::getName () {
+	std::string OPcastore::getName () {
 		return "castore";
 	}
 
-	uint32_t op_castore::getOpCode () {
+	uint32_t OPcastore::getOpCode () {
 		return 85;
 	}
 
-	uint32_t op_castore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPcastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// sastore
 
-	void op_sastore::execute() {
+	void OPsastore::execute() {
 
 	}
 
-	void op_sastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPsastore::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_sastore::getName () {
+	std::string OPsastore::getName () {
 		return "sastore";
 	}
 
-	uint32_t op_sastore::getOpCode () {
+	uint32_t OPsastore::getOpCode () {
 		return 86;
 	}
 
-	uint32_t op_sastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPsastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// pop
 
-	void op_pop::execute() {
+	void OPpop::execute() {
 
 	}
 
-	void op_pop::printToStream(std::ostream& os, std::string& prefix) {
+	void OPpop::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_pop::getName () {
+	std::string OPpop::getName () {
 		return "pop";
 	}
 
-	uint32_t op_pop::getOpCode () {
+	uint32_t OPpop::getOpCode () {
 		return 87;
 	}
 
-	uint32_t op_pop::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPpop::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// pop2
 
-	void op_pop2::execute() {
+	void OPpop2::execute() {
 
 	}
 
-	void op_pop2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPpop2::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_pop2::getName () {
+	std::string OPpop2::getName () {
 		return "pop2";
 	}
 
-	uint32_t op_pop2::getOpCode () {
+	uint32_t OPpop2::getOpCode () {
 		return 88;
 	}
 
-	uint32_t op_pop2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPpop2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dup
 
-	void op_dup::execute() {
+	void OPdup::execute() {
 
 	}
 
-	void op_dup::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdup::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dup::getName () {
+	std::string OPdup::getName () {
 		return "dup";
 	}
 
-	uint32_t op_dup::getOpCode () {
+	uint32_t OPdup::getOpCode () {
 		return 89;
 	}
 
-	uint32_t op_dup::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdup::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dup_x1
 
-	void op_dup_x1::execute() {
+	void OPdup_x1::execute() {
 
 	}
 
-	void op_dup_x1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdup_x1::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dup_x1::getName () {
+	std::string OPdup_x1::getName () {
 		return "dup_x1";
 	}
 
-	uint32_t op_dup_x1::getOpCode () {
+	uint32_t OPdup_x1::getOpCode () {
 		return 90;
 	}
 
-	uint32_t op_dup_x1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdup_x1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dup_x2
 
-	void op_dup_x2::execute() {
+	void OPdup_x2::execute() {
 
 	}
 
-	void op_dup_x2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdup_x2::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dup_x2::getName () {
+	std::string OPdup_x2::getName () {
 		return "dup_x2";
 	}
 
-	uint32_t op_dup_x2::getOpCode () {
+	uint32_t OPdup_x2::getOpCode () {
 		return 91;
 	}
 
-	uint32_t op_dup_x2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdup_x2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dup2
 
-	void op_dup2::execute() {
+	void OPdup2::execute() {
 
 	}
 
-	void op_dup2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdup2::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dup2::getName () {
+	std::string OPdup2::getName () {
 		return "dup2";
 	}
 
-	uint32_t op_dup2::getOpCode () {
+	uint32_t OPdup2::getOpCode () {
 		return 92;
 	}
 
-	uint32_t op_dup2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdup2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dup2_x1
 
-	void op_dup2_x1::execute() {
+	void OPdup2_x1::execute() {
 
 	}
 
-	void op_dup2_x1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdup2_x1::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dup2_x1::getName () {
+	std::string OPdup2_x1::getName () {
 		return "dup2_x1";
 	}
 
-	uint32_t op_dup2_x1::getOpCode () {
+	uint32_t OPdup2_x1::getOpCode () {
 		return 93;
 	}
 
-	uint32_t op_dup2_x1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdup2_x1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dup2_x2
 
-	void op_dup2_x2::execute() {
+	void OPdup2_x2::execute() {
 
 	}
 
-	void op_dup2_x2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdup2_x2::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dup2_x2::getName () {
+	std::string OPdup2_x2::getName () {
 		return "dup2_x2";
 	}
 
-	uint32_t op_dup2_x2::getOpCode () {
+	uint32_t OPdup2_x2::getOpCode () {
 		return 94;
 	}
 
-	uint32_t op_dup2_x2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdup2_x2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// swap
 
-	void op_swap::execute() {
+	void OPswap::execute() {
 
 	}
 
-	void op_swap::printToStream(std::ostream& os, std::string& prefix) {
+	void OPswap::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_swap::getName () {
+	std::string OPswap::getName () {
 		return "swap";
 	}
 
-	uint32_t op_swap::getOpCode () {
+	uint32_t OPswap::getOpCode () {
 		return 95;
 	}
 
-	uint32_t op_swap::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPswap::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// iadd
 
-	void op_iadd::execute() {
+	void OPiadd::execute() {
 
 	}
 
-	void op_iadd::printToStream(std::ostream& os, std::string& prefix) {
+	void OPiadd::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_iadd::getName () {
+	std::string OPiadd::getName () {
 		return "iadd";
 	}
 
-	uint32_t op_iadd::getOpCode () {
+	uint32_t OPiadd::getOpCode () {
 		return 96;
 	}
 
-	uint32_t op_iadd::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPiadd::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// ladd
 
-	void op_ladd::execute() {
+	void OPladd::execute() {
 
 	}
 
-	void op_ladd::printToStream(std::ostream& os, std::string& prefix) {
+	void OPladd::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_ladd::getName () {
+	std::string OPladd::getName () {
 		return "ladd";
 	}
 
-	uint32_t op_ladd::getOpCode () {
+	uint32_t OPladd::getOpCode () {
 		return 97;
 	}
 
-	uint32_t op_ladd::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPladd::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// fadd
 
-	void op_fadd::execute() {
+	void OPfadd::execute() {
 
 	}
 
-	void op_fadd::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfadd::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_fadd::getName () {
+	std::string OPfadd::getName () {
 		return "fadd";
 	}
 
-	uint32_t op_fadd::getOpCode () {
+	uint32_t OPfadd::getOpCode () {
 		return 98;
 	}
 
-	uint32_t op_fadd::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfadd::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dadd
 
-	void op_dadd::execute() {
+	void OPdadd::execute() {
 
 	}
 
-	void op_dadd::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdadd::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dadd::getName () {
+	std::string OPdadd::getName () {
 		return "dadd";
 	}
 
-	uint32_t op_dadd::getOpCode () {
+	uint32_t OPdadd::getOpCode () {
 		return 99;
 	}
 
-	uint32_t op_dadd::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdadd::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// isub
 
-	void op_isub::execute() {
+	void OPisub::execute() {
 
 	}
 
-	void op_isub::printToStream(std::ostream& os, std::string& prefix) {
+	void OPisub::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_isub::getName () {
+	std::string OPisub::getName () {
 		return "isub";
 	}
 
-	uint32_t op_isub::getOpCode () {
+	uint32_t OPisub::getOpCode () {
 		return 100;
 	}
 
-	uint32_t op_isub::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPisub::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// lsub
 
-	void op_lsub::execute() {
+	void OPlsub::execute() {
 
 	}
 
-	void op_lsub::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlsub::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lsub::getName () {
+	std::string OPlsub::getName () {
 		return "lsub";
 	}
 
-	uint32_t op_lsub::getOpCode () {
+	uint32_t OPlsub::getOpCode () {
 		return 101;
 	}
 
-	uint32_t op_lsub::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlsub::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// fsub
 
-	void op_fsub::execute() {
+	void OPfsub::execute() {
 
 	}
 
-	void op_fsub::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfsub::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_fsub::getName () {
+	std::string OPfsub::getName () {
 		return "fsub";
 	}
 
-	uint32_t op_fsub::getOpCode () {
+	uint32_t OPfsub::getOpCode () {
 		return 102;
 	}
 
-	uint32_t op_fsub::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfsub::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dsub
 
-	void op_dsub::execute() {
+	void OPdsub::execute() {
 
 	}
 
-	void op_dsub::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdsub::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dsub::getName () {
+	std::string OPdsub::getName () {
 		return "dsub";
 	}
 
-	uint32_t op_dsub::getOpCode () {
+	uint32_t OPdsub::getOpCode () {
 		return 103;
 	}
 
-	uint32_t op_dsub::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdsub::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// imul
 
-	void op_imul::execute() {
+	void OPimul::execute() {
 
 	}
 
-	void op_imul::printToStream(std::ostream& os, std::string& prefix) {
+	void OPimul::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_imul::getName () {
+	std::string OPimul::getName () {
 		return "imul";
 	}
 
-	uint32_t op_imul::getOpCode () {
+	uint32_t OPimul::getOpCode () {
 		return 104;
 	}
 
-	uint32_t op_imul::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPimul::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// lmul
 
-	void op_lmul::execute() {
+	void OPlmul::execute() {
 
 	}
 
-	void op_lmul::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlmul::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lmul::getName () {
+	std::string OPlmul::getName () {
 		return "lmul";
 	}
 
-	uint32_t op_lmul::getOpCode () {
+	uint32_t OPlmul::getOpCode () {
 		return 105;
 	}
 
-	uint32_t op_lmul::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlmul::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// fmul
 
-	void op_fmul::execute() {
+	void OPfmul::execute() {
 
 	}
 
-	void op_fmul::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfmul::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_fmul::getName () {
+	std::string OPfmul::getName () {
 		return "fmul";
 	}
 
-	uint32_t op_fmul::getOpCode () {
+	uint32_t OPfmul::getOpCode () {
 		return 106;
 	}
 
-	uint32_t op_fmul::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfmul::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dmul
 
-	void op_dmul::execute() {
+	void OPdmul::execute() {
 
 	}
 
-	void op_dmul::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdmul::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dmul::getName () {
+	std::string OPdmul::getName () {
 		return "dmul";
 	}
 
-	uint32_t op_dmul::getOpCode () {
+	uint32_t OPdmul::getOpCode () {
 		return 107;
 	}
 
-	uint32_t op_dmul::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdmul::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// idiv
 
-	void op_idiv::execute() {
+	void OPidiv::execute() {
 
 	}
 
-	void op_idiv::printToStream(std::ostream& os, std::string& prefix) {
+	void OPidiv::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_idiv::getName () {
+	std::string OPidiv::getName () {
 		return "idiv";
 	}
 
-	uint32_t op_idiv::getOpCode () {
+	uint32_t OPidiv::getOpCode () {
 		return 108;
 	}
 
-	uint32_t op_idiv::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPidiv::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// ldiv
 
-	void op_ldiv::execute() {
+	void OPldiv::execute() {
 
 	}
 
-	void op_ldiv::printToStream(std::ostream& os, std::string& prefix) {
+	void OPldiv::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_ldiv::getName () {
+	std::string OPldiv::getName () {
 		return "ldiv";
 	}
 
-	uint32_t op_ldiv::getOpCode () {
+	uint32_t OPldiv::getOpCode () {
 		return 109;
 	}
 
-	uint32_t op_ldiv::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPldiv::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// fdiv
 
-	void op_fdiv::execute() {
+	void OPfdiv::execute() {
 
 	}
 
-	void op_fdiv::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfdiv::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_fdiv::getName () {
+	std::string OPfdiv::getName () {
 		return "fdiv";
 	}
 
-	uint32_t op_fdiv::getOpCode () {
+	uint32_t OPfdiv::getOpCode () {
 		return 110;
 	}
 
-	uint32_t op_fdiv::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfdiv::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// ddiv
 
-	void op_ddiv::execute() {
+	void OPddiv::execute() {
 
 	}
 
-	void op_ddiv::printToStream(std::ostream& os, std::string& prefix) {
+	void OPddiv::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_ddiv::getName () {
+	std::string OPddiv::getName () {
 		return "ddiv";
 	}
 
-	uint32_t op_ddiv::getOpCode () {
+	uint32_t OPddiv::getOpCode () {
 		return 111;
 	}
 
-	uint32_t op_ddiv::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPddiv::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// irem
 
-	void op_irem::execute() {
+	void OPirem::execute() {
 
 	}
 
-	void op_irem::printToStream(std::ostream& os, std::string& prefix) {
+	void OPirem::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_irem::getName () {
+	std::string OPirem::getName () {
 		return "irem";
 	}
 
-	uint32_t op_irem::getOpCode () {
+	uint32_t OPirem::getOpCode () {
 		return 112;
 	}
 
-	uint32_t op_irem::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPirem::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// lrem
 
-	void op_lrem::execute() {
+	void OPlrem::execute() {
 
 	}
 
-	void op_lrem::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlrem::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lrem::getName () {
+	std::string OPlrem::getName () {
 		return "lrem";
 	}
 
-	uint32_t op_lrem::getOpCode () {
+	uint32_t OPlrem::getOpCode () {
 		return 113;
 	}
 
-	uint32_t op_lrem::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlrem::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// frem
 
-	void op_frem::execute() {
+	void OPfrem::execute() {
 
 	}
 
-	void op_frem::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfrem::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_frem::getName () {
+	std::string OPfrem::getName () {
 		return "frem";
 	}
 
-	uint32_t op_frem::getOpCode () {
+	uint32_t OPfrem::getOpCode () {
 		return 114;
 	}
 
-	uint32_t op_frem::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfrem::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// drem
 
-	void op_drem::execute() {
+	void OPdrem::execute() {
 
 	}
 
-	void op_drem::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdrem::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_drem::getName () {
+	std::string OPdrem::getName () {
 		return "drem";
 	}
 
-	uint32_t op_drem::getOpCode () {
+	uint32_t OPdrem::getOpCode () {
 		return 115;
 	}
 
-	uint32_t op_drem::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdrem::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// ineg
 
-	void op_ineg::execute() {
+	void OPineg::execute() {
 
 	}
 
-	void op_ineg::printToStream(std::ostream& os, std::string& prefix) {
+	void OPineg::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_ineg::getName () {
+	std::string OPineg::getName () {
 		return "ineg";
 	}
 
-	uint32_t op_ineg::getOpCode () {
+	uint32_t OPineg::getOpCode () {
 		return 116;
 	}
 
-	uint32_t op_ineg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPineg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// lneg
 
-	void op_lneg::execute() {
+	void OPlneg::execute() {
 
 	}
 
-	void op_lneg::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlneg::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lneg::getName () {
+	std::string OPlneg::getName () {
 		return "lneg";
 	}
 
-	uint32_t op_lneg::getOpCode () {
+	uint32_t OPlneg::getOpCode () {
 		return 117;
 	}
 
-	uint32_t op_lneg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlneg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// fneg
 
-	void op_fneg::execute() {
+	void OPfneg::execute() {
 
 	}
 
-	void op_fneg::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfneg::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_fneg::getName () {
+	std::string OPfneg::getName () {
 		return "fneg";
 	}
 
-	uint32_t op_fneg::getOpCode () {
+	uint32_t OPfneg::getOpCode () {
 		return 118;
 	}
 
-	uint32_t op_fneg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfneg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dneg
 
-	void op_dneg::execute() {
+	void OPdneg::execute() {
 
 	}
 
-	void op_dneg::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdneg::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dneg::getName () {
+	std::string OPdneg::getName () {
 		return "dneg";
 	}
 
-	uint32_t op_dneg::getOpCode () {
+	uint32_t OPdneg::getOpCode () {
 		return 119;
 	}
 
-	uint32_t op_dneg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdneg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// ishl
 
-	void op_ishl::execute() {
+	void OPishl::execute() {
 
 	}
 
-	void op_ishl::printToStream(std::ostream& os, std::string& prefix) {
+	void OPishl::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_ishl::getName () {
+	std::string OPishl::getName () {
 		return "ishl";
 	}
 
-	uint32_t op_ishl::getOpCode () {
+	uint32_t OPishl::getOpCode () {
 		return 120;
 	}
 
-	uint32_t op_ishl::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPishl::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// lshl
 
-	void op_lshl::execute() {
+	void OPlshl::execute() {
 
 	}
 
-	void op_lshl::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlshl::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lshl::getName () {
+	std::string OPlshl::getName () {
 		return "lshl";
 	}
 
-	uint32_t op_lshl::getOpCode () {
+	uint32_t OPlshl::getOpCode () {
 		return 121;
 	}
 
-	uint32_t op_lshl::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlshl::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// ishr
 
-	void op_ishr::execute() {
+	void OPishr::execute() {
 
 	}
 
-	void op_ishr::printToStream(std::ostream& os, std::string& prefix) {
+	void OPishr::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_ishr::getName () {
+	std::string OPishr::getName () {
 		return "ishr";
 	}
 
-	uint32_t op_ishr::getOpCode () {
+	uint32_t OPishr::getOpCode () {
 		return 122;
 	}
 
-	uint32_t op_ishr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPishr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// lshr
 
-	void op_lshr::execute() {
+	void OPlshr::execute() {
 
 	}
 
-	void op_lshr::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlshr::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lshr::getName () {
+	std::string OPlshr::getName () {
 		return "lshr";
 	}
 
-	uint32_t op_lshr::getOpCode () {
+	uint32_t OPlshr::getOpCode () {
 		return 123;
 	}
 
-	uint32_t op_lshr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlshr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// iushr
 
-	void op_iushr::execute() {
+	void OPiushr::execute() {
 
 	}
 
-	void op_iushr::printToStream(std::ostream& os, std::string& prefix) {
+	void OPiushr::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_iushr::getName () {
+	std::string OPiushr::getName () {
 		return "iushr";
 	}
 
-	uint32_t op_iushr::getOpCode () {
+	uint32_t OPiushr::getOpCode () {
 		return 124;
 	}
 
-	uint32_t op_iushr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPiushr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// lushr
 
-	void op_lushr::execute() {
+	void OPlushr::execute() {
 
 	}
 
-	void op_lushr::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlushr::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lushr::getName () {
+	std::string OPlushr::getName () {
 		return "lushr";
 	}
 
-	uint32_t op_lushr::getOpCode () {
+	uint32_t OPlushr::getOpCode () {
 		return 125;
 	}
 
-	uint32_t op_lushr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlushr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// iand
 
-	void op_iand::execute() {
+	void OPiand::execute() {
 
 	}
 
-	void op_iand::printToStream(std::ostream& os, std::string& prefix) {
+	void OPiand::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_iand::getName () {
+	std::string OPiand::getName () {
 		return "iand";
 	}
 
-	uint32_t op_iand::getOpCode () {
+	uint32_t OPiand::getOpCode () {
 		return 126;
 	}
 
-	uint32_t op_iand::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPiand::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// land
 
-	void op_land::execute() {
+	void OPland::execute() {
 
 	}
 
-	void op_land::printToStream(std::ostream& os, std::string& prefix) {
+	void OPland::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_land::getName () {
+	std::string OPland::getName () {
 		return "land";
 	}
 
-	uint32_t op_land::getOpCode () {
+	uint32_t OPland::getOpCode () {
 		return 127;
 	}
 
-	uint32_t op_land::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPland::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// ior
 
-	void op_ior::execute() {
+	void OPior::execute() {
 
 	}
 
-	void op_ior::printToStream(std::ostream& os, std::string& prefix) {
+	void OPior::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_ior::getName () {
+	std::string OPior::getName () {
 		return "ior";
 	}
 
-	uint32_t op_ior::getOpCode () {
+	uint32_t OPior::getOpCode () {
 		return 128;
 	}
 
-	uint32_t op_ior::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPior::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// lor
 
-	void op_lor::execute() {
+	void OPlor::execute() {
 
 	}
 
-	void op_lor::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlor::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lor::getName () {
+	std::string OPlor::getName () {
 		return "lor";
 	}
 
-	uint32_t op_lor::getOpCode () {
+	uint32_t OPlor::getOpCode () {
 		return 29;
 	}
 
-	uint32_t op_lor::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlor::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// ixor
 
-	void op_ixor::execute() {
+	void OPixor::execute() {
 
 	}
 
-	void op_ixor::printToStream(std::ostream& os, std::string& prefix) {
+	void OPixor::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_ixor::getName () {
+	std::string OPixor::getName () {
 		return "ixor";
 	}
 
-	uint32_t op_ixor::getOpCode () {
+	uint32_t OPixor::getOpCode () {
 		return 130;
 	}
 
-	uint32_t op_ixor::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPixor::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// lxor
 
-	void op_lxor::execute() {
+	void OPlxor::execute() {
 
 	}
 
-	void op_lxor::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlxor::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lxor::getName () {
+	std::string OPlxor::getName () {
 		return "lxor";
 	}
 
-	uint32_t op_lxor::getOpCode () {
+	uint32_t OPlxor::getOpCode () {
 		return 131;
 	}
 
-	uint32_t op_lxor::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlxor::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// iinc
 
-	void op_iinc::execute() {
+	void OPiinc::execute() {
 
 	}
 
-	void op_iinc::printToStream(std::ostream& os, std::string& prefix) {
+	void OPiinc::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_iinc::getName () {
+	std::string OPiinc::getName () {
 		return "iinc";
 	}
 
-	uint32_t op_iinc::getOpCode () {
+	uint32_t OPiinc::getOpCode () {
 		return 132;
 	}
 
-	uint32_t op_iinc::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPiinc::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 2;
 	}
 
 
 	// i2l
 
-	void op_i2l::execute() {
+	void OPi2l::execute() {
 
 	}
 
-	void op_i2l::printToStream(std::ostream& os, std::string& prefix) {
+	void OPi2l::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_i2l::getName () {
+	std::string OPi2l::getName () {
 		return "i2l";
 	}
 
-	uint32_t op_i2l::getOpCode () {
+	uint32_t OPi2l::getOpCode () {
 		return 133;
 	}
 
-	uint32_t op_i2l::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPi2l::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// i2f
 
-	void op_i2f::execute() {
+	void OPi2f::execute() {
 
 	}
 
-	void op_i2f::printToStream(std::ostream& os, std::string& prefix) {
+	void OPi2f::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_i2f::getName () {
+	std::string OPi2f::getName () {
 		return "i2f";
 	}
 
-	uint32_t op_i2f::getOpCode () {
+	uint32_t OPi2f::getOpCode () {
 		return 134;
 	}
 
-	uint32_t op_i2f::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPi2f::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// i2d
 
-	void op_i2d::execute() {
+	void OPi2d::execute() {
 
 	}
 
-	void op_i2d::printToStream(std::ostream& os, std::string& prefix) {
+	void OPi2d::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_i2d::getName () {
+	std::string OPi2d::getName () {
 		return "i2d";
 	}
 
-	uint32_t op_i2d::getOpCode () {
+	uint32_t OPi2d::getOpCode () {
 		return 135;
 	}
 
-	uint32_t op_i2d::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPi2d::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// l2i
 
-	void op_l2i::execute() {
+	void OPl2i::execute() {
 
 	}
 
-	void op_l2i::printToStream(std::ostream& os, std::string& prefix) {
+	void OPl2i::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_l2i::getName () {
+	std::string OPl2i::getName () {
 		return "l2i";
 	}
 
-	uint32_t op_l2i::getOpCode () {
+	uint32_t OPl2i::getOpCode () {
 		return 136;
 	}
 
-	uint32_t op_l2i::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPl2i::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// l2f
 
-	void op_l2f::execute() {
+	void OPl2f::execute() {
 
 	}
 
-	void op_l2f::printToStream(std::ostream& os, std::string& prefix) {
+	void OPl2f::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_l2f::getName () {
+	std::string OPl2f::getName () {
 		return "l2f";
 	}
 
-	uint32_t op_l2f::getOpCode () {
+	uint32_t OPl2f::getOpCode () {
 		return 137;
 	}
 
-	uint32_t op_l2f::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPl2f::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// l2d
 
-	void op_l2d::execute() {
+	void OPl2d::execute() {
 
 	}
 
-	void op_l2d::printToStream(std::ostream& os, std::string& prefix) {
+	void OPl2d::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_l2d::getName () {
+	std::string OPl2d::getName () {
 		return "l2d";
 	}
 
-	uint32_t op_l2d::getOpCode () {
+	uint32_t OPl2d::getOpCode () {
 		return 138;
 	}
 
-	uint32_t op_l2d::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPl2d::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// f2i
 
-	void op_f2i::execute() {
+	void OPf2i::execute() {
 
 	}
 
-	void op_f2i::printToStream(std::ostream& os, std::string& prefix) {
+	void OPf2i::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_f2i::getName () {
+	std::string OPf2i::getName () {
 		return "f2i";
 	}
 
-	uint32_t op_f2i::getOpCode () {
+	uint32_t OPf2i::getOpCode () {
 		return 139;
 	}
 
-	uint32_t op_f2i::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPf2i::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// f2l
 
-	void op_f2l::execute() {
+	void OPf2l::execute() {
 
 	}
 
-	void op_f2l::printToStream(std::ostream& os, std::string& prefix) {
+	void OPf2l::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_f2l::getName () {
+	std::string OPf2l::getName () {
 		return "f2l";
 	}
 
-	uint32_t op_f2l::getOpCode () {
+	uint32_t OPf2l::getOpCode () {
 		return 140;
 	}
 
-	uint32_t op_f2l::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPf2l::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// f2d
 
-	void op_f2d::execute() {
+	void OPf2d::execute() {
 
 	}
 
-	void op_f2d::printToStream(std::ostream& os, std::string& prefix) {
+	void OPf2d::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_f2d::getName () {
+	std::string OPf2d::getName () {
 		return "f2d";
 	}
 
-	uint32_t op_f2d::getOpCode () {
+	uint32_t OPf2d::getOpCode () {
 		return 141;
 	}
 
-	uint32_t op_f2d::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPf2d::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// d2i
 
-	void op_d2i::execute() {
+	void OPd2i::execute() {
 
 	}
 
-	void op_d2i::printToStream(std::ostream& os, std::string& prefix) {
+	void OPd2i::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_d2i::getName () {
+	std::string OPd2i::getName () {
 		return "d2i";
 	}
 
-	uint32_t op_d2i::getOpCode () {
+	uint32_t OPd2i::getOpCode () {
 		return 142;
 	}
 
-	uint32_t op_d2i::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPd2i::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// d2l
 
-	void op_d2l::execute() {
+	void OPd2l::execute() {
 
 	}
 
-	void op_d2l::printToStream(std::ostream& os, std::string& prefix) {
+	void OPd2l::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_d2l::getName () {
+	std::string OPd2l::getName () {
 		return "d2l";
 	}
 
-	uint32_t op_d2l::getOpCode () {
+	uint32_t OPd2l::getOpCode () {
 		return 143;
 	}
 
-	uint32_t op_d2l::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPd2l::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// d2f
 
-	void op_d2f::execute() {
+	void OPd2f::execute() {
 
 	}
 
-	void op_d2f::printToStream(std::ostream& os, std::string& prefix) {
+	void OPd2f::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_d2f::getName () {
+	std::string OPd2f::getName () {
 		return "d2f";
 	}
 
-	uint32_t op_d2f::getOpCode () {
+	uint32_t OPd2f::getOpCode () {
 		return 144;
 	}
 
-	uint32_t op_d2f::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPd2f::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// i2b
 
-	void op_i2b::execute() {
+	void OPi2b::execute() {
 
 	}
 
-	void op_i2b::printToStream(std::ostream& os, std::string& prefix) {
+	void OPi2b::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_i2b::getName () {
+	std::string OPi2b::getName () {
 		return "i2b";
 	}
 
-	uint32_t op_i2b::getOpCode () {
+	uint32_t OPi2b::getOpCode () {
 		return 145;
 	}
 
-	uint32_t op_i2b::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPi2b::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// i2c
 
-	void op_i2c::execute() {
+	void OPi2c::execute() {
 
 	}
 
-	void op_i2c::printToStream(std::ostream& os, std::string& prefix) {
+	void OPi2c::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_i2c::getName () {
+	std::string OPi2c::getName () {
 		return "i2c";
 	}
 
-	uint32_t op_i2c::getOpCode () {
+	uint32_t OPi2c::getOpCode () {
 		return 146;
 	}
 
-	uint32_t op_i2c::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPi2c::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// i2s
 
-	void op_i2s::execute() {
+	void OPi2s::execute() {
 
 	}
 
-	void op_i2s::printToStream(std::ostream& os, std::string& prefix) {
+	void OPi2s::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_i2s::getName () {
+	std::string OPi2s::getName () {
 		return "i2s";
 	}
 
-	uint32_t op_i2s::getOpCode () {
+	uint32_t OPi2s::getOpCode () {
 		return 147;
 	}
 
-	uint32_t op_i2s::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPi2s::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// lcmp
 
-	void op_lcmp::execute() {
+	void OPlcmp::execute() {
 
 	}
 
-	void op_lcmp::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlcmp::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lcmp::getName () {
+	std::string OPlcmp::getName () {
 		return "lcmp";
 	}
 
-	uint32_t op_lcmp::getOpCode () {
+	uint32_t OPlcmp::getOpCode () {
 		return 148;
 	}
 
-	uint32_t op_lcmp::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlcmp::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// fcmpl
 
-	void op_fcmpl::execute() {
+	void OPfcmpl::execute() {
 
 	}
 
-	void op_fcmpl::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfcmpl::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_fcmpl::getName () {
+	std::string OPfcmpl::getName () {
 		return "fcmpl";
 	}
 
-	uint32_t op_fcmpl::getOpCode () {
+	uint32_t OPfcmpl::getOpCode () {
 		return 149;
 	}
 
-	uint32_t op_fcmpl::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfcmpl::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// fcmpg
 
-	void op_fcmpg::execute() {
+	void OPfcmpg::execute() {
 
 	}
 
-	void op_fcmpg::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfcmpg::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_fcmpg::getName () {
+	std::string OPfcmpg::getName () {
 		return "fcmpg";
 	}
 
-	uint32_t op_fcmpg::getOpCode () {
+	uint32_t OPfcmpg::getOpCode () {
 		return 150;
 	}
 
-	uint32_t op_fcmpg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfcmpg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dcmpl
 
-	void op_dcmpl::execute() {
+	void OPdcmpl::execute() {
 
 	}
 
-	void op_dcmpl::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdcmpl::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dcmpl::getName () {
+	std::string OPdcmpl::getName () {
 		return "dcmpl";
 	}
 
-	uint32_t op_dcmpl::getOpCode () {
+	uint32_t OPdcmpl::getOpCode () {
 		return 151;
 	}
 
-	uint32_t op_dcmpl::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdcmpl::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dcmpg
 
-	void op_dcmpg::execute() {
+	void OPdcmpg::execute() {
 
 	}
 
-	void op_dcmpg::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdcmpg::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dcmpg::getName () {
+	std::string OPdcmpg::getName () {
 		return "dcmpg";
 	}
 
-	uint32_t op_dcmpg::getOpCode () {
+	uint32_t OPdcmpg::getOpCode () {
 		return 152;
 	}
 
-	uint32_t op_dcmpg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdcmpg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// ifeq
 
-	void op_ifeq::execute() {
+	void OPifeq::execute() {
 
 	}
 
-	void op_ifeq::printToStream(std::ostream& os, std::string& prefix) {
+	void OPifeq::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_ifeq::getName () {
+	std::string OPifeq::getName () {
 		return "ifeq";
 	}
 
-	uint32_t op_ifeq::getOpCode () {
+	uint32_t OPifeq::getOpCode () {
 		return 153;
 	}
 
-	uint32_t op_ifeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPifeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3853,46 +3853,46 @@ namespace jvm {
 
 	// ifne
 
-	void op_ifne::execute() {
+	void OPifne::execute() {
 
 	}
 
-	void op_ifne::printToStream(std::ostream& os, std::string& prefix) {
+	void OPifne::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_ifne::getName () {
+	std::string OPifne::getName () {
 		return "ifne";
 	}
 
-	uint32_t op_ifne::getOpCode () {
+	uint32_t OPifne::getOpCode () {
 		return 154;
 	}
 
-	uint32_t op_ifne::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPifne::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 2;
 	}
 
 
 	// iflt
 
-	void op_iflt::execute() {
+	void OPiflt::execute() {
 
 	}
 
-	void op_iflt::printToStream(std::ostream& os, std::string& prefix) {
+	void OPiflt::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_iflt::getName () {
+	std::string OPiflt::getName () {
 		return "iflt";
 	}
 
-	uint32_t op_iflt::getOpCode () {
+	uint32_t OPiflt::getOpCode () {
 		return 155;
 	}
 
-	uint32_t op_iflt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPiflt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3900,23 +3900,23 @@ namespace jvm {
 
 	// ifge
 
-	void op_ifge::execute() {
+	void OPifge::execute() {
 
 	}
 
-	void op_ifge::printToStream(std::ostream& os, std::string& prefix) {
+	void OPifge::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_ifge::getName () {
+	std::string OPifge::getName () {
 		return "ifge";
 	}
 
-	uint32_t op_ifge::getOpCode () {
+	uint32_t OPifge::getOpCode () {
 		return 156;
 	}
 
-	uint32_t op_ifge::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPifge::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3924,23 +3924,23 @@ namespace jvm {
 
 	// ifgt
 
-	void op_ifgt::execute() {
+	void OPifgt::execute() {
 
 	}
 
-	void op_ifgt::printToStream(std::ostream& os, std::string& prefix) {
+	void OPifgt::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_ifgt::getName () {
+	std::string OPifgt::getName () {
 		return "ifgt";
 	}
 
-	uint32_t op_ifgt::getOpCode () {
+	uint32_t OPifgt::getOpCode () {
 		return 157;
 	}
 
-	uint32_t op_ifgt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPifgt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3948,23 +3948,23 @@ namespace jvm {
 
 	// ifle
 
-	void op_ifle::execute() {
+	void OPifle::execute() {
 
 	}
 
-	void op_ifle::printToStream(std::ostream& os, std::string& prefix) {
+	void OPifle::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_ifle::getName () {
+	std::string OPifle::getName () {
 		return "ifle";
 	}
 
-	uint32_t op_ifle::getOpCode () {
+	uint32_t OPifle::getOpCode () {
 		return 158;
 	}
 
-	uint32_t op_ifle::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPifle::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3972,23 +3972,23 @@ namespace jvm {
 
 	// if_icmpeq
 
-	void op_if_icmpeq::execute() {
+	void OPif_icmpeq::execute() {
 
 	}
 
-	void op_if_icmpeq::printToStream(std::ostream& os, std::string& prefix) {
+	void OPif_icmpeq::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_if_icmpeq::getName () {
+	std::string OPif_icmpeq::getName () {
 		return "if_icmpeq";
 	}
 
-	uint32_t op_if_icmpeq::getOpCode () {
+	uint32_t OPif_icmpeq::getOpCode () {
 		return 159;
 	}
 
-	uint32_t op_if_icmpeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPif_icmpeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3996,23 +3996,23 @@ namespace jvm {
 
 	// if_icmpne
 
-	void op_if_icmpne::execute() {
+	void OPif_icmpne::execute() {
 
 	}
 
-	void op_if_icmpne::printToStream(std::ostream& os, std::string& prefix) {
+	void OPif_icmpne::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_if_icmpne::getName () {
+	std::string OPif_icmpne::getName () {
 		return "if_icmpne";
 	}
 
-	uint32_t op_if_icmpne::getOpCode () {
+	uint32_t OPif_icmpne::getOpCode () {
 		return 160;
 	}
 
-	uint32_t op_if_icmpne::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPif_icmpne::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4020,23 +4020,23 @@ namespace jvm {
 
 	// if_icmplt
 
-	void op_if_icmplt::execute() {
+	void OPif_icmplt::execute() {
 
 	}
 
-	void op_if_icmplt::printToStream(std::ostream& os, std::string& prefix) {
+	void OPif_icmplt::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_if_icmplt::getName () {
+	std::string OPif_icmplt::getName () {
 		return "if_icmplt";
 	}
 
-	uint32_t op_if_icmplt::getOpCode () {
+	uint32_t OPif_icmplt::getOpCode () {
 		return 61;
 	}
 
-	uint32_t op_if_icmplt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPif_icmplt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4044,23 +4044,23 @@ namespace jvm {
 
 	// if_icmpge
 
-	void op_if_icmpge::execute() {
+	void OPif_icmpge::execute() {
 
 	}
 
-	void op_if_icmpge::printToStream(std::ostream& os, std::string& prefix) {
+	void OPif_icmpge::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_if_icmpge::getName () {
+	std::string OPif_icmpge::getName () {
 		return "if_icmpge";
 	}
 
-	uint32_t op_if_icmpge::getOpCode () {
+	uint32_t OPif_icmpge::getOpCode () {
 		return 162;
 	}
 
-	uint32_t op_if_icmpge::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPif_icmpge::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4068,23 +4068,23 @@ namespace jvm {
 
 	// if_icmpgt
 
-	void op_if_icmpgt::execute() {
+	void OPif_icmpgt::execute() {
 
 	}
 
-	void op_if_icmpgt::printToStream(std::ostream& os, std::string& prefix) {
+	void OPif_icmpgt::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_if_icmpgt::getName () {
+	std::string OPif_icmpgt::getName () {
 		return "if_icmpgt";
 	}
 
-	uint32_t op_if_icmpgt::getOpCode () {
+	uint32_t OPif_icmpgt::getOpCode () {
 		return 163;
 	}
 
-	uint32_t op_if_icmpgt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPif_icmpgt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4092,23 +4092,23 @@ namespace jvm {
 
 	// if_icmple
 
-	void op_if_icmple::execute() {
+	void OPif_icmple::execute() {
 
 	}
 
-	void op_if_icmple::printToStream(std::ostream& os, std::string& prefix) {
+	void OPif_icmple::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_if_icmple::getName () {
+	std::string OPif_icmple::getName () {
 		return "if_icmple";
 	}
 
-	uint32_t op_if_icmple::getOpCode () {
+	uint32_t OPif_icmple::getOpCode () {
 		return 164;
 	}
 
-	uint32_t op_if_icmple::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPif_icmple::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4116,23 +4116,23 @@ namespace jvm {
 
 	// if_acmpeq
 
-	void op_if_acmpeq::execute() {
+	void OPif_acmpeq::execute() {
 
 	}
 
-	void op_if_acmpeq::printToStream(std::ostream& os, std::string& prefix) {
+	void OPif_acmpeq::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_if_acmpeq::getName () {
+	std::string OPif_acmpeq::getName () {
 		return "if_acmpeq";
 	}
 
-	uint32_t op_if_acmpeq::getOpCode () {
+	uint32_t OPif_acmpeq::getOpCode () {
 		return 165;
 	}
 
-	uint32_t op_if_acmpeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPif_acmpeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4140,23 +4140,23 @@ namespace jvm {
 
 	// if_acmpne
 
-	void op_if_acmpne::execute() {
+	void OPif_acmpne::execute() {
 
 	}
 
-	void op_if_acmpne::printToStream(std::ostream& os, std::string& prefix) {
+	void OPif_acmpne::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_if_acmpne::getName () {
+	std::string OPif_acmpne::getName () {
 		return "if_acmpne";
 	}
 
-	uint32_t op_if_acmpne::getOpCode () {
+	uint32_t OPif_acmpne::getOpCode () {
 		return 166;
 	}
 
-	uint32_t op_if_acmpne::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPif_acmpne::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4164,23 +4164,23 @@ namespace jvm {
 
 	// goto
 
-	void op_goto::execute() {
+	void OPgoto::execute() {
 
 	}
 
-	void op_goto::printToStream(std::ostream& os, std::string& prefix) {
+	void OPgoto::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
-	std::string op_goto::getName () {
+	std::string OPgoto::getName () {
 		return "goto";
 	}
 
-	uint32_t op_goto::getOpCode () {
+	uint32_t OPgoto::getOpCode () {
 		return 167;
 	}
 
-	uint32_t op_goto::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPgoto::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4193,252 +4193,252 @@ namespace jvm {
 
 	// jsr
 
-	void op_jsr::execute() {
+	void OPjsr::execute() {
 
 	}
 
-	void op_jsr::printToStream(std::ostream& os, std::string& prefix) {
+	void OPjsr::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_jsr::getName () {
+	std::string OPjsr::getName () {
 		return "jsr";
 	}
 
-	uint32_t op_jsr::getOpCode () {
+	uint32_t OPjsr::getOpCode () {
 		return 168;
 	}
 
-	uint32_t op_jsr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPjsr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 2;
 	}
 
 
 	// ret
 
-	void op_ret::execute() {
+	void OPret::execute() {
 
 	}
 
-	void op_ret::printToStream(std::ostream& os, std::string& prefix) {
+	void OPret::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_ret::getName () {
+	std::string OPret::getName () {
 		return "ret";
 	}
 
-	uint32_t op_ret::getOpCode () {
+	uint32_t OPret::getOpCode () {
 		return 169;
 	}
 
-	uint32_t op_ret::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPret::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 1;
 	}
 
 
 	// tableswitch
 
-	void op_tableswitch::execute() {
+	void OPtableswitch::execute() {
 
 	}
 
-	void op_tableswitch::printToStream(std::ostream& os, std::string& prefix) {
+	void OPtableswitch::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_tableswitch::getName () {
+	std::string OPtableswitch::getName () {
 		return "tableswitch";
 	}
 
-	uint32_t op_tableswitch::getOpCode () {
+	uint32_t OPtableswitch::getOpCode () {
 		return 170;
 	}
 
-	uint32_t op_tableswitch::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPtableswitch::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 16; //16+
 	}
 
-	// op_lookupswitch
+	// OPlookupswitch
 
-	void op_lookupswitch::execute() {
+	void OPlookupswitch::execute() {
 
 	}
 
-	void op_lookupswitch::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlookupswitch::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lookupswitch::getName () {
+	std::string OPlookupswitch::getName () {
 		return "lookupswitch";
 	}
 
-	uint32_t op_lookupswitch::getOpCode () {
+	uint32_t OPlookupswitch::getOpCode () {
 		return 171;
 	}
 
-	uint32_t op_lookupswitch::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlookupswitch::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 8; //8+
 	}
 
 
 	// ireturn
 
-	void op_ireturn::execute() {
+	void OPireturn::execute() {
 
 	}
 
-	void op_ireturn::printToStream(std::ostream& os, std::string& prefix) {
+	void OPireturn::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_ireturn::getName () {
+	std::string OPireturn::getName () {
 		return "ireturn";
 	}
 
-	uint32_t op_ireturn::getOpCode () {
+	uint32_t OPireturn::getOpCode () {
 		return 172;
 	}
 
-	uint32_t op_ireturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPireturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// lreturn
 
-	void op_lreturn::execute() {
+	void OPlreturn::execute() {
 
 	}
 
-	void op_lreturn::printToStream(std::ostream& os, std::string& prefix) {
+	void OPlreturn::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_lreturn::getName () {
+	std::string OPlreturn::getName () {
 		return "lreturn";
 	}
 
-	uint32_t op_lreturn::getOpCode () {
+	uint32_t OPlreturn::getOpCode () {
 		return 173;
 	}
 
-	uint32_t op_lreturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPlreturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// freturn
 
-	void op_freturn::execute() {
+	void OPfreturn::execute() {
 
 	}
 
-	void op_freturn::printToStream(std::ostream& os, std::string& prefix) {
+	void OPfreturn::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_freturn::getName () {
+	std::string OPfreturn::getName () {
 		return "freturn";
 	}
 
-	uint32_t op_freturn::getOpCode () {
+	uint32_t OPfreturn::getOpCode () {
 		return 174;
 	}
 
-	uint32_t op_freturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPfreturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// dreturn
 
-	void op_dreturn::execute() {
+	void OPdreturn::execute() {
 
 	}
 
-	void op_dreturn::printToStream(std::ostream& os, std::string& prefix) {
+	void OPdreturn::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_dreturn::getName () {
+	std::string OPdreturn::getName () {
 		return "dreturn";
 	}
 
-	uint32_t op_dreturn::getOpCode () {
+	uint32_t OPdreturn::getOpCode () {
 		return 175;
 	}
 
-	uint32_t op_dreturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPdreturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// areturn
 
-	void op_areturn::execute() {
+	void OPareturn::execute() {
 
 	}
 
-	void op_areturn::printToStream(std::ostream& os, std::string& prefix) {
+	void OPareturn::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_areturn::getName () {
+	std::string OPareturn::getName () {
 		return "areturn";
 	}
 
-	uint32_t op_areturn::getOpCode () {
+	uint32_t OPareturn::getOpCode () {
 		return 176;
 	}
 
-	uint32_t op_areturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPareturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// return
 
-	void op_return::execute() {
+	void OPreturn::execute() {
 
 	}
 
-	void op_return::printToStream(std::ostream& os, std::string& prefix) {
+	void OPreturn::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_return::getName () {
+	std::string OPreturn::getName () {
 		return "return";
 	}
 
-	uint32_t op_return::getOpCode () {
+	uint32_t OPreturn::getOpCode () {
 		return 177;
 	}
 
-	uint32_t op_return::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPreturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// getstatic
 
-	void op_getstatic::execute() {
+	void OPgetstatic::execute() {
 
 	}
 
-	void op_getstatic::printToStream(std::ostream& os, std::string& prefix) {
+	void OPgetstatic::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_getstatic::getName () {
+	std::string OPgetstatic::getName () {
 		return "getstatic";
 	}
 
-	uint32_t op_getstatic::getOpCode () {
+	uint32_t OPgetstatic::getOpCode () {
 		return 178;
 	}
 
-	uint32_t op_getstatic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPgetstatic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4446,46 +4446,46 @@ namespace jvm {
 
 	// putstatic
 
-	void op_putstatic::execute() {
+	void OPputstatic::execute() {
 
 	}
 
-	void op_putstatic::printToStream(std::ostream& os, std::string& prefix) {
+	void OPputstatic::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_putstatic::getName () {
+	std::string OPputstatic::getName () {
 		return "putstatic";
 	}
 
-	uint32_t op_putstatic::getOpCode () {
+	uint32_t OPputstatic::getOpCode () {
 		return 179;
 	}
 
-	uint32_t op_putstatic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPputstatic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 2;
 	}
 
 
 	// getfield
 
-	void op_getfield::execute() {
+	void OPgetfield::execute() {
 
 	}
 
-	void op_getfield::printToStream(std::ostream& os, std::string& prefix) {
+	void OPgetfield::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_getfield::getName () {
+	std::string OPgetfield::getName () {
 		return "getfield";
 	}
 
-	uint32_t op_getfield::getOpCode () {
+	uint32_t OPgetfield::getOpCode () {
 		return 180;
 	}
 
-	uint32_t op_getfield::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPgetfield::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4493,207 +4493,207 @@ namespace jvm {
 
 	// putfield
 
-	void op_putfield::execute() {
+	void OPputfield::execute() {
 
 	}
 
-	void op_putfield::printToStream(std::ostream& os, std::string& prefix) {
+	void OPputfield::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_putfield::getName () {
+	std::string OPputfield::getName () {
 		return "putfield";
 	}
 
-	uint32_t op_putfield::getOpCode () {
+	uint32_t OPputfield::getOpCode () {
 		return 181;
 	}
 
-	uint32_t op_putfield::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPputfield::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 2;
 	}
 
 
 	// invokevirtual
 
-	void op_invokevirtual::execute() {
+	void OPinvokevirtual::execute() {
 
 	}
 
-	void op_invokevirtual::printToStream(std::ostream& os, std::string& prefix) {
+	void OPinvokevirtual::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_invokevirtual::getName () {
+	std::string OPinvokevirtual::getName () {
 		return "invokevirtual";
 	}
 
-	uint32_t op_invokevirtual::getOpCode () {
+	uint32_t OPinvokevirtual::getOpCode () {
 		return 182;
 	}
 
-	uint32_t op_invokevirtual::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPinvokevirtual::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 2;
 	}
 
 
 	// invokespecial
 
-	void op_invokespecial::execute() {
+	void OPinvokespecial::execute() {
 
 	}
 
-	void op_invokespecial::printToStream(std::ostream& os, std::string& prefix) {
+	void OPinvokespecial::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_invokespecial::getName () {
+	std::string OPinvokespecial::getName () {
 		return "invokespecial";
 	}
 
-	uint32_t op_invokespecial::getOpCode () {
+	uint32_t OPinvokespecial::getOpCode () {
 		return 183;
 	}
 
-	uint32_t op_invokespecial::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPinvokespecial::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 2;
 	}
 
 
 	// invokestatic
 
-	void op_invokestatic::execute() {
+	void OPinvokestatic::execute() {
 
 	}
 
-	void op_invokestatic::printToStream(std::ostream& os, std::string& prefix) {
+	void OPinvokestatic::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_invokestatic::getName () {
+	std::string OPinvokestatic::getName () {
 		return "invokestatic";
 	}
 
-	uint32_t op_invokestatic::getOpCode () {
+	uint32_t OPinvokestatic::getOpCode () {
 		return 184;
 	}
 
-	uint32_t op_invokestatic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPinvokestatic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 2;
 	}
 
 
 	// invokeinterface
 
-	void op_invokeinterface::execute() {
+	void OPinvokeinterface::execute() {
 
 	}
 
-	void op_invokeinterface::printToStream(std::ostream& os, std::string& prefix) {
+	void OPinvokeinterface::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_invokeinterface::getName () {
+	std::string OPinvokeinterface::getName () {
 		return "invokeinterface";
 	}
 
-	uint32_t op_invokeinterface::getOpCode () {
+	uint32_t OPinvokeinterface::getOpCode () {
 		return 185;
 	}
 
-	uint32_t op_invokeinterface::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPinvokeinterface::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 4;
 	}
 
 
 	// invokedynamic
 
-	void op_invokedynamic::execute() {
+	void OPinvokedynamic::execute() {
 
 	}
 
-	void op_invokedynamic::printToStream(std::ostream& os, std::string& prefix) {
+	void OPinvokedynamic::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_invokedynamic::getName () {
+	std::string OPinvokedynamic::getName () {
 		return "invokedynamic";
 	}
 
-	uint32_t op_invokedynamic::getOpCode () {
+	uint32_t OPinvokedynamic::getOpCode () {
 		return 186;
 	}
 
-	uint32_t op_invokedynamic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPinvokedynamic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 4;
 	}
 
 
 	// new
 
-	void op_new::execute() {
+	void OPnew::execute() {
 
 	}
 
-	void op_new::printToStream(std::ostream& os, std::string& prefix) {
+	void OPnew::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_new::getName () {
+	std::string OPnew::getName () {
 		return "new";
 	}
 
-	uint32_t op_new::getOpCode () {
+	uint32_t OPnew::getOpCode () {
 		return 187;
 	}
 
-	uint32_t op_new::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPnew::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 2;
 	}
 
 
 	// newarray
 
-	void op_newarray::execute() {
+	void OPnewarray::execute() {
 
 	}
 
-	void op_newarray::printToStream(std::ostream& os, std::string& prefix) {
+	void OPnewarray::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_newarray::getName () {
+	std::string OPnewarray::getName () {
 		return "newarray";
 	}
 
-	uint32_t op_newarray::getOpCode () {
+	uint32_t OPnewarray::getOpCode () {
 		return 188;
 	}
 
-	uint32_t op_newarray::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPnewarray::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 1;
 	}
 
 
 	// anewarray
 
-	void op_anewarray::execute() {
+	void OPanewarray::execute() {
 
 	}
 
-	void op_anewarray::printToStream(std::ostream& os, std::string& prefix) {
+	void OPanewarray::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_anewarray::getName () {
+	std::string OPanewarray::getName () {
 		return "anewarray";
 	}
 
-	uint32_t op_anewarray::getOpCode () {
+	uint32_t OPanewarray::getOpCode () {
 		return 189;
 	}
 
-	uint32_t op_anewarray::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPanewarray::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4701,69 +4701,69 @@ namespace jvm {
 
 	// arraylength
 
-	void op_arraylength::execute() {
+	void OParraylength::execute() {
 
 	}
 
-	void op_arraylength::printToStream(std::ostream& os, std::string& prefix) {
+	void OParraylength::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_arraylength::getName () {
+	std::string OParraylength::getName () {
 		return "arraylength";
 	}
 
-	uint32_t op_arraylength::getOpCode () {
+	uint32_t OParraylength::getOpCode () {
 		return 190;
 	}
 
-	uint32_t op_arraylength::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OParraylength::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// athrow
 
-	void op_athrow::execute() {
+	void OPathrow::execute() {
 
 	}
 
-	void op_athrow::printToStream(std::ostream& os, std::string& prefix) {
+	void OPathrow::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_athrow::getName () {
+	std::string OPathrow::getName () {
 		return "athrow";
 	}
 
-	uint32_t op_athrow::getOpCode () {
+	uint32_t OPathrow::getOpCode () {
 		return 191;
 	}
 
-	uint32_t op_athrow::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPathrow::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// checkcast
 
-	void op_checkcast::execute() {
+	void OPcheckcast::execute() {
 
 	}
 
-	void op_checkcast::printToStream(std::ostream& os, std::string& prefix) {
+	void OPcheckcast::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_checkcast::getName () {
+	std::string OPcheckcast::getName () {
 		return "checkcast";
 	}
 
-	uint32_t op_checkcast::getOpCode () {
+	uint32_t OPcheckcast::getOpCode () {
 		return 192;
 	}
 
-	uint32_t op_checkcast::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPcheckcast::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4771,138 +4771,149 @@ namespace jvm {
 
 	// instanceof
 
-	void op_instanceof::execute() {
+	void OPinstanceof::execute() {
 
 	}
 
-	void op_instanceof::printToStream(std::ostream& os, std::string& prefix) {
+	void OPinstanceof::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_instanceof::getName () {
+	std::string OPinstanceof::getName () {
 		return "instanceof";
 	}
 
-	uint32_t op_instanceof::getOpCode () {
+	uint32_t OPinstanceof::getOpCode () {
 		return 193;
 	}
 
-	uint32_t op_instanceof::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPinstanceof::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 2;
 	}
 
 
 	// monitorenter
 
-	void op_monitorenter::execute() {
+	void OPmonitorenter::execute() {
 
 	}
 
-	void op_monitorenter::printToStream(std::ostream& os, std::string& prefix) {
+	void OPmonitorenter::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_monitorenter::getName () {
+	std::string OPmonitorenter::getName () {
 		return "monitorenter";
 	}
 
-	uint32_t op_monitorenter::getOpCode () {
+	uint32_t OPmonitorenter::getOpCode () {
 		return 194;
 	}
 
-	uint32_t op_monitorenter::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPmonitorenter::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// monitorexit
 
-	void op_monitorexit::execute() {
+	void OPmonitorexit::execute() {
 
 	}
 
-	void op_monitorexit::printToStream(std::ostream& os, std::string& prefix) {
+	void OPmonitorexit::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_monitorexit::getName () {
+	std::string OPmonitorexit::getName () {
 		return "monitorexit";
 	}
 
-	uint32_t op_monitorexit::getOpCode () {
+	uint32_t OPmonitorexit::getOpCode () {
 		return 195;
 	}
 
-	uint32_t op_monitorexit::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPmonitorexit::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// wide
 
-	void op_wide::execute() {
+	void OPwide::execute() {
 
 	}
 
-	void op_wide::printToStream(std::ostream& os, std::string& prefix) {
+	void OPwide::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_wide::getName () {
+	std::string OPwide::getName () {
 		return "wide";
 	}
 
-	uint32_t op_wide::getOpCode () {
+	uint32_t OPwide::getOpCode () {
 		return 196;
 	}
 
-	uint32_t op_wide::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		return 3; //3+ (3 or 5 in this case)
+	uint32_t OPwide::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+		OPiinc iinc;
+
+		opcode = data[idx + 1];
+
+		index = Converter::to_u2(data[idx + 2], data[idx + 3]);
+
+		if (opcode == iinc.getOpCode()) {
+			countbyte = Converter::to_u2(data[idx + 4], data[idx + 5]);
+			return 5;
+		}
+
+		return 3;
 	}
 
 
 	// multianewarray
 
-	void op_multianewarray::execute() {
+	void OPmultianewarray::execute() {
 
 	}
 
-	void op_multianewarray::printToStream(std::ostream& os, std::string& prefix) {
+	void OPmultianewarray::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_multianewarray::getName () {
+	std::string OPmultianewarray::getName () {
 		return "multianewarray";
 	}
 
-	uint32_t op_multianewarray::getOpCode () {
+	uint32_t OPmultianewarray::getOpCode () {
 		return 197;
 	}
 
-	uint32_t op_multianewarray::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPmultianewarray::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 3;
 	}
 
 
 	// ifnull
 
-	void op_ifnull::execute() {
+	void OPifnull::execute() {
 
 	}
 
-	void op_ifnull::printToStream(std::ostream& os, std::string& prefix) {
+	void OPifnull::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_ifnull::getName () {
+	std::string OPifnull::getName () {
 		return "ifnull";
 	}
 
-	uint32_t op_ifnull::getOpCode () {
+	uint32_t OPifnull::getOpCode () {
 		return 198;
 	}
 
-	uint32_t op_ifnull::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPifnull::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4910,23 +4921,23 @@ namespace jvm {
 
 	// ifnonnull
 
-	void op_ifnonnull::execute() {
+	void OPifnonnull::execute() {
 
 	}
 
-	void op_ifnonnull::printToStream(std::ostream& os, std::string& prefix) {
+	void OPifnonnull::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_ifnonnull::getName () {
+	std::string OPifnonnull::getName () {
 		return "ifnonnull";
 	}
 
-	uint32_t op_ifnonnull::getOpCode () {
+	uint32_t OPifnonnull::getOpCode () {
 		return 199;
 	}
 
-	uint32_t op_ifnonnull::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPifnonnull::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4934,23 +4945,23 @@ namespace jvm {
 
 	// goto_w
 
-	void op_goto_w::execute() {
+	void OPgoto_w::execute() {
 
 	}
 
-	void op_goto_w::printToStream(std::ostream& os, std::string& prefix) {
+	void OPgoto_w::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_goto_w::getName () {
+	std::string OPgoto_w::getName () {
 		return "goto_w";
 	}
 
-	uint32_t op_goto_w::getOpCode () {
+	uint32_t OPgoto_w::getOpCode () {
 		return 200;
 	}
 
-	uint32_t op_goto_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPgoto_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u4(data[idx+1], data[idx+2], data[idx+3], data[idx+4]);
 		return 4;
 	}
@@ -4958,92 +4969,92 @@ namespace jvm {
 
 	// jsr_w
 
-	void op_jsr_w::execute() {
+	void OPjsr_w::execute() {
 
 	}
 
-	void op_jsr_w::printToStream(std::ostream& os, std::string& prefix) {
+	void OPjsr_w::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_jsr_w::getName () {
+	std::string OPjsr_w::getName () {
 		return "jsr_w";
 	}
 
-	uint32_t op_jsr_w::getOpCode () {
+	uint32_t OPjsr_w::getOpCode () {
 		return 201;
 	}
 
-	uint32_t op_jsr_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPjsr_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 4;
 	}
 
 
 	// breakpoint
 
-	void op_breakpoint::execute() {
+	void OPbreakpoint::execute() {
 
 	}
 
-	void op_breakpoint::printToStream(std::ostream& os, std::string& prefix) {
+	void OPbreakpoint::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_breakpoint::getName () {
+	std::string OPbreakpoint::getName () {
 		return "breakpoint";
 	}
 
-	uint32_t op_breakpoint::getOpCode () {
+	uint32_t OPbreakpoint::getOpCode () {
 		return 202;
 	}
 
-	uint32_t op_breakpoint::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPbreakpoint::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// impdep1
 
-	void op_impdep1::execute() {
+	void OPimpdep1::execute() {
 
 	}
 
-	void op_impdep1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPimpdep1::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_impdep1::getName () {
+	std::string OPimpdep1::getName () {
 		return "impdep1";
 	}
 
-	uint32_t op_impdep1::getOpCode () {
+	uint32_t OPimpdep1::getOpCode () {
 		return 254;
 	}
 
-	uint32_t op_impdep1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPimpdep1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
 
 	// impdep2
 
-	void op_impdep2::execute() {
+	void OPimpdep2::execute() {
 
 	}
 
-	void op_impdep2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPimpdep2::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << std::endl;
 	}
 
-	std::string op_impdep2::getName () {
+	std::string OPimpdep2::getName () {
 		return "impdep2";
 	}
 
-	uint32_t op_impdep2::getOpCode () {
+	uint32_t OPimpdep2::getOpCode () {
 		return 255;
 	}
 
-	uint32_t op_impdep2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPimpdep2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
 
