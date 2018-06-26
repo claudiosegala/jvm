@@ -4246,7 +4246,7 @@ namespace jvm {
 	}
 
 	uint32_t OPret::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		index = data[idx+1]
+		index = data[idx+1];
 		return 1;
 	}
 
@@ -4664,7 +4664,7 @@ namespace jvm {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		count = data[idx+3];
 
-		if(!counter)
+		if(!count)
 			throw "Invalid invokeinterface: the value of count must not be zero";
 
 		if(!data[idx+4])
