@@ -671,6 +671,9 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		i2 value; ///< Short value to be pushed onto the stack
 	};
 
 	class OPldc : public Instruction { // 0x12 -- 18
@@ -704,6 +707,9 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		u1 index; ///< Index in the constant pool
 	};
 
 	class OPldc_w : public Instruction { // 0x13 -- 19
@@ -737,6 +743,9 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		u2 index; ///< Index in the constant pool
 	};
 
 	class OPldc2_w : public Instruction { // 0x14 -- 20
@@ -770,6 +779,9 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		u2 index; ///< Index in the constant pool
 	};
 
 	//Loads opcodes 0x15,21 -- 0x35,53
@@ -804,6 +816,9 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		u1 index; ///< Index of the local variable
 	};
 
 	class OPlload : public Instruction { // 0x16 -- 22
@@ -837,6 +852,9 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		u1 index; ///< Index to the local variable
 	};
 
 	class OPfload : public Instruction { // 0x17 -- 23
@@ -1903,6 +1921,9 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		u1 index; ///< Index to the local variable
 	};
 
 	class OPlstore : public Instruction { // 0x37 -- 55
@@ -1936,6 +1957,9 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		u1 index; ///< Index to the local variable
 	};
 
 	class OPfstore : public Instruction { // 0x38 -- 56
@@ -4490,8 +4514,8 @@ namespace jvm {
 		uint32_t getOpCode() override;
 
 	private:
-		u1 index;	///<
-		u1 constant; ///<
+		u1 index;		///< Index of the local variable
+		i1 constant;	///< Value to be incremented to the local variable
 	};
 
 	//Conversations 0x85,133 -> 0x93,147
@@ -5189,7 +5213,7 @@ namespace jvm {
 		uint32_t getOpCode() override;
 
 	private:
-		u2 branchoffset; ///< Offset to the next instruction
+		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPifne : public Instruction { // 0x9A -- 154
@@ -5225,7 +5249,7 @@ namespace jvm {
 		uint32_t getOpCode() override;
 
 	private:
-		u2 branchoffset; ///< Offset to the next instruction
+		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPiflt : public Instruction { // 0x9B -- 155
@@ -5261,7 +5285,7 @@ namespace jvm {
 		uint32_t getOpCode() override;
 
 	private:
-		u2 branchoffset; ///< Offset to the next instruction
+		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPifge : public Instruction { // 0x9C -- 156
@@ -5297,7 +5321,7 @@ namespace jvm {
 		uint32_t getOpCode() override;
 
 	private:
-		u2 branchoffset; ///< Offset to the next instruction
+		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPifgt : public Instruction { // 0x9D -- 157
@@ -5333,7 +5357,7 @@ namespace jvm {
 		uint32_t getOpCode() override;
 
 	private:
-		u2 branchoffset; ///< Offset to the next instruction
+		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPifle : public Instruction { // 0x9E -- 158
@@ -5369,7 +5393,7 @@ namespace jvm {
 		uint32_t getOpCode() override;
 
 	private:
-		u2 branchoffset; ///< Offset to the next instruction
+		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPif_icmpeq : public Instruction { // 0x9F -- 159
@@ -5405,7 +5429,7 @@ namespace jvm {
 		uint32_t getOpCode() override;
 
 	private:
-		u2 branchoffset; ///< Offset to the next instruction
+		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPif_icmpne : public Instruction { // 0xA0 -- 160
@@ -5441,7 +5465,7 @@ namespace jvm {
 		uint32_t getOpCode() override;
 
 	private:
-		u2 branchoffset; ///< Offset to the next instruction
+		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPif_icmplt : public Instruction { // 0xA1 - 161
@@ -5477,7 +5501,7 @@ namespace jvm {
 		uint32_t getOpCode() override;
 
 	private:
-		u2 branchoffset; ///< Offset to the next instruction
+		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPif_icmpge : public Instruction { // 0xA2 -- 162
@@ -5513,7 +5537,7 @@ namespace jvm {
 		uint32_t getOpCode() override;
 
 	private:
-		u2 branchoffset; ///< Offset to the next instruction
+		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPif_icmpgt : public Instruction { // 0xA3 -- 163
@@ -5549,7 +5573,7 @@ namespace jvm {
 		uint32_t getOpCode() override;
 
 	private:
-		u2 branchoffset; ///< Offset to the next instruction
+		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPif_icmple : public Instruction { // 0xA4 -- 164
@@ -5585,7 +5609,7 @@ namespace jvm {
 		uint32_t getOpCode() override;
 
 	private:
-		u2 branchoffset; ///< Offset to the next instruction
+		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPif_acmpeq : public Instruction { // 0xA5 -- 165
@@ -5621,7 +5645,7 @@ namespace jvm {
 		uint32_t getOpCode() override;
 
 	private:
-		u2 branchoffset; ///< Offset to the next instruction
+		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPif_acmpne : public Instruction { // 0xA6 -- 166
@@ -5657,7 +5681,7 @@ namespace jvm {
 		uint32_t getOpCode() override;
 
 	private:
-		u2 branchoffset; ///< Offset to the next instruction
+		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	//Control 0xA7,167 -> 0xB1,177
@@ -5694,7 +5718,7 @@ namespace jvm {
 		uint32_t getOpCode() override;
 
 	private:
-		u2 branchoffset; ///< Offset to the next instruction
+		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPjsr : public Instruction { // 0xA8 -- 168
@@ -5728,6 +5752,9 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		i2 branchoffset; ///< Offset to a subroutine
 	};
 
 	class OPret : public Instruction { // 0xA9 -- 169
@@ -5761,6 +5788,9 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		u1 index; ///< Index to the local variable
 	};
 
 	class OPtableswitch : public Instruction { // 0xAA -- 170
@@ -6118,6 +6148,9 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		u2 index; ///< Index in the constant pool to the field reference
 	};
 
 	class OPgetfield : public Instruction { // 0xB4 -- 180
@@ -6187,6 +6220,9 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		u2 index; ///< Index in the constant pool to the field reference
 	};
 
 	class OPinvokevirtual : public Instruction { // 0xB6 -- 182
@@ -6220,6 +6256,9 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		u2 index; ///< Index in the constant pool to the method reference
 	};
 
 	class OPinvokespecial : public Instruction { // 0xB7 -- 183
@@ -6253,6 +6292,9 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		u2 index; ///< Index in the constant pool to the method reference
 	};
 
 	class OPinvokestatic : public Instruction { // 0xB8 -- 184
@@ -6286,6 +6328,9 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		u2 index; ///< Index in the constant pool to the method reference
 	};
 
 	class OPinvokeinterface : public Instruction { // 0xB9 -- 185
@@ -6319,6 +6364,10 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		u2 index;	///< Index in the constant pool to the interface method
+		u1 count;	///< Count operand that must not be zero
 	};
 
 	class OPinvokedynamic : public Instruction { // 0xBA - - 186
@@ -6352,6 +6401,9 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		u2 index; ///< Index in the constant pool
 	};
 
 	class OPnew : public Instruction { // 0xBB -- 187
@@ -6385,6 +6437,9 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		u2 index; ///< Index in the constant pool to the class reference
 	};
 
 	class OPnewarray : public Instruction { // 0xBC -- 188
@@ -6418,6 +6473,9 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		u1 atype; ///< Code that indicates the type of array to create
 	};
 
 	class OPanewarray : public Instruction { // 0xBD -- 189
@@ -6589,6 +6647,9 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		u2 index; ///< Index to the class reference in the constant pool
 	};
 
 	class OPmonitorenter : public Instruction { // 0xC2 -- 194
@@ -6732,6 +6793,10 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		u2 index; ///< Index in the constant pool
+		u1 dimensions; // Number of dimensions of the array to be created, must be greater than or equal to 1
 	};
 
 	class OPifnull : public Instruction { // 0xC6 -- 198
@@ -6767,7 +6832,7 @@ namespace jvm {
 		uint32_t getOpCode() override;
 
 	private:
-		u2 branchoffset; ///< Offset to the next instruction
+		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPifnonnull : public Instruction { // 0xC7 -- 199
@@ -6803,7 +6868,7 @@ namespace jvm {
 		uint32_t getOpCode() override;
 
 	private:
-		u2 branchoffset; ///< Offset to the next instruction
+		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPgoto_w : public Instruction { // 0xC8 -- 200
@@ -6839,7 +6904,7 @@ namespace jvm {
 		uint32_t getOpCode() override;
 
 	private:
-		u4 branchoffset; ///< Offset to the next instruction
+		i4 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPjsr_w : public Instruction { // 0xC9 -- 201
@@ -6873,6 +6938,9 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 */
 		uint32_t getOpCode() override;
+
+	private:
+		i4 branchoffset; ///< Offset to a subroutine
 	};
 
 	//Reserved 0xca,202 -> 0xff,255

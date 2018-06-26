@@ -46,6 +46,14 @@ namespace jvm {
 		return aux;
 	}
 
+	i2 Converter::to_i2(u1 a, u1 b) {
+		u2 aux = a;
+
+		aux = (aux << 8ul) | b;
+
+		return static_cast<i2>(aux);
+	}
+
 	std::tuple<u2, u2> Converter::to_u2(u4 a) {
 		u2 low  = static_cast<u2>(a & ((1u << 16u) - 1)); a >>= 16u;
 		u2 high = static_cast<u2>(a);
