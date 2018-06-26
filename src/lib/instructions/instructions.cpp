@@ -315,6 +315,10 @@ namespace jvm {
 		return "nop";
 	}
 
+	uint32_t op_nop::getOpCode () {
+		return 00;
+	}
+
 	uint32_t op_nop::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -332,6 +336,10 @@ namespace jvm {
 
 	std::string op_aconst_null::getName () {
 		return "aconst_null";
+	}
+
+	uint32_t op_aconst_null::getOpCode () {
+		return 1;
 	}
 
 	uint32_t op_aconst_null::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -353,6 +361,10 @@ namespace jvm {
 		return "iconst_m1";
 	}
 
+	uint32_t op_iconst_m1::getOpCode () {
+		return 2;
+	}
+
 	uint32_t op_iconst_m1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -370,6 +382,10 @@ namespace jvm {
 
 	std::string op_iconst_0::getName () {
 		return "iconst_0";
+	}
+
+	uint32_t op_iconst_0::getOpCode () {
+		return 3;
 	}
 
 	uint32_t op_iconst_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -391,6 +407,10 @@ namespace jvm {
 		return "iconst_1";
 	}
 
+	uint32_t op_iconst_1::getOpCode () {
+		return 4;
+	}
+
 	uint32_t op_iconst_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -408,6 +428,10 @@ namespace jvm {
 
 	std::string op_iconst_2::getName () {
 		return "iconst_2";
+	}
+
+	uint32_t op_iconst_2::getOpCode () {
+		return 5;
 	}
 
 	uint32_t op_iconst_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -429,6 +453,10 @@ namespace jvm {
 		return "iconst_3";
 	}
 
+	uint32_t op_iconst_3::getOpCode () {
+		return 6;
+	}
+
 	uint32_t op_iconst_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -446,6 +474,10 @@ namespace jvm {
 
 	std::string op_iconst_4::getName () {
 		return "iconst_4";
+	}
+
+	uint32_t op_iconst_4::getOpCode () {
+		return 7;
 	}
 
 	uint32_t op_iconst_4::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -467,6 +499,10 @@ namespace jvm {
 		return "iconst_5";
 	}
 
+	uint32_t op_iconst_5::getOpCode () {
+		return 8;
+	}
+
 	uint32_t op_iconst_5::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -484,6 +520,10 @@ namespace jvm {
 
 	std::string op_lconst_0::getName () {
 		return "lconst_0";
+	}
+
+	uint32_t op_lconst_0::getOpCode () {
+		return 9;
 	}
 
 	uint32_t op_lconst_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -505,6 +545,10 @@ namespace jvm {
 		return "lconst_1";
 	}
 
+	uint32_t op_lconst_1::getOpCode () {
+		return 10;
+	}
+
 	uint32_t op_lconst_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -522,6 +566,10 @@ namespace jvm {
 
 	std::string op_fconst_0::getName () {
 		return "fconst_0";
+	}
+
+	uint32_t op_fconst_0::getOpCode () {
+		return 11;
 	}
 
 	uint32_t op_fconst_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -543,6 +591,10 @@ namespace jvm {
 		return "fconst_1";
 	}
 
+	uint32_t op_fconst_1::getOpCode () {
+		return 12;
+	}
+
 	uint32_t op_fconst_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -560,6 +612,10 @@ namespace jvm {
 
 	std::string op_fconst_2::getName () {
 		return "fconst_2";
+	}
+
+	uint32_t op_fconst_2::getOpCode () {
+		return 13;
 	}
 
 	uint32_t op_fconst_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -581,6 +637,10 @@ namespace jvm {
 		return "dconst_0";
 	}
 
+	uint32_t op_dconst_0::getOpCode () {
+		return 14;
+	}
+
 	uint32_t op_dconst_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -600,6 +660,10 @@ namespace jvm {
 		return "dconst_1";
 	}
 
+	uint32_t op_dconst_1::getOpCode () {
+		return 15;
+	}
+
 	uint32_t op_dconst_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -617,6 +681,10 @@ namespace jvm {
 
 	std::string op_bipush::getName () {
 		return "bipush";
+	}
+
+	uint32_t op_bipush::getOpCode () {
+		return 16;
 	}
 
 	uint32_t op_bipush::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -639,6 +707,10 @@ namespace jvm {
 		return "sipush";
 	}
 
+	uint32_t op_sipush::getOpCode () {
+		return 17;
+	}
+
 	uint32_t op_sipush::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 2;
 	}
@@ -656,6 +728,10 @@ namespace jvm {
 
 	std::string op_ldc::getName () {
 		return "ldc";
+	}
+
+	uint32_t op_ldc::getOpCode () {
+		return 18;
 	}
 
 	uint32_t op_ldc::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -677,6 +753,10 @@ namespace jvm {
 		return "ldc_w";
 	}
 
+	uint32_t op_ldc_w::getOpCode () {
+		return 19;
+	}
+
 	uint32_t op_ldc_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 2;
 	}
@@ -694,6 +774,10 @@ namespace jvm {
 
 	std::string op_ldc2_w::getName () {
 		return "ldc2_w";
+	}
+
+	uint32_t op_ldc2_w::getOpCode () {
+		return 20;
 	}
 
 	uint32_t op_ldc2_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -715,6 +799,10 @@ namespace jvm {
 		return "iload";
 	}
 
+	uint32_t op_iload::getOpCode () {
+		return 21;
+	}
+
 	uint32_t op_iload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 1;
 	}
@@ -734,6 +822,10 @@ namespace jvm {
 		return "lload";
 	}
 
+	uint32_t op_lload::getOpCode () {
+		return 22;
+	}
+
 	uint32_t op_lload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -751,6 +843,10 @@ namespace jvm {
 
 	std::string op_fload::getName () {
 		return "fload";
+	}
+
+	uint32_t op_fload::getOpCode () {
+		return 23;
 	}
 
 	uint32_t op_fload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -773,6 +869,10 @@ namespace jvm {
 		return "dload";
 	}
 
+	uint32_t op_dload::getOpCode () {
+		return 24;
+	}
+
 	uint32_t op_dload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
@@ -791,6 +891,10 @@ namespace jvm {
 
 	std::string op_aload::getName () {
 		return "aload";
+	}
+
+	uint32_t op_aload::getOpCode () {
+		return 25;
 	}
 
 	uint32_t op_aload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -813,6 +917,10 @@ namespace jvm {
 		return "iload_0";
 	}
 
+	uint32_t op_iload_0::getOpCode () {
+		return 26;
+	}
+
 	uint32_t op_iload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -830,6 +938,10 @@ namespace jvm {
 
 	std::string op_iload_1::getName () {
 		return "iload_1";
+	}
+
+	uint32_t op_iload_1::getOpCode () {
+		return 27;
 	}
 
 	uint32_t op_iload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -851,6 +963,10 @@ namespace jvm {
 		return "iload_2";
 	}
 
+	uint32_t op_iload_2::getOpCode () {
+		return 28;
+	}
+
 	uint32_t op_iload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -868,6 +984,10 @@ namespace jvm {
 
 	std::string op_iload_3::getName () {
 		return "iload_3";
+	}
+
+	uint32_t op_iload_3::getOpCode () {
+		return 29;
 	}
 
 	uint32_t op_iload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -889,6 +1009,10 @@ namespace jvm {
 		return "lload_0";
 	}
 
+	uint32_t op_lload_0::getOpCode () {
+		return 30;
+	}
+
 	uint32_t op_lload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -906,6 +1030,10 @@ namespace jvm {
 
 	std::string op_lload_1::getName () {
 		return "lload_1";
+	}
+
+	uint32_t op_lload_1::getOpCode () {
+		return 31;
 	}
 
 	uint32_t op_lload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -927,6 +1055,10 @@ namespace jvm {
 		return "lload_2";
 	}
 
+	uint32_t op_lload_2::getOpCode () {
+		return 32;
+	}
+
 	uint32_t op_lload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -944,6 +1076,10 @@ namespace jvm {
 
 	std::string op_lload_3::getName () {
 		return "lload_3";
+	}
+
+	uint32_t op_lload_3::getOpCode () {
+		return 33;
 	}
 
 	uint32_t op_lload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -965,6 +1101,10 @@ namespace jvm {
 		return "fload_0";
 	}
 
+	uint32_t op_fload_0::getOpCode () {
+		return 34;
+	}
+
 	uint32_t op_fload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -982,6 +1122,10 @@ namespace jvm {
 
 	std::string op_fload_1::getName () {
 		return "fload_1";
+	}
+
+	uint32_t op_fload_1::getOpCode () {
+		return 35;
 	}
 
 	uint32_t op_fload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1003,6 +1147,10 @@ namespace jvm {
 		return "fload_2";
 	}
 
+	uint32_t op_fload_2::getOpCode () {
+		return 36;
+	}
+
 	uint32_t op_fload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1020,6 +1168,10 @@ namespace jvm {
 
 	std::string op_fload_3::getName () {
 		return "fload_3";
+	}
+
+	uint32_t op_fload_3::getOpCode () {
+		return 37;
 	}
 
 	uint32_t op_fload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1041,6 +1193,10 @@ namespace jvm {
 		return "dload_0";
 	}
 
+	uint32_t op_dload_0::getOpCode () {
+		return 38;
+	}
+
 	uint32_t op_dload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1058,6 +1214,10 @@ namespace jvm {
 
 	std::string op_dload_1::getName () {
 		return "dload_1";
+	}
+
+	uint32_t op_dload_1::getOpCode () {
+		return 39;
 	}
 
 	uint32_t op_dload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1079,6 +1239,10 @@ namespace jvm {
 		return "dload_2";
 	}
 
+	uint32_t op_dload_2::getOpCode () {
+		return 40;
+	}
+
 	uint32_t op_dload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1096,6 +1260,10 @@ namespace jvm {
 
 	std::string op_dload_3::getName () {
 		return "dload_3";
+	}
+
+	uint32_t op_dload_3::getOpCode () {
+		return 41;
 	}
 
 	uint32_t op_dload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1117,6 +1285,10 @@ namespace jvm {
 		return "aload_0";
 	}
 
+	uint32_t op_aload_0::getOpCode () {
+		return 42;
+	}
+
 	uint32_t op_aload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1134,6 +1306,10 @@ namespace jvm {
 
 	std::string op_aload_1::getName () {
 		return "aload_1";
+	}
+
+	uint32_t op_aload_1::getOpCode () {
+		return 43;
 	}
 
 	uint32_t op_aload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1155,6 +1331,10 @@ namespace jvm {
 		return "aload_2";
 	}
 
+	uint32_t op_aload_2::getOpCode () {
+		return 44;
+	}
+
 	uint32_t op_aload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1172,6 +1352,10 @@ namespace jvm {
 
 	std::string op_aload_3::getName () {
 		return "aload_3";
+	}
+
+	uint32_t op_aload_3::getOpCode () {
+		return 45;
 	}
 
 	uint32_t op_aload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1193,6 +1377,10 @@ namespace jvm {
 		return "iaload";
 	}
 
+	uint32_t op_iaload::getOpCode () {
+		return 46;
+	}
+
 	uint32_t op_iaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1210,6 +1398,10 @@ namespace jvm {
 
 	std::string op_laload::getName () {
 		return "laload";
+	}
+
+	uint32_t op_laload::getOpCode () {
+		return 47;
 	}
 
 	uint32_t op_laload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1231,6 +1423,10 @@ namespace jvm {
 		return "faload";
 	}
 
+	uint32_t op_faload::getOpCode () {
+		return 48;
+	}
+
 	uint32_t op_faload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1248,6 +1444,10 @@ namespace jvm {
 
 	std::string op_daload::getName () {
 		return "daload";
+	}
+
+	uint32_t op_daload::getOpCode () {
+		return 49;
 	}
 
 	uint32_t op_daload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1269,6 +1469,10 @@ namespace jvm {
 		return "aaload";
 	}
 
+	uint32_t op_aaload::getOpCode () {
+		return 50;
+	}
+
 	uint32_t op_aaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1286,6 +1490,10 @@ namespace jvm {
 
 	std::string op_baload::getName () {
 		return "baload";
+	}
+
+	uint32_t op_baload::getOpCode () {
+		return 51;
 	}
 
 	uint32_t op_baload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1307,6 +1515,10 @@ namespace jvm {
 		return "caload";
 	}
 
+	uint32_t op_caload::getOpCode () {
+		return 52;
+	}
+
 	uint32_t op_caload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1324,6 +1536,10 @@ namespace jvm {
 
 	std::string op_saload::getName () {
 		return "saload";
+	}
+
+	uint32_t op_saload::getOpCode () {
+		return 53;
 	}
 
 	uint32_t op_saload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1345,6 +1561,10 @@ namespace jvm {
 		return "istore";
 	}
 
+	uint32_t op_istore::getOpCode () {
+		return 54;
+	}
+
 	uint32_t op_istore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 1;
 	}
@@ -1364,6 +1584,10 @@ namespace jvm {
 		return "lstore";
 	}
 
+	uint32_t op_lstore::getOpCode () {
+		return 55;
+	}
+
 	uint32_t op_lstore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 1;
 	}
@@ -1381,6 +1605,10 @@ namespace jvm {
 
 	std::string op_fstore::getName () {
 		return "fstore";
+	}
+
+	uint32_t op_fstore::getOpCode () {
+		return 56;
 	}
 
 	uint32_t op_fstore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1403,6 +1631,10 @@ namespace jvm {
 		return "dstore";
 	}
 
+	uint32_t op_dstore::getOpCode () {
+		return 57;
+	}
+
 	uint32_t op_dstore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
@@ -1421,6 +1653,10 @@ namespace jvm {
 
 	std::string op_astore::getName () {
 		return "astore";
+	}
+
+	uint32_t op_astore::getOpCode () {
+		return 58;
 	}
 
 	uint32_t op_astore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1443,6 +1679,10 @@ namespace jvm {
 		return "istore_0";
 	}
 
+	uint32_t op_istore_0::getOpCode () {
+		return 59;
+	}
+
 	uint32_t op_istore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1460,6 +1700,10 @@ namespace jvm {
 
 	std::string op_istore_1::getName () {
 		return "istore_1";
+	}
+
+	uint32_t op_istore_1::getOpCode () {
+		return 60;
 	}
 
 	uint32_t op_istore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1481,6 +1725,10 @@ namespace jvm {
 		return "istore_2";
 	}
 
+	uint32_t op_istore_2::getOpCode () {
+		return 61;
+	}
+
 	uint32_t op_istore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1498,6 +1746,10 @@ namespace jvm {
 
 	std::string op_istore_3::getName () {
 		return "istore_3";
+	}
+
+	uint32_t op_istore_3::getOpCode () {
+		return 62;
 	}
 
 	uint32_t op_istore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1519,6 +1771,10 @@ namespace jvm {
 		return "lstore_0";
 	}
 
+	uint32_t op_lstore_0::getOpCode () {
+		return 63;
+	}
+
 	uint32_t op_lstore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1536,6 +1792,10 @@ namespace jvm {
 
 	std::string op_lstore_1::getName () {
 		return "lstore_1";
+	}
+
+	uint32_t op_lstore_1::getOpCode () {
+		return 64;
 	}
 
 	uint32_t op_lstore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1557,6 +1817,10 @@ namespace jvm {
 		return "lstore_2";
 	}
 
+	uint32_t op_lstore_2::getOpCode () {
+		return 65;
+	}
+
 	uint32_t op_lstore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1574,6 +1838,10 @@ namespace jvm {
 
 	std::string op_lstore_3::getName () {
 		return "lstore_3";
+	}
+
+	uint32_t op_lstore_3::getOpCode () {
+		return 66;
 	}
 
 	uint32_t op_lstore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1595,6 +1863,10 @@ namespace jvm {
 		return "fstore_0";
 	}
 
+	uint32_t op_fstore_0::getOpCode () {
+		return 67;
+	}
+
 	uint32_t op_fstore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1612,6 +1884,10 @@ namespace jvm {
 
 	std::string op_fstore_1::getName () {
 		return "fstore_1";
+	}
+
+	uint32_t op_fstore_1::getOpCode () {
+		return 68;
 	}
 
 	uint32_t op_fstore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1633,6 +1909,10 @@ namespace jvm {
 		return "fstore_2";
 	}
 
+	uint32_t op_fstore_2::getOpCode () {
+		return 69;
+	}
+
 	uint32_t op_fstore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1650,6 +1930,10 @@ namespace jvm {
 
 	std::string op_fstore_3::getName () {
 		return "fstore_3";
+	}
+
+	uint32_t op_fstore_3::getOpCode () {
+		return 70;
 	}
 
 	uint32_t op_fstore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1671,6 +1955,10 @@ namespace jvm {
 		return "dstore_0";
 	}
 
+	uint32_t op_dstore_0::getOpCode () {
+		return 71;
+	}
+
 	uint32_t op_dstore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1688,6 +1976,10 @@ namespace jvm {
 
 	std::string op_dstore_1::getName () {
 		return "dstore_1";
+	}
+
+	uint32_t op_dstore_1::getOpCode () {
+		return 72;
 	}
 
 	uint32_t op_dstore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1709,6 +2001,10 @@ namespace jvm {
 		return "dstore_2";
 	}
 
+	uint32_t op_dstore_2::getOpCode () {
+		return 73;
+	}
+
 	uint32_t op_dstore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1726,6 +2022,10 @@ namespace jvm {
 
 	std::string op_dstore_3::getName () {
 		return "dstore_3";
+	}
+
+	uint32_t op_dstore_3::getOpCode () {
+		return 74;
 	}
 
 	uint32_t op_dstore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1747,6 +2047,10 @@ namespace jvm {
 		return "astore_0";
 	}
 
+	uint32_t op_astore_0::getOpCode () {
+		return 75;
+	}
+
 	uint32_t op_astore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1764,6 +2068,10 @@ namespace jvm {
 
 	std::string op_astore_1::getName () {
 		return "astore_1";
+	}
+
+	uint32_t op_astore_1::getOpCode () {
+		return 76;
 	}
 
 	uint32_t op_astore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1785,6 +2093,10 @@ namespace jvm {
 		return "astore_2";
 	}
 
+	uint32_t op_astore_2::getOpCode () {
+		return 77;
+	}
+
 	uint32_t op_astore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1802,6 +2114,10 @@ namespace jvm {
 
 	std::string op_astore_3::getName () {
 		return "astore_3";
+	}
+
+	uint32_t op_astore_3::getOpCode () {
+		return 78;
 	}
 
 	uint32_t op_astore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1823,6 +2139,10 @@ namespace jvm {
 		return "iastore";
 	}
 
+	uint32_t op_iastore::getOpCode () {
+		return 79;
+	}
+
 	uint32_t op_iastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1840,6 +2160,10 @@ namespace jvm {
 
 	std::string op_lastore::getName () {
 		return "lastore";
+	}
+
+	uint32_t op_lastore::getOpCode () {
+		return 80;
 	}
 
 	uint32_t op_lastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1861,6 +2185,10 @@ namespace jvm {
 		return "fastore";
 	}
 
+	uint32_t op_fastore::getOpCode () {
+		return 81;
+	}
+
 	uint32_t op_fastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1878,6 +2206,10 @@ namespace jvm {
 
 	std::string op_dastore::getName () {
 		return "dastore";
+	}
+
+	uint32_t op_dastore::getOpCode () {
+		return 82;
 	}
 
 	uint32_t op_dastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1899,6 +2231,10 @@ namespace jvm {
 		return "aastore";
 	}
 
+	uint32_t op_aastore::getOpCode () {
+		return 83;
+	}
+
 	uint32_t op_aastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1916,6 +2252,10 @@ namespace jvm {
 
 	std::string op_bastore::getName () {
 		return "bastore";
+	}
+
+	uint32_t op_bastore::getOpCode () {
+		return 84;
 	}
 
 	uint32_t op_bastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1937,6 +2277,10 @@ namespace jvm {
 		return "castore";
 	}
 
+	uint32_t op_castore::getOpCode () {
+		return 85;
+	}
+
 	uint32_t op_castore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1954,6 +2298,10 @@ namespace jvm {
 
 	std::string op_sastore::getName () {
 		return "sastore";
+	}
+
+	uint32_t op_sastore::getOpCode () {
+		return 86;
 	}
 
 	uint32_t op_sastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -1975,6 +2323,10 @@ namespace jvm {
 		return "pop";
 	}
 
+	uint32_t op_pop::getOpCode () {
+		return 87;
+	}
+
 	uint32_t op_pop::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -1992,6 +2344,10 @@ namespace jvm {
 
 	std::string op_pop2::getName () {
 		return "pop2";
+	}
+
+	uint32_t op_pop2::getOpCode () {
+		return 88;
 	}
 
 	uint32_t op_pop2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2013,6 +2369,10 @@ namespace jvm {
 		return "dup";
 	}
 
+	uint32_t op_dup::getOpCode () {
+		return 89;
+	}
+
 	uint32_t op_dup::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2030,6 +2390,10 @@ namespace jvm {
 
 	std::string op_dup_x1::getName () {
 		return "dup_x1";
+	}
+
+	uint32_t op_dup_x1::getOpCode () {
+		return 90;
 	}
 
 	uint32_t op_dup_x1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2051,6 +2415,10 @@ namespace jvm {
 		return "dup_x2";
 	}
 
+	uint32_t op_dup_x2::getOpCode () {
+		return 91;
+	}
+
 	uint32_t op_dup_x2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2068,6 +2436,10 @@ namespace jvm {
 
 	std::string op_dup2::getName () {
 		return "dup2";
+	}
+
+	uint32_t op_dup2::getOpCode () {
+		return 92;
 	}
 
 	uint32_t op_dup2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2089,6 +2461,10 @@ namespace jvm {
 		return "dup2_x1";
 	}
 
+	uint32_t op_dup2_x1::getOpCode () {
+		return 93;
+	}
+
 	uint32_t op_dup2_x1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2106,6 +2482,10 @@ namespace jvm {
 
 	std::string op_dup2_x2::getName () {
 		return "dup2_x2";
+	}
+
+	uint32_t op_dup2_x2::getOpCode () {
+		return 94;
 	}
 
 	uint32_t op_dup2_x2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2127,6 +2507,10 @@ namespace jvm {
 		return "swap";
 	}
 
+	uint32_t op_swap::getOpCode () {
+		return 95;
+	}
+
 	uint32_t op_swap::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2144,6 +2528,10 @@ namespace jvm {
 
 	std::string op_iadd::getName () {
 		return "iadd";
+	}
+
+	uint32_t op_iadd::getOpCode () {
+		return 96;
 	}
 
 	uint32_t op_iadd::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2165,6 +2553,10 @@ namespace jvm {
 		return "ladd";
 	}
 
+	uint32_t op_ladd::getOpCode () {
+		return 97;
+	}
+
 	uint32_t op_ladd::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2182,6 +2574,10 @@ namespace jvm {
 
 	std::string op_fadd::getName () {
 		return "fadd";
+	}
+
+	uint32_t op_fadd::getOpCode () {
+		return 98;
 	}
 
 	uint32_t op_fadd::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2203,6 +2599,10 @@ namespace jvm {
 		return "dadd";
 	}
 
+	uint32_t op_dadd::getOpCode () {
+		return 99;
+	}
+
 	uint32_t op_dadd::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2220,6 +2620,10 @@ namespace jvm {
 
 	std::string op_isub::getName () {
 		return "isub";
+	}
+
+	uint32_t op_isub::getOpCode () {
+		return 100;
 	}
 
 	uint32_t op_isub::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2241,6 +2645,10 @@ namespace jvm {
 		return "lsub";
 	}
 
+	uint32_t op_lsub::getOpCode () {
+		return 101;
+	}
+
 	uint32_t op_lsub::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2258,6 +2666,10 @@ namespace jvm {
 
 	std::string op_fsub::getName () {
 		return "fsub";
+	}
+
+	uint32_t op_fsub::getOpCode () {
+		return 102;
 	}
 
 	uint32_t op_fsub::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2279,6 +2691,10 @@ namespace jvm {
 		return "dsub";
 	}
 
+	uint32_t op_dsub::getOpCode () {
+		return 103;
+	}
+
 	uint32_t op_dsub::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2296,6 +2712,10 @@ namespace jvm {
 
 	std::string op_imul::getName () {
 		return "imul";
+	}
+
+	uint32_t op_imul::getOpCode () {
+		return 104;
 	}
 
 	uint32_t op_imul::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2317,6 +2737,10 @@ namespace jvm {
 		return "lmul";
 	}
 
+	uint32_t op_lmul::getOpCode () {
+		return 105;
+	}
+
 	uint32_t op_lmul::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2334,6 +2758,10 @@ namespace jvm {
 
 	std::string op_fmul::getName () {
 		return "fmul";
+	}
+
+	uint32_t op_fmul::getOpCode () {
+		return 106;
 	}
 
 	uint32_t op_fmul::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2355,6 +2783,10 @@ namespace jvm {
 		return "dmul";
 	}
 
+	uint32_t op_dmul::getOpCode () {
+		return 107;
+	}
+
 	uint32_t op_dmul::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2372,6 +2804,10 @@ namespace jvm {
 
 	std::string op_idiv::getName () {
 		return "idiv";
+	}
+
+	uint32_t op_idiv::getOpCode () {
+		return 108;
 	}
 
 	uint32_t op_idiv::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2393,6 +2829,10 @@ namespace jvm {
 		return "ldiv";
 	}
 
+	uint32_t op_ldiv::getOpCode () {
+		return 109;
+	}
+
 	uint32_t op_ldiv::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2410,6 +2850,10 @@ namespace jvm {
 
 	std::string op_fdiv::getName () {
 		return "fdiv";
+	}
+
+	uint32_t op_fdiv::getOpCode () {
+		return 110;
 	}
 
 	uint32_t op_fdiv::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2431,6 +2875,10 @@ namespace jvm {
 		return "ddiv";
 	}
 
+	uint32_t op_ddiv::getOpCode () {
+		return 111;
+	}
+
 	uint32_t op_ddiv::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2448,6 +2896,10 @@ namespace jvm {
 
 	std::string op_irem::getName () {
 		return "irem";
+	}
+
+	uint32_t op_irem::getOpCode () {
+		return 112;
 	}
 
 	uint32_t op_irem::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2469,6 +2921,10 @@ namespace jvm {
 		return "lrem";
 	}
 
+	uint32_t op_lrem::getOpCode () {
+		return 113;
+	}
+
 	uint32_t op_lrem::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2486,6 +2942,10 @@ namespace jvm {
 
 	std::string op_frem::getName () {
 		return "frem";
+	}
+
+	uint32_t op_frem::getOpCode () {
+		return 114;
 	}
 
 	uint32_t op_frem::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2507,6 +2967,10 @@ namespace jvm {
 		return "drem";
 	}
 
+	uint32_t op_drem::getOpCode () {
+		return 115;
+	}
+
 	uint32_t op_drem::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2524,6 +2988,10 @@ namespace jvm {
 
 	std::string op_ineg::getName () {
 		return "ineg";
+	}
+
+	uint32_t op_ineg::getOpCode () {
+		return 116;
 	}
 
 	uint32_t op_ineg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2545,6 +3013,10 @@ namespace jvm {
 		return "lneg";
 	}
 
+	uint32_t op_lneg::getOpCode () {
+		return 117;
+	}
+
 	uint32_t op_lneg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2562,6 +3034,10 @@ namespace jvm {
 
 	std::string op_fneg::getName () {
 		return "fneg";
+	}
+
+	uint32_t op_fneg::getOpCode () {
+		return 118;
 	}
 
 	uint32_t op_fneg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2583,6 +3059,10 @@ namespace jvm {
 		return "dneg";
 	}
 
+	uint32_t op_dneg::getOpCode () {
+		return 119;
+	}
+
 	uint32_t op_dneg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2600,6 +3080,10 @@ namespace jvm {
 
 	std::string op_ishl::getName () {
 		return "ishl";
+	}
+
+	uint32_t op_ishl::getOpCode () {
+		return 120;
 	}
 
 	uint32_t op_ishl::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2621,6 +3105,10 @@ namespace jvm {
 		return "lshl";
 	}
 
+	uint32_t op_lshl::getOpCode () {
+		return 121;
+	}
+
 	uint32_t op_lshl::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2638,6 +3126,10 @@ namespace jvm {
 
 	std::string op_ishr::getName () {
 		return "ishr";
+	}
+
+	uint32_t op_ishr::getOpCode () {
+		return 122;
 	}
 
 	uint32_t op_ishr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2659,6 +3151,10 @@ namespace jvm {
 		return "lshr";
 	}
 
+	uint32_t op_lshr::getOpCode () {
+		return 123;
+	}
+
 	uint32_t op_lshr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2676,6 +3172,10 @@ namespace jvm {
 
 	std::string op_iushr::getName () {
 		return "iushr";
+	}
+
+	uint32_t op_iushr::getOpCode () {
+		return 124;
 	}
 
 	uint32_t op_iushr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2697,6 +3197,10 @@ namespace jvm {
 		return "lushr";
 	}
 
+	uint32_t op_lushr::getOpCode () {
+		return 125;
+	}
+
 	uint32_t op_lushr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2714,6 +3218,10 @@ namespace jvm {
 
 	std::string op_iand::getName () {
 		return "iand";
+	}
+
+	uint32_t op_iand::getOpCode () {
+		return 126;
 	}
 
 	uint32_t op_iand::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2735,6 +3243,10 @@ namespace jvm {
 		return "land";
 	}
 
+	uint32_t op_land::getOpCode () {
+		return 127;
+	}
+
 	uint32_t op_land::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2752,6 +3264,10 @@ namespace jvm {
 
 	std::string op_ior::getName () {
 		return "ior";
+	}
+
+	uint32_t op_ior::getOpCode () {
+		return 128;
 	}
 
 	uint32_t op_ior::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2773,6 +3289,10 @@ namespace jvm {
 		return "lor";
 	}
 
+	uint32_t op_lor::getOpCode () {
+		return 29;
+	}
+
 	uint32_t op_lor::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2790,6 +3310,10 @@ namespace jvm {
 
 	std::string op_ixor::getName () {
 		return "ixor";
+	}
+
+	uint32_t op_ixor::getOpCode () {
+		return 130;
 	}
 
 	uint32_t op_ixor::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2811,6 +3335,10 @@ namespace jvm {
 		return "lxor";
 	}
 
+	uint32_t op_lxor::getOpCode () {
+		return 131;
+	}
+
 	uint32_t op_lxor::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2828,6 +3356,10 @@ namespace jvm {
 
 	std::string op_iinc::getName () {
 		return "iinc";
+	}
+
+	uint32_t op_iinc::getOpCode () {
+		return 132;
 	}
 
 	uint32_t op_iinc::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2849,6 +3381,10 @@ namespace jvm {
 		return "i2l";
 	}
 
+	uint32_t op_i2l::getOpCode () {
+		return 133;
+	}
+
 	uint32_t op_i2l::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2866,6 +3402,10 @@ namespace jvm {
 
 	std::string op_i2f::getName () {
 		return "i2f";
+	}
+
+	uint32_t op_i2f::getOpCode () {
+		return 134;
 	}
 
 	uint32_t op_i2f::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2887,6 +3427,10 @@ namespace jvm {
 		return "i2d";
 	}
 
+	uint32_t op_i2d::getOpCode () {
+		return 135;
+	}
+
 	uint32_t op_i2d::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2904,6 +3448,10 @@ namespace jvm {
 
 	std::string op_l2i::getName () {
 		return "l2i";
+	}
+
+	uint32_t op_l2i::getOpCode () {
+		return 136;
 	}
 
 	uint32_t op_l2i::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2925,6 +3473,10 @@ namespace jvm {
 		return "l2f";
 	}
 
+	uint32_t op_l2f::getOpCode () {
+		return 137;
+	}
+
 	uint32_t op_l2f::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2942,6 +3494,10 @@ namespace jvm {
 
 	std::string op_l2d::getName () {
 		return "l2d";
+	}
+
+	uint32_t op_l2d::getOpCode () {
+		return 138;
 	}
 
 	uint32_t op_l2d::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -2963,6 +3519,10 @@ namespace jvm {
 		return "f2i";
 	}
 
+	uint32_t op_f2i::getOpCode () {
+		return 139;
+	}
+
 	uint32_t op_f2i::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -2980,6 +3540,10 @@ namespace jvm {
 
 	std::string op_f2l::getName () {
 		return "f2l";
+	}
+
+	uint32_t op_f2l::getOpCode () {
+		return 140;
 	}
 
 	uint32_t op_f2l::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3001,6 +3565,10 @@ namespace jvm {
 		return "f2d";
 	}
 
+	uint32_t op_f2d::getOpCode () {
+		return 141;
+	}
+
 	uint32_t op_f2d::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -3018,6 +3586,10 @@ namespace jvm {
 
 	std::string op_d2i::getName () {
 		return "d2i";
+	}
+
+	uint32_t op_d2i::getOpCode () {
+		return 142;
 	}
 
 	uint32_t op_d2i::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3039,6 +3611,10 @@ namespace jvm {
 		return "d2l";
 	}
 
+	uint32_t op_d2l::getOpCode () {
+		return 143;
+	}
+
 	uint32_t op_d2l::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -3056,6 +3632,10 @@ namespace jvm {
 
 	std::string op_d2f::getName () {
 		return "d2f";
+	}
+
+	uint32_t op_d2f::getOpCode () {
+		return 144;
 	}
 
 	uint32_t op_d2f::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3077,6 +3657,10 @@ namespace jvm {
 		return "i2b";
 	}
 
+	uint32_t op_i2b::getOpCode () {
+		return 145;
+	}
+
 	uint32_t op_i2b::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -3094,6 +3678,10 @@ namespace jvm {
 
 	std::string op_i2c::getName () {
 		return "i2c";
+	}
+
+	uint32_t op_i2c::getOpCode () {
+		return 146;
 	}
 
 	uint32_t op_i2c::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3115,6 +3703,10 @@ namespace jvm {
 		return "i2s";
 	}
 
+	uint32_t op_i2s::getOpCode () {
+		return 147;
+	}
+
 	uint32_t op_i2s::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -3132,6 +3724,10 @@ namespace jvm {
 
 	std::string op_lcmp::getName () {
 		return "lcmp";
+	}
+
+	uint32_t op_lcmp::getOpCode () {
+		return 148;
 	}
 
 	uint32_t op_lcmp::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3153,6 +3749,10 @@ namespace jvm {
 		return "fcmpl";
 	}
 
+	uint32_t op_fcmpl::getOpCode () {
+		return 149;
+	}
+
 	uint32_t op_fcmpl::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -3170,6 +3770,10 @@ namespace jvm {
 
 	std::string op_fcmpg::getName () {
 		return "fcmpg";
+	}
+
+	uint32_t op_fcmpg::getOpCode () {
+		return 150;
 	}
 
 	uint32_t op_fcmpg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3191,6 +3795,10 @@ namespace jvm {
 		return "dcmpl";
 	}
 
+	uint32_t op_dcmpl::getOpCode () {
+		return 151;
+	}
+
 	uint32_t op_dcmpl::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -3210,6 +3818,10 @@ namespace jvm {
 		return "dcmpg";
 	}
 
+	uint32_t op_dcmpg::getOpCode () {
+		return 152;
+	}
+
 	uint32_t op_dcmpg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -3227,6 +3839,10 @@ namespace jvm {
 
 	std::string op_ifeq::getName () {
 		return "ifeq";
+	}
+
+	uint32_t op_ifeq::getOpCode () {
+		return 153;
 	}
 
 	uint32_t op_ifeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3249,6 +3865,10 @@ namespace jvm {
 		return "ifne";
 	}
 
+	uint32_t op_ifne::getOpCode () {
+		return 154;
+	}
+
 	uint32_t op_ifne::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 2;
 	}
@@ -3266,6 +3886,10 @@ namespace jvm {
 
 	std::string op_iflt::getName () {
 		return "iflt";
+	}
+
+	uint32_t op_iflt::getOpCode () {
+		return 155;
 	}
 
 	uint32_t op_iflt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3288,6 +3912,10 @@ namespace jvm {
 		return "ifge";
 	}
 
+	uint32_t op_ifge::getOpCode () {
+		return 156;
+	}
+
 	uint32_t op_ifge::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
@@ -3306,6 +3934,10 @@ namespace jvm {
 
 	std::string op_ifgt::getName () {
 		return "ifgt";
+	}
+
+	uint32_t op_ifgt::getOpCode () {
+		return 157;
 	}
 
 	uint32_t op_ifgt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3328,6 +3960,10 @@ namespace jvm {
 		return "ifle";
 	}
 
+	uint32_t op_ifle::getOpCode () {
+		return 158;
+	}
+
 	uint32_t op_ifle::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
@@ -3346,6 +3982,10 @@ namespace jvm {
 
 	std::string op_if_icmpeq::getName () {
 		return "if_icmpeq";
+	}
+
+	uint32_t op_if_icmpeq::getOpCode () {
+		return 159;
 	}
 
 	uint32_t op_if_icmpeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3368,6 +4008,10 @@ namespace jvm {
 		return "if_icmpne";
 	}
 
+	uint32_t op_if_icmpne::getOpCode () {
+		return 160;
+	}
+
 	uint32_t op_if_icmpne::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
@@ -3386,6 +4030,10 @@ namespace jvm {
 
 	std::string op_if_icmplt::getName () {
 		return "if_icmplt";
+	}
+
+	uint32_t op_if_icmplt::getOpCode () {
+		return 61;
 	}
 
 	uint32_t op_if_icmplt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3408,6 +4056,10 @@ namespace jvm {
 		return "if_icmpge";
 	}
 
+	uint32_t op_if_icmpge::getOpCode () {
+		return 162;
+	}
+
 	uint32_t op_if_icmpge::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
@@ -3426,6 +4078,10 @@ namespace jvm {
 
 	std::string op_if_icmpgt::getName () {
 		return "if_icmpgt";
+	}
+
+	uint32_t op_if_icmpgt::getOpCode () {
+		return 163;
 	}
 
 	uint32_t op_if_icmpgt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3448,6 +4104,10 @@ namespace jvm {
 		return "if_icmple";
 	}
 
+	uint32_t op_if_icmple::getOpCode () {
+		return 164;
+	}
+
 	uint32_t op_if_icmple::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
@@ -3466,6 +4126,10 @@ namespace jvm {
 
 	std::string op_if_acmpeq::getName () {
 		return "if_acmpeq";
+	}
+
+	uint32_t op_if_acmpeq::getOpCode () {
+		return 165;
 	}
 
 	uint32_t op_if_acmpeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3488,6 +4152,10 @@ namespace jvm {
 		return "if_acmpne";
 	}
 
+	uint32_t op_if_acmpne::getOpCode () {
+		return 166;
+	}
+
 	uint32_t op_if_acmpne::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
@@ -3506,6 +4174,10 @@ namespace jvm {
 
 	std::string op_goto::getName () {
 		return "goto";
+	}
+
+	uint32_t op_goto::getOpCode () {
+		return 167;
 	}
 
 	uint32_t op_goto::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3533,6 +4205,10 @@ namespace jvm {
 		return "jsr";
 	}
 
+	uint32_t op_jsr::getOpCode () {
+		return 168;
+	}
+
 	uint32_t op_jsr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 2;
 	}
@@ -3550,6 +4226,10 @@ namespace jvm {
 
 	std::string op_ret::getName () {
 		return "ret";
+	}
+
+	uint32_t op_ret::getOpCode () {
+		return 169;
 	}
 
 	uint32_t op_ret::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3571,6 +4251,10 @@ namespace jvm {
 		return "tableswitch";
 	}
 
+	uint32_t op_tableswitch::getOpCode () {
+		return 170;
+	}
+
 	uint32_t op_tableswitch::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 16; //16+
 	}
@@ -3587,6 +4271,10 @@ namespace jvm {
 
 	std::string op_lookupswitch::getName () {
 		return "lookupswitch";
+	}
+
+	uint32_t op_lookupswitch::getOpCode () {
+		return 171;
 	}
 
 	uint32_t op_lookupswitch::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3608,6 +4296,10 @@ namespace jvm {
 		return "ireturn";
 	}
 
+	uint32_t op_ireturn::getOpCode () {
+		return 172;
+	}
+
 	uint32_t op_ireturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -3625,6 +4317,10 @@ namespace jvm {
 
 	std::string op_lreturn::getName () {
 		return "lreturn";
+	}
+
+	uint32_t op_lreturn::getOpCode () {
+		return 173;
 	}
 
 	uint32_t op_lreturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3646,6 +4342,10 @@ namespace jvm {
 		return "freturn";
 	}
 
+	uint32_t op_freturn::getOpCode () {
+		return 174;
+	}
+
 	uint32_t op_freturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -3663,6 +4363,10 @@ namespace jvm {
 
 	std::string op_dreturn::getName () {
 		return "dreturn";
+	}
+
+	uint32_t op_dreturn::getOpCode () {
+		return 175;
 	}
 
 	uint32_t op_dreturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3684,6 +4388,10 @@ namespace jvm {
 		return "areturn";
 	}
 
+	uint32_t op_areturn::getOpCode () {
+		return 176;
+	}
+
 	uint32_t op_areturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -3703,6 +4411,10 @@ namespace jvm {
 		return "return";
 	}
 
+	uint32_t op_return::getOpCode () {
+		return 177;
+	}
+
 	uint32_t op_return::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -3720,6 +4432,10 @@ namespace jvm {
 
 	std::string op_getstatic::getName () {
 		return "getstatic";
+	}
+
+	uint32_t op_getstatic::getOpCode () {
+		return 178;
 	}
 
 	uint32_t op_getstatic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3742,6 +4458,10 @@ namespace jvm {
 		return "putstatic";
 	}
 
+	uint32_t op_putstatic::getOpCode () {
+		return 179;
+	}
+
 	uint32_t op_putstatic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 2;
 	}
@@ -3759,6 +4479,10 @@ namespace jvm {
 
 	std::string op_getfield::getName () {
 		return "getfield";
+	}
+
+	uint32_t op_getfield::getOpCode () {
+		return 180;
 	}
 
 	uint32_t op_getfield::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3781,6 +4505,10 @@ namespace jvm {
 		return "putfield";
 	}
 
+	uint32_t op_putfield::getOpCode () {
+		return 181;
+	}
+
 	uint32_t op_putfield::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 2;
 	}
@@ -3798,6 +4526,10 @@ namespace jvm {
 
 	std::string op_invokevirtual::getName () {
 		return "invokevirtual";
+	}
+
+	uint32_t op_invokevirtual::getOpCode () {
+		return 182;
 	}
 
 	uint32_t op_invokevirtual::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3819,6 +4551,10 @@ namespace jvm {
 		return "invokespecial";
 	}
 
+	uint32_t op_invokespecial::getOpCode () {
+		return 183;
+	}
+
 	uint32_t op_invokespecial::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 2;
 	}
@@ -3836,6 +4572,10 @@ namespace jvm {
 
 	std::string op_invokestatic::getName () {
 		return "invokestatic";
+	}
+
+	uint32_t op_invokestatic::getOpCode () {
+		return 184;
 	}
 
 	uint32_t op_invokestatic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3857,6 +4597,10 @@ namespace jvm {
 		return "invokeinterface";
 	}
 
+	uint32_t op_invokeinterface::getOpCode () {
+		return 185;
+	}
+
 	uint32_t op_invokeinterface::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 4;
 	}
@@ -3874,6 +4618,10 @@ namespace jvm {
 
 	std::string op_invokedynamic::getName () {
 		return "invokedynamic";
+	}
+
+	uint32_t op_invokedynamic::getOpCode () {
+		return 186;
 	}
 
 	uint32_t op_invokedynamic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3895,6 +4643,10 @@ namespace jvm {
 		return "new";
 	}
 
+	uint32_t op_new::getOpCode () {
+		return 187;
+	}
+
 	uint32_t op_new::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 2;
 	}
@@ -3914,6 +4666,10 @@ namespace jvm {
 		return "newarray";
 	}
 
+	uint32_t op_newarray::getOpCode () {
+		return 188;
+	}
+
 	uint32_t op_newarray::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 1;
 	}
@@ -3931,6 +4687,10 @@ namespace jvm {
 
 	std::string op_anewarray::getName () {
 		return "anewarray";
+	}
+
+	uint32_t op_anewarray::getOpCode () {
+		return 189;
 	}
 
 	uint32_t op_anewarray::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -3953,6 +4713,10 @@ namespace jvm {
 		return "arraylength";
 	}
 
+	uint32_t op_arraylength::getOpCode () {
+		return 190;
+	}
+
 	uint32_t op_arraylength::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -3972,6 +4736,10 @@ namespace jvm {
 		return "athrow";
 	}
 
+	uint32_t op_athrow::getOpCode () {
+		return 191;
+	}
+
 	uint32_t op_athrow::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -3989,6 +4757,10 @@ namespace jvm {
 
 	std::string op_checkcast::getName () {
 		return "checkcast";
+	}
+
+	uint32_t op_checkcast::getOpCode () {
+		return 192;
 	}
 
 	uint32_t op_checkcast::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -4011,6 +4783,10 @@ namespace jvm {
 		return "instanceof";
 	}
 
+	uint32_t op_instanceof::getOpCode () {
+		return 193;
+	}
+
 	uint32_t op_instanceof::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 2;
 	}
@@ -4028,6 +4804,10 @@ namespace jvm {
 
 	std::string op_monitorenter::getName () {
 		return "monitorenter";
+	}
+
+	uint32_t op_monitorenter::getOpCode () {
+		return 194;
 	}
 
 	uint32_t op_monitorenter::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -4049,6 +4829,10 @@ namespace jvm {
 		return "monitorexit";
 	}
 
+	uint32_t op_monitorexit::getOpCode () {
+		return 195;
+	}
+
 	uint32_t op_monitorexit::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -4066,6 +4850,10 @@ namespace jvm {
 
 	std::string op_wide::getName () {
 		return "wide";
+	}
+
+	uint32_t op_wide::getOpCode () {
+		return 196;
 	}
 
 	uint32_t op_wide::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -4087,6 +4875,10 @@ namespace jvm {
 		return "multianewarray";
 	}
 
+	uint32_t op_multianewarray::getOpCode () {
+		return 197;
+	}
+
 	uint32_t op_multianewarray::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 3;
 	}
@@ -4104,6 +4896,10 @@ namespace jvm {
 
 	std::string op_ifnull::getName () {
 		return "ifnull";
+	}
+
+	uint32_t op_ifnull::getOpCode () {
+		return 198;
 	}
 
 	uint32_t op_ifnull::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -4126,6 +4922,10 @@ namespace jvm {
 		return "ifnonnull";
 	}
 
+	uint32_t op_ifnonnull::getOpCode () {
+		return 199;
+	}
+
 	uint32_t op_ifnonnull::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		branchoffset = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
@@ -4144,6 +4944,10 @@ namespace jvm {
 
 	std::string op_goto_w::getName () {
 		return "goto_w";
+	}
+
+	uint32_t op_goto_w::getOpCode () {
+		return 200;
 	}
 
 	uint32_t op_goto_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -4166,6 +4970,10 @@ namespace jvm {
 		return "jsr_w";
 	}
 
+	uint32_t op_jsr_w::getOpCode () {
+		return 201;
+	}
+
 	uint32_t op_jsr_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 4;
 	}
@@ -4183,6 +4991,10 @@ namespace jvm {
 
 	std::string op_breakpoint::getName () {
 		return "breakpoint";
+	}
+
+	uint32_t op_breakpoint::getOpCode () {
+		return 202;
 	}
 
 	uint32_t op_breakpoint::fillParams (const uint32_t idx, const std::vector<u1>& data) {
@@ -4204,6 +5016,10 @@ namespace jvm {
 		return "impdep1";
 	}
 
+	uint32_t op_impdep1::getOpCode () {
+		return 254;
+	}
+
 	uint32_t op_impdep1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -4221,6 +5037,10 @@ namespace jvm {
 
 	std::string op_impdep2::getName () {
 		return "impdep2";
+	}
+
+	uint32_t op_impdep2::getOpCode () {
+		return 255;
 	}
 
 	uint32_t op_impdep2::fillParams (const uint32_t idx, const std::vector<u1>& data) {

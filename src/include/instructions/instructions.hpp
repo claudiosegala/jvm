@@ -62,13 +62,18 @@ namespace jvm {
 		 */
 		virtual std::string getName() = 0;
 
+		/**
+		 * Get the OpCode of the class
+		 */
+		virtual uint32_t getOpCode() = 0;
+
 	private:
 		//> A static reference to the framestack of the program
 		static FramesStack &fs;
 	};
 
 	//Constants opcodes 0x00,00 -- 0x14,20
-	class op_nop : public Instruction { // 0x00 - 00
+	class op_nop : public Instruction { // 0x00 -- 00
 	public:
 		/**
 		 * Constructor
@@ -94,9 +99,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_aconst_null : public Instruction { // 0x01 --01
+	class op_aconst_null : public Instruction { // 0x01 -- 01
 	public:
 		/**
 		 * Constructor
@@ -122,6 +132,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_iconst_m1 : public Instruction { // 0x02 -- 02
@@ -150,6 +165,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_iconst_0 : public Instruction { // 0x03 -- 03
@@ -178,6 +198,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_iconst_1 : public Instruction { // 0x04 -- 04
@@ -206,6 +231,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_iconst_2 : public Instruction { // 0x05 -- 05
@@ -234,6 +264,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_iconst_3 : public Instruction { // 0x06 -- 06
@@ -262,6 +297,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_iconst_4 : public Instruction { // 0x07 -- 07
@@ -290,6 +330,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_iconst_5 : public Instruction { // 0x08 -- 08
@@ -318,6 +363,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_lconst_0 : public Instruction { // 0x09 -- 09
@@ -346,6 +396,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_lconst_1 : public Instruction { // 0x0A -- 10
@@ -374,6 +429,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_fconst_0 : public Instruction { // 0x0B -- 11
@@ -402,6 +462,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_fconst_1 : public Instruction { // 0x0C -- 12
@@ -430,6 +495,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_fconst_2 : public Instruction { // 0x0D -- 13
@@ -458,6 +528,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_dconst_0 : public Instruction { // 0x0E -- 14
@@ -486,6 +561,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_dconst_1 : public Instruction { // 0x0F -- 15
@@ -514,6 +594,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_bipush : public Instruction { // 0x10 -- 16
@@ -542,6 +627,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 
 	private:
 		u1 byte; ///< Byte to be pushed as an integer to the stack
@@ -573,6 +663,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_ldc : public Instruction { // 0x12 -- 18
@@ -601,6 +696,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_ldc_w : public Instruction { // 0x13 -- 19
@@ -629,6 +729,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_ldc2_w : public Instruction { // 0x14 -- 20
@@ -657,10 +762,15 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	//Loads opcodes 0x15,21 -- 0x35,53
-	class op_iload : public Instruction { //0x15 -- 21
+	class op_iload : public Instruction { // 0x15 -- 21
 	public:
 		/**
 		 * Constructor
@@ -686,6 +796,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_lload : public Instruction { // 0x16 -- 22
@@ -714,6 +829,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_fload : public Instruction { // 0x17 -- 23
@@ -742,6 +862,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 
 	private:
 		u1 index; ///< Index of the local float variable
@@ -774,6 +899,11 @@ namespace jvm {
 		 */
 		std::string getName() override;
 
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
+
 	private:
 		u1 index; ///< Index to the local double variable
 	};
@@ -805,6 +935,11 @@ namespace jvm {
 		 */
 		std::string getName() override;
 
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
+
 	private:
 		u1 index; ///< index of the reference to the local variable to be loaded
 	};
@@ -835,6 +970,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_iload_1 : public Instruction { // 0x1B -- 27
@@ -863,6 +1003,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_iload_2 : public Instruction { // 0x1C -- 28
@@ -891,6 +1036,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_iload_3 : public Instruction { // 0x1D -- 29
@@ -919,6 +1069,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_lload_0 : public Instruction { // 0x1E -- 30
@@ -947,6 +1102,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_lload_1 : public Instruction { // 0x1F -- 31
@@ -975,6 +1135,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_lload_2 : public Instruction { // 0x20 -- 32
@@ -1003,6 +1168,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_lload_3 : public Instruction { // 0x21 -- 33
@@ -1031,6 +1201,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_fload_0 : public Instruction { // 0x22 -- 34
@@ -1059,6 +1234,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_fload_1 : public Instruction { // 0x23 -- 35
@@ -1087,6 +1267,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_fload_2 : public Instruction { // 0x24 -- 36
@@ -1115,6 +1300,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_fload_3 : public Instruction { // 0x25 -- 37
@@ -1143,6 +1333,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_dload_0 : public Instruction { // 0x26 -- 38
@@ -1171,6 +1366,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_dload_1 : public Instruction { // 0x27 -- 39
@@ -1199,6 +1399,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_dload_2 : public Instruction { // 0x28 -- 40
@@ -1227,6 +1432,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_dload_3 : public Instruction { // 0x29 -- 41
@@ -1255,6 +1465,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_aload_0 : public Instruction { // 0x2A -- 42
@@ -1283,6 +1498,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_aload_1 : public Instruction { // 0x2B -- 43
@@ -1311,6 +1531,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_aload_2 : public Instruction { // 0x2C -- 44
@@ -1339,6 +1564,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_aload_3 : public Instruction { // 0x2D -- 45
@@ -1367,6 +1597,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_iaload : public Instruction { // 0x2E -- 46
@@ -1395,6 +1630,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_laload : public Instruction { // 0x2F -- 47
@@ -1423,6 +1663,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_faload : public Instruction { // 0x30 -- 48
@@ -1451,6 +1696,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_daload : public Instruction { // 0x31 -- 49
@@ -1479,6 +1729,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_aaload : public Instruction { // 0x32 -- 50
@@ -1507,6 +1762,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_baload : public Instruction { // 0x33 -- 51
@@ -1535,6 +1795,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_caload : public Instruction { // 0x34 -- 52
@@ -1563,6 +1828,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_saload : public Instruction { // 0x35 -- 53
@@ -1591,10 +1861,15 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	//Stores 0x36,54 -> 0x56,86
-	class op_istore : public Instruction { //0x36 -- 54
+	class op_istore : public Instruction { // 0x36 -- 54
 	public:
 		/**
 		 * Constructor
@@ -1620,6 +1895,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_lstore : public Instruction { // 0x37 -- 55
@@ -1648,6 +1928,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_fstore : public Instruction { // 0x38 -- 56
@@ -1676,6 +1961,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 
 	private:
 		u1 index; ///< Index of the local float variable
@@ -1708,6 +1998,11 @@ namespace jvm {
 		 */
 		std::string getName() override;
 
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
+
 	private:
 		u1 index; ///< Index to the local double variable
 	};
@@ -1739,6 +2034,11 @@ namespace jvm {
 		 */
 		std::string getName() override;
 
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
+
 	private:
 		u1 index; ///< Index of the local variable that will store the reference
 	};
@@ -1769,6 +2069,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_istore_1 : public Instruction { // 0x3C -- 60
@@ -1797,6 +2102,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_istore_2 : public Instruction { // 0x3D -- 61
@@ -1825,6 +2135,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_istore_3 : public Instruction { // 0x3E -- 62
@@ -1853,6 +2168,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_lstore_0 : public Instruction { // 0x3F -- 63
@@ -1881,6 +2201,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_lstore_1 : public Instruction { // 0x40 -- 64
@@ -1909,6 +2234,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_lstore_2 : public Instruction { // 0x41 -- 65
@@ -1937,6 +2267,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_lstore_3 : public Instruction { // 0x42 -- 66
@@ -1965,6 +2300,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_fstore_0 : public Instruction { // 0x43 -- 67
@@ -1993,6 +2333,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_fstore_1 : public Instruction { // 0x44 -- 68
@@ -2021,6 +2366,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_fstore_2 : public Instruction { // 0x45 -- 69
@@ -2049,6 +2399,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_fstore_3 : public Instruction { // 0x46 -- 70
@@ -2077,6 +2432,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_dstore_0 : public Instruction { // 0x47 -- 71
@@ -2105,6 +2465,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_dstore_1 : public Instruction { // 0x48 -- 72
@@ -2133,6 +2498,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_dstore_2 : public Instruction { // 0x49 -- 73
@@ -2161,6 +2531,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_dstore_3 : public Instruction { // 0x4A -- 74
@@ -2189,6 +2564,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_astore_0 : public Instruction { // 0x4B -- 75
@@ -2217,6 +2597,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_astore_1 : public Instruction { // 0x4C -- 76
@@ -2245,6 +2630,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_astore_2 : public Instruction { // 0x4D -- 77
@@ -2273,6 +2663,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_astore_3 : public Instruction { // 0x4E -- 78
@@ -2301,6 +2696,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_iastore : public Instruction { // 0x4F -- 79
@@ -2329,6 +2729,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_lastore : public Instruction { // 0x50 -- 80
@@ -2357,6 +2762,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_fastore : public Instruction { // 0x51 -- 81
@@ -2385,6 +2795,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_dastore : public Instruction { // 0x52 -- 82
@@ -2413,6 +2828,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_aastore : public Instruction { // 0x53 -- 83
@@ -2441,6 +2861,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_bastore : public Instruction { // 0x54 -- 84
@@ -2469,6 +2894,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_castore : public Instruction { // 0x55 -- 85
@@ -2497,6 +2927,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_sastore : public Instruction { // 0x56 -- 86
@@ -2525,10 +2960,15 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	// Stack 0x57,87 -> 0x5F,95
-	class op_pop : public Instruction { //0x57 -- 87
+	class op_pop : public Instruction { // 0x57 -- 87
 	public:
 		/**
 		 * Constructor
@@ -2554,9 +2994,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_pop2 : public Instruction { //0x58 -- 88
+	class op_pop2 : public Instruction { // 0x58 -- 88
 	public:
 		/**
 		 * Constructor
@@ -2582,9 +3027,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_dup : public Instruction { //0x59 -- 89
+	class op_dup : public Instruction { // 0x59 -- 89
 	public:
 		/**
 		 * Constructor
@@ -2610,9 +3060,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_dup_x1 : public Instruction { //0x5A -- 90
+	class op_dup_x1 : public Instruction { // 0x5A -- 90
 	public:
 		/**
 		 * Constructor
@@ -2638,9 +3093,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_dup_x2 : public Instruction { //0x5B -- 91
+	class op_dup_x2 : public Instruction { // 0x5B -- 91
 	public:
 		/**
 		 * Constructor
@@ -2666,9 +3126,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_dup2 : public Instruction { //0x5C -- 92
+	class op_dup2 : public Instruction { // 0x5C -- 92
 	public:
 		/**
 		 * Constructor
@@ -2694,9 +3159,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_dup2_x1 : public Instruction { //0x5D -- 93
+	class op_dup2_x1 : public Instruction { // 0x5D -- 93
 	public:
 		/**
 		 * Constructor
@@ -2722,9 +3192,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_dup2_x2 : public Instruction { //0x5E -- 94
+	class op_dup2_x2 : public Instruction { // 0x5E -- 94
 	public:
 		/**
 		 * Constructor
@@ -2750,9 +3225,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_swap : public Instruction { //0x5F -- 95
+	class op_swap : public Instruction { // 0x5F -- 95
 	public:
 		/**
 		 * Constructor
@@ -2778,10 +3258,15 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	// Math 0x60,96 -> 0x84,132
-	class op_iadd : public Instruction { //0x60 -- 96
+	class op_iadd : public Instruction { // 0x60 -- 96
 	public:
 		/**
 		 * Constructor
@@ -2807,9 +3292,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_ladd : public Instruction { //0x61 -- 97
+	class op_ladd : public Instruction { // 0x61 -- 97
 	public:
 		/**
 		 * Constructor
@@ -2835,9 +3325,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_fadd : public Instruction { //0x62 -- 98
+	class op_fadd : public Instruction { // 0x62 -- 98
 	public:
 		/**
 		 * Constructor
@@ -2863,9 +3358,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_dadd : public Instruction { //0x63 -- 99
+	class op_dadd : public Instruction { // 0x63 -- 99
 	public:
 		/**
 		 * Constructor
@@ -2891,9 +3391,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_isub : public Instruction { //0x64 -- 100
+	class op_isub : public Instruction { // 0x64 -- 100
 	public:
 		/**
 		 * Constructor
@@ -2919,9 +3424,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_lsub : public Instruction { //0x65 -- 101
+	class op_lsub : public Instruction { // 0x65 -- 101
 	public:
 		/**
 		 * Constructor
@@ -2947,9 +3457,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_fsub : public Instruction { //0x66 -- 102
+	class op_fsub : public Instruction { // 0x66 -- 102
 	public:
 		/**
 		 * Constructor
@@ -2975,9 +3490,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_dsub : public Instruction { //0x67 -- 103
+	class op_dsub : public Instruction { // 0x67 -- 103
 	public:
 		/**
 		 * Constructor
@@ -3003,9 +3523,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_imul : public Instruction { //0x68 -- 104
+	class op_imul : public Instruction { // 0x68 -- 104
 	public:
 		/**
 		 * Constructor
@@ -3031,9 +3556,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_lmul : public Instruction { //0x69 -- 105
+	class op_lmul : public Instruction { // 0x69 -- 105
 	public:
 		/**
 		 * Constructor
@@ -3059,9 +3589,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_fmul : public Instruction { //0x6A -- 106
+	class op_fmul : public Instruction { // 0x6A -- 106
 	public:
 		/**
 		 * Constructor
@@ -3087,9 +3622,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_dmul : public Instruction { //0x6B -- 107
+	class op_dmul : public Instruction { // 0x6B -- 107
 	public:
 		/**
 		 * Constructor
@@ -3115,9 +3655,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_idiv : public Instruction { //0x6C -- 108
+	class op_idiv : public Instruction { // 0x6C -- 108
 	public:
 		/**
 		 * Constructor
@@ -3143,9 +3688,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_ldiv : public Instruction { //0x6D -- 109
+	class op_ldiv : public Instruction { // 0x6D -- 109
 	public:
 		/**
 		 * Constructor
@@ -3171,9 +3721,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_fdiv : public Instruction { //0x6E -- 110
+	class op_fdiv : public Instruction { // 0x6E -- 110
 	public:
 		/**
 		 * Constructor
@@ -3199,9 +3754,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_ddiv : public Instruction { //0x6F -- 111
+	class op_ddiv : public Instruction { // 0x6F -- 111
 	public:
 		/**
 		 * Constructor
@@ -3227,9 +3787,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_irem : public Instruction { //0x70 -- 112
+	class op_irem : public Instruction { // 0x70 -- 112
 	public:
 		/**
 		 * Constructor
@@ -3255,9 +3820,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_lrem : public Instruction { //0x71 -- 113
+	class op_lrem : public Instruction { // 0x71 -- 113
 	public:
 		/**
 		 * Constructor
@@ -3283,9 +3853,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_frem : public Instruction { //0x72 -- 114
+	class op_frem : public Instruction { // 0x72 -- 114
 	public:
 		/**
 		 * Constructor
@@ -3311,9 +3886,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_drem : public Instruction { //0x73 -- 115
+	class op_drem : public Instruction { // 0x73 -- 115
 	public:
 		/**
 		 * Constructor
@@ -3339,9 +3919,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_ineg : public Instruction { //0x74 -- 116
+	class op_ineg : public Instruction { // 0x74 -- 116
 	public:
 		/**
 		 * Constructor
@@ -3367,9 +3952,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_lneg : public Instruction { //0x75 -- 117
+	class op_lneg : public Instruction { // 0x75 -- 117
 	public:
 		/**
 		 * Constructor
@@ -3395,9 +3985,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_fneg : public Instruction { //0x76 -- 118
+	class op_fneg : public Instruction { // 0x76 -- 118
 	public:
 		/**
 		 * Constructor
@@ -3423,9 +4018,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_dneg : public Instruction { //0x77 -- 119
+	class op_dneg : public Instruction { // 0x77 -- 119
 	public:
 		/**
 		 * Constructor
@@ -3451,9 +4051,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_ishl : public Instruction { //0x78 -- 120
+	class op_ishl : public Instruction { // 0x78 -- 120
 	public:
 		/**
 		 * Constructor
@@ -3479,9 +4084,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_lshl : public Instruction { //0x79 -- 121
+	class op_lshl : public Instruction { // 0x79 -- 121
 	public:
 		/**
 		 * Constructor
@@ -3507,9 +4117,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_ishr : public Instruction { //0x7A -- 122
+	class op_ishr : public Instruction { // 0x7A -- 122
 	public:
 		/**
 		 * Constructor
@@ -3535,9 +4150,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_lshr : public Instruction { //0x7B -- 123
+	class op_lshr : public Instruction { // 0x7B -- 123
 	public:
 		/**
 		 * Constructor
@@ -3563,9 +4183,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_iushr : public Instruction { //0x7C -- 124
+	class op_iushr : public Instruction { // 0x7C -- 124
 	public:
 		/**
 		 * Constructor
@@ -3591,9 +4216,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_lushr : public Instruction { //0x7D -- 125
+	class op_lushr : public Instruction { // 0x7D -- 125
 	public:
 		/**
 		 * Constructor
@@ -3619,9 +4249,14 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
-	class op_iand : public Instruction { //0x7E -- 126
+	class op_iand : public Instruction { // 0x7E -- 126
 	public:
 		/**
 		 * Constructor
@@ -3647,6 +4282,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_land : public Instruction { // 0x7F -- 127
@@ -3675,6 +4315,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_ior : public Instruction { // 0x80 -- 128
@@ -3703,6 +4348,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_lor : public Instruction { // 0x81 --129
@@ -3731,6 +4381,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_ixor : public Instruction { // 0x82 -- 130
@@ -3759,6 +4414,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_lxor : public Instruction { // 0x83 -- 131
@@ -3787,6 +4447,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_iinc : public Instruction { // 0x84 -- 132
@@ -3815,6 +4480,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 
 	private:
 		u1 index;	///<
@@ -3848,6 +4518,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_i2f : public Instruction { // 0x86 -- 134
@@ -3876,6 +4551,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_i2d : public Instruction { // 0x87 -- 135
@@ -3904,6 +4584,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_l2i : public Instruction { // 0x88 -- 136
@@ -3932,6 +4617,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_l2f : public Instruction { // 0x89 -- 137
@@ -3960,6 +4650,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_l2d : public Instruction { // 0x8A -- 138
@@ -3988,6 +4683,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_f2i : public Instruction { // 0x8B -- 139
@@ -4016,6 +4716,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_f2l : public Instruction { // 0x8C -- 140
@@ -4044,6 +4749,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_f2d : public Instruction { // 0x8D -- 141
@@ -4072,6 +4782,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_d2i : public Instruction { // 0x8E -- 142
@@ -4100,6 +4815,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_d2l : public Instruction { // 0x8F -- 143
@@ -4128,6 +4848,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_d2f : public Instruction { // 0x90 -- 144
@@ -4156,6 +4881,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_i2b : public Instruction { // 0x91 -- 145
@@ -4184,6 +4914,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_i2c : public Instruction { // 0x92 -- 146
@@ -4212,6 +4947,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_i2s : public Instruction { // 0x93 -- 147
@@ -4240,6 +4980,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	// Comparisons 0x94,148 -> 0xA6,166
@@ -4269,6 +5014,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_fcmpl : public Instruction { // 0x95 -- 149
@@ -4297,6 +5047,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_fcmpg : public Instruction { // 0x96 -- 150
@@ -4325,6 +5080,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_dcmpl : public Instruction { // 0x97 -- 151
@@ -4353,6 +5113,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_dcmpg : public Instruction { // 0x98 -- 152
@@ -4381,6 +5146,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_ifeq : public Instruction { // 0x99 -- 153
@@ -4409,6 +5179,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 
 	private:
 		u2 branchoffset; ///< Offset to the next instruction
@@ -4441,6 +5216,11 @@ namespace jvm {
 		 */
 		std::string getName() override;
 
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
+
 	private:
 		u2 branchoffset; ///< Offset to the next instruction
 	};
@@ -4471,6 +5251,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 
 	private:
 		u2 branchoffset; ///< Offset to the next instruction
@@ -4503,11 +5288,16 @@ namespace jvm {
 		 */
 		std::string getName() override;
 
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
+
 	private:
 		u2 branchoffset; ///< Offset to the next instruction
 	};
 
-	class op_ifgt : public Instruction { //0x9D -- 157
+	class op_ifgt : public Instruction { // 0x9D -- 157
 	public:
 		/**
 		 * Constructor
@@ -4534,11 +5324,16 @@ namespace jvm {
 		 */
 		std::string getName() override;
 
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
+
 	private:
 		u2 branchoffset; ///< Offset to the next instruction
 	};
 
-	class op_ifle : public Instruction { //0x9E -- 158
+	class op_ifle : public Instruction { // 0x9E -- 158
 	public:
 		/**
 		 * Constructor
@@ -4564,6 +5359,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 
 	private:
 		u2 branchoffset; ///< Offset to the next instruction
@@ -4596,6 +5396,11 @@ namespace jvm {
 		 */
 		std::string getName() override;
 
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
+
 	private:
 		u2 branchoffset; ///< Offset to the next instruction
 	};
@@ -4626,6 +5431,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 
 	private:
 		u2 branchoffset; ///< Offset to the next instruction
@@ -4658,6 +5468,11 @@ namespace jvm {
 		 */
 		std::string getName() override;
 
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
+
 	private:
 		u2 branchoffset; ///< Offset to the next instruction
 	};
@@ -4688,6 +5503,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 
 	private:
 		u2 branchoffset; ///< Offset to the next instruction
@@ -4720,6 +5540,11 @@ namespace jvm {
 		 */
 		std::string getName() override;
 
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
+
 	private:
 		u2 branchoffset; ///< Offset to the next instruction
 	};
@@ -4750,6 +5575,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 
 	private:
 		u2 branchoffset; ///< Offset to the next instruction
@@ -4782,6 +5612,11 @@ namespace jvm {
 		 */
 		std::string getName() override;
 
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
+
 	private:
 		u2 branchoffset; ///< Offset to the next instruction
 	};
@@ -4812,6 +5647,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 
 	private:
 		u2 branchoffset; ///< Offset to the next instruction
@@ -4845,6 +5685,11 @@ namespace jvm {
 		 */
 		std::string getName() override;
 
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
+
 	private:
 		u2 branchoffset; ///< Offset to the next instruction
 	};
@@ -4875,6 +5720,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_ret : public Instruction { // 0xA9 -- 169
@@ -4903,6 +5753,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_tableswitch : public Instruction { // 0xAA -- 170
@@ -4931,6 +5786,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_lookupswitch : public Instruction { // 0xAB -- 171
@@ -4959,7 +5819,13 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
+
 	class op_ireturn : public Instruction { // 0xAC -- 172
 	public:
 		/**
@@ -4986,6 +5852,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_lreturn : public Instruction { // 0xAD -- 173
@@ -4993,7 +5864,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		op_freturn() = default;
+		op_lreturn() = default;
 
 		/**
 		 * Return long from method
@@ -5014,7 +5885,13 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
+
 	class op_freturn : public Instruction { // 0xAE -- 174
 	public:
 		/**
@@ -5041,6 +5918,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_dreturn : public Instruction { // 0xAF -- 175
@@ -5069,6 +5951,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_areturn : public Instruction { // 0xB0 -- 176
@@ -5097,6 +5984,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_return : public Instruction { // 0xB1 -- 177
@@ -5125,6 +6017,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	//References 0xB2,178 -> 0xC3,195
@@ -5154,6 +6051,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 
 	private:
 		u2 index; ///< Index to the field reference in the constant pool
@@ -5185,6 +6087,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_getfield : public Instruction { // 0xB4 -- 180
@@ -5213,6 +6120,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 
 	private:
 		u2 index; ///< Index to the field reference in the constant pool
@@ -5244,6 +6156,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_invokevirtual : public Instruction { // 0xB6 -- 182
@@ -5272,6 +6189,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_invokespecial : public Instruction { // 0xB7 -- 183
@@ -5300,6 +6222,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_invokestatic : public Instruction { // 0xB8 -- 184
@@ -5328,6 +6255,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_invokeinterface : public Instruction { // 0xB9 -- 185
@@ -5356,6 +6288,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_invokedynamic : public Instruction { // 0xBA - - 186
@@ -5384,6 +6321,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_new : public Instruction { // 0xBB -- 187
@@ -5412,6 +6354,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_newarray : public Instruction { // 0xBC -- 188
@@ -5440,6 +6387,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_anewarray : public Instruction { // 0xBD -- 189
@@ -5468,6 +6420,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 
 	private:
 		u2 index; ///< index of the reference to the class that identifies the component type
@@ -5499,6 +6456,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_athrow : public Instruction { // 0xBF -- 191
@@ -5527,6 +6489,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_checkcast : public Instruction { // 0xC0 -- 192
@@ -5556,11 +6523,16 @@ namespace jvm {
 		 */
 		std::string getName() override;
 
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
+
 	private:
 		u2 index; ///< Index of the class reference in the constant pool
 	};
 
-	class op_instanceof : public Instruction { //0xC1 -- 193
+	class op_instanceof : public Instruction { // 0xC1 -- 193
 	public:
 		/**
 		 * Constructor
@@ -5586,6 +6558,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_monitorenter : public Instruction { // 0xC2 -- 194
@@ -5614,6 +6591,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_monitorexit : public Instruction { // 0xC3 -- 195
@@ -5642,6 +6624,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	//Extended 0xC4,196 -> 0xC9,201
@@ -5671,6 +6658,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_multianewarray : public Instruction { // 0xC5 -- 197
@@ -5699,6 +6691,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	class op_ifnull : public Instruction { // 0xC6 -- 198
@@ -5727,6 +6724,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 
 	private:
 		u2 branchoffset; ///< Offset to the next instruction
@@ -5759,6 +6761,11 @@ namespace jvm {
 		 */
 		std::string getName() override;
 
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
+
 	private:
 		u2 branchoffset; ///< Offset to the next instruction
 	};
@@ -5790,6 +6797,11 @@ namespace jvm {
 		 */
 		std::string getName() override;
 
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
+
 	private:
 		u4 branchoffset; ///< Offset to the next instruction
 	};
@@ -5820,6 +6832,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	//Reserved 0xca,202 -> 0xff,255
@@ -5855,6 +6872,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	/**
@@ -5889,6 +6911,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 	/**
@@ -5923,6 +6950,11 @@ namespace jvm {
 		 * Get the name of the class
 		 */
 		std::string getName() override;
+
+		/**
+		 * Get the OpCode of the class
+		 */
+		uint32_t getOpCode() override;
 	};
 
 };
