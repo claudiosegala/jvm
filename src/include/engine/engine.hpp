@@ -1,6 +1,5 @@
 #pragma once
 
-#include "util/bit.hpp"
 #include "util/macros.hpp"
 #include "engine/framesStack.hpp"
 #include "class_loader/constant_pool.hpp"

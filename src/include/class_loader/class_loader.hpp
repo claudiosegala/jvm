@@ -4,7 +4,6 @@
 #include <vector>
 #include <string>
 #include <unordered_map>
-#include "util/bit.hpp"
 #include "util/reader.hpp"
 #include "constant_pool.hpp"
 #include "interface.hpp"
