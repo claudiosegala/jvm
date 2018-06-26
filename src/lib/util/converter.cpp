@@ -77,4 +77,16 @@ namespace jvm {
 		return std::make_tuple(low1, low2, high1, high2);
 	}
 
+	std::u16string Converter::utf8_to_utf16(const std::string source){
+		std::wstring_convert<std::codecvt_utf8_utf16<char16_t>,char16_t> convert;
+		std::u16string dest = convert.from_bytes(source);
+		return dest;
+	}
+
+	std::string Converter::utf16_to_utf8(const std::u16string source){
+		std::wstring_convert<std::codecvt_utf8_utf16<char16_t>,char16_t> convert;
+		std::string dest = convert.to_bytes(source);
+		return dest;
+	}
+
 }

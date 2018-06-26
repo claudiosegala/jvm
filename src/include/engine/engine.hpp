@@ -3,8 +3,6 @@
 #include "util/bit.hpp"
 #include "util/macros.hpp"
 #include "engine/framesStack.hpp"
-#include "class_loader/constant_pool.hpp"
-#include "class_loader/attribute.hpp"
 #include "class_loader/class_loader.hpp"
 
 namespace jvm {

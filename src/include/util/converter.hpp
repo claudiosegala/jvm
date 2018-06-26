@@ -23,6 +23,20 @@ namespace jvm {
 		static std::tuple<u1, u1> to_u1(u2);
 
 		static std::tuple<u1, u1, u1, u1> to_u1(u4);
+
+		/**
+		 * UTF-8 to UTF-16
+		 * @param source The source string to convert
+		 * @return source string converted
+		 */
+		std::u16string utf8_to_utf16(const std::string);
+
+		/**
+		 * UTF-16 to UTF-8
+		 * @param source The source string to convert
+		 * @return source string converted
+		 */
+		std::string utf16_to_utf8(const std::u16string);
 	};
 
 }
