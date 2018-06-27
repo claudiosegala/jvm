@@ -1,6 +1,6 @@
 #pragma once
 
-#include "attribute.hpp"
+#include "constant_pool.hpp"
 
 namespace jvm {
 

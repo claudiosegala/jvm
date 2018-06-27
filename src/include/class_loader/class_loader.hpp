@@ -1,10 +1,8 @@
 #pragma once
 
-#include "constant_pool.hpp"
+#include "method.hpp"
 #include "interface.hpp"
 #include "field.hpp"
-#include "method.hpp"
-#include "attribute.hpp"
 
 namespace jvm {
 

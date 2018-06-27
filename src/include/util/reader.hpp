@@ -1,6 +1,6 @@
 #pragma once
 
-#include "macros.hpp"
+#include "base.hpp"
 
 namespace jvm {
 

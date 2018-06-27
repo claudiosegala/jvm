@@ -1,6 +1,6 @@
 #pragma once
 
-#include "util/macros.hpp"
+#include "base.hpp"
 
 namespace jvm {
 	class Variables : public std::vector<u4> {
