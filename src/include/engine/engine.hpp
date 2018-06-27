@@ -1,7 +1,6 @@
 #pragma once
 
-#include "framesStack.hpp"
-#include "class_loader/class_loader.hpp"
+#include "code.hpp"
 
 namespace jvm {
 
@@ -12,7 +11,7 @@ namespace jvm {
 	public:
 		/**
 		 * Constructor
-		 * @params address to all .classes
+		 * @params address to the main .classes
 		 */
 		Engine(ClassLoader&);
 
@@ -23,8 +22,8 @@ namespace jvm {
 		void execute();
 
 	private:
-		//> Reference to .class that will be executed
-		ClassLoader& cl;
+		//> Reference to .class that will be executed first
+		ClassLoader& mainClass;
 
 		//> PC Register
 		uint64_t PC;

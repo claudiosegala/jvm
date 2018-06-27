@@ -2,7 +2,7 @@
 
 namespace jvm {
 
-	Engine::Engine (ClassLoader &cl) : cl(cl), PC(0) {}
+	Engine::Engine (ClassLoader &cl) : mainClass(cl), PC(0) {}
 
 	void Engine::execute () {
 		run_clinit();

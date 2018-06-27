@@ -1,4 +1,3 @@
-#include "class_loader/class_loader.hpp"
 #include "engine/framesStack.hpp"
 
 namespace jvm {

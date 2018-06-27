@@ -1,7 +1,7 @@
 #pragma once
 
-#include "method.hpp"
 #include "interface.hpp"
+#include "method.hpp"
 #include "field.hpp"
 
 namespace jvm {

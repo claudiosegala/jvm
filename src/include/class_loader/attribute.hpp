@@ -1,7 +1,7 @@
 #pragma once
 
 #include "constant_pool.hpp"
-#include "instructions/code.hpp"
+#include "engine/code.hpp"
 
 namespace jvm {
 

@@ -3,9 +3,9 @@
 #include "operands.hpp"
 #include "variables.hpp"
 
-// TODO: make a reference to the current .class
-
 namespace jvm {
+
+	class ClassLoader;
 
 	class Frame {
 	public:
@@ -23,8 +23,8 @@ namespace jvm {
 		//> The returned value
 		u4 Return_value;
 
-		//> Reference to the constant pool
-		//ConstantPool constat_pool_ref;
+		//> Class loader reference
+		ClassLoader* classLoader;
 	};
 
 }

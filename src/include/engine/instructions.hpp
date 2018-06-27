@@ -1,10 +1,11 @@
 #pragma once
 
 #include "base.hpp"
-#include "util/converter.hpp"
 #include "engine/framesStack.hpp"
 
 namespace jvm {
+
+	 class FramesStack;
 
 	class Instruction {
 	protected:
