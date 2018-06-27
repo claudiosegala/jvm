@@ -3,8 +3,8 @@
 namespace jvm {
 
 	// TODO: verify the need of this function
-	void FramesStack::push_frame () {
-		Frame frame;
+	void FramesStack::push_frame (ClassLoader &cl) {
+		Frame frame(cl);
 
 		push(frame);
 	}

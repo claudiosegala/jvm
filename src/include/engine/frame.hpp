@@ -12,7 +12,7 @@ namespace jvm {
 		/**
 		* Constructor Default
 		*/
-		Frame() = default;
+		Frame(ClassLoader& cl);
 
 		//> Operands Stack
 		Operands operands;
@@ -24,7 +24,7 @@ namespace jvm {
 		u4 Return_value;
 
 		//> Class loader reference
-		ClassLoader* classLoader;
+		ClassLoader& cl;
 	};
 
 }

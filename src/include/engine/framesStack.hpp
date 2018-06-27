@@ -14,7 +14,7 @@ namespace jvm {
 		/**
 		* Create a new frame and put in the top of the stack
 		*/
-		void push_frame();
+		void push_frame(ClassLoader&);
 
 		/**
 		* Destroy the object on the top and then remove it

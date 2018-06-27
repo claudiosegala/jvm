@@ -2,5 +2,6 @@
 
 namespace jvm {
 
+	Frame::Frame(ClassLoader &cl) : cl(cl) {}
 
 };
