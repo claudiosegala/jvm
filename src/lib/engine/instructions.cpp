@@ -3957,7 +3957,7 @@ namespace jvm {
 	}
 
 	void OPtableswitch::printToStream(std::ostream& os, std::string& prefix) {
-//		os << prefix << getName() << " " << defaultbyte << " " << low << " " << high << " " << jumpOffsets << std::endl;
+		os << prefix << getName() << " " << defaultbyte << " " << low << " " << high; // TODO: << " " << jumpOffsets << std::endl;
 	}
 
 	std::string OPtableswitch::getName () {
@@ -4000,7 +4000,12 @@ namespace jvm {
 	}
 
 	void OPlookupswitch::printToStream(std::ostream& os, std::string& prefix) {
-//		os << prefix << getName() << " " << defaultbyte << " " << npairs << " " << pairs << std::endl;
+		os << prefix << getName() << " " << defaultbyte << " " << npairs << " ";
+
+		for(const auto& sm_pair : pairs)
+			os << sm_pair.first << " ";
+
+		os << std::endl;
 	}
 
 	std::string OPlookupswitch::getName () {
