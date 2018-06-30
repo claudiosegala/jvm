@@ -376,7 +376,7 @@ namespace jvm {
 	}
 
 	void OPbipush::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << byte << std::endl;
 	}
 
 	std::string OPbipush::getName () {
@@ -424,7 +424,7 @@ namespace jvm {
 	}
 
 	void OPldc::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPldc::getName () {
@@ -448,7 +448,7 @@ namespace jvm {
 	}
 
 	void OPldc_w::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPldc_w::getName () {
@@ -472,7 +472,7 @@ namespace jvm {
 	}
 
 	void OPldc2_w::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPldc2_w::getName () {
@@ -496,7 +496,7 @@ namespace jvm {
 	}
 
 	void OPiload::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPiload::getName () {
@@ -520,7 +520,7 @@ namespace jvm {
 	}
 
 	void OPlload::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPlload::getName () {
@@ -544,7 +544,7 @@ namespace jvm {
 	}
 
 	void OPfload::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPfload::getName () {
@@ -568,7 +568,7 @@ namespace jvm {
 	}
 
 	void OPdload::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPdload::getName () {
@@ -592,7 +592,7 @@ namespace jvm {
 	}
 
 	void OPaload::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPaload::getName () {
@@ -1260,7 +1260,7 @@ namespace jvm {
 	}
 
 	void OPistore::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPistore::getName () {
@@ -1284,7 +1284,7 @@ namespace jvm {
 	}
 
 	void OPlstore::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPlstore::getName () {
@@ -1308,7 +1308,7 @@ namespace jvm {
 	}
 
 	void OPfstore::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPfstore::getName () {
@@ -1332,7 +1332,7 @@ namespace jvm {
 	}
 
 	void OPdstore::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPdstore::getName () {
@@ -1356,7 +1356,7 @@ namespace jvm {
 	}
 
 	void OPastore::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPastore::getName () {
@@ -3059,7 +3059,7 @@ namespace jvm {
 	}
 
 	void OPiinc::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << " " << constant << std::endl;
 	}
 
 	std::string OPiinc::getName () {
@@ -3072,7 +3072,7 @@ namespace jvm {
 
 	uint32_t OPiinc::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		index = data[idx+1];
-		constant = static_cast<i1>(data[idx+1]);
+		constant = Converter::to_i1(data[idx+1]);
 		return 2;
 	}
 
@@ -3544,7 +3544,7 @@ namespace jvm {
 	}
 
 	void OPifeq::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
 	std::string OPifeq::getName () {
@@ -3568,7 +3568,7 @@ namespace jvm {
 	}
 
 	void OPifne::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
 	std::string OPifne::getName () {
@@ -3592,7 +3592,7 @@ namespace jvm {
 	}
 
 	void OPiflt::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
 	std::string OPiflt::getName () {
@@ -3616,7 +3616,7 @@ namespace jvm {
 	}
 
 	void OPifge::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
 	std::string OPifge::getName () {
@@ -3640,7 +3640,7 @@ namespace jvm {
 	}
 
 	void OPifgt::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
 	std::string OPifgt::getName () {
@@ -3664,7 +3664,7 @@ namespace jvm {
 	}
 
 	void OPifle::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
 	std::string OPifle::getName () {
@@ -3688,7 +3688,7 @@ namespace jvm {
 	}
 
 	void OPif_icmpeq::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
 	std::string OPif_icmpeq::getName () {
@@ -3712,7 +3712,7 @@ namespace jvm {
 	}
 
 	void OPif_icmpne::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
 	std::string OPif_icmpne::getName () {
@@ -3736,7 +3736,7 @@ namespace jvm {
 	}
 
 	void OPif_icmplt::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
 	std::string OPif_icmplt::getName () {
@@ -3760,7 +3760,7 @@ namespace jvm {
 	}
 
 	void OPif_icmpge::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
 	std::string OPif_icmpge::getName () {
@@ -3784,7 +3784,7 @@ namespace jvm {
 	}
 
 	void OPif_icmpgt::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
 	std::string OPif_icmpgt::getName () {
@@ -3808,7 +3808,7 @@ namespace jvm {
 	}
 
 	void OPif_icmple::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
 	std::string OPif_icmple::getName () {
@@ -3832,7 +3832,7 @@ namespace jvm {
 	}
 
 	void OPif_acmpeq::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
 	std::string OPif_acmpeq::getName () {
@@ -3856,7 +3856,7 @@ namespace jvm {
 	}
 
 	void OPif_acmpne::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
 	std::string OPif_acmpne::getName () {
@@ -3909,7 +3909,7 @@ namespace jvm {
 	}
 
 	void OPjsr::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
 	std::string OPjsr::getName () {
@@ -3933,7 +3933,7 @@ namespace jvm {
 	}
 
 	void OPret::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPret::getName () {
@@ -3957,7 +3957,7 @@ namespace jvm {
 	}
 
 	void OPtableswitch::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << defaultbyte << " " << low << " " << high; // TODO: << " " << jumpOffsets << std::endl;
 	}
 
 	std::string OPtableswitch::getName () {
@@ -4000,7 +4000,12 @@ namespace jvm {
 	}
 
 	void OPlookupswitch::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << defaultbyte << " " << npairs << " ";
+
+		for(const auto& sm_pair : pairs)
+			os << sm_pair.first << " ";
+
+		os << std::endl;
 	}
 
 	std::string OPlookupswitch::getName () {
@@ -4180,7 +4185,7 @@ namespace jvm {
 	}
 
 	void OPgetstatic::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPgetstatic::getName () {
@@ -4204,7 +4209,7 @@ namespace jvm {
 	}
 
 	void OPputstatic::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPputstatic::getName () {
@@ -4228,7 +4233,7 @@ namespace jvm {
 	}
 
 	void OPgetfield::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPgetfield::getName () {
@@ -4252,7 +4257,7 @@ namespace jvm {
 	}
 
 	void OPputfield::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPputfield::getName () {
@@ -4276,7 +4281,7 @@ namespace jvm {
 	}
 
 	void OPinvokevirtual::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPinvokevirtual::getName () {
@@ -4288,7 +4293,7 @@ namespace jvm {
 	}
 
 	uint32_t OPinvokevirtual::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-
+		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
 
@@ -4300,7 +4305,7 @@ namespace jvm {
 	}
 
 	void OPinvokespecial::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPinvokespecial::getName () {
@@ -4324,7 +4329,7 @@ namespace jvm {
 	}
 
 	void OPinvokestatic::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPinvokestatic::getName () {
@@ -4348,7 +4353,7 @@ namespace jvm {
 	}
 
 	void OPinvokeinterface::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << " " << count << std::endl;
 	}
 
 	std::string OPinvokeinterface::getName () {
@@ -4380,7 +4385,7 @@ namespace jvm {
 	}
 
 	void OPinvokedynamic::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << " 0 0" << std::endl;
 	}
 
 	std::string OPinvokedynamic::getName () {
@@ -4407,7 +4412,7 @@ namespace jvm {
 	}
 
 	void OPnew::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPnew::getName () {
@@ -4431,7 +4436,7 @@ namespace jvm {
 	}
 
 	void OPnewarray::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << atype << std::endl;
 	}
 
 	std::string OPnewarray::getName () {
@@ -4455,7 +4460,7 @@ namespace jvm {
 	}
 
 	void OPanewarray::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPanewarray::getName () {
@@ -4525,7 +4530,7 @@ namespace jvm {
 	}
 
 	void OPcheckcast::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPcheckcast::getName () {
@@ -4549,7 +4554,7 @@ namespace jvm {
 	}
 
 	void OPinstanceof::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPinstanceof::getName () {
@@ -4619,7 +4624,7 @@ namespace jvm {
 	}
 
 	void OPwide::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << opcode << " " << index << " " << countbyte << std::endl;
 	}
 
 	std::string OPwide::getName () {
@@ -4653,7 +4658,7 @@ namespace jvm {
 	}
 
 	void OPmultianewarray::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << index << std::endl;
 	}
 
 	std::string OPmultianewarray::getName () {
@@ -4682,7 +4687,7 @@ namespace jvm {
 	}
 
 	void OPifnull::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
 	std::string OPifnull::getName () {
@@ -4706,7 +4711,7 @@ namespace jvm {
 	}
 
 	void OPifnonnull::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
 	std::string OPifnonnull::getName () {
@@ -4730,7 +4735,7 @@ namespace jvm {
 	}
 
 	void OPgoto_w::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
 	std::string OPgoto_w::getName () {
@@ -4754,7 +4759,7 @@ namespace jvm {
 	}
 
 	void OPjsr_w::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
 	std::string OPjsr_w::getName () {
