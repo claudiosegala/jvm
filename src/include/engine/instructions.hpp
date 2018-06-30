@@ -101,7 +101,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * operand stack ... → ..., null, opcode byte1, byte2 The immediate unsigned byte1 and byte2 values are assembled into an intermediate short where the value of the short is (byte1 << 8) | byte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -134,7 +134,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Operand stack ... → ..., <i>
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -167,7 +167,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Operand Stack ... → ..., <i>
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -200,7 +200,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Operand Stack... → ..., <i>
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -233,7 +233,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 *Operand Stack ... → ..., <i>
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -266,7 +266,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 *Operand Stack  ... → ..., <i>
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -299,7 +299,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 *Operand Stack ... → ..., <i>
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -332,7 +332,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 *Operand Stack  ... → ..., <i>
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -365,7 +365,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Operand Stack  ... → ..., <i>
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -398,7 +398,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 *OpStack ... → ..., <l> ,
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -431,7 +431,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ... → ..., <f>
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -464,7 +464,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ... → ..., <f>
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -497,7 +497,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ... → ..., <f>
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -530,7 +530,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ... → ..., <f>
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -563,7 +563,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ... → ..., <f>
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -596,7 +596,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Operand Stack  ... → ..., <i> , byte
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -632,7 +632,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Operand Stack ... → ..., value , The immediate unsigned byte1 and byte2 values are assembled into an intermediate short where the value of the short is (byte1 << 8) | byte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -668,7 +668,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Operand Stack ... → ..., value , The index is an unsigned byte that must be a valid index into the run-time constant pool
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -740,7 +740,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Operand Stack ... → ..., value , indexbyte1 indexbyte2 , the value of the index is calculated as (indexbyte1 << 8) | indexbyte2, run-time constant pool
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -777,7 +777,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ... → ..., value , The index is an unsigned byte into local variable array,
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -813,7 +813,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ... → ..., value, The index is an unsigned byte , local variable array
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -849,7 +849,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Op_stack ... → ..., value, The index is an unsigned byte that must be an index into the local variable array
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -885,7 +885,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ... →..., value, The index is an unsigned byte. Both index and index+1 must be indices into the local variable array
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -921,7 +921,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack  ... → ..., objectref, The index is an unsigned byte that must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -957,7 +957,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -990,7 +990,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1023,7 +1023,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1056,7 +1056,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1089,7 +1089,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1122,7 +1122,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1155,7 +1155,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1188,7 +1188,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1221,7 +1221,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ... → ..., value , The <n> must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1254,7 +1254,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 *  OpStack ... → ..., value , The <n> must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1287,7 +1287,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 *  OpStack ... → ..., value , The <n> must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1320,7 +1320,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 *  OpStack ... → ..., value , The <n> must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1353,7 +1353,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ... → ..., value, Both <n> and <n>+1 must be indices into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1386,7 +1386,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ... → ..., value, Both <n> and <n>+1 must be indices into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1419,7 +1419,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ... → ..., value, Both <n> and <n>+1 must be indices into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1452,7 +1452,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ... → ..., value, Both <n> and <n>+1 must be indices into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1485,7 +1485,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ... → ..., objectref,The <n> must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1518,7 +1518,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ... → ..., objectref,The <n> must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1551,7 +1551,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ... → ..., objectref,The <n> must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1584,7 +1584,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ... → ..., objectref,The <n> must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1617,7 +1617,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack..., arrayref, index → ..., value,The <n> must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1650,7 +1650,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., arrayref, index → ..., value ,The <n> must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1683,7 +1683,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., arrayref, index → ..., value , The arrayref must be of type reference and must refer to an array whose components are of type float
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1716,7 +1716,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., arrayref, index → ..., value , The arrayref must be of type reference and must refer to an array whose components are of type double.
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1749,7 +1749,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., arrayref, index → ..., value , The arrayref must be of type reference and must refer to an array whose components are of type reference
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1782,7 +1782,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., arrayref, index → ..., value , The arrayref must be of type reference and must refer to an array whose components are of type byte or of type boolean
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1815,7 +1815,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., arrayref, index → ..., value , The arrayref must be of type reference and must refer to an array whose components are of type char. The index must be of type int
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1848,7 +1848,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., arrayref, index → ..., value , The arrayref must be of type reference and must refer to an array whose components are of type short.
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1882,7 +1882,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., value → ... , The index is an unsigned byte that must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1918,7 +1918,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., value → ... , The index is an unsigned byte. Both index and index+1 must be indices into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1954,7 +1954,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., value → ... , The index is an unsigned byte that must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -1990,7 +1990,8 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., value → ... , The index is an unsigned byte. Both index and index+1 must be indices into the local variable array of the current frame
+
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2026,7 +2027,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., objectref → ... , The index is an unsigned byte that must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2062,7 +2063,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., value → ... , The <n> must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2095,7 +2096,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., value → ... , The <n> must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2161,7 +2162,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value → ... , The <n> must be an index into the local variable array of the current frame.
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2194,7 +2195,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2227,7 +2228,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2260,7 +2261,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2293,7 +2294,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2326,7 +2327,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., value → ... , The <n> must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2359,7 +2360,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., value → ... , The <n> must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2392,7 +2393,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., value → ... , The <n> must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2425,7 +2426,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., value → ... , The <n> must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2458,7 +2459,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2491,7 +2492,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2524,7 +2525,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2557,7 +2558,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2590,7 +2591,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * ..., objectref → ... , The <n> must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2623,7 +2624,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * ..., objectref → ... , The <n> must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2656,7 +2657,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., objectref → ... , The <n> must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2689,7 +2690,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., objectref → ... , The <n> must be an index into the local variable array of the current frame
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2722,7 +2723,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., arrayref, index, value →... , The arrayref must be of type reference and must refer to an array whose components are of type int. Both index and value must be of type int
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2750,7 +2751,7 @@ namespace jvm {
 		void execute() override;
 
 		/**
-		 * Print in the stream the name
+		 * OpStack ..., arrayref, index, value → ... , The arrayref must be of type reference and must refer to an array whose components are of type long. The index must be of type int
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
@@ -2788,7 +2789,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., arrayref, index, value → ... , The arrayref must be of type reference and must refer to an array whose components are of type float. The index must be of type int
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2821,7 +2822,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., arrayref, index, value → ... , The arrayref must be of type reference and must refer to an array whose components are of type double
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2854,7 +2855,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., arrayref, index, value → ... , The arrayref must be of type reference and must refer to an array whose components are of type reference
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2887,7 +2888,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., arrayref, index, value → ... , The arrayref must be of type reference and must refer to an array whose components are of type byte or of type boolean. The index and the value must both be of type int.
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2915,7 +2916,7 @@ namespace jvm {
 		void execute() override;
 
 		/**
-		 * Print in the stream the name
+		 * OpStack ..., arrayref, index, value → ... , The arrayref must be of type reference and must refer to an array whose components are of type char. The index and the value must both be of type int
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
@@ -2953,7 +2954,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., arrayref, index, value → ... , The arrayref must be of type reference and must refer to an array whose components are of type short. Both index and value must be of type int.
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -2987,7 +2988,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., value → ... , Pop the top value from the operand stack.
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3020,7 +3021,8 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack Form 1: ..., value2, value1 → ... ,  where each of value1 and value2 is a value of a category 1 computional type
+		 * OpStack Form 2: ..., value → ... , where value is a value of a category 2 computational type
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3053,7 +3055,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., value → ..., value, value ,
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3086,7 +3088,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack ..., value2, value1 → ..., value1, value2, value1 , Duplicate the top value on the operand stack and insert the duplicated value two values down in the operand stack.
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3119,7 +3121,8 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack Form 1: ..., value3, value2, value1 → ..., value1, value3, value2, value1 , where value1, value2, and value3 are all values of a category 1 computational type
+		 * OpStack Form 2: ..., value2, value1 → ..., value1, value2, value1 , where value1 is a value of a category 1 computational type and value2 is a value of a category 2 computational type
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3152,7 +3155,8 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack Form 1: ..., value2, value1 → ..., value2, value1, value2, value1 ,where both value1 and value2 are values of a category 1 computational type
+		 * OpStack Form 2: ..., value → ..., value, value where value is a value of a category 2 computational type
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3185,7 +3189,8 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * OpStack Form 1: ..., value3, value2, value1 → ..., value2, value1, value3, value2, value1 , where value1, value2, and value3 are all values of a category 1 computational type
+		 * OpStack Form 2: ..., value2, value1 → ..., value1, value2, value1 , where value1 is a value of a category 2 computational type and value2 is a value of a category 1 computational type
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3218,7 +3223,8 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack Form 1: ..., value4, value3, value2, value1 → ..., value2, value1, value4, value3, value2, value1 , where value1, value2, value3, and value4 are all values of a category 1 computational type,
+		 * Opstack Form 2: ..., value3, value2, value1 → ..., value1, value3, value2, value1
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3251,7 +3257,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value2, value1 → ..., value1, value2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3275,7 +3281,7 @@ namespace jvm {
 		OPiadd() = default;
 
 		/**
-		 * Swap the top two operand stack values , ..., value1, value2 →..., result
+		 * Swap the top two operand stack values
 		 */
 		void execute() override;
 
@@ -3285,7 +3291,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3308,7 +3314,7 @@ namespace jvm {
 		OPladd() = default;
 
 		/**
-		 * Add long ..., value1, value2 → ..., result
+		 * Add long
 		 */
 		void execute() override;
 
@@ -3318,7 +3324,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3341,12 +3347,12 @@ namespace jvm {
 		OPfadd() = default;
 
 		/**
-		 * Add float ..., value1, value2 → ..., result
+		 * Add float
 		 */
 		void execute() override;
 
 		/**
-		 * Print in the stream the name
+		 * Opstack  ..., value1, value2 → ..., result
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
@@ -3374,7 +3380,7 @@ namespace jvm {
 		OPdadd() = default;
 
 		/**
-		 * Add double , ..., value1, value2 → ..., result
+		 * Add double
 		 */
 		void execute() override;
 
@@ -3384,7 +3390,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3407,7 +3413,7 @@ namespace jvm {
 		OPisub() = default;
 
 		/**
-		 * Subtract int ..., value1, value2 → ..., result
+		 * Subtract int
 		 */
 		void execute() override;
 
@@ -3417,7 +3423,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3440,7 +3446,7 @@ namespace jvm {
 		OPlsub() = default;
 
 		/**
-		 * Subtract long ..., value1, value2 → ..., result
+		 * Subtract long
 		 */
 		void execute() override;
 
@@ -3450,7 +3456,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3473,12 +3479,12 @@ namespace jvm {
 		OPfsub() = default;
 
 		/**
-		 * Subtract float ..., value1, value2 → ..., result
+		 * Subtract float
 		 */
 		void execute() override;
 
 		/**
-		 * Print in the stream the name
+		 * Opstack  ..., value1, value2 → ..., result
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
@@ -3506,7 +3512,7 @@ namespace jvm {
 		OPdsub() = default;
 
 		/**
-		 * Subtract double ..., value1, value2 → ..., result
+		 * Subtract double
 		 */
 		void execute() override;
 
@@ -3516,7 +3522,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack  ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3539,7 +3545,7 @@ namespace jvm {
 		OPimul() = default;
 
 		/**
-		 * Multiply int ..., value1, value2 → ..., result
+		 * Multiply int
 		 */
 		void execute() override;
 
@@ -3549,7 +3555,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3572,7 +3578,7 @@ namespace jvm {
 		OPlmul() = default;
 
 		/**
-		 * Multiply long ..., value1, value2 → ..., result
+		 * Multiply long
 		 */
 		void execute() override;
 
@@ -3582,7 +3588,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3605,7 +3611,7 @@ namespace jvm {
 		OPfmul() = default;
 
 		/**
-		 * The execution of this instruction
+		 * Multiply float
 		 */
 		void execute() override;
 
@@ -3615,7 +3621,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3638,7 +3644,7 @@ namespace jvm {
 		OPdmul() = default;
 
 		/**
-		 * The execution of this instruction
+		 * Multiply double
 		 */
 		void execute() override;
 
@@ -3648,7 +3654,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result pop2 for each value
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3671,7 +3677,7 @@ namespace jvm {
 		OPidiv() = default;
 
 		/**
-		 * The execution of this instruction
+		 * Divide int
 		 */
 		void execute() override;
 
@@ -3681,7 +3687,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3704,7 +3710,7 @@ namespace jvm {
 		OPldiv() = default;
 
 		/**
-		 * The execution of this instruction
+		 * Divide long
 		 */
 		void execute() override;
 
@@ -3714,7 +3720,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3737,7 +3743,7 @@ namespace jvm {
 		OPfdiv() = default;
 
 		/**
-		 * The execution of this instruction
+		 * Divide float
 		 */
 		void execute() override;
 
@@ -3747,7 +3753,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3770,7 +3776,7 @@ namespace jvm {
 		OPddiv() = default;
 
 		/**
-		 * The execution of this instruction
+		 * Divide double
 		 */
 		void execute() override;
 
@@ -3780,7 +3786,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3803,7 +3809,7 @@ namespace jvm {
 		OPirem() = default;
 
 		/**
-		 * Remainder int , ..., value1, value2 → ..., result
+		 * Remainder int
 		 */
 		void execute() override;
 
@@ -3813,7 +3819,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack  ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3836,7 +3842,7 @@ namespace jvm {
 		OPlrem() = default;
 
 		/**
-		 * Remainder long , ..., value1, value2 → ..., result
+		 * Remainder long
 		 */
 		void execute() override;
 
@@ -3846,7 +3852,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack  ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3869,7 +3875,7 @@ namespace jvm {
 		OPfrem() = default;
 
 		/**
-		 * Remainder float ..., value1, value2 → ..., result
+		 * Remainder float
 		 */
 		void execute() override;
 
@@ -3879,7 +3885,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3902,7 +3908,7 @@ namespace jvm {
 		OPdrem() = default;
 
 		/**
-		 * Remainder double ..., value1, value2 → ..., result
+		 * Remainder double
 		 */
 		void execute() override;
 
@@ -3912,7 +3918,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3935,7 +3941,7 @@ namespace jvm {
 		OPineg() = default;
 
 		/**
-		 * Negate int , ..., value →..., result
+		 * Negate int
 		 */
 		void execute() override;
 
@@ -3945,7 +3951,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack  ..., value →..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -3968,7 +3974,7 @@ namespace jvm {
 		OPlneg() = default;
 
 		/**
-		 * Negate long ..., value → ..., result
+		 * Negate long
 		 */
 		void execute() override;
 
@@ -3978,7 +3984,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4001,7 +4007,7 @@ namespace jvm {
 		OPfneg() = default;
 
 		/**
-		 * Negate float, ..., value → ..., result
+		 * Negate float
 		 */
 		void execute() override;
 
@@ -4011,7 +4017,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack  ..., value → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4034,7 +4040,7 @@ namespace jvm {
 		OPdneg() = default;
 
 		/**
-		 * Negate double , ..., value → ..., result
+		 * Negate double
 		 */
 		void execute() override;
 
@@ -4044,7 +4050,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack  ..., value → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4067,7 +4073,7 @@ namespace jvm {
 		OPishl() = default;
 
 		/**
-		 * Shift left int , ..., value1, value2 → ..., result
+		 * Shift left int  ,shift value1 by low 5 bits of value2
 		 */
 		void execute() override;
 
@@ -4077,7 +4083,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4100,7 +4106,7 @@ namespace jvm {
 		OPlshl() = default;
 
 		/**
-		 * Shift left long , ..., value1, value2 → ..., result
+		 * Shift left long ,shift value1 by low 5 bits of value2
 		 */
 		void execute() override;
 
@@ -4110,7 +4116,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4133,7 +4139,7 @@ namespace jvm {
 		OPishr() = default;
 
 		/**
-		 * The execution of this instruction
+		 * Arithmetic shift right int,shift value1 by low 5 bits of value2
 		 */
 		void execute() override;
 
@@ -4143,7 +4149,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4166,7 +4172,7 @@ namespace jvm {
 		OPlshr() = default;
 
 		/**
-		 * The execution of this instruction
+		 * Arithmetic shift right long, shift value1 by low 5 bits of value2
 		 */
 		void execute() override;
 
@@ -4176,7 +4182,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4199,7 +4205,7 @@ namespace jvm {
 		OPiushr() = default;
 
 		/**
-		 * The execution of this instruction
+		 * Logical shift right int, shift value1 by low 5 bits of value2
 		 */
 		void execute() override;
 
@@ -4209,7 +4215,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4232,7 +4238,7 @@ namespace jvm {
 		OPlushr() = default;
 
 		/**
-		 * The execution of this instruction
+		 * Logical shift right long, shift value1 by low 6 bits of value2
 		 */
 		void execute() override;
 
@@ -4242,7 +4248,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4265,7 +4271,7 @@ namespace jvm {
 		OPiand() = default;
 
 		/**
-		 * The execution of this instruction
+		 * Boolean AND int
 		 */
 		void execute() override;
 
@@ -4275,7 +4281,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 →..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4298,7 +4304,7 @@ namespace jvm {
 		OPland() = default;
 
 		/**
-		 * The execution of this instruction
+		 * Boolean AND long
 		 */
 		void execute() override;
 
@@ -4308,7 +4314,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4341,7 +4347,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4364,7 +4370,7 @@ namespace jvm {
 		OPlor() = default;
 
 		/**
-		 * Boolean OR long ,..., value1, value2 →..., result
+		 * Boolean OR long
 		 */
 		void execute() override;
 
@@ -4374,7 +4380,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 →..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4397,7 +4403,7 @@ namespace jvm {
 		OPixor() = default;
 
 		/**
-		 * Boolean XOR int,..., value1, value2 → ..., result
+		 * Boolean XOR int
 		 */
 		void execute() override;
 
@@ -4407,7 +4413,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4430,7 +4436,7 @@ namespace jvm {
 		OPlxor() = default;
 
 		/**
-		 * Boolean XOR long,..., value1, value2 → ..., result
+		 * Boolean XOR long
 		 */
 		void execute() override;
 
@@ -4440,7 +4446,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4473,7 +4479,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack -> no changes, int index int const
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4511,7 +4517,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4534,7 +4540,7 @@ namespace jvm {
 		OPi2f() = default;
 
 		/**
-		 * Convert int to float , ..., value →..., result
+		 * Convert int to float
 		 */
 		void execute() override;
 
@@ -4544,7 +4550,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack  ..., value →..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4567,7 +4573,7 @@ namespace jvm {
 		OPi2d() = default;
 
 		/**
-		 * Convert int to double , ..., value →..., result
+		 * Convert int to double
 		 */
 		void execute() override;
 
@@ -4577,7 +4583,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value →..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4600,7 +4606,7 @@ namespace jvm {
 		OPl2i() = default;
 
 		/**
-		 * Convert long to int,..., value →..., result
+		 * Convert long to int
 		 */
 		void execute() override;
 
@@ -4610,7 +4616,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value →..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4633,7 +4639,7 @@ namespace jvm {
 		OPl2f() = default;
 
 		/**
-		 * Convert long to float ,..., value →..., result
+		 * Convert long to float
 		 */
 		void execute() override;
 
@@ -4643,7 +4649,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value →..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4666,7 +4672,7 @@ namespace jvm {
 		OPl2d() = default;
 
 		/**
-		 * Convert long to double , ..., value →..., result
+		 * Convert long to double
 		 */
 		void execute() override;
 
@@ -4676,7 +4682,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value →..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4699,7 +4705,7 @@ namespace jvm {
 		OPf2i() = default;
 
 		/**
-		 * Convert float to int , ..., value → ..., result
+		 * Convert float to int
 		 */
 		void execute() override;
 
@@ -4709,7 +4715,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack  ..., value → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4732,7 +4738,7 @@ namespace jvm {
 		OPf2l() = default;
 
 		/**
-		 * Convert float to long , ..., value → ..., result
+		 * Convert float to long
 		 */
 		void execute() override;
 
@@ -4742,7 +4748,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4765,7 +4771,7 @@ namespace jvm {
 		OPf2d() = default;
 
 		/**
-		 * Convert float to double, ..., value →..., result
+		 * Convert float to double
 		 */
 		void execute() override;
 
@@ -4775,7 +4781,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value →..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4798,7 +4804,7 @@ namespace jvm {
 		OPd2i() = default;
 
 		/**
-		 * Convert double to int , ..., value → ..., result
+		 * Convert double to int
 		 */
 		void execute() override;
 
@@ -4808,7 +4814,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 *  Opstack ..., value → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4831,7 +4837,7 @@ namespace jvm {
 		OPd2l() = default;
 
 		/**
-		 * Convert double to long , ..., value → ..., result
+		 * Convert double to long
 		 */
 		void execute() override;
 
@@ -4841,7 +4847,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4864,7 +4870,7 @@ namespace jvm {
 		OPd2f() = default;
 
 		/**
-		 * Convert double to float , ..., value → ..., result
+		 * Convert double to float
 		 */
 		void execute() override;
 
@@ -4874,7 +4880,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4897,7 +4903,7 @@ namespace jvm {
 		OPi2b() = default;
 
 		/**
-		 * Convert int to byte , ..., value →..., result
+		 * Convert int to byte
 		 */
 		void execute() override;
 
@@ -4907,7 +4913,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value →..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4930,7 +4936,7 @@ namespace jvm {
 		OPi2c() = default;
 
 		/**
-		 * Convert int to char ..., value → ..., result
+		 * Convert int to char
 		 */
 		void execute() override;
 
@@ -4940,7 +4946,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4963,7 +4969,7 @@ namespace jvm {
 		OPi2s() = default;
 
 		/**
-		 * Convert int to short ..., value →..., result
+		 * Convert int to short
 		 */
 		void execute() override;
 
@@ -4973,7 +4979,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value →..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -4997,7 +5003,7 @@ namespace jvm {
 		OPlcmp() = default;
 
 		/**
-		 * Compare long , ..., value1, value2 → ..., result
+		 * Compare long , if value1 > value2 push 1 , if value2 > value1 push -1 if value1 == value2 push 0
 		 */
 		void execute() override;
 
@@ -5007,7 +5013,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack  ..., value1, value2 → ..., result , if value1 > value2 push 1 , if value2 > value1 push -1 if value1 == value2 push 0
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5030,7 +5036,7 @@ namespace jvm {
 		OPfcmpl() = default;
 
 		/**
-		 * Compare float , ..., value1, value2 → ..., result
+		 * Compare float, if value1 > value2 push 1 , if value2 > value1 push -1 if value1 == value2 push 0
 		 */
 		void execute() override;
 
@@ -5040,7 +5046,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack  ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5063,8 +5069,9 @@ namespace jvm {
 		OPfcmpg() = default;
 
 		/**
-		 * Compare float , ..., value1, value2 → ..., result
+		 * Compare float , if value1 > value2 push 1 , if value2 > value1 push -1 if value1 == value2 push 0
 		 */
+
 		void execute() override;
 
 		/**
@@ -5073,7 +5080,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5096,7 +5103,7 @@ namespace jvm {
 		OPdcmpl() = default;
 
 		/**
-		 * Compare double , ..., value1, value2 → ..., result
+		 * Compare double , if value1 > value2 push 1 , if value2 > value1 push -1 if value1 == value2 push 0
 		 */
 		void execute() override;
 
@@ -5106,7 +5113,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5129,7 +5136,7 @@ namespace jvm {
 		OPdcmpg() = default;
 
 		/**
-		 * Compare double , ..., value1, value2 →..., result
+		 * Compare double ,if value1 > value2 push 1 , if value2 > value1 push -1 if value1 == value2 push 0
 		 */
 		void execute() override;
 
@@ -5139,7 +5146,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack  ..., value1, value2 →..., result
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5162,7 +5169,7 @@ namespace jvm {
 		OPifeq() = default;
 
 		/**
-		 * Branch if int comparison with zero succeeds
+		 * Branch if int comparison with zero succeeds , == 0
 		 */
 		void execute() override;
 
@@ -5172,7 +5179,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value → ..., branchbyte1 + branchbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5198,7 +5205,7 @@ namespace jvm {
 		OPifne() = default;
 
 		/**
-		 * Branch if int comparison with zero succeeds
+		 * Branch if int comparison with zero succeeds , != 0
 		 */
 		void execute() override;
 
@@ -5208,7 +5215,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value → ..., branchbyte1 + branchbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5234,7 +5241,7 @@ namespace jvm {
 		OPiflt() = default;
 
 		/**
-		 * Branch if int comparison with zero succeeds
+		 * Branch if int comparison with zero succeeds , < 0
 		 */
 		void execute() override;
 
@@ -5244,7 +5251,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value → ..., branchbyte1 + branchbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5270,7 +5277,7 @@ namespace jvm {
 		OPifge() = default;
 
 		/**
-		 * Branch if int comparison with zero succeeds
+		 * Branch if int comparison with zero succeeds , >= 0
 		 */
 		void execute() override;
 
@@ -5280,7 +5287,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value → ..., branchbyte1 + branchbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5306,7 +5313,7 @@ namespace jvm {
 		OPifgt() = default;
 
 		/**
-		 * Branch if int comparison with zero succeeds
+		 * Branch if int comparison with zero succeeds , >0
 		 */
 		void execute() override;
 
@@ -5316,7 +5323,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value → ..., branchbyte1 + branchbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5342,7 +5349,7 @@ namespace jvm {
 		OPifle() = default;
 
 		/**
-		 * Branch if int comparison with zero succeeds
+		 * Branch if int comparison with zero succeeds , >= 0
 		 */
 		void execute() override;
 
@@ -5352,7 +5359,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value → ..., branchbyte1 + branchbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5378,7 +5385,7 @@ namespace jvm {
 		OPif_icmpeq() = default;
 
 		/**
-		 *  Branch if int comparison succeeds
+		 *  Branch if int comparison succeeds, value1 = value2
 		 */
 		void execute() override;
 
@@ -5388,7 +5395,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value → ..., branchbyte1 + branchbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5414,7 +5421,7 @@ namespace jvm {
 		OPif_icmpne() = default;
 
 		/**
-		 * Branch if int comparison succeeds
+		 * Branch if int comparison succeeds, value1 != value2
 		 */
 		void execute() override;
 
@@ -5450,7 +5457,7 @@ namespace jvm {
 		OPif_icmplt() = default;
 
 		/**
-		 * Branch if int comparison succeeds
+		 * Branch if int comparison succeeds, value1 < value2
 		 */
 		void execute() override;
 
@@ -5460,7 +5467,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 →... , branchbyte1 + branchbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5486,7 +5493,7 @@ namespace jvm {
 		OPif_icmpge() = default;
 
 		/**
-		 * Branch if int comparison succeeds
+		 * Branch if int comparison succeeds, value1 >= value2
 		 */
 		void execute() override;
 
@@ -5496,7 +5503,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 →... , branchbyte1 + branchbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5522,7 +5529,7 @@ namespace jvm {
 		OPif_icmpgt() = default;
 
 		/**
-		 * Branch if int comparison succeeds
+		 * Branch if int comparison succeeds, value1 > value2
 		 */
 		void execute() override;
 
@@ -5532,7 +5539,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 →... , branchbyte1 + branchbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5558,7 +5565,7 @@ namespace jvm {
 		OPif_icmple() = default;
 
 		/**
-		 * Branch if int comparison succeeds
+		 * Branch if int comparison succeeds,value1 <= value2
 		 */
 		void execute() override;
 
@@ -5568,7 +5575,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ... , branchbyte1 + branchbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5594,7 +5601,7 @@ namespace jvm {
 		OPif_acmpeq() = default;
 
 		/**
-		 * Branch if reference comparison succeeds
+		 * Branch if reference comparison succeeds , value1 = value2, ref
 		 */
 		void execute() override;
 
@@ -5604,7 +5611,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value1, value2 → ... , branchbyte1 branchbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5630,7 +5637,7 @@ namespace jvm {
 		OPif_acmpne() = default;
 
 		/**
-		 * Branch if reference comparison succeeds
+		 * Branch if reference comparison succeeds  value1 != value2, ref
 		 */
 		void execute() override;
 
@@ -5677,7 +5684,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack no change , branchbyte1 + branchbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5749,7 +5756,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack no change
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5785,7 +5792,21 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack  ..., index → ... ,
+		 * <0-3 byte pad>
+		 * defaultbyte1
+		 * defaultbyte2
+		 * defaultbyte3
+		 * defaultbyte4
+		 * lowbyte1
+		 *  lowbyte2
+		 * lowbyte3
+		 * lowbyte4
+		 *  highbyte1
+		 *  highbyte2
+		 *  highbyte3
+		 *  highbyte4
+		 *   jump offsets...
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5821,7 +5842,7 @@ namespace jvm {
 		OPlookupswitch() = default;
 
 		/**
-		 * The execution of this instruction
+		 * Access jump table by key match and jump
 		 */
 		void execute() override;
 
@@ -5831,7 +5852,17 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., key → ...
+		 * <0-3 byte pad>
+		 * defaultbyte1
+		 * defaultbyte2
+		 * defaultbyte3
+		 * defaultbyte4
+		 * npairs1
+		 * npairs2
+		 * npairs3
+		 * npairs4
+		 *  match-offset pairs...
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5874,7 +5905,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value → [empty]
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5907,7 +5938,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value → [empty]
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5940,7 +5971,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value → [empty]
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -5973,7 +6004,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value → [empty]
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6006,7 +6037,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., objectref → [empty]
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6039,7 +6070,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ... → [empty]
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6073,7 +6104,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., → ..., value,indexbyte1 + indexbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6109,7 +6140,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value → ... ,indexbyte1 + indexbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6145,7 +6176,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 *Opstack ..., objectref → ..., value ,indexbyte1 + indexbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6181,7 +6212,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., objectref, value → ... , indexbyte1 + indexbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6207,7 +6238,7 @@ namespace jvm {
 		OPinvokevirtual() = default;
 
 		/**
-		 * Invoke instance method; dispatch based on class
+		 * Invoke instance method; dispatch based on class , constant pool
 		 */
 		void execute() override;
 
@@ -6217,7 +6248,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., objectref, [arg1, [arg2 ...]] → ... , indexbyte1 + indexbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6253,7 +6284,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., objectref, [arg1, [arg2 ...]] → ... , indexbyte1 + indexbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6289,7 +6320,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., [arg1, [arg2 ...]] → ...
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6325,7 +6356,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., objectref, [arg1, [arg2 ...]] → ... , indexbyte1 + indexbyte2 , count , 0
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6352,7 +6383,7 @@ namespace jvm {
 		OPinvokedynamic() = default;
 
 		/**
-		 * Invoke dynamic method
+		 * Invoke dynamic method , indexbyte1 + indexbyte2 , 0 , 0
 		 */
 		void execute() override;
 
@@ -6362,7 +6393,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., [arg1, [arg2 ...]] → ...
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6398,7 +6429,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ... → ..., objectref indexbyte1 + indexbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6424,7 +6455,7 @@ namespace jvm {
 		OPnewarray() = default;
 
 		/**
-		 * Create new array
+		 * Create new array , 4 = boolean, 5 = char ,6 = float , 7 = double, 8 = byte, 9 = short ,10 = int , 11 = long
 		 */
 		void execute() override;
 
@@ -6434,7 +6465,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., count → ..., arrayref , atype
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6460,7 +6491,7 @@ namespace jvm {
 		OPanewarray() = default;
 
 		/**
-		 * Create new array of reference
+		 * Create new array of reference , constant pool
 		 */
 		void execute() override;
 
@@ -6470,7 +6501,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opcode ..., count → ..., arrayref , indexbyte1 + indexbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6506,7 +6537,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., arrayref →..., length
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6539,7 +6570,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., objectref → objectref
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6572,7 +6603,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., objectref → ..., objectref ,  indexbyte1 + indexbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6608,7 +6639,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., objectref → ..., result, indexbyte1 + indexbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6644,7 +6675,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., objectref → ...
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6677,7 +6708,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., objectref → ...
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6711,7 +6742,12 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack Same as modified instruction
+		 * iinc
+		 * indexbyte1
+		 * indexbyte2
+		 * constbyte1
+		 * constbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6754,7 +6790,10 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., count1, [count2, ...] → ..., arrayref
+		 * indexbyte1
+		 * indexbyte2
+		 * dimensions
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6791,7 +6830,8 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ..., value → ... , branchbyte1 + branchbyte2
+
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6827,7 +6867,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack  ..., value → ...,branchbyte1 + branchbyte2
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6863,7 +6903,8 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack no changes
+		 * branchbyte1 + branchbyte2 + branchbyte3 + branchbyte4
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
@@ -6899,7 +6940,7 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Fill the params of this class
+		 * Opstack ... → ..., address , branchbyte1 + branchbyte2 + branchbyte3 + branchbyte4
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
