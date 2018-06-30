@@ -388,7 +388,7 @@ namespace jvm {
 	}
 
 	uint32_t OPbipush::fillParams (const uint32_t idx, const std::vector<u1>& data) {
-		byte = data[idx+1];
+		byte = Converter::to_i1(data[idx+1]);
 		return 1;
 	}
 
@@ -400,7 +400,7 @@ namespace jvm {
 	}
 
 	void OPsipush::printToStream(std::ostream& os, std::string& prefix) {
-		os << prefix << getName() << std::endl;
+		os << prefix << getName() << " " << value << std::endl;
 	}
 
 	std::string OPsipush::getName () {
