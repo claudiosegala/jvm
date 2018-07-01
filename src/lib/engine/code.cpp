@@ -264,7 +264,7 @@ namespace jvm {
 	std::shared_ptr<Instruction> Code::getInstr(const u1 &opcode) {
 		auto instrInstantiator = instruction_set[opcode];
 
-		if (not instrInstantiator) {
+		if (!instrInstantiator) {
 			throw "Opcode with number " + std::to_string(opcode) + " does not exist!";
 		}
 
