@@ -289,7 +289,7 @@ namespace jvm {
 
 	}
 
-	MethodInfo &Engine::findMethod(CP_Methodref& ref) {
+	const MethodInfo & Engine::findMethod(CP_Methodref &ref) {
 		auto &cl = fs.top().cl;
 		auto &cp = cl.constant_pool;
 		auto NameAndType = cp[ref.name_and_type_index] -> as<CP_NameAndType>();
@@ -297,17 +297,17 @@ namespace jvm {
 		std::string descriptor = cp[NameAndType.descriptor_index] -> toString(cp);
 		auto pair = cl.methods.find(name + descriptor);
 		if(pair != cl.methods.end())
-			return cl.methods[name+descriptor];
+			return pair->second;
 		throw "Method not found";
 	}
 
-	ClassLoader &Engine::findClass(CP_Class &classInfo) {
+	const ClassLoader & Engine::findClass(CP_Class &classInfo) {
 		auto &cl = fs.top().cl;
 		auto &cp = cl.constant_pool;
 		std::string ClassName = cp[classInfo.name_index]-> toString(cp);
 		auto pair = JavaClasses.find(ClassName);
 		if(pair != JavaClasses.end())
-			return JavaClasses[ClassName];
+			return pair->second;
 		throw "Class not found";
 	}
 

@@ -60,9 +60,9 @@ namespace jvm {
 		 */
 		void run_init();
 
-		MethodInfo& findMethod(CP_Methodref& ref);
+		const MethodInfo & findMethod(CP_Methodref &ref);
 
-		ClassLoader& findClass(CP_Class& classInfo);
+		const ClassLoader & findClass(CP_Class &classInfo);
 
 		/**
 		 * Nothing
