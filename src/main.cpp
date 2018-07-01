@@ -20,13 +20,13 @@ int main (int argc, char *argv[ ]) {
 		std::string filename;
 
 		for (const auto &command : commands) {
-			if (command == "--describe" or command == "-d") {
+			if (command == "--describe" || command == "-d") {
 				isToDescribe = true;
-			} else if (command == "--execute" or command == "-r") {
+			} else if (command == "--execute" || command == "-r") {
 				isToRun = true;
-			} else if (command == "--help" or command == "-h") {
+			} else if (command == "--help"||  command == "-h") {
 				isHelp = true;
-			} else if (not hasName) {
+			} else if (!hasName) {
 				filename = command;
 				hasName = true;
 			} else {
@@ -41,14 +41,14 @@ int main (int argc, char *argv[ ]) {
 			return 0;
 		}
 
-		if (not hasName) {
+		if (!hasName) {
 			std::cout << "Digite o nome do arquivo: ";
 			std::cin >> filename;
 		}
 
 		cl.read(filename);
 
-		if (not isToDescribe and not isToRun) {
+		if (!isToDescribe && !isToRun) {
 			int op;
 
 			std::cout << "Digite 1 se deseja que o(s) .class seja(m) lido(s)" << std::endl;
