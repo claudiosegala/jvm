@@ -1,6 +1,5 @@
 #pragma once
 
-#include <class_loader/method.hpp>
 #include "operands.hpp"
 #include "variables.hpp"
 

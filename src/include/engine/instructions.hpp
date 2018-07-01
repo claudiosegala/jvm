@@ -5,7 +5,7 @@
 
 namespace jvm {
 
-	 class FramesStack;
+	class FramesStack;
 
 	class Instruction {
 	protected:
