@@ -1719,8 +1719,8 @@ namespace jvm {
 	void Engine::exec_jsr_w (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOjsr_w *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		frame.operands.push4(this->PC);
+		this->PC += data->branchoffset;
 	}
 
 	void Engine::exec_breakpoint (InstructionInfo * info) {

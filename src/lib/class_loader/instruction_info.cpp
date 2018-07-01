@@ -511,7 +511,7 @@ namespace jvm {
 
 	uint32_t OPINFOlload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		index = data[idx+1];
-		return 0;
+		return 1;
 	}
 
 

@@ -34,7 +34,7 @@ namespace jvm {
 		ClassLoader& mainClass;
 
 		//> PC Register
-		uint64_t PC;
+		u4 PC;
 
 		//> Frame Stack
 		FramesStack fs;
