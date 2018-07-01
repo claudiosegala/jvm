@@ -1,5 +1,6 @@
 #pragma once
 
+#include <unordered_map>
 #include "frames_stack.hpp"
 #include "class_loader/class_loader.hpp"
 
@@ -31,7 +32,7 @@ namespace jvm {
 		std::vector<Execution> exec;
 
 		//> Reference to .class that will be executed first
-		ClassLoader& mainClass;
+		std::unordered_map<std::string, ClassLoader> JavaClasses;
 
 		//> PC Register
 		u4 PC;
@@ -58,6 +59,10 @@ namespace jvm {
 		 * Run the init method
 		 */
 		void run_init();
+
+		const MethodInfo & findMethod(CP_Methodref &ref);
+
+		const ClassLoader & findClass(CP_Class &classInfo);
 
 		/**
 		 * Nothing
@@ -1083,7 +1088,6 @@ namespace jvm {
 		 * These instructions are intended to provide "back doors" or traps to implementation-specific functionality implemented in software and hardware, respectively
 		 */
 		void exec_impdep2 (InstructionInfo *);
-
 	};
 
 }
