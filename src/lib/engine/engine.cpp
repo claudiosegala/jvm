@@ -5,8 +5,8 @@ namespace jvm {
 	Engine::Engine (ClassLoader &cl) : mainClass(cl), PC(0) {}
 
 	void Engine::execute () {
-		run_clinit();
-		run_init();
+		//run_clinit();
+		//run_init();
 	}
 
 	void Engine::run_clinit () {
