@@ -1,5 +1,6 @@
 #pragma once
 
+#include <class_loader/method.hpp>
 #include "operands.hpp"
 #include "variables.hpp"
 
@@ -14,11 +15,13 @@ namespace jvm {
 		*/
 		Frame(ClassLoader& cl);
 
+		~Frame();
+
 		//> Operands Stack
 		Operands operands;
 
-		//> Local Variables Stack
-		Variables variables;
+		//> Local Variables Vector
+		lvv variables;
 
 		//> The returned value
 		u4 Return_value;
