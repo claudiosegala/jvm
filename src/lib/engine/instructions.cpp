@@ -28,6 +28,7 @@ namespace jvm {
 
 	void OPaconst_null::execute() {
 
+
 	}
 
 	void OPaconst_null::printToStream(std::ostream& os, std::string& prefix) {
@@ -50,6 +51,9 @@ namespace jvm {
 	// iconst_m1
 
 	void OPiconst_m1::execute() {
+
+
+
 
 	}
 
@@ -1675,6 +1679,7 @@ namespace jvm {
 	// dstore_1
 
 	void OPdstore_1::execute() {
+		// push na pilha
 
 	}
 

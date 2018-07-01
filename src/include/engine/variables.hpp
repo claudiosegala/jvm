@@ -3,22 +3,23 @@
 #include "base.hpp"
 
 namespace jvm {
-	class Variables : public std::vector<u4> {
+	class Variables   {
 	public:
 		/**
 		 * Default constructor
 		 */
 		Variables() = default;
 
+		void  Write_vector4(u1 ,op4);
 
-		template<typename T>
-		void  Write_vector(u1 ,T);
+		void  Write_vector8(u1 ,op8);
 
-		template<typename T>
-		T Read_vector(u1);
+		op4 Read_vector4(u1);
 
-	private:
-		//>Variables Stack
-		std::vector <u4> variables;
+		op8 Read_vector8(u1);
+
+
+		 std::vector<op4> vetor;
+
 	};
 }
