@@ -2,7 +2,7 @@
 
 namespace jvm {
 
-	Frame::Frame(ClassLoader &cl) : cl(cl) {}
+	Frame::Frame(ClassLoader &cl, MethodInfo& mt) : cl(cl), mt(mt) {}
 
 	Frame::~Frame() {
 		delete[] variables.v4;
