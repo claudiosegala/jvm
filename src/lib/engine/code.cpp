@@ -261,17 +261,6 @@ namespace jvm {
 			Instruction::instantiate<OPimpdep2>            // 255
 	};
 
-	void Code::interpret(std::vector<u1> &data) {
-		for (uint32_t i = 0; i < data.size(); i++) {
-			auto opcode = data[i];
-			auto instr = getInstr(opcode);
-			auto paramsRead = instr->fillParams(i, data);
-
-			push_back(instr);
-			i += paramsRead;
-		}
-	}
-
 	std::shared_ptr<Instruction> Code::getInstr(const u1 &opcode) {
 		auto instrInstantiator = instruction_set[opcode];
 
@@ -280,20 +269,6 @@ namespace jvm {
 		}
 
 		return instrInstantiator();
-	}
-
-	void Code::printToStream(std::ostream &os, std::string &prefix) {
-		auto newPrefix = prefix + "\t";
-
-		os << prefix << "Opcodes:" << std::endl;
-
-		for (std::shared_ptr<Instruction> &ptr : *this) {
-			auto instr = ptr.get();
-
-			if (instr != nullptr) {
-				instr->printToStream(os, newPrefix);
-			}
-		}
 	}
 
 };
