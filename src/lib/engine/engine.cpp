@@ -1698,29 +1698,34 @@ namespace jvm {
 	void Engine::exec_ifnull (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifnull *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		op4 ref = frame.operands.pop4();
+		if(ref.f == 0)
+			this->PC = static_cast<u4>(static_cast<i4>(PC) + data->branchoffset);
+		else
+			this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_ifnonnull (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifnonnull *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		op4 ref = frame.operands.pop4();
+		if(!ref.f == 0)
+			this->PC = static_cast<u4>(static_cast<i4>(PC) + data->branchoffset);
+        else
+			this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_goto_w (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOgoto_w *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+        this->PC = static_cast<u4>(static_cast<i4>(PC) + data->branchoffset);
 	}
 
 	void Engine::exec_jsr_w (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOjsr_w *>(info); // get data in class
 		auto &frame = fs.top();
 		frame.operands.push4(this->PC + info->jmp);
-		this->PC += data->branchoffset;
+		this->PC = static_cast<u4>(static_cast<i4>(PC) + data->branchoffset);
 	}
 
 	void Engine::exec_breakpoint (InstructionInfo * info) {
