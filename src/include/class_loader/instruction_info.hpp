@@ -11,7 +11,7 @@ namespace jvm {
 
 	public:
 		//> Jumping bytes
-		uint32_t jpm;
+		uint32_t jmp;
 
 		template <class T>
 		static std::shared_ptr<InstructionInfo> instantiate() {

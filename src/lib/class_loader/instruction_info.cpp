@@ -4,7 +4,7 @@ namespace jvm {
 
 	// nop
 	OPINFOnop::OPINFOnop () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOnop::printToStream(std::ostream& os, std::string& prefix) {
@@ -26,7 +26,7 @@ namespace jvm {
 
 	// aconst_null
 	OPINFOaconst_null::OPINFOaconst_null () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOaconst_null::printToStream(std::ostream& os, std::string& prefix) {
@@ -48,7 +48,7 @@ namespace jvm {
 
 	// iconst_m1
 	OPINFOiconst_m1::OPINFOiconst_m1 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOiconst_m1::printToStream(std::ostream& os, std::string& prefix) {
@@ -70,7 +70,7 @@ namespace jvm {
 
 	// iconst_0
 	OPINFOiconst_0::OPINFOiconst_0 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOiconst_0::printToStream(std::ostream& os, std::string& prefix) {
@@ -92,7 +92,7 @@ namespace jvm {
 
 	// iconst_1
 	OPINFOiconst_1::OPINFOiconst_1 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOiconst_1::printToStream(std::ostream& os, std::string& prefix) {
@@ -114,7 +114,7 @@ namespace jvm {
 
 	// iconst_2
 	OPINFOiconst_2::OPINFOiconst_2 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOiconst_2::printToStream(std::ostream& os, std::string& prefix) {
@@ -136,7 +136,7 @@ namespace jvm {
 
 	// iconst_3
 	OPINFOiconst_3::OPINFOiconst_3 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOiconst_3::printToStream(std::ostream& os, std::string& prefix) {
@@ -158,7 +158,7 @@ namespace jvm {
 
 	// iconst_4
 	OPINFOiconst_4::OPINFOiconst_4 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOiconst_4::printToStream(std::ostream& os, std::string& prefix) {
@@ -180,7 +180,7 @@ namespace jvm {
 
 	// iconst_5
 	OPINFOiconst_5::OPINFOiconst_5 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOiconst_5::printToStream(std::ostream& os, std::string& prefix) {
@@ -202,7 +202,7 @@ namespace jvm {
 
 	// lconst_0
 	OPINFOlconst_0::OPINFOlconst_0 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlconst_0::printToStream(std::ostream& os, std::string& prefix) {
@@ -224,7 +224,7 @@ namespace jvm {
 
 	// lconst_1
 	OPINFOlconst_1::OPINFOlconst_1 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlconst_1::printToStream(std::ostream& os, std::string& prefix) {
@@ -246,7 +246,7 @@ namespace jvm {
 
 	// fconst_0
 	OPINFOfconst_0::OPINFOfconst_0 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOfconst_0::printToStream(std::ostream& os, std::string& prefix) {
@@ -268,7 +268,7 @@ namespace jvm {
 
 	// fconst_1
 	OPINFOfconst_1::OPINFOfconst_1 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOfconst_1::printToStream(std::ostream& os, std::string& prefix) {
@@ -290,7 +290,7 @@ namespace jvm {
 
 	// fconst_2
 	OPINFOfconst_2::OPINFOfconst_2 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOfconst_2::printToStream(std::ostream& os, std::string& prefix) {
@@ -312,7 +312,7 @@ namespace jvm {
 
 	// dconst_0
 	OPINFOdconst_0::OPINFOdconst_0 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdconst_0::printToStream(std::ostream& os, std::string& prefix) {
@@ -334,7 +334,7 @@ namespace jvm {
 
 	// dconst_1
 	OPINFOdconst_1::OPINFOdconst_1 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdconst_1::printToStream(std::ostream& os, std::string& prefix) {
@@ -356,7 +356,7 @@ namespace jvm {
 
 	// bipush
 	OPINFObipush::OPINFObipush () {
-		jpm = 0;
+		jmp = 1;
 	}
 
 	void OPINFObipush::printToStream(std::ostream& os, std::string& prefix) {
@@ -379,7 +379,7 @@ namespace jvm {
 
 	// sipush
 	OPINFOsipush::OPINFOsipush () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOsipush::printToStream(std::ostream& os, std::string& prefix) {
@@ -402,7 +402,7 @@ namespace jvm {
 
 	// ldc
 	OPINFOldc::OPINFOldc () {
-		jpm = 0;
+		jmp = 1;
 	}
 
 	void OPINFOldc::printToStream(std::ostream& os, std::string& prefix) {
@@ -425,7 +425,7 @@ namespace jvm {
 
 	// ldc_w
 	OPINFOldc_w::OPINFOldc_w () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOldc_w::printToStream(std::ostream& os, std::string& prefix) {
@@ -448,7 +448,7 @@ namespace jvm {
 
 	// ldc2_w
 	OPINFOldc2_w::OPINFOldc2_w () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOldc2_w::printToStream(std::ostream& os, std::string& prefix) {
@@ -471,7 +471,7 @@ namespace jvm {
 
 	// iload
 	OPINFOiload::OPINFOiload () {
-		jpm = 0;
+		jmp = 1;
 	}
 
 	void OPINFOiload::printToStream(std::ostream& os, std::string& prefix) {
@@ -494,7 +494,7 @@ namespace jvm {
 
 	// lload
 	OPINFOlload::OPINFOlload () {
-		jpm = 0;
+		jmp = 1;
 	}
 
 	void OPINFOlload::printToStream(std::ostream& os, std::string& prefix) {
@@ -511,13 +511,13 @@ namespace jvm {
 
 	uint32_t OPINFOlload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		index = data[idx+1];
-		return 0;
+		return 1;
 	}
 
 
 	// fload
 	OPINFOfload::OPINFOfload () {
-		jpm = 0;
+		jmp = 1;
 	}
 
 	void OPINFOfload::printToStream(std::ostream& os, std::string& prefix) {
@@ -540,7 +540,7 @@ namespace jvm {
 
 	// dload
 	OPINFOdload::OPINFOdload () {
-		jpm = 0;
+		jmp = 1;
 	}
 
 	void OPINFOdload::printToStream(std::ostream& os, std::string& prefix) {
@@ -563,7 +563,7 @@ namespace jvm {
 
 	// aload
 	OPINFOaload::OPINFOaload () {
-		jpm = 0;
+		jmp = 1;
 	}
 
 	void OPINFOaload::printToStream(std::ostream& os, std::string& prefix) {
@@ -586,7 +586,7 @@ namespace jvm {
 
 	// iload_0
 	OPINFOiload_0::OPINFOiload_0 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOiload_0::printToStream(std::ostream& os, std::string& prefix) {
@@ -608,7 +608,7 @@ namespace jvm {
 
 	// iload_1
 	OPINFOiload_1::OPINFOiload_1 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOiload_1::printToStream(std::ostream& os, std::string& prefix) {
@@ -630,7 +630,7 @@ namespace jvm {
 
 	// iload_2
 	OPINFOiload_2::OPINFOiload_2 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOiload_2::printToStream(std::ostream& os, std::string& prefix) {
@@ -652,7 +652,7 @@ namespace jvm {
 
 	// iload_3
 	OPINFOiload_3::OPINFOiload_3 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOiload_3::printToStream(std::ostream& os, std::string& prefix) {
@@ -674,7 +674,7 @@ namespace jvm {
 
 	// lload_0
 	OPINFOlload_0::OPINFOlload_0 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlload_0::printToStream(std::ostream& os, std::string& prefix) {
@@ -696,7 +696,7 @@ namespace jvm {
 
 	// lload_1
 	OPINFOlload_1::OPINFOlload_1 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlload_1::printToStream(std::ostream& os, std::string& prefix) {
@@ -718,7 +718,7 @@ namespace jvm {
 
 	// lload_2
 	OPINFOlload_2::OPINFOlload_2 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlload_2::printToStream(std::ostream& os, std::string& prefix) {
@@ -740,7 +740,7 @@ namespace jvm {
 
 	// lload_3
 	OPINFOlload_3::OPINFOlload_3 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlload_3::printToStream(std::ostream& os, std::string& prefix) {
@@ -762,7 +762,7 @@ namespace jvm {
 
 	// fload_0
 	OPINFOfload_0::OPINFOfload_0 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOfload_0::printToStream(std::ostream& os, std::string& prefix) {
@@ -784,7 +784,7 @@ namespace jvm {
 
 	// fload_1
 	OPINFOfload_1::OPINFOfload_1 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOfload_1::printToStream(std::ostream& os, std::string& prefix) {
@@ -806,7 +806,7 @@ namespace jvm {
 
 	// fload_2
 	OPINFOfload_2::OPINFOfload_2 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOfload_2::printToStream(std::ostream& os, std::string& prefix) {
@@ -828,7 +828,7 @@ namespace jvm {
 
 	// fload_3
 	OPINFOfload_3::OPINFOfload_3 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOfload_3::printToStream(std::ostream& os, std::string& prefix) {
@@ -850,7 +850,7 @@ namespace jvm {
 
 	// dload_0
 	OPINFOdload_0::OPINFOdload_0 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdload_0::printToStream(std::ostream& os, std::string& prefix) {
@@ -872,7 +872,7 @@ namespace jvm {
 
 	// dload_1
 	OPINFOdload_1::OPINFOdload_1 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdload_1::printToStream(std::ostream& os, std::string& prefix) {
@@ -894,7 +894,7 @@ namespace jvm {
 
 	// dload_2
 	OPINFOdload_2::OPINFOdload_2 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdload_2::printToStream(std::ostream& os, std::string& prefix) {
@@ -916,7 +916,7 @@ namespace jvm {
 
 	// dload_3
 	OPINFOdload_3::OPINFOdload_3 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdload_3::printToStream(std::ostream& os, std::string& prefix) {
@@ -938,7 +938,7 @@ namespace jvm {
 
 	// aload_0
 	OPINFOaload_0::OPINFOaload_0 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOaload_0::printToStream(std::ostream& os, std::string& prefix) {
@@ -960,7 +960,7 @@ namespace jvm {
 
 	// aload_1
 	OPINFOaload_1::OPINFOaload_1 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOaload_1::printToStream(std::ostream& os, std::string& prefix) {
@@ -982,7 +982,7 @@ namespace jvm {
 
 	// aload_2
 	OPINFOaload_2::OPINFOaload_2 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOaload_2::printToStream(std::ostream& os, std::string& prefix) {
@@ -1004,7 +1004,7 @@ namespace jvm {
 
 	// aload_3
 	OPINFOaload_3::OPINFOaload_3 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOaload_3::printToStream(std::ostream& os, std::string& prefix) {
@@ -1026,7 +1026,7 @@ namespace jvm {
 
 	// iaload
 	OPINFOiaload::OPINFOiaload () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOiaload::printToStream(std::ostream& os, std::string& prefix) {
@@ -1048,7 +1048,7 @@ namespace jvm {
 
 	// laload
 	OPINFOlaload::OPINFOlaload () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlaload::printToStream(std::ostream& os, std::string& prefix) {
@@ -1070,7 +1070,7 @@ namespace jvm {
 
 	// faload
 	OPINFOfaload::OPINFOfaload () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOfaload::printToStream(std::ostream& os, std::string& prefix) {
@@ -1092,7 +1092,7 @@ namespace jvm {
 
 	// daload
 	OPINFOdaload::OPINFOdaload () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdaload::printToStream(std::ostream& os, std::string& prefix) {
@@ -1114,7 +1114,7 @@ namespace jvm {
 
 	// aaload
 	OPINFOaaload::OPINFOaaload () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOaaload::printToStream(std::ostream& os, std::string& prefix) {
@@ -1136,7 +1136,7 @@ namespace jvm {
 
 	// baload
 	OPINFObaload::OPINFObaload () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFObaload::printToStream(std::ostream& os, std::string& prefix) {
@@ -1158,7 +1158,7 @@ namespace jvm {
 
 	// caload
 	OPINFOcaload::OPINFOcaload () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOcaload::printToStream(std::ostream& os, std::string& prefix) {
@@ -1180,7 +1180,7 @@ namespace jvm {
 
 	// saload
 	OPINFOsaload::OPINFOsaload () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOsaload::printToStream(std::ostream& os, std::string& prefix) {
@@ -1202,7 +1202,7 @@ namespace jvm {
 
 	// istore
 	OPINFOistore::OPINFOistore () {
-		jpm = 0;
+		jmp = 1;
 	}
 
 	void OPINFOistore::printToStream(std::ostream& os, std::string& prefix) {
@@ -1225,7 +1225,7 @@ namespace jvm {
 
 	// lstore
 	OPINFOlstore::OPINFOlstore () {
-		jpm = 0;
+		jmp = 1;
 	}
 
 	void OPINFOlstore::printToStream(std::ostream& os, std::string& prefix) {
@@ -1248,7 +1248,7 @@ namespace jvm {
 
 	// fstore
 	OPINFOfstore::OPINFOfstore () {
-		jpm = 0;
+		jmp = 1;
 	}
 
 	void OPINFOfstore::printToStream(std::ostream& os, std::string& prefix) {
@@ -1271,7 +1271,7 @@ namespace jvm {
 
 	// dstore
 	OPINFOdstore::OPINFOdstore () {
-		jpm = 0;
+		jmp = 1;
 	}
 
 	void OPINFOdstore::printToStream(std::ostream& os, std::string& prefix) {
@@ -1294,7 +1294,7 @@ namespace jvm {
 
 	// astore
 	OPINFOastore::OPINFOastore () {
-		jpm = 0;
+		jmp = 1;
 	}
 
 	void OPINFOastore::printToStream(std::ostream& os, std::string& prefix) {
@@ -1317,7 +1317,7 @@ namespace jvm {
 
 	// istore_0
 	OPINFOistore_0::OPINFOistore_0 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOistore_0::printToStream(std::ostream& os, std::string& prefix) {
@@ -1339,7 +1339,7 @@ namespace jvm {
 
 	// istore_1
 	OPINFOistore_1::OPINFOistore_1 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOistore_1::printToStream(std::ostream& os, std::string& prefix) {
@@ -1361,7 +1361,7 @@ namespace jvm {
 
 	// istore_2
 	OPINFOistore_2::OPINFOistore_2 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOistore_2::printToStream(std::ostream& os, std::string& prefix) {
@@ -1383,7 +1383,7 @@ namespace jvm {
 
 	// istore_3
 	OPINFOistore_3::OPINFOistore_3 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOistore_3::printToStream(std::ostream& os, std::string& prefix) {
@@ -1405,7 +1405,7 @@ namespace jvm {
 
 	// lstore_0
 	OPINFOlstore_0::OPINFOlstore_0 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlstore_0::printToStream(std::ostream& os, std::string& prefix) {
@@ -1427,7 +1427,7 @@ namespace jvm {
 
 	// lstore_1
 	OPINFOlstore_1::OPINFOlstore_1 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlstore_1::printToStream(std::ostream& os, std::string& prefix) {
@@ -1449,7 +1449,7 @@ namespace jvm {
 
 	// lstore_2
 	OPINFOlstore_2::OPINFOlstore_2 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlstore_2::printToStream(std::ostream& os, std::string& prefix) {
@@ -1471,7 +1471,7 @@ namespace jvm {
 
 	// lstore_3
 	OPINFOlstore_3::OPINFOlstore_3 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlstore_3::printToStream(std::ostream& os, std::string& prefix) {
@@ -1493,7 +1493,7 @@ namespace jvm {
 
 	// fstore_0
 	OPINFOfstore_0::OPINFOfstore_0 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOfstore_0::printToStream(std::ostream& os, std::string& prefix) {
@@ -1515,7 +1515,7 @@ namespace jvm {
 
 	// fstore_1
 	OPINFOfstore_1::OPINFOfstore_1 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOfstore_1::printToStream(std::ostream& os, std::string& prefix) {
@@ -1537,7 +1537,7 @@ namespace jvm {
 
 	// fstore_2
 	OPINFOfstore_2::OPINFOfstore_2 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOfstore_2::printToStream(std::ostream& os, std::string& prefix) {
@@ -1559,7 +1559,7 @@ namespace jvm {
 
 	// fstore_3
 	OPINFOfstore_3::OPINFOfstore_3 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOfstore_3::printToStream(std::ostream& os, std::string& prefix) {
@@ -1581,7 +1581,7 @@ namespace jvm {
 
 	// dstore_0
 	OPINFOdstore_0::OPINFOdstore_0 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdstore_0::printToStream(std::ostream& os, std::string& prefix) {
@@ -1603,7 +1603,7 @@ namespace jvm {
 
 	// dstore_1
 	OPINFOdstore_1::OPINFOdstore_1 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdstore_1::printToStream(std::ostream& os, std::string& prefix) {
@@ -1625,7 +1625,7 @@ namespace jvm {
 
 	// dstore_2
 	OPINFOdstore_2::OPINFOdstore_2 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdstore_2::printToStream(std::ostream& os, std::string& prefix) {
@@ -1647,7 +1647,7 @@ namespace jvm {
 
 	// dstore_3
 	OPINFOdstore_3::OPINFOdstore_3 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdstore_3::printToStream(std::ostream& os, std::string& prefix) {
@@ -1669,7 +1669,7 @@ namespace jvm {
 
 	// astore_0
 	OPINFOastore_0::OPINFOastore_0 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOastore_0::printToStream(std::ostream& os, std::string& prefix) {
@@ -1691,7 +1691,7 @@ namespace jvm {
 
 	// astore_1
 	OPINFOastore_1::OPINFOastore_1 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOastore_1::printToStream(std::ostream& os, std::string& prefix) {
@@ -1713,7 +1713,7 @@ namespace jvm {
 
 	// astore_2
 	OPINFOastore_2::OPINFOastore_2 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOastore_2::printToStream(std::ostream& os, std::string& prefix) {
@@ -1735,7 +1735,7 @@ namespace jvm {
 
 	// astore_3
 	OPINFOastore_3::OPINFOastore_3 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOastore_3::printToStream(std::ostream& os, std::string& prefix) {
@@ -1757,7 +1757,7 @@ namespace jvm {
 
 	// iastore
 	OPINFOiastore::OPINFOiastore () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOiastore::printToStream(std::ostream& os, std::string& prefix) {
@@ -1779,7 +1779,7 @@ namespace jvm {
 
 	// lastore
 	OPINFOlastore::OPINFOlastore () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlastore::printToStream(std::ostream& os, std::string& prefix) {
@@ -1801,7 +1801,7 @@ namespace jvm {
 
 	// fastore
 	OPINFOfastore::OPINFOfastore () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOfastore::printToStream(std::ostream& os, std::string& prefix) {
@@ -1823,7 +1823,7 @@ namespace jvm {
 
 	// dastore
 	OPINFOdastore::OPINFOdastore () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdastore::printToStream(std::ostream& os, std::string& prefix) {
@@ -1845,7 +1845,7 @@ namespace jvm {
 
 	// aastore
 	OPINFOaastore::OPINFOaastore () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOaastore::printToStream(std::ostream& os, std::string& prefix) {
@@ -1867,7 +1867,7 @@ namespace jvm {
 
 	// bastore
 	OPINFObastore::OPINFObastore () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFObastore::printToStream(std::ostream& os, std::string& prefix) {
@@ -1889,7 +1889,7 @@ namespace jvm {
 
 	// castore
 	OPINFOcastore::OPINFOcastore () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOcastore::printToStream(std::ostream& os, std::string& prefix) {
@@ -1911,7 +1911,7 @@ namespace jvm {
 
 	// sastore
 	OPINFOsastore::OPINFOsastore () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOsastore::printToStream(std::ostream& os, std::string& prefix) {
@@ -1933,7 +1933,7 @@ namespace jvm {
 
 	// pop
 	OPINFOpop::OPINFOpop () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOpop::printToStream(std::ostream& os, std::string& prefix) {
@@ -1955,7 +1955,7 @@ namespace jvm {
 
 	// pop2
 	OPINFOpop2::OPINFOpop2 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOpop2::printToStream(std::ostream& os, std::string& prefix) {
@@ -1977,7 +1977,7 @@ namespace jvm {
 
 	// dup
 	OPINFOdup::OPINFOdup () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdup::printToStream(std::ostream& os, std::string& prefix) {
@@ -1999,7 +1999,7 @@ namespace jvm {
 
 	// dup_x1
 	OPINFOdup_x1::OPINFOdup_x1 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdup_x1::printToStream(std::ostream& os, std::string& prefix) {
@@ -2021,7 +2021,7 @@ namespace jvm {
 
 	// dup_x2
 	OPINFOdup_x2::OPINFOdup_x2 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdup_x2::printToStream(std::ostream& os, std::string& prefix) {
@@ -2043,7 +2043,7 @@ namespace jvm {
 
 	// dup2
 	OPINFOdup2::OPINFOdup2 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdup2::printToStream(std::ostream& os, std::string& prefix) {
@@ -2065,7 +2065,7 @@ namespace jvm {
 
 	// dup2_x1
 	OPINFOdup2_x1::OPINFOdup2_x1 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdup2_x1::printToStream(std::ostream& os, std::string& prefix) {
@@ -2087,7 +2087,7 @@ namespace jvm {
 
 	// dup2_x2
 	OPINFOdup2_x2::OPINFOdup2_x2 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdup2_x2::printToStream(std::ostream& os, std::string& prefix) {
@@ -2109,7 +2109,7 @@ namespace jvm {
 
 	// swap
 	OPINFOswap::OPINFOswap () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOswap::printToStream(std::ostream& os, std::string& prefix) {
@@ -2131,7 +2131,7 @@ namespace jvm {
 
 	// iadd
 	OPINFOiadd::OPINFOiadd () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOiadd::printToStream(std::ostream& os, std::string& prefix) {
@@ -2153,7 +2153,7 @@ namespace jvm {
 
 	// ladd
 	OPINFOladd::OPINFOladd () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOladd::printToStream(std::ostream& os, std::string& prefix) {
@@ -2175,7 +2175,7 @@ namespace jvm {
 
 	// fadd
 	OPINFOfadd::OPINFOfadd () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOfadd::printToStream(std::ostream& os, std::string& prefix) {
@@ -2197,7 +2197,7 @@ namespace jvm {
 
 	// dadd
 	OPINFOdadd::OPINFOdadd () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdadd::printToStream(std::ostream& os, std::string& prefix) {
@@ -2219,7 +2219,7 @@ namespace jvm {
 
 	// isub
 	OPINFOisub::OPINFOisub () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOisub::printToStream(std::ostream& os, std::string& prefix) {
@@ -2241,7 +2241,7 @@ namespace jvm {
 
 	// lsub
 	OPINFOlsub::OPINFOlsub () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlsub::printToStream(std::ostream& os, std::string& prefix) {
@@ -2263,7 +2263,7 @@ namespace jvm {
 
 	// fsub
 	OPINFOfsub::OPINFOfsub () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOfsub::printToStream(std::ostream& os, std::string& prefix) {
@@ -2285,7 +2285,7 @@ namespace jvm {
 
 	// dsub
 	OPINFOdsub::OPINFOdsub () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdsub::printToStream(std::ostream& os, std::string& prefix) {
@@ -2307,7 +2307,7 @@ namespace jvm {
 
 	// imul
 	OPINFOimul::OPINFOimul () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOimul::printToStream(std::ostream& os, std::string& prefix) {
@@ -2329,7 +2329,7 @@ namespace jvm {
 
 	// lmul
 	OPINFOlmul::OPINFOlmul () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlmul::printToStream(std::ostream& os, std::string& prefix) {
@@ -2351,7 +2351,7 @@ namespace jvm {
 
 	// fmul
 	OPINFOfmul::OPINFOfmul () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOfmul::printToStream(std::ostream& os, std::string& prefix) {
@@ -2373,7 +2373,7 @@ namespace jvm {
 
 	// dmul
 	OPINFOdmul::OPINFOdmul () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdmul::printToStream(std::ostream& os, std::string& prefix) {
@@ -2395,7 +2395,7 @@ namespace jvm {
 
 	// idiv
 	OPINFOidiv::OPINFOidiv () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOidiv::printToStream(std::ostream& os, std::string& prefix) {
@@ -2417,7 +2417,7 @@ namespace jvm {
 
 	// ldiv
 	OPINFOldiv::OPINFOldiv () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOldiv::printToStream(std::ostream& os, std::string& prefix) {
@@ -2439,7 +2439,7 @@ namespace jvm {
 
 	// fdiv
 	OPINFOfdiv::OPINFOfdiv () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOfdiv::printToStream(std::ostream& os, std::string& prefix) {
@@ -2461,7 +2461,7 @@ namespace jvm {
 
 	// ddiv
 	OPINFOddiv::OPINFOddiv () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOddiv::printToStream(std::ostream& os, std::string& prefix) {
@@ -2483,7 +2483,7 @@ namespace jvm {
 
 	// irem
 	OPINFOirem::OPINFOirem () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOirem::printToStream(std::ostream& os, std::string& prefix) {
@@ -2505,7 +2505,7 @@ namespace jvm {
 
 	// lrem
 	OPINFOlrem::OPINFOlrem () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlrem::printToStream(std::ostream& os, std::string& prefix) {
@@ -2527,7 +2527,7 @@ namespace jvm {
 
 	// frem
 	OPINFOfrem::OPINFOfrem () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOfrem::printToStream(std::ostream& os, std::string& prefix) {
@@ -2549,7 +2549,7 @@ namespace jvm {
 
 	// drem
 	OPINFOdrem::OPINFOdrem () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdrem::printToStream(std::ostream& os, std::string& prefix) {
@@ -2571,7 +2571,7 @@ namespace jvm {
 
 	// ineg
 	OPINFOineg::OPINFOineg () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOineg::printToStream(std::ostream& os, std::string& prefix) {
@@ -2593,7 +2593,7 @@ namespace jvm {
 
 	// lneg
 	OPINFOlneg::OPINFOlneg () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlneg::printToStream(std::ostream& os, std::string& prefix) {
@@ -2615,7 +2615,7 @@ namespace jvm {
 
 	// fneg
 	OPINFOfneg::OPINFOfneg () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOfneg::printToStream(std::ostream& os, std::string& prefix) {
@@ -2637,7 +2637,7 @@ namespace jvm {
 
 	// dneg
 	OPINFOdneg::OPINFOdneg () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdneg::printToStream(std::ostream& os, std::string& prefix) {
@@ -2659,7 +2659,7 @@ namespace jvm {
 
 	// ishl
 	OPINFOishl::OPINFOishl () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOishl::printToStream(std::ostream& os, std::string& prefix) {
@@ -2681,7 +2681,7 @@ namespace jvm {
 
 	// lshl
 	OPINFOlshl::OPINFOlshl () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlshl::printToStream(std::ostream& os, std::string& prefix) {
@@ -2703,7 +2703,7 @@ namespace jvm {
 
 	// ishr
 	OPINFOishr::OPINFOishr () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOishr::printToStream(std::ostream& os, std::string& prefix) {
@@ -2725,7 +2725,7 @@ namespace jvm {
 
 	// lshr
 	OPINFOlshr::OPINFOlshr () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlshr::printToStream(std::ostream& os, std::string& prefix) {
@@ -2747,7 +2747,7 @@ namespace jvm {
 
 	// iushr
 	OPINFOiushr::OPINFOiushr () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOiushr::printToStream(std::ostream& os, std::string& prefix) {
@@ -2769,7 +2769,7 @@ namespace jvm {
 
 	// lushr
 	OPINFOlushr::OPINFOlushr () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlushr::printToStream(std::ostream& os, std::string& prefix) {
@@ -2791,7 +2791,7 @@ namespace jvm {
 
 	// iand
 	OPINFOiand::OPINFOiand () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOiand::printToStream(std::ostream& os, std::string& prefix) {
@@ -2813,7 +2813,7 @@ namespace jvm {
 
 	// land
 	OPINFOland::OPINFOland () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOland::printToStream(std::ostream& os, std::string& prefix) {
@@ -2835,7 +2835,7 @@ namespace jvm {
 
 	// ior
 	OPINFOior::OPINFOior () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOior::printToStream(std::ostream& os, std::string& prefix) {
@@ -2857,7 +2857,7 @@ namespace jvm {
 
 	// lor
 	OPINFOlor::OPINFOlor () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlor::printToStream(std::ostream& os, std::string& prefix) {
@@ -2879,7 +2879,7 @@ namespace jvm {
 
 	// ixor
 	OPINFOixor::OPINFOixor () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOixor::printToStream(std::ostream& os, std::string& prefix) {
@@ -2901,7 +2901,7 @@ namespace jvm {
 
 	// lxor
 	OPINFOlxor::OPINFOlxor () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlxor::printToStream(std::ostream& os, std::string& prefix) {
@@ -2923,7 +2923,7 @@ namespace jvm {
 
 	// iinc
 	OPINFOiinc::OPINFOiinc () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOiinc::printToStream(std::ostream& os, std::string& prefix) {
@@ -2947,7 +2947,7 @@ namespace jvm {
 
 	// i2l
 	OPINFOi2l::OPINFOi2l () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOi2l::printToStream(std::ostream& os, std::string& prefix) {
@@ -2969,7 +2969,7 @@ namespace jvm {
 
 	// i2f
 	OPINFOi2f::OPINFOi2f () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOi2f::printToStream(std::ostream& os, std::string& prefix) {
@@ -2991,7 +2991,7 @@ namespace jvm {
 
 	// i2d
 	OPINFOi2d::OPINFOi2d () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOi2d::printToStream(std::ostream& os, std::string& prefix) {
@@ -3013,7 +3013,7 @@ namespace jvm {
 
 	// l2i
 	OPINFOl2i::OPINFOl2i () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOl2i::printToStream(std::ostream& os, std::string& prefix) {
@@ -3035,7 +3035,7 @@ namespace jvm {
 
 	// l2f
 	OPINFOl2f::OPINFOl2f () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOl2f::printToStream(std::ostream& os, std::string& prefix) {
@@ -3057,7 +3057,7 @@ namespace jvm {
 
 	// l2d
 	OPINFOl2d::OPINFOl2d () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOl2d::printToStream(std::ostream& os, std::string& prefix) {
@@ -3079,7 +3079,7 @@ namespace jvm {
 
 	// f2i
 	OPINFOf2i::OPINFOf2i () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOf2i::printToStream(std::ostream& os, std::string& prefix) {
@@ -3101,7 +3101,7 @@ namespace jvm {
 
 	// f2l
 	OPINFOf2l::OPINFOf2l () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOf2l::printToStream(std::ostream& os, std::string& prefix) {
@@ -3123,7 +3123,7 @@ namespace jvm {
 
 	// f2d
 	OPINFOf2d::OPINFOf2d () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOf2d::printToStream(std::ostream& os, std::string& prefix) {
@@ -3145,7 +3145,7 @@ namespace jvm {
 
 	// d2i
 	OPINFOd2i::OPINFOd2i () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOd2i::printToStream(std::ostream& os, std::string& prefix) {
@@ -3167,7 +3167,7 @@ namespace jvm {
 
 	// d2l
 	OPINFOd2l::OPINFOd2l () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOd2l::printToStream(std::ostream& os, std::string& prefix) {
@@ -3189,7 +3189,7 @@ namespace jvm {
 
 	// d2f
 	OPINFOd2f::OPINFOd2f () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOd2f::printToStream(std::ostream& os, std::string& prefix) {
@@ -3211,7 +3211,7 @@ namespace jvm {
 
 	// i2b
 	OPINFOi2b::OPINFOi2b () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOi2b::printToStream(std::ostream& os, std::string& prefix) {
@@ -3233,7 +3233,7 @@ namespace jvm {
 
 	// i2c
 	OPINFOi2c::OPINFOi2c () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOi2c::printToStream(std::ostream& os, std::string& prefix) {
@@ -3255,7 +3255,7 @@ namespace jvm {
 
 	// i2s
 	OPINFOi2s::OPINFOi2s () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOi2s::printToStream(std::ostream& os, std::string& prefix) {
@@ -3277,7 +3277,7 @@ namespace jvm {
 
 	// lcmp
 	OPINFOlcmp::OPINFOlcmp () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlcmp::printToStream(std::ostream& os, std::string& prefix) {
@@ -3299,7 +3299,7 @@ namespace jvm {
 
 	// fcmpl
 	OPINFOfcmpl::OPINFOfcmpl () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOfcmpl::printToStream(std::ostream& os, std::string& prefix) {
@@ -3321,7 +3321,7 @@ namespace jvm {
 
 	// fcmpg
 	OPINFOfcmpg::OPINFOfcmpg () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOfcmpg::printToStream(std::ostream& os, std::string& prefix) {
@@ -3343,7 +3343,7 @@ namespace jvm {
 
 	// dcmpl
 	OPINFOdcmpl::OPINFOdcmpl () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdcmpl::printToStream(std::ostream& os, std::string& prefix) {
@@ -3365,7 +3365,7 @@ namespace jvm {
 
 	// dcmpg
 	OPINFOdcmpg::OPINFOdcmpg () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdcmpg::printToStream(std::ostream& os, std::string& prefix) {
@@ -3387,7 +3387,7 @@ namespace jvm {
 
 	// ifeq
 	OPINFOifeq::OPINFOifeq () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOifeq::printToStream(std::ostream& os, std::string& prefix) {
@@ -3410,7 +3410,7 @@ namespace jvm {
 
 	// ifne
 	OPINFOifne::OPINFOifne () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOifne::printToStream(std::ostream& os, std::string& prefix) {
@@ -3433,7 +3433,7 @@ namespace jvm {
 
 	// iflt
 	OPINFOiflt::OPINFOiflt () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOiflt::printToStream(std::ostream& os, std::string& prefix) {
@@ -3456,7 +3456,7 @@ namespace jvm {
 
 	// ifge
 	OPINFOifge::OPINFOifge () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOifge::printToStream(std::ostream& os, std::string& prefix) {
@@ -3479,7 +3479,7 @@ namespace jvm {
 
 	// ifgt
 	OPINFOifgt::OPINFOifgt () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOifgt::printToStream(std::ostream& os, std::string& prefix) {
@@ -3502,7 +3502,7 @@ namespace jvm {
 
 	// ifle
 	OPINFOifle::OPINFOifle () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOifle::printToStream(std::ostream& os, std::string& prefix) {
@@ -3525,7 +3525,7 @@ namespace jvm {
 
 	// if_icmpeq
 	OPINFOif_icmpeq::OPINFOif_icmpeq () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOif_icmpeq::printToStream(std::ostream& os, std::string& prefix) {
@@ -3548,7 +3548,7 @@ namespace jvm {
 
 	// if_icmpne
 	OPINFOif_icmpne::OPINFOif_icmpne () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOif_icmpne::printToStream(std::ostream& os, std::string& prefix) {
@@ -3571,7 +3571,7 @@ namespace jvm {
 
 	// if_icmplt
 	OPINFOif_icmplt::OPINFOif_icmplt () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOif_icmplt::printToStream(std::ostream& os, std::string& prefix) {
@@ -3594,7 +3594,7 @@ namespace jvm {
 
 	// if_icmpge
 	OPINFOif_icmpge::OPINFOif_icmpge () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOif_icmpge::printToStream(std::ostream& os, std::string& prefix) {
@@ -3617,7 +3617,7 @@ namespace jvm {
 
 	// if_icmpgt
 	OPINFOif_icmpgt::OPINFOif_icmpgt () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOif_icmpgt::printToStream(std::ostream& os, std::string& prefix) {
@@ -3640,7 +3640,7 @@ namespace jvm {
 
 	// if_icmple
 	OPINFOif_icmple::OPINFOif_icmple () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOif_icmple::printToStream(std::ostream& os, std::string& prefix) {
@@ -3663,7 +3663,7 @@ namespace jvm {
 
 	// if_acmpeq
 	OPINFOif_acmpeq::OPINFOif_acmpeq () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOif_acmpeq::printToStream(std::ostream& os, std::string& prefix) {
@@ -3686,7 +3686,7 @@ namespace jvm {
 
 	// if_acmpne
 	OPINFOif_acmpne::OPINFOif_acmpne () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOif_acmpne::printToStream(std::ostream& os, std::string& prefix) {
@@ -3709,7 +3709,7 @@ namespace jvm {
 
 	// goto
 	OPINFOgoto::OPINFOgoto () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOgoto::printToStream(std::ostream& os, std::string& prefix) {
@@ -3737,7 +3737,7 @@ namespace jvm {
 
 	// jsr
 	OPINFOjsr::OPINFOjsr () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOjsr::printToStream(std::ostream& os, std::string& prefix) {
@@ -3760,7 +3760,7 @@ namespace jvm {
 
 	// ret
 	OPINFOret::OPINFOret () {
-		jpm = 0;
+		jmp = 1;
 	}
 
 	void OPINFOret::printToStream(std::ostream& os, std::string& prefix) {
@@ -3783,7 +3783,7 @@ namespace jvm {
 
 	// tableswitch
 	OPINFOtableswitch::OPINFOtableswitch () {
-		jpm = 0;
+		jmp = 16;
 	}
 
 	void OPINFOtableswitch::printToStream(std::ostream& os, std::string& prefix) {
@@ -3820,12 +3820,12 @@ namespace jvm {
 			jumpOffsets[j] = Converter::to_i4(data[i], data[i+1], data[i+2], data[i+3]);
 		}
 
-		return i - idx; // 16+
+		return jmp = i - idx - 1; // 16+
 	}
 
 	// OPINFOlookupswitch
 	OPINFOlookupswitch::OPINFOlookupswitch () {
-		jpm = 0;
+		jmp = 8;
 	}
 
 	void OPINFOlookupswitch::printToStream(std::ostream& os, std::string& prefix) {
@@ -3865,13 +3865,13 @@ namespace jvm {
 			pairs[match] = value;
 		}
 
-		return i - idx; // 8+
+		return jmp = i - idx - 1; // 8+
 	}
 
 
 	// ireturn
 	OPINFOireturn::OPINFOireturn () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOireturn::printToStream(std::ostream& os, std::string& prefix) {
@@ -3893,7 +3893,7 @@ namespace jvm {
 
 	// lreturn
 	OPINFOlreturn::OPINFOlreturn () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOlreturn::printToStream(std::ostream& os, std::string& prefix) {
@@ -3915,7 +3915,7 @@ namespace jvm {
 
 	// freturn
 	OPINFOfreturn::OPINFOfreturn () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOfreturn::printToStream(std::ostream& os, std::string& prefix) {
@@ -3937,7 +3937,7 @@ namespace jvm {
 
 	// dreturn
 	OPINFOdreturn::OPINFOdreturn () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOdreturn::printToStream(std::ostream& os, std::string& prefix) {
@@ -3959,7 +3959,7 @@ namespace jvm {
 
 	// areturn
 	OPINFOareturn::OPINFOareturn () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOareturn::printToStream(std::ostream& os, std::string& prefix) {
@@ -3981,7 +3981,7 @@ namespace jvm {
 
 	// return
 	OPINFOreturn::OPINFOreturn () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOreturn::printToStream(std::ostream& os, std::string& prefix) {
@@ -4003,7 +4003,7 @@ namespace jvm {
 
 	// getstatic
 	OPINFOgetstatic::OPINFOgetstatic () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOgetstatic::printToStream(std::ostream& os, std::string& prefix) {
@@ -4026,7 +4026,7 @@ namespace jvm {
 
 	// putstatic
 	OPINFOputstatic::OPINFOputstatic () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOputstatic::printToStream(std::ostream& os, std::string& prefix) {
@@ -4049,7 +4049,7 @@ namespace jvm {
 
 	// getfield
 	OPINFOgetfield::OPINFOgetfield () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOgetfield::printToStream(std::ostream& os, std::string& prefix) {
@@ -4072,7 +4072,7 @@ namespace jvm {
 
 	// putfield
 	OPINFOputfield::OPINFOputfield () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOputfield::printToStream(std::ostream& os, std::string& prefix) {
@@ -4095,7 +4095,7 @@ namespace jvm {
 
 	// invokevirtual
 	OPINFOinvokevirtual::OPINFOinvokevirtual () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOinvokevirtual::printToStream(std::ostream& os, std::string& prefix) {
@@ -4118,7 +4118,7 @@ namespace jvm {
 
 	// invokespecial
 	OPINFOinvokespecial::OPINFOinvokespecial () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOinvokespecial::printToStream(std::ostream& os, std::string& prefix) {
@@ -4141,7 +4141,7 @@ namespace jvm {
 
 	// invokestatic
 	OPINFOinvokestatic::OPINFOinvokestatic () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOinvokestatic::printToStream(std::ostream& os, std::string& prefix) {
@@ -4164,7 +4164,7 @@ namespace jvm {
 
 	// invokeinterface
 	OPINFOinvokeinterface::OPINFOinvokeinterface () {
-		jpm = 0;
+		jmp = 4;
 	}
 
 	void OPINFOinvokeinterface::printToStream(std::ostream& os, std::string& prefix) {
@@ -4195,7 +4195,7 @@ namespace jvm {
 
 	// invokedynamic
 	OPINFOinvokedynamic::OPINFOinvokedynamic () {
-		jpm = 0;
+		jmp = 4;
 	}
 
 	void OPINFOinvokedynamic::printToStream(std::ostream& os, std::string& prefix) {
@@ -4221,7 +4221,7 @@ namespace jvm {
 
 	// new
 	OPINFOnew::OPINFOnew () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOnew::printToStream(std::ostream& os, std::string& prefix) {
@@ -4244,7 +4244,7 @@ namespace jvm {
 
 	// newarray
 	OPINFOnewarray::OPINFOnewarray () {
-		jpm = 0;
+		jmp = 1;
 	}
 
 	void OPINFOnewarray::printToStream(std::ostream& os, std::string& prefix) {
@@ -4267,7 +4267,7 @@ namespace jvm {
 
 	// anewarray
 	OPINFOanewarray::OPINFOanewarray () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOanewarray::printToStream(std::ostream& os, std::string& prefix) {
@@ -4290,7 +4290,7 @@ namespace jvm {
 
 	// arraylength
 	OPINFOarraylength::OPINFOarraylength () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOarraylength::printToStream(std::ostream& os, std::string& prefix) {
@@ -4312,7 +4312,7 @@ namespace jvm {
 
 	// athrow
 	OPINFOathrow::OPINFOathrow () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOathrow::printToStream(std::ostream& os, std::string& prefix) {
@@ -4334,7 +4334,7 @@ namespace jvm {
 
 	// checkcast
 	OPINFOcheckcast::OPINFOcheckcast () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOcheckcast::printToStream(std::ostream& os, std::string& prefix) {
@@ -4357,7 +4357,7 @@ namespace jvm {
 
 	// instanceof
 	OPINFOinstanceof::OPINFOinstanceof () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOinstanceof::printToStream(std::ostream& os, std::string& prefix) {
@@ -4380,7 +4380,7 @@ namespace jvm {
 
 	// monitorenter
 	OPINFOmonitorenter::OPINFOmonitorenter () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOmonitorenter::printToStream(std::ostream& os, std::string& prefix) {
@@ -4402,7 +4402,7 @@ namespace jvm {
 
 	// monitorexit
 	OPINFOmonitorexit::OPINFOmonitorexit () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOmonitorexit::printToStream(std::ostream& os, std::string& prefix) {
@@ -4424,7 +4424,7 @@ namespace jvm {
 
 	// wide
 	OPINFOwide::OPINFOwide () {
-		jpm = 0;
+		jmp = 3;
 	}
 
 	void OPINFOwide::printToStream(std::ostream& os, std::string& prefix) {
@@ -4448,16 +4448,16 @@ namespace jvm {
 
 		if (opcode == iinc.getOpCode()) {
 			countbyte = Converter::to_u2(data[idx + 4], data[idx + 5]);
-			return 5;
+			return jmp = 5;
 		}
 
-		return 3;
+		return jmp = 3;
 	}
 
 
 	// multianewarray
 	OPINFOmultianewarray::OPINFOmultianewarray () {
-		jpm = 0;
+		jmp = 3;
 	}
 
 	void OPINFOmultianewarray::printToStream(std::ostream& os, std::string& prefix) {
@@ -4485,7 +4485,7 @@ namespace jvm {
 
 	// ifnull
 	OPINFOifnull::OPINFOifnull () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOifnull::printToStream(std::ostream& os, std::string& prefix) {
@@ -4508,7 +4508,7 @@ namespace jvm {
 
 	// ifnonnull
 	OPINFOifnonnull::OPINFOifnonnull () {
-		jpm = 0;
+		jmp = 2;
 	}
 
 	void OPINFOifnonnull::printToStream(std::ostream& os, std::string& prefix) {
@@ -4531,7 +4531,7 @@ namespace jvm {
 
 	// goto_w
 	OPINFOgoto_w::OPINFOgoto_w () {
-		jpm = 0;
+		jmp = 4;
 	}
 
 	void OPINFOgoto_w::printToStream(std::ostream& os, std::string& prefix) {
@@ -4554,7 +4554,7 @@ namespace jvm {
 
 	// jsr_w
 	OPINFOjsr_w::OPINFOjsr_w () {
-		jpm = 0;
+		jmp = 4;
 	}
 
 	void OPINFOjsr_w::printToStream(std::ostream& os, std::string& prefix) {
@@ -4577,7 +4577,7 @@ namespace jvm {
 
 	// breakpoint
 	OPINFObreakpoint::OPINFObreakpoint () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFObreakpoint::printToStream(std::ostream& os, std::string& prefix) {
@@ -4599,7 +4599,7 @@ namespace jvm {
 
 	// impdep1
 	OPINFOimpdep1::OPINFOimpdep1 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOimpdep1::printToStream(std::ostream& os, std::string& prefix) {
@@ -4621,7 +4621,7 @@ namespace jvm {
 
 	// impdep2
 	OPINFOimpdep2::OPINFOimpdep2 () {
-		jpm = 0;
+		jmp = 0;
 	}
 
 	void OPINFOimpdep2::printToStream(std::ostream& os, std::string& prefix) {

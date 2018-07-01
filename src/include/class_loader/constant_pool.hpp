@@ -60,7 +60,7 @@ namespace jvm {
 		/**
 		 * 
 		 */
-		CP_Entry* operator[](size_type index);
+		CP_Entry* operator[](size_type index) const;
 
 	private:
 
@@ -88,7 +88,7 @@ namespace jvm {
 
 		virtual void printToStream(std::ostream &os, jvm::ConstantPool &cp) = 0;
 
-		virtual std::string toString(ConstantPool &cp) const = 0;
+		virtual std::string toString(const ConstantPool &cp) const = 0;
 
 		template<class T> T& as() {
 			auto toReturn = dynamic_cast<T*>(this);
@@ -107,7 +107,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(ConstantPool &cp) const override;
+		std::string toString(const ConstantPool &cp) const override;
 
 		uint16_t name_index;
 	};
@@ -121,7 +121,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(ConstantPool &cp) const override;
+		std::string toString(const ConstantPool &cp) const override;
 
 		uint16_t class_index;
 
@@ -135,7 +135,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(ConstantPool &cp) const override;
+		std::string toString(const ConstantPool &cp) const override;
 
 		uint16_t class_index;
 
@@ -149,7 +149,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(ConstantPool &cp) const override;
+		std::string toString(const ConstantPool &cp) const override;
 
 		uint16_t class_index;
 
@@ -163,7 +163,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(ConstantPool &cp) const override;
+		std::string toString(const ConstantPool &cp) const override;
 
 		uint16_t string_index;
 	};
@@ -175,7 +175,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(ConstantPool &cp) const override;
+		std::string toString(const ConstantPool &cp) const override;
 
 		uint32_t _bytes;
 	};
@@ -187,7 +187,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(ConstantPool &cp) const override;
+		std::string toString(const ConstantPool &cp) const override;
 
 		uint32_t _bytes;
 	};
@@ -199,7 +199,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(ConstantPool &cp) const override;
+		std::string toString(const ConstantPool &cp) const override;
 
 		uint32_t high_bytes;
 
@@ -213,7 +213,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(ConstantPool &cp) const override;
+		std::string toString(const ConstantPool &cp) const override;
 
 		uint32_t high_bytes;
 
@@ -227,7 +227,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(ConstantPool &cp) const override;
+		std::string toString(const ConstantPool &cp) const override;
 
 		uint16_t name_index;
 
@@ -245,7 +245,7 @@ namespace jvm {
 
 		std::string toString() const;
 
-		std::string toString(ConstantPool &cp) const override;
+		std::string toString(const ConstantPool &cp) const override;
 
 		uint16_t _length;
 
@@ -263,7 +263,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(ConstantPool &cp) const override;
+		std::string toString(const ConstantPool &cp) const override;
 
 		uint8_t reference_kind;
 
@@ -277,7 +277,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(ConstantPool &cp) const override;
+		std::string toString(const ConstantPool &cp) const override;
 
 		uint16_t descriptor_index;
 	};
@@ -289,7 +289,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(ConstantPool &cp) const override;
+		std::string toString(const ConstantPool &cp) const override;
 
 		uint16_t bootstrap_method_attr_index;
 
