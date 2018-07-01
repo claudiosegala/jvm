@@ -28,7 +28,7 @@ If arrayref is null, aastore throws a NullPointerException.
 	// aconst_null
 
 	void OPaconst_null::execute() {
-		auto& op = framestack.top().
+
 	}
 
 	void OPaconst_null::printToStream(std::ostream& os, std::string& prefix) {
@@ -78,7 +78,7 @@ If arrayref is null, aastore throws a NullPointerException.
 
 	void OPiconst_0::execute() {
 
-		Instruction::fs.top().operands.push4(0);
+
 
 	}
 

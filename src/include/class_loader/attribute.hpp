@@ -1,37 +1,37 @@
 #pragma once
 
 #include "constant_pool.hpp"
-#include "engine/code.hpp"
+#include "code_info.hpp"
 
 namespace jvm {
 
-	class Attr_Entry;
+	class AttrEntry;
 
 	// This maps a string to a function that returns an instance of the corresponding attribute
-	typedef std::map<std::string, std::shared_ptr<Attr_Entry>(*)(Reader&, ConstantPool&)> AttributeMap;
+	typedef std::map<std::string, std::shared_ptr<AttrEntry>(*)(Reader&, ConstantPool&)> AttributeMap;
 
-	class AttributeInfo : public std::vector<std::shared_ptr<Attr_Entry>> {
+	class AttributeInfo : public std::vector<std::shared_ptr<AttrEntry>> {
 	public:
 		void fill(Reader &reader, ConstantPool &cp);
 		void printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix);
 	};
 
-	class Attr_Entry {
+	class AttrEntry {
 	protected:
-		Attr_Entry() = default;
+		AttrEntry() = default;
 	public:
 		template<class T>
-		static std::shared_ptr<Attr_Entry> instantiate(Reader &reader, ConstantPool &cp) {
+		static std::shared_ptr<AttrEntry> instantiate(Reader &reader, ConstantPool &cp) {
 			return std::make_shared<T>(reader, cp);
 		}
 
-		virtual ~Attr_Entry() = default;
+		virtual ~AttrEntry() = default;
 
 		virtual void printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix) = 0;
 
 	};
 
-	struct Attr_Code : public Attr_Entry {
+	struct AttrCode : public AttrEntry {
 		typedef struct {
 			u2 start_pc;
 			u2 end_pc;
@@ -41,23 +41,24 @@ namespace jvm {
 
 		u2 max_stack;
 		u2 max_locals;
-		Code code;
+		std::vector<u1> code_bytes;
+		CodeInfo code;
 		std::vector<exception_table_entry> exception_table;
 		AttributeInfo attributes;
 
-		Attr_Code(Reader &reader, ConstantPool &cp);
+		AttrCode(Reader &reader, ConstantPool &cp);
 		void printToStream(std::ostream &ostream, ConstantPool &pool, const std::string &prefix) override;
 	};
 
-	struct Attr_ConstantValue : public Attr_Entry {
+	struct AttrConstantValue : public AttrEntry {
 		u2 constantvalue_index;
-		Attr_ConstantValue(Reader &reader, ConstantPool &cp);
+		AttrConstantValue(Reader &reader, ConstantPool &cp);
 		void printToStream(std::ostream &ostream, ConstantPool &pool, const std::string &prefix) override;
 	};
 
-	struct Attr_Exceptions : public Attr_Entry {
+	struct AttrExceptions : public AttrEntry {
 		std::vector<u2> exception_index_table;
-		Attr_Exceptions(Reader &reader, ConstantPool &cp);
+		AttrExceptions(Reader &reader, ConstantPool &cp);
 		void printToStream(std::ostream &os, ConstantPool &pool, const std::string &prefix) override;
 	};
 }

@@ -5,9 +5,9 @@ namespace jvm {
 	void AttributeInfo::fill(Reader &reader, ConstantPool &cp) {
 		// This maps a string to a function that returns an instance of the corresponding attribute
 		static const AttributeMap m = {
-				{"Code", Attr_Entry::instantiate<Attr_Code>},
-				{"Exceptions", Attr_Entry::instantiate<Attr_Exceptions>},
-				{"ConstantValue", Attr_Entry::instantiate<Attr_ConstantValue>}
+				{"Code", AttrEntry::instantiate<AttrCode>},
+				{"Exceptions", AttrEntry::instantiate<AttrExceptions>},
+				{"ConstantValue", AttrEntry::instantiate<AttrConstantValue>}
 		};
 
 		auto attr_count = reader.getNextHalfWord();
@@ -31,7 +31,7 @@ namespace jvm {
 
 	void AttributeInfo::printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix) {
 		os << prefix << "Attributes count:" << size() << std::endl;
-		for (std::shared_ptr<Attr_Entry>& ptr : *this) {
+		for (std::shared_ptr<AttrEntry>& ptr : *this) {
 			auto attr = ptr.get();
 			if (attr == nullptr) {
 				os << prefix << "Undefined attribute" << std::endl;
@@ -41,19 +41,17 @@ namespace jvm {
 		}
 	}
 
-	Attr_Code::Attr_Code(Reader &reader, ConstantPool &cp) {
-		std::vector<u1> codeData;
-
+	AttrCode::AttrCode(Reader &reader, ConstantPool &cp) {
 		max_stack = reader.getNextHalfWord();
 		max_locals = reader.getNextHalfWord();
 
 		u4 code_length = reader.getNextWord();
-		codeData.reserve(code_length);
+		code_bytes.reserve(code_length);
 		while (code_length--) {
-			codeData.emplace_back(reader.getNextByte());
+			code_bytes.emplace_back(reader.getNextByte());
 		}
 
-		code.interpret(codeData);
+		code.interpret(code_bytes);
 
 		u2 exception_table_length = reader.getNextHalfWord();
 		exception_table.resize(exception_table_length);
@@ -67,24 +65,24 @@ namespace jvm {
 		attributes.fill(reader, cp);
 	}
 
-	void Attr_Code::printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix) {
+	void AttrCode::printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix) {
 		os << prefix << "Code:" << std::endl;
 
-		for (std::shared_ptr<Instruction> instr : code) {
+		for (std::shared_ptr<InstructionInfo> instr : code) {
 			auto prefix2 = prefix + "\t";
 			instr->printToStream(os, prefix2);
 		}
 	}
 
-	Attr_ConstantValue::Attr_ConstantValue(Reader &reader, ConstantPool &cp) {
+	AttrConstantValue::AttrConstantValue(Reader &reader, ConstantPool &cp) {
 		constantvalue_index = reader.getNextHalfWord();
 	}
 
-	void Attr_ConstantValue::printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix) {
+	void AttrConstantValue::printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix) {
 		os << prefix << "Constant Value: " << cp[constantvalue_index]->toString(cp) << std::endl;
 	}
 
-	Attr_Exceptions::Attr_Exceptions(Reader &reader, ConstantPool &cp) {
+	AttrExceptions::AttrExceptions(Reader &reader, ConstantPool &cp) {
 		auto count = reader.getNextHalfWord();
 		exception_index_table.reserve(count);
 		while (count--) {
@@ -92,7 +90,7 @@ namespace jvm {
 		}
 	}
 
-	void Attr_Exceptions::printToStream(std::ostream &os, ConstantPool &pool, const std::string &prefix) {
+	void AttrExceptions::printToStream(std::ostream &os, ConstantPool &pool, const std::string &prefix) {
 		os << prefix << "Exception (count: " << exception_index_table.size() << ")" << std::endl;
 	}
 }
