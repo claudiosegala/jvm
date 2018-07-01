@@ -2,7 +2,7 @@
 
 namespace jvm {
 
-	Engine::Engine (ClassLoader &cl) : mainClass(cl), PC(0) {
+	Engine::Engine (ClassLoader &cl) : PC(0) {
 		exec = {
 				&Engine::exec_nop,               // 0
 				&Engine::exec_aconst_null,       // 1
@@ -261,6 +261,9 @@ namespace jvm {
 				&Engine::exec_impdep1,           // 254
 				&Engine::exec_impdep2            // 255
 		};
+
+		auto name = cl.constant_pool[cl.this_class]->toString(cl.constant_pool);
+		JavaClasses.insert({name, cl});
 	}
 
 	Execution Engine::getExecutor(const u1 opcode) {
@@ -275,7 +278,7 @@ namespace jvm {
 
 	void Engine::execute () {
 		//run_clinit();
-		//run_init();
+		run_init();
 	}
 
 	void Engine::run_clinit () {
@@ -285,6 +288,31 @@ namespace jvm {
 	void Engine::run_init () {
 
 	}
+
+	const MethodInfo & Engine::findMethod(CP_Methodref &ref) {
+		auto &cl = fs.top().cl;
+		auto &cp = cl.constant_pool;
+		auto NameAndType = cp[ref.name_and_type_index] -> as<CP_NameAndType>();
+		std::string name = cp[NameAndType.name_index] -> toString(cp);
+		std::string descriptor = cp[NameAndType.descriptor_index] -> toString(cp);
+		auto pair = cl.methods.find(name + descriptor);
+		if(pair != cl.methods.end())
+			return pair->second;
+		throw "Method not found";
+	}
+
+	const ClassLoader & Engine::findClass(CP_Class &classInfo) {
+		auto &cl = fs.top().cl;
+		auto &cp = cl.constant_pool;
+		std::string ClassName = cp[classInfo.name_index]-> toString(cp);
+		auto pair = JavaClasses.find(ClassName);
+		if(pair != JavaClasses.end())
+			return pair->second;
+		throw "Class not found";
+	}
+
+
+
 
 	void Engine::exec_nop (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOnop *>(info); // get data in class
@@ -1780,8 +1808,8 @@ namespace jvm {
 	void Engine::exec_jsr_w (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOjsr_w *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		frame.operands.push4(this->PC + info->jmp);
+		this->PC += data->branchoffset;
 	}
 
 	void Engine::exec_breakpoint (InstructionInfo * info) {

@@ -11,7 +11,7 @@ namespace jvm {
 
 	public:
 		//> Jumping bytes
-		uint32_t jpm;
+		uint32_t jmp;
 
 		template <class T>
 		static std::shared_ptr<InstructionInfo> instantiate() {
@@ -48,7 +48,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOnop() = default;
+		OPINFOnop();
 
 		/**
 		 * Print in the stream the name
@@ -76,7 +76,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOaconst_null() = default;
+		OPINFOaconst_null();
 
 		/**
 		 * Print in the stream the name
@@ -104,7 +104,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOiconst_m1() = default;
+		OPINFOiconst_m1();
 
 		/**
 		 * Print in the stream the name
@@ -132,7 +132,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOiconst_0() = default;
+		OPINFOiconst_0();
 
 		/**
 		 * Print in the stream the name
@@ -160,7 +160,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOiconst_1() = default;
+		OPINFOiconst_1();
 
 		/**
 		 * Print in the stream the name
@@ -188,7 +188,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOiconst_2() = default;
+		OPINFOiconst_2();
 
 		/**
 		 * Print in the stream the name
@@ -216,7 +216,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOiconst_3() = default;
+		OPINFOiconst_3();
 
 		/**
 		 * Print in the stream the name
@@ -244,7 +244,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOiconst_4() = default;
+		OPINFOiconst_4();
 
 		/**
 		 * Print in the stream the name
@@ -272,7 +272,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOiconst_5() = default;
+		OPINFOiconst_5();
 
 		/**
 		 * Print in the stream the name
@@ -300,7 +300,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlconst_0() = default;
+		OPINFOlconst_0();
 
 		/**
 		 * Print in the stream the name
@@ -328,7 +328,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlconst_1() = default;
+		OPINFOlconst_1();
 
 		/**
 		 * Print in the stream the name
@@ -356,7 +356,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfconst_0() = default;
+		OPINFOfconst_0();
 
 		/**
 		 * Print in the stream the name
@@ -384,7 +384,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfconst_1() = default;
+		OPINFOfconst_1();
 
 		/**
 		 * Print in the stream the name
@@ -412,7 +412,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfconst_2() = default;
+		OPINFOfconst_2();
 
 		/**
 		 * Print in the stream the name
@@ -440,7 +440,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdconst_0() = default;
+		OPINFOdconst_0();
 
 		/**
 		 * Print in the stream the name
@@ -468,7 +468,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdconst_1() = default;
+		OPINFOdconst_1();
 
 		/**
 		 * Print in the stream the name
@@ -496,7 +496,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFObipush() = default;
+		OPINFObipush();
 
 		/**
 		 * Print in the stream the name
@@ -526,7 +526,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOsipush() = default;
+		OPINFOsipush();
 
 		/**
 		 * Print in the stream the name
@@ -556,7 +556,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOldc() = default;
+		OPINFOldc();
 
 		/**
 		 * Print in the stream the name
@@ -586,7 +586,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOldc_w() = default;
+		OPINFOldc_w();
 
 		/**
 		 * Print in the stream the name
@@ -616,7 +616,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOldc2_w() = default;
+		OPINFOldc2_w();
 
 		/**
 		 * Print in the stream the name
@@ -647,7 +647,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOiload() = default;
+		OPINFOiload();
 
 		/**
 		 * Print in the stream the name
@@ -677,7 +677,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlload() = default;
+		OPINFOlload();
 
 		/**
 		 * Print in the stream the name
@@ -707,7 +707,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfload() = default;
+		OPINFOfload();
 
 		/**
 		 * Print in the stream the name
@@ -737,7 +737,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdload() = default;
+		OPINFOdload();
 
 		/**
 		 * Print in the stream the name
@@ -767,7 +767,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOaload() = default;
+		OPINFOaload();
 
 		/**
 		 * Print in the stream the name
@@ -797,7 +797,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOiload_0() = default;
+		OPINFOiload_0();
 
 		/**
 		 * Print in the stream the name
@@ -825,7 +825,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOiload_1() = default;
+		OPINFOiload_1();
 
 		/**
 		 * Print in the stream the name
@@ -853,7 +853,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOiload_2() = default;
+		OPINFOiload_2();
 
 		/**
 		 * Print in the stream the name
@@ -881,7 +881,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOiload_3() = default;
+		OPINFOiload_3();
 
 		/**
 		 * Print in the stream the name
@@ -909,7 +909,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlload_0() = default;
+		OPINFOlload_0();
 
 		/**
 		 * Print in the stream the name
@@ -937,7 +937,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlload_1() = default;
+		OPINFOlload_1();
 
 		/**
 		 * Print in the stream the name
@@ -965,7 +965,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlload_2() = default;
+		OPINFOlload_2();
 
 		/**
 		 * Print in the stream the name
@@ -993,7 +993,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlload_3() = default;
+		OPINFOlload_3();
 
 		/**
 		 * Print in the stream the name
@@ -1021,7 +1021,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfload_0() = default;
+		OPINFOfload_0();
 
 		/**
 		 * Print in the stream the name
@@ -1049,7 +1049,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfload_1() = default;
+		OPINFOfload_1();
 
 		/**
 		 * Print in the stream the name
@@ -1077,7 +1077,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfload_2() = default;
+		OPINFOfload_2();
 
 		/**
 		 * Print in the stream the name
@@ -1105,7 +1105,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfload_3() = default;
+		OPINFOfload_3();
 
 		/**
 		 * Print in the stream the name
@@ -1133,7 +1133,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdload_0() = default;
+		OPINFOdload_0();
 
 		/**
 		 * Print in the stream the name
@@ -1161,7 +1161,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdload_1() = default;
+		OPINFOdload_1();
 
 		/**
 		 * Print in the stream the name
@@ -1189,7 +1189,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdload_2() = default;
+		OPINFOdload_2();
 
 		/**
 		 * Print in the stream the name
@@ -1217,7 +1217,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdload_3() = default;
+		OPINFOdload_3();
 
 		/**
 		 * Print in the stream the name
@@ -1245,7 +1245,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOaload_0() = default;
+		OPINFOaload_0();
 
 		/**
 		 * Print in the stream the name
@@ -1273,7 +1273,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOaload_1() = default;
+		OPINFOaload_1();
 
 		/**
 		 * Print in the stream the name
@@ -1301,7 +1301,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOaload_2() = default;
+		OPINFOaload_2();
 
 		/**
 		 * Print in the stream the name
@@ -1329,7 +1329,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOaload_3() = default;
+		OPINFOaload_3();
 
 		/**
 		 * Print in the stream the name
@@ -1357,7 +1357,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOiaload() = default;
+		OPINFOiaload();
 
 		/**
 		 * Print in the stream the name
@@ -1385,7 +1385,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlaload() = default;
+		OPINFOlaload();
 
 		/**
 		 * Print in the stream the name
@@ -1413,7 +1413,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfaload() = default;
+		OPINFOfaload();
 
 		/**
 		 * Print in the stream the name
@@ -1441,7 +1441,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdaload() = default;
+		OPINFOdaload();
 
 		/**
 		 * Print in the stream the name
@@ -1469,7 +1469,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOaaload() = default;
+		OPINFOaaload();
 
 		/**
 		 * Print in the stream the name
@@ -1497,7 +1497,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFObaload() = default;
+		OPINFObaload();
 
 		/**
 		 * Print in the stream the name
@@ -1525,7 +1525,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOcaload() = default;
+		OPINFOcaload();
 
 		/**
 		 * Print in the stream the name
@@ -1553,7 +1553,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOsaload() = default;
+		OPINFOsaload();
 
 		/**
 		 * Print in the stream the name
@@ -1582,7 +1582,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOistore() = default;
+		OPINFOistore();
 
 		/**
 		 * Print in the stream the name
@@ -1612,7 +1612,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlstore() = default;
+		OPINFOlstore();
 
 		/**
 		 * Print in the stream the name
@@ -1642,7 +1642,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfstore() = default;
+		OPINFOfstore();
 
 		/**
 		 * Print in the stream the name
@@ -1672,7 +1672,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdstore() = default;
+		OPINFOdstore();
 
 		/**
 		 * Print in the stream the name
@@ -1703,7 +1703,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOastore() = default;
+		OPINFOastore();
 
 		/**
 		 * Print in the stream the name
@@ -1733,7 +1733,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOistore_0() = default;
+		OPINFOistore_0();
 
 		/**
 		 * Print in the stream the name
@@ -1761,7 +1761,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOistore_1() = default;
+		OPINFOistore_1();
 
 		/**
 		 * Print in the stream the name
@@ -1789,7 +1789,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOistore_2() = default;
+		OPINFOistore_2();
 
 		/**
 		 * Print in the stream the name
@@ -1817,7 +1817,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOistore_3() = default;
+		OPINFOistore_3();
 
 		/**
 		 * Print in the stream the name
@@ -1845,7 +1845,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlstore_0() = default;
+		OPINFOlstore_0();
 
 		/**
 		 * Print in the stream the name
@@ -1873,7 +1873,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlstore_1() = default;
+		OPINFOlstore_1();
 
 		/**
 		 * Print in the stream the name
@@ -1901,7 +1901,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlstore_2() = default;
+		OPINFOlstore_2();
 
 		/**
 		 * Print in the stream the name
@@ -1929,7 +1929,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlstore_3() = default;
+		OPINFOlstore_3();
 
 		/**
 		 * Print in the stream the name
@@ -1957,7 +1957,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfstore_0() = default;
+		OPINFOfstore_0();
 
 		/**
 		 * Print in the stream the name
@@ -1985,7 +1985,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfstore_1() = default;
+		OPINFOfstore_1();
 
 		/**
 		 * Print in the stream the name
@@ -2013,7 +2013,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfstore_2() = default;
+		OPINFOfstore_2();
 
 		/**
 		 * Print in the stream the name
@@ -2041,7 +2041,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfstore_3() = default;
+		OPINFOfstore_3();
 
 		/**
 		 * Print in the stream the name
@@ -2069,7 +2069,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdstore_0() = default;
+		OPINFOdstore_0();
 
 		/**
 		 * Print in the stream the name
@@ -2097,7 +2097,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdstore_1() = default;
+		OPINFOdstore_1();
 
 		/**
 		 * Print in the stream the name
@@ -2125,7 +2125,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdstore_2() = default;
+		OPINFOdstore_2();
 
 		/**
 		 * Print in the stream the name
@@ -2153,7 +2153,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdstore_3() = default;
+		OPINFOdstore_3();
 
 		/**
 		 * Print in the stream the name
@@ -2181,7 +2181,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOastore_0() = default;
+		OPINFOastore_0();
 
 		/**
 		 * Print in the stream the name
@@ -2209,7 +2209,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOastore_1() = default;
+		OPINFOastore_1();
 
 		/**
 		 * Print in the stream the name
@@ -2237,7 +2237,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOastore_2() = default;
+		OPINFOastore_2();
 
 		/**
 		 * Print in the stream the name
@@ -2265,7 +2265,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOastore_3() = default;
+		OPINFOastore_3();
 
 		/**
 		 * Print in the stream the name
@@ -2293,7 +2293,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOiastore() = default;
+		OPINFOiastore();
 
 		/**
 		 * Print in the stream the name
@@ -2321,7 +2321,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlastore() = default;
+		OPINFOlastore();
 
 		/**
 		 * Print in the stream the name
@@ -2349,7 +2349,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfastore() = default;
+		OPINFOfastore();
 
 		/**
 		 * Print in the stream the name
@@ -2377,7 +2377,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdastore() = default;
+		OPINFOdastore();
 
 		/**
 		 * Print in the stream the name
@@ -2405,7 +2405,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOaastore() = default;
+		OPINFOaastore();
 
 		/**
 		 * Print in the stream the name
@@ -2433,7 +2433,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFObastore() = default;
+		OPINFObastore();
 
 		/**
 		 * Print in the stream the name
@@ -2461,7 +2461,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOcastore() = default;
+		OPINFOcastore();
 
 		/**
 		 * Print in the stream the name
@@ -2489,7 +2489,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOsastore() = default;
+		OPINFOsastore();
 
 		/**
 		 *
@@ -2518,7 +2518,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOpop() = default;
+		OPINFOpop();
 
 		/**
 		 * Print in the stream the name
@@ -2546,7 +2546,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOpop2() = default;
+		OPINFOpop2();
 
 		/**
 		 * Print in the stream the name
@@ -2575,7 +2575,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdup() = default;
+		OPINFOdup();
 
 		/**
 		 * Print in the stream the name
@@ -2603,7 +2603,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdup_x1() = default;
+		OPINFOdup_x1();
 
 		/**
 		 * Print in the stream the name
@@ -2631,7 +2631,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdup_x2() = default;
+		OPINFOdup_x2();
 
 		/**
 		 * Print in the stream the name
@@ -2660,7 +2660,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdup2() = default;
+		OPINFOdup2();
 
 		/**
 		 * Print in the stream the name
@@ -2689,7 +2689,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdup2_x1() = default;
+		OPINFOdup2_x1();
 
 		/**
 		 * Print in the stream the name
@@ -2718,7 +2718,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdup2_x2() = default;
+		OPINFOdup2_x2();
 
 		/**
 		 * Print in the stream the name
@@ -2747,7 +2747,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOswap() = default;
+		OPINFOswap();
 
 		/**
 		 * Print in the stream the name
@@ -2776,7 +2776,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOiadd() = default;
+		OPINFOiadd();
 
 		/**
 		 * Print in the stream the name
@@ -2804,7 +2804,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOladd() = default;
+		OPINFOladd();
 
 		/**
 		 *
@@ -2832,7 +2832,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfadd() = default;
+		OPINFOfadd();
 
 		/**
 		 * Print in the stream the name
@@ -2860,7 +2860,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdadd() = default;
+		OPINFOdadd();
 
 		/**
 		 * Print in the stream the name
@@ -2888,7 +2888,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOisub() = default;
+		OPINFOisub();
 
 		/**
 		 * Print in the stream the name
@@ -2916,7 +2916,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlsub() = default;
+		OPINFOlsub();
 
 		/**
 		 * Print in the stream the name
@@ -2944,7 +2944,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfsub() = default;
+		OPINFOfsub();
 
 		/**
 		 * Opstack  ..., value1, value2 → ..., result
@@ -2972,7 +2972,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdsub() = default;
+		OPINFOdsub();
 
 		/**
 		 * Print in the stream the name
@@ -3000,7 +3000,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOimul() = default;
+		OPINFOimul();
 
 		/**
 		 * Print in the stream the name
@@ -3028,7 +3028,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlmul() = default;
+		OPINFOlmul();
 
 		/**
 		 * Print in the stream the name
@@ -3056,7 +3056,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfmul() = default;
+		OPINFOfmul();
 
 		/**
 		 * Print in the stream the name
@@ -3084,7 +3084,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdmul() = default;
+		OPINFOdmul();
 
 		/**
 		 * Print in the stream the name
@@ -3112,7 +3112,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOidiv() = default;
+		OPINFOidiv();
 
 		/**
 		 * Print in the stream the name
@@ -3140,7 +3140,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOldiv() = default;
+		OPINFOldiv();
 
 		/**
 		 * Print in the stream the name
@@ -3168,7 +3168,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfdiv() = default;
+		OPINFOfdiv();
 
 		/**
 		 * Print in the stream the name
@@ -3196,7 +3196,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOddiv() = default;
+		OPINFOddiv();
 
 		/**
 		 * Print in the stream the name
@@ -3224,7 +3224,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOirem() = default;
+		OPINFOirem();
 
 		/**
 		 * Print in the stream the name
@@ -3252,7 +3252,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlrem() = default;
+		OPINFOlrem();
 
 		/**
 		 * Print in the stream the name
@@ -3280,7 +3280,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfrem() = default;
+		OPINFOfrem();
 
 		/**
 		 * Print in the stream the name
@@ -3308,7 +3308,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdrem() = default;
+		OPINFOdrem();
 
 		/**
 		 * Print in the stream the name
@@ -3336,7 +3336,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOineg() = default;
+		OPINFOineg();
 
 		/**
 		 * Print in the stream the name
@@ -3364,7 +3364,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlneg() = default;
+		OPINFOlneg();
 
 		/**
 		 * Print in the stream the name
@@ -3392,7 +3392,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfneg() = default;
+		OPINFOfneg();
 
 		/**
 		 * Print in the stream the name
@@ -3420,7 +3420,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdneg() = default;
+		OPINFOdneg();
 
 		/**
 		 * Print in the stream the name
@@ -3448,7 +3448,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOishl() = default;
+		OPINFOishl();
 
 		/**
 		 * Print in the stream the name
@@ -3476,7 +3476,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlshl() = default;
+		OPINFOlshl();
 
 		/**
 		 * Print in the stream the name
@@ -3504,7 +3504,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOishr() = default;
+		OPINFOishr();
 
 		/**
 		 * Print in the stream the name
@@ -3532,7 +3532,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlshr() = default;
+		OPINFOlshr();
 
 		/**
 		 * Print in the stream the name
@@ -3560,7 +3560,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOiushr() = default;
+		OPINFOiushr();
 
 		/**
 		 * Print in the stream the name
@@ -3588,7 +3588,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlushr() = default;
+		OPINFOlushr();
 
 		/**
 		 * Print in the stream the name
@@ -3616,7 +3616,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOiand() = default;
+		OPINFOiand();
 
 		/**
 		 * Print in the stream the name
@@ -3644,7 +3644,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOland() = default;
+		OPINFOland();
 
 		/**
 		 * Print in the stream the name
@@ -3672,7 +3672,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOior() = default;
+		OPINFOior();
 
 		/**
 		 * Print in the stream the name
@@ -3700,7 +3700,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlor() = default;
+		OPINFOlor();
 
 		/**
 		 * Print in the stream the name
@@ -3728,7 +3728,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOixor() = default;
+		OPINFOixor();
 
 		/**
 		 * Print in the stream the name
@@ -3756,7 +3756,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlxor() = default;
+		OPINFOlxor();
 
 		/**
 		 * Print in the stream the name
@@ -3784,7 +3784,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOiinc() = default;
+		OPINFOiinc();
 
 		/**
 		 * Print in the stream the name
@@ -3816,7 +3816,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOi2l() = default;
+		OPINFOi2l();
 
 		/**
 		 * Print in the stream the name
@@ -3844,7 +3844,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOi2f() = default;
+		OPINFOi2f();
 
 		/**
 		 * Print in the stream the name
@@ -3872,7 +3872,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOi2d() = default;
+		OPINFOi2d();
 
 		/**
 		 * Print in the stream the name
@@ -3900,7 +3900,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOl2i() = default;
+		OPINFOl2i();
 
 		/**
 		 * Print in the stream the name
@@ -3928,7 +3928,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOl2f() = default;
+		OPINFOl2f();
 
 		/**
 		 * Print in the stream the name
@@ -3956,7 +3956,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOl2d() = default;
+		OPINFOl2d();
 
 		/**
 		 * Print in the stream the name
@@ -3984,7 +3984,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOf2i() = default;
+		OPINFOf2i();
 
 		/**
 		 * Print in the stream the name
@@ -4012,7 +4012,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOf2l() = default;
+		OPINFOf2l();
 
 		/**
 		 * Print in the stream the name
@@ -4040,7 +4040,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOf2d() = default;
+		OPINFOf2d();
 
 		/**
 		 * Print in the stream the name
@@ -4068,7 +4068,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOd2i() = default;
+		OPINFOd2i();
 
 		/**
 		 * Print in the stream the name
@@ -4096,7 +4096,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOd2l() = default;
+		OPINFOd2l();
 
 		/**
 		 * Print in the stream the name
@@ -4124,7 +4124,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOd2f() = default;
+		OPINFOd2f();
 
 		/**
 		 * Print in the stream the name
@@ -4152,7 +4152,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOi2b() = default;
+		OPINFOi2b();
 
 		/**
 		 * Print in the stream the name
@@ -4180,7 +4180,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOi2c() = default;
+		OPINFOi2c();
 
 		/**
 		 * Print in the stream the name
@@ -4208,7 +4208,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOi2s() = default;
+		OPINFOi2s();
 
 		/**
 		 * Print in the stream the name
@@ -4237,7 +4237,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlcmp() = default;
+		OPINFOlcmp();
 
 		/**
 		 * Print in the stream the name
@@ -4265,7 +4265,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfcmpl() = default;
+		OPINFOfcmpl();
 
 		/**
 		 * Print in the stream the name
@@ -4293,7 +4293,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfcmpg() = default;
+		OPINFOfcmpg();
 
 		/**
 		 * Print in the stream the name
@@ -4321,7 +4321,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdcmpl() = default;
+		OPINFOdcmpl();
 
 		/**
 		 * Print in the stream the name
@@ -4349,7 +4349,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdcmpg() = default;
+		OPINFOdcmpg();
 
 		/**
 		 * Print in the stream the name
@@ -4377,7 +4377,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOifeq() = default;
+		OPINFOifeq();
 
 		/**
 		 * Print in the stream the name
@@ -4407,7 +4407,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOifne() = default;
+		OPINFOifne();
 
 		/**
 		 * Print in the stream the name
@@ -4437,7 +4437,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOiflt() = default;
+		OPINFOiflt();
 
 		/**
 		 * Print in the stream the name
@@ -4467,7 +4467,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOifge() = default;
+		OPINFOifge();
 
 		/**
 		 * Print in the stream the name
@@ -4497,7 +4497,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOifgt() = default;
+		OPINFOifgt();
 
 		/**
 		 * Print in the stream the name
@@ -4527,7 +4527,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOifle() = default;
+		OPINFOifle();
 
 		/**
 		 * Print in the stream the name
@@ -4557,7 +4557,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOif_icmpeq() = default;
+		OPINFOif_icmpeq();
 
 		/**
 		 * Print in the stream the name
@@ -4587,7 +4587,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOif_icmpne() = default;
+		OPINFOif_icmpne();
 
 		/**
 		 * Print in the stream the name
@@ -4617,7 +4617,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOif_icmplt() = default;
+		OPINFOif_icmplt();
 
 		/**
 		 * Print in the stream the name
@@ -4647,7 +4647,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOif_icmpge() = default;
+		OPINFOif_icmpge();
 
 		/**
 		 * Print in the stream the name
@@ -4677,7 +4677,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOif_icmpgt() = default;
+		OPINFOif_icmpgt();
 
 		/**
 		 * Print in the stream the name
@@ -4707,7 +4707,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOif_icmple() = default;
+		OPINFOif_icmple();
 
 		/**
 		 * Print in the stream the name
@@ -4737,7 +4737,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOif_acmpeq() = default;
+		OPINFOif_acmpeq();
 
 		/**
 		 * Print in the stream the name
@@ -4767,7 +4767,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOif_acmpne() = default;
+		OPINFOif_acmpne();
 
 		/**
 		 * Print in the stream the name
@@ -4798,7 +4798,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOgoto() = default;
+		OPINFOgoto();
 
 		/**
 		 * Print in the stream the name
@@ -4828,7 +4828,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOjsr() = default;
+		OPINFOjsr();
 
 		/**
 		 * Print in the stream the name
@@ -4858,7 +4858,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOret() = default;
+		OPINFOret();
 
 		/**
 		 * Print in the stream the name
@@ -4888,7 +4888,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOtableswitch() = default;
+		OPINFOtableswitch();
 
 		/**
 		 * Print in the stream the name
@@ -4942,7 +4942,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlookupswitch() = default;
+		OPINFOlookupswitch();
 
 		/**
 		 * Print in the stream the name
@@ -4989,7 +4989,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOireturn() = default;
+		OPINFOireturn();
 
 		/**
 		 * Print in the stream the name
@@ -5017,7 +5017,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOlreturn() = default;
+		OPINFOlreturn();
 
 		/**
 		 * Print in the stream the name
@@ -5045,7 +5045,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOfreturn() = default;
+		OPINFOfreturn();
 
 		/**
 		 * Print in the stream the name
@@ -5073,7 +5073,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOdreturn() = default;
+		OPINFOdreturn();
 
 		/**
 		 * Print in the stream the name
@@ -5101,7 +5101,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOareturn() = default;
+		OPINFOareturn();
 
 		/**
 		 * Print in the stream the name
@@ -5129,7 +5129,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOreturn() = default;
+		OPINFOreturn();
 
 		/**
 		 * Print in the stream the name
@@ -5158,7 +5158,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOgetstatic() = default;
+		OPINFOgetstatic();
 
 		/**
 		 * Print in the stream the name
@@ -5188,7 +5188,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOputstatic() = default;
+		OPINFOputstatic();
 
 		/**
 		 * Print in the stream the name
@@ -5218,7 +5218,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOgetfield() = default;
+		OPINFOgetfield();
 
 		/**
 		 * Print in the stream the name
@@ -5248,7 +5248,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOputfield() = default;
+		OPINFOputfield();
 
 		/**
 		 * Print in the stream the name
@@ -5278,7 +5278,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOinvokevirtual() = default;
+		OPINFOinvokevirtual();
 
 		/**
 		 * Print in the stream the name
@@ -5308,7 +5308,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOinvokespecial() = default;
+		OPINFOinvokespecial();
 
 		/**
 		 * Print in the stream the name
@@ -5338,7 +5338,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOinvokestatic() = default;
+		OPINFOinvokestatic();
 
 		/**
 		 * Print in the stream the name
@@ -5368,7 +5368,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOinvokeinterface() = default;
+		OPINFOinvokeinterface();
 
 		/**
 		 * Print in the stream the name
@@ -5399,7 +5399,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOinvokedynamic() = default;
+		OPINFOinvokedynamic();
 
 		/**
 		 * Print in the stream the name
@@ -5429,7 +5429,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOnew() = default;
+		OPINFOnew();
 
 		/**
 		 * Print in the stream the name
@@ -5459,7 +5459,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOnewarray() = default;
+		OPINFOnewarray();
 
 		/**
 		 * Print in the stream the name
@@ -5489,7 +5489,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOanewarray() = default;
+		OPINFOanewarray();
 
 		/**
 		 * Print in the stream the name
@@ -5519,7 +5519,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOarraylength() = default;
+		OPINFOarraylength();
 
 		/**
 		 * Print in the stream the name
@@ -5547,7 +5547,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOathrow() = default;
+		OPINFOathrow();
 
 		/**
 		 * Print in the stream the name
@@ -5575,7 +5575,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOcheckcast() = default;
+		OPINFOcheckcast();
 
 		/**
 		 * Print in the stream the name
@@ -5605,7 +5605,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOinstanceof() = default;
+		OPINFOinstanceof();
 
 		/**
 		 * Print in the stream the name
@@ -5635,7 +5635,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOmonitorenter() = default;
+		OPINFOmonitorenter();
 
 		/**
 		 * Print in the stream the name
@@ -5663,7 +5663,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOmonitorexit() = default;
+		OPINFOmonitorexit();
 
 		/**
 		 * Print in the stream the name
@@ -5692,7 +5692,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOwide() = default;
+		OPINFOwide();
 
 		/**
 		 * Print in the stream the name
@@ -5734,7 +5734,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOmultianewarray() = default;
+		OPINFOmultianewarray();
 
 		/**
 		 * Print in the stream the name
@@ -5768,7 +5768,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOifnull() = default;
+		OPINFOifnull();
 
 		/**
 		 * Print in the stream the name
@@ -5798,7 +5798,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOifnonnull() = default;
+		OPINFOifnonnull();
 
 		/**
 		 * Print in the stream the name
@@ -5828,7 +5828,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOgoto_w() = default;
+		OPINFOgoto_w();
 
 		/**
 		 * Print in the stream the name
@@ -5859,7 +5859,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOjsr_w() = default;
+		OPINFOjsr_w();
 
 		/**
 		 * Print in the stream the name
@@ -5896,7 +5896,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFObreakpoint() = default;
+		OPINFObreakpoint();
 
 		/**
 		 * Print in the stream the name
@@ -5930,7 +5930,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOimpdep1() = default;
+		OPINFOimpdep1();
 
 		/**
 		 * Print in the stream the name
@@ -5964,7 +5964,7 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		OPINFOimpdep2() = default;
+		OPINFOimpdep2();
 
 		/**
 		 * Print in the stream the name

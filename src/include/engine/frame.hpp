@@ -1,5 +1,6 @@
 #pragma once
 
+#include <class_loader/method.hpp>
 #include "operands.hpp"
 #include "variables.hpp"
 
@@ -12,7 +13,7 @@ namespace jvm {
 		/**
 		* Constructor Default
 		*/
-		Frame(ClassLoader& cl);
+		Frame(ClassLoader&, MethodInfo&);
 
 		~Frame();
 
@@ -26,7 +27,10 @@ namespace jvm {
 		u4 Return_value;
 
 		//> Class loader reference
-		ClassLoader& cl;
+		const ClassLoader& cl;
+
+		//> Method info reference
+		const MethodInfo& mt;
 	};
 
 }
