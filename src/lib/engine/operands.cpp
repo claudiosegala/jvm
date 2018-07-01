@@ -8,15 +8,10 @@ namespace jvm {
 	}
 
 	op8 Operands::pop8() {
-		op8 bytes, high_bytes, low_bytes;
+		op4 high = top(); pop();
+		op4 low  = top(); pop();
 
-		high_bytes.ull = top().ui4; pop();
-		low_bytes.ull = top().ui4;  pop();
-
-		bytes.ull = high_bytes.ull << 32ul;
-		bytes.ull = bytes.ull | low_bytes.ull;
-
-		return bytes;
+		return Converter::to_op8(low, high);
 	}
 
 	void Operands::push4(u4 value) {
@@ -42,14 +37,12 @@ namespace jvm {
 	}
 
 	void Operands::push8(op8 value) {
-		op4 high_bytes, low_bytes;
+		op4 low, high;
 
-		high_bytes.ui4 = static_cast<u4>(value.ull >> 32ul);
-		low_bytes.ui4  = static_cast<u4>(value.ull & ((1ul << 32ul) - 1));
+		std::tie(low, high) = Converter::to_op4(value);
 
-		push(low_bytes);
-		push(high_bytes);
+		push(low);
+		push(high);
 	}
-
 
 }
