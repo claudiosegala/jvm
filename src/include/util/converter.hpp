@@ -6,6 +6,10 @@ namespace jvm {
 
 	class Converter {
 	public:
+		static op8 to_op8(op4, op4);
+
+		static std::tuple<op4, op4> to_op4(op8);
+
 		static u4 to_u4(u2, u2);
 
 		static i4 to_i4(u2, u2);
@@ -31,14 +35,14 @@ namespace jvm {
 		 * @param source The source string to convert
 		 * @return source string converted
 		 */
-		std::u16string utf8_to_utf16(const std::string);
+		std::u16string utf8_to_utf16(std::string);
 
 		/**
 		 * UTF-16 to UTF-8
 		 * @param source The source string to convert
 		 * @return source string converted
 		 */
-		std::string utf16_to_utf8(const std::u16string);
+		std::string utf16_to_utf8(std::u16string);
 	};
 
 }
