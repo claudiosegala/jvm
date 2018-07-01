@@ -518,7 +518,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		i1 byte; ///< Byte to be pushed as an integer to the stack
 	};
 
@@ -549,7 +548,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		i2 value; ///< Short value to be pushed onto the stack
 	};
 
@@ -580,7 +578,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u1 index; ///< Index in the constant pool
 	};
 
@@ -611,7 +608,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u2 index; ///< Index in the constant pool
 	};
 
@@ -642,7 +638,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u2 index; ///< Index in the constant pool
 	};
 
@@ -674,7 +669,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u1 index; ///< Index of the local variable
 	};
 
@@ -705,7 +699,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u1 index; ///< Index to the local variable
 	};
 
@@ -736,7 +729,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u1 index; ///< Index of the local float variable
 	};
 
@@ -767,7 +759,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u1 index; ///< Index to the local double variable
 	};
 
@@ -798,7 +789,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u1 index; ///< index of the reference to the local variable to be loaded
 	};
 
@@ -1614,7 +1604,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u1 index; ///< Index to the local variable
 	};
 
@@ -1645,7 +1634,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u1 index; ///< Index to the local variable
 	};
 
@@ -1676,7 +1664,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u1 index; ///< Index of the local float variable
 	};
 
@@ -1708,7 +1695,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u1 index; ///< Index to the local double variable
 	};
 
@@ -1739,7 +1725,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u1 index; ///< Index of the local variable that will store the reference
 	};
 
@@ -3821,7 +3806,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u1 index;		///< Index of the local variable
 		i1 constant;	///< Value to be incremented to the local variable
 	};
@@ -4415,7 +4399,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
@@ -4446,7 +4429,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
@@ -4477,7 +4459,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
@@ -4508,7 +4489,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
@@ -4539,7 +4519,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
@@ -4570,7 +4549,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
@@ -4601,7 +4579,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
@@ -4632,7 +4609,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
@@ -4663,7 +4639,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
@@ -4694,7 +4669,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
@@ -4725,7 +4699,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
@@ -4756,7 +4729,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
@@ -4787,7 +4759,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
@@ -4818,7 +4789,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
@@ -4850,7 +4820,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
@@ -4881,7 +4850,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		i2 branchoffset; ///< Offset to a subroutine
 	};
 
@@ -4912,7 +4880,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u1 index; ///< Index to the local variable
 	};
 
@@ -4957,7 +4924,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		//> default
 		i4 defaultbyte;
 
@@ -5008,7 +4974,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		//> default
 		i4 defaultbyte;
 
@@ -5215,7 +5180,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u2 index; ///< Index to the field reference in the constant pool
 	};
 
@@ -5246,7 +5210,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u2 index; ///< Index in the constant pool to the field reference
 	};
 
@@ -5277,7 +5240,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u2 index; ///< Index to the field reference in the constant pool
 	};
 
@@ -5308,7 +5270,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u2 index; ///< Index in the constant pool to the field reference
 	};
 
@@ -5339,7 +5300,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u2 index; ///< Index in the constant pool to the method reference
 	};
 
@@ -5370,7 +5330,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u2 index; ///< Index in the constant pool to the method reference
 	};
 
@@ -5401,7 +5360,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u2 index; ///< Index in the constant pool to the method reference
 	};
 
@@ -5432,7 +5390,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u2 index;	///< Index in the constant pool to the interface method
 		u1 count;	///< Count operand that must not be zero
 	};
@@ -5464,7 +5421,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u2 index; ///< Index in the constant pool
 	};
 
@@ -5495,7 +5451,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u2 index; ///< Index in the constant pool to the class reference
 	};
 
@@ -5526,7 +5481,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u1 atype; ///< Code that indicates the type of array to create
 	};
 
@@ -5557,7 +5511,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u2 index; ///< index of the reference to the class that identifies the component type
 	};
 
@@ -5644,7 +5597,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u2 index; ///< Index of the class reference in the constant pool
 	};
 
@@ -5675,7 +5627,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u2 index; ///< Index to the class reference in the constant pool
 	};
 
@@ -5768,7 +5719,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		//> the opcode to execute wide
 		u1 opcode;
 
@@ -5809,7 +5759,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		u2 index; ///< Index in the constant pool
 		u1 dimensions; // Number of dimensions of the array to be created, must be greater than or equal to 1
 	};
@@ -5841,7 +5790,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
@@ -5872,7 +5820,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
@@ -5904,7 +5851,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		i4 branchoffset; ///< Offset to the next instruction
 	};
 
@@ -5935,7 +5881,6 @@ namespace jvm {
 		 */
 		uint32_t getOpCode() override;
 
-	private:
 		i4 branchoffset; ///< Offset to a subroutine
 	};
 
