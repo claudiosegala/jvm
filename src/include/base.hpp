@@ -51,3 +51,8 @@ union op8 {
 	uint64_t ull;
 	int64_t ll;
 };
+
+union lvv {
+	op4* v4;
+	op8* v8;
+};

@@ -5,7 +5,7 @@
 
 namespace jvm {
 
-	 class FramesStack;
+	class FramesStack;
 
 	class Instruction {
 	protected:
@@ -611,7 +611,7 @@ namespace jvm {
 		uint32_t getOpCode() override;
 
 	private:
-		u1 byte; ///< Byte to be pushed as an integer to the stack
+		i1 byte; ///< Byte to be pushed as an integer to the stack
 	};
 
 	class OPsipush : public Instruction { // 0x11 -- 17
