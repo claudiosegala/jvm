@@ -1,6 +1,7 @@
 #pragma once
 
 #include "base.hpp"
+#include "util/converter.hpp"
 
 namespace jvm {
 

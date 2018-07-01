@@ -1,32 +1,41 @@
 #include "engine/variables.hpp"
 
-//namespace jvm {
-//
-//	void Variables::Write_vector8(u1 index, op8 valor) {
-//		op4 a, b;
-//        b = reinterpret_cast<op4>(valor << 0uint32_t);
-//		a = reinterpret_cast<op4>(valor >> 32uint32_t);
-//
-//		Variables::vetor[index] = b;
-//		Variables::vetor[index + 1] = a;
-//	}
-//
-//	void Variables::Write_vector4(u1 index, op4 valor) {
-//		Variables::vetor[index] = valor;
-//	}
-//
-//	op4 Variables::Read_vector4(u1 index) {
-//		return Variables::vetor[index];
-//
-//	}
-//
-//	op8 Variables::Read_vector8(u1 index) {
-//		op4 a,b;
-//		op8 c;
-//		a = Variables::vetor[index];
-//		b = Variables::vetor[index + 1];
-//		c = (a << 32uint32_t) | b;
-//		return c;
-//
-//	}
-//};
+namespace jvm {
+
+	Variables::Variables(uint32_t n) {
+		vec = new op4[n];
+	}
+
+	Variables::~Variables() {
+		delete[] vec;
+	}
+
+	op4 Variables::get4(u2 idx) {
+		return vec[idx];
+	}
+
+	op8 Variables::get8(u2 idx) {
+		return Converter::to_op8(vec[idx], vec[idx+1]);
+	}
+
+	void Variables::set(u2 idx, op4 value) {
+		vec[idx] = value;
+	}
+
+	void Variables::set(u2 idx, u4 value) {
+		vec[idx].ui4 = value;
+	}
+
+	void Variables::set(u2 idx, op8 value) {
+		std::tie(vec[idx], vec[idx + 1]) = Converter::to_op4(value);
+	}
+
+	void Variables::set(u2 idx, u8 value) {
+		op8 aux;
+
+		aux.ull = value;
+
+		std::tie(vec[idx], vec[idx + 1]) = Converter::to_op4(aux);
+	}
+
+};
