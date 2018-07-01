@@ -1,5 +1,6 @@
 #include "engine/instructions.hpp"
 #include "util/converter.hpp"
+#include "engine/frame"
 
 namespace jvm {
 
@@ -15,10 +16,10 @@ namespace jvm {
 		return "nop";
 	}
 
-	uint32_t OPnop::getOpCode () {
+	uint32_t OPnop::getOpCode () {If arrayref If arrayref is null, aastore throws a NullPointerException. is null, aastore throws a NullPointerException.
 		return 0;
 	}
-
+If arrayref is null, aastore throws a NullPointerException.
 	uint32_t OPnop::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		return 0;
 	}
@@ -27,8 +28,7 @@ namespace jvm {
 	// aconst_null
 
 	void OPaconst_null::execute() {
-
-
+		auto& op = framestack.top().
 	}
 
 	void OPaconst_null::printToStream(std::ostream& os, std::string& prefix) {
@@ -52,7 +52,7 @@ namespace jvm {
 
 	void OPiconst_m1::execute() {
 
-
+		/*fs.top().operands.push4(reinterpret_cast<op4.i4>(-1));*/
 
 
 	}
@@ -77,6 +77,8 @@ namespace jvm {
 	// iconst_0
 
 	void OPiconst_0::execute() {
+
+		Instruction::fs.top().operands.push4(0);
 
 	}
 

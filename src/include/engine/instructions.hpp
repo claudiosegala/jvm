@@ -44,7 +44,6 @@ namespace jvm {
 		 */
 		virtual uint32_t getOpCode() = 0;
 
-	private:
 		//> A static reference to the framestack of the program
 		static FramesStack &fs;
 	};
