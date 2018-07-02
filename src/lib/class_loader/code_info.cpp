@@ -267,7 +267,7 @@ namespace jvm {
 			auto instr = getInstr(opcode);
 			auto paramsRead = instr->fillParams(i, data);
 
-			push_back(instr);
+			insert({i, instr});
 			i += paramsRead;
 		}
 	}
@@ -287,7 +287,8 @@ namespace jvm {
 
 		os << prefix << "Opcodes:" << std::endl;
 
-		for (std::shared_ptr<InstructionInfo> &ptr : *this) {
+		for (auto pair : *this) {
+			auto ptr = pair.second;
 			auto instr = ptr.get();
 
 			if (instr != nullptr) {
