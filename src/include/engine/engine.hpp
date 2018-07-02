@@ -10,6 +10,9 @@ namespace jvm {
 
 	typedef void (Engine::*Execution) (InstructionInfo *);
 
+	//engine heap mem
+	std::vector<void*>mem;
+
 	/**
 	 * Class that run a single thread virtual machine
 	 */

@@ -773,7 +773,12 @@ namespace jvm {
 	void Engine::exec_laload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlaload *>(info); // get data in class
 		auto &frame = fs.top();
-		
+		auto val1 = frame.operands.pop4();
+		auto val2 = frame.operands.pop4();
+		op8 res;
+
+
+
 
 	}
 
