@@ -1,4 +1,5 @@
 #include "engine/engine.hpp"
+#include <cstdio>
 
 namespace jvm {
 
@@ -279,11 +280,16 @@ namespace jvm {
 	void Engine::execute () {
 		ClassLoader cl = JavaClasses.find("jvm_teste/Jvm_teste")->second;
 		MethodInfo method = cl.methods.find("main([Ljava/lang/String;)V")->second;
+
 		//run_clinit();
 		run_init();
 		Frame frame(cl,method);
 		fs.push(frame);
-
+		AttrCode codes = method.attributes.codes[0];
+		/*for(int i; i<codes.code)
+		int32_t InsOpCode = codes.code[0]->getOpCode();
+		auto executing = getExecutor(InsOpCode);
+		executing(codes.code[0]);*/
 	}
 
 	void Engine::run_clinit () {
