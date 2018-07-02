@@ -1806,17 +1806,11 @@ namespace jvm {
 	}
 
 	void Engine::exec_monitorenter (InstructionInfo * info) {
-		auto data   = reinterpret_cast<OPINFOmonitorenter *>(info); // get data in class
-		auto &frame = fs.top();
-
-
+		// This JVM does not have support for multiple threads
 	}
 
 	void Engine::exec_monitorexit (InstructionInfo * info) {
-		auto data   = reinterpret_cast<OPINFOmonitorexit *>(info); // get data in class
-		auto &frame = fs.top();
-
-
+		// This JVM does not have support for multiple threads
 	}
 
 	void Engine::exec_wide (InstructionInfo * info) {
@@ -1836,33 +1830,40 @@ namespace jvm {
 	void Engine::exec_ifnull (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifnull *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 ref = frame.operands.pop4();
-		if(ref.f == 0)
+		auto ref = frame.operands.pop4();
+
+		if(ref.f == 0) {
 			this->PC = static_cast<u4>(static_cast<i4>(PC) + data->branchoffset);
-		else
+		} else {
 			this->PC += data->jmp + 1;
+		}
 	}
 
 	void Engine::exec_ifnonnull (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifnonnull *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 ref = frame.operands.pop4();
-		if(!ref.f == 0)
+		auto ref = frame.operands.pop4();
+
+		if(ref.f != 0) {
 			this->PC = static_cast<u4>(static_cast<i4>(PC) + data->branchoffset);
-        else
+		} else {
 			this->PC += data->jmp + 1;
+		}
 	}
 
 	void Engine::exec_goto_w (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOgoto_w *>(info); // get data in class
 		auto &frame = fs.top();
+
         this->PC = static_cast<u4>(static_cast<i4>(PC) + data->branchoffset);
 	}
 
 	void Engine::exec_jsr_w (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOjsr_w *>(info); // get data in class
 		auto &frame = fs.top();
+
 		frame.operands.push4(this->PC + info->jmp);
+
 		this->PC = static_cast<u4>(static_cast<i4>(PC) + data->branchoffset);
 	}
 
