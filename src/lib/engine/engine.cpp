@@ -1117,140 +1117,262 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOiadd *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op4 res;
 
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		res.i4 = value1.i4 + value2.i4;
+
+		frame.operands.push4(res);
 	}
 
 	void Engine::exec_ladd (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOladd *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op8 res;
 
+		auto value1 = frame.operands.pop8();
+		auto value2 = frame.operands.pop8();
+
+		res.ll = value1.ll + value2.ll;
+
+		frame.operands.push8(res);
 	}
 
 	void Engine::exec_fadd (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfadd *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op4 res;
 
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		res.f = value1.f + value2.f;
+
+		frame.operands.push4(res);
 	}
 
 	void Engine::exec_dadd (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdadd *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op8 res;
 
+		auto value1 = frame.operands.pop8();
+		auto value2 = frame.operands.pop8();
+
+		res.lf = value1.lf + value2.lf;
+
+		frame.operands.push8(res);
 	}
 
 	void Engine::exec_isub (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOisub *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op4 res;
 
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		res.i4 = value1.i4 - value2.i4;
+
+		frame.operands.push4(res);
 	}
 
 	void Engine::exec_lsub (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlsub *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op8 res;
 
+		auto value1 = frame.operands.pop8();
+		auto value2 = frame.operands.pop8();
+		res.ll = value1.ll - value2.ll;
+
+		frame.operands.push8(res);
 	}
 
 	void Engine::exec_fsub (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfsub *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op4 res;
 
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		res.f = value1.f - value2.f;
+
+		frame.operands.push4(res);
 	}
 
 	void Engine::exec_dsub (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdsub *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op8 res;
 
+		auto value1 = frame.operands.pop8();
+		auto value2 = frame.operands.pop8();
+		res.lf = value1.lf - value2.lf;
+
+		frame.operands.push8(res);
 	}
 
 	void Engine::exec_imul (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOimul *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op4 res;
 
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		res.i4 = value1.i4 - value2.i4;
+
+		frame.operands.push4(res);
 	}
 
 	void Engine::exec_lmul (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlmul *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op8 res;
 
+		auto value1 = frame.operands.pop8();
+		auto value2 = frame.operands.pop8();
+		res.ll = value1.ll - value2.ll;
+
+		frame.operands.push8(res);
 	}
 
 	void Engine::exec_fmul (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfmul *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op4 res;
 
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		res.f = value1.f - value2.f;
+
+		frame.operands.push4(res);
 	}
 
 	void Engine::exec_dmul (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdmul *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op8 res;
 
+		auto value1 = frame.operands.pop8();
+		auto value2 = frame.operands.pop8();
+		res.lf = value1.lf - value2.lf;
+
+		frame.operands.push8(res);
 	}
 
 	void Engine::exec_idiv (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOidiv *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op4 res;
 
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		res.i4 = value1.i4 / value2.i4;
+
+		frame.operands.push4(res);
 	}
 
 	void Engine::exec_ldiv (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOldiv *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op8 res;
 
+		auto value1 = frame.operands.pop8();
+		auto value2 = frame.operands.pop8();
+		res.ll = value1.ll / value2.ll;
+
+		frame.operands.push8(res);
 	}
 
 	void Engine::exec_fdiv (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfdiv *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op4 res;
 
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		res.f = value1.f / value2.f;
+
+		frame.operands.push4(res);
 	}
 
 	void Engine::exec_ddiv (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOddiv *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op8 res;
 
+		auto value1 = frame.operands.pop8();
+		auto value2 = frame.operands.pop8();
+		res.lf = value1.lf / value2.lf;
+
+		frame.operands.push8(res);
 	}
 
 	void Engine::exec_irem (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOirem *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op4 res;
 
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		res.i4 = value1.i4 - (value1.i4 / value2.i4) * value2.i4;
+
+		frame.operands.push4(res);
 	}
 
 	void Engine::exec_lrem (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlrem *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op8 res;
 
+		auto value1 = frame.operands.pop8();
+		auto value2 = frame.operands.pop8();
+		res.ll = value1.ll - (value1.ll / value2.ll) * value2.ll;
+
+		frame.operands.push8(res);
 	}
 
 	void Engine::exec_frem (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfrem *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op4 res;
 
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		res.f = fmod(value1.f, value2.f);
+
+		frame.operands.push4(res);
 	}
 
 	void Engine::exec_drem (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdrem *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op8 res;
 
+		auto value1 = frame.operands.pop8();
+		auto value2 = frame.operands.pop8();
+		res.lf = fmod(value1.lf, value2.lf);
+
+		frame.operands.push8(res);
 	}
 
 	void Engine::exec_ineg (InstructionInfo * info) {
@@ -1863,24 +1985,15 @@ namespace jvm {
 	}
 
 	void Engine::exec_breakpoint (InstructionInfo * info) {
-		auto data   = reinterpret_cast<OPINFObreakpoint *>(info); // get data in class
-		auto &frame = fs.top();
-
-
+		// This JVM will not need reserved instructions for debuggers or back door
 	}
 
 	void Engine::exec_impdep1 (InstructionInfo * info) {
-		auto data   = reinterpret_cast<OPINFOimpdep1 *>(info); // get data in class
-		auto &frame = fs.top();
-
-
+		// This JVM will not need reserved instructions for debuggers or back door
 	}
 
 	void Engine::exec_impdep2 (InstructionInfo * info) {
-		auto data   = reinterpret_cast<OPINFOimpdep2 *>(info); // get data in class
-		auto &frame = fs.top();
-
-
+		// This JVM will not need reserved instructions for debuggers or back door
 	}
 
 }
