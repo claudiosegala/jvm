@@ -456,7 +456,7 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOdconst_1 *>(info); // get data in class
 		auto &frame = fs.top();
 		op8 res;
-		res.lf = 0.0;
+		res.lf = 1.0;
 		frame.operands.push8(res);
 		this->PC += data->jmp + 1;
 	}
@@ -773,13 +773,13 @@ namespace jvm {
 	void Engine::exec_laload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlaload *>(info); // get data in class
 		auto &frame = fs.top();
-		auto arrayref = frame.operands.push4();
-		void * ARP = Engine::mem[]
-		op8 res;
-
-
-
-
+		auto arrayref = frame.operands.pop4();
+		auto index = frame.operands.pop4();
+		double * ARP = static_cast<double*>(mem[arrayref.i4]);
+		op8 value;
+		value.lf = ARP[index.i4];
+		frame.operands.push8(value);
+		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_faload (InstructionInfo * info) {
