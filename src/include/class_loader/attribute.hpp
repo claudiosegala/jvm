@@ -6,12 +6,18 @@
 namespace jvm {
 
 	class AttrEntry;
+	struct AttrCode;
+	struct AttrConstantValue;
+	struct AttrExceptions;
 
 	// This maps a string to a function that returns an instance of the corresponding attribute
 	typedef std::map<std::string, std::shared_ptr<AttrEntry>(*)(Reader&, ConstantPool&)> AttributeMap;
 
 	class AttributeInfo : public std::vector<std::shared_ptr<AttrEntry>> {
 	public:
+		std::vector<AttrCode>codes;
+		std::vector<AttrConstantValue>ConstValues;
+		std::vector<AttrExceptions>Exceptions;
 		void fill(Reader &reader, ConstantPool &cp);
 		void printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix);
 	};

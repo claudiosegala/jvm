@@ -18,14 +18,22 @@ namespace jvm {
 			auto name = cp[name_index]->toString(cp);
 			auto it = m.find(name);
 
-			if (it == m.end()) { // In this case, the attribute's name is not in the map
+			if(name == "Code"){
+				codes.emplace_back(reader, cp);
+			}else if(name == "Exceptions"){
+				Exceptions.emplace_back(reader, cp);
+			}else if(name == "ConstantValue"){
+				ConstValues.emplace_back(reader, cp);
+			}
+
+			/*if (it == m.end()) { // In this case, the attribute's name is not in the map
 				// Add a nullptr and skip the attribute's bytes
 				emplace_back();
 				reader.skipBytes(attr_length);
 			} else { // instantiate the attribute and initialize with data from reader
 				auto attr = (*(it->second))(reader, cp);
 				push_back(attr);
-			}
+			}*/
 		}
 	}
 
