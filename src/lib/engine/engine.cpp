@@ -311,16 +311,11 @@ namespace jvm {
 		throw "Class not found";
 	}
 
-
-
-
 	void Engine::exec_nop (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOnop *>(info); // get data in class
 		auto &frame = fs.top();
+
 		frame.PC += data->jmp + 1;
-
-
-
 	}
 
 	void Engine::exec_aconst_null (InstructionInfo * info) {
@@ -553,7 +548,6 @@ namespace jvm {
 			frame.PC += data->jmp + 1;
 		}
 
-
 	}
 
 	void Engine::exec_iload (InstructionInfo * info) {
@@ -586,8 +580,6 @@ namespace jvm {
 		auto value = frame.variables.get8(data->index);
 		frame.operands.push8(value);
 		frame.PC += data->jmp + 1;
-
-
 	}
 
 	void Engine::exec_aload (InstructionInfo * info) {
@@ -782,172 +774,196 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_faload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfaload *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_daload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdaload *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_aaload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOaaload *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_baload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFObaload *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_caload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOcaload *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_saload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOsaload *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_istore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOistore *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_lstore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlstore *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_fstore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfstore *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_dstore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdstore *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_astore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOastore *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_istore_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOistore_0 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_istore_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOistore_1 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_istore_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOistore_2 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_istore_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOistore_3 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_lstore_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlstore_0 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_lstore_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlstore_1 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_lstore_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlstore_2 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_lstore_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlstore_3 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_fstore_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfstore_0 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_fstore_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfstore_1 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_fstore_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfstore_2 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_fstore_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfstore_3 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_dstore_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdstore_0 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_dstore_1 (InstructionInfo * info) {
@@ -957,116 +973,132 @@ namespace jvm {
 		// push na pilha
 	}
 
+	// TODO: finish this function
 	void Engine::exec_dstore_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdstore_2 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_dstore_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdstore_3 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_astore_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOastore_0 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_astore_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOastore_1 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_astore_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOastore_2 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_astore_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOastore_3 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_iastore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiastore *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_lastore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlastore *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_fastore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfastore *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_dastore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdastore *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_aastore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOaastore *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_bastore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFObastore *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_castore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOcastore *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_sastore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOsastore *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_pop (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOpop *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_pop2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOpop2 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_dup (InstructionInfo * info) {
@@ -1089,32 +1121,36 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_dup_x2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdup_x2 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_dup2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdup2 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_dup2_x1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdup2_x1 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_dup2_x2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdup2_x2 *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_swap (InstructionInfo * info) {
@@ -1505,523 +1541,597 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_ishl (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOishl *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_lshl (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlshl *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_ishr (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOishr *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_lshr (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlshr *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_iushr (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiushr *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_lushr (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlushr *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_iand (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiand *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_land (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOland *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_ior (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOior *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_lor (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlor *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_ixor (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOixor *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_lxor (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlxor *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_iinc (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiinc *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
 
+	// TODO: finish this function
 	void Engine::exec_i2l (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOi2l *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_i2f (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOi2f *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_i2d (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOi2d *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_l2i (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOl2i *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_l2f (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOl2f *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_l2d (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOl2d *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_f2i (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOf2i *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_f2l (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOf2l *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_f2d (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOf2d *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_d2i (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOd2i *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_d2l (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOd2l *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_d2f (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOd2f *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_i2b (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOi2b *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_i2c (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOi2c *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_i2s (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOi2s *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_lcmp (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlcmp *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_fcmpl (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfcmpl *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_fcmpg (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfcmpg *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_dcmpl (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdcmpl *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_dcmpg (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdcmpg *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_ifeq (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifeq *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_ifne (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifne *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_iflt (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiflt *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_ifge (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifge *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_ifgt (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifgt *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_ifle (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifle *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_if_icmpeq (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_icmpeq *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_if_icmpne (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_icmpne *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_if_icmplt (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_icmplt *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_if_icmpge (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_icmpge *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_if_icmpgt (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_icmpgt *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_if_icmple (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_icmple *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_if_acmpeq (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_acmpeq *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_if_acmpne (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_acmpne *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_goto (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOgoto *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_jsr (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOjsr *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_ret (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOret *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_tableswitch (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOtableswitch *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_lookupswitch (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlookupswitch *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_ireturn (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOireturn *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_lreturn (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlreturn *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_freturn (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfreturn *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_dreturn (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdreturn *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_areturn (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOareturn *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_return (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOreturn *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_getstatic (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOgetstatic *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_putstatic (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOputstatic *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_getfield (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOgetfield *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_putfield (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOputfield *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_invokevirtual (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOinvokevirtual *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_invokespecial (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOinvokespecial *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_invokestatic (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOinvokestatic *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_invokeinterface (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOinvokeinterface *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_invokedynamic (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOinvokedynamic *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_new (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOnew *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_newarray (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOnewarray *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_anewarray (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOanewarray *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_arraylength (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOarraylength *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_athrow (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOathrow *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_checkcast (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOcheckcast *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_instanceof (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOinstanceof *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_monitorenter (InstructionInfo * info) {
@@ -2032,18 +2142,20 @@ namespace jvm {
 		// This JVM does not have support for multiple threads
 	}
 
+	// TODO: finish this function
 	void Engine::exec_wide (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOwide *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: finish this function
 	void Engine::exec_multianewarray (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOmultianewarray *>(info); // get data in class
 		auto &frame = fs.top();
 
-
+		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_ifnull (InstructionInfo * info) {
