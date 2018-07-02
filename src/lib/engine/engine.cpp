@@ -1541,98 +1541,184 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_ishl (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOishl *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op4 res;
+
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		res.ui4 = value1.ui4 << (value2.ui4 & 0x1f);
+
+		frame.operands.push4(res);
+
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_lshl (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlshl *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op8 res;
+
+		auto value1 = frame.operands.pop8();
+		auto value2 = frame.operands.pop8();
+		res.ll = value1.ll << (value2.ll & 0x3f);
+
+		frame.operands.push8(res);
+
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_ishr (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOishr *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op4 res;
+
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		res.ui4 = value1.ui4 >> (value2.ui4 & 0x1f);
+
+		frame.operands.push4(res);
+
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_lshr (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlshr *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op8 res;
+
+		auto value1 = frame.operands.pop8();
+		auto value2 = frame.operands.pop8();
+		res.ll = value1.ll >> (value2.ll & 0x3f);
+
+		frame.operands.push8(res);
+
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_iushr (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiushr *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op4 res;
+
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		auto s      = value2.ui4 & 0x1f;
+		res.ui4 = (value1.ui4 >> s) + (2 << (~s));
+
+		frame.operands.push4(res);
+
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_lushr (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlushr *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op8 res;
+
+		auto value1 = frame.operands.pop8();
+		auto value2 = frame.operands.pop8();
+		auto s      = value2.ll & 0x3f;
+		res.ll = (value1.ll >> s) + (2L << (~s));
+
+		frame.operands.push8(res);
+
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_iand (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiand *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op4 res;
+
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		res.ui4 = value1.ui4 & value2.ui4;
+
+		frame.operands.push4(res);
+
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_land (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOland *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op8 res;
+
+		auto value1 = frame.operands.pop8();
+		auto value2 = frame.operands.pop8();
+		res.ll = value1.ll & value2.ll;
+
+		frame.operands.push8(res);
+
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_ior (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOior *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op4 res;
+
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		res.ui4 = value1.ui4 | value2.ui4;
+
+		frame.operands.push4(res);
+
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_lor (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlor *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op8 res;
+
+		auto value1 = frame.operands.pop8();
+		auto value2 = frame.operands.pop8();
+		res.ll = value1.ll | value2.ll;
+
+		frame.operands.push8(res);
+
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_ixor (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOixor *>(info); // get data in class
 		auto &frame = fs.top();
 
+		op4 res;
+
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		res.ui4 = value1.ui4 ^ value2.ui4;
+
+		frame.operands.push4(res);
+
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_lxor (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlxor *>(info); // get data in class
 		auto &frame = fs.top();
+
+		op8 res;
+
+		auto value1 = frame.operands.pop8();
+		auto value2 = frame.operands.pop8();
+		res.ll = value1.ll ^ value2.ll;
+
+		frame.operands.push8(res);
 
 		frame.PC += data->jmp + 1;
 	}
