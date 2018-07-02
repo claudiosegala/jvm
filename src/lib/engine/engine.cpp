@@ -791,6 +791,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -799,6 +801,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -807,6 +811,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -815,6 +821,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -823,6 +831,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -831,6 +841,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	void Engine::exec_istore (InstructionInfo * info) {
@@ -855,6 +867,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -863,6 +877,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -871,6 +887,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	void Engine::exec_istore_0 (InstructionInfo * info) {
@@ -943,6 +961,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -951,6 +971,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -959,6 +981,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -967,6 +991,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -975,6 +1001,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	void Engine::exec_dstore_1 (InstructionInfo * info) {
@@ -990,6 +1018,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -998,6 +1028,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1006,6 +1038,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1014,6 +1048,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1022,6 +1058,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1030,6 +1068,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1038,6 +1078,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1046,6 +1088,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1054,6 +1098,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1062,6 +1108,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1070,6 +1118,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1078,6 +1128,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1086,6 +1138,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1094,6 +1148,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1102,6 +1158,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1110,6 +1168,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	void Engine::exec_dup (InstructionInfo * info) {
@@ -1138,6 +1198,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1146,6 +1208,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1154,6 +1218,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1162,6 +1228,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	void Engine::exec_swap (InstructionInfo * info) {
@@ -1740,6 +1808,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 
@@ -1749,6 +1819,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1757,6 +1829,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1765,6 +1839,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1773,6 +1849,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1781,6 +1859,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1789,6 +1869,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1797,6 +1879,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1805,6 +1889,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1813,6 +1899,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1821,6 +1909,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1829,6 +1919,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1837,6 +1929,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1845,6 +1939,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1853,6 +1949,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1861,6 +1959,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1869,6 +1969,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1877,6 +1979,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1885,6 +1989,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1893,6 +1999,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1901,6 +2009,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1909,6 +2019,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1917,6 +2029,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1925,6 +2039,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1933,6 +2049,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1941,6 +2059,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1949,6 +2069,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1957,6 +2079,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1965,6 +2089,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1973,6 +2099,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1981,6 +2109,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1989,6 +2119,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -1997,6 +2129,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2005,6 +2139,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2013,6 +2149,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2021,6 +2159,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2029,6 +2169,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2037,6 +2179,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2045,6 +2189,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2053,6 +2199,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2061,6 +2209,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2069,6 +2219,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2077,6 +2229,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2085,6 +2239,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2093,6 +2249,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2101,6 +2259,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2109,6 +2269,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2117,6 +2279,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2125,6 +2289,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2133,6 +2299,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2141,6 +2309,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2149,6 +2319,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2157,6 +2329,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2165,6 +2339,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2173,6 +2349,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2181,6 +2359,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2189,6 +2369,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2197,6 +2379,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2205,6 +2389,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2213,6 +2399,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2221,6 +2409,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2229,6 +2419,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	void Engine::exec_monitorenter (InstructionInfo * info) {
@@ -2245,6 +2437,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
@@ -2253,6 +2447,8 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
+
+		throw "Not Implemented!";
 	}
 
 	void Engine::exec_ifnull (InstructionInfo * info) {
