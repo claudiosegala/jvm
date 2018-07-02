@@ -1814,45 +1814,37 @@ namespace jvm {
 		throw "Not Implemented!";
 	}
 
-
-	// TODO: finish this function
 	void Engine::exec_i2l (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOi2l *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op4 intValue = frame.operands.pop4();
+		frame.operands.push8(static_cast<i8>(intValue.i4));
 		frame.PC += data->jmp + 1;
-
-		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
 	void Engine::exec_i2f (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOi2f *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op4 intValue = frame.operands.pop4();
+		frame.operands.push4(static_cast<float>(intValue.i4));
 		frame.PC += data->jmp + 1;
-
-		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
 	void Engine::exec_i2d (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOi2d *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op4 intValue = frame.operands.pop4();
+		frame.operands.push8(static_cast<double>(intValue.i4));
 		frame.PC += data->jmp + 1;
-
-		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
 	void Engine::exec_l2i (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOl2i *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op8 longValue = frame.operands.pop8();
+		i4 intValue = static_cast<i4>(0x00000000FFFFFFFF & longValue.ll);
+		frame.operands.push4(intValue);
 		frame.PC += data->jmp + 1;
-
-		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
