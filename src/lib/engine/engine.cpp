@@ -311,14 +311,9 @@ namespace jvm {
 		throw "Class not found";
 	}
 
-
-
-
 	void Engine::exec_nop (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOnop *>(info); // get data in class
 		auto &frame = fs.top();
-
-
 
 	}
 
@@ -328,7 +323,6 @@ namespace jvm {
 		op4 res;
 		res.ui4 = 0;
 		frame.operands.push4(res);
-
 
 	}
 
