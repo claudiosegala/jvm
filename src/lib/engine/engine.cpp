@@ -822,19 +822,19 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_istore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOistore *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op4 value = frame.operands.pop4();
+		frame.variables.set(data->index, value);
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_lstore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlstore *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op8 value = frame.operands.pop8();
+		frame.variables.set(data->index, value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -862,67 +862,67 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_istore_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOistore_0 *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op4 value = frame.operands.pop4();
+		frame.variables.set(0, value);
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_istore_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOistore_1 *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op4 value = frame.operands.pop4();
+		frame.variables.set(1, value);
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_istore_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOistore_2 *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op4 value = frame.operands.pop4();
+		frame.variables.set(2, value);
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_istore_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOistore_3 *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op4 value = frame.operands.pop4();
+		frame.variables.set(3, value);
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_lstore_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlstore_0 *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op8 value = frame.operands.pop8();
+		frame.variables.set(0, value);
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_lstore_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlstore_1 *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op8 value = frame.operands.pop8();
+		frame.variables.set(1, value);
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_lstore_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlstore_2 *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op8 value = frame.operands.pop8();
+		frame.variables.set(2, value);
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_lstore_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlstore_3 *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op8 value = frame.operands.pop8();
+		frame.variables.set(3, value);
 		frame.PC += data->jmp + 1;
 	}
 
