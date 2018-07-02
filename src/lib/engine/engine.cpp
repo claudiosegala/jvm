@@ -277,8 +277,13 @@ namespace jvm {
 	}
 
 	void Engine::execute () {
+		ClassLoader cl = JavaClasses.find("jvm_teste/Jvm_teste")->second;
+		MethodInfo method = cl.methods.find("main([Ljava/lang/String;)V")->second;
 		//run_clinit();
 		run_init();
+		Frame frame(cl,method);
+		fs.push(frame);
+
 	}
 
 	void Engine::run_clinit () {
