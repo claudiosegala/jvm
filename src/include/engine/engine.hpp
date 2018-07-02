@@ -43,8 +43,8 @@ namespace jvm {
 		FramesStack fs;
 
 		//engine heap mem
-		std::vector<void*>mem;
-		
+		std::vector<void*> mem;
+
 		//> Method Area
 		// TODO: understand
 

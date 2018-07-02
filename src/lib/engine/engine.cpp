@@ -484,14 +484,14 @@ namespace jvm {
 		auto &frame = fs.top();
 		op4 res;
 		auto k = frame.cl.constant_pool[data->index];
-		auto res_float = reinterpret_cast<CP_Float*>(k);
+		auto res_float = dynamic_cast<CP_Float*>(k);
 		if (res_float != nullptr) {
 			res.ui4 = res_float->_bytes;
 			frame.operands.push4(res);
 			frame.PC += data->jmp + 1;
 			return;
 		}
-		auto res_int = reinterpret_cast<CP_Integer*>(k);
+		auto res_int = dynamic_cast<CP_Integer*>(k);
 		if(res_int != nullptr) {
 			res.ui4 = res_float->_bytes;
 			frame.operands.push4(res);
@@ -508,13 +508,13 @@ namespace jvm {
 		auto &frame = fs.top();
 		op4 res;
 		auto k = frame.cl.constant_pool[data->index];
-		auto res_float = reinterpret_cast<CP_Float*>(k);
+		auto res_float = dynamic_cast<CP_Float*>(k);
 		if(res_float != nullptr) {
 			res.ui4 = res_float->_bytes;
 			frame.operands.push4(res);
 			frame.PC += data->jmp + 1;
 		}
-		auto res_int = reinterpret_cast<CP_Integer*>(k);
+		auto res_int = dynamic_cast<CP_Integer*>(k);
 		if(res_int != nullptr){
 			res.ui4 = res_int->_bytes;
 			frame.operands.push4(res);
@@ -528,7 +528,7 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOldc2_w *>(info); // get data in class
 		auto &frame = fs.top();
 		auto k = frame.cl.constant_pool[data->index];
-		auto res_double = reinterpret_cast<CP_Double*>(k);
+		auto res_double = dynamic_cast<CP_Double*>(k);
 
 		op4 res1, res2;
 
@@ -540,7 +540,7 @@ namespace jvm {
 			frame.PC += data->jmp + 1;
 		}
 
-		auto res_long = reinterpret_cast<CP_Long*>(k);
+		auto res_long = dynamic_cast<CP_Long*>(k);
 
 		if(res_long != nullptr){
 			res1.ui4 = res_long->low_bytes;
@@ -773,7 +773,8 @@ namespace jvm {
 	void Engine::exec_laload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlaload *>(info); // get data in class
 		auto &frame = fs.top();
-		void * ARP = e
+		auto arrayref = frame.operands.push4();
+		void * ARP = Engine::mem[]
 		op8 res;
 
 
