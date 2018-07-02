@@ -1,3 +1,4 @@
+#include <cmath>
 #include "engine/engine.hpp"
 
 namespace jvm {
@@ -1463,7 +1464,7 @@ namespace jvm {
 
 		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
-		res.f = fmod(value1.f, value2.f);
+		res.f = std::fmod(value1.f, value2.f);
 
 		frame.operands.push4(res);
 
