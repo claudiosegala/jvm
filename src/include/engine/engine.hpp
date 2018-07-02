@@ -10,8 +10,6 @@ namespace jvm {
 
 	typedef void (Engine::*Execution) (InstructionInfo *);
 
-
-
 	/**
 	 * Class that run a single thread virtual machine
 	 */
