@@ -864,31 +864,31 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_fstore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfstore *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op4 value = frame.operands.pop4();
+		frame.variables.set(data->index, value);
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
 	void Engine::exec_dstore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdstore *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op8 value = frame.operands.pop8();
+		frame.variables.set(data->index, value);
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
 	void Engine::exec_astore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOastore *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op4 objectref = frame.operands.pop4();
+		frame.variables.set(data->index, objectref);
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
@@ -958,51 +958,51 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_fstore_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfstore_0 *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op4 value = frame.operands.pop4();
+		frame.variables.set(0, value);
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
 	void Engine::exec_fstore_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfstore_1 *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op4 value = frame.operands.pop4();
+		frame.variables.set(1, value);
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
 	void Engine::exec_fstore_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfstore_2 *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op4 value = frame.operands.pop4();
+		frame.variables.set(2, value);
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
 	void Engine::exec_fstore_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfstore_3 *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op4 value = frame.operands.pop4();
+		frame.variables.set(3, value);
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
 	void Engine::exec_dstore_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdstore_0 *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op8 value = frame.operands.pop8();
+		frame.variables.set(0, value);
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
@@ -1011,65 +1011,66 @@ namespace jvm {
 	void Engine::exec_dstore_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdstore_2 *>(info); // get data in class
 		auto &frame = fs.top();
-
-		// push na pilha
+		op8 value = frame.operands.pop8();
+		frame.variables.set(1, value);
+		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_dstore_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdstore_2 *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op8 value = frame.operands.pop8();
+		frame.variables.set(2, value);
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
 	void Engine::exec_dstore_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdstore_3 *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op8 value = frame.operands.pop8();
+		frame.variables.set(3, value);
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
 	void Engine::exec_astore_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOastore_0 *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op4 objectref = frame.operands.pop4();
+		frame.variables.set(0, objectref);
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
-
-	// TODO: finish this function
+	
 	void Engine::exec_astore_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOastore_1 *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op4 objectref = frame.operands.pop4();
+		frame.variables.set(1, objectref);
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
 	void Engine::exec_astore_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOastore_2 *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op4 objectref = frame.operands.pop4();
+		frame.variables.set(2, objectref);
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
 	void Engine::exec_astore_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOastore_3 *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op4 objectref = frame.operands.pop4();
+		frame.variables.set(3, objectref);
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
