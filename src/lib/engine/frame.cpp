@@ -5,7 +5,8 @@ namespace jvm {
 	Frame::Frame(ClassLoader &cl, MethodInfo& mt) : cl(cl), mt(mt) {}
 
 	Frame::~Frame() {
-		delete[] variables.v4;
+		// TODO: maybe implement this
+		//delete[] variables.v4;
 	}
 
 };

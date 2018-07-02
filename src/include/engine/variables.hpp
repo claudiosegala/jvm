@@ -10,8 +10,8 @@ namespace jvm {
 		/**
 		 * Constructor
 		 */
-		Variables(uint32_t);
-
+		//Variables(uint32_t);
+		Variables();
 
 		/**
 		 * Destructor
@@ -32,7 +32,11 @@ namespace jvm {
 
 	private:
 		//> Array of op4
-		op4* vec;
+		std::vector<op4> vec;
+
+		// TODO: implement this
+		//> Array of op4
+		// op4* vec;
 	};
 
 }

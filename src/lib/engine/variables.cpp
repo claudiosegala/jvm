@@ -2,12 +2,16 @@
 
 namespace jvm {
 
-	Variables::Variables(uint32_t n) {
-		vec = new op4[n];
-	}
+	// TODO: implement this
+//	Variables::Variables(uint32_t n) {
+//		vec = new op4[n];
+//	}
+
+	Variables::Variables() {}
 
 	Variables::~Variables() {
-		delete[] vec;
+		// TODO: implement this
+		//delete[] vec;
 	}
 
 	op4 Variables::get4(u2 idx) {

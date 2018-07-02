@@ -317,7 +317,7 @@ namespace jvm {
 	void Engine::exec_nop (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOnop *>(info); // get data in class
 		auto &frame = fs.top();
-		this->PC += data->jpm + 1;
+		this->PC += data->jmp + 1;
 
 
 
@@ -329,6 +329,7 @@ namespace jvm {
 		op4 res;
 		res.ui4 = 0;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 
 
 	}
@@ -339,6 +340,7 @@ namespace jvm {
 		op4 res;
 		res.i4 = -1;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_iconst_0 (InstructionInfo * info) {
@@ -347,6 +349,7 @@ namespace jvm {
 		op4 res;
 		res.ui4 = 0;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_iconst_1 (InstructionInfo * info) {
@@ -355,6 +358,7 @@ namespace jvm {
 		op4 res;
 		res.ui4 = 1;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_iconst_2 (InstructionInfo * info) {
@@ -363,6 +367,7 @@ namespace jvm {
 		op4 res;
 		res.ui4 = 2;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_iconst_3 (InstructionInfo * info) {
@@ -371,6 +376,7 @@ namespace jvm {
 		op4 res;
 		res.ui4 = 3;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_iconst_4 (InstructionInfo * info) {
@@ -379,6 +385,7 @@ namespace jvm {
 		op4 res;
 		res.ui4 = 4;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_iconst_5 (InstructionInfo * info) {
@@ -387,6 +394,7 @@ namespace jvm {
 		op4 res;
 		res.ui4 = 5;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 
 	}
 
@@ -396,6 +404,7 @@ namespace jvm {
 		op8 res;
 		res.ull = 0;
 		frame.operands.push8(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_lconst_1 (InstructionInfo * info) {
@@ -404,8 +413,7 @@ namespace jvm {
 		op8 res;
 		res.ull = 1;
 		frame.operands.push8(res);
-
-
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_fconst_0 (InstructionInfo * info) {
@@ -414,6 +422,7 @@ namespace jvm {
 		op4 res;
 		res.f = 0.0;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_fconst_1 (InstructionInfo * info) {
@@ -422,6 +431,7 @@ namespace jvm {
 		op4 res;
 		res.f = 1.0;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_fconst_2 (InstructionInfo * info) {
@@ -430,6 +440,7 @@ namespace jvm {
 		op4 res;
 		res.f = 2.0;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_dconst_0 (InstructionInfo * info) {
@@ -438,6 +449,7 @@ namespace jvm {
 		op8 res;
 		res.lf = 0.0;
 		frame.operands.push8(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_dconst_1 (InstructionInfo * info) {
@@ -446,6 +458,7 @@ namespace jvm {
 		op8 res;
 		res.lf = 0.0;
 		frame.operands.push8(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_bipush (InstructionInfo * info) {
@@ -454,6 +467,7 @@ namespace jvm {
 		op4 res;
 		res.i1 = data->byte;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_sipush (InstructionInfo * info) {
@@ -462,6 +476,7 @@ namespace jvm {
 		op4 res;
 		res.i2 = data->value;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_ldc (InstructionInfo * info) {
@@ -473,12 +488,14 @@ namespace jvm {
 		if (res_float != nullptr) {
 			res.ui4 = res_float->_bytes;
 			frame.operands.push4(res);
+			this->PC += data->jmp + 1;
 			return;
 		}
 		auto res_int = reinterpret_cast<CP_Integer*>(k);
 		if(res_int != nullptr) {
 			res.ui4 = res_float->_bytes;
 			frame.operands.push4(res);
+			f += data->jmp + 1;
 		} else{
 			std::cout <<"Error in ldc" << std::endl;
 		}
@@ -489,7 +506,7 @@ namespace jvm {
 	void Engine::exec_ldc_w (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOldc_w *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res
+		op4 res;
 		auto k = frame.cl.constant_pool[data->index];
 		auto res_float = reinterpret_cast<CP_Float*>(k);
 		if(res_float != nullptr) {
@@ -508,16 +525,20 @@ namespace jvm {
 	void Engine::exec_ldc2_w (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOldc2_w *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res1,res2;
 		auto k = frame.cl.constant_pool[data->index];
 		auto res_double = reinterpret_cast<CP_Double*>(k);
+
+		op4 res1, res2;
+
 		if(res_double != nullptr) {
 			res1.ui4 = res_double->low_bytes;
 			res2.ui4 = res_double->high_bytes;
 			frame.operands.push4(res1);
 			frame.operands.push4(res2);
 		}
+
 		auto res_long = reinterpret_cast<CP_Long*>(k);
+
 		if(res_long != nullptr){
 			res1.ui4 = res_long->low_bytes;
 			res2.ui4 = res_long->high_bytes;
