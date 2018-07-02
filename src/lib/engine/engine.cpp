@@ -314,6 +314,7 @@ namespace jvm {
 	void Engine::exec_nop (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOnop *>(info); // get data in class
 		auto &frame = fs.top();
+		this->PC += data->jmp + 1;
 
 	}
 
@@ -323,6 +324,7 @@ namespace jvm {
 		op4 res;
 		res.ui4 = 0;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 
 	}
 
@@ -332,6 +334,7 @@ namespace jvm {
 		op4 res;
 		res.i4 = -1;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_iconst_0 (InstructionInfo * info) {
@@ -340,6 +343,7 @@ namespace jvm {
 		op4 res;
 		res.ui4 = 0;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_iconst_1 (InstructionInfo * info) {
@@ -348,6 +352,7 @@ namespace jvm {
 		op4 res;
 		res.ui4 = 1;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_iconst_2 (InstructionInfo * info) {
@@ -356,6 +361,7 @@ namespace jvm {
 		op4 res;
 		res.ui4 = 2;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_iconst_3 (InstructionInfo * info) {
@@ -364,6 +370,7 @@ namespace jvm {
 		op4 res;
 		res.ui4 = 3;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_iconst_4 (InstructionInfo * info) {
@@ -372,6 +379,7 @@ namespace jvm {
 		op4 res;
 		res.ui4 = 4;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_iconst_5 (InstructionInfo * info) {
@@ -380,6 +388,7 @@ namespace jvm {
 		op4 res;
 		res.ui4 = 5;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 
 	}
 
@@ -389,6 +398,7 @@ namespace jvm {
 		op8 res;
 		res.ull = 0;
 		frame.operands.push8(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_lconst_1 (InstructionInfo * info) {
@@ -397,8 +407,7 @@ namespace jvm {
 		op8 res;
 		res.ull = 1;
 		frame.operands.push8(res);
-
-
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_fconst_0 (InstructionInfo * info) {
@@ -407,6 +416,7 @@ namespace jvm {
 		op4 res;
 		res.f = 0.0;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_fconst_1 (InstructionInfo * info) {
@@ -415,6 +425,7 @@ namespace jvm {
 		op4 res;
 		res.f = 1.0;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_fconst_2 (InstructionInfo * info) {
@@ -423,42 +434,65 @@ namespace jvm {
 		op4 res;
 		res.f = 2.0;
 		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_dconst_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdconst_0 *>(info); // get data in class
 		auto &frame = fs.top();
-
-
-
+		op8 res;
+		res.lf = 0.0;
+		frame.operands.push8(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_dconst_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdconst_1 *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		op8 res;
+		res.lf = 0.0;
+		frame.operands.push8(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_bipush (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFObipush *>(info); // get data in class
 		auto &frame = fs.top();
-
-
-
+		op4 res;
+		res.i1 = data->byte;
+		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_sipush (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOsipush *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		op4 res;
+		res.i2 = data->value;
+		frame.operands.push4(res);
+		this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_ldc (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOldc *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op4 res;
+		auto k = frame.cl.constant_pool[data->index];
+		auto res_float = reinterpret_cast<CP_Float*>(k);
+		if (res_float != nullptr) {
+			res.ui4 = res_float->_bytes;
+			frame.operands.push4(res);
+			this->PC += data->jmp + 1;
+			return;
+		}
+		auto res_int = reinterpret_cast<CP_Integer*>(k);
+		if(res_int != nullptr) {
+			res.ui4 = res_float->_bytes;
+			frame.operands.push4(res);
+			f += data->jmp + 1;
+		} else{
+			std::cout <<"Error in ldc" << std::endl;
+		}
 
 
 	}
@@ -466,13 +500,47 @@ namespace jvm {
 	void Engine::exec_ldc_w (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOldc_w *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		op4 res;
+		auto k = frame.cl.constant_pool[data->index];
+		auto res_float = reinterpret_cast<CP_Float*>(k);
+		if(res_float != nullptr) {
+			res.ui4 = res_float->_bytes;
+			frame.operands.push4(res);
+		}
+		auto res_int = reinterpret_cast<CP_Integer*>(k);
+		if(res_int != nullptr){
+			res.ui4 = res_int->_bytes;
+			frame.operands.push4(res);
+		} else {
+			std::cout << "Error in ldc_w" << std::endl;
+		}
 	}
 
 	void Engine::exec_ldc2_w (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOldc2_w *>(info); // get data in class
 		auto &frame = fs.top();
+		auto k = frame.cl.constant_pool[data->index];
+		auto res_double = reinterpret_cast<CP_Double*>(k);
+
+		op4 res1, res2;
+
+		if(res_double != nullptr) {
+			res1.ui4 = res_double->low_bytes;
+			res2.ui4 = res_double->high_bytes;
+			frame.operands.push4(res1);
+			frame.operands.push4(res2);
+		}
+
+		auto res_long = reinterpret_cast<CP_Long*>(k);
+
+		if(res_long != nullptr){
+			res1.ui4 = res_long->low_bytes;
+			res2.ui4 = res_long->high_bytes;
+			frame.operands.push4(res1);
+			frame.operands.push4(res2);
+		} else {
+			std::cout << "Error in ldc2_w" << std::endl;
+		}
 
 
 	}
@@ -480,27 +548,29 @@ namespace jvm {
 	void Engine::exec_iload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiload *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+//		auto value = frame.variables.get4(data->index);
+//		frame.operands.push4(value);
 	}
 
 	void Engine::exec_lload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlload *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		auto value = frame.variables.get8(data->index);
+		frame.operands.push8(value);
 	}
 
 	void Engine::exec_fload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfload *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		auto value = frame.variables.get4(data->index);
+		frame.operands.push4(value);
 	}
 
 	void Engine::exec_dload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdload *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value = frame.variables.get8(data->index);
+		frame.operands.push8(value);
 
 
 	}
@@ -508,13 +578,15 @@ namespace jvm {
 	void Engine::exec_aload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOaload *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		auto value = frame.variables.get4(data->index);
+		frame.operands.push4(value);
 	}
 
 	void Engine::exec_iload_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiload_0 *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value = frame.variables.get4(1);
+		frame.operands.push4(value);
 
 
 	}
@@ -522,6 +594,8 @@ namespace jvm {
 	void Engine::exec_iload_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiload_1 *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value = frame.variables.get4(2);
+		frame.operands.push4(value);
 
 
 	}
@@ -529,6 +603,8 @@ namespace jvm {
 	void Engine::exec_iload_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiload_2 *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value = frame.variables.get4(3);
+		frame.operands.push4(value);
 
 
 	}
@@ -536,6 +612,8 @@ namespace jvm {
 	void Engine::exec_iload_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiload_3 *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value = frame.variables.get4(4);
+		frame.operands.push4(value);
 
 
 	}
@@ -543,6 +621,8 @@ namespace jvm {
 	void Engine::exec_lload_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlload_0 *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value = frame.variables.get8(1);
+		frame.operands.push8(value);
 
 
 	}
@@ -550,111 +630,113 @@ namespace jvm {
 	void Engine::exec_lload_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlload_1 *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		auto value = frame.variables.get8(2);
+		frame.operands.push8(value);
 	}
 
 	void Engine::exec_lload_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlload_2 *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		auto value = frame.variables.get8(3);
+		frame.operands.push8(value);
 	}
 
 	void Engine::exec_lload_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlload_3 *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		auto value = frame.variables.get8(4);
+		frame.operands.push8(value);
 	}
 
 	void Engine::exec_fload_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfload_0 *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		auto value = frame.variables.get4(1);
+		frame.operands.push4(value);
 	}
 
 	void Engine::exec_fload_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfload_1 *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		auto value = frame.variables.get4(2);
+		frame.operands.push4(value);
 	}
 
 	void Engine::exec_fload_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfload_2 *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		auto value = frame.variables.get4(3);
+		frame.operands.push4(value);
 	}
 
 	void Engine::exec_fload_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfload_3 *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		auto value = frame.variables.get4(4);
+		frame.operands.push4(value);
 	}
 
 	void Engine::exec_dload_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdload_0 *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		auto value = frame.variables.get8(1);
+		frame.operands.push8(value);
 	}
 
 	void Engine::exec_dload_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdload_1 *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		auto value = frame.variables.get8(2);
+		frame.operands.push8(value);
 	}
 
 	void Engine::exec_dload_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdload_2 *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		auto value = frame.variables.get8(3);
+		frame.operands.push8(value);
 	}
 
 	void Engine::exec_dload_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdload_3 *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		auto value = frame.variables.get8(4);
+		frame.operands.push8(value);
 	}
 
 	void Engine::exec_aload_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOaload_0 *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		auto value = frame.variables.get4(1);
+		frame.operands.push4(value);
 	}
 
 	void Engine::exec_aload_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOaload_1 *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		auto value = frame.variables.get4(2);
+		frame.operands.push4(value);
 	}
 
 	void Engine::exec_aload_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOaload_2 *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		auto value = frame.variables.get4(3);
+		frame.operands.push4(value);
 	}
 
 	void Engine::exec_aload_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOaload_3 *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		auto value = frame.variables.get4(4);
+		frame.operands.push4(value);
 	}
 
 	void Engine::exec_iaload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiaload *>(info); // get data in class
 		auto &frame = fs.top();
+		op4 val1 = frame.operands.pop4();
+		op4 val2 = frame.operands.pop4();
 
 
 	}
@@ -1720,29 +1802,34 @@ namespace jvm {
 	void Engine::exec_ifnull (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifnull *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		op4 ref = frame.operands.pop4();
+		if(ref.f == 0)
+			this->PC = static_cast<u4>(static_cast<i4>(PC) + data->branchoffset);
+		else
+			this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_ifnonnull (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifnonnull *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		op4 ref = frame.operands.pop4();
+		if(!ref.f == 0)
+			this->PC = static_cast<u4>(static_cast<i4>(PC) + data->branchoffset);
+        else
+			this->PC += data->jmp + 1;
 	}
 
 	void Engine::exec_goto_w (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOgoto_w *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+        this->PC = static_cast<u4>(static_cast<i4>(PC) + data->branchoffset);
 	}
 
 	void Engine::exec_jsr_w (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOjsr_w *>(info); // get data in class
 		auto &frame = fs.top();
 		frame.operands.push4(this->PC + info->jmp);
-		this->PC += data->branchoffset;
+		this->PC = static_cast<u4>(static_cast<i4>(PC) + data->branchoffset);
 	}
 
 	void Engine::exec_breakpoint (InstructionInfo * info) {

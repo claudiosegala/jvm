@@ -21,10 +21,13 @@ namespace jvm {
 		Operands operands;
 
 		//> Local Variables Vector
-		lvv variables;
+		Variables variables;
 
 		//> The returned value
 		u4 Return_value;
+
+		//>Frame PC
+		u4 PC;
 
 		//> Class loader reference
 		const ClassLoader& cl;

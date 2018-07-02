@@ -1,25 +1,42 @@
 #pragma once
 
 #include "base.hpp"
+#include "util/converter.hpp"
 
 namespace jvm {
-	class Variables   {
+
+	class Variables {
 	public:
 		/**
-		 * Default constructor
+		 * Constructor
 		 */
-		Variables() = default;
+		//Variables(uint32_t);
+		Variables();
 
-		void  Write_vector4(u1 ,op4);
+		/**
+		 * Destructor
+		 */
+		~Variables();
 
-		void  Write_vector8(u1 ,op8);
+		op4 get4(u2);
 
-		op4 Read_vector4(u1);
+		op8 get8(u2);
 
-		op8 Read_vector8(u1);
+		void set(u2, op4);
 
+		void set(u2, u4);
 
-		 std::vector<op4> vetor;
+		void set(u2, op8);
 
+		void set(u2, u8);
+
+	private:
+		//> Array of op4
+		std::vector<op4> vec;
+
+		// TODO: implement this
+		//> Array of op4
+		// op4* vec;
 	};
+
 }
