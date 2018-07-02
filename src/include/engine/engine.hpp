@@ -10,6 +10,8 @@ namespace jvm {
 
 	typedef void (Engine::*Execution) (InstructionInfo *);
 
+
+
 	/**
 	 * Class that run a single thread virtual machine
 	 */
@@ -39,6 +41,9 @@ namespace jvm {
 
 		//> Frame Stack
 		FramesStack fs;
+
+		//engine heap mem
+		std::vector<void*> mem;
 
 		//> Method Area
 		// TODO: understand
