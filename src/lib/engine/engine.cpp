@@ -2154,14 +2154,11 @@ namespace jvm {
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
 	void Engine::exec_goto (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOgoto *>(info); // get data in class
 		auto &frame = fs.top();
 
-		frame.PC += data->jmp + 1;
-
-		throw "Not Implemented!";
+		frame.PC = static_cast<u4>(static_cast<i4>(frame.PC) + data->branchoffset);
 	}
 
 	// TODO: finish this function
@@ -2174,14 +2171,12 @@ namespace jvm {
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
 	void Engine::exec_ret (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOret *>(info); // get data in class
 		auto &frame = fs.top();
+		auto newPC  = frame.variables.get4(data->index);
 
-		frame.PC += data->jmp + 1;
-
-		throw "Not Implemented!";
+		frame.PC = newPC.ui4;
 	}
 
 	// TODO: finish this function
@@ -2262,14 +2257,11 @@ namespace jvm {
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
 	void Engine::exec_return (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOreturn *>(info); // get data in class
-		auto &frame = fs.top();
+		auto &frame = fs.top(); fs.pop();
 
 		frame.PC += data->jmp + 1;
-
-		throw "Not Implemented!";
 	}
 
 	// TODO: finish this function
