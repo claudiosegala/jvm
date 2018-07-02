@@ -329,7 +329,7 @@ namespace jvm {
 		op4 res;
 		res.ui4 = 0;
 		frame.operands.push4(res);
-		this->PC += data->jmp + 1;
+		frame.PC += data->jmp + 1;
 
 
 	}
@@ -458,7 +458,7 @@ namespace jvm {
 		op8 res;
 		res.lf = 1.0;
 		frame.operands.push8(res);
-		this->PC += data->jmp + 1;
+		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_bipush (InstructionInfo * info) {
@@ -1075,6 +1075,7 @@ namespace jvm {
 		op4 value = frame.operands.pop4();
 		frame.operands.push4(value);
 		frame.operands.push4(value);
+		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_dup_x1 (InstructionInfo * info) {
@@ -1085,6 +1086,7 @@ namespace jvm {
 		frame.operands.push4(value1);
 		frame.operands.push4(value2);
 		frame.operands.push4(value1);
+		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_dup_x2 (InstructionInfo * info) {
@@ -1122,6 +1124,7 @@ namespace jvm {
 		op4 value2 = frame.operands.pop4();
 		frame.operands.push4(value1);
 		frame.operands.push4(value2);
+		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_iadd (InstructionInfo * info) {
@@ -1130,6 +1133,7 @@ namespace jvm {
 		op4 value1 = frame.operands.pop4();
 		op4 value2 = frame.operands.pop4();
 		frame.operands.push4(value1.i4 + value2.i4);
+		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_ladd (InstructionInfo * info) {
@@ -1841,9 +1845,9 @@ namespace jvm {
 		auto ref = frame.operands.pop4();
 
 		if(ref.f == 0) {
-			this->PC = static_cast<u4>(static_cast<i4>(PC) + data->branchoffset);
+			frame.PC = static_cast<u4>(static_cast<i4>(frame.PC) + data->branchoffset);
 		} else {
-			this->PC += data->jmp + 1;
+			frame.PC += data->jmp + 1;
 		}
 	}
 
@@ -1853,9 +1857,9 @@ namespace jvm {
 		auto ref = frame.operands.pop4();
 
 		if(ref.f != 0) {
-			this->PC = static_cast<u4>(static_cast<i4>(PC) + data->branchoffset);
+			frame.PC = static_cast<u4>(static_cast<i4>(frame.PC) + data->branchoffset);
 		} else {
-			this->PC += data->jmp + 1;
+			frame.PC += data->jmp + 1;
 		}
 	}
 
@@ -1863,16 +1867,16 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOgoto_w *>(info); // get data in class
 		auto &frame = fs.top();
 
-        this->PC = static_cast<u4>(static_cast<i4>(PC) + data->branchoffset);
+		frame.PC = static_cast<u4>(static_cast<i4>(frame.PC) + data->branchoffset);
 	}
 
 	void Engine::exec_jsr_w (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOjsr_w *>(info); // get data in class
 		auto &frame = fs.top();
 
-		frame.operands.push4(this->PC + info->jmp);
+		frame.operands.push4(frame.PC + info->jmp);
 
-		this->PC = static_cast<u4>(static_cast<i4>(PC) + data->branchoffset);
+		frame.PC = static_cast<u4>(static_cast<i4>(frame.PC) + data->branchoffset);
 	}
 
 	void Engine::exec_breakpoint (InstructionInfo * info) {
