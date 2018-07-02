@@ -1072,15 +1072,19 @@ namespace jvm {
 	void Engine::exec_dup (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdup *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		op4 value = frame.operands.pop4();
+		frame.operands.push4(value);
+		frame.operands.push4(value);
 	}
 
 	void Engine::exec_dup_x1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdup_x1 *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		op4 value1 = frame.operands.pop4();
+		op4 value2 = frame.operands.pop4();
+		frame.operands.push4(value1);
+		frame.operands.push4(value2);
+		frame.operands.push4(value1);
 	}
 
 	void Engine::exec_dup_x2 (InstructionInfo * info) {
@@ -1114,22 +1118,26 @@ namespace jvm {
 	void Engine::exec_swap (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOswap *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		op4 value1 = frame.operands.pop4();
+		op4 value2 = frame.operands.pop4();
+		frame.operands.push4(value1);
+		frame.operands.push4(value2);
 	}
 
 	void Engine::exec_iadd (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiadd *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		op4 value1 = frame.operands.pop4();
+		op4 value2 = frame.operands.pop4();
+		frame.operands.push4(value1.i4 + value2.i4);
 	}
 
 	void Engine::exec_ladd (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOladd *>(info); // get data in class
 		auto &frame = fs.top();
-
-
+		op8 value1 = frame.operands.pop8();
+		op8 value2 = frame.operands.pop8();
+		frame.operands.push8(value1.ll + value2.ll);
 	}
 
 	void Engine::exec_fadd (InstructionInfo * info) {
