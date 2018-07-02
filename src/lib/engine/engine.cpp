@@ -287,10 +287,11 @@ namespace jvm {
 		Frame frame(cl,method);
 		fs.push(frame);
 		AttrCode codes = method.attributes.codes[0];
-		/*for(int i; i<codes.code)
-		int32_t InsOpCode = codes.code[0]->getOpCode();
-		auto executing = getExecutor(InsOpCode);
-		executing(codes.code[0]);*/
+		for(int i = 0; i<codes.code.size(); i++) {
+			int32_t InsOpCode = codes.code[i]->getOpCode();
+			auto executing = getExecutor(InsOpCode);
+			executing(codes.code[i].get());
+		}
 	}
 
 	void Engine::run_clinit () {
