@@ -2203,44 +2203,52 @@ namespace jvm {
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
 	void Engine::exec_ireturn (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOireturn *>(info); // get data in class
-		auto &frame = fs.top();
+		auto &frame = fs.top(); fs.pop();
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		auto returnValue = frame.operands.pop4();
+		auto &frameInvoker = fs.top();
+
+		frameInvoker.operands.push4(returnValue);
 	}
 
-	// TODO: finish this function
 	void Engine::exec_lreturn (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlreturn *>(info); // get data in class
-		auto &frame = fs.top();
+		auto &frame = fs.top(); fs.pop();
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		auto returnValue = frame.operands.pop8();
+		auto &frameInvoker = fs.top();
+
+		frameInvoker.operands.push8(returnValue);
 	}
 
-	// TODO: finish this function
 	void Engine::exec_freturn (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfreturn *>(info); // get data in class
-		auto &frame = fs.top();
+		auto &frame = fs.top(); fs.pop();
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		auto returnValue = frame.operands.pop4();
+		auto &frameInvoker = fs.top();
+
+		frameInvoker.operands.push4(returnValue);
 	}
 
-	// TODO: finish this function
 	void Engine::exec_dreturn (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdreturn *>(info); // get data in class
-		auto &frame = fs.top();
+		auto &frame = fs.top(); fs.pop();
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		auto returnValue = frame.operands.pop8();
+		auto &frameInvoker = fs.top();
+
+		frameInvoker.operands.push8(returnValue);
 	}
 
 	// TODO: finish this function
