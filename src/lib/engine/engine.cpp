@@ -290,7 +290,8 @@ namespace jvm {
 		for(int i = 0; i<codes.code.size(); i++) {
 			int32_t InsOpCode = codes.code[i]->getOpCode();
 			auto executing = getExecutor(InsOpCode);
-			executing(codes.code[i].get());
+			InstructionInfo *Instr = codes.code[i].get();
+			(this ->* executing)(Instr);
 		}
 	}
 
