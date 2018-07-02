@@ -267,7 +267,7 @@ namespace jvm {
 			auto instr = getInstr(opcode);
 			auto paramsRead = instr->fillParams(i, data);
 
-			push_back(instr);
+			insert({i, instr});
 			i += paramsRead;
 		}
 	}
