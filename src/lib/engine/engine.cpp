@@ -283,16 +283,16 @@ namespace jvm {
 		MethodInfo method = cl.methods.find("main([Ljava/lang/String;)V")->second;
 
 		//run_clinit();
-		run_init();
-		Frame frame(cl,method);
-		fs.push(frame);
-		AttrCode codes = method.attributes.codes[0];
-		for(int i = 0; i<codes.code.size(); i++) {
-			int32_t InsOpCode = codes.code[i]->getOpCode();
-			auto executing = getExecutor(InsOpCode);
-			InstructionInfo *Instr = codes.code[i].get();
-			(this ->* executing)(Instr);
-		}
+		//run_init();
+//		Frame frame(cl,method);
+//		fs.push(frame);
+//		AttrCode codes = method.attributes.codes[0];
+//		for(int i = 0; i<codes.code.size(); i++) {
+//			int32_t InsOpCode = codes.code[i]->getOpCode();
+//			auto executing = getExecutor(InsOpCode);
+//			InstructionInfo *Instr = codes.code[i].get();
+//			(this ->* executing)(Instr);
+//		}
 	}
 
 	void Engine::run_clinit () {
