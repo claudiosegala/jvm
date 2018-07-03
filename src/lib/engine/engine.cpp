@@ -279,7 +279,7 @@ namespace jvm {
 	}
 
 	void Engine::execute () {
-		ClassLoader cl = JavaClasses.find("double_aritmetica")->second;
+		ClassLoader cl = JavaClasses.find("jvm_teste/Jvm_teste")->second;
 		MethodInfo method = cl.methods.find("main([Ljava/lang/String;)V")->second;
 
 		//run_clinit();
