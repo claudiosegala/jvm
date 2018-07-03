@@ -12,6 +12,8 @@ namespace jvm {
 		*/
 		Operands() = default;
 
+		void setSize(u4 size);
+
 		op4 pop4();
 
 		op8 pop8();
@@ -23,6 +25,8 @@ namespace jvm {
 		void push8(u8);
 
 		void push8(op8);
+
+		u4 maxSize;
 	};
 
 }

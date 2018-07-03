@@ -18,6 +18,8 @@ namespace jvm {
 		 */
 		~Variables();
 
+		void setSize(u4 size);
+
 		op4 get4(u2);
 
 		op8 get8(u2);
