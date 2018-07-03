@@ -286,12 +286,12 @@ namespace jvm {
 		//run_init();
 		Frame frame(cl,method);
 		fs.push(frame);
-		AttrCode *codes = reinterpret_cast<AttrCode*>(method.attributes.codes[0]);
-		for(int i = 0; i<codes->code.size(); i++) {
-			int32_t InsOpCode = codes->code[i]->getOpCode();
-			auto executing = getExecutor(InsOpCode);
-			InstructionInfo *Instr = codes->code[i].get();
-			(this ->* executing)(Instr);
+		auto& codes = method.attributes.Codes[0]->code; // Getting the method's executable code
+		while (true) {
+			auto instruction = codes[PC];
+			auto opcode = instruction->getOpCode();
+			auto executor = getExecutor(opcode);
+			(this ->* executor)(instruction.get());
 		}
 	}
 
@@ -346,8 +346,7 @@ namespace jvm {
 	void Engine::exec_iconst_m1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiconst_m1 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.i4 = -1;
+		op4 res = {.i4 = -1};
 		frame.operands.push4(res);
 		frame.PC += data->jmp + 1;
 	}

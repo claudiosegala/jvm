@@ -3,43 +3,31 @@
 namespace jvm {
 
 	void AttributeInfo::fill(Reader &reader, ConstantPool &cp) {
-		// This maps a string to a function that returns an instance of the corresponding attribute
-		static const AttributeMap m = {
-				{"Code", AttrEntry::instantiate<AttrCode>},
-				{"Exceptions", AttrEntry::instantiate<AttrExceptions>},
-				{"ConstantValue", AttrEntry::instantiate<AttrConstantValue>}
-		};
-
 		auto attr_count = reader.getNextHalfWord();
 		reserve(attr_count);
 		while(attr_count--) {
 			auto name_index = reader.getNextHalfWord();
 			auto attr_length = reader.getNextWord();
 			auto name = cp[name_index]->toString(cp);
-			auto it = m.find(name);
-//
-//			if(name == "Code"){
-//				codes.emplace_back(reader, cp);
-//			}else if(name == "Exceptions"){
-//				Exceptions.emplace_back(reader, cp);
-//			}else if(name == "ConstantValue"){
-//				ConstValues.emplace_back(reader, cp);
-//			}
 
-			if (it == m.end()) { // In this case, the attribute's name is not in the map
+			// instantiate the attribute and initialize with data from reader
+			if (name == "Code") {
+				auto codePtr = std::make_shared<AttrCode>(reader, cp);
+				Codes.push_back(codePtr);
+				push_back(codePtr);
+			} else if (name == "Exceptions") {
+				auto exceptionsPtr = std::make_shared<AttrExceptions>(reader, cp);
+				Exceptions.push_back(exceptionsPtr);
+				push_back(exceptionsPtr);
+			} else if (name == "ConstantValue") {
+				auto constantValuePtr = std::make_shared<AttrConstantValue>(reader, cp);
+				ConstValues.push_back(constantValuePtr);
+				push_back(constantValuePtr);
+			} else {
+				// In this case, the attribute is of a type we won't read
 				// Add a nullptr and skip the attribute's bytes
 				emplace_back();
 				reader.skipBytes(attr_length);
-			} else { // instantiate the attribute and initialize with data from reader
-				auto attr = (*(it->second))(reader, cp);
-				push_back(attr);
-				if(name == "Code"){
-					codes.push_back(attr.get());
-				}else if(name == "Exceptions"){
-					Exceptions.push_back(attr.get());
-				}else if(name == "ConstantValue"){
-					ConstValues.push_back(attr.get());
-				}
 			}
 		}
 	}
