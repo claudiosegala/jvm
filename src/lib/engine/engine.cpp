@@ -2411,7 +2411,7 @@ namespace jvm {
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
+	
 	void Engine::exec_if_acmpne (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_acmpne *>(info); // get data in class
 		auto &frame = fs.top();
