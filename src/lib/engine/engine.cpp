@@ -2152,14 +2152,30 @@ namespace jvm {
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_dcmpg (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdcmpg *>(info); // get data in class
 		auto &frame = fs.top();
+		op8 floatvalue1 = frame.operands.pop8();
+		op8 floatvalue2 = frame.operands.pop8();
+		op8 resvalue;
+		resvalue.lf = floatvalue1.lf - floatvalue2.lf;
+		if(__isnan(floatvalue1.lf)| __isnan(floatvalue2.lf))
+		{
+			frame.operands.push4(1);
+
+		}
+		if (resvalue.lf > 0){
+			frame.operands.push4(1);
+		}
+		else if(resvalue.lf == 0){
+			frame.operands.push4(0);
+		}
+		else if(resvalue.lf < 0){
+			frame.operands.push4(-1);
+		}
 
 		frame.PC += data->jmp + 1;
-
-		throw "Not Implemented!";
 	}
 
 	void Engine::exec_ifeq (InstructionInfo * info) {
@@ -2172,6 +2188,7 @@ namespace jvm {
 			frame.PC += data->jmp + 1;
 		}
 	}
+
 
 	void Engine::exec_ifne (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifne *>(info); // get data in class
