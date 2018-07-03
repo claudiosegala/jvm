@@ -2345,24 +2345,30 @@ namespace jvm {
 		frame.PC = newPC.ui4;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_tableswitch (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOtableswitch *>(info); // get data in class
 		auto &frame = fs.top();
-
-		frame.PC += data->jmp + 1;
-
-		throw "Not Implemented!";
+		op4 index = frame.operands.pop4();
+		if(index.i4 < data->low || index.i4 > data->high) {
+			frame.PC += data->defaultbyte;
+		}
+		else {
+			auto offset = data->jumpOffsets[index.i4 - data->low];
+			frame.PC += offset;
+		}
 	}
 
-	// TODO: finish this function
 	void Engine::exec_lookupswitch (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlookupswitch *>(info); // get data in class
 		auto &frame = fs.top();
-
-		frame.PC += data->jmp + 1;
-
-		throw "Not Implemented!";
+		op4 key = frame.operands.pop4();
+		for(auto& pair : data->pairs) {
+			if(pair.first == key.i4) {
+				frame.PC += pair.second;
+				return;
+			}
+		}
+		frame.PC += data->defaultbyte;
 	}
 
 	void Engine::exec_ireturn (InstructionInfo * info) {
