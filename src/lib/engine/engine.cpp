@@ -1,7 +1,6 @@
 #include <cmath>
 #include "engine/engine.hpp"
 #include <cstdio>
-#include <itclIntDecls.h>
 
 namespace jvm {
 
