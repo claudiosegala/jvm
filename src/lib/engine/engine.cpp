@@ -607,7 +607,7 @@ namespace jvm {
 	void Engine::exec_iload_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiload_0 *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value = frame.variables.get4(1);
+		auto value = frame.variables.get4(0);
 		frame.operands.push4(value);
 		frame.PC += data->jmp + 1;
 
@@ -616,7 +616,7 @@ namespace jvm {
 	void Engine::exec_iload_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiload_1 *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value = frame.variables.get4(2);
+		auto value = frame.variables.get4(1);
 		frame.operands.push4(value);
 		frame.PC += data->jmp + 1;
 
@@ -625,7 +625,7 @@ namespace jvm {
 	void Engine::exec_iload_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiload_2 *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value = frame.variables.get4(3);
+		auto value = frame.variables.get4(2);
 		frame.operands.push4(value);
 		frame.PC += data->jmp + 1;
 
@@ -634,7 +634,7 @@ namespace jvm {
 	void Engine::exec_iload_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiload_3 *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value = frame.variables.get4(4);
+		auto value = frame.variables.get4(3);
 		frame.operands.push4(value);
 		frame.PC += data->jmp + 1;
 
@@ -643,7 +643,7 @@ namespace jvm {
 	void Engine::exec_lload_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlload_0 *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value = frame.variables.get8(1);
+		auto value = frame.variables.get8(0);
 		frame.operands.push8(value);
 		frame.PC += data->jmp + 1;
 
@@ -652,7 +652,7 @@ namespace jvm {
 	void Engine::exec_lload_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlload_1 *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value = frame.variables.get8(2);
+		auto value = frame.variables.get8(1);
 		frame.operands.push8(value);
 		frame.PC += data->jmp + 1;
 	}
@@ -660,7 +660,7 @@ namespace jvm {
 	void Engine::exec_lload_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlload_2 *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value = frame.variables.get8(3);
+		auto value = frame.variables.get8(2);
 		frame.operands.push8(value);
 		frame.PC += data->jmp + 1;
 	}
@@ -668,7 +668,7 @@ namespace jvm {
 	void Engine::exec_lload_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlload_3 *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value = frame.variables.get8(4);
+		auto value = frame.variables.get8(3);
 		frame.operands.push8(value);
 		frame.PC += data->jmp + 1;
 	}
@@ -676,7 +676,7 @@ namespace jvm {
 	void Engine::exec_fload_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfload_0 *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value = frame.variables.get4(1);
+		auto value = frame.variables.get4(0);
 		frame.operands.push4(value);
 		frame.PC += data->jmp + 1;
 	}
@@ -684,7 +684,7 @@ namespace jvm {
 	void Engine::exec_fload_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfload_1 *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value = frame.variables.get4(2);
+		auto value = frame.variables.get4(1);
 		frame.operands.push4(value);
 		frame.PC += data->jmp + 1;
 	}
@@ -692,7 +692,7 @@ namespace jvm {
 	void Engine::exec_fload_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfload_2 *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value = frame.variables.get4(3);
+		auto value = frame.variables.get4(2);
 		frame.operands.push4(value);
 		frame.PC += data->jmp + 1;
 	}
@@ -700,7 +700,7 @@ namespace jvm {
 	void Engine::exec_fload_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfload_3 *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value = frame.variables.get4(4);
+		auto value = frame.variables.get4(3);
 		frame.operands.push4(value);
 		frame.PC += data->jmp + 1;
 	}
@@ -708,7 +708,7 @@ namespace jvm {
 	void Engine::exec_dload_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdload_0 *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value = frame.variables.get8(1);
+		auto value = frame.variables.get8(0);
 		frame.operands.push8(value);
 		frame.PC += data->jmp + 1;
 	}
@@ -716,7 +716,7 @@ namespace jvm {
 	void Engine::exec_dload_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdload_1 *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value = frame.variables.get8(2);
+		auto value = frame.variables.get8(1);
 		frame.operands.push8(value);
 		frame.PC += data->jmp + 1;
 	}
@@ -724,7 +724,7 @@ namespace jvm {
 	void Engine::exec_dload_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdload_2 *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value = frame.variables.get8(3);
+		auto value = frame.variables.get8(2);
 		frame.operands.push8(value);
 		frame.PC += data->jmp + 1;
 	}
@@ -732,7 +732,7 @@ namespace jvm {
 	void Engine::exec_dload_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdload_3 *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value = frame.variables.get8(4);
+		auto value = frame.variables.get8(3);
 		frame.operands.push8(value);
 		frame.PC += data->jmp + 1;
 	}
@@ -740,14 +740,14 @@ namespace jvm {
 	void Engine::exec_aload_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOaload_0 *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value = frame.variables.get4(1);
+		auto value = frame.variables.get4(0);
 		frame.operands.push4(value);
 	}
 
 	void Engine::exec_aload_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOaload_1 *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value = frame.variables.get4(2);
+		auto value = frame.variables.get4(1);
 		frame.operands.push4(value);
 		frame.PC += data->jmp + 1;
 	}
@@ -755,7 +755,7 @@ namespace jvm {
 	void Engine::exec_aload_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOaload_2 *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value = frame.variables.get4(3);
+		auto value = frame.variables.get4(2);
 		frame.operands.push4(value);
 		frame.PC += data->jmp + 1;
 	}
@@ -763,7 +763,7 @@ namespace jvm {
 	void Engine::exec_aload_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOaload_3 *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value = frame.variables.get4(4);
+		auto value = frame.variables.get4(3);
 		frame.operands.push4(value);
 	}
 
