@@ -2328,25 +2328,20 @@ namespace jvm {
 	void Engine::exec_goto (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOgoto *>(info); // get data in class
 		auto &frame = fs.top();
-
-		frame.PC = static_cast<u4>(static_cast<i4>(frame.PC) + data->branchoffset);
+		frame.PC += data->branchoffset;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_jsr (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOjsr *>(info); // get data in class
 		auto &frame = fs.top();
-
-		frame.PC += data->jmp + 1;
-
-		throw "Not Implemented!";
+		frame.operands.push4(frame.PC + data->jmp + 1);
+		frame.PC += data->branchoffset;
 	}
 
 	void Engine::exec_ret (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOret *>(info); // get data in class
 		auto &frame = fs.top();
 		auto newPC  = frame.variables.get4(data->index);
-
 		frame.PC = newPC.ui4;
 	}
 
