@@ -15,9 +15,9 @@ namespace jvm {
 
 	class AttributeInfo : public std::vector<std::shared_ptr<AttrEntry>> {
 	public:
-//		std::vector<AttrCode>codes;
-//		std::vector<AttrConstantValue>ConstValues;
-//		std::vector<AttrExceptions>Exceptions;
+		std::vector<AttrEntry*>codes;
+		std::vector<AttrEntry*>ConstValues;
+		std::vector<AttrEntry*>Exceptions;
 		void fill(Reader &reader, ConstantPool &cp);
 		void printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix);
 	};

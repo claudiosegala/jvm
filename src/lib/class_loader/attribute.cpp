@@ -33,6 +33,13 @@ namespace jvm {
 			} else { // instantiate the attribute and initialize with data from reader
 				auto attr = (*(it->second))(reader, cp);
 				push_back(attr);
+				if(name == "Code"){
+					codes.push_back(attr.get());
+				}else if(name == "Exceptions"){
+					Exceptions.push_back(attr.get());
+				}else if(name == "ConstantValue"){
+					ConstValues.push_back(attr.get());
+				}
 			}
 		}
 	}
