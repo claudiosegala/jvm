@@ -803,7 +803,7 @@ namespace jvm {
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_daload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdaload *>(info); // get data in class
 		auto &frame = fs.top();
@@ -819,7 +819,7 @@ namespace jvm {
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_aaload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOaaload *>(info); // get data in class
 		auto &frame = fs.top();
@@ -834,7 +834,7 @@ namespace jvm {
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_baload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFObaload *>(info); // get data in class
 		auto &frame = fs.top();
@@ -849,7 +849,7 @@ namespace jvm {
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_caload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOcaload *>(info); // get data in class
 		auto &frame = fs.top();
@@ -2126,7 +2126,7 @@ namespace jvm {
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_dcmpl (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdcmpl *>(info); // get data in class
 		auto &frame = fs.top();
