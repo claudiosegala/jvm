@@ -34,6 +34,9 @@ namespace jvm {
 		//> Reference to .class that will be executed first
 		std::unordered_map<std::string, ClassLoader> JavaClasses;
 
+		//> Name of .class that will be executed first
+		std::string Entry_class_name;
+
 		//> PC Register
 		u4 PC;
 

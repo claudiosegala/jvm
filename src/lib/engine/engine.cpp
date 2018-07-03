@@ -266,6 +266,7 @@ namespace jvm {
 
 		auto name = cl.constant_pool[cl.this_class]->toString(cl.constant_pool);
 		JavaClasses.insert({name, cl});
+		Entry_class_name = name;
 	}
 
 	Execution Engine::getExecutor(const u1 opcode) {
@@ -279,12 +280,12 @@ namespace jvm {
 	}
 
 	void Engine::execute () {
-		ClassLoader cl = JavaClasses.find("jvm_teste/Jvm_teste")->second;
-		MethodInfo method = cl.methods.find("main([Ljava/lang/String;)V")->second;
+		ClassLoader First_cl = JavaClasses.find(Entry_class_name)->second;
+		MethodInfo method = First_cl.methods.find("main([Ljava/lang/String;)V")->second;
 
 		//run_clinit();
 		//run_init();
-		Frame frame(cl,method);
+		Frame frame(First_cl,method);
 		fs.push(frame);
 		auto& codes = method.attributes.Codes[0]->code; // Getting the method's executable code
 		while (true) {

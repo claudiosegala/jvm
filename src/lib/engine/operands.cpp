@@ -23,14 +23,14 @@ namespace jvm {
 	void Operands::push4(u4 value) {
 		op4 bytes = { .ui4 = value };
 		push(bytes);
-		if (size() >= maxSize) {
+		if (size() > maxSize) {
 			throw "Maximum operands stack exceeded";
 		}
 	}
 
 	void Operands::push4(op4 value) {
 		push(value);
-		if (size() >= maxSize) {
+		if (size() > maxSize) {
 			throw "Maximum operands stack exceeded";
 		}
 	}
@@ -53,7 +53,7 @@ namespace jvm {
 		push(low);
 		push(high);
 
-		if (size() >= maxSize) {
+		if (size() > maxSize) {
 			throw "Maximum operands stack exceeded";
 		}
 	}
