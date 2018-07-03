@@ -1,7 +1,7 @@
 #include <cmath>
 #include "engine/engine.hpp"
 #include <cstdio>
-#include <itclIntDecls.h>
+
 
 namespace jvm {
 
@@ -2154,140 +2154,257 @@ namespace jvm {
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_dcmpg (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdcmpg *>(info); // get data in class
 		auto &frame = fs.top();
+		op8 floatvalue1 = frame.operands.pop8();
+		op8 floatvalue2 = frame.operands.pop8();
+		op8 resvalue;
+		resvalue.lf = floatvalue1.lf - floatvalue2.lf;
+		if(__isnan(floatvalue1.lf)| __isnan(floatvalue2.lf))
+		{
+			frame.operands.push4(1);
+
+		}
+		if (resvalue.lf > 0){
+			frame.operands.push4(1);
+		}
+		else if(resvalue.lf == 0){
+			frame.operands.push4(0);
+		}
+		else if(resvalue.lf < 0){
+			frame.operands.push4(-1);
+		}
+
+		frame.PC += data->jmp + 1;
 
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_ifeq (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifeq *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value = frame.operands.pop4();
+
+		if(value.i4 == 0){
+			frame.PC += data->branchoffset;
+		}
 
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_ifne (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifne *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value = frame.operands.pop4();
+		if(value.i4 != 0){
+			frame.PC += data->branchoffset;
+		}
 
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_iflt (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiflt *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value = frame.operands.pop4();
+		if(value.i4 < 0){
+			frame.PC += data->branchoffset;
+		}
 
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_ifge (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifge *>(info); // get data in class
 		auto &frame = fs.top();
-
+		auto value = frame.operands.pop4();
+		if(value.i4 >= 0){
+			frame.PC +=data->branchoffset;
+		}
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_ifgt (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifgt *>(info); // get data in class
 		auto &frame = fs.top();
-
+		auto value = frame.operands.pop4();
+		if(value.i4 > 0){
+			frame.PC +=data->branchoffset;
+		}
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
 	void Engine::exec_ifle (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifle *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value = frame.operands.pop4();
+		if(value.i4 <= 0){
+			frame.PC +=data->branchoffset;
+		}
 
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_if_icmpeq (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_icmpeq *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		op4 resvalue;
+		resvalue.i4 = value1.i4 - value2.i4;
+		if(resvalue.i4 == 0){
+			frame.PC += data->branchoffset;
+		}
+		else{
+			frame.PC += data->jmp + 1;
+		}
 
-		frame.PC += data->jmp + 1;
+
+
+
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_if_icmpne (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_icmpne *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		op4 resvalue;
+		resvalue.i4 = value1.i4 - value2.i4;
+		if(resvalue.i4 != 0){
+			frame.PC += data->branchoffset;
+		}
+		else{
+			frame.PC += data->jmp + 1;
+		}
 
-		frame.PC += data->jmp + 1;
+
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_if_icmplt (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_icmplt *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		op4 resvalue;
+		resvalue.i4 = value1.i4 - value2.i4;
+		if(resvalue.i4 < 0){
+			frame.PC += data->branchoffset;
+		}
+		else{
+			frame.PC += data->jmp + 1;
+		}
 
-		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_if_icmpge (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_icmpge *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		op4 resvalue;
+		resvalue.i4 = value1.i4 - value2.i4;
+		if(resvalue.i4 >= 0){
+			frame.PC += data->branchoffset;
+		}
+		else{
+			frame.PC += data->jmp + 1;
+		}
+
 
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_if_icmpgt (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_icmpgt *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		op4 resvalue;
+		resvalue.i4 = value1.i4 - value2.i4;
+		if(resvalue.i4 > 0){
+			frame.PC += data->branchoffset;
+		}
+		else{
+			frame.PC += data->jmp + 1;
+		}
+
 
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_if_icmple (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_icmple *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		op4 resvalue;
+		resvalue.i4 = value1.i4 - value2.i4;
+		if(resvalue.i4 <= 0){
+			frame.PC += data->branchoffset;
+		}
+		else{
+			frame.PC += data->jmp + 1;
+		}
+
 
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_if_acmpeq (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_acmpeq *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		op4 resvalue;
+		resvalue.ui4 = value1.ui4 - value2.ui4;
+		if(resvalue.ui4 == 0){
+			frame.PC += data->branchoffset;
+		}
+		else{
+			frame.PC += data->jmp + 1;
+		}
+
 
 		frame.PC += data->jmp + 1;
 
@@ -2298,6 +2415,20 @@ namespace jvm {
 	void Engine::exec_if_acmpne (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_acmpne *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+		op4 resvalue;
+		resvalue.ui4 = value1.ui4 - value2.ui4;
+		if(resvalue.ui4 != 0){
+			frame.PC += data->branchoffset;
+		}
+		else{
+			frame.PC += data->jmp + 1;
+		}
+
+
+		frame.PC += data->jmp + 1;
+
 
 		frame.PC += data->jmp + 1;
 
@@ -2311,7 +2442,7 @@ namespace jvm {
 		frame.PC = static_cast<u4>(static_cast<i4>(frame.PC) + data->branchoffset);
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_jsr (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOjsr *>(info); // get data in class
 		auto &frame = fs.top();
