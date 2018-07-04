@@ -322,6 +322,7 @@ namespace jvm {
 			auto& method = pair->second;
 			return std::make_pair(methodClass, method);
 		}
+
 		throw JvmException("Method " + name + " not found");
 	}
 
@@ -2508,10 +2509,22 @@ namespace jvm {
 		throw JvmException("Not Implemented!");
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_invokevirtual (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOinvokevirtual *>(info); // get data in class
 		auto &frame = fs.top();
+		auto objectref = frame.operands.pop4();
+		auto x = reinterpret_cast<CP_Methodref*>(frame.cl.constant_pool[data->index]);
+		auto k = findMethod(*x);
+		Frame l(k.first,k.second);
+		int i = 1;
+		while(!fs.top().operands.empty())
+		{
+			auto resvalue = frame.operands.pop4();
+			l.variables.set(i,resvalue.ui4);
+			i++;
+		}
+		fs.push(l);
 
 		frame.PC += data->jmp + 1;
 
@@ -2579,10 +2592,85 @@ namespace jvm {
 		throw JvmException("Not Implemented!");
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_newarray (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOnewarray *>(info); // get data in class
 		auto &frame = fs.top();
+		auto arraytam = frame.operands.pop4();
+		auto type = data->atype;
+		auto vector_ptr = mem.size();
+		if(type == 4)
+		{
+			bool * val = new bool[arraytam];
+			mem.push_back(val);
+			op4 res;
+			res.ui4 = vector_ptr;
+			frame.operands.push4(res);
+
+		}
+		else if(type == 5)
+		{
+			char * val = new char[arraytam];
+			mem.push_back(val);
+			op4 res;
+			res.ui4 = vector_ptr;
+			frame.operands.push4(res);
+
+		}
+		else if(type == 6)
+		{
+			float * val = new float[arraytam];
+			mem.push_back(val);
+			op4 res;
+			res.ui4 = vector_ptr;
+			frame.operands.push4(res);
+
+		}
+		else if(type == 7)
+		{
+			double * val = new double[arraytam];
+			mem.push_back(val);
+			op4 res;
+			res.ui4 = vector_ptr;
+			frame.operands.push4(res);
+
+		}
+		else if(type == 8)
+		{
+			u1 * val = new u1[arraytam];
+			mem.push_back(val);
+			op4 res;
+			res.ui4 = vector_ptr;
+			frame.operands.push4(res);
+
+		}
+		else if(type == 9)
+		{
+			short * val = new short[arraytam];
+			mem.push_back(val);
+			op4 res;
+			res.ui4 = vector_ptr;
+			frame.operands.push4(res);
+
+		}
+		else if(type == 10)
+		{
+			int * val = new int[arraytam];
+			mem.push_back(val);
+			op4 res;
+			res.ui4 = vector_ptr;
+			frame.operands.push4(res);
+
+		}
+		else if(type == 11)
+		{
+			long * val = new long[arraytam];
+			mem.push_back(val);
+			op4 res;
+			res.ui4 = vector_ptr;
+			frame.operands.push4(res);
+
+		}
 
 		frame.PC += data->jmp + 1;
 
