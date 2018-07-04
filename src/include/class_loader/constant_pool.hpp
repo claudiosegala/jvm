@@ -34,8 +34,9 @@ namespace jvm {
 
 		/**
 		 * ConstantPool's constructor that calls the method fill, reading all of the cp entries
-		 * @param reader Reader of the class file
-		 * @param cp_count Number of elements of the constant pool
+		 * @param reader a reference to the class file reader
+		 * @param cp_count number of elements of the constant pool
+		 * @see fill()
 		 */
 		ConstantPool(Reader &reader, size_type cp_count);
 
@@ -46,14 +47,14 @@ namespace jvm {
 
 		/**
 		 * Fills this ConstantPool with it's entries
-		 * @param reader Reader of the class file
-		 * @param cp_count Number of elements of the constant pool
+		 * @param reader a reference to the class file reader
+		 * @param cp_count number of elements of the constant pool
 		 */
 		void fill(Reader &reader, size_type cp_count);
 
 		/**
 		 * Prints this ConstantPool's entries to the console
-		 * @param os Reference to ostream
+		 * @param os used to output data
 		 */
 		void printToStream(std::ostream& os);
 
@@ -65,9 +66,9 @@ namespace jvm {
 	private:
 
 		/**
-		 * Gets the next entry of the ConstantPool, ad it must be of the kind of the given tag
-		 * @param reader A reference to the Reader of the class file
-		 * @param tag An identifyer of the cp_info's kind
+		 * Gets the next entry of the ConstantPool wich must be of the kind of the given tag
+		 * @param reader a reference to the class file reader
+		 * @param tag an identifyer of the cp_info's kind
 		 * @return Pointer to the next CP_Entry according to the given tag
 		 * @throw Exception when invalid tag's value
 		 */
@@ -100,6 +101,9 @@ namespace jvm {
 		}
 	};
 
+	/**
+	 * CP_Class entry to the constant pool
+	 */
 	struct CP_Class : public CP_Entry {
 		explicit CP_Class(Reader& reader);
 
@@ -112,6 +116,9 @@ namespace jvm {
 		uint16_t name_index;
 	};
 
+	/**
+	 * CP_Fieldref entry to the constant pool
+	 */
 	struct CP_Fieldref : public CP_Entry {
 		explicit CP_Fieldref(Reader& reader);
 
@@ -128,6 +135,9 @@ namespace jvm {
 		uint16_t name_and_type_index;
 	};
 
+	/**
+	 * CP_Methodref entry to the constant pool
+	 */
 	struct CP_Methodref : public CP_Entry {
 		explicit CP_Methodref(Reader& reader);
 
@@ -142,6 +152,9 @@ namespace jvm {
 		uint16_t name_and_type_index;
 	};
 
+	/**
+	 * CP_InterfaceMethodref entry to the constant pool
+	 */
 	struct CP_InterfaceMethodref : public CP_Entry {
 		explicit CP_InterfaceMethodref(Reader& reader);
 
@@ -156,6 +169,9 @@ namespace jvm {
 		uint16_t name_and_class_index;
 	};
 
+	/**
+	 * CP_String entry to the constant pool
+	 */
 	struct CP_String : public CP_Entry {
 		explicit CP_String(Reader& reader);
 
@@ -168,6 +184,9 @@ namespace jvm {
 		uint16_t string_index;
 	};
 
+	/**
+	 * CP_Integer entry to the constant pool
+	 */
 	struct CP_Integer : public CP_Entry {
 		explicit CP_Integer(Reader& reader);
 
@@ -180,6 +199,9 @@ namespace jvm {
 		uint32_t _bytes;
 	};
 
+	/**
+	 * CP_Float entry to the constant pool
+	 */
 	struct CP_Float : public CP_Entry {
 		explicit CP_Float(Reader& reader);
 
@@ -192,6 +214,9 @@ namespace jvm {
 		uint32_t _bytes;
 	};
 
+	/**
+	 * CP_Long entry to the constant pool
+	 */
 	struct CP_Long : public CP_Entry {
 		explicit CP_Long(Reader& reader);
 
@@ -206,6 +231,9 @@ namespace jvm {
 		uint32_t low_bytes;
 	};
 
+	/**
+	 * CP_Double entry to the constant pool
+	 */
 	struct CP_Double : public CP_Entry {
 		explicit CP_Double(Reader& reader);
 
@@ -220,6 +248,9 @@ namespace jvm {
 		uint32_t low_bytes;
 	};
 
+	/**
+	 * CP_NameAnsType entry to the constant pool
+	 */
 	struct CP_NameAndType : public CP_Entry {
 		explicit CP_NameAndType(Reader& reader);
 
@@ -234,6 +265,9 @@ namespace jvm {
 		uint16_t descriptor_index;
 	};
 
+	/**
+	 * CP_Utf8 entry to the constant pool
+	 */
 	struct CP_Utf8 : public CP_Entry {
 		explicit CP_Utf8(Reader& reader);
 
@@ -256,6 +290,9 @@ namespace jvm {
 	bool operator== (const std::string&, const CP_Utf8&);
 	bool operator== (const CP_Utf8&, const std::string&);
 
+	/**
+	 * CP_MethodHandle entry to the constant pool
+	 */
 	struct CP_MethodHandle : public CP_Entry {
 		explicit CP_MethodHandle(Reader& reader);
 
@@ -270,6 +307,9 @@ namespace jvm {
 		uint16_t reference_index;
 	};
 
+	/**
+	 * CP_MethodType entry to the constant pool
+	 */
 	struct CP_MethodType : public CP_Entry {
 		explicit CP_MethodType(Reader& reader);
 
@@ -282,6 +322,9 @@ namespace jvm {
 		uint16_t descriptor_index;
 	};
 
+	/**
+	 * CP_InvokeDYnamic entry to the constant pool
+	 */
 	struct CP_InvokeDynamic : public CP_Entry {
 		explicit CP_InvokeDynamic(Reader& reader);
 

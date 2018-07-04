@@ -7,11 +7,16 @@ namespace jvm {
 
 	class Operands : public std::stack<op4> {
 	public:
+
 		/**
-		* Default constructor
-		*/
+		 * Default constructor
+		 */
 		Operands() = default;
 
+		/**
+		 * Sets the max size of the operands stack
+		 * @param size 
+		 */
 		void setSize(u4 size);
 
 		op4 pop4();

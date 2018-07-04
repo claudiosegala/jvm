@@ -10,29 +10,58 @@ namespace jvm {
 	struct AttrConstantValue;
 	struct AttrExceptions;
 
-	// This maps a string to a function that returns an instance of the corresponding attribute
+	/**
+	 * Maps a string to a function that returns an instance of the corresponding attribute
+	 */
 	typedef std::map<std::string, std::shared_ptr<AttrEntry>(*)(Reader&, ConstantPool&)> AttributeMap;
 
 	class AttributeInfo : public std::vector<std::shared_ptr<AttrEntry>> {
 	public:
-		std::vector<std::shared_ptr<AttrCode>>Codes;
-		std::vector<std::shared_ptr<AttrConstantValue>>ConstValues;
-		std::vector<std::shared_ptr<AttrExceptions>>Exceptions;
+
+		std::vector<std::shared_ptr<AttrCode>> Codes;	///< Vector of the attribute code
+		std::vector<std::shared_ptr<AttrConstantValue>> ConstValues; ///< Vector of the constant values
+		std::vector<std::shared_ptr<AttrExceptions>> Exceptions; ///< Vector of the exceptions
+
+		/**
+		 * Fills this attribute entry's members
+		 * @param reader a reference to the class file reader
+		 * @param cp_count number of elements of the constant pool
+		 */
 		void fill(Reader &reader, ConstantPool &cp);
+
+		/**
+		 * Prints this ConstantPool's entries to the console
+		 * @param os Reference to ostream
+		 */
 		void printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix);
 	};
 
 	class AttrEntry {
 	protected:
+
+		/**
+		 * Default constructor
+		 */
 		AttrEntry() = default;
+
 	public:
+
 		template<class T>
 		static std::shared_ptr<AttrEntry> instantiate(Reader &reader, ConstantPool &cp) {
 			return std::make_shared<T>(reader, cp);
 		}
 
+		/**
+		 * Default destructor
+		 */
 		virtual ~AttrEntry() = default;
 
+		/**
+		 * Prints this attribute entry to the console
+		 * @param os used to output data
+		 * @param cp a reference to the constant pool
+		 * @param prefix a reference to a string to be printed before the attribute
+		 */
 		virtual void printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix) = 0;
 
 	};
