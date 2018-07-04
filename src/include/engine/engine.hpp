@@ -35,8 +35,6 @@ namespace jvm {
 
 		std::string Entry_class_name;	///> Name of .class that will be executed first
 
-		u4 PC;	///> PC Register
-
 		FramesStack fs;	///> Frame Stack
 
 		std::vector<void*> mem;	///> Engine heap mem

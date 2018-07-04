@@ -3,7 +3,7 @@
 
 namespace jvm {
 
-	Engine::Engine (ClassLoader &cl) : PC(0) {
+	Engine::Engine (ClassLoader &cl) {
 		exec = {
 				&Engine::exec_nop,               // 0
 				&Engine::exec_aconst_null,       // 1
@@ -292,8 +292,7 @@ namespace jvm {
 				throw JvmException("Fim inesperado da aplicação, não há frames restantes");
 			auto curFrame = fs.top();
 			auto& codes = curFrame.mt.attributes.Codes[0]->code; // Getting the method's executable code
-			PC = curFrame.PC;
-			auto instruction = codes[PC];
+			auto instruction = codes[curFrame.PC];
 			auto opcode = instruction->getOpCode();
 			auto executor = getExecutor(opcode);
 			(this ->* executor)(instruction.get());
@@ -336,6 +335,7 @@ namespace jvm {
 		newClass.read("../samples/"+className+".class"); // Load the correct class
 		JavaClasses.insert({className, newClass}); // Add new class to the map
 		pair = JavaClasses.find(className);
+		pair->second.show();
 		if(pair != JavaClasses.end())
 			return pair->second; // Class is loaded
 		throw JvmException("Not able to load" + className + ".class");
