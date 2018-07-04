@@ -309,7 +309,7 @@ namespace jvm {
 
 	}
 
-	const MethodInfo & Engine::findMethod(CP_Methodref &ref) {
+	std::pair<ClassLoader, MethodInfo> Engine::findMethod(CP_Methodref &ref) {
 		auto &currentClass = fs.top().cl;
 		auto &constantPool = currentClass.constant_pool;
 		auto &classInfo = constantPool[ref.class_index] -> as<CP_Class>();
@@ -318,8 +318,10 @@ namespace jvm {
 		std::string descriptor = constantPool[nameAndType.descriptor_index] -> toString(constantPool);
 		auto& methodClass = findClass(classInfo);
 		auto pair = methodClass.methods.find(name + descriptor);
-		if(pair != methodClass.methods.end())
-			return pair->second;
+		if(pair != methodClass.methods.end()) {
+			auto& method = pair->second;
+			return std::make_pair(methodClass, method);
+		}
 		throw JvmException("Method " + name + " not found");
 	}
 
