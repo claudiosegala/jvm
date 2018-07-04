@@ -2681,6 +2681,8 @@ namespace jvm {
 	void Engine::exec_anewarray (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOanewarray *>(info); // get data in class
 		auto &frame = fs.top();
+		op4 count_value = frame.operands.pop4();
+		auto constant_pool_ref = data->index
 
 		frame.PC += data->jmp + 1;
 
