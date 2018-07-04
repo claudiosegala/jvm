@@ -1,6 +1,6 @@
 #pragma once
 
-#include <unordered_map>
+#include "base.hpp"
 #include "frames_stack.hpp"
 #include "class_loader/class_loader.hpp"
 

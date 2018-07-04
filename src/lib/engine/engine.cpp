@@ -1,5 +1,3 @@
-#include <cmath>
-#include <cstdio>
 #include "engine/engine.hpp"
 #include "util/JvmException.hpp"
 
@@ -540,7 +538,7 @@ namespace jvm {
 			frame.PC += data->jmp + 1;
 		}
 		auto res_int = dynamic_cast<CP_Integer*>(k);
-		if(res_int != nullptr){
+		if(res_int != nullptr) {
 			res.ui4 = res_int->_bytes;
 			frame.operands.push4(res);
 			frame.PC += data->jmp + 1;
@@ -567,7 +565,7 @@ namespace jvm {
 
 		auto res_long = dynamic_cast<CP_Long*>(k);
 
-		if(res_long != nullptr){
+		if(res_long != nullptr) {
 			res1.ui4 = res_long->low_bytes;
 			res2.ui4 = res_long->high_bytes;
 			frame.operands.push4(res1);
@@ -1091,7 +1089,7 @@ namespace jvm {
 
 		throw JvmException("Not Implemented!");
 	}
-	
+
 	void Engine::exec_astore_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOastore_1 *>(info); // get data in class
 		auto &frame = fs.top();
@@ -2070,15 +2068,11 @@ namespace jvm {
 		op8 longvalue2 = frame.operands.pop8();
 		op8 res;
 		res.ll = longvalue1.ll - longvalue2.ll;
-		if (res.ll > 0){
+		if (res.ll > 0) {
 			frame.operands.push4(1);
-		}
-		else if(res.ll == 0)
-		{
+		} else if(res.ll == 0) {
 			frame.operands.push4(0);
-		}
-		else if(res.ll < 0)
-		{
+		} else if(res.ll < 0) {
 			frame.operands.push4(-1);
 		}
 		frame.PC += data->jmp + 1;
@@ -2093,18 +2087,16 @@ namespace jvm {
 		op4 floatvalue2 = frame.operands.pop4();
 		op4 resvalue;
 		resvalue.f = floatvalue1.f - floatvalue2.f;
-		if(isnanf(floatvalue1.f)| isnanf(floatvalue2.f))
-		{
-			frame.operands.push4(-1);
 
+		if(std::isnan(floatvalue1.f)| std::isnan(floatvalue2.f)) {
+			frame.operands.push4(-1);
 		}
-		if (resvalue.f > 0){
+
+		if (resvalue.f > 0) {
 			frame.operands.push4(1);
-		}
-		else if(resvalue.f == 0){
+		} else if(resvalue.f == 0) {
 			frame.operands.push4(0);
-		}
-		else if(resvalue.f < 0){
+		} else if(resvalue.f < 0) {
 			frame.operands.push4(-1);
 		}
 
@@ -2121,18 +2113,15 @@ namespace jvm {
 		op4 floatvalue2 = frame.operands.pop4();
 		op4 resvalue;
 		resvalue.f = floatvalue1.f - floatvalue2.f;
-		if(isnanf(floatvalue1.f)| isnanf(floatvalue2.f))
-		{
+		if(std::isnan(floatvalue1.f)| std::isnan(floatvalue2.f)) {
 			frame.operands.push4(1);
+		}
 
-		}
-		if (resvalue.f > 0){
+		if (resvalue.f > 0) {
 			frame.operands.push4(1);
-		}
-		else if(resvalue.f == 0){
+		} else if(resvalue.f == 0) {
 			frame.operands.push4(0);
-		}
-		else if(resvalue.f < 0){
+		} else if(resvalue.f < 0) {
 			frame.operands.push4(-1);
 		}
 
@@ -2145,22 +2134,20 @@ namespace jvm {
 	void Engine::exec_dcmpl (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdcmpl *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 floatvalue1 = frame.operands.pop8();
-		op8 floatvalue2 = frame.operands.pop8();
-		op8 resvalue;
-		resvalue.lf = floatvalue1.lf - floatvalue2.lf;
-		if(__isnan(floatvalue1.lf)| __isnan(floatvalue2.lf))
-		{
-			frame.operands.push4(-1);
+		auto floatvalue1 = frame.operands.pop8();
+		auto floatvalue2 = frame.operands.pop8();
 
+		op8 resvalue { .lf = floatvalue1.lf - floatvalue2.lf };
+
+		if(std::isnan(floatvalue1.lf)| std::isnan(floatvalue2.lf)) {
+			frame.operands.push4(-1);
 		}
-		if (resvalue.lf > 0){
+
+		if (resvalue.lf > 0) {
 			frame.operands.push4(1);
-		}
-		else if(resvalue.lf == 0){
+		} else if(resvalue.lf == 0) {
 			frame.operands.push4(0);
-		}
-		else if(resvalue.lf < 0){
+		} else if(resvalue.lf < 0) {
 			frame.operands.push4(-1);
 		}
 
@@ -2177,18 +2164,15 @@ namespace jvm {
 		op8 floatvalue2 = frame.operands.pop8();
 		op8 resvalue;
 		resvalue.lf = floatvalue1.lf - floatvalue2.lf;
-		if(__isnan(floatvalue1.lf)| __isnan(floatvalue2.lf))
-		{
+		if(std::isnan(floatvalue1.lf)| std::isnan(floatvalue2.lf)) {
 			frame.operands.push4(1);
+		}
 
-		}
-		if (resvalue.lf > 0){
+		if (resvalue.lf > 0) {
 			frame.operands.push4(1);
-		}
-		else if(resvalue.lf == 0){
+		} else if(resvalue.lf == 0) {
 			frame.operands.push4(0);
-		}
-		else if(resvalue.lf < 0){
+		} else if(resvalue.lf < 0) {
 			frame.operands.push4(-1);
 		}
 
@@ -2521,8 +2505,7 @@ namespace jvm {
 		auto k = findMethod(*x);
 		Frame l(k.first,k.second);
 		int i = 1;
-		while(!fs.top().operands.empty())
-		{
+		while(!fs.top().operands.empty()) {
 			auto resvalue = frame.operands.pop4();
 			l.variables.set(i,resvalue.ui4);
 			i++;
@@ -2550,14 +2533,16 @@ namespace jvm {
 		auto &frame = fs.top();
 		auto x = reinterpret_cast<CP_Methodref*>(frame.cl.constant_pool[data->index]);
 		auto k = findMethod(*x);
+
 		Frame l(k.first,k.second);
 		int i = 1;
-		while(!fs.top().operands.empty())
-		{
+
+		while(!fs.top().operands.empty()) {
 			auto resvalue = frame.operands.pop4();
 			l.variables.set(i,resvalue.ui4);
 			i++;
 		}
+
 		fs.push(l);
 
 		frame.PC += data->jmp + 1;
@@ -2602,77 +2587,54 @@ namespace jvm {
 		auto arraytam = frame.operands.pop4();
 		auto type = data->atype;
 		auto vector_ptr = mem.size();
-		if(type == 4)
-		{
+		if(type == 4) {
 			bool * val = new bool[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
 			frame.operands.push4(res);
-
-		}
-		else if(type == 5)
-		{
+		} else if(type == 5) {
 			char * val = new char[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
 			frame.operands.push4(res);
-
-		}
-		else if(type == 6)
-		{
+		} else if(type == 6) {
 			float * val = new float[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
 			frame.operands.push4(res);
-
-		}
-		else if(type == 7)
-		{
+		} else if(type == 7) {
 			double * val = new double[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
 			frame.operands.push4(res);
-
-		}
-		else if(type == 8)
-		{
+		} else if(type == 8) {
 			u1 * val = new u1[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
 			frame.operands.push4(res);
-
-		}
-		else if(type == 9)
-		{
+		} else if(type == 9) {
 			short * val = new short[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
 			frame.operands.push4(res);
-
-		}
-		else if(type == 10)
-		{
+		} else if(type == 10) {
 			int * val = new int[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
 			frame.operands.push4(res);
-
-		}
-		else if(type == 11)
-		{
+		} else if(type == 11) {
 			long * val = new long[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
 			frame.operands.push4(res);
-
 		}
 
 		frame.PC += data->jmp + 1;

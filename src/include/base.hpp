@@ -2,12 +2,15 @@
 
 #include <map>
 #include <stack>
+#include <cmath>
 #include <tuple>
 #include <array>
+#include <cstdio>
 #include <locale>
 #include <vector>
 #include <memory>
 #include <string>
+#include <math.h>
 #include <codecvt>
 #include <sstream>
 #include <fstream>
