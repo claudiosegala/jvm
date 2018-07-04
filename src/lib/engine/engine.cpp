@@ -2552,8 +2552,7 @@ namespace jvm {
 		auto k = findMethod(*x);
 		Frame l(k.first,k.second);
 		int i = 1;
-		while(!fs.top().operands.empty())
-		{
+		while(!fs.top().operands.empty()){
 			auto resvalue = frame.operands.pop4();
 			l.variables.set(i,resvalue.ui4);
 			i++;
@@ -2562,7 +2561,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw JvmException("Not Implemented!");
+//		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
