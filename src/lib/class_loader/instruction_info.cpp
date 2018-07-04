@@ -16,7 +16,7 @@ namespace jvm {
 		return "nop";
 	}
 
-	uint32_t OPINFOnop::getOpCode () {
+	u1 OPINFOnop::getOpCode() {
 		return 0;
 	}
 
@@ -38,7 +38,7 @@ namespace jvm {
 		return "aconst_null";
 	}
 
-	uint32_t OPINFOaconst_null::getOpCode () {
+	u1 OPINFOaconst_null::getOpCode() {
 		return 1;
 	}
 
@@ -60,7 +60,7 @@ namespace jvm {
 		return "iconst_m1";
 	}
 
-	uint32_t OPINFOiconst_m1::getOpCode () {
+	u1 OPINFOiconst_m1::getOpCode() {
 		return 2;
 	}
 
@@ -82,7 +82,7 @@ namespace jvm {
 		return "iconst_0";
 	}
 
-	uint32_t OPINFOiconst_0::getOpCode () {
+	u1 OPINFOiconst_0::getOpCode() {
 		return 3;
 	}
 
@@ -104,7 +104,7 @@ namespace jvm {
 		return "iconst_1";
 	}
 
-	uint32_t OPINFOiconst_1::getOpCode () {
+	u1 OPINFOiconst_1::getOpCode() {
 		return 4;
 	}
 
@@ -126,7 +126,7 @@ namespace jvm {
 		return "iconst_2";
 	}
 
-	uint32_t OPINFOiconst_2::getOpCode () {
+	u1 OPINFOiconst_2::getOpCode() {
 		return 5;
 	}
 
@@ -148,7 +148,7 @@ namespace jvm {
 		return "iconst_3";
 	}
 
-	uint32_t OPINFOiconst_3::getOpCode () {
+	u1 OPINFOiconst_3::getOpCode() {
 		return 6;
 	}
 
@@ -170,7 +170,7 @@ namespace jvm {
 		return "iconst_4";
 	}
 
-	uint32_t OPINFOiconst_4::getOpCode () {
+	u1 OPINFOiconst_4::getOpCode() {
 		return 7;
 	}
 
@@ -192,7 +192,7 @@ namespace jvm {
 		return "iconst_5";
 	}
 
-	uint32_t OPINFOiconst_5::getOpCode () {
+	u1 OPINFOiconst_5::getOpCode() {
 		return 8;
 	}
 
@@ -214,7 +214,7 @@ namespace jvm {
 		return "lconst_0";
 	}
 
-	uint32_t OPINFOlconst_0::getOpCode () {
+	u1 OPINFOlconst_0::getOpCode() {
 		return 9;
 	}
 
@@ -236,7 +236,7 @@ namespace jvm {
 		return "lconst_1";
 	}
 
-	uint32_t OPINFOlconst_1::getOpCode () {
+	u1 OPINFOlconst_1::getOpCode() {
 		return 10;
 	}
 
@@ -258,7 +258,7 @@ namespace jvm {
 		return "fconst_0";
 	}
 
-	uint32_t OPINFOfconst_0::getOpCode () {
+	u1 OPINFOfconst_0::getOpCode() {
 		return 11;
 	}
 
@@ -280,7 +280,7 @@ namespace jvm {
 		return "fconst_1";
 	}
 
-	uint32_t OPINFOfconst_1::getOpCode () {
+	u1 OPINFOfconst_1::getOpCode() {
 		return 12;
 	}
 
@@ -302,7 +302,7 @@ namespace jvm {
 		return "fconst_2";
 	}
 
-	uint32_t OPINFOfconst_2::getOpCode () {
+	u1 OPINFOfconst_2::getOpCode() {
 		return 13;
 	}
 
@@ -324,7 +324,7 @@ namespace jvm {
 		return "dconst_0";
 	}
 
-	uint32_t OPINFOdconst_0::getOpCode () {
+	u1 OPINFOdconst_0::getOpCode() {
 		return 14;
 	}
 
@@ -346,7 +346,7 @@ namespace jvm {
 		return "dconst_1";
 	}
 
-	uint32_t OPINFOdconst_1::getOpCode () {
+	u1 OPINFOdconst_1::getOpCode() {
 		return 15;
 	}
 
@@ -368,7 +368,7 @@ namespace jvm {
 		return "bipush";
 	}
 
-	uint32_t OPINFObipush::getOpCode () {
+	u1 OPINFObipush::getOpCode() {
 		return 16;
 	}
 
@@ -391,7 +391,7 @@ namespace jvm {
 		return "sipush";
 	}
 
-	uint32_t OPINFOsipush::getOpCode () {
+	u1 OPINFOsipush::getOpCode() {
 		return 17;
 	}
 
@@ -414,7 +414,7 @@ namespace jvm {
 		return "ldc";
 	}
 
-	uint32_t OPINFOldc::getOpCode () {
+	u1 OPINFOldc::getOpCode() {
 		return 18;
 	}
 
@@ -437,7 +437,7 @@ namespace jvm {
 		return "ldc_w";
 	}
 
-	uint32_t OPINFOldc_w::getOpCode () {
+	u1 OPINFOldc_w::getOpCode() {
 		return 19;
 	}
 
@@ -460,7 +460,7 @@ namespace jvm {
 		return "ldc2_w";
 	}
 
-	uint32_t OPINFOldc2_w::getOpCode () {
+	u1 OPINFOldc2_w::getOpCode() {
 		return 20;
 	}
 
@@ -483,7 +483,7 @@ namespace jvm {
 		return "iload";
 	}
 
-	uint32_t OPINFOiload::getOpCode () {
+	u1 OPINFOiload::getOpCode() {
 		return 21;
 	}
 
@@ -506,7 +506,7 @@ namespace jvm {
 		return "lload";
 	}
 
-	uint32_t OPINFOlload::getOpCode () {
+	u1 OPINFOlload::getOpCode() {
 		return 22;
 	}
 
@@ -529,7 +529,7 @@ namespace jvm {
 		return "fload";
 	}
 
-	uint32_t OPINFOfload::getOpCode () {
+	u1 OPINFOfload::getOpCode() {
 		return 23;
 	}
 
@@ -552,7 +552,7 @@ namespace jvm {
 		return "dload";
 	}
 
-	uint32_t OPINFOdload::getOpCode () {
+	u1 OPINFOdload::getOpCode() {
 		return 24;
 	}
 
@@ -575,7 +575,7 @@ namespace jvm {
 		return "aload";
 	}
 
-	uint32_t OPINFOaload::getOpCode () {
+	u1 OPINFOaload::getOpCode() {
 		return 25;
 	}
 
@@ -598,7 +598,7 @@ namespace jvm {
 		return "iload_0";
 	}
 
-	uint32_t OPINFOiload_0::getOpCode () {
+	u1 OPINFOiload_0::getOpCode() {
 		return 26;
 	}
 
@@ -620,7 +620,7 @@ namespace jvm {
 		return "iload_1";
 	}
 
-	uint32_t OPINFOiload_1::getOpCode () {
+	u1 OPINFOiload_1::getOpCode() {
 		return 27;
 	}
 
@@ -642,7 +642,7 @@ namespace jvm {
 		return "iload_2";
 	}
 
-	uint32_t OPINFOiload_2::getOpCode () {
+	u1 OPINFOiload_2::getOpCode() {
 		return 28;
 	}
 
@@ -664,7 +664,7 @@ namespace jvm {
 		return "iload_3";
 	}
 
-	uint32_t OPINFOiload_3::getOpCode () {
+	u1 OPINFOiload_3::getOpCode() {
 		return 29;
 	}
 
@@ -686,7 +686,7 @@ namespace jvm {
 		return "lload_0";
 	}
 
-	uint32_t OPINFOlload_0::getOpCode () {
+	u1 OPINFOlload_0::getOpCode() {
 		return 30;
 	}
 
@@ -708,7 +708,7 @@ namespace jvm {
 		return "lload_1";
 	}
 
-	uint32_t OPINFOlload_1::getOpCode () {
+	u1 OPINFOlload_1::getOpCode() {
 		return 31;
 	}
 
@@ -730,7 +730,7 @@ namespace jvm {
 		return "lload_2";
 	}
 
-	uint32_t OPINFOlload_2::getOpCode () {
+	u1 OPINFOlload_2::getOpCode() {
 		return 32;
 	}
 
@@ -752,7 +752,7 @@ namespace jvm {
 		return "lload_3";
 	}
 
-	uint32_t OPINFOlload_3::getOpCode () {
+	u1 OPINFOlload_3::getOpCode() {
 		return 33;
 	}
 
@@ -774,7 +774,7 @@ namespace jvm {
 		return "fload_0";
 	}
 
-	uint32_t OPINFOfload_0::getOpCode () {
+	u1 OPINFOfload_0::getOpCode() {
 		return 34;
 	}
 
@@ -796,7 +796,7 @@ namespace jvm {
 		return "fload_1";
 	}
 
-	uint32_t OPINFOfload_1::getOpCode () {
+	u1 OPINFOfload_1::getOpCode() {
 		return 35;
 	}
 
@@ -818,7 +818,7 @@ namespace jvm {
 		return "fload_2";
 	}
 
-	uint32_t OPINFOfload_2::getOpCode () {
+	u1 OPINFOfload_2::getOpCode() {
 		return 36;
 	}
 
@@ -840,7 +840,7 @@ namespace jvm {
 		return "fload_3";
 	}
 
-	uint32_t OPINFOfload_3::getOpCode () {
+	u1 OPINFOfload_3::getOpCode() {
 		return 37;
 	}
 
@@ -862,7 +862,7 @@ namespace jvm {
 		return "dload_0";
 	}
 
-	uint32_t OPINFOdload_0::getOpCode () {
+	u1 OPINFOdload_0::getOpCode() {
 		return 38;
 	}
 
@@ -884,7 +884,7 @@ namespace jvm {
 		return "dload_1";
 	}
 
-	uint32_t OPINFOdload_1::getOpCode () {
+	u1 OPINFOdload_1::getOpCode() {
 		return 39;
 	}
 
@@ -906,7 +906,7 @@ namespace jvm {
 		return "dload_2";
 	}
 
-	uint32_t OPINFOdload_2::getOpCode () {
+	u1 OPINFOdload_2::getOpCode() {
 		return 40;
 	}
 
@@ -928,7 +928,7 @@ namespace jvm {
 		return "dload_3";
 	}
 
-	uint32_t OPINFOdload_3::getOpCode () {
+	u1 OPINFOdload_3::getOpCode() {
 		return 41;
 	}
 
@@ -950,7 +950,7 @@ namespace jvm {
 		return "aload_0";
 	}
 
-	uint32_t OPINFOaload_0::getOpCode () {
+	u1 OPINFOaload_0::getOpCode() {
 		return 42;
 	}
 
@@ -972,7 +972,7 @@ namespace jvm {
 		return "aload_1";
 	}
 
-	uint32_t OPINFOaload_1::getOpCode () {
+	u1 OPINFOaload_1::getOpCode() {
 		return 43;
 	}
 
@@ -994,7 +994,7 @@ namespace jvm {
 		return "aload_2";
 	}
 
-	uint32_t OPINFOaload_2::getOpCode () {
+	u1 OPINFOaload_2::getOpCode() {
 		return 44;
 	}
 
@@ -1016,7 +1016,7 @@ namespace jvm {
 		return "aload_3";
 	}
 
-	uint32_t OPINFOaload_3::getOpCode () {
+	u1 OPINFOaload_3::getOpCode() {
 		return 45;
 	}
 
@@ -1038,7 +1038,7 @@ namespace jvm {
 		return "iaload";
 	}
 
-	uint32_t OPINFOiaload::getOpCode () {
+	u1 OPINFOiaload::getOpCode() {
 		return 46;
 	}
 
@@ -1060,7 +1060,7 @@ namespace jvm {
 		return "laload";
 	}
 
-	uint32_t OPINFOlaload::getOpCode () {
+	u1 OPINFOlaload::getOpCode() {
 		return 47;
 	}
 
@@ -1082,7 +1082,7 @@ namespace jvm {
 		return "faload";
 	}
 
-	uint32_t OPINFOfaload::getOpCode () {
+	u1 OPINFOfaload::getOpCode() {
 		return 48;
 	}
 
@@ -1104,7 +1104,7 @@ namespace jvm {
 		return "daload";
 	}
 
-	uint32_t OPINFOdaload::getOpCode () {
+	u1 OPINFOdaload::getOpCode() {
 		return 49;
 	}
 
@@ -1126,7 +1126,7 @@ namespace jvm {
 		return "aaload";
 	}
 
-	uint32_t OPINFOaaload::getOpCode () {
+	u1 OPINFOaaload::getOpCode() {
 		return 50;
 	}
 
@@ -1148,7 +1148,7 @@ namespace jvm {
 		return "baload";
 	}
 
-	uint32_t OPINFObaload::getOpCode () {
+	u1 OPINFObaload::getOpCode() {
 		return 51;
 	}
 
@@ -1170,7 +1170,7 @@ namespace jvm {
 		return "caload";
 	}
 
-	uint32_t OPINFOcaload::getOpCode () {
+	u1 OPINFOcaload::getOpCode() {
 		return 52;
 	}
 
@@ -1192,7 +1192,7 @@ namespace jvm {
 		return "saload";
 	}
 
-	uint32_t OPINFOsaload::getOpCode () {
+	u1 OPINFOsaload::getOpCode() {
 		return 53;
 	}
 
@@ -1214,7 +1214,7 @@ namespace jvm {
 		return "istore";
 	}
 
-	uint32_t OPINFOistore::getOpCode () {
+	u1 OPINFOistore::getOpCode() {
 		return 54;
 	}
 
@@ -1237,7 +1237,7 @@ namespace jvm {
 		return "lstore";
 	}
 
-	uint32_t OPINFOlstore::getOpCode () {
+	u1 OPINFOlstore::getOpCode() {
 		return 55;
 	}
 
@@ -1260,7 +1260,7 @@ namespace jvm {
 		return "fstore";
 	}
 
-	uint32_t OPINFOfstore::getOpCode () {
+	u1 OPINFOfstore::getOpCode() {
 		return 56;
 	}
 
@@ -1283,7 +1283,7 @@ namespace jvm {
 		return "dstore";
 	}
 
-	uint32_t OPINFOdstore::getOpCode () {
+	u1 OPINFOdstore::getOpCode() {
 		return 57;
 	}
 
@@ -1306,7 +1306,7 @@ namespace jvm {
 		return "astore";
 	}
 
-	uint32_t OPINFOastore::getOpCode () {
+	u1 OPINFOastore::getOpCode() {
 		return 58;
 	}
 
@@ -1329,7 +1329,7 @@ namespace jvm {
 		return "istore_0";
 	}
 
-	uint32_t OPINFOistore_0::getOpCode () {
+	u1 OPINFOistore_0::getOpCode() {
 		return 59;
 	}
 
@@ -1351,7 +1351,7 @@ namespace jvm {
 		return "istore_1";
 	}
 
-	uint32_t OPINFOistore_1::getOpCode () {
+	u1 OPINFOistore_1::getOpCode() {
 		return 60;
 	}
 
@@ -1373,7 +1373,7 @@ namespace jvm {
 		return "istore_2";
 	}
 
-	uint32_t OPINFOistore_2::getOpCode () {
+	u1 OPINFOistore_2::getOpCode() {
 		return 61;
 	}
 
@@ -1395,7 +1395,7 @@ namespace jvm {
 		return "istore_3";
 	}
 
-	uint32_t OPINFOistore_3::getOpCode () {
+	u1 OPINFOistore_3::getOpCode() {
 		return 62;
 	}
 
@@ -1417,7 +1417,7 @@ namespace jvm {
 		return "lstore_0";
 	}
 
-	uint32_t OPINFOlstore_0::getOpCode () {
+	u1 OPINFOlstore_0::getOpCode() {
 		return 63;
 	}
 
@@ -1439,7 +1439,7 @@ namespace jvm {
 		return "lstore_1";
 	}
 
-	uint32_t OPINFOlstore_1::getOpCode () {
+	u1 OPINFOlstore_1::getOpCode() {
 		return 64;
 	}
 
@@ -1461,7 +1461,7 @@ namespace jvm {
 		return "lstore_2";
 	}
 
-	uint32_t OPINFOlstore_2::getOpCode () {
+	u1 OPINFOlstore_2::getOpCode() {
 		return 65;
 	}
 
@@ -1483,7 +1483,7 @@ namespace jvm {
 		return "lstore_3";
 	}
 
-	uint32_t OPINFOlstore_3::getOpCode () {
+	u1 OPINFOlstore_3::getOpCode() {
 		return 66;
 	}
 
@@ -1505,7 +1505,7 @@ namespace jvm {
 		return "fstore_0";
 	}
 
-	uint32_t OPINFOfstore_0::getOpCode () {
+	u1 OPINFOfstore_0::getOpCode() {
 		return 67;
 	}
 
@@ -1527,7 +1527,7 @@ namespace jvm {
 		return "fstore_1";
 	}
 
-	uint32_t OPINFOfstore_1::getOpCode () {
+	u1 OPINFOfstore_1::getOpCode() {
 		return 68;
 	}
 
@@ -1549,7 +1549,7 @@ namespace jvm {
 		return "fstore_2";
 	}
 
-	uint32_t OPINFOfstore_2::getOpCode () {
+	u1 OPINFOfstore_2::getOpCode() {
 		return 69;
 	}
 
@@ -1571,7 +1571,7 @@ namespace jvm {
 		return "fstore_3";
 	}
 
-	uint32_t OPINFOfstore_3::getOpCode () {
+	u1 OPINFOfstore_3::getOpCode() {
 		return 70;
 	}
 
@@ -1593,7 +1593,7 @@ namespace jvm {
 		return "dstore_0";
 	}
 
-	uint32_t OPINFOdstore_0::getOpCode () {
+	u1 OPINFOdstore_0::getOpCode() {
 		return 71;
 	}
 
@@ -1615,7 +1615,7 @@ namespace jvm {
 		return "dstore_1";
 	}
 
-	uint32_t OPINFOdstore_1::getOpCode () {
+	u1 OPINFOdstore_1::getOpCode() {
 		return 72;
 	}
 
@@ -1637,7 +1637,7 @@ namespace jvm {
 		return "dstore_2";
 	}
 
-	uint32_t OPINFOdstore_2::getOpCode () {
+	u1 OPINFOdstore_2::getOpCode() {
 		return 73;
 	}
 
@@ -1659,7 +1659,7 @@ namespace jvm {
 		return "dstore_3";
 	}
 
-	uint32_t OPINFOdstore_3::getOpCode () {
+	u1 OPINFOdstore_3::getOpCode() {
 		return 74;
 	}
 
@@ -1681,7 +1681,7 @@ namespace jvm {
 		return "astore_0";
 	}
 
-	uint32_t OPINFOastore_0::getOpCode () {
+	u1 OPINFOastore_0::getOpCode() {
 		return 75;
 	}
 
@@ -1703,7 +1703,7 @@ namespace jvm {
 		return "astore_1";
 	}
 
-	uint32_t OPINFOastore_1::getOpCode () {
+	u1 OPINFOastore_1::getOpCode() {
 		return 76;
 	}
 
@@ -1725,7 +1725,7 @@ namespace jvm {
 		return "astore_2";
 	}
 
-	uint32_t OPINFOastore_2::getOpCode () {
+	u1 OPINFOastore_2::getOpCode() {
 		return 77;
 	}
 
@@ -1747,7 +1747,7 @@ namespace jvm {
 		return "astore_3";
 	}
 
-	uint32_t OPINFOastore_3::getOpCode () {
+	u1 OPINFOastore_3::getOpCode() {
 		return 78;
 	}
 
@@ -1769,7 +1769,7 @@ namespace jvm {
 		return "iastore";
 	}
 
-	uint32_t OPINFOiastore::getOpCode () {
+	u1 OPINFOiastore::getOpCode() {
 		return 79;
 	}
 
@@ -1791,7 +1791,7 @@ namespace jvm {
 		return "lastore";
 	}
 
-	uint32_t OPINFOlastore::getOpCode () {
+	u1 OPINFOlastore::getOpCode() {
 		return 80;
 	}
 
@@ -1813,7 +1813,7 @@ namespace jvm {
 		return "fastore";
 	}
 
-	uint32_t OPINFOfastore::getOpCode () {
+	u1 OPINFOfastore::getOpCode() {
 		return 81;
 	}
 
@@ -1835,7 +1835,7 @@ namespace jvm {
 		return "dastore";
 	}
 
-	uint32_t OPINFOdastore::getOpCode () {
+	u1 OPINFOdastore::getOpCode() {
 		return 82;
 	}
 
@@ -1857,7 +1857,7 @@ namespace jvm {
 		return "aastore";
 	}
 
-	uint32_t OPINFOaastore::getOpCode () {
+	u1 OPINFOaastore::getOpCode() {
 		return 83;
 	}
 
@@ -1879,7 +1879,7 @@ namespace jvm {
 		return "bastore";
 	}
 
-	uint32_t OPINFObastore::getOpCode () {
+	u1 OPINFObastore::getOpCode() {
 		return 84;
 	}
 
@@ -1901,7 +1901,7 @@ namespace jvm {
 		return "castore";
 	}
 
-	uint32_t OPINFOcastore::getOpCode () {
+	u1 OPINFOcastore::getOpCode() {
 		return 85;
 	}
 
@@ -1923,7 +1923,7 @@ namespace jvm {
 		return "sastore";
 	}
 
-	uint32_t OPINFOsastore::getOpCode () {
+	u1 OPINFOsastore::getOpCode() {
 		return 86;
 	}
 
@@ -1945,7 +1945,7 @@ namespace jvm {
 		return "pop";
 	}
 
-	uint32_t OPINFOpop::getOpCode () {
+	u1 OPINFOpop::getOpCode() {
 		return 87;
 	}
 
@@ -1967,7 +1967,7 @@ namespace jvm {
 		return "pop2";
 	}
 
-	uint32_t OPINFOpop2::getOpCode () {
+	u1 OPINFOpop2::getOpCode() {
 		return 88;
 	}
 
@@ -1989,7 +1989,7 @@ namespace jvm {
 		return "dup";
 	}
 
-	uint32_t OPINFOdup::getOpCode () {
+	u1 OPINFOdup::getOpCode() {
 		return 89;
 	}
 
@@ -2011,7 +2011,7 @@ namespace jvm {
 		return "dup_x1";
 	}
 
-	uint32_t OPINFOdup_x1::getOpCode () {
+	u1 OPINFOdup_x1::getOpCode() {
 		return 90;
 	}
 
@@ -2033,7 +2033,7 @@ namespace jvm {
 		return "dup_x2";
 	}
 
-	uint32_t OPINFOdup_x2::getOpCode () {
+	u1 OPINFOdup_x2::getOpCode() {
 		return 91;
 	}
 
@@ -2055,7 +2055,7 @@ namespace jvm {
 		return "dup2";
 	}
 
-	uint32_t OPINFOdup2::getOpCode () {
+	u1 OPINFOdup2::getOpCode() {
 		return 92;
 	}
 
@@ -2077,7 +2077,7 @@ namespace jvm {
 		return "dup2_x1";
 	}
 
-	uint32_t OPINFOdup2_x1::getOpCode () {
+	u1 OPINFOdup2_x1::getOpCode() {
 		return 93;
 	}
 
@@ -2099,7 +2099,7 @@ namespace jvm {
 		return "dup2_x2";
 	}
 
-	uint32_t OPINFOdup2_x2::getOpCode () {
+	u1 OPINFOdup2_x2::getOpCode() {
 		return 94;
 	}
 
@@ -2121,7 +2121,7 @@ namespace jvm {
 		return "swap";
 	}
 
-	uint32_t OPINFOswap::getOpCode () {
+	u1 OPINFOswap::getOpCode() {
 		return 95;
 	}
 
@@ -2143,7 +2143,7 @@ namespace jvm {
 		return "iadd";
 	}
 
-	uint32_t OPINFOiadd::getOpCode () {
+	u1 OPINFOiadd::getOpCode() {
 		return 96;
 	}
 
@@ -2165,7 +2165,7 @@ namespace jvm {
 		return "ladd";
 	}
 
-	uint32_t OPINFOladd::getOpCode () {
+	u1 OPINFOladd::getOpCode() {
 		return 97;
 	}
 
@@ -2187,7 +2187,7 @@ namespace jvm {
 		return "fadd";
 	}
 
-	uint32_t OPINFOfadd::getOpCode () {
+	u1 OPINFOfadd::getOpCode() {
 		return 98;
 	}
 
@@ -2209,7 +2209,7 @@ namespace jvm {
 		return "dadd";
 	}
 
-	uint32_t OPINFOdadd::getOpCode () {
+	u1 OPINFOdadd::getOpCode() {
 		return 99;
 	}
 
@@ -2231,7 +2231,7 @@ namespace jvm {
 		return "isub";
 	}
 
-	uint32_t OPINFOisub::getOpCode () {
+	u1 OPINFOisub::getOpCode() {
 		return 100;
 	}
 
@@ -2253,7 +2253,7 @@ namespace jvm {
 		return "lsub";
 	}
 
-	uint32_t OPINFOlsub::getOpCode () {
+	u1 OPINFOlsub::getOpCode() {
 		return 101;
 	}
 
@@ -2275,7 +2275,7 @@ namespace jvm {
 		return "fsub";
 	}
 
-	uint32_t OPINFOfsub::getOpCode () {
+	u1 OPINFOfsub::getOpCode() {
 		return 102;
 	}
 
@@ -2297,7 +2297,7 @@ namespace jvm {
 		return "dsub";
 	}
 
-	uint32_t OPINFOdsub::getOpCode () {
+	u1 OPINFOdsub::getOpCode() {
 		return 103;
 	}
 
@@ -2319,7 +2319,7 @@ namespace jvm {
 		return "imul";
 	}
 
-	uint32_t OPINFOimul::getOpCode () {
+	u1 OPINFOimul::getOpCode() {
 		return 104;
 	}
 
@@ -2341,7 +2341,7 @@ namespace jvm {
 		return "lmul";
 	}
 
-	uint32_t OPINFOlmul::getOpCode () {
+	u1 OPINFOlmul::getOpCode() {
 		return 105;
 	}
 
@@ -2363,7 +2363,7 @@ namespace jvm {
 		return "fmul";
 	}
 
-	uint32_t OPINFOfmul::getOpCode () {
+	u1 OPINFOfmul::getOpCode() {
 		return 106;
 	}
 
@@ -2385,7 +2385,7 @@ namespace jvm {
 		return "dmul";
 	}
 
-	uint32_t OPINFOdmul::getOpCode () {
+	u1 OPINFOdmul::getOpCode() {
 		return 107;
 	}
 
@@ -2407,7 +2407,7 @@ namespace jvm {
 		return "idiv";
 	}
 
-	uint32_t OPINFOidiv::getOpCode () {
+	u1 OPINFOidiv::getOpCode() {
 		return 108;
 	}
 
@@ -2429,7 +2429,7 @@ namespace jvm {
 		return "ldiv";
 	}
 
-	uint32_t OPINFOldiv::getOpCode () {
+	u1 OPINFOldiv::getOpCode() {
 		return 109;
 	}
 
@@ -2451,7 +2451,7 @@ namespace jvm {
 		return "fdiv";
 	}
 
-	uint32_t OPINFOfdiv::getOpCode () {
+	u1 OPINFOfdiv::getOpCode() {
 		return 110;
 	}
 
@@ -2473,7 +2473,7 @@ namespace jvm {
 		return "ddiv";
 	}
 
-	uint32_t OPINFOddiv::getOpCode () {
+	u1 OPINFOddiv::getOpCode() {
 		return 111;
 	}
 
@@ -2495,7 +2495,7 @@ namespace jvm {
 		return "irem";
 	}
 
-	uint32_t OPINFOirem::getOpCode () {
+	u1 OPINFOirem::getOpCode() {
 		return 112;
 	}
 
@@ -2517,7 +2517,7 @@ namespace jvm {
 		return "lrem";
 	}
 
-	uint32_t OPINFOlrem::getOpCode () {
+	u1 OPINFOlrem::getOpCode() {
 		return 113;
 	}
 
@@ -2539,7 +2539,7 @@ namespace jvm {
 		return "frem";
 	}
 
-	uint32_t OPINFOfrem::getOpCode () {
+	u1 OPINFOfrem::getOpCode() {
 		return 114;
 	}
 
@@ -2561,7 +2561,7 @@ namespace jvm {
 		return "drem";
 	}
 
-	uint32_t OPINFOdrem::getOpCode () {
+	u1 OPINFOdrem::getOpCode() {
 		return 115;
 	}
 
@@ -2583,7 +2583,7 @@ namespace jvm {
 		return "ineg";
 	}
 
-	uint32_t OPINFOineg::getOpCode () {
+	u1 OPINFOineg::getOpCode() {
 		return 116;
 	}
 
@@ -2605,7 +2605,7 @@ namespace jvm {
 		return "lneg";
 	}
 
-	uint32_t OPINFOlneg::getOpCode () {
+	u1 OPINFOlneg::getOpCode() {
 		return 117;
 	}
 
@@ -2627,7 +2627,7 @@ namespace jvm {
 		return "fneg";
 	}
 
-	uint32_t OPINFOfneg::getOpCode () {
+	u1 OPINFOfneg::getOpCode() {
 		return 118;
 	}
 
@@ -2649,7 +2649,7 @@ namespace jvm {
 		return "dneg";
 	}
 
-	uint32_t OPINFOdneg::getOpCode () {
+	u1 OPINFOdneg::getOpCode() {
 		return 119;
 	}
 
@@ -2671,7 +2671,7 @@ namespace jvm {
 		return "ishl";
 	}
 
-	uint32_t OPINFOishl::getOpCode () {
+	u1 OPINFOishl::getOpCode() {
 		return 120;
 	}
 
@@ -2693,7 +2693,7 @@ namespace jvm {
 		return "lshl";
 	}
 
-	uint32_t OPINFOlshl::getOpCode () {
+	u1 OPINFOlshl::getOpCode() {
 		return 121;
 	}
 
@@ -2715,7 +2715,7 @@ namespace jvm {
 		return "ishr";
 	}
 
-	uint32_t OPINFOishr::getOpCode () {
+	u1 OPINFOishr::getOpCode() {
 		return 122;
 	}
 
@@ -2737,7 +2737,7 @@ namespace jvm {
 		return "lshr";
 	}
 
-	uint32_t OPINFOlshr::getOpCode () {
+	u1 OPINFOlshr::getOpCode() {
 		return 123;
 	}
 
@@ -2759,7 +2759,7 @@ namespace jvm {
 		return "iushr";
 	}
 
-	uint32_t OPINFOiushr::getOpCode () {
+	u1 OPINFOiushr::getOpCode() {
 		return 124;
 	}
 
@@ -2781,7 +2781,7 @@ namespace jvm {
 		return "lushr";
 	}
 
-	uint32_t OPINFOlushr::getOpCode () {
+	u1 OPINFOlushr::getOpCode() {
 		return 125;
 	}
 
@@ -2803,7 +2803,7 @@ namespace jvm {
 		return "iand";
 	}
 
-	uint32_t OPINFOiand::getOpCode () {
+	u1 OPINFOiand::getOpCode() {
 		return 126;
 	}
 
@@ -2825,7 +2825,7 @@ namespace jvm {
 		return "land";
 	}
 
-	uint32_t OPINFOland::getOpCode () {
+	u1 OPINFOland::getOpCode() {
 		return 127;
 	}
 
@@ -2847,7 +2847,7 @@ namespace jvm {
 		return "ior";
 	}
 
-	uint32_t OPINFOior::getOpCode () {
+	u1 OPINFOior::getOpCode() {
 		return 128;
 	}
 
@@ -2869,7 +2869,7 @@ namespace jvm {
 		return "lor";
 	}
 
-	uint32_t OPINFOlor::getOpCode () {
+	u1 OPINFOlor::getOpCode() {
 		return 29;
 	}
 
@@ -2891,7 +2891,7 @@ namespace jvm {
 		return "ixor";
 	}
 
-	uint32_t OPINFOixor::getOpCode () {
+	u1 OPINFOixor::getOpCode() {
 		return 130;
 	}
 
@@ -2913,7 +2913,7 @@ namespace jvm {
 		return "lxor";
 	}
 
-	uint32_t OPINFOlxor::getOpCode () {
+	u1 OPINFOlxor::getOpCode() {
 		return 131;
 	}
 
@@ -2935,7 +2935,7 @@ namespace jvm {
 		return "iinc";
 	}
 
-	uint32_t OPINFOiinc::getOpCode () {
+	u1 OPINFOiinc::getOpCode() {
 		return 132;
 	}
 
@@ -2959,7 +2959,7 @@ namespace jvm {
 		return "i2l";
 	}
 
-	uint32_t OPINFOi2l::getOpCode () {
+	u1 OPINFOi2l::getOpCode() {
 		return 133;
 	}
 
@@ -2981,7 +2981,7 @@ namespace jvm {
 		return "i2f";
 	}
 
-	uint32_t OPINFOi2f::getOpCode () {
+	u1 OPINFOi2f::getOpCode() {
 		return 134;
 	}
 
@@ -3003,7 +3003,7 @@ namespace jvm {
 		return "i2d";
 	}
 
-	uint32_t OPINFOi2d::getOpCode () {
+	u1 OPINFOi2d::getOpCode() {
 		return 135;
 	}
 
@@ -3025,7 +3025,7 @@ namespace jvm {
 		return "l2i";
 	}
 
-	uint32_t OPINFOl2i::getOpCode () {
+	u1 OPINFOl2i::getOpCode() {
 		return 136;
 	}
 
@@ -3047,7 +3047,7 @@ namespace jvm {
 		return "l2f";
 	}
 
-	uint32_t OPINFOl2f::getOpCode () {
+	u1 OPINFOl2f::getOpCode() {
 		return 137;
 	}
 
@@ -3069,7 +3069,7 @@ namespace jvm {
 		return "l2d";
 	}
 
-	uint32_t OPINFOl2d::getOpCode () {
+	u1 OPINFOl2d::getOpCode() {
 		return 138;
 	}
 
@@ -3091,7 +3091,7 @@ namespace jvm {
 		return "f2i";
 	}
 
-	uint32_t OPINFOf2i::getOpCode () {
+	u1 OPINFOf2i::getOpCode() {
 		return 139;
 	}
 
@@ -3113,7 +3113,7 @@ namespace jvm {
 		return "f2l";
 	}
 
-	uint32_t OPINFOf2l::getOpCode () {
+	u1 OPINFOf2l::getOpCode() {
 		return 140;
 	}
 
@@ -3135,7 +3135,7 @@ namespace jvm {
 		return "f2d";
 	}
 
-	uint32_t OPINFOf2d::getOpCode () {
+	u1 OPINFOf2d::getOpCode() {
 		return 141;
 	}
 
@@ -3157,7 +3157,7 @@ namespace jvm {
 		return "d2i";
 	}
 
-	uint32_t OPINFOd2i::getOpCode () {
+	u1 OPINFOd2i::getOpCode() {
 		return 142;
 	}
 
@@ -3179,7 +3179,7 @@ namespace jvm {
 		return "d2l";
 	}
 
-	uint32_t OPINFOd2l::getOpCode () {
+	u1 OPINFOd2l::getOpCode() {
 		return 143;
 	}
 
@@ -3201,7 +3201,7 @@ namespace jvm {
 		return "d2f";
 	}
 
-	uint32_t OPINFOd2f::getOpCode () {
+	u1 OPINFOd2f::getOpCode() {
 		return 144;
 	}
 
@@ -3223,7 +3223,7 @@ namespace jvm {
 		return "i2b";
 	}
 
-	uint32_t OPINFOi2b::getOpCode () {
+	u1 OPINFOi2b::getOpCode() {
 		return 145;
 	}
 
@@ -3245,7 +3245,7 @@ namespace jvm {
 		return "i2c";
 	}
 
-	uint32_t OPINFOi2c::getOpCode () {
+	u1 OPINFOi2c::getOpCode() {
 		return 146;
 	}
 
@@ -3267,7 +3267,7 @@ namespace jvm {
 		return "i2s";
 	}
 
-	uint32_t OPINFOi2s::getOpCode () {
+	u1 OPINFOi2s::getOpCode() {
 		return 147;
 	}
 
@@ -3289,7 +3289,7 @@ namespace jvm {
 		return "lcmp";
 	}
 
-	uint32_t OPINFOlcmp::getOpCode () {
+	u1 OPINFOlcmp::getOpCode() {
 		return 148;
 	}
 
@@ -3311,7 +3311,7 @@ namespace jvm {
 		return "fcmpl";
 	}
 
-	uint32_t OPINFOfcmpl::getOpCode () {
+	u1 OPINFOfcmpl::getOpCode() {
 		return 149;
 	}
 
@@ -3333,7 +3333,7 @@ namespace jvm {
 		return "fcmpg";
 	}
 
-	uint32_t OPINFOfcmpg::getOpCode () {
+	u1 OPINFOfcmpg::getOpCode() {
 		return 150;
 	}
 
@@ -3355,7 +3355,7 @@ namespace jvm {
 		return "dcmpl";
 	}
 
-	uint32_t OPINFOdcmpl::getOpCode () {
+	u1 OPINFOdcmpl::getOpCode() {
 		return 151;
 	}
 
@@ -3377,7 +3377,7 @@ namespace jvm {
 		return "dcmpg";
 	}
 
-	uint32_t OPINFOdcmpg::getOpCode () {
+	u1 OPINFOdcmpg::getOpCode() {
 		return 152;
 	}
 
@@ -3399,7 +3399,7 @@ namespace jvm {
 		return "ifeq";
 	}
 
-	uint32_t OPINFOifeq::getOpCode () {
+	u1 OPINFOifeq::getOpCode() {
 		return 153;
 	}
 
@@ -3422,7 +3422,7 @@ namespace jvm {
 		return "ifne";
 	}
 
-	uint32_t OPINFOifne::getOpCode () {
+	u1 OPINFOifne::getOpCode() {
 		return 154;
 	}
 
@@ -3445,7 +3445,7 @@ namespace jvm {
 		return "iflt";
 	}
 
-	uint32_t OPINFOiflt::getOpCode () {
+	u1 OPINFOiflt::getOpCode() {
 		return 155;
 	}
 
@@ -3468,7 +3468,7 @@ namespace jvm {
 		return "ifge";
 	}
 
-	uint32_t OPINFOifge::getOpCode () {
+	u1 OPINFOifge::getOpCode() {
 		return 156;
 	}
 
@@ -3491,7 +3491,7 @@ namespace jvm {
 		return "ifgt";
 	}
 
-	uint32_t OPINFOifgt::getOpCode () {
+	u1 OPINFOifgt::getOpCode() {
 		return 157;
 	}
 
@@ -3514,7 +3514,7 @@ namespace jvm {
 		return "ifle";
 	}
 
-	uint32_t OPINFOifle::getOpCode () {
+	u1 OPINFOifle::getOpCode() {
 		return 158;
 	}
 
@@ -3537,7 +3537,7 @@ namespace jvm {
 		return "if_icmpeq";
 	}
 
-	uint32_t OPINFOif_icmpeq::getOpCode () {
+	u1 OPINFOif_icmpeq::getOpCode() {
 		return 159;
 	}
 
@@ -3560,7 +3560,7 @@ namespace jvm {
 		return "if_icmpne";
 	}
 
-	uint32_t OPINFOif_icmpne::getOpCode () {
+	u1 OPINFOif_icmpne::getOpCode() {
 		return 160;
 	}
 
@@ -3583,7 +3583,7 @@ namespace jvm {
 		return "if_icmplt";
 	}
 
-	uint32_t OPINFOif_icmplt::getOpCode () {
+	u1 OPINFOif_icmplt::getOpCode() {
 		return 61;
 	}
 
@@ -3606,7 +3606,7 @@ namespace jvm {
 		return "if_icmpge";
 	}
 
-	uint32_t OPINFOif_icmpge::getOpCode () {
+	u1 OPINFOif_icmpge::getOpCode() {
 		return 162;
 	}
 
@@ -3629,7 +3629,7 @@ namespace jvm {
 		return "if_icmpgt";
 	}
 
-	uint32_t OPINFOif_icmpgt::getOpCode () {
+	u1 OPINFOif_icmpgt::getOpCode() {
 		return 163;
 	}
 
@@ -3652,7 +3652,7 @@ namespace jvm {
 		return "if_icmple";
 	}
 
-	uint32_t OPINFOif_icmple::getOpCode () {
+	u1 OPINFOif_icmple::getOpCode() {
 		return 164;
 	}
 
@@ -3675,7 +3675,7 @@ namespace jvm {
 		return "if_acmpeq";
 	}
 
-	uint32_t OPINFOif_acmpeq::getOpCode () {
+	u1 OPINFOif_acmpeq::getOpCode() {
 		return 165;
 	}
 
@@ -3698,7 +3698,7 @@ namespace jvm {
 		return "if_acmpne";
 	}
 
-	uint32_t OPINFOif_acmpne::getOpCode () {
+	u1 OPINFOif_acmpne::getOpCode() {
 		return 166;
 	}
 
@@ -3721,7 +3721,7 @@ namespace jvm {
 		return "goto";
 	}
 
-	uint32_t OPINFOgoto::getOpCode () {
+	u1 OPINFOgoto::getOpCode() {
 		return 167;
 	}
 
@@ -3749,7 +3749,7 @@ namespace jvm {
 		return "jsr";
 	}
 
-	uint32_t OPINFOjsr::getOpCode () {
+	u1 OPINFOjsr::getOpCode() {
 		return 168;
 	}
 
@@ -3772,7 +3772,7 @@ namespace jvm {
 		return "ret";
 	}
 
-	uint32_t OPINFOret::getOpCode () {
+	u1 OPINFOret::getOpCode() {
 		return 169;
 	}
 
@@ -3795,7 +3795,7 @@ namespace jvm {
 		return "tableswitch";
 	}
 
-	uint32_t OPINFOtableswitch::getOpCode () {
+	u1 OPINFOtableswitch::getOpCode() {
 		return 170;
 	}
 
@@ -3842,7 +3842,7 @@ namespace jvm {
 		return "lookupswitch";
 	}
 
-	uint32_t OPINFOlookupswitch::getOpCode () {
+	u1 OPINFOlookupswitch::getOpCode() {
 		return 171;
 	}
 
@@ -3883,7 +3883,7 @@ namespace jvm {
 		return "ireturn";
 	}
 
-	uint32_t OPINFOireturn::getOpCode () {
+	u1 OPINFOireturn::getOpCode() {
 		return 172;
 	}
 
@@ -3905,7 +3905,7 @@ namespace jvm {
 		return "lreturn";
 	}
 
-	uint32_t OPINFOlreturn::getOpCode () {
+	u1 OPINFOlreturn::getOpCode() {
 		return 173;
 	}
 
@@ -3927,7 +3927,7 @@ namespace jvm {
 		return "freturn";
 	}
 
-	uint32_t OPINFOfreturn::getOpCode () {
+	u1 OPINFOfreturn::getOpCode() {
 		return 174;
 	}
 
@@ -3949,7 +3949,7 @@ namespace jvm {
 		return "dreturn";
 	}
 
-	uint32_t OPINFOdreturn::getOpCode () {
+	u1 OPINFOdreturn::getOpCode() {
 		return 175;
 	}
 
@@ -3971,7 +3971,7 @@ namespace jvm {
 		return "areturn";
 	}
 
-	uint32_t OPINFOareturn::getOpCode () {
+	u1 OPINFOareturn::getOpCode() {
 		return 176;
 	}
 
@@ -3993,7 +3993,7 @@ namespace jvm {
 		return "return";
 	}
 
-	uint32_t OPINFOreturn::getOpCode () {
+	u1 OPINFOreturn::getOpCode() {
 		return 177;
 	}
 
@@ -4015,7 +4015,7 @@ namespace jvm {
 		return "getstatic";
 	}
 
-	uint32_t OPINFOgetstatic::getOpCode () {
+	u1 OPINFOgetstatic::getOpCode() {
 		return 178;
 	}
 
@@ -4038,7 +4038,7 @@ namespace jvm {
 		return "putstatic";
 	}
 
-	uint32_t OPINFOputstatic::getOpCode () {
+	u1 OPINFOputstatic::getOpCode() {
 		return 179;
 	}
 
@@ -4061,7 +4061,7 @@ namespace jvm {
 		return "getfield";
 	}
 
-	uint32_t OPINFOgetfield::getOpCode () {
+	u1 OPINFOgetfield::getOpCode() {
 		return 180;
 	}
 
@@ -4084,7 +4084,7 @@ namespace jvm {
 		return "putfield";
 	}
 
-	uint32_t OPINFOputfield::getOpCode () {
+	u1 OPINFOputfield::getOpCode() {
 		return 181;
 	}
 
@@ -4107,7 +4107,7 @@ namespace jvm {
 		return "invokevirtual";
 	}
 
-	uint32_t OPINFOinvokevirtual::getOpCode () {
+	u1 OPINFOinvokevirtual::getOpCode() {
 		return 182;
 	}
 
@@ -4130,7 +4130,7 @@ namespace jvm {
 		return "invokespecial";
 	}
 
-	uint32_t OPINFOinvokespecial::getOpCode () {
+	u1 OPINFOinvokespecial::getOpCode() {
 		return 183;
 	}
 
@@ -4153,7 +4153,7 @@ namespace jvm {
 		return "invokestatic";
 	}
 
-	uint32_t OPINFOinvokestatic::getOpCode () {
+	u1 OPINFOinvokestatic::getOpCode() {
 		return 184;
 	}
 
@@ -4176,7 +4176,7 @@ namespace jvm {
 		return "invokeinterface";
 	}
 
-	uint32_t OPINFOinvokeinterface::getOpCode () {
+	u1 OPINFOinvokeinterface::getOpCode() {
 		return 185;
 	}
 
@@ -4207,7 +4207,7 @@ namespace jvm {
 		return "invokedynamic";
 	}
 
-	uint32_t OPINFOinvokedynamic::getOpCode () {
+	u1 OPINFOinvokedynamic::getOpCode() {
 		return 186;
 	}
 
@@ -4233,7 +4233,7 @@ namespace jvm {
 		return "new";
 	}
 
-	uint32_t OPINFOnew::getOpCode () {
+	u1 OPINFOnew::getOpCode() {
 		return 187;
 	}
 
@@ -4256,7 +4256,7 @@ namespace jvm {
 		return "newarray";
 	}
 
-	uint32_t OPINFOnewarray::getOpCode () {
+	u1 OPINFOnewarray::getOpCode() {
 		return 188;
 	}
 
@@ -4279,7 +4279,7 @@ namespace jvm {
 		return "anewarray";
 	}
 
-	uint32_t OPINFOanewarray::getOpCode () {
+	u1 OPINFOanewarray::getOpCode() {
 		return 189;
 	}
 
@@ -4302,7 +4302,7 @@ namespace jvm {
 		return "arraylength";
 	}
 
-	uint32_t OPINFOarraylength::getOpCode () {
+	u1 OPINFOarraylength::getOpCode() {
 		return 190;
 	}
 
@@ -4324,7 +4324,7 @@ namespace jvm {
 		return "athrow";
 	}
 
-	uint32_t OPINFOathrow::getOpCode () {
+	u1 OPINFOathrow::getOpCode() {
 		return 191;
 	}
 
@@ -4346,7 +4346,7 @@ namespace jvm {
 		return "checkcast";
 	}
 
-	uint32_t OPINFOcheckcast::getOpCode () {
+	u1 OPINFOcheckcast::getOpCode() {
 		return 192;
 	}
 
@@ -4369,7 +4369,7 @@ namespace jvm {
 		return "instanceof";
 	}
 
-	uint32_t OPINFOinstanceof::getOpCode () {
+	u1 OPINFOinstanceof::getOpCode() {
 		return 193;
 	}
 
@@ -4392,7 +4392,7 @@ namespace jvm {
 		return "monitorenter";
 	}
 
-	uint32_t OPINFOmonitorenter::getOpCode () {
+	u1 OPINFOmonitorenter::getOpCode() {
 		return 194;
 	}
 
@@ -4414,7 +4414,7 @@ namespace jvm {
 		return "monitorexit";
 	}
 
-	uint32_t OPINFOmonitorexit::getOpCode () {
+	u1 OPINFOmonitorexit::getOpCode() {
 		return 195;
 	}
 
@@ -4436,7 +4436,7 @@ namespace jvm {
 		return "wide";
 	}
 
-	uint32_t OPINFOwide::getOpCode () {
+	u1 OPINFOwide::getOpCode() {
 		return 196;
 	}
 
@@ -4469,7 +4469,7 @@ namespace jvm {
 		return "multianewarray";
 	}
 
-	uint32_t OPINFOmultianewarray::getOpCode () {
+	u1 OPINFOmultianewarray::getOpCode() {
 		return 197;
 	}
 
@@ -4497,7 +4497,7 @@ namespace jvm {
 		return "ifnull";
 	}
 
-	uint32_t OPINFOifnull::getOpCode () {
+	u1 OPINFOifnull::getOpCode() {
 		return 198;
 	}
 
@@ -4520,7 +4520,7 @@ namespace jvm {
 		return "ifnonnull";
 	}
 
-	uint32_t OPINFOifnonnull::getOpCode () {
+	u1 OPINFOifnonnull::getOpCode() {
 		return 199;
 	}
 
@@ -4543,7 +4543,7 @@ namespace jvm {
 		return "goto_w";
 	}
 
-	uint32_t OPINFOgoto_w::getOpCode () {
+	u1 OPINFOgoto_w::getOpCode() {
 		return 200;
 	}
 
@@ -4566,7 +4566,7 @@ namespace jvm {
 		return "jsr_w";
 	}
 
-	uint32_t OPINFOjsr_w::getOpCode () {
+	u1 OPINFOjsr_w::getOpCode() {
 		return 201;
 	}
 
@@ -4589,7 +4589,7 @@ namespace jvm {
 		return "breakpoint";
 	}
 
-	uint32_t OPINFObreakpoint::getOpCode () {
+	u1 OPINFObreakpoint::getOpCode() {
 		return 202;
 	}
 
@@ -4611,7 +4611,7 @@ namespace jvm {
 		return "impdep1";
 	}
 
-	uint32_t OPINFOimpdep1::getOpCode () {
+	u1 OPINFOimpdep1::getOpCode() {
 		return 254;
 	}
 
@@ -4633,7 +4633,7 @@ namespace jvm {
 		return "impdep2";
 	}
 
-	uint32_t OPINFOimpdep2::getOpCode () {
+	u1 OPINFOimpdep2::getOpCode() {
 		return 255;
 	}
 
