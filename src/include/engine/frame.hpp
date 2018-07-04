@@ -15,8 +15,6 @@ namespace jvm {
 		*/
 		Frame(ClassLoader&, MethodInfo&);
 
-		~Frame();
-
 		//> Operands Stack
 		Operands operands;
 
