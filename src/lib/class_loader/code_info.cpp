@@ -1,4 +1,5 @@
 #include "class_loader/code_info.hpp"
+#include "util/JvmException.hpp"
 
 namespace jvm {
 
@@ -276,7 +277,7 @@ namespace jvm {
 		auto instrInstantiator = instruction_set[opcode];
 
 		if (not instrInstantiator) {
-			throw "Opcode with number " + std::to_string(opcode) + " does not exist!";
+			throw JvmException("Opcode with number " + std::to_string(opcode) + " does not exist!");
 		}
 
 		return instrInstantiator();

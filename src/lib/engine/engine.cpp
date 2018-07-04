@@ -1,7 +1,7 @@
 #include <cmath>
-#include "engine/engine.hpp"
 #include <cstdio>
-#include <util/JvmException.h>
+#include "engine/engine.hpp"
+#include "util/JvmException.hpp"
 
 namespace jvm {
 
@@ -274,7 +274,7 @@ namespace jvm {
 		auto executor = exec[opcode];
 
 		if (not executor) {
-			throw "Opcode with number " + std::to_string(opcode) + " does not exist!";
+			throw JvmException("Opcode with number " + std::to_string(opcode) + " does not exist!");
 		}
 
 		return executor;
@@ -807,7 +807,7 @@ namespace jvm {
 		frame.operands.push4(value.f);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -823,7 +823,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -838,7 +838,7 @@ namespace jvm {
 		frame.operands.push4(value.ui4);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -853,7 +853,7 @@ namespace jvm {
 		frame.operands.push4(value);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -868,7 +868,7 @@ namespace jvm {
 		frame.operands.push4(value);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 
@@ -883,7 +883,7 @@ namespace jvm {
 		frame.operands.push4(value.i2);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_istore (InstructionInfo * info) {
@@ -909,7 +909,7 @@ namespace jvm {
 		frame.variables.set(data->index, value);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_dstore (InstructionInfo * info) {
@@ -919,7 +919,7 @@ namespace jvm {
 		frame.variables.set(data->index, value);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_astore (InstructionInfo * info) {
@@ -929,7 +929,7 @@ namespace jvm {
 		frame.variables.set(data->index, objectref);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_istore_0 (InstructionInfo * info) {
@@ -1003,7 +1003,7 @@ namespace jvm {
 		frame.variables.set(0, value);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_fstore_1 (InstructionInfo * info) {
@@ -1013,7 +1013,7 @@ namespace jvm {
 		frame.variables.set(1, value);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_fstore_2 (InstructionInfo * info) {
@@ -1023,7 +1023,7 @@ namespace jvm {
 		frame.variables.set(2, value);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_fstore_3 (InstructionInfo * info) {
@@ -1033,7 +1033,7 @@ namespace jvm {
 		frame.variables.set(3, value);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_dstore_0 (InstructionInfo * info) {
@@ -1043,7 +1043,7 @@ namespace jvm {
 		frame.variables.set(0, value);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_dstore_1 (InstructionInfo * info) {
@@ -1061,7 +1061,7 @@ namespace jvm {
 		frame.variables.set(2, value);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_dstore_3 (InstructionInfo * info) {
@@ -1071,7 +1071,7 @@ namespace jvm {
 		frame.variables.set(3, value);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_astore_0 (InstructionInfo * info) {
@@ -1081,7 +1081,7 @@ namespace jvm {
 		frame.variables.set(0, objectref);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 	
 	void Engine::exec_astore_1 (InstructionInfo * info) {
@@ -1091,7 +1091,7 @@ namespace jvm {
 		frame.variables.set(1, objectref);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_astore_2 (InstructionInfo * info) {
@@ -1101,7 +1101,7 @@ namespace jvm {
 		frame.variables.set(2, objectref);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_astore_3 (InstructionInfo * info) {
@@ -1111,7 +1111,7 @@ namespace jvm {
 		frame.variables.set(3, objectref);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 
@@ -1124,7 +1124,7 @@ namespace jvm {
 		frame.variables.set(index.ui2,value);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 
@@ -1137,7 +1137,7 @@ namespace jvm {
 		frame.variables.set(index.ui2,value);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 
@@ -1150,7 +1150,7 @@ namespace jvm {
 		frame.variables.set(index.ui2,value);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 
@@ -1163,7 +1163,7 @@ namespace jvm {
 		frame.variables.set(index.ui2,value);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 
@@ -1176,7 +1176,7 @@ namespace jvm {
 		frame.variables.set(index.i2,value);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 
@@ -1189,7 +1189,7 @@ namespace jvm {
 		frame.variables.set(index.i2,value);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 
@@ -1202,7 +1202,7 @@ namespace jvm {
 		frame.variables.set(index.i2,value);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 
@@ -1215,7 +1215,7 @@ namespace jvm {
 		frame.variables.set(index.i2,value);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_pop (InstructionInfo * info) {
@@ -1224,7 +1224,7 @@ namespace jvm {
 		op4 value = frame.operands.pop4();
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -1234,7 +1234,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_dup (InstructionInfo * info) {
@@ -1264,7 +1264,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -1274,7 +1274,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -1284,7 +1284,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -1294,7 +1294,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_swap (InstructionInfo * info) {
@@ -1499,7 +1499,7 @@ namespace jvm {
 		auto value2 = frame.operands.pop4();
 
 		if (value2.i4 == 0) {
-			throw "ArithmeticException";
+			throw JvmException("ArithmeticException");
 		}
 
 		res.i4 = value1.i4 / value2.i4;
@@ -1519,7 +1519,7 @@ namespace jvm {
 		auto value2 = frame.operands.pop8();
 
 		if (value2.ll == 0) {
-			throw "ArithmeticException";
+			throw JvmException("ArithmeticException");
 		}
 
 		res.ll = value1.ll / value2.ll;
@@ -1569,7 +1569,7 @@ namespace jvm {
 		auto value2 = frame.operands.pop4();
 
 		if (value2.i4 == 0) {
-			throw "ArithmeticException";
+			throw JvmException("ArithmeticException");
 		}
 
 		res.i4 = value1.i4 - (value1.i4 / value2.i4) * value2.i4;
@@ -1589,7 +1589,7 @@ namespace jvm {
 		auto value2 = frame.operands.pop8();
 
 		if (value2.ll == 0) {
-			throw "ArithmeticException";
+			throw JvmException("ArithmeticException");
 		}
 
 		res.ll = value1.ll - (value1.ll / value2.ll) * value2.ll;
@@ -1876,7 +1876,7 @@ namespace jvm {
 		frame.variables.set(index.i2,valor);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_i2l (InstructionInfo * info) {
@@ -1922,7 +1922,7 @@ namespace jvm {
 		frame.operands.push4(floatvalue);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 
@@ -1935,7 +1935,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_f2i (InstructionInfo * info) {
@@ -1948,7 +1948,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_f2l (InstructionInfo * info) {
@@ -1960,7 +1960,7 @@ namespace jvm {
 		frame.operands.push8(longvalue);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 
@@ -1973,7 +1973,7 @@ namespace jvm {
 		frame.operands.push8(doublevalue.lf);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 
@@ -1988,7 +1988,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 
@@ -2002,7 +2002,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 
@@ -2014,7 +2014,7 @@ namespace jvm {
 		floatvalue.f = static_cast<float>(doublevalue.lf);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 
@@ -2027,7 +2027,7 @@ namespace jvm {
 		frame.operands.push4(bytevalue);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_i2c (InstructionInfo * info) {
@@ -2039,7 +2039,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 
@@ -2051,7 +2051,7 @@ namespace jvm {
 		shortvalue.i2 = static_cast<int16_t>(intvalue.i4);
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 
@@ -2075,7 +2075,7 @@ namespace jvm {
 		}
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_fcmpl (InstructionInfo * info) {
@@ -2103,7 +2103,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_fcmpg (InstructionInfo * info) {
@@ -2130,7 +2130,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -2158,7 +2158,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 
@@ -2364,7 +2364,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_ret (InstructionInfo * info) {
@@ -2382,7 +2382,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -2392,7 +2392,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_ireturn (InstructionInfo * info) {
@@ -2450,7 +2450,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_return (InstructionInfo * info) {
@@ -2467,7 +2467,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -2477,7 +2477,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -2487,7 +2487,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -2497,7 +2497,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -2507,7 +2507,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -2517,7 +2517,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -2527,7 +2527,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -2537,7 +2537,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -2547,7 +2547,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -2557,7 +2557,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -2567,7 +2567,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -2577,7 +2577,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -2587,7 +2587,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -2597,7 +2597,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -2607,7 +2607,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -2617,7 +2617,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_monitorenter (InstructionInfo * info) {
@@ -2635,7 +2635,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
@@ -2645,7 +2645,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw "Not Implemented!";
+		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_ifnull (InstructionInfo * info) {
