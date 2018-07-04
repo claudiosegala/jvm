@@ -282,6 +282,7 @@ namespace jvm {
 
 	void Engine::execute () {
 		ClassLoader First_cl = JavaClasses.find(Entry_class_name)->second;
+		//HARD-CODED SEARCH FOR MAIN, do not modify without notifying others
 		MethodInfo method = First_cl.methods.find("main([Ljava/lang/String;)V")->second;
 
 		//run_clinit();
