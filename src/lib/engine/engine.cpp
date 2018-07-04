@@ -2468,7 +2468,8 @@ namespace jvm {
 	void Engine::exec_getstatic (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOgetstatic *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value = reinterpret_cast<CP_Fieldref>frame.cl.constant_pool[data->index];
+		auto value = reinterpret_cast<CP_Fieldref*>(frame.cl.constant_pool[data->index]);
+		auto ref = value->class_index;
 
 
 		frame.PC += data->jmp + 1;
@@ -2526,12 +2527,21 @@ namespace jvm {
 		throw JvmException("Not Implemented!");
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_invokestatic (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOinvokestatic *>(info); // get data in class
 		auto &frame = fs.top();
 		auto x = reinterpret_cast<CP_Methodref&>(frame.cl.constant_pool[data->index]);
 		auto k = findMethod(x);
+		Frame l(k.first,k.second);
+		int i = 1;
+		while(!fs.top().operands.empty())
+		{
+			auto resvalue = frame.operands.pop4();
+			l.variables.set(i,resvalue.ui4);
+			i++;
+		}
+		fs.push(l);
 
 		frame.PC += data->jmp + 1;
 
