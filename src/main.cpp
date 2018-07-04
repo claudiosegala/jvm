@@ -1,12 +1,15 @@
-#include <util/JvmException.h>
+#include <util/JvmException.hpp>
 #include "class_loader/class_loader.hpp"
 #include "engine/engine.hpp"
+#include "util/JvmException.hpp"
 
 void show_commands() {
 	std::cout << "--describe or -d => descrevem o .class" << std::endl;
 	std::cout << "--execute or -r      => executa o código descrito no .class" << std::endl;
 	std::cout << "--help or -h     => descrevem os comandos válidos" << std::endl;
 }
+
+using namespace jvm;
 
 int main (int argc, char *argv[ ]) {
 	std::string show;
@@ -31,7 +34,7 @@ int main (int argc, char *argv[ ]) {
 				filename = command;
 				hasName = true;
 			} else {
-				throw "Tem algum problema com os argumentos";
+				throw JvmException("Tem algum problema com os argumentos");
 			}
 		}
 
@@ -71,7 +74,7 @@ int main (int argc, char *argv[ ]) {
 					isToRun = true;
 					break;
 				default:
-					throw "Cara... Você tinha um trabalho, escolher entre 3 números...";
+					throw JvmException("Cara... Você tinha um trabalho, escolher entre 3 números...");
 			}
 		}
 

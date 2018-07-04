@@ -1,6 +1,6 @@
 #pragma once
 
-#include <unordered_map>
+#include "base.hpp"
 #include "frames_stack.hpp"
 #include "class_loader/class_loader.hpp"
 
@@ -61,7 +61,7 @@ namespace jvm {
 		 */
 		void run_init();
 
-		const MethodInfo & findMethod(CP_Methodref &ref);
+		std::pair<ClassLoader, MethodInfo> findMethod(CP_Methodref &ref);
 
 		const ClassLoader & findClass(CP_Class &classInfo);
 

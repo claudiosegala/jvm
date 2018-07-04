@@ -2,6 +2,7 @@
 
 #include "base.hpp"
 #include "util/reader.hpp"
+#include "util/JvmException.hpp"
 
 namespace jvm {
 
@@ -94,7 +95,7 @@ namespace jvm {
 		template<class T> T& as() {
 			auto toReturn = dynamic_cast<T*>(this);
 			if (toReturn == nullptr) {
-				throw "Invalid CP_Entry cast";
+				throw JvmException("Invalid CP_Entry cast");
 			}
 
 			return *toReturn;
