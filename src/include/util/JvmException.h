@@ -1,7 +1,10 @@
 #pragma once
 
-#include <exception>
+#include <stdexcept>
 
 namespace jvm {
-class JvmException : public std::exception {};
+	class JvmException : public std::runtime_error {
+	public:
+		explicit JvmException(const std::string& s) : std::runtime_error(s) {};
+	};
 }

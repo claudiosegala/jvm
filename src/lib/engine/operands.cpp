@@ -1,3 +1,4 @@
+#include <util/JvmException.h>
 #include "engine/operands.hpp"
 
 namespace jvm {
@@ -54,7 +55,7 @@ namespace jvm {
 		push(high);
 
 		if (size() > maxSize) {
-			throw "Maximum operands stack exceeded";
+			throw "Maximum operands stack size exceeded";
 		}
 	}
 

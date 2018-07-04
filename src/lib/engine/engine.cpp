@@ -1,6 +1,7 @@
 #include <cmath>
 #include "engine/engine.hpp"
 #include <cstdio>
+#include <util/JvmException.h>
 
 namespace jvm {
 
@@ -289,7 +290,7 @@ namespace jvm {
 		Frame frame(First_cl,method);
 		fs.push(frame);
 		auto& codes = method.attributes.Codes[0]->code; // Getting the method's executable code
-		while (true) {
+		while (true) { // This will exit when instruction 'return' is executed
 			PC = fs.top().PC;
 			auto instruction = codes[PC];
 			auto opcode = instruction->getOpCode();
@@ -307,25 +308,30 @@ namespace jvm {
 	}
 
 	const MethodInfo & Engine::findMethod(CP_Methodref &ref) {
-		auto &cl = fs.top().cl;
-		auto &cp = cl.constant_pool;
-		auto NameAndType = cp[ref.name_and_type_index] -> as<CP_NameAndType>();
-		std::string name = cp[NameAndType.name_index] -> toString(cp);
-		std::string descriptor = cp[NameAndType.descriptor_index] -> toString(cp);
-		auto pair = cl.methods.find(name + descriptor);
-		if(pair != cl.methods.end())
+		auto &currentClass = fs.top().cl;
+		auto &constantPool = currentClass.constant_pool;
+		auto &classInfo = constantPool[ref.class_index] -> as<CP_Class>();
+		auto &nameAndType = constantPool[ref.name_and_type_index] -> as<CP_NameAndType>();
+		std::string name = constantPool[nameAndType.name_index] -> toString(constantPool);
+		std::string descriptor = constantPool[nameAndType.descriptor_index] -> toString(constantPool);
+		auto& methodClass = findClass(classInfo);
+		auto pair = methodClass.methods.find(name + descriptor);
+		if(pair != methodClass.methods.end())
 			return pair->second;
-		throw "Method not found";
+		throw JvmException("Method " + name + " not found");
 	}
 
 	const ClassLoader & Engine::findClass(CP_Class &classInfo) {
 		auto &cl = fs.top().cl;
 		auto &cp = cl.constant_pool;
-		std::string ClassName = cp[classInfo.name_index]-> toString(cp);
-		auto pair = JavaClasses.find(ClassName);
+		std::string className = cp[classInfo.name_index]-> toString(cp);
+		auto pair = JavaClasses.find(className);
 		if(pair != JavaClasses.end())
-			return pair->second;
-		throw "Class not found";
+			return pair->second; // Class is loaded
+		// Class is not loaded, we'll find the corresponding .class file
+		ClassLoader newClass;
+		newClass.read(className + ".class"); // Load the correct class
+		JavaClasses.insert({className, newClass}); // Add new class to the map
 	}
 
 	void Engine::exec_nop (InstructionInfo * info) {
