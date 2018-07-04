@@ -334,7 +334,7 @@ namespace jvm {
 			return pair->second; // Class is loaded
 		// Class is not loaded, we'll find the corresponding .class file
 		ClassLoader newClass;
-		newClass.read(className + ".class"); // Load the correct class
+		newClass.read("../samples/"+className+".class"); // Load the correct class
 		JavaClasses.insert({className, newClass}); // Add new class to the map
 	}
 
@@ -2459,8 +2459,9 @@ namespace jvm {
 
 	void Engine::exec_return (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOreturn *>(info); // get data in class
-		auto &frame = fs.top(); fs.pop();
-
+		auto &frame = fs.top();
+		fs.pop();
+		if(fs.empty()) throw JvmException("Execução finalizada com sucesso.");
 		frame.PC += data->jmp + 1;
 	}
 
@@ -2531,8 +2532,8 @@ namespace jvm {
 	void Engine::exec_invokestatic (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOinvokestatic *>(info); // get data in class
 		auto &frame = fs.top();
-		auto x = static_cast<CP_Methodref&>(frame.cl.constant_pool[data->index]);
-		auto k = findMethod(x);
+		auto x = reinterpret_cast<CP_Methodref*>(frame.cl.constant_pool[data->index]);
+		auto k = findMethod(*x);
 		Frame l(k.first,k.second);
 		int i = 1;
 		while(!fs.top().operands.empty())

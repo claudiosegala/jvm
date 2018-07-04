@@ -27,9 +27,6 @@ namespace jvm {
 		 */
 		void execute();
 
-		//> Frame Stack
-		FramesStack static fs;
-
 	private:
 		//> The set of instantiators to the instruction
 		std::vector<Execution> exec;
@@ -43,7 +40,8 @@ namespace jvm {
 		//> PC Register
 		u4 PC;
 
-
+		//> Frame Stack
+		FramesStack fs;
 
 		//engine heap mem
 		std::vector<void*> mem;
