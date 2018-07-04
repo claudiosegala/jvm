@@ -2528,10 +2528,14 @@ namespace jvm {
 		frameInvoker.operands.push8(returnValue);
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_areturn (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOareturn *>(info); // get data in class
-		auto &frame = fs.top();
+		auto &frame = fs.top(); fs.pop();
+		auto returnValue = frame.operands.pop4();
+		auto &FrameInvoker = fs.top();
+
+		FrameInvoker.operands.push4(returnValue);
 
 		frame.PC += data->jmp + 1;
 
@@ -2545,30 +2549,43 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_getstatic (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOgetstatic *>(info); // get data in class
 		auto &frame = fs.top();
+		op4 res;
+		auto k = frame.cl.constant_pool[data->index];
+		auto resvalue = dynamic_cast<CP_Fieldref*>(k);
+		if(resvalue != nullptr){
+			res.ui4 = resvalue->class_index;
+			frame.operands.push4(res);
+			frame.PC += data->jmp + 1;
+			return;
+		}
+
 
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_putstatic (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOputstatic *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op4 res = frame.operands.pop4();
+		frame.cl.constant_pool[data->index] = static_cast<CP_Entry*>(res.ui4);
 		frame.PC += data->jmp + 1;
 
 		throw "Not Implemented!";
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_getfield (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOgetfield *>(info); // get data in class
 		auto &frame = fs.top();
+		op4 objectref = frame.operands.pop4();
+		auto Fieldref = frame.cl.constant_pool[data->index];
 
 		frame.PC += data->jmp + 1;
 
@@ -2609,6 +2626,10 @@ namespace jvm {
 	void Engine::exec_invokestatic (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOinvokestatic *>(info); // get data in class
 		auto &frame = fs.top();
+		auto x = reinterpret_cast<CP_Methodref*>(frame.cl.constant_pool[data->index]);
+		auto k = x->name_and_type_index;
+		auto y = reinterpret_cast<CP_Utf8*>(frame.cl.constant_pool[k]);
+
 
 		frame.PC += data->jmp + 1;
 
