@@ -2531,7 +2531,7 @@ namespace jvm {
 	void Engine::exec_invokestatic (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOinvokestatic *>(info); // get data in class
 		auto &frame = fs.top();
-		auto x = reinterpret_cast<CP_Methodref&>(frame.cl.constant_pool[data->index]);
+		auto x = static_cast<CP_Methodref&>(frame.cl.constant_pool[data->index]);
 		auto k = findMethod(x);
 		Frame l(k.first,k.second);
 		int i = 1;
