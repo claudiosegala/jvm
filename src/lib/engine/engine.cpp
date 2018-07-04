@@ -287,11 +287,12 @@ namespace jvm {
 		//run_init();
 		Frame frame(First_cl,method);
 		fs.push(frame);
-		auto& codes = method.attributes.Codes[0]->code; // Getting the method's executable code
 		while (true) { // This will exit when instruction 'return' is executed
 			if(fs.empty())
-				throw JvmException("Fim inesperado da aplicação, não a frames restantes");
-			PC = fs.top().PC;
+				throw JvmException("Fim inesperado da aplicação, não há frames restantes");
+			auto curFrame = fs.top();
+			auto& codes = curFrame.mt.attributes.Codes[0]->code; // Getting the method's executable code
+			PC = curFrame.PC;
 			auto instruction = codes[PC];
 			auto opcode = instruction->getOpCode();
 			auto executor = getExecutor(opcode);
@@ -2534,16 +2535,16 @@ namespace jvm {
 		auto x = reinterpret_cast<CP_Methodref*>(frame.cl.constant_pool[data->index]);
 		auto k = findMethod(*x);
 
-		Frame l(k.first,k.second);
+		Frame newFrame(k.first,k.second);
 		int i = 1;
 
 		while(!fs.top().operands.empty()) {
 			auto resvalue = frame.operands.pop4();
-			l.variables.set(i,resvalue.ui4);
+			newFrame.variables.set(i,resvalue.ui4);
 			i++;
 		}
 
-		fs.push(l);
+		fs.push(newFrame);
 
 		frame.PC += data->jmp + 1;
 
