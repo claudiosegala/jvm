@@ -37,17 +37,24 @@ namespace jvm {
 		FieldInfo () = default;
 
 		/**
-		 * Reader
+		 * Constructor that calls Read() method
+		 * @param reader an instance of the class file reader
+		 * @param cp a reference to the constant pool
+		 * @see Read()
 		 */
 		explicit FieldInfo(Reader &, ConstantPool &cp);
 
 		/**
 		 * Print the content of the class
+		 * @param os used to output data
+		 * @param cp a reference to the constant pool
 		 */
 		void PrintToStream (std::ostream&, ConstantPool&);
 
 		/**
-		 * Read from a file
+		 * Read from a class file
+		 * @param reader an instance of the class file reader
+		 * @param cp a reference to the constant pool
 		 */
 		void Read(Reader &, ConstantPool &cp);
 
@@ -55,6 +62,8 @@ namespace jvm {
 
 		/**
 		 * Print the content the flags of the method
+		 * @param os used to output data
+		 * @param flag a code that identifyes the flag of this field
 		 */
 		void PrintFlags(std::ostream &, uint32_t);
 	};

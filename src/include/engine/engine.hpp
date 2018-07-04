@@ -28,23 +28,18 @@ namespace jvm {
 		void execute();
 
 	private:
-		//> The set of instantiators to the instruction
-		std::vector<Execution> exec;
 
-		//> Reference to .class that will be executed first
-		std::unordered_map<std::string, ClassLoader> JavaClasses;
+		std::vector<Execution> exec;	///> The set of instantiators to the instruction
 
-		//> Name of .class that will be executed first
-		std::string Entry_class_name;
+		std::unordered_map<std::string, ClassLoader> JavaClasses;	///> Reference to .class that will be executed first
 
-		//> PC Register
-		u4 PC;
+		std::string Entry_class_name;	///> Name of .class that will be executed first
 
-		//> Frame Stack
-		FramesStack fs;
+		u4 PC;	///> PC Register
 
-		//engine heap mem
-		std::vector<void*> mem;
+		FramesStack fs;	///> Frame Stack
+
+		std::vector<void*> mem;	///> Engine heap mem
 
 		//> Method Area
 		// TODO: understand

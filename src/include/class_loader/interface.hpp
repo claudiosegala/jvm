@@ -14,21 +14,22 @@ namespace jvm {
 		InterfaceInfo ();
 
 		/**
-		 * Constructor with a reader, wich calls Read method, setting the value of the info index
-		 * @param Reference to a Reader
+		 * Constructor with a reader, wich calls Read() method, setting the value of the info index
+		 * @param reader an instance of the class file reader
+		 * @see Read()
 		 */
 		explicit InterfaceInfo (Reader&);
 
 		/**
 		 * Print the content of the info
-		 * @param Reference to std::ostream
-		 * @param Reference to the ConstantPool entity
+		 * @param os used to output data
+		 * @param cp a reference to the constant pool
 		 */
 		void PrintToStream(std::ostream &, ConstantPool &);
 
 		/**
 		 * Read the value of info from a file
-		 * @param Reference to the Reader
+		 * @param reader an instance of the class file reader
 		 */
 		void Read(Reader&);
 	};
