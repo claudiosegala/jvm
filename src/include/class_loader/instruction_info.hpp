@@ -49,7 +49,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		virtual uint32_t getOpCode() = 0;
+		virtual u1 getOpCode() = 0;
 
 	};
 
@@ -86,7 +86,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOaconst_null : public InstructionInfo { // 0x01 -- 01
@@ -122,7 +122,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiconst_m1 : public InstructionInfo { // 0x02 -- 02
@@ -158,7 +158,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiconst_0 : public InstructionInfo { // 0x03 -- 03
@@ -194,7 +194,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiconst_1 : public InstructionInfo { // 0x04 -- 04
@@ -230,7 +230,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiconst_2 : public InstructionInfo { // 0x05 -- 05
@@ -266,7 +266,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiconst_3 : public InstructionInfo { // 0x06 -- 06
@@ -302,7 +302,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiconst_4 : public InstructionInfo { // 0x07 -- 07
@@ -338,7 +338,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiconst_5 : public InstructionInfo { // 0x08 -- 08
@@ -374,7 +374,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlconst_0 : public InstructionInfo { // 0x09 -- 09
@@ -410,7 +410,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlconst_1 : public InstructionInfo { // 0x0A -- 10
@@ -446,7 +446,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfconst_0 : public InstructionInfo { // 0x0B -- 11
@@ -482,7 +482,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfconst_1 : public InstructionInfo { // 0x0C -- 12
@@ -518,7 +518,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfconst_2 : public InstructionInfo { // 0x0D -- 13
@@ -554,7 +554,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdconst_0 : public InstructionInfo { // 0x0E -- 14
@@ -590,7 +590,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdconst_1 : public InstructionInfo { // 0x0F -- 15
@@ -626,7 +626,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFObipush : public InstructionInfo { // 0x10 -- 16
@@ -662,7 +662,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i1 byte; ///< Byte to be pushed as an integer to the stack
 	};
@@ -700,7 +700,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 value; ///< Short value to be pushed onto the stack
 	};
@@ -738,7 +738,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< Index in the constant pool
 	};
@@ -776,7 +776,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index in the constant pool
 	};
@@ -814,7 +814,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index in the constant pool
 	};
@@ -853,7 +853,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< Index of the local variable
 	};
@@ -891,7 +891,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< Index to the local variable
 	};
@@ -929,7 +929,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< Index of the local float variable
 	};
@@ -967,7 +967,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< Index to the local double variable
 	};
@@ -1005,7 +1005,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< index of the reference to the local variable to be loaded
 	};
@@ -1043,7 +1043,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiload_1 : public InstructionInfo { // 0x1B -- 27
@@ -1079,7 +1079,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiload_2 : public InstructionInfo { // 0x1C -- 28
@@ -1115,7 +1115,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiload_3 : public InstructionInfo { // 0x1D -- 29
@@ -1151,7 +1151,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlload_0 : public InstructionInfo { // 0x1E -- 30
@@ -1187,7 +1187,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlload_1 : public InstructionInfo { // 0x1F -- 31
@@ -1223,7 +1223,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlload_2 : public InstructionInfo { // 0x20 -- 32
@@ -1259,7 +1259,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlload_3 : public InstructionInfo { // 0x21 -- 33
@@ -1295,7 +1295,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfload_0 : public InstructionInfo { // 0x22 -- 34
@@ -1331,7 +1331,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfload_1 : public InstructionInfo { // 0x23 -- 35
@@ -1367,7 +1367,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfload_2 : public InstructionInfo { // 0x24 -- 36
@@ -1403,7 +1403,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfload_3 : public InstructionInfo { // 0x25 -- 37
@@ -1439,7 +1439,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdload_0 : public InstructionInfo { // 0x26 -- 38
@@ -1475,7 +1475,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdload_1 : public InstructionInfo { // 0x27 -- 39
@@ -1511,7 +1511,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdload_2 : public InstructionInfo { // 0x28 -- 40
@@ -1547,7 +1547,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdload_3 : public InstructionInfo { // 0x29 -- 41
@@ -1583,7 +1583,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOaload_0 : public InstructionInfo { // 0x2A -- 42
@@ -1619,7 +1619,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOaload_1 : public InstructionInfo { // 0x2B -- 43
@@ -1655,7 +1655,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOaload_2 : public InstructionInfo { // 0x2C -- 44
@@ -1691,7 +1691,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOaload_3 : public InstructionInfo { // 0x2D -- 45
@@ -1727,7 +1727,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiaload : public InstructionInfo { // 0x2E -- 46
@@ -1763,7 +1763,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlaload : public InstructionInfo { // 0x2F -- 47
@@ -1799,7 +1799,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfaload : public InstructionInfo { // 0x30 -- 48
@@ -1835,7 +1835,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdaload : public InstructionInfo { // 0x31 -- 49
@@ -1871,7 +1871,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOaaload : public InstructionInfo { // 0x32 -- 50
@@ -1907,7 +1907,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFObaload : public InstructionInfo { // 0x33 -- 51
@@ -1943,7 +1943,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOcaload : public InstructionInfo { // 0x34 -- 52
@@ -1979,7 +1979,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOsaload : public InstructionInfo { // 0x35 -- 53
@@ -2015,7 +2015,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	//Stores 0x36,54 -> 0x56,86
@@ -2052,7 +2052,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< Index to the local variable
 	};
@@ -2090,7 +2090,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< Index to the local variable
 	};
@@ -2128,7 +2128,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< Index of the local float variable
 	};
@@ -2167,7 +2167,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< Index to the local double variable
 	};
@@ -2205,7 +2205,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< Index of the local variable that will store the reference
 	};
@@ -2243,7 +2243,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOistore_1 : public InstructionInfo { // 0x3C -- 60
@@ -2279,7 +2279,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOistore_2 : public InstructionInfo { // 0x3D -- 61
@@ -2315,7 +2315,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOistore_3 : public InstructionInfo { // 0x3E -- 62
@@ -2354,7 +2354,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlstore_0 : public InstructionInfo { // 0x3F -- 63
@@ -2390,7 +2390,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlstore_1 : public InstructionInfo { // 0x40 -- 64
@@ -2426,7 +2426,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlstore_2 : public InstructionInfo { // 0x41 -- 65
@@ -2462,7 +2462,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlstore_3 : public InstructionInfo { // 0x42 -- 66
@@ -2498,7 +2498,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfstore_0 : public InstructionInfo { // 0x43 -- 67
@@ -2534,7 +2534,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfstore_1 : public InstructionInfo { // 0x44 -- 68
@@ -2570,7 +2570,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfstore_2 : public InstructionInfo { // 0x45 -- 69
@@ -2606,7 +2606,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfstore_3 : public InstructionInfo { // 0x46 -- 70
@@ -2642,7 +2642,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdstore_0 : public InstructionInfo { // 0x47 -- 71
@@ -2678,7 +2678,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdstore_1 : public InstructionInfo { // 0x48 -- 72
@@ -2714,7 +2714,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdstore_2 : public InstructionInfo { // 0x49 -- 73
@@ -2750,7 +2750,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdstore_3 : public InstructionInfo { // 0x4A -- 74
@@ -2786,7 +2786,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOastore_0 : public InstructionInfo { // 0x4B -- 75
@@ -2822,7 +2822,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOastore_1 : public InstructionInfo { // 0x4C -- 76
@@ -2858,7 +2858,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOastore_2 : public InstructionInfo { // 0x4D -- 77
@@ -2894,7 +2894,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOastore_3 : public InstructionInfo { // 0x4E -- 78
@@ -2930,7 +2930,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiastore : public InstructionInfo { // 0x4F -- 79
@@ -2966,7 +2966,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlastore : public InstructionInfo { // 0x50 -- 80
@@ -3002,7 +3002,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfastore : public InstructionInfo { // 0x51 -- 81
@@ -3038,7 +3038,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdastore : public InstructionInfo { // 0x52 -- 82
@@ -3074,7 +3074,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOaastore : public InstructionInfo { // 0x53 -- 83
@@ -3110,7 +3110,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFObastore : public InstructionInfo { // 0x54 -- 84
@@ -3146,7 +3146,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOcastore : public InstructionInfo { // 0x55 -- 85
@@ -3182,7 +3182,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOsastore : public InstructionInfo { // 0x56 -- 86
@@ -3216,7 +3216,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	// Stack 0x57,87 -> 0x5F,95
@@ -3253,7 +3253,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOpop2 : public InstructionInfo { // 0x58 -- 88
@@ -3290,7 +3290,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdup : public InstructionInfo { // 0x59 -- 89
@@ -3326,7 +3326,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdup_x1 : public InstructionInfo { // 0x5A -- 90
@@ -3362,7 +3362,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdup_x2 : public InstructionInfo { // 0x5B -- 91
@@ -3399,7 +3399,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdup2 : public InstructionInfo { // 0x5C -- 92
@@ -3436,7 +3436,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdup2_x1 : public InstructionInfo { // 0x5D -- 93
@@ -3473,7 +3473,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdup2_x2 : public InstructionInfo { // 0x5E -- 94
@@ -3510,7 +3510,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOswap : public InstructionInfo { // 0x5F -- 95
@@ -3546,7 +3546,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	// Math 0x60,96 -> 0x84,132
@@ -3583,7 +3583,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOladd : public InstructionInfo { // 0x61 -- 97
@@ -3617,7 +3617,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfadd : public InstructionInfo { // 0x62 -- 98
@@ -3653,7 +3653,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdadd : public InstructionInfo { // 0x63 -- 99
@@ -3689,7 +3689,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOisub : public InstructionInfo { // 0x64 -- 100
@@ -3725,7 +3725,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlsub : public InstructionInfo { // 0x65 -- 101
@@ -3761,7 +3761,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfsub : public InstructionInfo { // 0x66 -- 102
@@ -3795,7 +3795,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdsub : public InstructionInfo { // 0x67 -- 103
@@ -3831,7 +3831,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOimul : public InstructionInfo { // 0x68 -- 104
@@ -3867,7 +3867,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlmul : public InstructionInfo { // 0x69 -- 105
@@ -3903,7 +3903,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfmul : public InstructionInfo { // 0x6A -- 106
@@ -3939,7 +3939,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdmul : public InstructionInfo { // 0x6B -- 107
@@ -3975,7 +3975,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOidiv : public InstructionInfo { // 0x6C -- 108
@@ -4011,7 +4011,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOldiv : public InstructionInfo { // 0x6D -- 109
@@ -4047,7 +4047,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfdiv : public InstructionInfo { // 0x6E -- 110
@@ -4083,7 +4083,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOddiv : public InstructionInfo { // 0x6F -- 111
@@ -4119,7 +4119,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOirem : public InstructionInfo { // 0x70 -- 112
@@ -4155,7 +4155,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlrem : public InstructionInfo { // 0x71 -- 113
@@ -4191,7 +4191,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfrem : public InstructionInfo { // 0x72 -- 114
@@ -4227,7 +4227,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdrem : public InstructionInfo { // 0x73 -- 115
@@ -4263,7 +4263,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOineg : public InstructionInfo { // 0x74 -- 116
@@ -4299,7 +4299,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlneg : public InstructionInfo { // 0x75 -- 117
@@ -4335,7 +4335,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfneg : public InstructionInfo { // 0x76 -- 118
@@ -4371,7 +4371,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdneg : public InstructionInfo { // 0x77 -- 119
@@ -4407,7 +4407,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOishl : public InstructionInfo { // 0x78 -- 120
@@ -4443,7 +4443,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlshl : public InstructionInfo { // 0x79 -- 121
@@ -4479,7 +4479,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOishr : public InstructionInfo { // 0x7A -- 122
@@ -4515,7 +4515,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlshr : public InstructionInfo { // 0x7B -- 123
@@ -4551,7 +4551,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiushr : public InstructionInfo { // 0x7C -- 124
@@ -4587,7 +4587,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlushr : public InstructionInfo { // 0x7D -- 125
@@ -4623,7 +4623,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiand : public InstructionInfo { // 0x7E -- 126
@@ -4659,7 +4659,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOland : public InstructionInfo { // 0x7F -- 127
@@ -4695,7 +4695,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOior : public InstructionInfo { // 0x80 -- 128
@@ -4731,7 +4731,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlor : public InstructionInfo { // 0x81 --129
@@ -4767,7 +4767,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOixor : public InstructionInfo { // 0x82 -- 130
@@ -4803,7 +4803,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlxor : public InstructionInfo { // 0x83 -- 131
@@ -4839,7 +4839,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiinc : public InstructionInfo { // 0x84 -- 132
@@ -4875,7 +4875,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index;		///< Index of the local variable
 		i1 constant;	///< Value to be incremented to the local variable
@@ -4915,7 +4915,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOi2f : public InstructionInfo { // 0x86 -- 134
@@ -4951,7 +4951,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOi2d : public InstructionInfo { // 0x87 -- 135
@@ -4987,7 +4987,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOl2i : public InstructionInfo { // 0x88 -- 136
@@ -5023,7 +5023,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOl2f : public InstructionInfo { // 0x89 -- 137
@@ -5059,7 +5059,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOl2d : public InstructionInfo { // 0x8A -- 138
@@ -5095,7 +5095,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOf2i : public InstructionInfo { // 0x8B -- 139
@@ -5131,7 +5131,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOf2l : public InstructionInfo { // 0x8C -- 140
@@ -5167,7 +5167,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOf2d : public InstructionInfo { // 0x8D -- 141
@@ -5203,7 +5203,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOd2i : public InstructionInfo { // 0x8E -- 142
@@ -5239,7 +5239,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOd2l : public InstructionInfo { // 0x8F -- 143
@@ -5275,7 +5275,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOd2f : public InstructionInfo { // 0x90 -- 144
@@ -5311,7 +5311,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOi2b : public InstructionInfo { // 0x91 -- 145
@@ -5347,7 +5347,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOi2c : public InstructionInfo { // 0x92 -- 146
@@ -5383,7 +5383,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOi2s : public InstructionInfo { // 0x93 -- 147
@@ -5419,7 +5419,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	// Comparisons 0x94,148 -> 0xA6,166
@@ -5456,7 +5456,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfcmpl : public InstructionInfo { // 0x95 -- 149
@@ -5492,7 +5492,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfcmpg : public InstructionInfo { // 0x96 -- 150
@@ -5528,7 +5528,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdcmpl : public InstructionInfo { // 0x97 -- 151
@@ -5564,7 +5564,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdcmpg : public InstructionInfo { // 0x98 -- 152
@@ -5600,7 +5600,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOifeq : public InstructionInfo { // 0x99 -- 153
@@ -5636,7 +5636,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
@@ -5674,7 +5674,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
@@ -5712,7 +5712,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
@@ -5750,7 +5750,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
@@ -5788,7 +5788,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
@@ -5826,7 +5826,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
@@ -5864,7 +5864,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
@@ -5902,7 +5902,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
@@ -5940,7 +5940,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
@@ -5978,7 +5978,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
@@ -6016,7 +6016,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
@@ -6054,7 +6054,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
@@ -6092,7 +6092,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
@@ -6130,7 +6130,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
@@ -6169,7 +6169,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
@@ -6207,7 +6207,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to a subroutine
 	};
@@ -6245,7 +6245,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< Index to the local variable
 	};
@@ -6297,7 +6297,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		//> default
 		i4 defaultbyte;
@@ -6355,7 +6355,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		//> default
 		i4 defaultbyte;
@@ -6400,7 +6400,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlreturn : public InstructionInfo { // 0xAD -- 173
@@ -6436,7 +6436,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfreturn : public InstructionInfo { // 0xAE -- 174
@@ -6472,7 +6472,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdreturn : public InstructionInfo { // 0xAF -- 175
@@ -6508,7 +6508,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOareturn : public InstructionInfo { // 0xB0 -- 176
@@ -6544,7 +6544,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOreturn : public InstructionInfo { // 0xB1 -- 177
@@ -6580,7 +6580,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	//References 0xB2,178 -> 0xC3,195
@@ -6617,7 +6617,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index to the field reference in the constant pool
 	};
@@ -6655,7 +6655,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index in the constant pool to the field reference
 	};
@@ -6693,7 +6693,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index to the field reference in the constant pool
 	};
@@ -6731,7 +6731,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index in the constant pool to the field reference
 	};
@@ -6769,7 +6769,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index in the constant pool to the method reference
 	};
@@ -6807,7 +6807,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index in the constant pool to the method reference
 	};
@@ -6845,7 +6845,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index in the constant pool to the method reference
 	};
@@ -6883,7 +6883,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index;	///< Index in the constant pool to the interface method
 		u1 count;	///< Count operand that must not be zero
@@ -6922,7 +6922,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index in the constant pool
 	};
@@ -6960,7 +6960,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index in the constant pool to the class reference
 	};
@@ -6998,7 +6998,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 atype; ///< Code that indicates the type of array to create
 	};
@@ -7036,7 +7036,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< index of the reference to the class that identifies the component type
 	};
@@ -7074,7 +7074,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOathrow : public InstructionInfo { // 0xBF -- 191
@@ -7110,7 +7110,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOcheckcast : public InstructionInfo { // 0xC0 -- 192
@@ -7146,7 +7146,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index of the class reference in the constant pool
 	};
@@ -7184,7 +7184,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index to the class reference in the constant pool
 	};
@@ -7222,7 +7222,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOmonitorexit : public InstructionInfo { // 0xC3 -- 195
@@ -7258,7 +7258,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	//Extended 0xC4,196 -> 0xC9,201
@@ -7300,7 +7300,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		//> the opcode to execute wide
 		u1 opcode;
@@ -7348,7 +7348,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index in the constant pool
 		u1 dimensions; // Number of dimensions of the array to be created, must be greater than or equal to 1
@@ -7387,7 +7387,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
@@ -7425,7 +7425,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
@@ -7464,7 +7464,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i4 branchoffset; ///< Offset to the next instruction
 	};
@@ -7502,7 +7502,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i4 branchoffset; ///< Offset to a subroutine
 	};
@@ -7547,7 +7547,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	/**
@@ -7589,7 +7589,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	/**
@@ -7631,7 +7631,7 @@ namespace jvm {
 		 * Get the OpCode of the class
 		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 };
