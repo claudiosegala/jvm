@@ -1,13 +1,20 @@
+#include <util/JvmException.h>
 #include "engine/operands.hpp"
 
 namespace jvm {
 
 	op4 Operands::pop4() {
+		if (empty()) {
+			throw "Not enough operands on stack";
+		}
 		op4 retval = top(); pop();
 		return retval;
 	}
 
 	op8 Operands::pop8() {
+		if (size() < 2) {
+			throw "Not enough operands on stack";
+		}
 		op4 high = top(); pop();
 		op4 low  = top(); pop();
 
@@ -15,15 +22,18 @@ namespace jvm {
 	}
 
 	void Operands::push4(u4 value) {
-		op4 bytes;
-
-		bytes.ui4 = value;
-
+		op4 bytes = { .ui4 = value };
 		push(bytes);
+		if (size() > maxSize) {
+			throw "Maximum operands stack exceeded";
+		}
 	}
 
 	void Operands::push4(op4 value) {
 		push(value);
+		if (size() > maxSize) {
+			throw "Maximum operands stack exceeded";
+		}
 	}
 
 	void Operands::push8(u8 value) {
@@ -43,6 +53,14 @@ namespace jvm {
 
 		push(low);
 		push(high);
+
+		if (size() > maxSize) {
+			throw "Maximum operands stack size exceeded";
+		}
+	}
+
+	void Operands::setSize(u4 size) {
+		maxSize = size;
 	}
 
 }

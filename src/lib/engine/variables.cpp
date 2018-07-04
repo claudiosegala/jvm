@@ -42,4 +42,8 @@ namespace jvm {
 		std::tie(vec[idx], vec[idx + 1]) = Converter::to_op4(aux);
 	}
 
+	void Variables::setSize(u4 size) {
+		vec.resize(size);
+	}
+
 };
