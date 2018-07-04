@@ -290,6 +290,8 @@ namespace jvm {
 		fs.push(frame);
 		auto& codes = method.attributes.Codes[0]->code; // Getting the method's executable code
 		while (true) {
+			if(fs.empty())
+				return;
 			PC = fs.top().PC;
 			auto instruction = codes[PC];
 			auto opcode = instruction->getOpCode();
