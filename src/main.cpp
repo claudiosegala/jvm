@@ -1,3 +1,4 @@
+#include <util/JvmException.h>
 #include "class_loader/class_loader.hpp"
 #include "engine/engine.hpp"
 
@@ -87,6 +88,8 @@ int main (int argc, char *argv[ ]) {
 	    std::cout << error << std::endl;
 	} catch (const char* error) {
 		std::cout << error << std::endl;
+	} catch (jvm::JvmException& e) {
+		std::cout << e.what() << std::endl;
 	}
 
 	return 0;
