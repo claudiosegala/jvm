@@ -291,9 +291,8 @@ namespace jvm {
 		fs.push(frame);
 		auto& codes = method.attributes.Codes[0]->code; // Getting the method's executable code
 		while (true) { // This will exit when instruction 'return' is executed
-		while (true) {
 			if(fs.empty())
-				return;
+				throw JvmException("Fim inesperado da aplicação, não a frames restantes");
 			PC = fs.top().PC;
 			auto instruction = codes[PC];
 			auto opcode = instruction->getOpCode();
