@@ -322,7 +322,6 @@ namespace jvm {
 			auto& method = pair->second;
 			return std::make_pair(methodClass, method);
 		}
-
 		throw JvmException("Method " + name + " not found");
 	}
 
@@ -337,6 +336,10 @@ namespace jvm {
 		ClassLoader newClass;
 		newClass.read("../samples/"+className+".class"); // Load the correct class
 		JavaClasses.insert({className, newClass}); // Add new class to the map
+		pair = JavaClasses.find(className);
+		if(pair != JavaClasses.end())
+			return pair->second; // Class is loaded
+		throw JvmException("Not able to load" + className + ".class");
 	}
 
 	void Engine::exec_nop (InstructionInfo * info) {
@@ -2601,7 +2604,7 @@ namespace jvm {
 		auto vector_ptr = mem.size();
 		if(type == 4)
 		{
-			bool * val = new bool[arraytam];
+			bool * val = new bool[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
@@ -2610,7 +2613,7 @@ namespace jvm {
 		}
 		else if(type == 5)
 		{
-			char * val = new char[arraytam];
+			char * val = new char[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
@@ -2619,7 +2622,7 @@ namespace jvm {
 		}
 		else if(type == 6)
 		{
-			float * val = new float[arraytam];
+			float * val = new float[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
@@ -2628,7 +2631,7 @@ namespace jvm {
 		}
 		else if(type == 7)
 		{
-			double * val = new double[arraytam];
+			double * val = new double[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
@@ -2637,7 +2640,7 @@ namespace jvm {
 		}
 		else if(type == 8)
 		{
-			u1 * val = new u1[arraytam];
+			u1 * val = new u1[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
@@ -2646,7 +2649,7 @@ namespace jvm {
 		}
 		else if(type == 9)
 		{
-			short * val = new short[arraytam];
+			short * val = new short[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
@@ -2655,7 +2658,7 @@ namespace jvm {
 		}
 		else if(type == 10)
 		{
-			int * val = new int[arraytam];
+			int * val = new int[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
@@ -2664,7 +2667,7 @@ namespace jvm {
 		}
 		else if(type == 11)
 		{
-			long * val = new long[arraytam];
+			long * val = new long[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
