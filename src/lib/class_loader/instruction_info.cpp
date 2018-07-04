@@ -1,4 +1,5 @@
 #include "class_loader/instruction_info.hpp"
+#include "util/JvmException.hpp"
 
 namespace jvm {
 
@@ -3811,7 +3812,7 @@ namespace jvm {
 		auto n = high - low + 1;
 
 		if (low <= high) {
-			throw "Invalid tableswitch";
+			throw JvmException("Invalid tableswitch");
 		}
 
 		jumpOffsets.resize(n);
@@ -3855,7 +3856,7 @@ namespace jvm {
 		npairs      = Converter::to_i4(data[i], data[i+1], data[i+2], data[i+3]); i += 4;
 
 		if (npairs < 0) {
-			throw "Invalid tableswitch";
+			throw JvmException("Invalid tableswitch");
 		}
 
 		for (int j = 0; j < npairs; j++, i += 4) {
@@ -4184,10 +4185,10 @@ namespace jvm {
 		count = data[idx+3];
 
 		if(!count)
-			throw "Invalid invokeinterface: the value of count must not be zero";
+			throw JvmException("Invalid invokeinterface: the value of count must not be zero");
 
 		if(!data[idx+4])
-			throw "Invalid invokeinterface: the value of the last argument must be zero";
+			throw JvmException("Invalid invokeinterface: the value of the last argument must be zero");
 
 		return 4;
 	}
@@ -4213,7 +4214,7 @@ namespace jvm {
 	uint32_t OPINFOinvokedynamic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		if(!data[idx+3] || !data[idx+4]) {
-			throw "Invalid invokedynamic: the value of the last 2 arguments must be zero";
+			throw JvmException("Invalid invokedynamic: the value of the last 2 arguments must be zero");
 		}
 		return 4;
 	}
@@ -4477,7 +4478,7 @@ namespace jvm {
 		dimensions = data[idx+3];
 
 		if(dimensions < 1u)
-			throw "Invalid multianewarray: the number of dimensions of the array must be greater than or equal to 1";
+			throw JvmException("Invalid multianewarray: the number of dimensions of the array must be greater than or equal to 1");
 
 		return 3;
 	}

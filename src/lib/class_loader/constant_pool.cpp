@@ -1,4 +1,5 @@
 #include "class_loader/constant_pool.hpp"
+#include "util/JvmException.hpp"
 
 namespace jvm {
 
@@ -60,7 +61,7 @@ namespace jvm {
 			case CP_TAGS::MethodHandle:	   return std::make_shared<CP_MethodHandle>(reader);
 			case CP_TAGS::MethodType:		 return std::make_shared<CP_MethodType>(reader);
 			case CP_TAGS::InvokeDynamic:	  return std::make_shared<CP_InvokeDynamic>(reader);
-			default:						  throw "Invalid Constant Pool Tag";
+			default:						  throw JvmException("Invalid Constant Pool Tag");
 		}
 	}
 

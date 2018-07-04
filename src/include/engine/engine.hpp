@@ -68,7 +68,7 @@ namespace jvm {
 		 */
 		void run_init();
 
-		const MethodInfo & findMethod(CP_Methodref &ref);
+		std::pair<ClassLoader, MethodInfo> findMethod(CP_Methodref &ref);
 
 		const ClassLoader & findClass(CP_Class &classInfo);
 

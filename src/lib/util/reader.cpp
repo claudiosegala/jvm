@@ -1,4 +1,5 @@
 #include "util/reader.hpp"
+#include "util/JvmException.hpp"
 
 namespace jvm {
 
@@ -20,7 +21,7 @@ namespace jvm {
 		_class.open(filename, std::ios::binary);
 
 		if (!_class.is_open()) {
-			throw "Couldn't open file";
+			throw JvmException("Couldn't open file");
 		}
 
 		// reserve in memory the space needed for the file
@@ -32,7 +33,7 @@ namespace jvm {
 		}
 
 		if (!isValid()) {
-			throw "This file isn't a valid .class file";
+			throw JvmException("This file isn't a valid .class file");
 		}
 	}
 
