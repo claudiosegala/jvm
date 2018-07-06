@@ -71,6 +71,8 @@ namespace jvm {
 	void AttrCode::printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix) {
 		os << prefix << "Code:" << std::endl;
 
+		
+
 		for (auto pair : code) {
 			auto instr = pair.second;
 			auto prefix2 = prefix + "\t";

@@ -279,32 +279,34 @@ namespace jvm {
 	}
 
 	void Engine::execute () {
-		ClassLoader First_cl = JavaClasses.find(Entry_class_name)->second;
-		//HARD-CODED SEARCH FOR MAIN, do not modify without notifying others
-		MethodInfo method = First_cl.methods.find("main([Ljava/lang/String;)V")->second;
+		auto main_name = std::string("main([Ljava/lang/String;)V");
+		auto cl = JavaClasses[Entry_class_name];
+		auto mt = cl.methods[main_name]; //HARD-CODED SEARCH FOR MAIN, do not modify without notifying others
 
-		//run_clinit();
-		//run_init();
-		Frame frame(First_cl,method);
-		fs.push(frame);
-		while (true) { // This will exit when instruction 'return' is executed
-			if(fs.empty())
-				throw JvmException("Fim inesperado da aplicação, não há frames restantes");
+		// run_clinit();
+		// run_init();
+
+		Frame frame(cl, mt);                                         // Create first frame
+
+		fs.push(frame);                                              // Init first frame in JVM
+
+		while (not fs.empty()) {                                     // This will exit when instruction 'return' is executed
 			auto curFrame = fs.top();
-			auto& codes = curFrame.mt.attributes.Codes[0]->code; // Getting the method's executable code
-			auto instruction = codes[curFrame.PC];
-			auto opcode = instruction->getOpCode();
-			auto executor = getExecutor(opcode);
-			(this ->* executor)(instruction.get());
+			auto& codes = curFrame.mt.attributes.Codes[0]->code;     // Get the current method's executable code
+			auto instruction = codes[curFrame.PC];                   // Get the current instruction
+			auto opcode = instruction->getOpCode();                  // Got op-code of the instruction
+			auto executor = getExecutor(opcode);                     // Get pointer to instruction execution
+
+			(this ->* executor)(instruction.get());                  // Access the instruction and execute it
 		}
 	}
 
 	void Engine::run_clinit () {
-
+		// Won't be needed
 	}
 
 	void Engine::run_init () {
-
+		// Won't be needed
 	}
 
 	std::pair<ClassLoader, MethodInfo> Engine::findMethod(CP_Methodref &ref) {
