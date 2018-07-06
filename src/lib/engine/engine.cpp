@@ -2614,15 +2614,6 @@ namespace jvm {
 		auto methodName = cp[methodNameAndType.name_index] -> toString(cp);
 		auto methodDescriptor = cp[methodNameAndType.descriptor_index] -> toString(cp);
 
-		if (methodName == "println" && className == "java/io/PrintStream") {
-			auto printStart = frame.operands.pop4();
-
-			//std::cout << print(printStart) << std::endl;
-
-			frame.PC += data->jmp + 1;
-			return;
-		}
-
 		if (methodName == "registerNatives" && className == "java/lang/Object") { // ignore registerNatives
 			frame.PC += data->jmp + 1;
 			return;

@@ -20,6 +20,7 @@
 #include <iostream>
 #include <algorithm>
 #include <unordered_map>
+#include <assert.h>
 
 
 #define W(x)         std::cerr << "\033[35m" << #x << "=" << (x) << "\033[0m" << "\n";
