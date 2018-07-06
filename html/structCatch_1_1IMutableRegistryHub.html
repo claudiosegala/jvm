@@ -99,19 +99,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a1c0ac202ac31ee9f88e8ff5cbac4b243"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c0ac202ac31ee9f88e8ff5cbac4b243"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>registerReporter</b> (std::string const &amp;name, IReporterFactoryPtr const &amp;factory)=0</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>registerReporter</b> (std::string &amp;name, IReporterFactoryPtr &amp;factory)=0</td></tr>
 <tr class="separator:a1c0ac202ac31ee9f88e8ff5cbac4b243"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd892a133f85581fd00ee75bb379ca56"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd892a133f85581fd00ee75bb379ca56"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>registerListener</b> (IReporterFactoryPtr const &amp;factory)=0</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>registerListener</b> (IReporterFactoryPtr &amp;factory)=0</td></tr>
 <tr class="separator:abd892a133f85581fd00ee75bb379ca56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11b85c6744d88c9f83fe16ad4a8dd451"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a11b85c6744d88c9f83fe16ad4a8dd451"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>registerTest</b> (<a class="el" href="classCatch_1_1TestCase.html">TestCase</a> const &amp;testInfo)=0</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>registerTest</b> (<a class="el" href="classCatch_1_1TestCase.html">TestCase</a> &amp;testInfo)=0</td></tr>
 <tr class="separator:a11b85c6744d88c9f83fe16ad4a8dd451"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6825365102693cf7707db022a2c2b49"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae6825365102693cf7707db022a2c2b49"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>registerTranslator</b> (const <a class="el" href="structCatch_1_1IExceptionTranslator.html">IExceptionTranslator</a> *translator)=0</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>registerTranslator</b> (<a class="el" href="structCatch_1_1IExceptionTranslator.html">IExceptionTranslator</a> *translator)=0</td></tr>
 <tr class="separator:ae6825365102693cf7707db022a2c2b49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf2e386b6f94f615719ada711adbf822"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abf2e386b6f94f615719ada711adbf822"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>registerTagAlias</b> (std::string const &amp;alias, std::string const &amp;tag, <a class="el" href="structCatch_1_1SourceLineInfo.html">SourceLineInfo</a> const &amp;lineInfo)=0</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>registerTagAlias</b> (std::string &amp;alias, std::string &amp;tag, <a class="el" href="structCatch_1_1SourceLineInfo.html">SourceLineInfo</a> &amp;lineInfo)=0</td></tr>
 <tr class="separator:abf2e386b6f94f615719ada711adbf822"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72a7d5386851ac3200f8da794a009c86"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a72a7d5386851ac3200f8da794a009c86"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>registerStartupException</b> () noexcept=0</td></tr>

@@ -62,7 +62,7 @@ namespace jvm {
 		/**
 		 * 
 		 */
-		CP_Entry* operator[](size_type index) const;
+		CP_Entry* operator[](size_type index) ;
 
 	private:
 
@@ -90,7 +90,7 @@ namespace jvm {
 
 		virtual void printToStream(std::ostream &os, jvm::ConstantPool &cp) = 0;
 
-		virtual std::string toString(const ConstantPool &cp) const = 0;
+		virtual std::string toString(ConstantPool &cp) = 0;
 
 		template<class T> T& as() {
 			auto toReturn = dynamic_cast<T*>(this);
@@ -112,7 +112,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(const ConstantPool &cp) const override;
+		std::string toString(ConstantPool &cp) override;
 
 		uint16_t name_index;
 	};
@@ -129,7 +129,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(const ConstantPool &cp) const override;
+		std::string toString(ConstantPool &cp) override;
 
 		uint16_t class_index;
 
@@ -146,7 +146,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(const ConstantPool &cp) const override;
+		std::string toString(ConstantPool &cp) override;
 
 		uint16_t class_index;
 
@@ -163,7 +163,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(const ConstantPool &cp) const override;
+		std::string toString(ConstantPool &cp) override;
 
 		uint16_t class_index;
 
@@ -180,7 +180,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(const ConstantPool &cp) const override;
+		std::string toString(ConstantPool &cp) override;
 
 		uint16_t string_index;
 	};
@@ -195,7 +195,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(const ConstantPool &cp) const override;
+		std::string toString(ConstantPool &cp) override;
 
 		uint32_t _bytes;
 	};
@@ -210,7 +210,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(const ConstantPool &cp) const override;
+		std::string toString(ConstantPool &cp) override;
 
 		uint32_t _bytes;
 	};
@@ -225,7 +225,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(const ConstantPool &cp) const override;
+		std::string toString(ConstantPool &cp) override;
 
 		uint32_t high_bytes;
 
@@ -242,7 +242,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(const ConstantPool &cp) const override;
+		std::string toString(ConstantPool &cp) override;
 
 		uint32_t high_bytes;
 
@@ -259,7 +259,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(const ConstantPool &cp) const override;
+		std::string toString(ConstantPool &cp) override;
 
 		uint16_t name_index;
 
@@ -278,18 +278,18 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString() const;
+		std::string toString() ;
 
-		std::string toString(const ConstantPool &cp) const override;
+		std::string toString(ConstantPool &cp) override;
 
 		uint16_t _length;
 
 		uint8_t *_bytes;
 	};
 
-	std::ostream& operator<< (std::ostream&, const CP_Utf8&);
-	bool operator== (const std::string&, const CP_Utf8&);
-	bool operator== (const CP_Utf8&, const std::string&);
+	std::ostream& operator<< (std::ostream&, CP_Utf8&);
+	bool operator== (std::string&, CP_Utf8&);
+	bool operator== (CP_Utf8&, std::string&);
 
 	/**
 	 * CP_MethodHandle entry to the constant pool
@@ -301,7 +301,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(const ConstantPool &cp) const override;
+		std::string toString(ConstantPool &cp) override;
 
 		uint8_t reference_kind;
 
@@ -318,7 +318,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(const ConstantPool &cp) const override;
+		std::string toString(ConstantPool &cp) override;
 
 		uint16_t descriptor_index;
 	};
@@ -333,7 +333,7 @@ namespace jvm {
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
-		std::string toString(const ConstantPool &cp) const override;
+		std::string toString(ConstantPool &cp) override;
 
 		uint16_t bootstrap_method_attr_index;
 

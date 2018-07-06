@@ -268,7 +268,7 @@ namespace jvm {
 		Entry_class_name = name;
 	}
 
-	Execution Engine::getExecutor(const u1 opcode) {
+	Execution Engine::getExecutor(u1 opcode) {
 		auto executor = exec[opcode];
 
 		if (not executor) {
@@ -309,7 +309,7 @@ namespace jvm {
 		// Won't be needed
 	}
 
-	std::pair<ClassLoader, MethodInfo> Engine::findMethod(CP_Methodref &ref) {
+	ClassAndMethod Engine::findMethod(CP_Methodref &ref) {
 		auto &currentClass = fs.top().cl;
 		auto &constantPool = currentClass.constant_pool;
 
@@ -321,14 +321,16 @@ namespace jvm {
 		auto& methodClass = findClass(classInfo);
 		auto methodKey = std::string(name + descriptor);
 
-		if (methodClass.methods.count(methodKey) == 0) {
-			throw JvmException("Method with" + name + "and descritor" + descriptor + " not found!");
+		auto pair = methodClass.methods.find(methodKey);
+
+		if (pair == methodClass.methods.end()) {
+			throw JvmException("Method with name " + name + " and descriptor " + descriptor + " not found!");
 		}
 
-		return std::make_pair(methodClass, methodClass.methods[methodKey]);
+		return ClassAndMethod(methodClass, pair->second);
 	}
 
-	const ClassLoader& Engine::findClass(CP_Class &classInfo) {
+	ClassLoader & Engine::findClass(CP_Class &classInfo) {
 		auto &cl = fs.top().cl;
 		auto &cp = cl.constant_pool;
 		auto className = cp[classInfo.name_index]-> toString(cp);
@@ -2518,8 +2520,9 @@ namespace jvm {
 		auto &frame = fs.top();
 		auto objectref = frame.operands.pop4();
 		auto x = reinterpret_cast<CP_Methodref*>(frame.cl.constant_pool[data->index]);
+		CP_Class* cl;
 		auto k = findMethod(*x);
-		Frame l(k.first,k.second);
+		Frame l(k.classLoader, k.method);
 		int i = 1;
 		while(!fs.top().operands.empty()) {
 			auto resvalue = frame.operands.pop4();

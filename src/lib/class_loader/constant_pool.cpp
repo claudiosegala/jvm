@@ -65,7 +65,7 @@ namespace jvm {
 		}
 	}
 
-	CP_Entry* ConstantPool::operator[](size_t index) const {
+	CP_Entry* ConstantPool::operator[](size_t index) {
 		return this->at(index - 1).get();
 	}
 
@@ -152,7 +152,7 @@ namespace jvm {
 		_name_and_type->printToStream(os, cp);
 	}
 
-	std::string CP_Fieldref::toString(const ConstantPool &cp) const {
+	std::string CP_Fieldref::toString(ConstantPool &cp) {
 		auto _nameAndType = cp[name_and_type_index];
 		return _nameAndType->toString(cp);
 	}
@@ -172,7 +172,7 @@ namespace jvm {
 		_nameAndType->printToStream(os, cp);
 	}
 
-	std::string CP_Methodref::toString(const ConstantPool &cp) const {
+	std::string CP_Methodref::toString(ConstantPool &cp) {
 		auto _nameAndType = cp[name_and_type_index];
 		return _nameAndType->toString(cp);
 	}
@@ -186,8 +186,8 @@ namespace jvm {
 		os << "\t\t" << toString(cp) << std::endl;
 	}
 
-	std::string CP_Float::toString(const ConstantPool &cp) const {
-		return std::to_string(reinterpret_cast<const float&>(_bytes));
+	std::string CP_Float::toString(ConstantPool &cp) {
+		return std::to_string(reinterpret_cast<float&>(_bytes));
 	}
 
 	CP_Long::CP_Long(Reader &reader) {
@@ -200,7 +200,7 @@ namespace jvm {
 		os << "\t\t" << toString(cp) << std::endl;
 	}
 
-	std::string CP_Long::toString(const ConstantPool &cp) const {
+	std::string CP_Long::toString(ConstantPool &cp) {
 		uint64_t number = high_bytes;
 		number = (number << 32) | low_bytes;
 		auto number_signed = reinterpret_cast<int64_t&>(number);
@@ -217,7 +217,7 @@ namespace jvm {
 		os << "\t\t" << toString(cp) << std::endl;
 	}
 
-	std::string CP_Double::toString(const ConstantPool &cp) const {
+	std::string CP_Double::toString(ConstantPool &cp) {
 		uint64_t number = high_bytes;
 		number = (number << 32) | low_bytes;
 		return std::to_string(reinterpret_cast<double&>(number));
@@ -236,7 +236,7 @@ namespace jvm {
 		os << "\tReference: " << nam1.reference_index << std::endl;
 	}
 
-	std::string CP_MethodHandle::toString(const ConstantPool &cp) const {
+	std::string CP_MethodHandle::toString(ConstantPool &cp) {
 		CP_Entry* name1  = cp[reference_index];
 		auto& nam1 = name1->as<CP_MethodHandle>();
 		switch(nam1.reference_kind) {
@@ -269,7 +269,7 @@ namespace jvm {
 		os << "\tName and type: " << nam2 << std::endl;
 	}
 
-	std::string CP_InterfaceMethodref::toString(const ConstantPool &cp) const {
+	std::string CP_InterfaceMethodref::toString(ConstantPool &cp) {
 		CP_Entry* name2 = cp[name_and_class_index];
 		auto& nam2 = name2->as<CP_Utf8>();
 		return nam2.toString(cp);
@@ -286,7 +286,7 @@ namespace jvm {
 			os << "\t\t" << nam1 << std::endl;
 	}
 
-	std::string CP_String::toString(const ConstantPool &cp) const {
+	std::string CP_String::toString(ConstantPool &cp) {
 		CP_Entry* name1 = cp[string_index];
 		auto& nam1 = name1->as<CP_Utf8>();
 		return nam1.toString(cp);
@@ -301,8 +301,8 @@ namespace jvm {
 		os << "\t\t" << toString(cp) << std::endl;
 	}
 
-	std::string CP_Integer::toString(const ConstantPool &cp) const {
-		return std::to_string(reinterpret_cast<const int32_t&>(_bytes));
+	std::string CP_Integer::toString(ConstantPool &cp) {
+		return std::to_string(reinterpret_cast<int32_t&>(_bytes));
 	}
 
 	CP_NameAndType::CP_NameAndType(Reader &reader) {
@@ -319,7 +319,7 @@ namespace jvm {
 		os << nam1 << ": " << nam2 << std::endl;
 	}
 
-	std::string CP_NameAndType::toString(const ConstantPool &cp) const {
+	std::string CP_NameAndType::toString(ConstantPool &cp) {
 		CP_Entry* name1 = cp[name_index];
 		auto& nam1 = name1->as<CP_Utf8>();
 		return nam1.toString(cp);
@@ -340,7 +340,7 @@ namespace jvm {
 		os << "\t\tName and Type: " << nam2 <<std::endl;
 	}
 
-	std::string CP_InvokeDynamic::toString(const ConstantPool &cp) const {
+	std::string CP_InvokeDynamic::toString(ConstantPool &cp) {
 		CP_Entry* name1 = cp[bootstrap_method_attr_index];
 		auto& nam1 = name1->as<CP_Utf8>();
 		return nam1.toString(cp);
@@ -363,11 +363,11 @@ namespace jvm {
 		os << "\t\t" << *this << std::endl;
 	}
 
-	std::string CP_Utf8::toString(const ConstantPool &cp) const {
+	std::string CP_Utf8::toString(ConstantPool &cp) {
 		return toString();
 	}
 
-	std::string CP_Utf8::toString() const {
+	std::string CP_Utf8::toString() {
 		std::ostringstream stream;
 		stream << *this;
 		return stream.str();
@@ -381,7 +381,7 @@ namespace jvm {
 		os << toString(cp) << std::endl;
 	}
 
-	std::string CP_Class::toString(const ConstantPool &cp) const {
+	std::string CP_Class::toString(ConstantPool &cp) {
 		CP_Entry* name = cp[name_index];
 		return name->toString(cp);
 	}
@@ -399,7 +399,7 @@ namespace jvm {
 
 	}
 
-	std::string CP_MethodType::toString(const ConstantPool &cp) const {
+	std::string CP_MethodType::toString(ConstantPool &cp) {
 		CP_Entry* name1 = cp[descriptor_index];
 		auto& characters = name1->as<CP_Utf8>();
 		return characters.toString(cp);
@@ -409,7 +409,7 @@ namespace jvm {
 
 	// OPERATORS
 
-	std::ostream& operator<< (std::ostream& os, const CP_Utf8& utf8) {
+	std::ostream& operator<< (std::ostream& os, CP_Utf8& utf8) {
 		auto end = utf8._bytes + utf8._length;
 		auto current = utf8._bytes;
 		while (current < end) {
@@ -418,11 +418,11 @@ namespace jvm {
 		return os;
 	}
 
-	bool operator==(const std::string& str, const CP_Utf8& utf8) {
+	bool operator==(std::string& str, CP_Utf8& utf8) {
 		return str == utf8.toString();
 	}
 
-	bool operator==(const CP_Utf8& utf8, const std::string& str) {
+	bool operator==(CP_Utf8& utf8, std::string& str) {
 		return str == utf8;
 	}
 

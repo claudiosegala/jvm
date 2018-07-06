@@ -16,7 +16,7 @@ var searchData=
   ['stringmaker_3c_20catch_3a_3adetail_3a_3aapprox_20_3e',['StringMaker&lt; Catch::Detail::Approx &gt;',['../structCatch_1_1StringMaker_3_01Catch_1_1Detail_1_1Approx_01_4.html',1,'Catch']]],
   ['stringmaker_3c_20char_20_2a_20_3e',['StringMaker&lt; char * &gt;',['../structCatch_1_1StringMaker_3_01char_01_5_01_4.html',1,'Catch']]],
   ['stringmaker_3c_20char_20_3e',['StringMaker&lt; char &gt;',['../structCatch_1_1StringMaker_3_01char_01_4.html',1,'Catch']]],
-  ['stringmaker_3c_20char_20const_20_2a_20_3e',['StringMaker&lt; char const * &gt;',['../structCatch_1_1StringMaker_3_01char_01const_01_5_01_4.html',1,'Catch']]],
+  ['stringmaker_3c_20char_20const_20_2a_20_3e',['StringMaker&lt; char * &gt;',['../structCatch_1_1StringMaker_3_01char_01const_01_5_01_4.html',1,'Catch']]],
   ['stringmaker_3c_20char_5bsz_5d_3e',['StringMaker&lt; char[SZ]&gt;',['../structCatch_1_1StringMaker_3_01char[SZ]_4.html',1,'Catch']]],
   ['stringmaker_3c_20double_20_3e',['StringMaker&lt; double &gt;',['../structCatch_1_1StringMaker_3_01double_01_4.html',1,'Catch']]],
   ['stringmaker_3c_20float_20_3e',['StringMaker&lt; float &gt;',['../structCatch_1_1StringMaker_3_01float_01_4.html',1,'Catch']]],
@@ -38,7 +38,7 @@ var searchData=
   ['stringmaker_3c_20unsigned_20long_20_3e',['StringMaker&lt; unsigned long &gt;',['../structCatch_1_1StringMaker_3_01unsigned_01long_01_4.html',1,'Catch']]],
   ['stringmaker_3c_20unsigned_20long_20long_20_3e',['StringMaker&lt; unsigned long long &gt;',['../structCatch_1_1StringMaker_3_01unsigned_01long_01long_01_4.html',1,'Catch']]],
   ['stringmaker_3c_20wchar_5ft_20_2a_20_3e',['StringMaker&lt; wchar_t * &gt;',['../structCatch_1_1StringMaker_3_01wchar__t_01_5_01_4.html',1,'Catch']]],
-  ['stringmaker_3c_20wchar_5ft_20const_20_2a_20_3e',['StringMaker&lt; wchar_t const * &gt;',['../structCatch_1_1StringMaker_3_01wchar__t_01const_01_5_01_4.html',1,'Catch']]],
+  ['stringmaker_3c_20wchar_5ft_20const_20_2a_20_3e',['StringMaker&lt; wchar_t * &gt;',['../structCatch_1_1StringMaker_3_01wchar__t_01const_01_5_01_4.html',1,'Catch']]],
   ['stringmatcherbase',['StringMatcherBase',['../structCatch_1_1Matchers_1_1StdString_1_1StringMatcherBase.html',1,'Catch::Matchers::StdString']]],
   ['stringref',['StringRef',['../classCatch_1_1StringRef.html',1,'Catch']]],
   ['super_5fclass',['super_class',['../classjvm_1_1ClassLoader.html#ae52e901882c3e369fe78a2a39bdfc6f4',1,'jvm::ClassLoader']]]

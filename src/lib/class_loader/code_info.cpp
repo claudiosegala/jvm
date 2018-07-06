@@ -3,7 +3,7 @@
 
 namespace jvm {
 
-	const InstructionInfoInstantiator CodeInfo::instruction_set[256] = {
+	InstructionInfoInstantiator CodeInfo::instruction_set[256] = {
 			InstructionInfo::instantiate<OPINFOnop>,               // 0
 			InstructionInfo::instantiate<OPINFOaconst_null>,       // 1
 			InstructionInfo::instantiate<OPINFOiconst_m1>,         // 2
@@ -273,7 +273,7 @@ namespace jvm {
 		}
 	}
 
-	std::shared_ptr<InstructionInfo> CodeInfo::getInstr(const u1 &opcode) {
+	std::shared_ptr<InstructionInfo> CodeInfo::getInstr(u1 &opcode) {
 		auto instrInstantiator = instruction_set[opcode];
 
 		if (not instrInstantiator) {

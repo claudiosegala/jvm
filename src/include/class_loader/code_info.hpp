@@ -24,14 +24,14 @@ namespace jvm {
 
 	private:
 		
-		static const InstructionInfoInstantiator instruction_set[256];	///> The set of instantiators to the instruction
+		static InstructionInfoInstantiator instruction_set[256];	///> The set of instantiators to the instruction
 
 		/**
 		 * Given an opcode, it will get the right instruction
 		 * @params u1 the opcode
 		 * @return the shared pointer to the instruction
 		 */
-		std::shared_ptr<InstructionInfo> getInstr(const u1 &);
+		std::shared_ptr<InstructionInfo> getInstr(u1 &);
 	};
 
 };
