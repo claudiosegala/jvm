@@ -42,6 +42,9 @@
 #define T_INT     10
 #define T_LONG    11
 #define T_RET     12
+#define T_METHOD  13
+#define T_INTERFACE     13
+
 
 
 typedef uint8_t  u1;
@@ -78,4 +81,10 @@ struct Data {
 struct BigData {
 	u1 type;
 	op8 value;
+};
+
+struct Array {
+	u4 type;
+	u4 size;
+	void * array;
 };

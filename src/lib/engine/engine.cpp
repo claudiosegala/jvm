@@ -2825,6 +2825,7 @@ namespace jvm {
 		throw JvmException("Not Implemented!");
 	}
 
+	// TODO: verificar corretude
 	void Engine::exec_newarray (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOnewarray *>(info); // get data in class
 		auto &frame = fs.top();
@@ -2834,74 +2835,92 @@ namespace jvm {
 
 		assert(value.type == T_INT);
 
+		auto arr = new Array;
+
+		arr->size = value.value.ui4;
+
 		if (type == T_BOOL) {
-			auto val = new bool[value.value.ui4];
-			mem.push_back(val);
+			arr->type = T_BOOL;
+			arr->array = new bool[value.value.ui4];
 		} else if (type == T_CHAR) {
-			auto val = new char[value.value.ui4];
-			mem.push_back(val);
+			arr->type = T_CHAR;
+			arr->array = new char[value.value.ui4];
 		} else if (type == T_FLOAT) {
-			auto val = new float[value.value.ui4];
-			mem.push_back(val);
+			arr->type = T_FLOAT;
+			arr->array = new float[value.value.ui4];
 		} else if (type == T_DOUBLE) {
-			auto val = new double[value.value.ui4];
-			mem.push_back(val);
+			arr->type = T_DOUBLE;
+			arr->array = new double[value.value.ui4];
 		} else if (type == T_BYTE) {
-			auto val = new u1[value.value.ui4];
-			mem.push_back(val);
+			arr->type = T_BYTE;
+			arr->array = new u1[value.value.ui4];
 		} else if (type == T_SHORT) {
-			auto val = new short[value.value.ui4];
-			mem.push_back(val);
+			arr->type = T_SHORT;
+			arr->array = new short[value.value.ui4];
 		} else if (type == T_INT) {
-			auto val = new int[value.value.ui4];
-			mem.push_back(val);
+			arr->type = T_INT;
+			arr->array = new int[value.value.ui4];
 		} else if (type == T_LONG) {
-			auto val = new long[value.value.ui4];
-			mem.push_back(val);
+			arr->type = T_LONG;
+			arr->array = new long[value.value.ui4];
+		} else {
+			throw JvmException("Invalid atype!");
 		}
 
+		mem.push_back(arr);
 		op4 res { .ui4 = vector_ptr };
 
 		frame.operands.push4(T_ARRAY, res);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
-	// TODO: finish this function
+	// TODO: need to set array to null and corretude
 	void Engine::exec_anewarray (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOanewarray *>(info); // get data in class
 		auto &frame = fs.top();
-		auto count_value = frame.operands.pop4();
-		CP_Entry* f = frame.cl.constant_pool[data->index];
+		auto cpRef = frame.cl.constant_pool[data->index];
+		auto vector_ptr = static_cast<u2>(mem.size());
+		auto value = frame.operands.pop4();
 
-		f = dynamic_cast<CP_Class*>(f);
-		if (f != nullptr) {
+		assert(value.type == T_INT);
 
+		auto arr = new Array;
+
+		arr->size = value.value.ui4;
+		arr->array = new i4[value.value.ui4];
+
+		auto cl = dynamic_cast<CP_Class*>(cpRef);
+		if (cl != nullptr) { // array of type Class
+			arr->type = T_OBJ;
 		}
 
-		f = dynamic_cast<CP_Methodref*>(f);
-		if (f != nullptr) {
-
+		auto mr = dynamic_cast<CP_Methodref*>(cpRef);
+		if (mr != nullptr) { // array of type method ref
+			arr->type = T_METHOD;
 		}
 
+		auto ir = dynamic_cast<CP_InterfaceMethodref*>(cpRef);
+		if (ir != nullptr) { // array of type interface ref
+			arr->type = T_INTERFACE;
+		}
+
+		mem.push_back(arr);
+		op4 res { .ui4 = vector_ptr };
+
+		frame.operands.push4(T_ARRAY, res);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
-	// TODO: finish this function
 	void Engine::exec_arraylength (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOarraylength *>(info); // get data in class
 		auto &frame = fs.top();
-		auto arrayref = frame.operands.pop4();
-		auto ARP = mem[arrayref.value.ui4];
-		op4 arraylength;
-		//arraylength.ui4 = (sizeof(ARP)/sizeof(ARP[0]));
-		frame.operands.push4(T_INT, arraylength.ui4);
-		frame.PC += data->jmp + 1;
+		auto value = frame.operands.pop4();
+		auto arr = static_cast<Array*>(mem[value.value.ui4]);
 
-		throw JvmException("Not Implemented!");
+		op4 res { .ui4 = arr->size };
+
+		frame.operands.push4(T_INT, res);
+		frame.PC += data->jmp + 1;
 	}
 
 	// TODO: finish this function
