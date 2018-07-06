@@ -8,7 +8,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOnop::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOnop::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -20,7 +20,7 @@ namespace jvm {
 		return 0;
 	}
 
-	uint32_t OPINFOnop::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOnop::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -30,7 +30,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOaconst_null::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOaconst_null::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -42,7 +42,7 @@ namespace jvm {
 		return 1;
 	}
 
-	uint32_t OPINFOaconst_null::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOaconst_null::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -52,7 +52,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiconst_m1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiconst_m1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -64,7 +64,7 @@ namespace jvm {
 		return 2;
 	}
 
-	uint32_t OPINFOiconst_m1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiconst_m1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -74,7 +74,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiconst_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiconst_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -86,7 +86,7 @@ namespace jvm {
 		return 3;
 	}
 
-	uint32_t OPINFOiconst_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiconst_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -96,7 +96,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiconst_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiconst_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -108,7 +108,7 @@ namespace jvm {
 		return 4;
 	}
 
-	uint32_t OPINFOiconst_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiconst_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -118,7 +118,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiconst_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiconst_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -130,7 +130,7 @@ namespace jvm {
 		return 5;
 	}
 
-	uint32_t OPINFOiconst_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiconst_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -140,7 +140,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiconst_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiconst_3::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -152,7 +152,7 @@ namespace jvm {
 		return 6;
 	}
 
-	uint32_t OPINFOiconst_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiconst_3::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -162,7 +162,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiconst_4::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiconst_4::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -174,7 +174,7 @@ namespace jvm {
 		return 7;
 	}
 
-	uint32_t OPINFOiconst_4::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiconst_4::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -184,7 +184,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiconst_5::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiconst_5::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -196,7 +196,7 @@ namespace jvm {
 		return 8;
 	}
 
-	uint32_t OPINFOiconst_5::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiconst_5::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -206,7 +206,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlconst_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlconst_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -218,7 +218,7 @@ namespace jvm {
 		return 9;
 	}
 
-	uint32_t OPINFOlconst_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlconst_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -228,7 +228,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlconst_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlconst_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -240,7 +240,7 @@ namespace jvm {
 		return 10;
 	}
 
-	uint32_t OPINFOlconst_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlconst_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -250,7 +250,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfconst_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfconst_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -262,7 +262,7 @@ namespace jvm {
 		return 11;
 	}
 
-	uint32_t OPINFOfconst_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfconst_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -272,7 +272,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfconst_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfconst_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -284,7 +284,7 @@ namespace jvm {
 		return 12;
 	}
 
-	uint32_t OPINFOfconst_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfconst_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -294,7 +294,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfconst_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfconst_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -306,7 +306,7 @@ namespace jvm {
 		return 13;
 	}
 
-	uint32_t OPINFOfconst_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfconst_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -316,7 +316,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdconst_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdconst_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -328,7 +328,7 @@ namespace jvm {
 		return 14;
 	}
 
-	uint32_t OPINFOdconst_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdconst_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -338,7 +338,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdconst_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdconst_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -350,7 +350,7 @@ namespace jvm {
 		return 15;
 	}
 
-	uint32_t OPINFOdconst_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdconst_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -360,7 +360,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFObipush::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFObipush::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +byte << std::endl;
 	}
 
@@ -372,7 +372,7 @@ namespace jvm {
 		return 16;
 	}
 
-	uint32_t OPINFObipush::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFObipush::fillParams (uint32_t idx, std::vector<u1>& data) {
 		byte = Converter::to_i1(data[idx+1]);
 		return 1;
 	}
@@ -383,7 +383,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOsipush::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOsipush::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << value << std::endl;
 	}
 
@@ -395,7 +395,7 @@ namespace jvm {
 		return 17;
 	}
 
-	uint32_t OPINFOsipush::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOsipush::fillParams (uint32_t idx, std::vector<u1>& data) {
 		value = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -406,7 +406,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOldc::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOldc::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -418,7 +418,7 @@ namespace jvm {
 		return 18;
 	}
 
-	uint32_t OPINFOldc::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOldc::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -429,7 +429,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOldc_w::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOldc_w::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -441,7 +441,7 @@ namespace jvm {
 		return 19;
 	}
 
-	uint32_t OPINFOldc_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOldc_w::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -452,7 +452,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOldc2_w::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOldc2_w::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -464,7 +464,7 @@ namespace jvm {
 		return 20;
 	}
 
-	uint32_t OPINFOldc2_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOldc2_w::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -475,7 +475,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOiload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -487,7 +487,7 @@ namespace jvm {
 		return 21;
 	}
 
-	uint32_t OPINFOiload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -498,7 +498,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOlload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -510,7 +510,7 @@ namespace jvm {
 		return 22;
 	}
 
-	uint32_t OPINFOlload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -521,7 +521,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOfload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -533,7 +533,7 @@ namespace jvm {
 		return 23;
 	}
 
-	uint32_t OPINFOfload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -544,7 +544,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOdload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -556,7 +556,7 @@ namespace jvm {
 		return 24;
 	}
 
-	uint32_t OPINFOdload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -567,7 +567,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOaload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOaload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -579,7 +579,7 @@ namespace jvm {
 		return 25;
 	}
 
-	uint32_t OPINFOaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOaload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -590,7 +590,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiload_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiload_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -602,7 +602,7 @@ namespace jvm {
 		return 26;
 	}
 
-	uint32_t OPINFOiload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiload_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -612,7 +612,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiload_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiload_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -624,7 +624,7 @@ namespace jvm {
 		return 27;
 	}
 
-	uint32_t OPINFOiload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiload_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -634,7 +634,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiload_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiload_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -646,7 +646,7 @@ namespace jvm {
 		return 28;
 	}
 
-	uint32_t OPINFOiload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiload_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -656,7 +656,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiload_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiload_3::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -668,7 +668,7 @@ namespace jvm {
 		return 29;
 	}
 
-	uint32_t OPINFOiload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiload_3::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -678,7 +678,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlload_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlload_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -690,7 +690,7 @@ namespace jvm {
 		return 30;
 	}
 
-	uint32_t OPINFOlload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlload_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -700,7 +700,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlload_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlload_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -712,7 +712,7 @@ namespace jvm {
 		return 31;
 	}
 
-	uint32_t OPINFOlload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlload_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -722,7 +722,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlload_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlload_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -734,7 +734,7 @@ namespace jvm {
 		return 32;
 	}
 
-	uint32_t OPINFOlload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlload_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -744,7 +744,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlload_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlload_3::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -756,7 +756,7 @@ namespace jvm {
 		return 33;
 	}
 
-	uint32_t OPINFOlload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlload_3::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -766,7 +766,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfload_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfload_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -778,7 +778,7 @@ namespace jvm {
 		return 34;
 	}
 
-	uint32_t OPINFOfload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfload_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -788,7 +788,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfload_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfload_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -800,7 +800,7 @@ namespace jvm {
 		return 35;
 	}
 
-	uint32_t OPINFOfload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfload_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -810,7 +810,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfload_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfload_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -822,7 +822,7 @@ namespace jvm {
 		return 36;
 	}
 
-	uint32_t OPINFOfload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfload_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -832,7 +832,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfload_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfload_3::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -844,7 +844,7 @@ namespace jvm {
 		return 37;
 	}
 
-	uint32_t OPINFOfload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfload_3::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -854,7 +854,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdload_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdload_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -866,7 +866,7 @@ namespace jvm {
 		return 38;
 	}
 
-	uint32_t OPINFOdload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdload_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -876,7 +876,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdload_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdload_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -888,7 +888,7 @@ namespace jvm {
 		return 39;
 	}
 
-	uint32_t OPINFOdload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdload_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -898,7 +898,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdload_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdload_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -910,7 +910,7 @@ namespace jvm {
 		return 40;
 	}
 
-	uint32_t OPINFOdload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdload_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -920,7 +920,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdload_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdload_3::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -932,7 +932,7 @@ namespace jvm {
 		return 41;
 	}
 
-	uint32_t OPINFOdload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdload_3::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -942,7 +942,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOaload_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOaload_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -954,7 +954,7 @@ namespace jvm {
 		return 42;
 	}
 
-	uint32_t OPINFOaload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOaload_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -964,7 +964,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOaload_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOaload_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -976,7 +976,7 @@ namespace jvm {
 		return 43;
 	}
 
-	uint32_t OPINFOaload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOaload_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -986,7 +986,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOaload_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOaload_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -998,7 +998,7 @@ namespace jvm {
 		return 44;
 	}
 
-	uint32_t OPINFOaload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOaload_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1008,7 +1008,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOaload_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOaload_3::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1020,7 +1020,7 @@ namespace jvm {
 		return 45;
 	}
 
-	uint32_t OPINFOaload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOaload_3::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1030,7 +1030,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiaload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiaload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1042,7 +1042,7 @@ namespace jvm {
 		return 46;
 	}
 
-	uint32_t OPINFOiaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiaload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1052,7 +1052,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlaload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlaload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1064,7 +1064,7 @@ namespace jvm {
 		return 47;
 	}
 
-	uint32_t OPINFOlaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlaload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1074,7 +1074,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfaload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfaload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1086,7 +1086,7 @@ namespace jvm {
 		return 48;
 	}
 
-	uint32_t OPINFOfaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfaload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1096,7 +1096,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdaload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdaload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1108,7 +1108,7 @@ namespace jvm {
 		return 49;
 	}
 
-	uint32_t OPINFOdaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdaload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1118,7 +1118,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOaaload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOaaload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1130,7 +1130,7 @@ namespace jvm {
 		return 50;
 	}
 
-	uint32_t OPINFOaaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOaaload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1140,7 +1140,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFObaload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFObaload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1152,7 +1152,7 @@ namespace jvm {
 		return 51;
 	}
 
-	uint32_t OPINFObaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFObaload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1162,7 +1162,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOcaload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOcaload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1174,7 +1174,7 @@ namespace jvm {
 		return 52;
 	}
 
-	uint32_t OPINFOcaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOcaload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1184,7 +1184,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOsaload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOsaload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1196,7 +1196,7 @@ namespace jvm {
 		return 53;
 	}
 
-	uint32_t OPINFOsaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOsaload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1206,7 +1206,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOistore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOistore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -1218,7 +1218,7 @@ namespace jvm {
 		return 54;
 	}
 
-	uint32_t OPINFOistore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOistore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -1229,7 +1229,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOlstore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlstore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -1241,7 +1241,7 @@ namespace jvm {
 		return 55;
 	}
 
-	uint32_t OPINFOlstore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlstore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -1252,7 +1252,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOfstore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfstore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -1264,7 +1264,7 @@ namespace jvm {
 		return 56;
 	}
 
-	uint32_t OPINFOfstore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfstore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -1275,7 +1275,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOdstore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdstore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -1287,7 +1287,7 @@ namespace jvm {
 		return 57;
 	}
 
-	uint32_t OPINFOdstore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdstore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -1298,7 +1298,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOastore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -1310,7 +1310,7 @@ namespace jvm {
 		return 58;
 	}
 
-	uint32_t OPINFOastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOastore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -1321,7 +1321,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOistore_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOistore_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1333,7 +1333,7 @@ namespace jvm {
 		return 59;
 	}
 
-	uint32_t OPINFOistore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOistore_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1343,7 +1343,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOistore_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOistore_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1355,7 +1355,7 @@ namespace jvm {
 		return 60;
 	}
 
-	uint32_t OPINFOistore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOistore_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1365,7 +1365,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOistore_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOistore_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1377,7 +1377,7 @@ namespace jvm {
 		return 61;
 	}
 
-	uint32_t OPINFOistore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOistore_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1387,7 +1387,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOistore_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOistore_3::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1399,7 +1399,7 @@ namespace jvm {
 		return 62;
 	}
 
-	uint32_t OPINFOistore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOistore_3::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1409,7 +1409,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlstore_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlstore_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1421,7 +1421,7 @@ namespace jvm {
 		return 63;
 	}
 
-	uint32_t OPINFOlstore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlstore_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1431,7 +1431,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlstore_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlstore_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1443,7 +1443,7 @@ namespace jvm {
 		return 64;
 	}
 
-	uint32_t OPINFOlstore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlstore_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1453,7 +1453,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlstore_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlstore_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1465,7 +1465,7 @@ namespace jvm {
 		return 65;
 	}
 
-	uint32_t OPINFOlstore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlstore_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1475,7 +1475,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlstore_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlstore_3::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1487,7 +1487,7 @@ namespace jvm {
 		return 66;
 	}
 
-	uint32_t OPINFOlstore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlstore_3::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1497,7 +1497,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfstore_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfstore_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1509,7 +1509,7 @@ namespace jvm {
 		return 67;
 	}
 
-	uint32_t OPINFOfstore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfstore_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1519,7 +1519,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfstore_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfstore_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1531,7 +1531,7 @@ namespace jvm {
 		return 68;
 	}
 
-	uint32_t OPINFOfstore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfstore_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1541,7 +1541,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfstore_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfstore_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1553,7 +1553,7 @@ namespace jvm {
 		return 69;
 	}
 
-	uint32_t OPINFOfstore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfstore_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1563,7 +1563,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfstore_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfstore_3::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1575,7 +1575,7 @@ namespace jvm {
 		return 70;
 	}
 
-	uint32_t OPINFOfstore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfstore_3::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1585,7 +1585,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdstore_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdstore_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1597,7 +1597,7 @@ namespace jvm {
 		return 71;
 	}
 
-	uint32_t OPINFOdstore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdstore_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1607,7 +1607,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdstore_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdstore_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1619,7 +1619,7 @@ namespace jvm {
 		return 72;
 	}
 
-	uint32_t OPINFOdstore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdstore_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1629,7 +1629,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdstore_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdstore_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1641,7 +1641,7 @@ namespace jvm {
 		return 73;
 	}
 
-	uint32_t OPINFOdstore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdstore_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1651,7 +1651,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdstore_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdstore_3::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1663,7 +1663,7 @@ namespace jvm {
 		return 74;
 	}
 
-	uint32_t OPINFOdstore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdstore_3::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1673,7 +1673,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOastore_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOastore_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1685,7 +1685,7 @@ namespace jvm {
 		return 75;
 	}
 
-	uint32_t OPINFOastore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOastore_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1695,7 +1695,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOastore_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOastore_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1707,7 +1707,7 @@ namespace jvm {
 		return 76;
 	}
 
-	uint32_t OPINFOastore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOastore_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1717,7 +1717,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOastore_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOastore_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1729,7 +1729,7 @@ namespace jvm {
 		return 77;
 	}
 
-	uint32_t OPINFOastore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOastore_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1739,7 +1739,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOastore_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOastore_3::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1751,7 +1751,7 @@ namespace jvm {
 		return 78;
 	}
 
-	uint32_t OPINFOastore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOastore_3::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1761,7 +1761,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiastore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1773,7 +1773,7 @@ namespace jvm {
 		return 79;
 	}
 
-	uint32_t OPINFOiastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiastore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1783,7 +1783,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlastore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1795,7 +1795,7 @@ namespace jvm {
 		return 80;
 	}
 
-	uint32_t OPINFOlastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlastore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1805,7 +1805,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfastore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1817,7 +1817,7 @@ namespace jvm {
 		return 81;
 	}
 
-	uint32_t OPINFOfastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfastore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1827,7 +1827,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdastore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1839,7 +1839,7 @@ namespace jvm {
 		return 82;
 	}
 
-	uint32_t OPINFOdastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdastore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1849,7 +1849,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOaastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOaastore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1861,7 +1861,7 @@ namespace jvm {
 		return 83;
 	}
 
-	uint32_t OPINFOaastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOaastore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1871,7 +1871,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFObastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFObastore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1883,7 +1883,7 @@ namespace jvm {
 		return 84;
 	}
 
-	uint32_t OPINFObastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFObastore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1893,7 +1893,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOcastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOcastore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1905,7 +1905,7 @@ namespace jvm {
 		return 85;
 	}
 
-	uint32_t OPINFOcastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOcastore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1915,7 +1915,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOsastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOsastore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1927,7 +1927,7 @@ namespace jvm {
 		return 86;
 	}
 
-	uint32_t OPINFOsastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOsastore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1937,7 +1937,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOpop::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOpop::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1949,7 +1949,7 @@ namespace jvm {
 		return 87;
 	}
 
-	uint32_t OPINFOpop::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOpop::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1959,7 +1959,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOpop2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOpop2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1971,7 +1971,7 @@ namespace jvm {
 		return 88;
 	}
 
-	uint32_t OPINFOpop2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOpop2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1981,7 +1981,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdup::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdup::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1993,7 +1993,7 @@ namespace jvm {
 		return 89;
 	}
 
-	uint32_t OPINFOdup::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdup::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2003,7 +2003,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdup_x1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdup_x1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2015,7 +2015,7 @@ namespace jvm {
 		return 90;
 	}
 
-	uint32_t OPINFOdup_x1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdup_x1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2025,7 +2025,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdup_x2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdup_x2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2037,7 +2037,7 @@ namespace jvm {
 		return 91;
 	}
 
-	uint32_t OPINFOdup_x2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdup_x2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2047,7 +2047,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdup2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdup2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2059,7 +2059,7 @@ namespace jvm {
 		return 92;
 	}
 
-	uint32_t OPINFOdup2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdup2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2069,7 +2069,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdup2_x1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdup2_x1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2081,7 +2081,7 @@ namespace jvm {
 		return 93;
 	}
 
-	uint32_t OPINFOdup2_x1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdup2_x1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2091,7 +2091,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdup2_x2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdup2_x2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2103,7 +2103,7 @@ namespace jvm {
 		return 94;
 	}
 
-	uint32_t OPINFOdup2_x2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdup2_x2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2113,7 +2113,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOswap::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOswap::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2125,7 +2125,7 @@ namespace jvm {
 		return 95;
 	}
 
-	uint32_t OPINFOswap::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOswap::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2135,7 +2135,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiadd::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiadd::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2147,7 +2147,7 @@ namespace jvm {
 		return 96;
 	}
 
-	uint32_t OPINFOiadd::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiadd::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2157,7 +2157,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOladd::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOladd::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2169,7 +2169,7 @@ namespace jvm {
 		return 97;
 	}
 
-	uint32_t OPINFOladd::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOladd::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2179,7 +2179,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfadd::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfadd::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2191,7 +2191,7 @@ namespace jvm {
 		return 98;
 	}
 
-	uint32_t OPINFOfadd::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfadd::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2201,7 +2201,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdadd::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdadd::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2213,7 +2213,7 @@ namespace jvm {
 		return 99;
 	}
 
-	uint32_t OPINFOdadd::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdadd::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2223,7 +2223,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOisub::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOisub::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2235,7 +2235,7 @@ namespace jvm {
 		return 100;
 	}
 
-	uint32_t OPINFOisub::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOisub::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2245,7 +2245,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlsub::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlsub::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2257,7 +2257,7 @@ namespace jvm {
 		return 101;
 	}
 
-	uint32_t OPINFOlsub::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlsub::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2267,7 +2267,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfsub::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfsub::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2279,7 +2279,7 @@ namespace jvm {
 		return 102;
 	}
 
-	uint32_t OPINFOfsub::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfsub::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2289,7 +2289,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdsub::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdsub::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2301,7 +2301,7 @@ namespace jvm {
 		return 103;
 	}
 
-	uint32_t OPINFOdsub::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdsub::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2311,7 +2311,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOimul::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOimul::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2323,7 +2323,7 @@ namespace jvm {
 		return 104;
 	}
 
-	uint32_t OPINFOimul::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOimul::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2333,7 +2333,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlmul::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlmul::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2345,7 +2345,7 @@ namespace jvm {
 		return 105;
 	}
 
-	uint32_t OPINFOlmul::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlmul::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2355,7 +2355,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfmul::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfmul::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2367,7 +2367,7 @@ namespace jvm {
 		return 106;
 	}
 
-	uint32_t OPINFOfmul::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfmul::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2377,7 +2377,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdmul::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdmul::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2389,7 +2389,7 @@ namespace jvm {
 		return 107;
 	}
 
-	uint32_t OPINFOdmul::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdmul::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2399,7 +2399,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOidiv::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOidiv::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2411,7 +2411,7 @@ namespace jvm {
 		return 108;
 	}
 
-	uint32_t OPINFOidiv::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOidiv::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2421,7 +2421,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOldiv::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOldiv::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2433,7 +2433,7 @@ namespace jvm {
 		return 109;
 	}
 
-	uint32_t OPINFOldiv::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOldiv::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2443,7 +2443,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfdiv::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfdiv::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2455,7 +2455,7 @@ namespace jvm {
 		return 110;
 	}
 
-	uint32_t OPINFOfdiv::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfdiv::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2465,7 +2465,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOddiv::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOddiv::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2477,7 +2477,7 @@ namespace jvm {
 		return 111;
 	}
 
-	uint32_t OPINFOddiv::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOddiv::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2487,7 +2487,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOirem::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOirem::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2499,7 +2499,7 @@ namespace jvm {
 		return 112;
 	}
 
-	uint32_t OPINFOirem::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOirem::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2509,7 +2509,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlrem::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlrem::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2521,7 +2521,7 @@ namespace jvm {
 		return 113;
 	}
 
-	uint32_t OPINFOlrem::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlrem::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2531,7 +2531,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfrem::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfrem::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2543,7 +2543,7 @@ namespace jvm {
 		return 114;
 	}
 
-	uint32_t OPINFOfrem::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfrem::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2553,7 +2553,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdrem::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdrem::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2565,7 +2565,7 @@ namespace jvm {
 		return 115;
 	}
 
-	uint32_t OPINFOdrem::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdrem::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2575,7 +2575,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOineg::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOineg::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2587,7 +2587,7 @@ namespace jvm {
 		return 116;
 	}
 
-	uint32_t OPINFOineg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOineg::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2597,7 +2597,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlneg::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlneg::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2609,7 +2609,7 @@ namespace jvm {
 		return 117;
 	}
 
-	uint32_t OPINFOlneg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlneg::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2619,7 +2619,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfneg::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfneg::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2631,7 +2631,7 @@ namespace jvm {
 		return 118;
 	}
 
-	uint32_t OPINFOfneg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfneg::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2641,7 +2641,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdneg::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdneg::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2653,7 +2653,7 @@ namespace jvm {
 		return 119;
 	}
 
-	uint32_t OPINFOdneg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdneg::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2663,7 +2663,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOishl::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOishl::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2675,7 +2675,7 @@ namespace jvm {
 		return 120;
 	}
 
-	uint32_t OPINFOishl::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOishl::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2685,7 +2685,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlshl::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlshl::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2697,7 +2697,7 @@ namespace jvm {
 		return 121;
 	}
 
-	uint32_t OPINFOlshl::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlshl::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2707,7 +2707,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOishr::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOishr::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2719,7 +2719,7 @@ namespace jvm {
 		return 122;
 	}
 
-	uint32_t OPINFOishr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOishr::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2729,7 +2729,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlshr::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlshr::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2741,7 +2741,7 @@ namespace jvm {
 		return 123;
 	}
 
-	uint32_t OPINFOlshr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlshr::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2751,7 +2751,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiushr::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiushr::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2763,7 +2763,7 @@ namespace jvm {
 		return 124;
 	}
 
-	uint32_t OPINFOiushr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiushr::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2773,7 +2773,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlushr::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlushr::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2785,7 +2785,7 @@ namespace jvm {
 		return 125;
 	}
 
-	uint32_t OPINFOlushr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlushr::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2795,7 +2795,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiand::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiand::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2807,7 +2807,7 @@ namespace jvm {
 		return 126;
 	}
 
-	uint32_t OPINFOiand::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiand::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2817,7 +2817,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOland::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOland::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2829,7 +2829,7 @@ namespace jvm {
 		return 127;
 	}
 
-	uint32_t OPINFOland::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOland::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2839,7 +2839,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOior::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOior::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2851,7 +2851,7 @@ namespace jvm {
 		return 128;
 	}
 
-	uint32_t OPINFOior::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOior::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2861,7 +2861,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlor::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlor::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2873,7 +2873,7 @@ namespace jvm {
 		return 29;
 	}
 
-	uint32_t OPINFOlor::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlor::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2883,7 +2883,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOixor::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOixor::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2895,7 +2895,7 @@ namespace jvm {
 		return 130;
 	}
 
-	uint32_t OPINFOixor::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOixor::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2905,7 +2905,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlxor::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlxor::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2917,7 +2917,7 @@ namespace jvm {
 		return 131;
 	}
 
-	uint32_t OPINFOlxor::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlxor::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2927,7 +2927,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOiinc::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiinc::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << " " << +constant << std::endl;
 	}
 
@@ -2939,7 +2939,7 @@ namespace jvm {
 		return 132;
 	}
 
-	uint32_t OPINFOiinc::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiinc::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		constant = Converter::to_i1(data[idx+2]);
 		return 2;
@@ -2951,7 +2951,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOi2l::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOi2l::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2963,7 +2963,7 @@ namespace jvm {
 		return 133;
 	}
 
-	uint32_t OPINFOi2l::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOi2l::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2973,7 +2973,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOi2f::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOi2f::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2985,7 +2985,7 @@ namespace jvm {
 		return 134;
 	}
 
-	uint32_t OPINFOi2f::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOi2f::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2995,7 +2995,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOi2d::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOi2d::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3007,7 +3007,7 @@ namespace jvm {
 		return 135;
 	}
 
-	uint32_t OPINFOi2d::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOi2d::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3017,7 +3017,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOl2i::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOl2i::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3029,7 +3029,7 @@ namespace jvm {
 		return 136;
 	}
 
-	uint32_t OPINFOl2i::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOl2i::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3039,7 +3039,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOl2f::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOl2f::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3051,7 +3051,7 @@ namespace jvm {
 		return 137;
 	}
 
-	uint32_t OPINFOl2f::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOl2f::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3061,7 +3061,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOl2d::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOl2d::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3073,7 +3073,7 @@ namespace jvm {
 		return 138;
 	}
 
-	uint32_t OPINFOl2d::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOl2d::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3083,7 +3083,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOf2i::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOf2i::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3095,7 +3095,7 @@ namespace jvm {
 		return 139;
 	}
 
-	uint32_t OPINFOf2i::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOf2i::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3105,7 +3105,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOf2l::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOf2l::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3117,7 +3117,7 @@ namespace jvm {
 		return 140;
 	}
 
-	uint32_t OPINFOf2l::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOf2l::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3127,7 +3127,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOf2d::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOf2d::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3139,7 +3139,7 @@ namespace jvm {
 		return 141;
 	}
 
-	uint32_t OPINFOf2d::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOf2d::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3149,7 +3149,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOd2i::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOd2i::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3161,7 +3161,7 @@ namespace jvm {
 		return 142;
 	}
 
-	uint32_t OPINFOd2i::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOd2i::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3171,7 +3171,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOd2l::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOd2l::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3183,7 +3183,7 @@ namespace jvm {
 		return 143;
 	}
 
-	uint32_t OPINFOd2l::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOd2l::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3193,7 +3193,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOd2f::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOd2f::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3205,7 +3205,7 @@ namespace jvm {
 		return 144;
 	}
 
-	uint32_t OPINFOd2f::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOd2f::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3215,7 +3215,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOi2b::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOi2b::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3227,7 +3227,7 @@ namespace jvm {
 		return 145;
 	}
 
-	uint32_t OPINFOi2b::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOi2b::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3237,7 +3237,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOi2c::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOi2c::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3249,7 +3249,7 @@ namespace jvm {
 		return 146;
 	}
 
-	uint32_t OPINFOi2c::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOi2c::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3259,7 +3259,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOi2s::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOi2s::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3271,7 +3271,7 @@ namespace jvm {
 		return 147;
 	}
 
-	uint32_t OPINFOi2s::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOi2s::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3281,7 +3281,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlcmp::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlcmp::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3293,7 +3293,7 @@ namespace jvm {
 		return 148;
 	}
 
-	uint32_t OPINFOlcmp::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlcmp::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3303,7 +3303,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfcmpl::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfcmpl::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3315,7 +3315,7 @@ namespace jvm {
 		return 149;
 	}
 
-	uint32_t OPINFOfcmpl::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfcmpl::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3325,7 +3325,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfcmpg::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfcmpg::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3337,7 +3337,7 @@ namespace jvm {
 		return 150;
 	}
 
-	uint32_t OPINFOfcmpg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfcmpg::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3347,7 +3347,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdcmpl::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdcmpl::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3359,7 +3359,7 @@ namespace jvm {
 		return 151;
 	}
 
-	uint32_t OPINFOdcmpl::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdcmpl::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3369,7 +3369,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdcmpg::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdcmpg::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3381,7 +3381,7 @@ namespace jvm {
 		return 152;
 	}
 
-	uint32_t OPINFOdcmpg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdcmpg::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3391,7 +3391,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOifeq::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOifeq::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3403,7 +3403,7 @@ namespace jvm {
 		return 153;
 	}
 
-	uint32_t OPINFOifeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOifeq::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3414,7 +3414,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOifne::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOifne::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3426,7 +3426,7 @@ namespace jvm {
 		return 154;
 	}
 
-	uint32_t OPINFOifne::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOifne::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3437,7 +3437,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOiflt::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiflt::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3449,7 +3449,7 @@ namespace jvm {
 		return 155;
 	}
 
-	uint32_t OPINFOiflt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiflt::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3460,7 +3460,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOifge::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOifge::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3472,7 +3472,7 @@ namespace jvm {
 		return 156;
 	}
 
-	uint32_t OPINFOifge::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOifge::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3483,7 +3483,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOifgt::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOifgt::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3495,7 +3495,7 @@ namespace jvm {
 		return 157;
 	}
 
-	uint32_t OPINFOifgt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOifgt::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3506,7 +3506,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOifle::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOifle::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3518,7 +3518,7 @@ namespace jvm {
 		return 158;
 	}
 
-	uint32_t OPINFOifle::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOifle::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3529,7 +3529,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOif_icmpeq::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOif_icmpeq::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3541,7 +3541,7 @@ namespace jvm {
 		return 159;
 	}
 
-	uint32_t OPINFOif_icmpeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOif_icmpeq::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3552,7 +3552,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOif_icmpne::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOif_icmpne::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3564,7 +3564,7 @@ namespace jvm {
 		return 160;
 	}
 
-	uint32_t OPINFOif_icmpne::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOif_icmpne::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3575,7 +3575,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOif_icmplt::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOif_icmplt::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3587,7 +3587,7 @@ namespace jvm {
 		return 61;
 	}
 
-	uint32_t OPINFOif_icmplt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOif_icmplt::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3598,7 +3598,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOif_icmpge::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOif_icmpge::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3610,7 +3610,7 @@ namespace jvm {
 		return 162;
 	}
 
-	uint32_t OPINFOif_icmpge::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOif_icmpge::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3621,7 +3621,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOif_icmpgt::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOif_icmpgt::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3633,7 +3633,7 @@ namespace jvm {
 		return 163;
 	}
 
-	uint32_t OPINFOif_icmpgt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOif_icmpgt::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3644,7 +3644,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOif_icmple::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOif_icmple::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3656,7 +3656,7 @@ namespace jvm {
 		return 164;
 	}
 
-	uint32_t OPINFOif_icmple::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOif_icmple::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3667,7 +3667,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOif_acmpeq::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOif_acmpeq::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3679,7 +3679,7 @@ namespace jvm {
 		return 165;
 	}
 
-	uint32_t OPINFOif_acmpeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOif_acmpeq::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3690,7 +3690,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOif_acmpne::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOif_acmpne::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3702,7 +3702,7 @@ namespace jvm {
 		return 166;
 	}
 
-	uint32_t OPINFOif_acmpne::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOif_acmpne::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3713,7 +3713,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOgoto::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOgoto::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3725,7 +3725,7 @@ namespace jvm {
 		return 167;
 	}
 
-	uint32_t OPINFOgoto::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOgoto::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3741,7 +3741,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOjsr::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOjsr::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3753,7 +3753,7 @@ namespace jvm {
 		return 168;
 	}
 
-	uint32_t OPINFOjsr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOjsr::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3764,7 +3764,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOret::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOret::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -3776,7 +3776,7 @@ namespace jvm {
 		return 169;
 	}
 
-	uint32_t OPINFOret::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOret::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -3787,7 +3787,7 @@ namespace jvm {
 		jmp = 16;
 	}
 
-	void OPINFOtableswitch::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOtableswitch::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << defaultbyte << " " << low << " " << high; // TODO: << " " << jumpOffsets << std::endl;
 	}
 
@@ -3800,7 +3800,7 @@ namespace jvm {
 	}
 
 	// TODO: check later for correctness
-	uint32_t OPINFOtableswitch::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOtableswitch::fillParams (uint32_t idx, std::vector<u1>& data) {
 		uint32_t i = idx + 1;
 
 		i += (i % 4); // this jump is needed! A tableswitch is a variable-length instruction. Immediately after the tableswitch opcode, between zero and three bytes must act as padding, such that defaultbyte1 begins at an address that is a multiple of four bytes from the start of the current method (the opcode of its first instruction).
@@ -3829,10 +3829,10 @@ namespace jvm {
 		jmp = 8;
 	}
 
-	void OPINFOlookupswitch::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlookupswitch::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << defaultbyte << " " << npairs << " ";
 
-		for(const auto& sm_pair : pairs)
+		for(auto& sm_pair : pairs)
 			os << sm_pair.first << " ";
 
 		os << std::endl;
@@ -3847,7 +3847,7 @@ namespace jvm {
 	}
 
 	// TODO: check later for correctness
-	uint32_t OPINFOlookupswitch::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlookupswitch::fillParams (uint32_t idx, std::vector<u1>& data) {
 		uint32_t i = idx + 1;
 
 		i += (i % 4); // this jump is needed! A tableswitch is a variable-length instruction. Immediately after the tableswitch opcode, between zero and three bytes must act as padding, such that defaultbyte1 begins at an address that is a multiple of four bytes from the start of the current method (the opcode of its first instruction).
@@ -3875,7 +3875,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOireturn::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOireturn::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3887,7 +3887,7 @@ namespace jvm {
 		return 172;
 	}
 
-	uint32_t OPINFOireturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOireturn::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3897,7 +3897,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlreturn::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlreturn::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3909,7 +3909,7 @@ namespace jvm {
 		return 173;
 	}
 
-	uint32_t OPINFOlreturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlreturn::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3919,7 +3919,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfreturn::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfreturn::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3931,7 +3931,7 @@ namespace jvm {
 		return 174;
 	}
 
-	uint32_t OPINFOfreturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfreturn::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3941,7 +3941,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdreturn::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdreturn::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3953,7 +3953,7 @@ namespace jvm {
 		return 175;
 	}
 
-	uint32_t OPINFOdreturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdreturn::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3963,7 +3963,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOareturn::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOareturn::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3975,7 +3975,7 @@ namespace jvm {
 		return 176;
 	}
 
-	uint32_t OPINFOareturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOareturn::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3985,7 +3985,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOreturn::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOreturn::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3997,7 +3997,7 @@ namespace jvm {
 		return 177;
 	}
 
-	uint32_t OPINFOreturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOreturn::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -4007,7 +4007,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOgetstatic::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOgetstatic::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -4019,7 +4019,7 @@ namespace jvm {
 		return 178;
 	}
 
-	uint32_t OPINFOgetstatic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOgetstatic::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4030,7 +4030,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOputstatic::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOputstatic::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -4042,7 +4042,7 @@ namespace jvm {
 		return 179;
 	}
 
-	uint32_t OPINFOputstatic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOputstatic::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4053,7 +4053,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOgetfield::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOgetfield::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -4065,7 +4065,7 @@ namespace jvm {
 		return 180;
 	}
 
-	uint32_t OPINFOgetfield::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOgetfield::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4076,7 +4076,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOputfield::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOputfield::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -4088,7 +4088,7 @@ namespace jvm {
 		return 181;
 	}
 
-	uint32_t OPINFOputfield::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOputfield::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4099,7 +4099,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOinvokevirtual::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOinvokevirtual::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -4111,7 +4111,7 @@ namespace jvm {
 		return 182;
 	}
 
-	uint32_t OPINFOinvokevirtual::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOinvokevirtual::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4122,7 +4122,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOinvokespecial::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOinvokespecial::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -4134,7 +4134,7 @@ namespace jvm {
 		return 183;
 	}
 
-	uint32_t OPINFOinvokespecial::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOinvokespecial::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4145,7 +4145,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOinvokestatic::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOinvokestatic::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -4157,7 +4157,7 @@ namespace jvm {
 		return 184;
 	}
 
-	uint32_t OPINFOinvokestatic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOinvokestatic::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4168,7 +4168,7 @@ namespace jvm {
 		jmp = 4;
 	}
 
-	void OPINFOinvokeinterface::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOinvokeinterface::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << " " << +count << std::endl;
 	}
 
@@ -4180,7 +4180,7 @@ namespace jvm {
 		return 185;
 	}
 
-	uint32_t OPINFOinvokeinterface::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOinvokeinterface::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		count = data[idx+3];
 
@@ -4199,7 +4199,7 @@ namespace jvm {
 		jmp = 4;
 	}
 
-	void OPINFOinvokedynamic::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOinvokedynamic::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << " 0 0" << std::endl;
 	}
 
@@ -4211,7 +4211,7 @@ namespace jvm {
 		return 186;
 	}
 
-	uint32_t OPINFOinvokedynamic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOinvokedynamic::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		if(!data[idx+3] || !data[idx+4]) {
 			throw JvmException("Invalid invokedynamic: the value of the last 2 arguments must be zero");
@@ -4225,7 +4225,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOnew::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOnew::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -4237,7 +4237,7 @@ namespace jvm {
 		return 187;
 	}
 
-	uint32_t OPINFOnew::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOnew::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4248,7 +4248,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOnewarray::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOnewarray::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +atype << std::endl;
 	}
 
@@ -4260,7 +4260,7 @@ namespace jvm {
 		return 188;
 	}
 
-	uint32_t OPINFOnewarray::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOnewarray::fillParams (uint32_t idx, std::vector<u1>& data) {
 		atype = data[idx+1];
 		return 1;
 	}
@@ -4271,7 +4271,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOanewarray::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOanewarray::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -4283,7 +4283,7 @@ namespace jvm {
 		return 189;
 	}
 
-	uint32_t OPINFOanewarray::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOanewarray::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4294,7 +4294,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOarraylength::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOarraylength::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -4306,7 +4306,7 @@ namespace jvm {
 		return 190;
 	}
 
-	uint32_t OPINFOarraylength::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOarraylength::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -4316,7 +4316,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOathrow::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOathrow::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -4328,7 +4328,7 @@ namespace jvm {
 		return 191;
 	}
 
-	uint32_t OPINFOathrow::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOathrow::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -4338,7 +4338,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOcheckcast::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOcheckcast::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -4350,7 +4350,7 @@ namespace jvm {
 		return 192;
 	}
 
-	uint32_t OPINFOcheckcast::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOcheckcast::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4361,7 +4361,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOinstanceof::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOinstanceof::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -4373,7 +4373,7 @@ namespace jvm {
 		return 193;
 	}
 
-	uint32_t OPINFOinstanceof::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOinstanceof::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4384,7 +4384,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOmonitorenter::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOmonitorenter::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -4396,7 +4396,7 @@ namespace jvm {
 		return 194;
 	}
 
-	uint32_t OPINFOmonitorenter::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOmonitorenter::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -4406,7 +4406,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOmonitorexit::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOmonitorexit::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -4418,7 +4418,7 @@ namespace jvm {
 		return 195;
 	}
 
-	uint32_t OPINFOmonitorexit::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOmonitorexit::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -4428,7 +4428,7 @@ namespace jvm {
 		jmp = 3;
 	}
 
-	void OPINFOwide::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOwide::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +opcode << " " << index << " " << countbyte << std::endl;
 	}
 
@@ -4440,7 +4440,7 @@ namespace jvm {
 		return 196;
 	}
 
-	uint32_t OPINFOwide::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOwide::fillParams (uint32_t idx, std::vector<u1>& data) {
 		OPINFOiinc iinc;
 
 		opcode = data[idx + 1];
@@ -4461,7 +4461,7 @@ namespace jvm {
 		jmp = 3;
 	}
 
-	void OPINFOmultianewarray::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOmultianewarray::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << " " << dimensions << std::endl;
 	}
 
@@ -4473,7 +4473,7 @@ namespace jvm {
 		return 197;
 	}
 
-	uint32_t OPINFOmultianewarray::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOmultianewarray::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		dimensions = data[idx+3];
 
@@ -4489,7 +4489,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOifnull::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOifnull::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -4501,7 +4501,7 @@ namespace jvm {
 		return 198;
 	}
 
-	uint32_t OPINFOifnull::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOifnull::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4512,7 +4512,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOifnonnull::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOifnonnull::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -4524,7 +4524,7 @@ namespace jvm {
 		return 199;
 	}
 
-	uint32_t OPINFOifnonnull::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOifnonnull::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4535,7 +4535,7 @@ namespace jvm {
 		jmp = 4;
 	}
 
-	void OPINFOgoto_w::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOgoto_w::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -4547,7 +4547,7 @@ namespace jvm {
 		return 200;
 	}
 
-	uint32_t OPINFOgoto_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOgoto_w::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i4(data[idx+1], data[idx+2], data[idx+3], data[idx+4]);
 		return 4;
 	}
@@ -4558,7 +4558,7 @@ namespace jvm {
 		jmp = 4;
 	}
 
-	void OPINFOjsr_w::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOjsr_w::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -4570,7 +4570,7 @@ namespace jvm {
 		return 201;
 	}
 
-	uint32_t OPINFOjsr_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOjsr_w::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i4(data[idx+1], data[idx+2], data[idx+3], data[idx+4]);
 		return 4;
 	}
@@ -4581,7 +4581,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFObreakpoint::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFObreakpoint::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -4593,7 +4593,7 @@ namespace jvm {
 		return 202;
 	}
 
-	uint32_t OPINFObreakpoint::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFObreakpoint::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -4603,7 +4603,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOimpdep1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOimpdep1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -4615,7 +4615,7 @@ namespace jvm {
 		return 254;
 	}
 
-	uint32_t OPINFOimpdep1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOimpdep1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -4625,7 +4625,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOimpdep2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOimpdep2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -4637,7 +4637,7 @@ namespace jvm {
 		return 255;
 	}
 
-	uint32_t OPINFOimpdep2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOimpdep2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 

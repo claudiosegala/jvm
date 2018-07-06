@@ -268,7 +268,7 @@ namespace jvm {
 		Entry_class_name = name;
 	}
 
-	Execution Engine::getExecutor(const u1 opcode) {
+	Execution Engine::getExecutor(u1 opcode) {
 		auto executor = exec[opcode];
 
 		if (not executor) {
@@ -279,66 +279,87 @@ namespace jvm {
 	}
 
 	void Engine::execute () {
-		ClassLoader First_cl = JavaClasses.find(Entry_class_name)->second;
-		//HARD-CODED SEARCH FOR MAIN, do not modify without notifying others
-		MethodInfo method = First_cl.methods.find("main([Ljava/lang/String;)V")->second;
+		auto main_name = std::string("main([Ljava/lang/String;)V");
+		auto cl = JavaClasses[Entry_class_name];
+		auto mt = cl.methods[main_name]; //HARD-CODED SEARCH FOR MAIN, do not modify without notifying others
 
-		//run_clinit();
-		//run_init();
-		Frame frame(First_cl,method);
-		fs.push(frame);
-		while (true) { // This will exit when instruction 'return' is executed
-			if(fs.empty())
-				throw JvmException("Fim inesperado da aplicação, não há frames restantes");
+		// run_clinit();
+		// run_init();
+
+		Frame frame(cl, mt);                                         // Create first frame
+
+		fs.push(frame);                                              // Init first frame in JVM
+
+		while (not fs.empty()) {                                     // This will exit when instruction 'return' is executed
 			auto curFrame = fs.top();
-			auto& codes = curFrame.mt.attributes.Codes[0]->code; // Getting the method's executable code
-			auto instruction = codes[curFrame.PC];
-			auto opcode = instruction->getOpCode();
-			auto executor = getExecutor(opcode);
-			(this ->* executor)(instruction.get());
+			auto& codes = curFrame.mt.attributes.Codes[0]->code;     // Get the current method's executable code
+			auto instruction = codes[curFrame.PC];                   // Get the current instruction
+			auto opcode = instruction->getOpCode();                  // Got op-code of the instruction
+			auto executor = getExecutor(opcode);                     // Get pointer to instruction execution
+
+			(this ->* executor)(instruction.get());                  // Access the instruction and execute it
 		}
 	}
 
 	void Engine::run_clinit () {
-
+		// Won't be needed
 	}
 
 	void Engine::run_init () {
-
+		// Won't be needed
 	}
 
-	std::pair<ClassLoader, MethodInfo> Engine::findMethod(CP_Methodref &ref) {
+	ClassAndMethod Engine::findMethod(CP_Methodref &ref) {
 		auto &currentClass = fs.top().cl;
 		auto &constantPool = currentClass.constant_pool;
+
 		auto &classInfo = constantPool[ref.class_index] -> as<CP_Class>();
 		auto &nameAndType = constantPool[ref.name_and_type_index] -> as<CP_NameAndType>();
-		std::string name = constantPool[nameAndType.name_index] -> toString(constantPool);
-		std::string descriptor = constantPool[nameAndType.descriptor_index] -> toString(constantPool);
-		auto& methodClass = findClass(classInfo);
-		auto pair = methodClass.methods.find(name + descriptor);
-		if(pair != methodClass.methods.end()) {
-			auto& method = pair->second;
-			return std::make_pair(methodClass, method);
-		}
-		throw JvmException("Method " + name + " not found");
+		auto name = constantPool[nameAndType.name_index] -> toString(constantPool);
+		auto descriptor = constantPool[nameAndType.descriptor_index] -> toString(constantPool);
+
+		std::string methodKey = name + descriptor;
+
+		return findMethod(classInfo, methodKey);
 	}
 
-	const ClassLoader & Engine::findClass(CP_Class &classInfo) {
+	ClassAndMethod Engine::findMethod(CP_Class &classInfo, std::string &methodKey) {
+		auto &currentClass = fs.top().cl;
+		auto &constantPool = currentClass.constant_pool;
+		auto &methodClass = findClass(classInfo);
+		auto pair = methodClass.methods.find(methodKey);
+
+		if (pair == methodClass.methods.end()) {
+			if (methodClass.super_class == 0) {
+				throw JvmException("Method " + methodKey + " not found!");
+			}
+			auto& superClass = constantPool[methodClass.super_class]->as<CP_Class>();
+			return findMethod(superClass, methodKey);
+		}
+
+		return {methodClass, pair->second};
+	}
+
+	ClassLoader & Engine::findClass(CP_Class &classInfo) {
 		auto &cl = fs.top().cl;
 		auto &cp = cl.constant_pool;
-		std::string className = cp[classInfo.name_index]-> toString(cp);
-		auto pair = JavaClasses.find(className);
-		if(pair != JavaClasses.end())
-			return pair->second; // Class is loaded
-		// Class is not loaded, we'll find the corresponding .class file
+		auto className = cp[classInfo.name_index]-> toString(cp);
+		return findClass(className);
+	}
+
+	ClassLoader &Engine::findClass(std::string &className) {
+		if (JavaClasses.count(className) > 0) {  // If class was already loaded, return
+			return JavaClasses[className];
+		}
+
+		// Find the corresponding .class file and load
+
 		ClassLoader newClass;
-		newClass.read("../samples/"+className+".class"); // Load the correct class
-		JavaClasses.insert({className, newClass}); // Add new class to the map
-		pair = JavaClasses.find(className);
-		pair->second.show();
-		if(pair != JavaClasses.end())
-			return pair->second; // Class is loaded
-		throw JvmException("Not able to load" + className + ".class");
+
+		newClass.read("../samples/" + className + ".class"); // Load the correct class
+		JavaClasses.insert({ className, newClass }); // Add new class to the map
+
+		return JavaClasses[className];
 	}
 
 	void Engine::exec_nop (InstructionInfo * info) {
@@ -351,73 +372,80 @@ namespace jvm {
 	void Engine::exec_aconst_null (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOaconst_null *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.ui4 = 0;
-		frame.operands.push4(res);
+
+		op4 res { .ui4 = 0 };
+
+		frame.operands.push4(T_REF, res); // TODO: verify if the type match
 		frame.PC += data->jmp + 1;
-
-
 	}
 
 	void Engine::exec_iconst_m1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiconst_m1 *>(info); // get data in class
 		auto &frame = fs.top();
+
 		op4 res = {.i4 = -1};
-		frame.operands.push4(res);
+
+		frame.operands.push4(T_INT, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_iconst_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiconst_0 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.ui4 = 0;
-		frame.operands.push4(res);
+
+		op4 res { .ui4 = 0 };
+
+		frame.operands.push4(T_INT, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_iconst_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiconst_1 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.ui4 = 1;
-		frame.operands.push4(res);
+
+		op4 res { .ui4 = 1 };
+
+		frame.operands.push4(T_INT, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_iconst_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiconst_2 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.ui4 = 2;
-		frame.operands.push4(res);
+
+		op4 res { .ui4 = 2 };
+
+		frame.operands.push4(T_INT, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_iconst_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiconst_3 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.ui4 = 3;
-		frame.operands.push4(res);
+
+		op4 res { .ui4 = 3 };
+
+		frame.operands.push4(T_INT, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_iconst_4 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiconst_4 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.ui4 = 4;
-		frame.operands.push4(res);
+
+		op4 res { .ui4 = 4 };
+
+		frame.operands.push4(T_INT, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_iconst_5 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiconst_5 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.ui4 = 5;
-		frame.operands.push4(res);
+
+		op4 res { .ui4 = 5 };
+
+		frame.operands.push4(T_INT, res);
 		frame.PC += data->jmp + 1;
 
 	}
@@ -425,123 +453,124 @@ namespace jvm {
 	void Engine::exec_lconst_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlconst_0 *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 res;
-		res.ull = 0;
-		frame.operands.push8(res);
+
+		op8 res { .ull = 0 };
+
+		frame.operands.push8(T_LONG, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_lconst_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlconst_1 *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 res;
-		res.ull = 1;
-		frame.operands.push8(res);
+
+		op8 res { .ull = 1 };
+
+		frame.operands.push8(T_LONG, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_fconst_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfconst_0 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.f = 0.0;
-		frame.operands.push4(res);
+		op4 res { .f = 0.0 };
+		frame.operands.push4(T_FLOAT, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_fconst_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfconst_1 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.f = 1.0;
-		frame.operands.push4(res);
+		op4 res { .f = 1.0 };
+		frame.operands.push4(T_FLOAT, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_fconst_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfconst_2 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.f = 2.0;
-		frame.operands.push4(res);
+		op4 res { .f = 2.0 };
+		frame.operands.push4(T_FLOAT, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_dconst_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdconst_0 *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 res;
-		res.lf = 0.0;
-		frame.operands.push8(res);
+
+		op8 res { .lf = 0.0 };
+
+		frame.operands.push8(T_DOUBLE, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_dconst_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdconst_1 *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 res;
-		res.lf = 1.0;
-		frame.operands.push8(res);
+
+		op8 res { .lf = 1.0 };
+
+		frame.operands.push8(T_DOUBLE, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_bipush (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFObipush *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.i1 = data->byte;
-		frame.operands.push4(res);
+		op4 res { .i1 = data->byte };
+
+		frame.operands.push4(T_INT, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_sipush (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOsipush *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.i2 = data->value;
-		frame.operands.push4(res);
+		op4 res { .i2 = data->value };
+
+		frame.operands.push4(T_INT, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_ldc (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOldc *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
 		auto k = frame.cl.constant_pool[data->index];
 		auto res_float = dynamic_cast<CP_Float*>(k);
+
 		if (res_float != nullptr) {
-			res.ui4 = res_float->_bytes;
-			frame.operands.push4(res);
+			op4 res { .ui4 = res_float->_bytes };
+			frame.operands.push4(T_FLOAT, res);
 			frame.PC += data->jmp + 1;
 			return;
 		}
+
 		auto res_int = dynamic_cast<CP_Integer*>(k);
-		if(res_int != nullptr) {
-			res.ui4 = res_float->_bytes;
-			frame.operands.push4(res);
+		if (res_int != nullptr) {
+			op4 res { .ui4 = res_float->_bytes };
+			frame.operands.push4(T_INT, res);
 			frame.PC += data->jmp + 1;
 		} else{
 			std::cout <<"Error in ldc" << std::endl;
 		}
-
-
 	}
 
 	void Engine::exec_ldc_w (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOldc_w *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
 		auto k = frame.cl.constant_pool[data->index];
 		auto res_float = dynamic_cast<CP_Float*>(k);
-		if(res_float != nullptr) {
-			res.ui4 = res_float->_bytes;
-			frame.operands.push4(res);
+
+		if (res_float != nullptr) {
+			op4 res { .ui4 = res_float->_bytes };
+			frame.operands.push4(T_FLOAT, res);
 			frame.PC += data->jmp + 1;
 		}
+
 		auto res_int = dynamic_cast<CP_Integer*>(k);
-		if(res_int != nullptr){
-			res.ui4 = res_int->_bytes;
-			frame.operands.push4(res);
+		if (res_int != nullptr) {
+			op4 res { .ui4 = res_int->_bytes };
+			frame.operands.push4(T_INT, res);
 			frame.PC += data->jmp + 1;
 		} else {
 			std::cout << "Error in ldc_w" << std::endl;
@@ -556,21 +585,21 @@ namespace jvm {
 
 		op4 res1, res2;
 
-		if(res_double != nullptr) {
+		if (res_double != nullptr) {
 			res1.ui4 = res_double->low_bytes;
 			res2.ui4 = res_double->high_bytes;
-			frame.operands.push4(res1);
-			frame.operands.push4(res2);
+			frame.operands.push4(T_DOUBLE, res1);
+			frame.operands.push4(T_DOUBLE, res2);
 			frame.PC += data->jmp + 1;
 		}
 
 		auto res_long = dynamic_cast<CP_Long*>(k);
 
-		if(res_long != nullptr){
+		if (res_long != nullptr) {
 			res1.ui4 = res_long->low_bytes;
 			res2.ui4 = res_long->high_bytes;
-			frame.operands.push4(res1);
-			frame.operands.push4(res2);
+			frame.operands.push4(T_LONG, res1);
+			frame.operands.push4(T_LONG, res2);
 			frame.PC += data->jmp + 1;
 		} else {
 			std::cout << "Error in ldc2_w" << std::endl;
@@ -583,7 +612,8 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOiload *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get4(data->index);
-		frame.operands.push4(value);
+
+		frame.operands.push4(T_INT, value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -591,7 +621,8 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOlload *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get8(data->index);
-		frame.operands.push8(value);
+
+		frame.operands.push8(T_LONG, value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -599,7 +630,8 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOfload *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get4(data->index);
-		frame.operands.push4(value);
+
+		frame.operands.push4(T_FLOAT, value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -607,7 +639,8 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOdload *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get8(data->index);
-		frame.operands.push8(value);
+
+		frame.operands.push8(T_DOUBLE, value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -615,7 +648,8 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOaload *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get4(data->index);
-		frame.operands.push4(value);
+
+		frame.operands.push4(T_ARRAY, value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -623,7 +657,8 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOiload_0 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get4(0);
-		frame.operands.push4(value);
+
+		frame.operands.push4(T_INT, value);
 		frame.PC += data->jmp + 1;
 
 	}
@@ -632,7 +667,8 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOiload_1 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get4(1);
-		frame.operands.push4(value);
+
+		frame.operands.push4(T_INT, value);
 		frame.PC += data->jmp + 1;
 
 	}
@@ -641,7 +677,8 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOiload_2 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get4(2);
-		frame.operands.push4(value);
+
+		frame.operands.push4(T_INT, value);
 		frame.PC += data->jmp + 1;
 
 	}
@@ -650,7 +687,8 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOiload_3 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get4(3);
-		frame.operands.push4(value);
+
+		frame.operands.push4(T_INT, value);
 		frame.PC += data->jmp + 1;
 
 	}
@@ -659,7 +697,8 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOlload_0 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get8(0);
-		frame.operands.push8(value);
+
+		frame.operands.push8(T_LONG, value);
 		frame.PC += data->jmp + 1;
 
 	}
@@ -668,7 +707,7 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOlload_1 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get8(1);
-		frame.operands.push8(value);
+		frame.operands.push8(T_LONG, value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -676,7 +715,7 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOlload_2 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get8(2);
-		frame.operands.push8(value);
+		frame.operands.push8(T_LONG, value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -684,7 +723,7 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOlload_3 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get8(3);
-		frame.operands.push8(value);
+		frame.operands.push8(T_LONG, value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -692,7 +731,7 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOfload_0 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get4(0);
-		frame.operands.push4(value);
+		frame.operands.push4(T_FLOAT, value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -700,7 +739,7 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOfload_1 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get4(1);
-		frame.operands.push4(value);
+		frame.operands.push4(T_FLOAT, value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -708,7 +747,7 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOfload_2 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get4(2);
-		frame.operands.push4(value);
+		frame.operands.push4(T_FLOAT, value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -716,7 +755,7 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOfload_3 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get4(3);
-		frame.operands.push4(value);
+		frame.operands.push4(T_FLOAT, value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -724,7 +763,7 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOdload_0 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get8(0);
-		frame.operands.push8(value);
+		frame.operands.push8(T_DOUBLE, value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -732,7 +771,7 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOdload_1 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get8(1);
-		frame.operands.push8(value);
+		frame.operands.push8(T_DOUBLE, value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -740,7 +779,7 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOdload_2 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get8(2);
-		frame.operands.push8(value);
+		frame.operands.push8(T_DOUBLE, value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -748,7 +787,7 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOdload_3 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get8(3);
-		frame.operands.push8(value);
+		frame.operands.push8(T_DOUBLE, value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -756,14 +795,14 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOaload_0 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get4(0);
-		frame.operands.push4(value);
+		frame.operands.push4(T_ARRAY, value);
 	}
 
 	void Engine::exec_aload_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOaload_1 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get4(1);
-		frame.operands.push4(value);
+		frame.operands.push4(T_ARRAY, value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -771,7 +810,7 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOaload_2 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get4(2);
-		frame.operands.push4(value);
+		frame.operands.push4(T_ARRAY, value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -779,14 +818,14 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOaload_3 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get4(3);
-		frame.operands.push4(value);
+		frame.operands.push4(T_ARRAY, value);
 	}
 
 	void Engine::exec_iaload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiaload *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 val1 = frame.operands.pop4();
-		op4 val2 = frame.operands.pop4();
+		auto val1 = frame.operands.pop4();
+		auto val2 = frame.operands.pop4();
 		frame.PC += data->jmp + 1;
 
 	}
@@ -796,10 +835,10 @@ namespace jvm {
 		auto &frame = fs.top();
 		auto arrayref = frame.operands.pop4();
 		auto index = frame.operands.pop4();
-		long * ARP = static_cast<long*>(mem[arrayref.i4]);
+		long * ARP = static_cast<long*>(mem[arrayref.value.i4]);
 		op8 value;
-		value.lf = ARP[index.i4];
-		frame.operands.push8(value.ll);
+		value.lf = ARP[index.value.i4];
+		frame.operands.push8(T_LONG, value.ll);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -808,10 +847,10 @@ namespace jvm {
 		auto &frame = fs.top();
 		auto arrareyref = frame.operands.pop4();
 		auto index = frame.operands.pop4();
-		float * ARP = static_cast<float*>(mem[arrareyref.i4]);
+		float * ARP = static_cast<float*>(mem[arrareyref.value.i4]);
 		op4 value;
-		value.f = ARP[index.i4];
-		frame.operands.push4(value.f);
+		value.f = ARP[index.value.i4];
+		frame.operands.push4(T_FLOAT, value.f);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -823,10 +862,10 @@ namespace jvm {
 		auto &frame = fs.top();
 		auto arrareyref = frame.operands.pop4();
 		auto index = frame.operands.pop4();
-		double * ARP = static_cast<double*>(mem[arrareyref.i4]);
+		double * ARP = static_cast<double*>(mem[arrareyref.value.i4]);
 		op8 value;
-		value.lf = ARP[index.i4];
-		frame.operands.push8(value.lf);
+		value.lf = ARP[index.value.i4];
+		frame.operands.push8(T_DOUBLE, value.lf);
 
 		frame.PC += data->jmp + 1;
 
@@ -839,10 +878,10 @@ namespace jvm {
 		auto &frame = fs.top();
 		auto arreyref = frame.operands.pop4();
 		auto index = frame.operands.pop4();
-		uint32_t * ARP = static_cast<uint32_t*>(mem[arreyref.i4]);
+		uint32_t * ARP = static_cast<uint32_t*>(mem[arreyref.value.i4]);
 		op4 value;
-		value.ui4 = static_cast<uint32_t >(ARP[index.i4]);
-		frame.operands.push4(value.ui4);
+		value.ui4 = static_cast<uint32_t >(ARP[index.value.i4]);
+		frame.operands.push4(T_ARRAY, value.ui4);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -854,10 +893,10 @@ namespace jvm {
 		auto &frame = fs.top();
 		auto arrayref = frame.operands.pop4();
 		auto index = frame.operands.pop4();
-		uint8_t * ARP = static_cast<uint8_t*>(mem[arrayref.i4]);
+		uint8_t * ARP = static_cast<uint8_t*>(mem[arrayref.value.i4]);
 		op4 value;
-		value.ui1 = static_cast<uint8_t>(ARP[index.i4]);
-		frame.operands.push4(value);
+		value.ui1 = static_cast<uint8_t>(ARP[index.value.i4]);
+		frame.operands.push4(T_BYTE, value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -869,25 +908,24 @@ namespace jvm {
 		auto &frame = fs.top();
 		auto arrayref = frame.operands.pop4();
 		auto index = frame.operands.pop4();
-		uint8_t * ARP = static_cast<uint8_t*>(mem[arrayref.i4]);
+		uint8_t * ARP = static_cast<uint8_t*>(mem[arrayref.value.i4]);
 		op4 value;
-		value.ui1 = static_cast<uint8_t>(ARP[index.i4]);
-		frame.operands.push4(value);
+		value.ui1 = static_cast<uint8_t>(ARP[index.value.i4]);
+		frame.operands.push4(T_BYTE, value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
 	}
-
 
 	void Engine::exec_saload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOsaload *>(info); // get data in class
 		auto &frame = fs.top();
 		auto arrayref = frame.operands.pop4();
 		auto index = frame.operands.pop4();
-		int16_t * ARP = static_cast<int16_t *>(mem[arrayref.i4]);
+		int16_t * ARP = static_cast<int16_t *>(mem[arrayref.value.i4]);
 		op4 value;
-		value.i2 = static_cast<int16_t>(ARP[index.i4]);
-		frame.operands.push4(value.i2);
+		value.i2 = static_cast<int16_t>(ARP[index.value.i4]);
+		frame.operands.push4(T_LONG, value.i2);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -896,24 +934,27 @@ namespace jvm {
 	void Engine::exec_istore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOistore *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value = frame.operands.pop4();
-		frame.variables.set(data->index, value);
+		auto value = frame.operands.pop4();
+
+		frame.variables.set(data->index, value.value);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_lstore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlstore *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 value = frame.operands.pop8();
-		frame.variables.set(data->index, value);
+		auto value = frame.operands.pop8();
+
+		frame.variables.set(data->index, value.value);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_fstore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfstore *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value = frame.operands.pop4();
-		frame.variables.set(data->index, value);
+		auto value = frame.operands.pop4();
+
+		frame.variables.set(data->index, value.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -922,8 +963,9 @@ namespace jvm {
 	void Engine::exec_dstore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdstore *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 value = frame.operands.pop8();
-		frame.variables.set(data->index, value);
+		auto value = frame.operands.pop8();
+
+		frame.variables.set(data->index, value.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -932,8 +974,9 @@ namespace jvm {
 	void Engine::exec_astore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOastore *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 objectref = frame.operands.pop4();
-		frame.variables.set(data->index, objectref);
+		auto objectref = frame.operands.pop4();
+
+		frame.variables.set(data->index, objectref.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -942,72 +985,81 @@ namespace jvm {
 	void Engine::exec_istore_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOistore_0 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value = frame.operands.pop4();
-		frame.variables.set(0, value);
+		auto value = frame.operands.pop4();
+
+		frame.variables.set(0, value.value);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_istore_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOistore_1 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value = frame.operands.pop4();
-		frame.variables.set(1, value);
+		auto value = frame.operands.pop4();
+
+		frame.variables.set(1, value.value);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_istore_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOistore_2 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value = frame.operands.pop4();
-		frame.variables.set(2, value);
+		auto value = frame.operands.pop4();
+
+		frame.variables.set(2, value.value);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_istore_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOistore_3 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value = frame.operands.pop4();
-		frame.variables.set(3, value);
+		auto value = frame.operands.pop4();
+
+		frame.variables.set(3, value.value);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_lstore_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlstore_0 *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 value = frame.operands.pop8();
-		frame.variables.set(0, value);
+		auto value = frame.operands.pop8();
+
+		frame.variables.set(0, value.value);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_lstore_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlstore_1 *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 value = frame.operands.pop8();
-		frame.variables.set(1, value);
+		auto value = frame.operands.pop8();
+
+		frame.variables.set(1, value.value);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_lstore_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlstore_2 *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 value = frame.operands.pop8();
-		frame.variables.set(2, value);
+		auto value = frame.operands.pop8();
+
+		frame.variables.set(2, value.value);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_lstore_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlstore_3 *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 value = frame.operands.pop8();
-		frame.variables.set(3, value);
+		auto value = frame.operands.pop8();
+
+		frame.variables.set(3, value.value);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_fstore_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfstore_0 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value = frame.operands.pop4();
-		frame.variables.set(0, value);
+		auto value = frame.operands.pop4();
+
+		frame.variables.set(0, value.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -1016,8 +1068,9 @@ namespace jvm {
 	void Engine::exec_fstore_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfstore_1 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value = frame.operands.pop4();
-		frame.variables.set(1, value);
+		auto value = frame.operands.pop4();
+
+		frame.variables.set(1, value.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -1026,8 +1079,9 @@ namespace jvm {
 	void Engine::exec_fstore_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfstore_2 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value = frame.operands.pop4();
-		frame.variables.set(2, value);
+		auto value = frame.operands.pop4();
+
+		frame.variables.set(2, value.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -1036,8 +1090,9 @@ namespace jvm {
 	void Engine::exec_fstore_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfstore_3 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value = frame.operands.pop4();
-		frame.variables.set(3, value);
+		auto value = frame.operands.pop4();
+
+		frame.variables.set(3, value.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -1046,8 +1101,9 @@ namespace jvm {
 	void Engine::exec_dstore_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdstore_0 *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 value = frame.operands.pop8();
-		frame.variables.set(0, value);
+		auto value = frame.operands.pop8();
+
+		frame.variables.set(0, value.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -1056,16 +1112,18 @@ namespace jvm {
 	void Engine::exec_dstore_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdstore_2 *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 value = frame.operands.pop8();
-		frame.variables.set(1, value);
+		auto value = frame.operands.pop8();
+
+		frame.variables.set(1, value.value);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_dstore_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdstore_2 *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 value = frame.operands.pop8();
-		frame.variables.set(2, value);
+		auto value = frame.operands.pop8();
+
+		frame.variables.set(2, value.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -1074,8 +1132,9 @@ namespace jvm {
 	void Engine::exec_dstore_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdstore_3 *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 value = frame.operands.pop8();
-		frame.variables.set(3, value);
+		auto value = frame.operands.pop8();
+
+		frame.variables.set(3, value.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -1084,18 +1143,20 @@ namespace jvm {
 	void Engine::exec_astore_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOastore_0 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 objectref = frame.operands.pop4();
-		frame.variables.set(0, objectref);
+		auto objectref = frame.operands.pop4();
+
+		frame.variables.set(0, objectref.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
 	}
-	
+
 	void Engine::exec_astore_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOastore_1 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 objectref = frame.operands.pop4();
-		frame.variables.set(1, objectref);
+		auto objectref = frame.operands.pop4();
+
+		frame.variables.set(1, objectref.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -1104,8 +1165,9 @@ namespace jvm {
 	void Engine::exec_astore_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOastore_2 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 objectref = frame.operands.pop4();
-		frame.variables.set(2, objectref);
+		auto objectref = frame.operands.pop4();
+
+		frame.variables.set(2, objectref.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -1114,112 +1176,113 @@ namespace jvm {
 	void Engine::exec_astore_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOastore_3 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 objectref = frame.operands.pop4();
-		frame.variables.set(3, objectref);
+		auto objectref = frame.operands.pop4();
+
+		frame.variables.set(3, objectref.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
 	}
-
 
 	void Engine::exec_iastore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiastore *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 arrayref = frame.operands.pop4();
-		op4 index = frame.operands.pop4();
-		op4 value = frame.operands.pop4();
-		frame.variables.set(index.ui2,value);
+		auto arrayref = frame.operands.pop4();
+		auto index = frame.operands.pop4();
+		auto value = frame.operands.pop4();
+
+		frame.variables.set(index.value.ui2,value.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
 	}
-
 
 	void Engine::exec_lastore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlastore *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 arrayref = frame.operands.pop4();
-		op4 index = frame.operands.pop4();
-		op8 value = frame.operands.pop8();
-		frame.variables.set(index.ui2,value);
+		auto arrayref = frame.operands.pop4();
+		auto index = frame.operands.pop4();
+		auto value = frame.operands.pop8();
+
+		frame.variables.set(index.value.ui2, value.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
 	}
-
 
 	void Engine::exec_fastore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfastore *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 arrayref = frame.operands.pop4();
-		op4 index = frame.operands.pop4();
-		op4 value = frame.operands.pop4();
-		frame.variables.set(index.ui2,value);
+		auto arrayref = frame.operands.pop4();
+		auto index = frame.operands.pop4();
+		auto value = frame.operands.pop4();
+
+		frame.variables.set(index.value.ui2,value.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
 	}
-
 
 	void Engine::exec_dastore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdastore *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 arrayref = frame.operands.pop4();
-		op4 index = frame.operands.pop4();
-		op8 value = frame.operands.pop8();
-		frame.variables.set(index.ui2,value);
+		auto arrayref = frame.operands.pop4();
+		auto index = frame.operands.pop4();
+		auto value = frame.operands.pop8();
+
+		frame.variables.set(index.value.ui2,value.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
 	}
-
 
 	void Engine::exec_aastore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOaastore *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 arrayref = frame.operands.pop4();
-		op4 index = frame.operands.pop4();
-		op4 value = frame.operands.pop4();
-		frame.variables.set(index.i2,value);
+		auto arrayref = frame.operands.pop4();
+		auto index = frame.operands.pop4();
+		auto value = frame.operands.pop4();
+
+		frame.variables.set(index.value.i2,value.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
 	}
-
 
 	void Engine::exec_bastore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFObastore *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 arrayref = frame.operands.pop4();
-		op4 index = frame.operands.pop4();
-		op4 value = frame.operands.pop4();
-		frame.variables.set(index.i2,value);
+		auto arrayref = frame.operands.pop4();
+		auto index = frame.operands.pop4();
+		auto value = frame.operands.pop4();
+
+		frame.variables.set(index.value.i2,value.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
 	}
-
 
 	void Engine::exec_castore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOcastore *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 arrayref = frame.operands.pop4();
-		op4 index = frame.operands.pop4();
-		op4 value = frame.operands.pop4();
-		frame.variables.set(index.i2,value);
+		auto arrayref = frame.operands.pop4();
+		auto index = frame.operands.pop4();
+		auto value = frame.operands.pop4();
+
+		frame.variables.set(index.value.i2,value.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
 	}
 
-
 	void Engine::exec_sastore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOsastore *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 arrayref = frame.operands.pop4();
-		op4 index = frame.operands.pop4();
-		op4 value = frame.operands.pop4();
-		frame.variables.set(index.i2,value);
+		auto arrayref = frame.operands.pop4();
+		auto index = frame.operands.pop4();
+		auto value = frame.operands.pop4();
+
+		frame.variables.set(index.value.i2,value.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -1228,7 +1291,8 @@ namespace jvm {
 	void Engine::exec_pop (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOpop *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value = frame.operands.pop4();
+		auto value = frame.operands.pop4();
+
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -1247,20 +1311,22 @@ namespace jvm {
 	void Engine::exec_dup (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdup *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value = frame.operands.pop4();
-		frame.operands.push4(value);
-		frame.operands.push4(value);
+		auto value = frame.operands.pop4();
+
+		frame.operands.push4(T_INT, value.value);
+		frame.operands.push4(T_INT, value.value);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_dup_x1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdup_x1 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value1 = frame.operands.pop4();
-		op4 value2 = frame.operands.pop4();
-		frame.operands.push4(value1);
-		frame.operands.push4(value2);
-		frame.operands.push4(value1);
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+
+		frame.operands.push4(T_INT, value1.value);
+		frame.operands.push4(T_INT, value2.value);
+		frame.operands.push4(T_INT, value1.value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -1307,24 +1373,23 @@ namespace jvm {
 	void Engine::exec_swap (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOswap *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value1 = frame.operands.pop4();
-		op4 value2 = frame.operands.pop4();
-		frame.operands.push4(value1);
-		frame.operands.push4(value2);
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+
+		frame.operands.push4(value1.type, value1.value);
+		frame.operands.push4(value2.type, value2.value);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_iadd (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiadd *>(info); // get data in class
 		auto &frame = fs.top();
-
-		op4 res;
-
 		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
-		res.i4 = value1.i4 + value2.i4;
 
-		frame.operands.push4(res);
+		op4 res { .i4 = value1.value.i4 + value2.value.i4 };
+
+		frame.operands.push4(T_INT, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1333,14 +1398,12 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOladd *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op8 res;
-
 		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
 
-		res.ll = value1.ll + value2.ll;
+		op8 res { .ll = value1.value.ll + value2.value.ll };
 
-		frame.operands.push8(res);
+		frame.operands.push8(T_LONG, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1349,13 +1412,11 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOfadd *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op4 res;
-
 		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
-		res.f = value1.f + value2.f;
+		op4 res { .f = value1.value.f + value2.value.f };
 
-		frame.operands.push4(res);
+		frame.operands.push4(T_FLOAT, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1364,14 +1425,12 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOdadd *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op8 res;
-
 		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
 
-		res.lf = value1.lf + value2.lf;
+		op8 res { .lf = value1.value.lf + value2.value.lf };
 
-		frame.operands.push8(res);
+		frame.operands.push8(T_DOUBLE, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1379,14 +1438,12 @@ namespace jvm {
 	void Engine::exec_isub (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOisub *>(info); // get data in class
 		auto &frame = fs.top();
-
-		op4 res;
-
 		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
-		res.i4 = value1.i4 - value2.i4;
 
-		frame.operands.push4(res);
+		op4 res { .i4 = value1.value.i4 - value2.value.i4 };
+
+		frame.operands.push4(T_INT, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1395,13 +1452,11 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOlsub *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op8 res;
-
 		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
-		res.ll = value1.ll - value2.ll;
+		op8 res { .ll = value1.value.ll - value2.value.ll };
 
-		frame.operands.push8(res);
+		frame.operands.push8(T_LONG, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1409,45 +1464,33 @@ namespace jvm {
 	void Engine::exec_fsub (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfsub *>(info); // get data in class
 		auto &frame = fs.top();
-
-		op4 res;
-
 		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
-		res.f = value1.f - value2.f;
 
-		frame.operands.push4(res);
-
+		op4 res { .f = value1.value.f - value2.value.f };
+		frame.operands.push4(T_FLOAT, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_dsub (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdsub *>(info); // get data in class
 		auto &frame = fs.top();
-
-		op8 res;
-
 		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
-		res.lf = value1.lf - value2.lf;
 
-		frame.operands.push8(res);
-
+		op8 res { .lf = value1.value.lf - value2.value.lf };
+		frame.operands.push8(T_DOUBLE, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_imul (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOimul *>(info); // get data in class
 		auto &frame = fs.top();
-
-		op4 res;
-
 		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
-		res.i4 = value1.i4*value2.i4;
 
-		frame.operands.push4(res);
-
+		op4 res { .i4 = value1.value.i4*value2.value.i4 };
+		frame.operands.push4(T_INT, res);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -1455,13 +1498,11 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOlmul *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op8 res;
-
 		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
-		res.ll = value1.ll*value2.ll;
+		op8 res { .ll = value1.value.ll*value2.value.ll };
 
-		frame.operands.push8(res);
+		frame.operands.push8(T_LONG, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1470,13 +1511,11 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOfmul *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op4 res;
-
 		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
-		res.f = value1.f*value2.f;
+		op4 res { .f = value1.value.f*value2.value.f };
 
-		frame.operands.push4(res);
+		frame.operands.push4(T_FLOAT, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1485,13 +1524,11 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOdmul *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op8 res;
-
 		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
-		res.lf = value1.lf*value2.lf;
+		op8 res { .lf = value1.value.lf*value2.value.lf };
 
-		frame.operands.push8(res);
+		frame.operands.push8(T_DOUBLE, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1500,18 +1537,16 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOidiv *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op4 res;
-
 		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
 
-		if (value2.i4 == 0) {
+		if (value2.value.i4 == 0) {
 			throw JvmException("ArithmeticException");
 		}
 
-		res.i4 = value1.i4 / value2.i4;
+		op4 res { .i4 = value1.value.i4 / value2.value.i4 };
 
-		frame.operands.push4(res);
+		frame.operands.push4(T_INT, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1520,18 +1555,16 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOldiv *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op8 res;
-
 		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
 
-		if (value2.ll == 0) {
+		if (value2.value.ll == 0) {
 			throw JvmException("ArithmeticException");
 		}
 
-		res.ll = value1.ll / value2.ll;
+		op8 res { .ll = value1.value.ll / value2.value.ll };
 
-		frame.operands.push8(res);
+		frame.operands.push8(T_LONG, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1540,13 +1573,11 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOfdiv *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op4 res;
-
 		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
-		res.f = value1.f / value2.f;
+		op4 res { .f = value1.value.f / value2.value.f };
 
-		frame.operands.push4(res);
+		frame.operands.push4(T_FLOAT, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1555,13 +1586,11 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOddiv *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op8 res;
-
 		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
-		res.lf = value1.lf / value2.lf;
+		op8 res { .lf = value1.value.lf / value2.value.lf };
 
-		frame.operands.push8(res);
+		frame.operands.push8(T_DOUBLE, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1570,18 +1599,16 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOirem *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op4 res;
-
 		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
 
-		if (value2.i4 == 0) {
+		if (value2.value.i4 == 0) {
 			throw JvmException("ArithmeticException");
 		}
 
-		res.i4 = value1.i4 - (value1.i4 / value2.i4) * value2.i4;
+		op4 res { .i4 = value1.value.i4 - (value1.value.i4 / value2.value.i4) * value2.value.i4 };
 
-		frame.operands.push4(res);
+		frame.operands.push4(T_INT, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1590,18 +1617,16 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOlrem *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op8 res;
-
 		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
 
-		if (value2.ll == 0) {
+		if (value2.value.ll == 0) {
 			throw JvmException("ArithmeticException");
 		}
 
-		res.ll = value1.ll - (value1.ll / value2.ll) * value2.ll;
+		op8 res { .ll = value1.value.ll - (value1.value.ll / value2.value.ll) * value2.value.ll };
 
-		frame.operands.push8(res);
+		frame.operands.push8(T_LONG, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1609,86 +1634,62 @@ namespace jvm {
 	void Engine::exec_frem (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfrem *>(info); // get data in class
 		auto &frame = fs.top();
-
-		op4 res;
-
 		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
-		res.f = std::fmod(value1.f, value2.f);
 
-		frame.operands.push4(res);
-
+		op4 res { .f = std::fmod(value1.value.f, value2.value.f) };
+		frame.operands.push4(T_FLOAT, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_drem (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdrem *>(info); // get data in class
 		auto &frame = fs.top();
-
-		op8 res;
-
 		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
-		res.lf = fmod(value1.lf, value2.lf);
 
-		frame.operands.push8(res);
-
+		op8 res { .lf = fmod(value1.value.lf, value2.value.lf) };
+		frame.operands.push8(T_DOUBLE, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_ineg (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOineg *>(info); // get data in class
 		auto &frame = fs.top();
-
-		op4 res;
-
 		auto value = frame.operands.pop4();
-		res.i4 = (~value.i4)+1;
 
-		frame.operands.push4(res);
-
+		op4 res { .i4 = (~value.value.i4)+1 };
+		frame.operands.push4(T_INT, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_lneg (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlneg *>(info); // get data in class
 		auto &frame = fs.top();
-
-		op8 res;
-
 		auto value = frame.operands.pop8();
-		res.ll = (~value.ll)+1;
 
-		frame.operands.push8(res);
-
+		op8 res { .ll = (~value.value.ll)+1 };
+		frame.operands.push8(T_LONG, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_fneg (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfneg *>(info); // get data in class
 		auto &frame = fs.top();
-
-		op4 res;
-
 		auto value = frame.operands.pop4();
-		res.f = -value.f;
 
-		frame.operands.push4(res);
-
+		op4 res { .f = -value.value.f };
+		frame.operands.push4(T_FLOAT, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_dneg (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdneg *>(info); // get data in class
 		auto &frame = fs.top();
-
-		op8 res;
-
 		auto value = frame.operands.pop8();
-		res.lf = -value.lf;
 
-		frame.operands.push8(res);
-
+		op8 res { .lf = -value.value.lf };
+		frame.operands.push8(T_DOUBLE, res);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -1696,13 +1697,11 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOishl *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op4 res;
-
 		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
-		res.ui4 = value1.ui4 << (value2.ui4 & 0x1f);
+		op4 res { .ui4 = value1.value.ui4 << (value2.value.ui4 & 0x1f) };
 
-		frame.operands.push4(res);
+		frame.operands.push4(T_INT, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1711,13 +1710,11 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOlshl *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op8 res;
-
 		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
-		res.ll = value1.ll << (value2.ll & 0x3f);
+		op8 res { .ll = value1.value.ll << (value2.value.ll & 0x3f) };
 
-		frame.operands.push8(res);
+		frame.operands.push8(T_LONG, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1726,13 +1723,11 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOishr *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op4 res;
-
 		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
-		res.ui4 = value1.ui4 >> (value2.ui4 & 0x1f);
+		op4 res { .ui4 = value1.value.ui4 >> (value2.value.ui4 & 0x1f) };
 
-		frame.operands.push4(res);
+		frame.operands.push4(T_INT, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1741,13 +1736,11 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOlshr *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op8 res;
-
 		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
-		res.ll = value1.ll >> (value2.ll & 0x3f);
+		op8 res { .ll = value1.value.ll >> (value2.value.ll & 0x3f) };
 
-		frame.operands.push8(res);
+		frame.operands.push8(T_LONG, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1756,14 +1749,12 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOiushr *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op4 res;
-
 		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
-		auto s      = value2.ui4 & 0x1f;
-		res.ui4 = (value1.ui4 >> s) + (2 << (~s));
+		auto s      = value2.value.ui4 & 0x1f;
+		op4 res { .ui4 = (value1.value.ui4 >> s) + (2 << (~s)) };
 
-		frame.operands.push4(res);
+		frame.operands.push4(T_INT, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1772,14 +1763,12 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOlushr *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op8 res;
-
 		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
-		auto s      = value2.ll & 0x3f;
-		res.ll = (value1.ll >> s) + (2L << (~s));
+		auto s      = value2.value.ll & 0x3f;
+		op8 res { .ll = (value1.value.ll >> s) + (2L << (~s)) };
 
-		frame.operands.push8(res);
+		frame.operands.push8(T_LONG, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1788,13 +1777,11 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOiand *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op4 res;
-
 		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
-		res.ui4 = value1.ui4 & value2.ui4;
+		op4 res { .ui4 = value1.value.ui4 & value2.value.ui4 };
 
-		frame.operands.push4(res);
+		frame.operands.push4(T_INT, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1803,13 +1790,11 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOland *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op8 res;
-
 		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
-		res.ll = value1.ll & value2.ll;
+		op8 res { .ll = value1.value.ll & value2.value.ll };
 
-		frame.operands.push8(res);
+		frame.operands.push8(T_LONG, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1818,13 +1803,11 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOior *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op4 res;
-
 		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
-		res.ui4 = value1.ui4 | value2.ui4;
+		op4 res { .ui4 = value1.value.ui4 | value2.value.ui4 };
 
-		frame.operands.push4(res);
+		frame.operands.push4(T_INT, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1833,13 +1816,11 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOlor *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op8 res;
-
 		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
-		res.ll = value1.ll | value2.ll;
+		op8 res { .ll = value1.value.ll | value2.value.ll };
 
-		frame.operands.push8(res);
+		frame.operands.push8(T_LONG, res);
 
 		frame.PC += data->jmp + 1;
 	}
@@ -1848,39 +1829,32 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOixor *>(info); // get data in class
 		auto &frame = fs.top();
 
-		op4 res;
-
 		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
-		res.ui4 = value1.ui4 ^ value2.ui4;
+		op4 res { .ui4 = value1.value.ui4 ^ value2.value.ui4 };
 
-		frame.operands.push4(res);
-
+		frame.operands.push4(T_INT, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_lxor (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlxor *>(info); // get data in class
 		auto &frame = fs.top();
-
-		op8 res;
-
 		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
-		res.ll = value1.ll ^ value2.ll;
 
-		frame.operands.push8(res);
-
+		op8 res { .ll = value1.value.ll ^ value2.value.ll };
+		frame.operands.push8(T_LONG, res);
 		frame.PC += data->jmp + 1;
 	}
-
 
 	void Engine::exec_iinc (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiinc *>(info); // get data in class
 		auto &frame = fs.top();
 		auto index = frame.operands.pop4();
 		auto valor = frame.operands.pop4();
-		frame.variables.set(index.i2,valor);
+
+		frame.variables.set(index.value.i2,valor.value);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -1889,57 +1863,58 @@ namespace jvm {
 	void Engine::exec_i2l (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOi2l *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 intValue = frame.operands.pop4();
-		frame.operands.push8(static_cast<i8>(intValue.i4));
+		auto intValue = frame.operands.pop4();
+
+		frame.operands.push8(T_LONG, static_cast<i8>(intValue.value.i4));
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_i2f (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOi2f *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 intValue = frame.operands.pop4();
-		frame.operands.push4(static_cast<float>(intValue.i4));
+		auto intValue = frame.operands.pop4();
+
+		frame.operands.push4(T_FLOAT, static_cast<float>(intValue.value.i4));
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_i2d (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOi2d *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 intValue = frame.operands.pop4();
-		frame.operands.push8(static_cast<double>(intValue.i4));
+		auto intValue = frame.operands.pop4();
+
+		frame.operands.push8(T_DOUBLE, static_cast<double>(intValue.value.i4));
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_l2i (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOl2i *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 longValue = frame.operands.pop8();
-		i4 intValue = static_cast<i4>(0x00000000FFFFFFFF & longValue.ll);
-		frame.operands.push4(intValue);
+		auto longValue = frame.operands.pop8();
+
+		op4 intValue { .i4 = static_cast<i4>(0x00000000FFFFFFFF & longValue.value.ll) };
+		frame.operands.push4(T_INT, intValue);
 		frame.PC += data->jmp + 1;
 	}
-
 
 	void Engine::exec_l2f (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOl2f *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 longvalue = frame.operands.pop8();
-		op4 floatvalue;
-		floatvalue.f = static_cast<float>(longvalue.ll);
-		frame.operands.push4(floatvalue);
+		auto longvalue = frame.operands.pop8();
+
+		op4 floatvalue { .f = static_cast<float>(longvalue.value.ll) };
+		frame.operands.push4(T_FLOAT, floatvalue);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
 	}
 
-
 	void Engine::exec_l2d (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOl2d *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 longvalue = frame.operands.pop8();
-		op8 doublevalue;
-		doublevalue.lf = static_cast<double>(longvalue.ll);
+		auto longvalue = frame.operands.pop8();
 
+		op8 doublevalue { .lf = static_cast<double>(longvalue.value.ll) };
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -1948,11 +1923,10 @@ namespace jvm {
 	void Engine::exec_f2i (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOf2i *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 floatvalue = frame.operands.pop4();
-		op4 intvalue;
-		intvalue.i4 = static_cast<int32_t>(floatvalue.f);
-		frame.operands.push4(intvalue);
+		auto floatvalue = frame.operands.pop4();
 
+		op4 intvalue { .i4 = static_cast<int32_t>(floatvalue.value.f) };
+		frame.operands.push4(T_INT, intvalue);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -1961,77 +1935,71 @@ namespace jvm {
 	void Engine::exec_f2l (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOf2l *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 floatvalue = frame.operands.pop4();
-		op8 longvalue;
-		longvalue.ll = static_cast<float>(floatvalue.f);
-		frame.operands.push8(longvalue);
+		auto floatvalue = frame.operands.pop4();
+
+		op8 longvalue { .ll = (long long) static_cast<double>(floatvalue.value.f) };
+		frame.operands.push8(T_LONG, longvalue);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
 	}
-
 
 	void Engine::exec_f2d (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOf2d *>(info); // get data in class
 		auto &frame = fs.top();
-		op4  floatvalue = frame.operands.pop4();
-		op8 doublevalue;
-		doublevalue.lf = static_cast<double>(floatvalue.f);
-		frame.operands.push8(doublevalue.lf);
+		auto  floatvalue = frame.operands.pop4();
+
+		op8 doublevalue { .lf = static_cast<double>(floatvalue.value.f) };
+		frame.operands.push8(T_DOUBLE, doublevalue.lf);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
 	}
-
 
 	void Engine::exec_d2i (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOd2i *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 doublevalue = frame.operands.pop8();
-		op4 intvalue;
-		intvalue.i4 = static_cast<int32_t>(doublevalue.lf);
-		frame.operands.push4(intvalue.i4);
+		auto doublevalue = frame.operands.pop8();
+		auto intvalue = static_cast<int32_t>(doublevalue.value.lf);
 
-
+		frame.operands.push4(T_INT, intvalue);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
 	}
-
 
 	void Engine::exec_d2l (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOd2l *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 doublevalue = frame.operands.pop8();
+		auto doublevalue = frame.operands.pop8();
 		op8 longvalue;
-		longvalue.ll = static_cast<long>(doublevalue.lf);
-		frame.operands.push8(longvalue);
+		longvalue.ll = static_cast<long>(doublevalue.value.lf);
+		frame.operands.push8(T_LONG, longvalue);
 
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
 	}
-
 
 	void Engine::exec_d2f (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOd2f *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 doublevalue = frame.operands.pop8();
+		auto doublevalue = frame.operands.pop8();
+
 		op4 floatvalue;
-		floatvalue.f = static_cast<float>(doublevalue.lf);
+		floatvalue.f = static_cast<float>(doublevalue.value.lf);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
 	}
 
-
 	void Engine::exec_i2b (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOi2b *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 intvalue = frame.operands.pop4();
-		op4 bytevalue;
-		bytevalue.i1 = static_cast<int8_t>(intvalue.i1);
-		frame.operands.push4(bytevalue);
+		auto intvalue = frame.operands.pop4();
+
+		op4 bytevalue { .i1 = static_cast<int8_t>(intvalue.value.i1) };
+		frame.operands.push4(T_BYTE, bytevalue);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -2040,41 +2008,41 @@ namespace jvm {
 	void Engine::exec_i2c (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOi2c *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 intvalue = frame.operands.pop4();
-		op4 comput;
-		comput.i1 = static_cast<int8_t>(intvalue.i4);
+		auto intvalue = frame.operands.pop4();
+
+		op4 comput { .i1 = static_cast<int8_t>(intvalue.value.i4) };
 
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
 	}
-
 
 	void Engine::exec_i2s (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOi2s *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 intvalue = frame.operands.pop4();
-		op4 shortvalue;
-		shortvalue.i2 = static_cast<int16_t>(intvalue.i4);
+		auto intvalue = frame.operands.pop4();
+
+		op4 shortvalue { .i2 = static_cast<int16_t>(intvalue.value.i4) };
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
 	}
 
-
 	void Engine::exec_lcmp (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlcmp *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 longvalue1 = frame.operands.pop8();
-		op8 longvalue2 = frame.operands.pop8();
-		op8 res;
-		res.ll = longvalue1.ll - longvalue2.ll;
-		if (res.ll > 0) {
-			frame.operands.push4(1);
-		} else if(res.ll == 0) {
-			frame.operands.push4(0);
-		} else if(res.ll < 0) {
-			frame.operands.push4(-1);
+		auto longvalue1 = frame.operands.pop8();
+		auto longvalue2 = frame.operands.pop8();
+
+		op8 aux { .ll = longvalue1.value.ll - longvalue2.value.ll };
+		BigData res { .value = aux };
+
+		if (res.value.ll > 0) {
+			frame.operands.push4(T_INT, 1);
+		} else if (res.value.ll == 0) {
+			frame.operands.push4(T_INT, 0);
+		} else if (res.value.ll < 0) {
+			frame.operands.push4(T_INT, -1);
 		}
 		frame.PC += data->jmp + 1;
 
@@ -2084,21 +2052,21 @@ namespace jvm {
 	void Engine::exec_fcmpl (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfcmpl *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 floatvalue1 = frame.operands.pop4();
-		op4 floatvalue2 = frame.operands.pop4();
-		op4 resvalue;
-		resvalue.f = floatvalue1.f - floatvalue2.f;
+		auto floatvalue1 = frame.operands.pop4();
+		auto floatvalue2 = frame.operands.pop4();
 
-		if(std::isnan(floatvalue1.f)| std::isnan(floatvalue2.f)) {
-			frame.operands.push4(-1);
+		op4 resvalue { .f = floatvalue1.value.f - floatvalue2.value.f };
+
+		if (std::isnan(floatvalue1.value.f)| std::isnan(floatvalue2.value.f)) {
+			frame.operands.push4(T_INT, -1);
 		}
 
 		if (resvalue.f > 0) {
-			frame.operands.push4(1);
-		} else if(resvalue.f == 0) {
-			frame.operands.push4(0);
-		} else if(resvalue.f < 0) {
-			frame.operands.push4(-1);
+			frame.operands.push4(T_INT, 1);
+		} else if (resvalue.f == 0) {
+			frame.operands.push4(T_INT, 0);
+		} else if (resvalue.f < 0) {
+			frame.operands.push4(T_INT, -1);
 		}
 
 
@@ -2110,20 +2078,20 @@ namespace jvm {
 	void Engine::exec_fcmpg (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfcmpg *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 floatvalue1 = frame.operands.pop4();
-		op4 floatvalue2 = frame.operands.pop4();
-		op4 resvalue;
-		resvalue.f = floatvalue1.f - floatvalue2.f;
-		if(std::isnan(floatvalue1.f)| std::isnan(floatvalue2.f)) {
-			frame.operands.push4(1);
+		auto floatvalue1 = frame.operands.pop4();
+		auto floatvalue2 = frame.operands.pop4();
+
+		op4 resvalue { .f = floatvalue1.value.f - floatvalue2.value.f };
+		if (std::isnan(floatvalue1.value.f) | std::isnan(floatvalue2.value.f)) {
+			frame.operands.push4(T_INT, -1);
 		}
 
 		if (resvalue.f > 0) {
-			frame.operands.push4(1);
-		} else if(resvalue.f == 0) {
-			frame.operands.push4(0);
-		} else if(resvalue.f < 0) {
-			frame.operands.push4(-1);
+			frame.operands.push4(T_INT, 1);
+		} else if (resvalue.f == 0) {
+			frame.operands.push4(T_INT, 0);
+		} else if (resvalue.f < 0) {
+			frame.operands.push4(T_INT, -1);
 		}
 
 		frame.PC += data->jmp + 1;
@@ -2138,18 +2106,18 @@ namespace jvm {
 		auto floatvalue1 = frame.operands.pop8();
 		auto floatvalue2 = frame.operands.pop8();
 
-		op8 resvalue { .lf = floatvalue1.lf - floatvalue2.lf };
+		op8 resvalue { .lf = floatvalue1.value.lf - floatvalue2.value.lf };
 
-		if(std::isnan(floatvalue1.lf)| std::isnan(floatvalue2.lf)) {
-			frame.operands.push4(-1);
+		if (std::isnan(floatvalue1.value.lf)| std::isnan(floatvalue2.value.lf)) {
+			frame.operands.push4(T_INT, -1);
 		}
 
 		if (resvalue.lf > 0) {
-			frame.operands.push4(1);
-		} else if(resvalue.lf == 0) {
-			frame.operands.push4(0);
-		} else if(resvalue.lf < 0) {
-			frame.operands.push4(-1);
+			frame.operands.push4(T_INT, 1);
+		} else if (resvalue.lf == 0) {
+			frame.operands.push4(T_INT, 0);
+		} else if (resvalue.lf < 0) {
+			frame.operands.push4(T_INT, -1);
 		}
 
 		frame.PC += data->jmp + 1;
@@ -2157,24 +2125,24 @@ namespace jvm {
 		throw JvmException("Not Implemented!");
 	}
 
-
 	void Engine::exec_dcmpg (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdcmpg *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 floatvalue1 = frame.operands.pop8();
-		op8 floatvalue2 = frame.operands.pop8();
+		auto floatvalue1 = frame.operands.pop8();
+		auto floatvalue2 = frame.operands.pop8();
+
 		op8 resvalue;
-		resvalue.lf = floatvalue1.lf - floatvalue2.lf;
-		if(std::isnan(floatvalue1.lf)| std::isnan(floatvalue2.lf)) {
-			frame.operands.push4(1);
+		resvalue.lf = floatvalue1.value.lf - floatvalue2.value.lf;
+		if (std::isnan(floatvalue1.value.lf)| std::isnan(floatvalue2.value.lf)) {
+			frame.operands.push4(T_INT, 1);
 		}
 
 		if (resvalue.lf > 0) {
-			frame.operands.push4(1);
-		} else if(resvalue.lf == 0) {
-			frame.operands.push4(0);
-		} else if(resvalue.lf < 0) {
-			frame.operands.push4(-1);
+			frame.operands.push4(T_INT, 1);
+		} else if (resvalue.lf == 0) {
+			frame.operands.push4(T_INT, 0);
+		} else if (resvalue.lf < 0) {
+			frame.operands.push4(T_INT, -1);
 		}
 
 		frame.PC += data->jmp + 1;
@@ -2183,20 +2151,21 @@ namespace jvm {
 	void Engine::exec_ifeq (InstructionInfo * info) {
 		auto data = reinterpret_cast<OPINFOifeq *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value = frame.operands.pop4();
-		if (value.i4 == 0) {
+		auto value = frame.operands.pop4();
+
+		if (value.value.i4 == 0) {
 			frame.PC += data->branchoffset;
 		} else {
 			frame.PC += data->jmp + 1;
 		}
 	}
 
-
 	void Engine::exec_ifne (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifne *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value = frame.operands.pop4();
-		if (value.i4 != 0) {
+		auto value = frame.operands.pop4();
+
+		if (value.value.i4 != 0) {
 			frame.PC += data->branchoffset;
 		} else {
 			frame.PC += data->jmp + 1;
@@ -2206,8 +2175,9 @@ namespace jvm {
 	void Engine::exec_iflt (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiflt *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value = frame.operands.pop4();
-		if (value.i4 < 0) {
+		auto value = frame.operands.pop4();
+
+		if (value.value.i4 < 0) {
 			frame.PC += data->branchoffset;
 		} else {
 			frame.PC += data->jmp + 1;
@@ -2217,8 +2187,9 @@ namespace jvm {
 	void Engine::exec_ifge (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifge *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value = frame.operands.pop4();
-		if (value.i4 >= 0) {
+		auto value = frame.operands.pop4();
+
+		if (value.value.i4 >= 0) {
 			frame.PC += data->branchoffset;
 		} else {
 			frame.PC += data->jmp + 1;
@@ -2228,8 +2199,9 @@ namespace jvm {
 	void Engine::exec_ifgt (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifgt *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value = frame.operands.pop4();
-		if (value.i4 > 0) {
+		auto value = frame.operands.pop4();
+
+		if (value.value.i4 > 0) {
 			frame.PC += data->branchoffset;
 		} else {
 			frame.PC += data->jmp + 1;
@@ -2239,8 +2211,9 @@ namespace jvm {
 	void Engine::exec_ifle (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifle *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value = frame.operands.pop4();
-		if (value.i4 <= 0) {
+		auto value = frame.operands.pop4();
+
+		if (value.value.i4 <= 0) {
 			frame.PC += data->branchoffset;
 		} else {
 			frame.PC += data->jmp + 1;
@@ -2250,9 +2223,10 @@ namespace jvm {
 	void Engine::exec_if_icmpeq (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_icmpeq *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value1 = frame.operands.pop4();
-		op4 value2 = frame.operands.pop4();
-		if (value1.i4 == value2.i4) {
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+
+		if (value1.value.i4 == value2.value.i4) {
 			frame.PC += data->branchoffset;
 		} else {
 			frame.PC += data->jmp + 1;
@@ -2262,9 +2236,10 @@ namespace jvm {
 	void Engine::exec_if_icmpne (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_icmpne *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value1 = frame.operands.pop4();
-		op4 value2 = frame.operands.pop4();
-		if (value1.i4 != value2.i4) {
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+
+		if (value1.value.i4 != value2.value.i4) {
 			frame.PC += data->branchoffset;
 		} else {
 			frame.PC += data->jmp + 1;
@@ -2274,9 +2249,10 @@ namespace jvm {
 	void Engine::exec_if_icmplt (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_icmplt *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value1 = frame.operands.pop4();
-		op4 value2 = frame.operands.pop4();
-		if (value1.i4 < value2.i4) {
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+
+		if (value1.value.i4 < value2.value.i4) {
 			frame.PC += data->branchoffset;
 		} else {
 			frame.PC += data->jmp + 1;
@@ -2286,9 +2262,10 @@ namespace jvm {
 	void Engine::exec_if_icmpge (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_icmpge *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value1 = frame.operands.pop4();
-		op4 value2 = frame.operands.pop4();
-		if (value1.i4 >= value2.i4) {
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+
+		if (value1.value.i4 >= value2.value.i4) {
 			frame.PC += data->branchoffset;
 		} else {
 			frame.PC += data->jmp + 1;
@@ -2298,9 +2275,10 @@ namespace jvm {
 	void Engine::exec_if_icmpgt (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_icmpgt *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value1 = frame.operands.pop4();
-		op4 value2 = frame.operands.pop4();
-		if (value1.i4 > value2.i4) {
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+
+		if (value1.value.i4 > value2.value.i4) {
 			frame.PC += data->branchoffset;
 		} else {
 			frame.PC += data->jmp + 1;
@@ -2310,9 +2288,10 @@ namespace jvm {
 	void Engine::exec_if_icmple (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_icmple *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value1 = frame.operands.pop4();
-		op4 value2 = frame.operands.pop4();
-		if (value1.i4 <= value2.i4) {
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+
+		if (value1.value.i4 <= value2.value.i4) {
 			frame.PC += data->branchoffset;
 		} else {
 			frame.PC += data->jmp + 1;
@@ -2322,9 +2301,10 @@ namespace jvm {
 	void Engine::exec_if_acmpeq (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_acmpeq *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value1 = frame.operands.pop4();
-		op4 value2 = frame.operands.pop4();
-		if (value1.ui4 == value2.ui4) {
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+
+		if (value1.value.ui4 == value2.value.ui4) {
 			frame.PC += data->branchoffset;
 		} else {
 			frame.PC += data->jmp + 1;
@@ -2334,9 +2314,10 @@ namespace jvm {
 	void Engine::exec_if_acmpne (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOif_acmpne *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 value1 = frame.operands.pop4();
-		op4 value2 = frame.operands.pop4();
-		if (value1.ui4 != value2.ui4) {
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop4();
+
+		if (value1.value.ui4 != value2.value.ui4) {
 			frame.PC += data->branchoffset;
 		} else {
 			frame.PC += data->jmp + 1;
@@ -2350,20 +2331,20 @@ namespace jvm {
 		frame.PC = static_cast<u4>(static_cast<i4>(frame.PC) + data->branchoffset);
 	}
 
-	// TODO: finish this function
 	void Engine::exec_jsr (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOjsr *>(info); // get data in class
 		auto &frame = fs.top();
 
-		frame.PC += data->jmp + 1;
+		frame.operands.push4(T_RET, frame.PC + data->jmp + 1); // insert address of the next instruction as type ReturnAddress
 
-		throw JvmException("Not Implemented!");
+		frame.PC = static_cast<u4>(static_cast<i4>(frame.PC) + data->branchoffset); // jump to procedure
 	}
 
 	void Engine::exec_ret (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOret *>(info); // get data in class
 		auto &frame = fs.top();
-		auto newPC  = frame.variables.get4(data->index);
+
+		auto newPC  = frame.variables.get4(data->index); // remove the next PC of type returnAddress
 
 		frame.PC = newPC.ui4;
 	}
@@ -2390,50 +2371,54 @@ namespace jvm {
 
 	void Engine::exec_ireturn (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOireturn *>(info); // get data in class
-		auto &frame = fs.top(); fs.pop();
+		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
 
 		auto returnValue = frame.operands.pop4();
+		fs.pop();
 		auto &frameInvoker = fs.top();
 
-		frameInvoker.operands.push4(returnValue);
+		frameInvoker.operands.push4(T_INT, returnValue.value);
 	}
 
 	void Engine::exec_lreturn (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlreturn *>(info); // get data in class
-		auto &frame = fs.top(); fs.pop();
+		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
 
 		auto returnValue = frame.operands.pop8();
+		fs.pop();
 		auto &frameInvoker = fs.top();
 
-		frameInvoker.operands.push8(returnValue);
+		frameInvoker.operands.push8(T_LONG, returnValue.value);
 	}
 
 	void Engine::exec_freturn (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfreturn *>(info); // get data in class
-		auto &frame = fs.top(); fs.pop();
+		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
 
 		auto returnValue = frame.operands.pop4();
+		fs.pop();
 		auto &frameInvoker = fs.top();
 
-		frameInvoker.operands.push4(returnValue);
+		frameInvoker.operands.push4(T_FLOAT, returnValue.value);
 	}
 
 	void Engine::exec_dreturn (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdreturn *>(info); // get data in class
-		auto &frame = fs.top(); fs.pop();
+		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
 
 		auto returnValue = frame.operands.pop8();
+		fs.pop();
 		auto &frameInvoker = fs.top();
 
-		frameInvoker.operands.push8(returnValue);
+		frameInvoker.operands.push8(T_DOUBLE, returnValue.value);
 	}
 
 	// TODO: finish this function
@@ -2450,10 +2435,9 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOreturn *>(info); // get data in class
 		auto &frame = fs.top();
 		fs.pop();
-		if(fs.empty()) throw JvmException("Execução finalizada com sucesso.");
+		if (fs.empty()) throw JvmException("Execução finalizada com sucesso.");
 		frame.PC += data->jmp + 1;
 	}
-
 
 	void Engine::exec_getstatic (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOgetstatic *>(info); // get data in class
@@ -2497,24 +2481,56 @@ namespace jvm {
 		throw JvmException("Not Implemented!");
 	}
 
-
+	// TODO: finish this function
 	void Engine::exec_invokevirtual (InstructionInfo * info) {
-		auto data   = reinterpret_cast<OPINFOinvokevirtual *>(info); // get data in class
+		auto data   = reinterpret_cast<OPINFOinvokestatic *>(info); // get data in class
 		auto &frame = fs.top();
-		auto objectref = frame.operands.pop4();
-		auto x = reinterpret_cast<CP_Methodref*>(frame.cl.constant_pool[data->index]);
-		auto k = findMethod(*x);
-		Frame l(k.first,k.second);
-		int i = 1;
-		while(!fs.top().operands.empty()) {
-			auto resvalue = frame.operands.pop4();
-			l.variables.set(i,resvalue.ui4);
-			i++;
+		auto &cp = frame.cl.constant_pool;
+
+		auto methodRef = reinterpret_cast<CP_Methodref*>(cp[data->index]); // get the method info from constant pool
+		auto &classInfo = cp[methodRef->class_index]->as<CP_Class>();
+		auto className = cp[classInfo.name_index]->toString(cp);
+		auto &methodNameAndType = cp[methodRef->name_and_type_index]->as<CP_NameAndType>();
+		auto methodName = cp[methodNameAndType.name_index] -> toString(cp);
+		auto methodDescriptor = cp[methodNameAndType.descriptor_index] -> toString(cp);
+
+		if (methodName == "println" && className == "java/io/PrintStream") {
+			auto printStart = frame.operands.pop4();
+
+			//std::cout << print(printStart) << std::endl;
+
+			frame.PC += data->jmp + 1;
+			return;
 		}
-		fs.push(l);
+
+		if (methodName == "registerNatives" && className == "java/lang/Object") { // ignore registerNatives
+			frame.PC += data->jmp + 1;
+			return;
+		}
+
+		if (className.find("java/") == 0) { // calling something that start with java/, this should not happen
+			throw JvmException("Invalid call to" + className);
+		}
+
+		auto methodData = findMethod(*methodRef);
+
+		Frame newFrame(methodData.classLoader, methodData.method);
+
+		auto nargs = getArgumentsSize(methodDescriptor);
+		std::stack<op4> args;
+		for (u2 i = 0; i < nargs; i++) {
+			auto value = frame.operands.pop4();
+			args.push(value.value);
+		}
+
+		for (u2 i = 0; i < nargs; i++) {
+			auto value = args.top(); args.pop();
+			newFrame.variables.set(i, value);
+		}
+
+		fs.push(newFrame);
 
 		frame.PC += data->jmp + 1;
-
 		throw JvmException("Not Implemented!");
 	}
 
@@ -2528,27 +2544,84 @@ namespace jvm {
 		throw JvmException("Not Implemented!");
 	}
 
-
 	void Engine::exec_invokestatic (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOinvokestatic *>(info); // get data in class
 		auto &frame = fs.top();
-		auto x = reinterpret_cast<CP_Methodref*>(frame.cl.constant_pool[data->index]);
-		auto k = findMethod(*x);
+		auto &cp = frame.cl.constant_pool;
 
-		Frame newFrame(k.first,k.second);
-		int i = 1;
+		auto methodRef = reinterpret_cast<CP_Methodref*>(cp[data->index]); // get the method info from constant pool
+		auto &classInfo = cp[methodRef->class_index]->as<CP_Class>();
+		auto className = cp[classInfo.name_index]->toString(cp);
+		auto &methodNameAndType = cp[methodRef->name_and_type_index]->as<CP_NameAndType>();
+		auto methodName = cp[methodNameAndType.name_index] -> toString(cp);
+		auto methodDescriptor = cp[methodNameAndType.descriptor_index] -> toString(cp);
 
-		while(!fs.top().operands.empty()) {
-			auto resvalue = frame.operands.pop4();
-			newFrame.variables.set(i,resvalue.ui4);
-			i++;
+		if (methodName == "println" && className == "java/io/PrintStream") {
+			auto printStart = frame.operands.pop4();
+
+			//std::cout << print(printStart) << std::endl;
+
+			frame.PC += data->jmp + 1;
+			return;
+		}
+
+		if (methodName == "registerNatives" && className == "java/lang/Object") { // ignore registerNatives
+			frame.PC += data->jmp + 1;
+			return;
+		}
+
+		if (className.find("java/") == 0) { // calling something that start with java/, this should not happen
+			throw JvmException("Invalid call to" + className);
+		}
+
+		auto methodData = findMethod(*methodRef);
+
+		Frame newFrame(methodData.classLoader, methodData.method);
+
+		auto nargs = getArgumentsSize(methodDescriptor);
+		std::stack<op4> args;
+		for (u2 i = 0; i < nargs; i++) {
+			auto value = frame.operands.pop4();
+			args.push(value.value);
+		}
+
+		for (u2 i = 0; i < nargs; i++) {
+			auto value = args.top(); args.pop();
+			newFrame.variables.set(i, value);
 		}
 
 		fs.push(newFrame);
 
 		frame.PC += data->jmp + 1;
+	}
 
-//		throw JvmException("Not Implemented!");
+	u4 Engine::getArgumentsSize (std::string descriptor) {
+		u4 nargs = 0;
+
+		for (u2 i = 1; descriptor[i] != ')'; i++) {
+			switch (descriptor[i]) {
+				case 'D': // double-precision floating-point value
+				case 'J': // long integer
+					nargs += 2;
+					break;
+				case '[':
+					nargs++;
+					while(descriptor[++i] != '['); // jump description of how much dimentions it is
+					if (descriptor[i] == 'L') { // if array of type L
+						while(descriptor[++i] != ';');
+					}
+					break;
+				case 'L': // an instance of class ClassName
+					nargs++;
+					while(descriptor[++i] != ';'); // jump the name of the class
+					break;
+				default:
+					nargs++;
+					break;
+			}
+		}
+
+		return nargs;
 	}
 
 	// TODO: finish this function
@@ -2581,63 +2654,42 @@ namespace jvm {
 		throw JvmException("Not Implemented!");
 	}
 
-
 	void Engine::exec_newarray (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOnewarray *>(info); // get data in class
 		auto &frame = fs.top();
 		auto arraytam = frame.operands.pop4();
 		auto type = data->atype;
-		auto vector_ptr = mem.size();
-		if(type == 4) {
-			bool * val = new bool[arraytam.ui4];
+		auto vector_ptr = static_cast<u2>(mem.size());
+
+		if (type == T_BOOL) {
+			auto val = new bool[arraytam.value.ui4];
 			mem.push_back(val);
-			op4 res;
-			res.ui4 = vector_ptr;
-			frame.operands.push4(res);
-		} else if(type == 5) {
-			char * val = new char[arraytam.ui4];
+		} else if (type == T_CHAR) {
+			auto val = new char[arraytam.value.ui4];
 			mem.push_back(val);
-			op4 res;
-			res.ui4 = vector_ptr;
-			frame.operands.push4(res);
-		} else if(type == 6) {
-			float * val = new float[arraytam.ui4];
+		} else if (type == T_FLOAT) {
+			auto val = new float[arraytam.value.ui4];
 			mem.push_back(val);
-			op4 res;
-			res.ui4 = vector_ptr;
-			frame.operands.push4(res);
-		} else if(type == 7) {
-			double * val = new double[arraytam.ui4];
+		} else if (type == T_DOUBLE) {
+			auto val = new double[arraytam.value.ui4];
 			mem.push_back(val);
-			op4 res;
-			res.ui4 = vector_ptr;
-			frame.operands.push4(res);
-		} else if(type == 8) {
-			u1 * val = new u1[arraytam.ui4];
+		} else if (type == T_BYTE) {
+			auto val = new u1[arraytam.value.ui4];
 			mem.push_back(val);
-			op4 res;
-			res.ui4 = vector_ptr;
-			frame.operands.push4(res);
-		} else if(type == 9) {
-			short * val = new short[arraytam.ui4];
+		} else if (type == T_SHORT) {
+			auto val = new short[arraytam.value.ui4];
 			mem.push_back(val);
-			op4 res;
-			res.ui4 = vector_ptr;
-			frame.operands.push4(res);
-		} else if(type == 10) {
-			int * val = new int[arraytam.ui4];
+		} else if (type == T_INT) {
+			auto val = new int[arraytam.value.ui4];
 			mem.push_back(val);
-			op4 res;
-			res.ui4 = vector_ptr;
-			frame.operands.push4(res);
-		} else if(type == 11) {
-			long * val = new long[arraytam.ui4];
+		} else if (type == T_LONG) {
+			auto val = new long[arraytam.value.ui4];
 			mem.push_back(val);
-			op4 res;
-			res.ui4 = vector_ptr;
-			frame.operands.push4(res);
 		}
 
+		op4 res { .ui4 = vector_ptr };
+
+		frame.operands.push4(T_ARRAY, res);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -2647,15 +2699,16 @@ namespace jvm {
 	void Engine::exec_anewarray (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOanewarray *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 count_value = frame.operands.pop4();
-		CP_Entry* f =frame.cl.constant_pool[data->index];
+		auto count_value = frame.operands.pop4();
+		CP_Entry* f = frame.cl.constant_pool[data->index];
+
 		f = dynamic_cast<CP_Class*>(f);
-		if(f != nullptr)
-		{
+		if (f != nullptr) {
 
 		}
+
 		f = dynamic_cast<CP_Methodref*>(f);
-		if(f != nullptr){
+		if (f != nullptr) {
 
 		}
 
@@ -2664,14 +2717,14 @@ namespace jvm {
 		throw JvmException("Not Implemented!");
 	}
 
-
 	void Engine::exec_arraylength (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOarraylength *>(info); // get data in class
 		auto &frame = fs.top();
 		auto arrayref = frame.operands.pop4();
-		auto ARP = mem.
-		op4 arraylength { .ui4 =(sizeof(ARP)/sizeof(*ARP+ 0)) };
-		frame.operands.push4(arraylength.ui4);
+		auto ARP = mem[arrayref.value.ui4];
+		op4 arraylength;
+		//arraylength.ui4 = (sizeof(ARP)/sizeof(ARP[0]));
+		frame.operands.push4(T_INT, arraylength.ui4);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
@@ -2740,7 +2793,7 @@ namespace jvm {
 		auto &frame = fs.top();
 		auto ref = frame.operands.pop4();
 
-		if(ref.f == 0) {
+		if (ref.value.f == 0) {
 			frame.PC = static_cast<u4>(static_cast<i4>(frame.PC) + data->branchoffset);
 		} else {
 			frame.PC += data->jmp + 1;
@@ -2752,7 +2805,7 @@ namespace jvm {
 		auto &frame = fs.top();
 		auto ref = frame.operands.pop4();
 
-		if(ref.f != 0) {
+		if (ref.value.f != 0) {
 			frame.PC = static_cast<u4>(static_cast<i4>(frame.PC) + data->branchoffset);
 		} else {
 			frame.PC += data->jmp + 1;
@@ -2770,9 +2823,9 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOjsr_w *>(info); // get data in class
 		auto &frame = fs.top();
 
-		frame.operands.push4(frame.PC + info->jmp);
+		frame.operands.push4(T_RET, frame.PC + data->jmp + 1); // insert address of the next instruction as type ReturnAddress
 
-		frame.PC = static_cast<u4>(static_cast<i4>(frame.PC) + data->branchoffset);
+		frame.PC = static_cast<u4>(static_cast<i4>(frame.PC) + data->branchoffset); // jump to procedure
 	}
 
 	void Engine::exec_breakpoint (InstructionInfo * info) {

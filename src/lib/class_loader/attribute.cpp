@@ -39,7 +39,8 @@ namespace jvm {
 			if (attr == nullptr) {
 				os << prefix << "Undefined attribute" << std::endl;
 			} else {
-				attr->printToStream(os, cp, prefix + "\t");
+				auto res = prefix + "\t";
+				attr->printToStream(os, cp, res);
 			}
 		}
 	}
@@ -68,13 +69,13 @@ namespace jvm {
 		attributes.fill(reader, cp);
 	}
 
-	void AttrCode::printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix) {
+	void AttrCode::printToStream(std::ostream &os, ConstantPool &cp, std::string &prefix) {
 		os << prefix << "Code:" << std::endl;
 
 		for (auto pair : code) {
 			auto instr = pair.second;
 			auto prefix2 = prefix + "\t";
-			instr->printToStream(os, prefix2);
+			instr->printToStream(os, prefix2, cp);
 		}
 	}
 
@@ -82,7 +83,7 @@ namespace jvm {
 		constantvalue_index = reader.getNextHalfWord();
 	}
 
-	void AttrConstantValue::printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix) {
+	void AttrConstantValue::printToStream(std::ostream &os, ConstantPool &cp, std::string &prefix) {
 		os << prefix << "Constant Value: " << cp[constantvalue_index]->toString(cp) << std::endl;
 	}
 
@@ -94,7 +95,7 @@ namespace jvm {
 		}
 	}
 
-	void AttrExceptions::printToStream(std::ostream &os, ConstantPool &pool, const std::string &prefix) {
+	void AttrExceptions::printToStream(std::ostream &os, ConstantPool &pool, std::string &prefix) {
 		os << prefix << "Exception (count: " << exception_index_table.size() << ")" << std::endl;
 	}
 }

@@ -23,9 +23,9 @@ namespace jvm {
 
 		u4 PC;	///>Frame PC
 
-		const ClassLoader& cl;	///> Class loader reference
+		ClassLoader& cl;	///> Class loader reference
 
-		const MethodInfo& mt;	///> Method info reference
+		MethodInfo& mt;	///> Method info reference
 	};
 
 }

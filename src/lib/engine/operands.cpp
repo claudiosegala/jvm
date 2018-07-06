@@ -4,56 +4,71 @@
 
 namespace jvm {
 
-	op4 Operands::pop4() {
+	Data Operands::pop4() {
 		if (empty()) {
 			throw JvmException("Not enough operands on stack");
 		}
-		op4 retval = top(); pop();
-		return retval;
+		auto data = top(); pop();
+		return data;
 	}
 
-	op8 Operands::pop8() {
+	BigData Operands::pop8() {
 		if (size() < 2) {
 			throw JvmException("Not enough operands on stack");
 		}
-		op4 high = top(); pop();
-		op4 low  = top(); pop();
 
-		return Converter::to_op8(low, high);
+		Data high = top(); pop();
+		Data low  = top(); pop();
+
+		BigData bigData { .value = Converter::to_op8(low.value, high.value) };
+
+		return bigData;
 	}
 
-	void Operands::push4(u4 value) {
+	void Operands::push4(u1 type, u4 value) {
 		op4 bytes = { .ui4 = value };
-		push(bytes);
+		Data data = { .type = type, .value = bytes };
+
+		push(data);
+
 		if (size() > maxSize) {
 			throw JvmException("Maximum operands stack exceeded");
 		}
 	}
 
-	void Operands::push4(op4 value) {
-		push(value);
+	void Operands::push4(u1 type, op4 value) {
+		Data data = { .type = type, .value = value };
+
+		push(data);
+
 		if (size() > maxSize) {
 			throw JvmException("Maximum operands stack exceeded");
 		}
 	}
 
-	void Operands::push8(u8 value) {
+	void Operands::push8(u1 type, u8 value) {
 		op4 high_bytes, low_bytes;
 
 		high_bytes.ui4 = static_cast<u4>(value >> 32ul);
 		low_bytes.ui4  = static_cast<u4>(value & ((1ul << 32ul) - 1));
 
-		push(low_bytes);
-		push(high_bytes);
+		Data data1 { .type = type, .value = low_bytes };
+		Data data2 { .type = type, .value = high_bytes };
+
+		push(data1);
+		push(data2);
 	}
 
-	void Operands::push8(op8 value) {
+	void Operands::push8(u1 type, op8 value) {
 		op4 low, high;
 
 		std::tie(low, high) = Converter::to_op4(value);
 
-		push(low);
-		push(high);
+		Data data1 { .type = type, .value = low };
+		Data data2 { .type = type, .value = high };
+
+		push(data1);
+		push(data2);
 
 		if (size() > maxSize) {
 			throw JvmException("Maximum operands stack size exceeded");

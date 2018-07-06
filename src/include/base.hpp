@@ -10,7 +10,7 @@
 #include <vector>
 #include <memory>
 #include <string>
-#include <math.h>
+#include <cmath>
 #include <codecvt>
 #include <sstream>
 #include <fstream>
@@ -27,6 +27,19 @@
 #define BYTESIZE     8
 #define HALFSIZE     16
 #define WORDSIZE     32
+
+#define T_ARRAY   1
+#define T_OBJ     2 // TODO: verify this
+#define T_REF     3 // TODO: verify this
+#define T_BOOL    4
+#define T_CHAR    5
+#define T_FLOAT   6
+#define T_DOUBLE  7
+#define T_BYTE    8
+#define T_SHORT   9
+#define T_INT     10
+#define T_LONG    11
+#define T_RET     12
 
 
 typedef uint8_t  u1;
@@ -55,7 +68,12 @@ union op8 {
 	int64_t ll;
 };
 
-union lvv {
-	op4* v4;
-	op8* v8;
+struct Data {
+	u1 type;
+	op4 value;
+};
+
+struct BigData {
+	u1 type;
+	op8 value;
 };
