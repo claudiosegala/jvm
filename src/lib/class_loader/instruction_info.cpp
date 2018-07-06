@@ -3830,12 +3830,12 @@ namespace jvm {
 	}
 
 	void OPINFOlookupswitch::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
-		os << prefix << getName() << " " << defaultbyte << " " << npairs << " ";
+		os << prefix << getName() << " " << npairs << " ";
 
 		for(auto& sm_pair : pairs)
 			os << sm_pair.first << " ";
 
-		os << std::endl;
+		os << defaultbyte << std::endl;
 	}
 
 	std::string OPINFOlookupswitch::getName () {
@@ -4462,7 +4462,7 @@ namespace jvm {
 	}
 
 	void OPINFOmultianewarray::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
-		os << prefix << getName() << " " << index << " " << dimensions << std::endl;
+		os << prefix << getName() << " " << +index << " " << cl[index]->toString(cl) << " dim " << +dimensions << std::endl;
 	}
 
 	std::string OPINFOmultianewarray::getName () {
