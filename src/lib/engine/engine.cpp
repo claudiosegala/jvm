@@ -299,6 +299,7 @@ namespace jvm {
 
 			(this ->* executor)(instruction.get());                  // Access the instruction and execute it
 		}
+		std::cout <<"Execução concluída" << std::endl;
 	}
 
 	void Engine::run_clinit () {
@@ -1340,8 +1341,11 @@ namespace jvm {
 		auto &frame = fs.top();
 		auto value = frame.operands.pop4();
 
-		frame.operands.push4(T_INT, value.value);
-		frame.operands.push4(T_INT, value.value);
+		assert(value.type != T_DOUBLE);
+		assert(value.type != T_LONG);
+
+		frame.operands.push4(value.type, value.value);
+		frame.operands.push4(value.type, value.value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -1351,47 +1355,60 @@ namespace jvm {
 		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
 
-		frame.operands.push4(T_INT, value1.value);
-		frame.operands.push4(T_INT, value2.value);
-		frame.operands.push4(T_INT, value1.value);
+		assert(value1.type != T_DOUBLE);
+		assert(value1.type != T_LONG);
+		assert(value2.type != T_DOUBLE);
+		assert(value2.type != T_LONG);
+
+		frame.operands.push4(value1.type, value1.value);
+		frame.operands.push4(value2.type, value2.value);
+		frame.operands.push4(value1.type, value1.value);
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_dup_x2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdup_x2 *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value1 = frame.operands.pop4();
+		auto value2 = frame.operands.pop8();
 
+		frame.operands.push4(value1.type, value1.value);
+		frame.operands.push8(value2.type, value2.value);
+		frame.operands.push4(value1.type, value1.value);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
-	// TODO: finish this function
 	void Engine::exec_dup2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdup2 *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value = frame.operands.pop8();
 
+		frame.operands.push8(value.type, value.value);
+		frame.operands.push8(value.type, value.value);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
-	// TODO: finish this function
 	void Engine::exec_dup2_x1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdup2_x1 *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value1 = frame.operands.pop8();
+		auto value2 = frame.operands.pop4();
 
+		frame.operands.push8(value1.type, value1.value);
+		frame.operands.push4(value2.type, value2.value);
+		frame.operands.push8(value1.type, value1.value);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
-	// TODO: finish this function
 	void Engine::exec_dup2_x2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdup2_x2 *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value1 = frame.operands.pop8();
+		auto value2 = frame.operands.pop8();
 
+		frame.operands.push8(value1.type, value1.value);
+		frame.operands.push8(value2.type, value2.value);
+		frame.operands.push8(value1.type, value1.value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -2665,10 +2682,15 @@ namespace jvm {
 			auto to_print = frame.operands.pop4();
 			auto print_type = to_print.type;
 			auto print_value = to_print.value;
+			double db;
 			if(print_type == T_STRING){
 				auto str_addr = reinterpret_cast<CP_String *>(cp[print_value.ui4]);
 				std::string str = reinterpret_cast<CP_Utf8 *>(cp[str_addr->string_index])->toString(cp);
 				std::cout << str << std::endl;
+			}
+			if(print_type == T_DOUBLE){
+				auto aux = Converter::to_op8(frame.operands.pop4().value, to_print.value);
+				db = aux.lf;
 			}
 			switch(print_type) {
 				case T_INT:
@@ -2684,6 +2706,9 @@ namespace jvm {
 						std::cout << "false"<< std::endl;
 					break;
 				case T_STRING:
+					break;
+				case T_DOUBLE:
+					std::cout << db << std::endl;
 					break;
 				default:
 					throw JvmException("Type not recognized");
@@ -2969,7 +2994,6 @@ namespace jvm {
 		throw JvmException("Not Implemented!");
 	}
 
-	// TODO: check if this checking on null is correct (i think we will need to see the heap)
 	void Engine::exec_ifnull (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifnull *>(info); // get data in class
 		auto &frame = fs.top();
@@ -2984,7 +3008,6 @@ namespace jvm {
 		}
 	}
 
-	// TODO: check if this checking on null is correct (i think we will need to see the heap)
 	void Engine::exec_ifnonnull (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifnonnull *>(info); // get data in class
 		auto &frame = fs.top();
