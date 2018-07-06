@@ -67,7 +67,11 @@ namespace jvm {
 
 		ClassAndMethod findMethod(CP_Methodref &ref);
 
+		ClassAndMethod findMethod(CP_Class &classInfo, std::string &nameAndDescriptor);
+
 		ClassLoader& findClass(CP_Class &classInfo);
+
+		ClassLoader& findClass(std::string& class_name);
 
 		/**
 		 * Get the arguments of a method based on a descriptor

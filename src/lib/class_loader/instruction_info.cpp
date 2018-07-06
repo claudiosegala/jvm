@@ -8,7 +8,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOnop::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOnop::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -30,7 +30,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOaconst_null::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOaconst_null::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -52,7 +52,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiconst_m1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiconst_m1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -74,7 +74,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiconst_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiconst_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -96,7 +96,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiconst_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiconst_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -118,7 +118,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiconst_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiconst_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -140,7 +140,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiconst_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiconst_3::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -162,7 +162,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiconst_4::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiconst_4::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -184,7 +184,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiconst_5::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiconst_5::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -206,7 +206,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlconst_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlconst_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -228,7 +228,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlconst_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlconst_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -250,7 +250,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfconst_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfconst_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -272,7 +272,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfconst_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfconst_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -294,7 +294,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfconst_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfconst_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -316,7 +316,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdconst_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdconst_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -338,7 +338,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdconst_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdconst_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -360,7 +360,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFObipush::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFObipush::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +byte << std::endl;
 	}
 
@@ -383,7 +383,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOsipush::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOsipush::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << value << std::endl;
 	}
 
@@ -406,7 +406,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOldc::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOldc::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -429,7 +429,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOldc_w::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOldc_w::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -452,7 +452,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOldc2_w::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOldc2_w::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -475,7 +475,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOiload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -498,7 +498,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOlload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -521,7 +521,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOfload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -544,7 +544,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOdload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -567,7 +567,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOaload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOaload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -590,7 +590,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiload_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiload_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -612,7 +612,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiload_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiload_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -634,7 +634,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiload_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiload_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -656,7 +656,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiload_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiload_3::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -678,7 +678,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlload_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlload_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -700,7 +700,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlload_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlload_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -722,7 +722,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlload_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlload_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -744,7 +744,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlload_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlload_3::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -766,7 +766,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfload_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfload_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -788,7 +788,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfload_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfload_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -810,7 +810,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfload_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfload_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -832,7 +832,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfload_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfload_3::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -854,7 +854,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdload_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdload_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -876,7 +876,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdload_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdload_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -898,7 +898,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdload_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdload_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -920,7 +920,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdload_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdload_3::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -942,7 +942,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOaload_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOaload_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -964,7 +964,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOaload_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOaload_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -986,7 +986,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOaload_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOaload_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1008,7 +1008,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOaload_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOaload_3::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1030,7 +1030,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiaload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiaload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1052,7 +1052,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlaload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlaload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1074,7 +1074,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfaload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfaload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1096,7 +1096,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdaload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdaload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1118,7 +1118,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOaaload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOaaload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1140,7 +1140,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFObaload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFObaload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1162,7 +1162,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOcaload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOcaload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1184,7 +1184,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOsaload::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOsaload::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1206,7 +1206,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOistore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOistore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -1229,7 +1229,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOlstore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlstore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -1252,7 +1252,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOfstore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfstore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -1275,7 +1275,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOdstore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdstore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -1298,7 +1298,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOastore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -1321,7 +1321,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOistore_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOistore_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1343,7 +1343,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOistore_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOistore_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1365,7 +1365,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOistore_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOistore_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1387,7 +1387,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOistore_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOistore_3::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1409,7 +1409,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlstore_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlstore_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1431,7 +1431,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlstore_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlstore_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1453,7 +1453,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlstore_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlstore_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1475,7 +1475,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlstore_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlstore_3::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1497,7 +1497,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfstore_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfstore_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1519,7 +1519,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfstore_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfstore_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1541,7 +1541,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfstore_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfstore_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1563,7 +1563,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfstore_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfstore_3::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1585,7 +1585,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdstore_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdstore_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1607,7 +1607,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdstore_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdstore_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1629,7 +1629,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdstore_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdstore_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1651,7 +1651,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdstore_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdstore_3::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1673,7 +1673,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOastore_0::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOastore_0::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1695,7 +1695,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOastore_1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOastore_1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1717,7 +1717,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOastore_2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOastore_2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1739,7 +1739,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOastore_3::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOastore_3::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1761,7 +1761,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiastore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1783,7 +1783,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlastore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1805,7 +1805,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfastore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1827,7 +1827,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdastore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1849,7 +1849,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOaastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOaastore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1871,7 +1871,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFObastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFObastore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1893,7 +1893,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOcastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOcastore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1915,7 +1915,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOsastore::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOsastore::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1937,7 +1937,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOpop::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOpop::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1959,7 +1959,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOpop2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOpop2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -1981,7 +1981,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdup::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdup::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2003,7 +2003,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdup_x1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdup_x1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2025,7 +2025,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdup_x2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdup_x2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2047,7 +2047,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdup2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdup2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2069,7 +2069,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdup2_x1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdup2_x1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2091,7 +2091,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdup2_x2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdup2_x2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2113,7 +2113,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOswap::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOswap::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2135,7 +2135,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiadd::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiadd::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2157,7 +2157,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOladd::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOladd::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2179,7 +2179,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfadd::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfadd::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2201,7 +2201,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdadd::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdadd::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2223,7 +2223,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOisub::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOisub::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2245,7 +2245,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlsub::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlsub::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2267,7 +2267,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfsub::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfsub::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2289,7 +2289,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdsub::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdsub::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2311,7 +2311,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOimul::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOimul::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2333,7 +2333,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlmul::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlmul::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2355,7 +2355,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfmul::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfmul::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2377,7 +2377,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdmul::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdmul::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2399,7 +2399,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOidiv::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOidiv::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2421,7 +2421,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOldiv::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOldiv::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2443,7 +2443,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfdiv::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfdiv::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2465,7 +2465,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOddiv::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOddiv::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2487,7 +2487,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOirem::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOirem::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2509,7 +2509,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlrem::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlrem::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2531,7 +2531,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfrem::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfrem::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2553,7 +2553,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdrem::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdrem::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2575,7 +2575,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOineg::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOineg::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2597,7 +2597,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlneg::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlneg::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2619,7 +2619,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfneg::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfneg::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2641,7 +2641,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdneg::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdneg::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2663,7 +2663,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOishl::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOishl::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2685,7 +2685,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlshl::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlshl::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2707,7 +2707,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOishr::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOishr::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2729,7 +2729,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlshr::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlshr::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2751,7 +2751,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiushr::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiushr::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2773,7 +2773,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlushr::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlushr::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2795,7 +2795,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOiand::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiand::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2817,7 +2817,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOland::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOland::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2839,7 +2839,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOior::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOior::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2861,7 +2861,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlor::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlor::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2883,7 +2883,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOixor::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOixor::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2905,7 +2905,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlxor::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlxor::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2927,7 +2927,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOiinc::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiinc::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << " " << +constant << std::endl;
 	}
 
@@ -2951,7 +2951,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOi2l::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOi2l::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2973,7 +2973,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOi2f::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOi2f::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -2995,7 +2995,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOi2d::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOi2d::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3017,7 +3017,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOl2i::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOl2i::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3039,7 +3039,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOl2f::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOl2f::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3061,7 +3061,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOl2d::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOl2d::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3083,7 +3083,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOf2i::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOf2i::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3105,7 +3105,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOf2l::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOf2l::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3127,7 +3127,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOf2d::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOf2d::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3149,7 +3149,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOd2i::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOd2i::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3171,7 +3171,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOd2l::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOd2l::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3193,7 +3193,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOd2f::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOd2f::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3215,7 +3215,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOi2b::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOi2b::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3237,7 +3237,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOi2c::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOi2c::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3259,7 +3259,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOi2s::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOi2s::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3281,7 +3281,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlcmp::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlcmp::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3303,7 +3303,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfcmpl::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfcmpl::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3325,7 +3325,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfcmpg::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfcmpg::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3347,7 +3347,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdcmpl::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdcmpl::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3369,7 +3369,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdcmpg::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdcmpg::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3391,7 +3391,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOifeq::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOifeq::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3414,7 +3414,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOifne::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOifne::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3437,7 +3437,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOiflt::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOiflt::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3460,7 +3460,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOifge::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOifge::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3483,7 +3483,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOifgt::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOifgt::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3506,7 +3506,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOifle::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOifle::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3529,7 +3529,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOif_icmpeq::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOif_icmpeq::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3552,7 +3552,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOif_icmpne::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOif_icmpne::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3575,7 +3575,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOif_icmplt::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOif_icmplt::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3598,7 +3598,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOif_icmpge::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOif_icmpge::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3621,7 +3621,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOif_icmpgt::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOif_icmpgt::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3644,7 +3644,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOif_icmple::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOif_icmple::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3667,7 +3667,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOif_acmpeq::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOif_acmpeq::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3690,7 +3690,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOif_acmpne::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOif_acmpne::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3713,7 +3713,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOgoto::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOgoto::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3741,7 +3741,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOjsr::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOjsr::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -3764,7 +3764,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOret::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOret::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +index << std::endl;
 	}
 
@@ -3787,7 +3787,7 @@ namespace jvm {
 		jmp = 16;
 	}
 
-	void OPINFOtableswitch::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOtableswitch::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << defaultbyte << " " << low << " " << high; // TODO: << " " << jumpOffsets << std::endl;
 	}
 
@@ -3829,7 +3829,7 @@ namespace jvm {
 		jmp = 8;
 	}
 
-	void OPINFOlookupswitch::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlookupswitch::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << defaultbyte << " " << npairs << " ";
 
 		for(auto& sm_pair : pairs)
@@ -3875,7 +3875,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOireturn::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOireturn::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3897,7 +3897,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOlreturn::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOlreturn::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3919,7 +3919,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOfreturn::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOfreturn::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3941,7 +3941,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOdreturn::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOdreturn::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3963,7 +3963,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOareturn::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOareturn::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -3985,7 +3985,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOreturn::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOreturn::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -4007,7 +4007,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOgetstatic::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOgetstatic::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -4030,7 +4030,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOputstatic::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOputstatic::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -4053,7 +4053,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOgetfield::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOgetfield::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -4076,7 +4076,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOputfield::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOputfield::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -4099,7 +4099,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOinvokevirtual::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOinvokevirtual::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -4122,7 +4122,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOinvokespecial::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOinvokespecial::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -4145,7 +4145,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOinvokestatic::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOinvokestatic::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -4168,7 +4168,7 @@ namespace jvm {
 		jmp = 4;
 	}
 
-	void OPINFOinvokeinterface::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOinvokeinterface::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << " " << +count << std::endl;
 	}
 
@@ -4199,7 +4199,7 @@ namespace jvm {
 		jmp = 4;
 	}
 
-	void OPINFOinvokedynamic::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOinvokedynamic::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << " 0 0" << std::endl;
 	}
 
@@ -4225,7 +4225,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOnew::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOnew::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -4248,7 +4248,7 @@ namespace jvm {
 		jmp = 1;
 	}
 
-	void OPINFOnewarray::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOnewarray::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +atype << std::endl;
 	}
 
@@ -4271,7 +4271,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOanewarray::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOanewarray::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -4294,7 +4294,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOarraylength::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOarraylength::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -4316,7 +4316,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOathrow::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOathrow::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -4338,7 +4338,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOcheckcast::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOcheckcast::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -4361,7 +4361,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOinstanceof::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOinstanceof::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << std::endl;
 	}
 
@@ -4384,7 +4384,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOmonitorenter::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOmonitorenter::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -4406,7 +4406,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOmonitorexit::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOmonitorexit::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -4428,7 +4428,7 @@ namespace jvm {
 		jmp = 3;
 	}
 
-	void OPINFOwide::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOwide::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << +opcode << " " << index << " " << countbyte << std::endl;
 	}
 
@@ -4461,7 +4461,7 @@ namespace jvm {
 		jmp = 3;
 	}
 
-	void OPINFOmultianewarray::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOmultianewarray::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << index << " " << dimensions << std::endl;
 	}
 
@@ -4489,7 +4489,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOifnull::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOifnull::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -4512,7 +4512,7 @@ namespace jvm {
 		jmp = 2;
 	}
 
-	void OPINFOifnonnull::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOifnonnull::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -4535,7 +4535,7 @@ namespace jvm {
 		jmp = 4;
 	}
 
-	void OPINFOgoto_w::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOgoto_w::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -4558,7 +4558,7 @@ namespace jvm {
 		jmp = 4;
 	}
 
-	void OPINFOjsr_w::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOjsr_w::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << " " << branchoffset << std::endl;
 	}
 
@@ -4581,7 +4581,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFObreakpoint::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFObreakpoint::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -4603,7 +4603,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOimpdep1::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOimpdep1::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 
@@ -4625,7 +4625,7 @@ namespace jvm {
 		jmp = 0;
 	}
 
-	void OPINFOimpdep2::printToStream(std::ostream& os, std::string& prefix) {
+	void OPINFOimpdep2::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
 		os << prefix << getName() << std::endl;
 	}
 

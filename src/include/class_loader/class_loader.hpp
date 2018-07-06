@@ -16,7 +16,7 @@ namespace jvm {
 
 		uint16_t cp_count;                          ///< Number of entries in the constant_pool entity plus one
 
-		ConstantPool constant_pool;                 ///< Vector of entries that are different structures
+		ConstantPool constant_pool;                 ///< Vector of entries that are constants
 
 		uint16_t access_flags;                      ///< Mask of flags used to denote access permissions to and properties of this class or interface
 

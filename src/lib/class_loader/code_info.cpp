@@ -288,14 +288,14 @@ namespace jvm {
 
 		os << prefix << "Opcodes:" << std::endl;
 
-		for (auto pair : *this) {
-			auto ptr = pair.second;
-			auto instr = ptr.get();
-
-			if (instr != nullptr) {
-				instr->printToStream(os, newPrefix);
-			}
-		}
+//		for (auto pair : *this) {
+//			auto ptr = pair.second;
+//			auto instr = ptr.get();
+//
+//			if (instr != nullptr) {
+//				instr->printToStream(os, newPrefix);
+//			}
+//		}
 	}
 
 };
