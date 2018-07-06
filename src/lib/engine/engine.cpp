@@ -599,6 +599,7 @@ namespace jvm {
 			frame.operands.push4(T_DOUBLE, res1);
 			frame.operands.push4(T_DOUBLE, res2);
 			frame.PC += data->jmp + 1;
+			return;
 		}
 
 		auto res_long = dynamic_cast<CP_Long*>(k);
