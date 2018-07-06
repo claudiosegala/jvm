@@ -1099,8 +1099,6 @@ namespace jvm {
 
 		frame.variables.set(0, value.value);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_fstore_1 (InstructionInfo * info) {
@@ -1110,8 +1108,6 @@ namespace jvm {
 
 		frame.variables.set(1, value.value);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_fstore_2 (InstructionInfo * info) {
@@ -1121,8 +1117,6 @@ namespace jvm {
 
 		frame.variables.set(2, value.value);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_fstore_3 (InstructionInfo * info) {
@@ -1132,8 +1126,6 @@ namespace jvm {
 
 		frame.variables.set(3, value.value);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_dstore_0 (InstructionInfo * info) {
@@ -1143,8 +1135,6 @@ namespace jvm {
 
 		frame.variables.set(0, value.value);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_dstore_1 (InstructionInfo * info) {
@@ -1163,8 +1153,6 @@ namespace jvm {
 
 		frame.variables.set(2, value.value);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_dstore_3 (InstructionInfo * info) {
@@ -1174,8 +1162,6 @@ namespace jvm {
 
 		frame.variables.set(3, value.value);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_astore_0 (InstructionInfo * info) {
@@ -2683,6 +2669,9 @@ namespace jvm {
 				std::string str = reinterpret_cast<CP_Utf8 *>(cp[str_addr->string_index])->toString(cp);
 				std::cout << str << std::endl;
 			}
+			if(print_type == T_DOUBLE){
+				double db = static_cast<u8>(frame.operands.pop4().value.ui4 << 4 || to_print.value.ui4);
+			}
 			switch(print_type) {
 				case T_INT:
 					std::cout << print_value.i4<< std::endl;
@@ -2697,6 +2686,9 @@ namespace jvm {
 						std::cout << "false"<< std::endl;
 					break;
 				case T_STRING:
+					break;
+				case T_DOUBLE:
+//					std::cout << db << std::endl;
 					break;
 				default:
 					throw JvmException("Type not recognized");
