@@ -356,7 +356,7 @@ namespace jvm {
 
 		ClassLoader newClass;
 
-		newClass.read("../samples/" + className + ".class"); // Load the correct class
+		newClass.read(path + className + ".class"); // Load the correct class
 		JavaClasses.insert({ className, newClass }); // Add new class to the map
 
 		return JavaClasses[className];
