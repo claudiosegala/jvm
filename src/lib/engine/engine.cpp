@@ -2407,11 +2407,12 @@ namespace jvm {
 
 	void Engine::exec_ireturn (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOireturn *>(info); // get data in class
-		auto &frame = fs.top(); fs.pop();
+		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
 
 		auto returnValue = frame.operands.pop4();
+		fs.pop();
 		auto &frameInvoker = fs.top();
 
 		frameInvoker.operands.push4(returnValue);
@@ -2419,11 +2420,12 @@ namespace jvm {
 
 	void Engine::exec_lreturn (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlreturn *>(info); // get data in class
-		auto &frame = fs.top(); fs.pop();
+		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
 
 		auto returnValue = frame.operands.pop8();
+		fs.pop();
 		auto &frameInvoker = fs.top();
 
 		frameInvoker.operands.push8(returnValue);
@@ -2431,11 +2433,12 @@ namespace jvm {
 
 	void Engine::exec_freturn (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfreturn *>(info); // get data in class
-		auto &frame = fs.top(); fs.pop();
+		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
 
 		auto returnValue = frame.operands.pop4();
+		fs.pop();
 		auto &frameInvoker = fs.top();
 
 		frameInvoker.operands.push4(returnValue);
@@ -2443,11 +2446,12 @@ namespace jvm {
 
 	void Engine::exec_dreturn (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdreturn *>(info); // get data in class
-		auto &frame = fs.top(); fs.pop();
+		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
 
 		auto returnValue = frame.operands.pop8();
+		fs.pop();
 		auto &frameInvoker = fs.top();
 
 		frameInvoker.operands.push8(returnValue);
@@ -2588,7 +2592,7 @@ namespace jvm {
 			args.push(value);
 		}
 
-		for (u2 i = 1; i <= nargs; i++) {
+		for (u2 i = 0; i < nargs; i++) {
 			auto value = args.top(); args.pop();
 			newFrame.variables.set(i, value);
 		}
