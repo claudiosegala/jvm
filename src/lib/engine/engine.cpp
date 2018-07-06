@@ -2605,57 +2605,37 @@ namespace jvm {
 		auto &frame = fs.top();
 		auto arraytam = frame.operands.pop4();
 		auto type = data->atype;
-		auto vector_ptr = mem.size();
-		if (type == 4) {
-			bool * val = new bool[arraytam.ui4];
+		auto vector_ptr = static_cast<u2>(mem.size());
+
+		if (type == T_BOOLEAN) {
+			auto val = new bool[arraytam.ui4];
 			mem.push_back(val);
-			op4 res;
-			res.ui4 = vector_ptr;
-			frame.operands.push4(res);
-		} else if (type == 5) {
-			char * val = new char[arraytam.ui4];
+		} else if (type == T_CHAR) {
+			auto val = new char[arraytam.ui4];
 			mem.push_back(val);
-			op4 res;
-			res.ui4 = vector_ptr;
-			frame.operands.push4(res);
-		} else if (type == 6) {
-			float * val = new float[arraytam.ui4];
+		} else if (type == T_FLOAT) {
+			auto val = new float[arraytam.ui4];
 			mem.push_back(val);
-			op4 res;
-			res.ui4 = vector_ptr;
-			frame.operands.push4(res);
-		} else if (type == 7) {
-			double * val = new double[arraytam.ui4];
+		} else if (type == T_DOUBLE) {
+			auto val = new double[arraytam.ui4];
 			mem.push_back(val);
-			op4 res;
-			res.ui4 = vector_ptr;
-			frame.operands.push4(res);
-		} else if (type == 8) {
-			u1 * val = new u1[arraytam.ui4];
+		} else if (type == T_BYTE) {
+			auto val = new u1[arraytam.ui4];
 			mem.push_back(val);
-			op4 res;
-			res.ui4 = vector_ptr;
-			frame.operands.push4(res);
-		} else if (type == 9) {
-			short * val = new short[arraytam.ui4];
+		} else if (type == T_SHORT) {
+			auto val = new short[arraytam.ui4];
 			mem.push_back(val);
-			op4 res;
-			res.ui4 = vector_ptr;
-			frame.operands.push4(res);
-		} else if (type == 10) {
-			int * val = new int[arraytam.ui4];
+		} else if (type == T_INT) {
+			auto val = new int[arraytam.ui4];
 			mem.push_back(val);
-			op4 res;
-			res.ui4 = vector_ptr;
-			frame.operands.push4(res);
-		} else if (type == 11) {
-			long * val = new long[arraytam.ui4];
+		} else if (type == T_LONG) {
+			auto val = new long[arraytam.ui4];
 			mem.push_back(val);
-			op4 res;
-			res.ui4 = vector_ptr;
-			frame.operands.push4(res);
 		}
 
+		op4 res { .ui4 = vector_ptr };
+
+		frame.operands.push4(res);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
