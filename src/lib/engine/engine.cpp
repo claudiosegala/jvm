@@ -560,7 +560,7 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
-    // TODO VERIFY THIS INSTRUCTION
+
 	void Engine::exec_ldc (InstructionInfo * info) {
 	    auto data = reinterpret_cast<OPINFOldc *>(info); // get data in class
 	    auto &frame = fs.top();
@@ -620,70 +620,64 @@ namespace jvm {
 //	}
 
 
-	// TODO: VERIFY THIS INSTRUCTION
 	void Engine::exec_ldc_w (InstructionInfo * info) {
-		auto data   = reinterpret_cast<OPINFOldc_w *>(info); // get data in class
+
+		auto data = reinterpret_cast<OPINFOldc *>(info); // get data in class
 		auto &frame = fs.top();
 		auto k = frame.cl.constant_pool[data->index];
-		auto res_float = dynamic_cast<CP_Float*>(k);
+		if (k->getTag() == Integer /* Integer */) {
+			auto int_cp = k->as<CP_Integer>();
+			op4 value{.i4 = static_cast<i4>(int_cp._bytes) };
+			frame.operands.push4(T_INT, value);
 
-		if (res_float != nullptr) {
-			op4 res { .ui4 = res_float->_bytes };
-			frame.operands.push4(T_FLOAT, res);
-			frame.PC += data->jmp + 1;
-		}
+		} else if (k->getTag() == Float /* Float */) {
+			auto float_cp = k->as<CP_Float>();
+			op4 value{.f = static_cast<float>(float_cp._bytes) };
+			frame.operands.push4(T_FLOAT, value);
+		} else if (k->getTag() == String /* String */) {
+			auto cp_str = k->as<CP_String>();
+			auto aux = frame.cl.constant_pool[cp_str.string_index];
+			auto cp_utf8 = aux->as<CP_Utf8>();
+			auto str = cp_utf8.toString(frame.cl.constant_pool);
 
-		auto res_int = dynamic_cast<CP_Integer*>(k);
-		if (res_int != nullptr) {
-			op4 res { .ui4 = res_int->_bytes };
-			frame.operands.push4(T_INT, res);
+			for (auto c : str) {
+				op4 ch{.ui1 = (u1) c };
+				frame.operands.push4(T_CHAR, ch);
+			}
+
+
 			frame.PC += data->jmp + 1;
-		} else {
-			std::cout << "Error in ldc_w" << std::endl;
 		}
 	}
-	// TODO VERIFY THIS INSTRUCTION
 	void Engine::exec_ldc2_w (InstructionInfo * info) {
-		auto data   = reinterpret_cast<OPINFOldc2_w *>(info); // get data in class
+
+		auto data = reinterpret_cast<OPINFOldc *>(info); // get data in class
 		auto &frame = fs.top();
 		auto k = frame.cl.constant_pool[data->index];
-		auto res_double = dynamic_cast<CP_Double*>(k);
+		if (k->getTag() == Long /* Integer */) {
+			auto long_cp = k->as<CP_Long>();
+			op4 value1{.i4 = static_cast<i4>(long_cp.high_bytes)};
+			op4 value2{.i4 = static_cast<i4>(long_cp.low_bytes)};
+			op8 resvalue {.ll = value1.i4 << 32 | value2.i4};
+			frame.operands.push8(T_LONG,resvalue.ll);
 
-		op4 res1, res2;
-
-		if (res_double != nullptr) {
-			res1.ui4 = res_double->low_bytes;
-			res2.ui4 = res_double->high_bytes;
-			frame.operands.push4(T_DOUBLE, res1);
-			frame.operands.push4(T_DOUBLE, res2);
-			frame.PC += data->jmp + 1;
-			return;
-		}
-
-		auto res_long = dynamic_cast<CP_Long*>(k);
-
-		if (res_long != nullptr) {
-			res1.ui4 = res_long->low_bytes;
-			res2.ui4 = res_long->high_bytes;
-			frame.operands.push4(T_LONG, res1);
-			frame.operands.push4(T_LONG, res2);
-			frame.PC += data->jmp + 1;
-		} else {
-			std::cout << "Error in ldc2_w" << std::endl;
+		} else if (k->getTag() == Double /* Double */) {
+			auto double_cp = k->as<CP_Double>();
+			op4 value1 {.ui4 = static_cast<float>(double_cp.high_bytes)};
+			op4 value2 {.ui4 = static_cast<float>(double_cp.low_bytes)};
+			op8 resvalue {.lf = value1.ui4 << 32 | value2.ui4 };
+			frame.operands.push8(T_DOUBLE,resvalue.lf);
 			frame.PC += data->jmp + 1;
 		}
-
 	}
-	// TODO VERIFY THIS INSTRUCTION
 	void Engine::exec_iload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiload *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get4(data->index);
-
 		frame.operands.push4(T_INT, value);
 		frame.PC += data->jmp + 1;
 	}
-	// TODO VERIFY THIS INSTRUCTION
+
 	void Engine::exec_lload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlload *>(info); // get data in class
 		auto &frame = fs.top();
@@ -692,7 +686,7 @@ namespace jvm {
 		frame.operands.push8(T_LONG, value);
 		frame.PC += data->jmp + 1;
 	}
-	// TODO VERIFY THIS INSTRUCTION
+
 	void Engine::exec_fload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfload *>(info); // get data in class
 		auto &frame = fs.top();
@@ -701,7 +695,6 @@ namespace jvm {
 		frame.operands.push4(T_FLOAT, value);
 		frame.PC += data->jmp + 1;
 	}
-	// TODO VERIFY THIS INSTRUCTION
 	void Engine::exec_dload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdload *>(info); // get data in class
 		auto &frame = fs.top();
@@ -710,7 +703,6 @@ namespace jvm {
 		frame.operands.push8(T_DOUBLE, value);
 		frame.PC += data->jmp + 1;
 	}
-	// TODO VERIFY THIS INSTRUCTION
 	void Engine::exec_aload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOaload *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1023,7 +1015,6 @@ namespace jvm {
 		frame.variables.set(data->index, value.value);
 		frame.PC += data->jmp + 1;
 
-		throw JvmException("Not Implemented!");
 	}
 	// TODO VERIFY THIS INSTRUCTION PUT DOUBLE TYPE
 	void Engine::exec_dstore (InstructionInfo * info) {
@@ -1034,7 +1025,6 @@ namespace jvm {
 		frame.variables.set(data->index, value.value);
 		frame.PC += data->jmp + 1;
 
-		throw JvmException("Not Implemented!");
 	}
 	// TODO VERIFY THIS INSTRUCTION PUT REFERENCE TYPE
 	void Engine::exec_astore (InstructionInfo * info) {
@@ -1045,7 +1035,6 @@ namespace jvm {
 		frame.variables.set(data->index, objectref.value);
 		frame.PC += data->jmp + 1;
 
-		throw JvmException("Not Implemented!");
 	}
 	// TODO VERIFY THIS INSTRUCTION PUT INT TYPE
 	void Engine::exec_istore_0 (InstructionInfo * info) {
@@ -1128,7 +1117,6 @@ namespace jvm {
 		frame.variables.set(0, value.value);
 		frame.PC += data->jmp + 1;
 
-		throw JvmException("Not Implemented!");
 	}
 	// TODO VERIFY THIS INSTRUCTION PUT FLOAT TYPE
 	void Engine::exec_fstore_1 (InstructionInfo * info) {
@@ -1139,7 +1127,6 @@ namespace jvm {
 		frame.variables.set(1, value.value);
 		frame.PC += data->jmp + 1;
 
-		throw JvmException("Not Implemented!");
 	}
 	// TODO VERIFY THIS INSTRUCTION PUT FLOAT TYPE
 	void Engine::exec_fstore_2 (InstructionInfo * info) {
@@ -1150,7 +1137,6 @@ namespace jvm {
 		frame.variables.set(2, value.value);
 		frame.PC += data->jmp + 1;
 
-		throw JvmException("Not Implemented!");
 	}
 	// TODO VERIFY THIS INSTRUCTION PUT FLOAT TYPE
 	void Engine::exec_fstore_3 (InstructionInfo * info) {
@@ -1161,7 +1147,6 @@ namespace jvm {
 		frame.variables.set(3, value.value);
 		frame.PC += data->jmp + 1;
 
-		throw JvmException("Not Implemented!");
 	}
 	// TODO VERIFY THIS INSTRUCTION PUT DOUBLE TYPE
 	void Engine::exec_dstore_0 (InstructionInfo * info) {
@@ -1172,7 +1157,6 @@ namespace jvm {
 		frame.variables.set(0, value.value);
 		frame.PC += data->jmp + 1;
 
-		throw JvmException("Not Implemented!");
 	}
 	// TODO VERIFY THIS INSTRUCTION PUT DOUBLE TYPE
 	void Engine::exec_dstore_1 (InstructionInfo * info) {
@@ -1192,7 +1176,6 @@ namespace jvm {
 		frame.variables.set(2, value.value);
 		frame.PC += data->jmp + 1;
 
-		throw JvmException("Not Implemented!");
 	}
 	// TODO VERIFY THIS INSTRUCTION PUT DOUBLE TYPE
 	void Engine::exec_dstore_3 (InstructionInfo * info) {
@@ -1203,7 +1186,6 @@ namespace jvm {
 		frame.variables.set(3, value.value);
 		frame.PC += data->jmp + 1;
 
-		throw JvmException("Not Implemented!");
 	}
 	// TODO VERIFY THIS INSTRUCTION PUT REFERENCE TYPE
 	void Engine::exec_astore_0 (InstructionInfo * info) {
@@ -1214,7 +1196,6 @@ namespace jvm {
 		frame.variables.set(0, objectref.value);
 		frame.PC += data->jmp + 1;
 
-		throw JvmException("Not Implemented!");
 	}
 	// TODO VERIFY THIS INSTRUCTION PUT REFERENCE TYPE
 	void Engine::exec_astore_1 (InstructionInfo * info) {
@@ -1225,7 +1206,6 @@ namespace jvm {
 		frame.variables.set(1, objectref.value);
 		frame.PC += data->jmp + 1;
 
-		throw JvmException("Not Implemented!");
 	}
 	// TODO VERIFY THIS INSTRUCTION PUT REFERENCE TYPE
 	void Engine::exec_astore_2 (InstructionInfo * info) {
@@ -1236,7 +1216,6 @@ namespace jvm {
 		frame.variables.set(2, objectref.value);
 		frame.PC += data->jmp + 1;
 
-		throw JvmException("Not Implemented!");
 	}
 	// TODO VERIFY THIS INSTRUCTION PUT REFERENCE TYPE
 	void Engine::exec_astore_3 (InstructionInfo * info) {
@@ -1246,8 +1225,6 @@ namespace jvm {
 
 		frame.variables.set(3, objectref.value);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 	// TODO VERIFY THIS INSTRUCTION PUT INT TYPE
 	void Engine::exec_iastore (InstructionInfo * info) {
@@ -1260,7 +1237,6 @@ namespace jvm {
 		frame.variables.set(index.value.ui2,value.value);
 		frame.PC += data->jmp + 1;
 
-		throw JvmException("Not Implemented!");
 	}
 	// TODO VERIFY THIS INSTRUCTION PUT LONG TYPE
 	void Engine::exec_lastore (InstructionInfo * info) {
@@ -1272,8 +1248,6 @@ namespace jvm {
 
 		frame.variables.set(index.value.ui2, value.value);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 	// TODO VERIFY THIS INSTRUCTION PUT FLOAT TYPE
 	void Engine::exec_fastore (InstructionInfo * info) {
@@ -1286,9 +1260,8 @@ namespace jvm {
 		frame.variables.set(index.value.ui2,value.value);
 		frame.PC += data->jmp + 1;
 
-		throw JvmException("Not Implemented!");
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT DOUBLE TYPE
+
 	void Engine::exec_dastore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdastore *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1299,9 +1272,8 @@ namespace jvm {
 		frame.variables.set(index.value.ui2,value.value);
 		frame.PC += data->jmp + 1;
 
-		throw JvmException("Not Implemented!");
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT REFERENCE TYPE
+
 	void Engine::exec_aastore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOaastore *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1312,9 +1284,8 @@ namespace jvm {
 		frame.variables.set(index.value.i2,value.value);
 		frame.PC += data->jmp + 1;
 
-		throw JvmException("Not Implemented!");
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT BYTE TYPE
+
 	void Engine::exec_bastore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFObastore *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1325,9 +1296,8 @@ namespace jvm {
 		frame.variables.set(index.value.i2,value.value);
 		frame.PC += data->jmp + 1;
 
-		throw JvmException("Not Implemented!");
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT CASTORE TYPE
+
 	void Engine::exec_castore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOcastore *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1337,8 +1307,6 @@ namespace jvm {
 
 		frame.variables.set(index.value.i2,value.value);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_sastore (InstructionInfo * info) {
@@ -1350,8 +1318,6 @@ namespace jvm {
 
 		frame.variables.set(index.value.i2,value.value);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_pop (InstructionInfo * info) {
@@ -1361,14 +1327,12 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		throw JvmException("Not Implemented!");
 	}
 
 	// TODO: finish this function
 	void Engine::exec_pop2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOpop2 *>(info); // get data in class
 		auto &frame = fs.top();
-
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
