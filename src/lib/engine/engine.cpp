@@ -1426,24 +1426,28 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_dup2_x1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdup2_x1 *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value1 = frame.operands.pop8();
+		auto value2 = frame.operands.pop4();
 
+		frame.operands.push8(value1.type, value1.value);
+		frame.operands.push4(value2.type, value2.value);
+		frame.operands.push8(value1.type, value1.value);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
-	// TODO: finish this function
 	void Engine::exec_dup2_x2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdup2_x2 *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value1 = frame.operands.pop8();
+		auto value2 = frame.operands.pop8();
 
+		frame.operands.push8(value1.type, value1.value);
+		frame.operands.push8(value2.type, value2.value);
+		frame.operands.push8(value1.type, value1.value);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_swap (InstructionInfo * info) {
