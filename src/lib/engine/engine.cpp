@@ -2535,10 +2535,28 @@ namespace jvm {
 		auto methodDescriptor = cp[methodNameAndType.descriptor_index] -> toString(cp);
 
 		if (methodName == "println" && className == "java/io/PrintStream") {
-			auto to_print = frame.operands.pop4().value.ui4;
-
-			std::cout << to_print << std::endl;
-
+			auto to_print = frame.operands.pop4();
+			auto print_type = to_print.type;
+			auto print_value = to_print.value;
+			switch(print_type) {
+				case T_INT:
+					std::cout << print_value.i4<< std::endl;
+					break;
+				case T_FLOAT:
+					std::cout << print_value.f<< std::endl;
+					break;
+				case T_CHAR:
+					std::cout << (char)print_value.ui1<< std::endl;
+					break;
+				case T_BOOL:
+					if(print_value.ui1 == 1)
+						std::cout << "true"<< std::endl;
+					else if(print_value.ui1 == 0)
+						std::cout << "false"<< std::endl;
+					break;
+				default:
+					throw JvmException("Type not recognized");
+			}
 			frame.PC += data->jmp + 1;
 			return;
 		}
@@ -2686,10 +2704,17 @@ namespace jvm {
 
 	// TODO: finish this function
 	void Engine::exec_new (InstructionInfo * info) {
-		auto data   = reinterpret_cast<OPINFOnew *>(info); // get data in class
+		auto data   = reinterpret_cast<OPINFOinvokestatic *>(info); // get data in class
 		auto &frame = fs.top();
+		auto &cp = frame.cl.constant_pool;
 
-		frame.PC += data->jmp + 1;
+		auto classInfo = reinterpret_cast<CP_Class*>(cp[data->index]); // get the method info from constant pool
+		auto className = cp[classInfo->name_index]->toString(cp);
+		if (className == "java/lang/StringBuilder") {
+			frame.PC += data->jmp + 1;
+			throw JvmException("Not Implemented String Builder!");
+			return;
+		}
 
 		throw JvmException("Not Implemented!");
 	}
