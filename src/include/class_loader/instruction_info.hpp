@@ -1,6 +1,7 @@
 #pragma once
 
 #include "base.hpp"
+#include "constant_pool.hpp"
 #include "util/converter.hpp"
 
 namespace jvm {
@@ -31,7 +32,7 @@ namespace jvm {
 		 * Print in the stream the name
 		 * @param std::ostream& Console output, std::string& String to be printed
 		 */
-		virtual void printToStream(std::ostream &, std::string &) = 0;
+		virtual void printToStream(std::ostream &, std::string &, ConstantPool &) = 0;
 
 		/**
 		 * Fill the params of this class
@@ -66,7 +67,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * No params for this instruction
@@ -102,7 +103,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * operand stack ... → ..., null, opcode byte1, byte2 The immediate unsigned byte1 and byte2 values are assembled into an intermediate short where the value of the short is (byte1 << 8) | byte2
@@ -138,7 +139,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Operand stack ... → ..., <i>
@@ -174,7 +175,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Operand Stack ... → ..., <i>
@@ -210,7 +211,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Operand Stack... → ..., <i>
@@ -246,7 +247,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 *Operand Stack ... → ..., <i>
@@ -282,7 +283,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 *Operand Stack  ... → ..., <i>
@@ -318,7 +319,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 *Operand Stack ... → ..., <i>
@@ -354,7 +355,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 *Operand Stack  ... → ..., <i>
@@ -390,7 +391,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Operand Stack  ... → ..., <i>
@@ -426,7 +427,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 *OpStack ... → ..., <l> ,
@@ -462,7 +463,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ... → ..., <f>
@@ -498,7 +499,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ... → ..., <f>
@@ -534,7 +535,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ... → ..., <f>
@@ -570,7 +571,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ... → ..., <f>
@@ -606,7 +607,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ... → ..., <f>
@@ -642,7 +643,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Operand Stack  ... → ..., <i> , byte
@@ -680,7 +681,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Operand Stack ... → ..., value , The immediate unsigned byte1 and byte2 values are assembled into an intermediate short where the value of the short is (byte1 << 8) | byte2
@@ -718,7 +719,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Operand Stack ... → ..., value , The index is an unsigned byte that must be a valid index into the run-time constant pool
@@ -756,7 +757,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ... → ..., value , indexbyte1 + indexbyte2
@@ -794,7 +795,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Operand Stack ... → ..., value , indexbyte1 indexbyte2 , the value of the index is calculated as (indexbyte1 << 8) | indexbyte2, run-time constant pool
@@ -833,7 +834,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ... → ..., value , The index is an unsigned byte into local variable array,
@@ -871,7 +872,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ... → ..., value, The index is an unsigned byte , local variable array
@@ -909,7 +910,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Op_stack ... → ..., value, The index is an unsigned byte that must be an index into the local variable array
@@ -947,7 +948,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ... →..., value, The index is an unsigned byte. Both index and index+1 must be indices into the local variable array
@@ -985,7 +986,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack  ... → ..., objectref, The index is an unsigned byte that must be an index into the local variable array of the current frame
@@ -1023,7 +1024,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
@@ -1059,7 +1060,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
@@ -1095,7 +1096,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
@@ -1131,7 +1132,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
@@ -1167,7 +1168,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
@@ -1203,7 +1204,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
@@ -1239,7 +1240,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
@@ -1275,7 +1276,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
@@ -1311,7 +1312,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ... → ..., value , The <n> must be an index into the local variable array of the current frame
@@ -1347,7 +1348,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 *  OpStack ... → ..., value , The <n> must be an index into the local variable array of the current frame
@@ -1383,7 +1384,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 *  OpStack ... → ..., value , The <n> must be an index into the local variable array of the current frame
@@ -1419,7 +1420,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 *  OpStack ... → ..., value , The <n> must be an index into the local variable array of the current frame
@@ -1455,7 +1456,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ... → ..., value, Both <n> and <n>+1 must be indices into the local variable array of the current frame
@@ -1491,7 +1492,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ... → ..., value, Both <n> and <n>+1 must be indices into the local variable array of the current frame
@@ -1527,7 +1528,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ... → ..., value, Both <n> and <n>+1 must be indices into the local variable array of the current frame
@@ -1563,7 +1564,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ... → ..., value, Both <n> and <n>+1 must be indices into the local variable array of the current frame
@@ -1599,7 +1600,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ... → ..., objectref,The <n> must be an index into the local variable array of the current frame
@@ -1635,7 +1636,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ... → ..., objectref,The <n> must be an index into the local variable array of the current frame
@@ -1671,7 +1672,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ... → ..., objectref,The <n> must be an index into the local variable array of the current frame
@@ -1707,7 +1708,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ... → ..., objectref,The <n> must be an index into the local variable array of the current frame
@@ -1743,7 +1744,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack..., arrayref, index → ..., value,The <n> must be an index into the local variable array of the current frame
@@ -1779,7 +1780,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., arrayref, index → ..., value ,The <n> must be an index into the local variable array of the current frame
@@ -1815,7 +1816,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., arrayref, index → ..., value , The arrayref must be of type reference and must refer to an array whose components are of type float
@@ -1851,7 +1852,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., arrayref, index → ..., value , The arrayref must be of type reference and must refer to an array whose components are of type double.
@@ -1887,7 +1888,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., arrayref, index → ..., value , The arrayref must be of type reference and must refer to an array whose components are of type reference
@@ -1923,7 +1924,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., arrayref, index → ..., value , The arrayref must be of type reference and must refer to an array whose components are of type byte or of type boolean
@@ -1959,7 +1960,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., arrayref, index → ..., value , The arrayref must be of type reference and must refer to an array whose components are of type char. The index must be of type int
@@ -1995,7 +1996,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., arrayref, index → ..., value , The arrayref must be of type reference and must refer to an array whose components are of type short.
@@ -2032,7 +2033,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., value → ... , The index is an unsigned byte that must be an index into the local variable array of the current frame
@@ -2070,7 +2071,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., value → ... , The index is an unsigned byte. Both index and index+1 must be indices into the local variable array of the current frame
@@ -2108,7 +2109,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., value → ... , The index is an unsigned byte that must be an index into the local variable array of the current frame
@@ -2146,7 +2147,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., value → ... , The index is an unsigned byte. Both index and index+1 must be indices into the local variable array of the current frame
@@ -2185,7 +2186,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., objectref → ... , The index is an unsigned byte that must be an index into the local variable array of the current frame
@@ -2223,7 +2224,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., value → ... , The <n> must be an index into the local variable array of the current frame
@@ -2259,7 +2260,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., value → ... , The <n> must be an index into the local variable array of the current frame
@@ -2295,7 +2296,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value → ...
@@ -2331,7 +2332,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value → ... , The <n> must be an index into the local variable array of the current frame.
@@ -2370,7 +2371,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
@@ -2406,7 +2407,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
@@ -2442,7 +2443,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
@@ -2478,7 +2479,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
@@ -2514,7 +2515,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., value → ... , The <n> must be an index into the local variable array of the current frame
@@ -2550,7 +2551,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., value → ... , The <n> must be an index into the local variable array of the current frame
@@ -2586,7 +2587,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., value → ... , The <n> must be an index into the local variable array of the current frame
@@ -2622,7 +2623,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., value → ... , The <n> must be an index into the local variable array of the current frame
@@ -2658,7 +2659,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
@@ -2694,7 +2695,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
@@ -2730,7 +2731,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
@@ -2766,7 +2767,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
@@ -2802,7 +2803,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * ..., objectref → ... , The <n> must be an index into the local variable array of the current frame
@@ -2838,7 +2839,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * ..., objectref → ... , The <n> must be an index into the local variable array of the current frame
@@ -2874,7 +2875,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., objectref → ... , The <n> must be an index into the local variable array of the current frame
@@ -2910,7 +2911,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., objectref → ... , The <n> must be an index into the local variable array of the current frame
@@ -2946,7 +2947,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., arrayref, index, value →... , The arrayref must be of type reference and must refer to an array whose components are of type int. Both index and value must be of type int
@@ -2982,7 +2983,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., arrayref, index, value → ...
@@ -3018,7 +3019,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., arrayref, index, value → ... , The arrayref must be of type reference and must refer to an array whose components are of type float. The index must be of type int
@@ -3054,7 +3055,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., arrayref, index, value → ... , The arrayref must be of type reference and must refer to an array whose components are of type double
@@ -3090,7 +3091,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., arrayref, index, value → ... , The arrayref must be of type reference and must refer to an array whose components are of type reference
@@ -3126,7 +3127,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., arrayref, index, value → ... , The arrayref must be of type reference and must refer to an array whose components are of type byte or of type boolean. The index and the value must both be of type int.
@@ -3162,7 +3163,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * * OpStack ..., arrayref, index, value → ...
@@ -3196,7 +3197,7 @@ namespace jvm {
 		/**
 		 *
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., arrayref, index, value → ... , The arrayref must be of type reference and must refer to an array whose components are of type short. Both index and value must be of type int.
@@ -3233,7 +3234,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., value → ... , Pop the top value from the operand stack.
@@ -3269,7 +3270,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack Form 1: ..., value2, value1 → ... ,  where each of value1 and value2 is a value of a category 1 computional type
@@ -3306,7 +3307,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., value → ..., value, value ,
@@ -3342,7 +3343,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack ..., value2, value1 → ..., value1, value2, value1 , Duplicate the top value on the operand stack and insert the duplicated value two values down in the operand stack.
@@ -3378,7 +3379,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack Form 1: ..., value3, value2, value1 → ..., value1, value3, value2, value1 , where value1, value2, and value3 are all values of a category 1 computational type
@@ -3415,7 +3416,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack Form 1: ..., value2, value1 → ..., value2, value1, value2, value1 ,where both value1 and value2 are values of a category 1 computational type
@@ -3452,7 +3453,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * OpStack Form 1: ..., value3, value2, value1 → ..., value2, value1, value3, value2, value1 , where value1, value2, and value3 are all values of a category 1 computational type
@@ -3489,7 +3490,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack Form 1: ..., value4, value3, value2, value1 → ..., value2, value1, value4, value3, value2, value1 , where value1, value2, value3, and value4 are all values of a category 1 computational type,
@@ -3526,7 +3527,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value2, value1 → ..., value1, value2
@@ -3563,7 +3564,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -3597,7 +3598,7 @@ namespace jvm {
 		/**
 		 *
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -3633,7 +3634,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack  ..., value1, value2 → ..., result
@@ -3669,7 +3670,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -3705,7 +3706,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -3741,7 +3742,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -3775,7 +3776,7 @@ namespace jvm {
 		/**
 		 * Opstack  ..., value1, value2 → ..., result
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -3811,7 +3812,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack  ..., value1, value2 → ..., result
@@ -3847,7 +3848,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -3883,7 +3884,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -3919,7 +3920,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -3955,7 +3956,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result pop2 for each value
@@ -3991,7 +3992,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -4027,7 +4028,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -4063,7 +4064,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -4099,7 +4100,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -4135,7 +4136,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack  ..., value1, value2 → ..., result
@@ -4171,7 +4172,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack  ..., value1, value2 → ..., result
@@ -4207,7 +4208,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -4243,7 +4244,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -4279,7 +4280,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack  ..., value →..., result
@@ -4315,7 +4316,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value → ..., result
@@ -4351,7 +4352,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack  ..., value → ..., result
@@ -4387,7 +4388,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack  ..., value → ..., result
@@ -4423,7 +4424,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -4459,7 +4460,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -4495,7 +4496,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -4531,7 +4532,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -4567,7 +4568,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -4603,7 +4604,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -4639,7 +4640,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 →..., result
@@ -4675,7 +4676,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -4711,7 +4712,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -4747,7 +4748,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 →..., result
@@ -4783,7 +4784,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -4819,7 +4820,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -4855,7 +4856,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack -> no changes, int index int 		 * @param idx index to the data vector
@@ -4894,7 +4895,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value → ..., result
@@ -4930,7 +4931,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack  ..., value →..., result
@@ -4966,7 +4967,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value →..., result
@@ -5002,7 +5003,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value →..., result
@@ -5038,7 +5039,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value →..., result
@@ -5074,7 +5075,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value →..., result
@@ -5110,7 +5111,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack  ..., value → ..., result
@@ -5146,7 +5147,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value → ..., result
@@ -5182,7 +5183,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value →..., result
@@ -5218,7 +5219,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 *  Opstack ..., value → ..., result
@@ -5254,7 +5255,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value → ..., result
@@ -5290,7 +5291,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value → ..., result
@@ -5326,7 +5327,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value →..., result
@@ -5362,7 +5363,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value → ..., result
@@ -5398,7 +5399,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value →..., result
@@ -5435,7 +5436,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack  ..., value1, value2 → ..., result , if value1 > value2 push 1 , if value2 > value1 push -1 if value1 == value2 push 0
@@ -5471,7 +5472,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack  ..., value1, value2 → ..., result
@@ -5507,7 +5508,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -5543,7 +5544,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
@@ -5579,7 +5580,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack  ..., value1, value2 →..., result
@@ -5615,7 +5616,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value → ..., branchbyte1 + branchbyte2
@@ -5653,7 +5654,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value → ..., branchbyte1 + branchbyte2
@@ -5691,7 +5692,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value → ..., branchbyte1 + branchbyte2
@@ -5729,7 +5730,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value → ..., branchbyte1 + branchbyte2
@@ -5767,7 +5768,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value → ..., branchbyte1 + branchbyte2
@@ -5805,7 +5806,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value → ..., branchbyte1 + branchbyte2
@@ -5843,7 +5844,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value → ..., branchbyte1 + branchbyte2
@@ -5881,7 +5882,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ...,branchbyte1 + branchbyte2
@@ -5919,7 +5920,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 →... , branchbyte1 + branchbyte2
@@ -5957,7 +5958,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 →... , branchbyte1 + branchbyte2
@@ -5995,7 +5996,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 →... , branchbyte1 + branchbyte2
@@ -6033,7 +6034,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ... , branchbyte1 + branchbyte2
@@ -6071,7 +6072,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ... , branchbyte1 branchbyte2
@@ -6109,7 +6110,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ... ,  branchbyte1 + branchbyte2
@@ -6148,7 +6149,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack no change , branchbyte1 + branchbyte2
@@ -6186,7 +6187,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ... → ..., address , branchbyte1 + branchbyte2
@@ -6224,7 +6225,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack no change
@@ -6262,7 +6263,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack  ..., index → ... ,
@@ -6324,7 +6325,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., key → ...
@@ -6379,7 +6380,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value → [empty]
@@ -6415,7 +6416,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value → [empty]
@@ -6451,7 +6452,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value → [empty]
@@ -6487,7 +6488,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value → [empty]
@@ -6523,7 +6524,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., objectref → [empty]
@@ -6559,7 +6560,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ... → [empty]
@@ -6596,7 +6597,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., → ..., value,indexbyte1 + indexbyte2
@@ -6634,7 +6635,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value → ... ,indexbyte1 + indexbyte2
@@ -6672,7 +6673,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 *Opstack ..., objectref → ..., value ,indexbyte1 + indexbyte2
@@ -6710,7 +6711,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., objectref, value → ... , indexbyte1 + indexbyte2
@@ -6748,7 +6749,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., objectref, [arg1, [arg2 ...]] → ... , indexbyte1 + indexbyte2
@@ -6786,7 +6787,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., objectref, [arg1, [arg2 ...]] → ... , indexbyte1 + indexbyte2
@@ -6824,7 +6825,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., [arg1, [arg2 ...]] → ...
@@ -6862,7 +6863,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., objectref, [arg1, [arg2 ...]] → ... , indexbyte1 + indexbyte2 , count , 0
@@ -6901,7 +6902,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., [arg1, [arg2 ...]] → ...
@@ -6939,7 +6940,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ... → ..., objectref indexbyte1 + indexbyte2
@@ -6977,7 +6978,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., count → ..., arrayref , atype
@@ -7015,7 +7016,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opcode ..., count → ..., arrayref , indexbyte1 + indexbyte2
@@ -7053,7 +7054,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., arrayref →..., length
@@ -7089,7 +7090,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., objectref → objectref
@@ -7125,7 +7126,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., objectref → ..., objectref ,  indexbyte1 + indexbyte2
@@ -7163,7 +7164,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., objectref → ..., result, indexbyte1 + indexbyte2
@@ -7201,7 +7202,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., objectref → ...
@@ -7237,7 +7238,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., objectref → ...
@@ -7274,7 +7275,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack Same as modified instruction
@@ -7324,7 +7325,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., count1, [count2, ...] → ..., arrayref
@@ -7366,7 +7367,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ..., value → ... , branchbyte1 + branchbyte2
@@ -7404,7 +7405,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack  ..., value → ...,branchbyte1 + branchbyte2
@@ -7442,7 +7443,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack no changes
@@ -7481,7 +7482,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * Opstack ... → ..., address , branchbyte1 + branchbyte2 + branchbyte3 + branchbyte4
@@ -7526,7 +7527,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * No params for this intrsuction
@@ -7568,7 +7569,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * No params for this instruction
@@ -7610,7 +7611,7 @@ namespace jvm {
 		 * @param os used to output data
 		 * @param prefix string to be printed before the opcodes
 		 */
-		void printToStream(std::ostream &, std::string &) override;
+		void printToStream(std::ostream &, std::string &, ConstantPool &) override;
 
 		/**
 		 * No params for this instruction
