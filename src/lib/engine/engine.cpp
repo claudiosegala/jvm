@@ -318,23 +318,36 @@ namespace jvm {
 		auto name = constantPool[nameAndType.name_index] -> toString(constantPool);
 		auto descriptor = constantPool[nameAndType.descriptor_index] -> toString(constantPool);
 
-		auto& methodClass = findClass(classInfo);
-		auto methodKey = std::string(name + descriptor);
+		std::string methodKey = name + descriptor;
 
+		return findMethod(classInfo, methodKey);
+	}
+
+	ClassAndMethod Engine::findMethod(CP_Class &classInfo, std::string &methodKey) {
+		auto &currentClass = fs.top().cl;
+		auto &constantPool = currentClass.constant_pool;
+		auto &methodClass = findClass(classInfo);
 		auto pair = methodClass.methods.find(methodKey);
 
 		if (pair == methodClass.methods.end()) {
-			throw JvmException("Method with name " + name + " and descriptor " + descriptor + " not found!");
+			if (methodClass.super_class == 0) {
+				throw JvmException("Method " + methodKey + " not found!");
+			}
+			auto& superClass = constantPool[methodClass.super_class]->as<CP_Class>();
+			return findMethod(superClass, methodKey);
 		}
 
-		return ClassAndMethod(methodClass, pair->second);
+		return {methodClass, pair->second};
 	}
 
 	ClassLoader & Engine::findClass(CP_Class &classInfo) {
 		auto &cl = fs.top().cl;
 		auto &cp = cl.constant_pool;
 		auto className = cp[classInfo.name_index]-> toString(cp);
+		return findClass(className);
+	}
 
+	ClassLoader &Engine::findClass(std::string &className) {
 		if (JavaClasses.count(className) > 0) {  // If class was already loaded, return
 			return JavaClasses[className];
 		}
