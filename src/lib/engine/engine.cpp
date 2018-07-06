@@ -2647,18 +2647,31 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOanewarray *>(info); // get data in class
 		auto &frame = fs.top();
 		op4 count_value = frame.operands.pop4();
-		auto constant_pool_ref = data->index
+		CP_Entry* f =frame.cl.constant_pool[data->index];
+		f = dynamic_cast<CP_Class*>(f);
+		if(f != nullptr)
+		{
+
+		}
+		f = dynamic_cast<CP_Methodref*>(f);
+		if(f != nullptr){
+
+		}
 
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_arraylength (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOarraylength *>(info); // get data in class
 		auto &frame = fs.top();
-
+		op4 arrayref = frame.operands.pop4();
+		auto ARP = mem[arrayref.ui4];
+		op4 arraylength;
+		arraylength.ui4 = (sizeof(ARP)/sizeof(ARP[0]));
+		frame.operands.push4(arraylength.ui4);
 		frame.PC += data->jmp + 1;
 
 		throw JvmException("Not Implemented!");
