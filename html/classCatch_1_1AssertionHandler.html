@@ -99,17 +99,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a74627e1e399b026e9acbaf95ea673643"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a74627e1e399b026e9acbaf95ea673643"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>AssertionHandler</b> (<a class="el" href="classCatch_1_1StringRef.html">StringRef</a> macroName, <a class="el" href="structCatch_1_1SourceLineInfo.html">SourceLineInfo</a> const &amp;lineInfo, <a class="el" href="classCatch_1_1StringRef.html">StringRef</a> capturedExpression, ResultDisposition::Flags resultDisposition)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>AssertionHandler</b> (<a class="el" href="classCatch_1_1StringRef.html">StringRef</a> macroName, <a class="el" href="structCatch_1_1SourceLineInfo.html">SourceLineInfo</a> &amp;lineInfo, <a class="el" href="classCatch_1_1StringRef.html">StringRef</a> capturedExpression, ResultDisposition::Flags resultDisposition)</td></tr>
 <tr class="separator:a74627e1e399b026e9acbaf95ea673643"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ef387e567bad90ec6e4b5bf5c367388"><td class="memTemplParams" colspan="2"><a class="anchor" id="a2ef387e567bad90ec6e4b5bf5c367388"></a>
 template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a2ef387e567bad90ec6e4b5bf5c367388"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>handleExpr</b> (<a class="el" href="classCatch_1_1ExprLhs.html">ExprLhs</a>&lt; T &gt; const &amp;expr)</td></tr>
+<tr class="memitem:a2ef387e567bad90ec6e4b5bf5c367388"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>handleExpr</b> (<a class="el" href="classCatch_1_1ExprLhs.html">ExprLhs</a>&lt; T &gt; &amp;expr)</td></tr>
 <tr class="separator:a2ef387e567bad90ec6e4b5bf5c367388"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe14d9cf1b1c7f70dae439fbdb51d0c4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afe14d9cf1b1c7f70dae439fbdb51d0c4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>handleExpr</b> (<a class="el" href="structCatch_1_1ITransientExpression.html">ITransientExpression</a> const &amp;expr)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>handleExpr</b> (<a class="el" href="structCatch_1_1ITransientExpression.html">ITransientExpression</a> &amp;expr)</td></tr>
 <tr class="separator:afe14d9cf1b1c7f70dae439fbdb51d0c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdb4c180ed83ec2858b2fb87712c516d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abdb4c180ed83ec2858b2fb87712c516d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>handleMessage</b> (ResultWas::OfType resultType, <a class="el" href="classCatch_1_1StringRef.html">StringRef</a> const &amp;message)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>handleMessage</b> (ResultWas::OfType resultType, <a class="el" href="classCatch_1_1StringRef.html">StringRef</a> &amp;message)</td></tr>
 <tr class="separator:abdb4c180ed83ec2858b2fb87712c516d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6caf765764a4064e90fce829eec201d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab6caf765764a4064e90fce829eec201d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>handleExceptionThrownAsExpected</b> ()</td></tr>
@@ -133,7 +133,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>complete</b> ()</td><
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setCompleted</b> ()</td></tr>
 <tr class="separator:a6756bd5395c0ddd28764a9fb4612d5e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a193bb3999494c46457f3059184c6b251"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a193bb3999494c46457f3059184c6b251"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>allowThrows</b> () const -&gt; bool</td></tr>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>allowThrows</b> () -&gt; bool</td></tr>
 <tr class="separator:a193bb3999494c46457f3059184c6b251"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following file:<ul>

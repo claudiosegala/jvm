@@ -107,7 +107,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0dfbe2aa4b0f8b3989da6298d949bba8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a47e400ea42083bf640497bb82ea28074"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classjvm_1_1InstructionInfo.html#a47e400ea42083bf640497bb82ea28074">printToStream</a> (std::ostream &amp;, std::string &amp;)=0</td></tr>
 <tr class="separator:a47e400ea42083bf640497bb82ea28074"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b3e2aad727e484a26f137420ff88d4f"><td class="memItemLeft" align="right" valign="top">virtual uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classjvm_1_1InstructionInfo.html#a0b3e2aad727e484a26f137420ff88d4f">fillParams</a> (const uint32_t, const std::vector&lt; u1 &gt; &amp;)=0</td></tr>
+<tr class="memitem:a0b3e2aad727e484a26f137420ff88d4f"><td class="memItemLeft" align="right" valign="top">virtual uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classjvm_1_1InstructionInfo.html#a0b3e2aad727e484a26f137420ff88d4f">fillParams</a> (uint32_t, std::vector&lt; u1 &gt; &amp;)=0</td></tr>
 <tr class="separator:a0b3e2aad727e484a26f137420ff88d4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a964336008a739d9c0240abc7e14d3400"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classjvm_1_1InstructionInfo.html#a964336008a739d9c0240abc7e14d3400">getName</a> ()=0</td></tr>
 <tr class="separator:a964336008a739d9c0240abc7e14d3400"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -196,13 +196,13 @@ Protected Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual uint32_t jvm::InstructionInfo::fillParams </td>
           <td>(</td>
-          <td class="paramtype">const uint32_t&#160;</td>
+          <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::vector&lt; u1 &gt; &amp;&#160;</td>
+          <td class="paramtype">std::vector&lt; u1 &gt; &amp;&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>
@@ -219,7 +219,7 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Fill the params of this class </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">const</td><td>uint32_t Index of the data vector, const std::vector&lt;u1&gt;&amp; Reference to the data vector </td></tr>
+    <tr><td class="paramname">const</td><td>uint32_t Index of the data vector, std::vector&lt;u1&gt;&amp; Reference to the data vector </td></tr>
   </table>
   </dd>
 </dl>

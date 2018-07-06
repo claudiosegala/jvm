@@ -6,6 +6,12 @@
 
 namespace jvm {
 
+	struct ClassAndMethod {
+		ClassLoader& classLoader;
+		MethodInfo& method;
+		ClassAndMethod(ClassLoader& classLoader, MethodInfo& method) : classLoader(classLoader), method(method) {}
+	};
+
 	class Engine;
 
 	typedef void (Engine::*Execution) (InstructionInfo *);
@@ -59,9 +65,9 @@ namespace jvm {
 		 */
 		void run_init();
 
-		std::pair<ClassLoader, MethodInfo> findMethod(CP_Methodref &ref);
+		ClassAndMethod findMethod(CP_Methodref &ref);
 
-		const ClassLoader & findClass(CP_Class &classInfo);
+		ClassLoader & findClass(CP_Class &classInfo);
 
 		/**
 		 * Nothing

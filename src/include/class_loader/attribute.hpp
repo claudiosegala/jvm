@@ -62,7 +62,7 @@ namespace jvm {
 		 * @param cp a reference to the constant pool
 		 * @param prefix a reference to a string to be printed before the attribute
 		 */
-		virtual void printToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix) = 0;
+		virtual void printToStream(std::ostream &os, ConstantPool &cp, std::string &prefix) = 0;
 
 	};
 
@@ -82,18 +82,18 @@ namespace jvm {
 		AttributeInfo attributes;
 
 		AttrCode(Reader &reader, ConstantPool &cp);
-		void printToStream(std::ostream &ostream, ConstantPool &pool, const std::string &prefix) override;
+		void printToStream(std::ostream &ostream, ConstantPool &pool, std::string &prefix) override;
 	};
 
 	struct AttrConstantValue : public AttrEntry {
 		u2 constantvalue_index;
 		AttrConstantValue(Reader &reader, ConstantPool &cp);
-		void printToStream(std::ostream &ostream, ConstantPool &pool, const std::string &prefix) override;
+		void printToStream(std::ostream &ostream, ConstantPool &pool, std::string &prefix) override;
 	};
 
 	struct AttrExceptions : public AttrEntry {
 		std::vector<u2> exception_index_table;
 		AttrExceptions(Reader &reader, ConstantPool &cp);
-		void printToStream(std::ostream &os, ConstantPool &pool, const std::string &prefix) override;
+		void printToStream(std::ostream &os, ConstantPool &pool, std::string &prefix) override;
 	};
 }

@@ -35,9 +35,9 @@ namespace jvm {
 
 		/**
 		 * Fill the params of this class
-		 * @param const uint32_t Index of the data vector, const std::vector<u1>& Reference to the data vector
+		 * @param uint32_t Index of the data vector, std::vector<u1>& Reference to the data vector
 		 */
-		virtual uint32_t fillParams(const uint32_t, const std::vector<u1> &) = 0;
+		virtual uint32_t fillParams(uint32_t, std::vector<u1> &) = 0;
 
 		/**
 		 * Get the name of the class
@@ -74,7 +74,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -110,7 +110,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -146,7 +146,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -182,7 +182,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -218,7 +218,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -254,7 +254,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -290,7 +290,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -326,7 +326,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -362,7 +362,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -398,7 +398,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -434,7 +434,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -470,7 +470,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -506,7 +506,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -542,7 +542,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -578,7 +578,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -614,7 +614,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -650,7 +650,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -688,7 +688,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -726,7 +726,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -764,7 +764,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -802,7 +802,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -841,7 +841,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -879,7 +879,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -917,7 +917,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -955,7 +955,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -993,7 +993,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1031,7 +1031,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1067,7 +1067,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1103,7 +1103,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1139,7 +1139,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1175,7 +1175,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1211,7 +1211,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1247,7 +1247,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1283,7 +1283,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1319,7 +1319,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1355,7 +1355,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1391,7 +1391,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1427,7 +1427,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1463,7 +1463,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1499,7 +1499,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1535,7 +1535,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1571,7 +1571,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1607,7 +1607,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1643,7 +1643,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1679,7 +1679,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1715,7 +1715,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1751,7 +1751,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1787,7 +1787,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1823,7 +1823,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1859,7 +1859,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1895,7 +1895,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1931,7 +1931,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -1967,7 +1967,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2003,7 +2003,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2040,7 +2040,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2078,7 +2078,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2116,7 +2116,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2155,7 +2155,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2193,7 +2193,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2231,7 +2231,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2267,7 +2267,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2303,7 +2303,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2342,7 +2342,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2378,7 +2378,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2414,7 +2414,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2450,7 +2450,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2486,7 +2486,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2522,7 +2522,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2558,7 +2558,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2594,7 +2594,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2630,7 +2630,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2666,7 +2666,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2702,7 +2702,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2738,7 +2738,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2774,7 +2774,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2810,7 +2810,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2846,7 +2846,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2882,7 +2882,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2918,7 +2918,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2954,7 +2954,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -2990,7 +2990,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3026,7 +3026,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3062,7 +3062,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3098,7 +3098,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3134,7 +3134,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3170,7 +3170,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3204,7 +3204,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3241,7 +3241,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3278,7 +3278,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3314,7 +3314,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3350,7 +3350,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3387,7 +3387,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3424,7 +3424,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3461,7 +3461,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3498,7 +3498,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3534,7 +3534,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3571,7 +3571,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3605,7 +3605,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3641,7 +3641,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3677,7 +3677,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3713,7 +3713,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3749,7 +3749,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3783,7 +3783,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3819,7 +3819,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3855,7 +3855,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3891,7 +3891,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3927,7 +3927,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3963,7 +3963,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -3999,7 +3999,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4035,7 +4035,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4071,7 +4071,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4107,7 +4107,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4143,7 +4143,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4179,7 +4179,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4215,7 +4215,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4251,7 +4251,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4287,7 +4287,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4323,7 +4323,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4359,7 +4359,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4395,7 +4395,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4431,7 +4431,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4467,7 +4467,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4503,7 +4503,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4539,7 +4539,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4575,7 +4575,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4611,7 +4611,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4647,7 +4647,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4683,7 +4683,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4719,7 +4719,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4755,7 +4755,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4791,7 +4791,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4827,7 +4827,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4858,12 +4858,11 @@ namespace jvm {
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
-		 * Opstack -> no changes, int index int const
-		 * @param idx index to the data vector
+		 * Opstack -> no changes, int index int 		 * @param idx index to the data vector
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4903,7 +4902,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4939,7 +4938,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -4975,7 +4974,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5011,7 +5010,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5047,7 +5046,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5083,7 +5082,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5119,7 +5118,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5155,7 +5154,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5191,7 +5190,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5227,7 +5226,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5263,7 +5262,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5299,7 +5298,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5335,7 +5334,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5371,7 +5370,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5407,7 +5406,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5444,7 +5443,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5480,7 +5479,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5516,7 +5515,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5552,7 +5551,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5588,7 +5587,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5624,7 +5623,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5662,7 +5661,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5700,7 +5699,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5738,7 +5737,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5776,7 +5775,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5814,7 +5813,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5852,7 +5851,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5890,7 +5889,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5928,7 +5927,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -5966,7 +5965,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6004,7 +6003,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6042,7 +6041,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6080,7 +6079,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6118,7 +6117,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6157,7 +6156,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6195,7 +6194,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6233,7 +6232,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6285,7 +6284,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6343,7 +6342,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6388,7 +6387,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6424,7 +6423,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6460,7 +6459,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6496,7 +6495,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6532,7 +6531,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6568,7 +6567,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6605,7 +6604,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6643,7 +6642,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6681,7 +6680,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6719,7 +6718,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6757,7 +6756,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6795,7 +6794,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6833,7 +6832,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6871,7 +6870,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6910,7 +6909,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6948,7 +6947,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -6986,7 +6985,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -7024,7 +7023,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -7062,7 +7061,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -7098,7 +7097,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -7134,7 +7133,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -7172,7 +7171,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -7210,7 +7209,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -7246,7 +7245,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -7288,7 +7287,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -7336,7 +7335,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -7375,7 +7374,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -7413,7 +7412,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -7452,7 +7451,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -7490,7 +7489,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -7535,7 +7534,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -7577,7 +7576,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
@@ -7619,7 +7618,7 @@ namespace jvm {
 		 * @param data vector of bytes containing the arguments
 		 * @return unsigned int number of arguments read
 		 */
-		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
+		uint32_t fillParams(uint32_t, std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class

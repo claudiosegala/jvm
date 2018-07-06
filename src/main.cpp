@@ -23,7 +23,7 @@ int main (int argc, char *argv[ ]) {
 		bool hasName = false;
 		std::string filename;
 
-		for (const auto &command : commands) {
+		for (auto &command : commands) {
 			if (command == "--describe" || command == "-d") {
 				isToDescribe = true;
 			} else if (command == "--execute" || command == "-r") {
@@ -89,7 +89,7 @@ int main (int argc, char *argv[ ]) {
 
 	} catch (std::string& error) {
 	    std::cout << error << std::endl;
-	} catch (const char* error) {
+	} catch (char* error) {
 		std::cout << error << std::endl;
 	} catch (jvm::JvmException& e) {
 		std::cout << e.what() << std::endl;

@@ -109,55 +109,55 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>size_type</b> = std:
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2f287267c3a988b288bfd910667c1cfc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2f287267c3a988b288bfd910667c1cfc"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>StringRef</b> (<a class="el" href="classCatch_1_1StringRef.html">StringRef</a> const &amp;other) noexcept</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>StringRef</b> (<a class="el" href="classCatch_1_1StringRef.html">StringRef</a> &amp;other) noexcept</td></tr>
 <tr class="separator:a2f287267c3a988b288bfd910667c1cfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a407d5737b94e5a374add5c2794589733"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a407d5737b94e5a374add5c2794589733"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>StringRef</b> (<a class="el" href="classCatch_1_1StringRef.html">StringRef</a> &amp;&amp;other) noexcept</td></tr>
 <tr class="separator:a407d5737b94e5a374add5c2794589733"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea45f5089c53adac362bff6bd7c40943"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aea45f5089c53adac362bff6bd7c40943"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>StringRef</b> (char const *rawChars) noexcept</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>StringRef</b> (char *rawChars) noexcept</td></tr>
 <tr class="separator:aea45f5089c53adac362bff6bd7c40943"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a320bf235274ebb90dd6af80485af2797"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a320bf235274ebb90dd6af80485af2797"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>StringRef</b> (char const *rawChars, size_type size) noexcept</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>StringRef</b> (char *rawChars, size_type size) noexcept</td></tr>
 <tr class="separator:a320bf235274ebb90dd6af80485af2797"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fe41469048f906e9a847798cd335f23"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7fe41469048f906e9a847798cd335f23"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>StringRef</b> (std::string const &amp;stdString) noexcept</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>StringRef</b> (std::string &amp;stdString) noexcept</td></tr>
 <tr class="separator:a7fe41469048f906e9a847798cd335f23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac330bd7890310e9cab73a82cdfc1b7f4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac330bd7890310e9cab73a82cdfc1b7f4"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classCatch_1_1StringRef.html">StringRef</a> const &amp;other) noexcept-&gt; <a class="el" href="classCatch_1_1StringRef.html">StringRef</a> &amp;</td></tr>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classCatch_1_1StringRef.html">StringRef</a> &amp;other) noexcept-&gt; <a class="el" href="classCatch_1_1StringRef.html">StringRef</a> &amp;</td></tr>
 <tr class="separator:ac330bd7890310e9cab73a82cdfc1b7f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f38055e84bb8d16e23490b2664bb319"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7f38055e84bb8d16e23490b2664bb319"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>operator std::string</b> () const </td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>operator std::string</b> () </td></tr>
 <tr class="separator:a7f38055e84bb8d16e23490b2664bb319"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a843e39ad3560d10a80524ed926ed63"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8a843e39ad3560d10a80524ed926ed63"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="el" href="classCatch_1_1StringRef.html">StringRef</a> &amp;other) noexcept</td></tr>
 <tr class="separator:a8a843e39ad3560d10a80524ed926ed63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04c84d944fb51b02552e7ce8de7dbbf0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a04c84d944fb51b02552e7ce8de7dbbf0"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (<a class="el" href="classCatch_1_1StringRef.html">StringRef</a> const &amp;other) const noexcept-&gt; bool</td></tr>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (<a class="el" href="classCatch_1_1StringRef.html">StringRef</a> &amp;other) noexcept-&gt; bool</td></tr>
 <tr class="separator:a04c84d944fb51b02552e7ce8de7dbbf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a015f7b3adee8fe49ebb8172ae2975d21"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a015f7b3adee8fe49ebb8172ae2975d21"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (<a class="el" href="classCatch_1_1StringRef.html">StringRef</a> const &amp;other) const noexcept-&gt; bool</td></tr>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (<a class="el" href="classCatch_1_1StringRef.html">StringRef</a> &amp;other) noexcept-&gt; bool</td></tr>
 <tr class="separator:a015f7b3adee8fe49ebb8172ae2975d21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a803e3617331820a7ad8fea3051d6b094"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a803e3617331820a7ad8fea3051d6b094"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (size_type index) const noexcept-&gt; char</td></tr>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (size_type index) noexcept-&gt; char</td></tr>
 <tr class="separator:a803e3617331820a7ad8fea3051d6b094"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a326d5d5c97e0e792d66a9056143a922b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a326d5d5c97e0e792d66a9056143a922b"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>empty</b> () const noexcept-&gt; bool</td></tr>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>empty</b> () noexcept-&gt; bool</td></tr>
 <tr class="separator:a326d5d5c97e0e792d66a9056143a922b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa370158c82397f443a16f96ab3133950"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa370158c82397f443a16f96ab3133950"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> () const noexcept-&gt; size_type</td></tr>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> () noexcept-&gt; size_type</td></tr>
 <tr class="separator:aa370158c82397f443a16f96ab3133950"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1f444eb9a9c7ba18b3f71fc85f3222f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac1f444eb9a9c7ba18b3f71fc85f3222f"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>numberOfCharacters</b> () const noexcept-&gt; size_type</td></tr>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>numberOfCharacters</b> () noexcept-&gt; size_type</td></tr>
 <tr class="separator:ac1f444eb9a9c7ba18b3f71fc85f3222f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1669cb2765e820ca258159676cbd82a5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1669cb2765e820ca258159676cbd82a5"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>c_str</b> () const -&gt; char const *</td></tr>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>c_str</b> () -&gt; char *</td></tr>
 <tr class="separator:a1669cb2765e820ca258159676cbd82a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ce373cbe7068bdc118b8f0fc9a2d44d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7ce373cbe7068bdc118b8f0fc9a2d44d"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>substr</b> (size_type start, size_type size) const noexcept-&gt; <a class="el" href="classCatch_1_1StringRef.html">StringRef</a></td></tr>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>substr</b> (size_type start, size_type size) noexcept-&gt; <a class="el" href="classCatch_1_1StringRef.html">StringRef</a></td></tr>
 <tr class="separator:a7ce373cbe7068bdc118b8f0fc9a2d44d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8dd423c873140a92282bc7099ec67fc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa8dd423c873140a92282bc7099ec67fc"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>currentData</b> () const noexcept-&gt; char const *</td></tr>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>currentData</b> () noexcept-&gt; char *</td></tr>
 <tr class="separator:aa8dd423c873140a92282bc7099ec67fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>

@@ -20,7 +20,7 @@ namespace jvm {
 		return 0;
 	}
 
-	uint32_t OPINFOnop::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOnop::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -42,7 +42,7 @@ namespace jvm {
 		return 1;
 	}
 
-	uint32_t OPINFOaconst_null::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOaconst_null::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -64,7 +64,7 @@ namespace jvm {
 		return 2;
 	}
 
-	uint32_t OPINFOiconst_m1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiconst_m1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -86,7 +86,7 @@ namespace jvm {
 		return 3;
 	}
 
-	uint32_t OPINFOiconst_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiconst_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -108,7 +108,7 @@ namespace jvm {
 		return 4;
 	}
 
-	uint32_t OPINFOiconst_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiconst_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -130,7 +130,7 @@ namespace jvm {
 		return 5;
 	}
 
-	uint32_t OPINFOiconst_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiconst_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -152,7 +152,7 @@ namespace jvm {
 		return 6;
 	}
 
-	uint32_t OPINFOiconst_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiconst_3::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -174,7 +174,7 @@ namespace jvm {
 		return 7;
 	}
 
-	uint32_t OPINFOiconst_4::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiconst_4::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -196,7 +196,7 @@ namespace jvm {
 		return 8;
 	}
 
-	uint32_t OPINFOiconst_5::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiconst_5::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -218,7 +218,7 @@ namespace jvm {
 		return 9;
 	}
 
-	uint32_t OPINFOlconst_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlconst_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -240,7 +240,7 @@ namespace jvm {
 		return 10;
 	}
 
-	uint32_t OPINFOlconst_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlconst_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -262,7 +262,7 @@ namespace jvm {
 		return 11;
 	}
 
-	uint32_t OPINFOfconst_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfconst_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -284,7 +284,7 @@ namespace jvm {
 		return 12;
 	}
 
-	uint32_t OPINFOfconst_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfconst_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -306,7 +306,7 @@ namespace jvm {
 		return 13;
 	}
 
-	uint32_t OPINFOfconst_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfconst_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -328,7 +328,7 @@ namespace jvm {
 		return 14;
 	}
 
-	uint32_t OPINFOdconst_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdconst_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -350,7 +350,7 @@ namespace jvm {
 		return 15;
 	}
 
-	uint32_t OPINFOdconst_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdconst_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -372,7 +372,7 @@ namespace jvm {
 		return 16;
 	}
 
-	uint32_t OPINFObipush::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFObipush::fillParams (uint32_t idx, std::vector<u1>& data) {
 		byte = Converter::to_i1(data[idx+1]);
 		return 1;
 	}
@@ -395,7 +395,7 @@ namespace jvm {
 		return 17;
 	}
 
-	uint32_t OPINFOsipush::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOsipush::fillParams (uint32_t idx, std::vector<u1>& data) {
 		value = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -418,7 +418,7 @@ namespace jvm {
 		return 18;
 	}
 
-	uint32_t OPINFOldc::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOldc::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -441,7 +441,7 @@ namespace jvm {
 		return 19;
 	}
 
-	uint32_t OPINFOldc_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOldc_w::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -464,7 +464,7 @@ namespace jvm {
 		return 20;
 	}
 
-	uint32_t OPINFOldc2_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOldc2_w::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -487,7 +487,7 @@ namespace jvm {
 		return 21;
 	}
 
-	uint32_t OPINFOiload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -510,7 +510,7 @@ namespace jvm {
 		return 22;
 	}
 
-	uint32_t OPINFOlload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -533,7 +533,7 @@ namespace jvm {
 		return 23;
 	}
 
-	uint32_t OPINFOfload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -556,7 +556,7 @@ namespace jvm {
 		return 24;
 	}
 
-	uint32_t OPINFOdload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -579,7 +579,7 @@ namespace jvm {
 		return 25;
 	}
 
-	uint32_t OPINFOaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOaload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -602,7 +602,7 @@ namespace jvm {
 		return 26;
 	}
 
-	uint32_t OPINFOiload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiload_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -624,7 +624,7 @@ namespace jvm {
 		return 27;
 	}
 
-	uint32_t OPINFOiload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiload_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -646,7 +646,7 @@ namespace jvm {
 		return 28;
 	}
 
-	uint32_t OPINFOiload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiload_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -668,7 +668,7 @@ namespace jvm {
 		return 29;
 	}
 
-	uint32_t OPINFOiload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiload_3::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -690,7 +690,7 @@ namespace jvm {
 		return 30;
 	}
 
-	uint32_t OPINFOlload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlload_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -712,7 +712,7 @@ namespace jvm {
 		return 31;
 	}
 
-	uint32_t OPINFOlload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlload_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -734,7 +734,7 @@ namespace jvm {
 		return 32;
 	}
 
-	uint32_t OPINFOlload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlload_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -756,7 +756,7 @@ namespace jvm {
 		return 33;
 	}
 
-	uint32_t OPINFOlload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlload_3::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -778,7 +778,7 @@ namespace jvm {
 		return 34;
 	}
 
-	uint32_t OPINFOfload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfload_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -800,7 +800,7 @@ namespace jvm {
 		return 35;
 	}
 
-	uint32_t OPINFOfload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfload_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -822,7 +822,7 @@ namespace jvm {
 		return 36;
 	}
 
-	uint32_t OPINFOfload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfload_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -844,7 +844,7 @@ namespace jvm {
 		return 37;
 	}
 
-	uint32_t OPINFOfload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfload_3::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -866,7 +866,7 @@ namespace jvm {
 		return 38;
 	}
 
-	uint32_t OPINFOdload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdload_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -888,7 +888,7 @@ namespace jvm {
 		return 39;
 	}
 
-	uint32_t OPINFOdload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdload_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -910,7 +910,7 @@ namespace jvm {
 		return 40;
 	}
 
-	uint32_t OPINFOdload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdload_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -932,7 +932,7 @@ namespace jvm {
 		return 41;
 	}
 
-	uint32_t OPINFOdload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdload_3::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -954,7 +954,7 @@ namespace jvm {
 		return 42;
 	}
 
-	uint32_t OPINFOaload_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOaload_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -976,7 +976,7 @@ namespace jvm {
 		return 43;
 	}
 
-	uint32_t OPINFOaload_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOaload_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -998,7 +998,7 @@ namespace jvm {
 		return 44;
 	}
 
-	uint32_t OPINFOaload_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOaload_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1020,7 +1020,7 @@ namespace jvm {
 		return 45;
 	}
 
-	uint32_t OPINFOaload_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOaload_3::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1042,7 +1042,7 @@ namespace jvm {
 		return 46;
 	}
 
-	uint32_t OPINFOiaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiaload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1064,7 +1064,7 @@ namespace jvm {
 		return 47;
 	}
 
-	uint32_t OPINFOlaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlaload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1086,7 +1086,7 @@ namespace jvm {
 		return 48;
 	}
 
-	uint32_t OPINFOfaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfaload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1108,7 +1108,7 @@ namespace jvm {
 		return 49;
 	}
 
-	uint32_t OPINFOdaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdaload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1130,7 +1130,7 @@ namespace jvm {
 		return 50;
 	}
 
-	uint32_t OPINFOaaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOaaload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1152,7 +1152,7 @@ namespace jvm {
 		return 51;
 	}
 
-	uint32_t OPINFObaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFObaload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1174,7 +1174,7 @@ namespace jvm {
 		return 52;
 	}
 
-	uint32_t OPINFOcaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOcaload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1196,7 +1196,7 @@ namespace jvm {
 		return 53;
 	}
 
-	uint32_t OPINFOsaload::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOsaload::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1218,7 +1218,7 @@ namespace jvm {
 		return 54;
 	}
 
-	uint32_t OPINFOistore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOistore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -1241,7 +1241,7 @@ namespace jvm {
 		return 55;
 	}
 
-	uint32_t OPINFOlstore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlstore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -1264,7 +1264,7 @@ namespace jvm {
 		return 56;
 	}
 
-	uint32_t OPINFOfstore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfstore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -1287,7 +1287,7 @@ namespace jvm {
 		return 57;
 	}
 
-	uint32_t OPINFOdstore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdstore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -1310,7 +1310,7 @@ namespace jvm {
 		return 58;
 	}
 
-	uint32_t OPINFOastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOastore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -1333,7 +1333,7 @@ namespace jvm {
 		return 59;
 	}
 
-	uint32_t OPINFOistore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOistore_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1355,7 +1355,7 @@ namespace jvm {
 		return 60;
 	}
 
-	uint32_t OPINFOistore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOistore_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1377,7 +1377,7 @@ namespace jvm {
 		return 61;
 	}
 
-	uint32_t OPINFOistore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOistore_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1399,7 +1399,7 @@ namespace jvm {
 		return 62;
 	}
 
-	uint32_t OPINFOistore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOistore_3::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1421,7 +1421,7 @@ namespace jvm {
 		return 63;
 	}
 
-	uint32_t OPINFOlstore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlstore_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1443,7 +1443,7 @@ namespace jvm {
 		return 64;
 	}
 
-	uint32_t OPINFOlstore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlstore_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1465,7 +1465,7 @@ namespace jvm {
 		return 65;
 	}
 
-	uint32_t OPINFOlstore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlstore_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1487,7 +1487,7 @@ namespace jvm {
 		return 66;
 	}
 
-	uint32_t OPINFOlstore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlstore_3::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1509,7 +1509,7 @@ namespace jvm {
 		return 67;
 	}
 
-	uint32_t OPINFOfstore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfstore_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1531,7 +1531,7 @@ namespace jvm {
 		return 68;
 	}
 
-	uint32_t OPINFOfstore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfstore_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1553,7 +1553,7 @@ namespace jvm {
 		return 69;
 	}
 
-	uint32_t OPINFOfstore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfstore_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1575,7 +1575,7 @@ namespace jvm {
 		return 70;
 	}
 
-	uint32_t OPINFOfstore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfstore_3::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1597,7 +1597,7 @@ namespace jvm {
 		return 71;
 	}
 
-	uint32_t OPINFOdstore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdstore_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1619,7 +1619,7 @@ namespace jvm {
 		return 72;
 	}
 
-	uint32_t OPINFOdstore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdstore_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1641,7 +1641,7 @@ namespace jvm {
 		return 73;
 	}
 
-	uint32_t OPINFOdstore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdstore_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1663,7 +1663,7 @@ namespace jvm {
 		return 74;
 	}
 
-	uint32_t OPINFOdstore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdstore_3::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1685,7 +1685,7 @@ namespace jvm {
 		return 75;
 	}
 
-	uint32_t OPINFOastore_0::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOastore_0::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1707,7 +1707,7 @@ namespace jvm {
 		return 76;
 	}
 
-	uint32_t OPINFOastore_1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOastore_1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1729,7 +1729,7 @@ namespace jvm {
 		return 77;
 	}
 
-	uint32_t OPINFOastore_2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOastore_2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1751,7 +1751,7 @@ namespace jvm {
 		return 78;
 	}
 
-	uint32_t OPINFOastore_3::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOastore_3::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1773,7 +1773,7 @@ namespace jvm {
 		return 79;
 	}
 
-	uint32_t OPINFOiastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiastore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1795,7 +1795,7 @@ namespace jvm {
 		return 80;
 	}
 
-	uint32_t OPINFOlastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlastore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1817,7 +1817,7 @@ namespace jvm {
 		return 81;
 	}
 
-	uint32_t OPINFOfastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfastore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1839,7 +1839,7 @@ namespace jvm {
 		return 82;
 	}
 
-	uint32_t OPINFOdastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdastore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1861,7 +1861,7 @@ namespace jvm {
 		return 83;
 	}
 
-	uint32_t OPINFOaastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOaastore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1883,7 +1883,7 @@ namespace jvm {
 		return 84;
 	}
 
-	uint32_t OPINFObastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFObastore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1905,7 +1905,7 @@ namespace jvm {
 		return 85;
 	}
 
-	uint32_t OPINFOcastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOcastore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1927,7 +1927,7 @@ namespace jvm {
 		return 86;
 	}
 
-	uint32_t OPINFOsastore::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOsastore::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1949,7 +1949,7 @@ namespace jvm {
 		return 87;
 	}
 
-	uint32_t OPINFOpop::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOpop::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1971,7 +1971,7 @@ namespace jvm {
 		return 88;
 	}
 
-	uint32_t OPINFOpop2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOpop2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -1993,7 +1993,7 @@ namespace jvm {
 		return 89;
 	}
 
-	uint32_t OPINFOdup::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdup::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2015,7 +2015,7 @@ namespace jvm {
 		return 90;
 	}
 
-	uint32_t OPINFOdup_x1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdup_x1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2037,7 +2037,7 @@ namespace jvm {
 		return 91;
 	}
 
-	uint32_t OPINFOdup_x2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdup_x2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2059,7 +2059,7 @@ namespace jvm {
 		return 92;
 	}
 
-	uint32_t OPINFOdup2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdup2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2081,7 +2081,7 @@ namespace jvm {
 		return 93;
 	}
 
-	uint32_t OPINFOdup2_x1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdup2_x1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2103,7 +2103,7 @@ namespace jvm {
 		return 94;
 	}
 
-	uint32_t OPINFOdup2_x2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdup2_x2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2125,7 +2125,7 @@ namespace jvm {
 		return 95;
 	}
 
-	uint32_t OPINFOswap::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOswap::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2147,7 +2147,7 @@ namespace jvm {
 		return 96;
 	}
 
-	uint32_t OPINFOiadd::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiadd::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2169,7 +2169,7 @@ namespace jvm {
 		return 97;
 	}
 
-	uint32_t OPINFOladd::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOladd::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2191,7 +2191,7 @@ namespace jvm {
 		return 98;
 	}
 
-	uint32_t OPINFOfadd::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfadd::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2213,7 +2213,7 @@ namespace jvm {
 		return 99;
 	}
 
-	uint32_t OPINFOdadd::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdadd::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2235,7 +2235,7 @@ namespace jvm {
 		return 100;
 	}
 
-	uint32_t OPINFOisub::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOisub::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2257,7 +2257,7 @@ namespace jvm {
 		return 101;
 	}
 
-	uint32_t OPINFOlsub::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlsub::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2279,7 +2279,7 @@ namespace jvm {
 		return 102;
 	}
 
-	uint32_t OPINFOfsub::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfsub::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2301,7 +2301,7 @@ namespace jvm {
 		return 103;
 	}
 
-	uint32_t OPINFOdsub::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdsub::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2323,7 +2323,7 @@ namespace jvm {
 		return 104;
 	}
 
-	uint32_t OPINFOimul::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOimul::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2345,7 +2345,7 @@ namespace jvm {
 		return 105;
 	}
 
-	uint32_t OPINFOlmul::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlmul::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2367,7 +2367,7 @@ namespace jvm {
 		return 106;
 	}
 
-	uint32_t OPINFOfmul::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfmul::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2389,7 +2389,7 @@ namespace jvm {
 		return 107;
 	}
 
-	uint32_t OPINFOdmul::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdmul::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2411,7 +2411,7 @@ namespace jvm {
 		return 108;
 	}
 
-	uint32_t OPINFOidiv::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOidiv::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2433,7 +2433,7 @@ namespace jvm {
 		return 109;
 	}
 
-	uint32_t OPINFOldiv::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOldiv::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2455,7 +2455,7 @@ namespace jvm {
 		return 110;
 	}
 
-	uint32_t OPINFOfdiv::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfdiv::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2477,7 +2477,7 @@ namespace jvm {
 		return 111;
 	}
 
-	uint32_t OPINFOddiv::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOddiv::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2499,7 +2499,7 @@ namespace jvm {
 		return 112;
 	}
 
-	uint32_t OPINFOirem::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOirem::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2521,7 +2521,7 @@ namespace jvm {
 		return 113;
 	}
 
-	uint32_t OPINFOlrem::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlrem::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2543,7 +2543,7 @@ namespace jvm {
 		return 114;
 	}
 
-	uint32_t OPINFOfrem::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfrem::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2565,7 +2565,7 @@ namespace jvm {
 		return 115;
 	}
 
-	uint32_t OPINFOdrem::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdrem::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2587,7 +2587,7 @@ namespace jvm {
 		return 116;
 	}
 
-	uint32_t OPINFOineg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOineg::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2609,7 +2609,7 @@ namespace jvm {
 		return 117;
 	}
 
-	uint32_t OPINFOlneg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlneg::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2631,7 +2631,7 @@ namespace jvm {
 		return 118;
 	}
 
-	uint32_t OPINFOfneg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfneg::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2653,7 +2653,7 @@ namespace jvm {
 		return 119;
 	}
 
-	uint32_t OPINFOdneg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdneg::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2675,7 +2675,7 @@ namespace jvm {
 		return 120;
 	}
 
-	uint32_t OPINFOishl::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOishl::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2697,7 +2697,7 @@ namespace jvm {
 		return 121;
 	}
 
-	uint32_t OPINFOlshl::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlshl::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2719,7 +2719,7 @@ namespace jvm {
 		return 122;
 	}
 
-	uint32_t OPINFOishr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOishr::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2741,7 +2741,7 @@ namespace jvm {
 		return 123;
 	}
 
-	uint32_t OPINFOlshr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlshr::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2763,7 +2763,7 @@ namespace jvm {
 		return 124;
 	}
 
-	uint32_t OPINFOiushr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiushr::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2785,7 +2785,7 @@ namespace jvm {
 		return 125;
 	}
 
-	uint32_t OPINFOlushr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlushr::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2807,7 +2807,7 @@ namespace jvm {
 		return 126;
 	}
 
-	uint32_t OPINFOiand::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiand::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2829,7 +2829,7 @@ namespace jvm {
 		return 127;
 	}
 
-	uint32_t OPINFOland::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOland::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2851,7 +2851,7 @@ namespace jvm {
 		return 128;
 	}
 
-	uint32_t OPINFOior::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOior::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2873,7 +2873,7 @@ namespace jvm {
 		return 29;
 	}
 
-	uint32_t OPINFOlor::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlor::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2895,7 +2895,7 @@ namespace jvm {
 		return 130;
 	}
 
-	uint32_t OPINFOixor::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOixor::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2917,7 +2917,7 @@ namespace jvm {
 		return 131;
 	}
 
-	uint32_t OPINFOlxor::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlxor::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2939,7 +2939,7 @@ namespace jvm {
 		return 132;
 	}
 
-	uint32_t OPINFOiinc::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiinc::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		constant = Converter::to_i1(data[idx+2]);
 		return 2;
@@ -2963,7 +2963,7 @@ namespace jvm {
 		return 133;
 	}
 
-	uint32_t OPINFOi2l::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOi2l::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -2985,7 +2985,7 @@ namespace jvm {
 		return 134;
 	}
 
-	uint32_t OPINFOi2f::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOi2f::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3007,7 +3007,7 @@ namespace jvm {
 		return 135;
 	}
 
-	uint32_t OPINFOi2d::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOi2d::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3029,7 +3029,7 @@ namespace jvm {
 		return 136;
 	}
 
-	uint32_t OPINFOl2i::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOl2i::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3051,7 +3051,7 @@ namespace jvm {
 		return 137;
 	}
 
-	uint32_t OPINFOl2f::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOl2f::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3073,7 +3073,7 @@ namespace jvm {
 		return 138;
 	}
 
-	uint32_t OPINFOl2d::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOl2d::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3095,7 +3095,7 @@ namespace jvm {
 		return 139;
 	}
 
-	uint32_t OPINFOf2i::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOf2i::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3117,7 +3117,7 @@ namespace jvm {
 		return 140;
 	}
 
-	uint32_t OPINFOf2l::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOf2l::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3139,7 +3139,7 @@ namespace jvm {
 		return 141;
 	}
 
-	uint32_t OPINFOf2d::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOf2d::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3161,7 +3161,7 @@ namespace jvm {
 		return 142;
 	}
 
-	uint32_t OPINFOd2i::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOd2i::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3183,7 +3183,7 @@ namespace jvm {
 		return 143;
 	}
 
-	uint32_t OPINFOd2l::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOd2l::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3205,7 +3205,7 @@ namespace jvm {
 		return 144;
 	}
 
-	uint32_t OPINFOd2f::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOd2f::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3227,7 +3227,7 @@ namespace jvm {
 		return 145;
 	}
 
-	uint32_t OPINFOi2b::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOi2b::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3249,7 +3249,7 @@ namespace jvm {
 		return 146;
 	}
 
-	uint32_t OPINFOi2c::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOi2c::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3271,7 +3271,7 @@ namespace jvm {
 		return 147;
 	}
 
-	uint32_t OPINFOi2s::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOi2s::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3293,7 +3293,7 @@ namespace jvm {
 		return 148;
 	}
 
-	uint32_t OPINFOlcmp::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlcmp::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3315,7 +3315,7 @@ namespace jvm {
 		return 149;
 	}
 
-	uint32_t OPINFOfcmpl::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfcmpl::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3337,7 +3337,7 @@ namespace jvm {
 		return 150;
 	}
 
-	uint32_t OPINFOfcmpg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfcmpg::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3359,7 +3359,7 @@ namespace jvm {
 		return 151;
 	}
 
-	uint32_t OPINFOdcmpl::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdcmpl::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3381,7 +3381,7 @@ namespace jvm {
 		return 152;
 	}
 
-	uint32_t OPINFOdcmpg::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdcmpg::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3403,7 +3403,7 @@ namespace jvm {
 		return 153;
 	}
 
-	uint32_t OPINFOifeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOifeq::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3426,7 +3426,7 @@ namespace jvm {
 		return 154;
 	}
 
-	uint32_t OPINFOifne::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOifne::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3449,7 +3449,7 @@ namespace jvm {
 		return 155;
 	}
 
-	uint32_t OPINFOiflt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOiflt::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3472,7 +3472,7 @@ namespace jvm {
 		return 156;
 	}
 
-	uint32_t OPINFOifge::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOifge::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3495,7 +3495,7 @@ namespace jvm {
 		return 157;
 	}
 
-	uint32_t OPINFOifgt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOifgt::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3518,7 +3518,7 @@ namespace jvm {
 		return 158;
 	}
 
-	uint32_t OPINFOifle::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOifle::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3541,7 +3541,7 @@ namespace jvm {
 		return 159;
 	}
 
-	uint32_t OPINFOif_icmpeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOif_icmpeq::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3564,7 +3564,7 @@ namespace jvm {
 		return 160;
 	}
 
-	uint32_t OPINFOif_icmpne::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOif_icmpne::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3587,7 +3587,7 @@ namespace jvm {
 		return 61;
 	}
 
-	uint32_t OPINFOif_icmplt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOif_icmplt::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3610,7 +3610,7 @@ namespace jvm {
 		return 162;
 	}
 
-	uint32_t OPINFOif_icmpge::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOif_icmpge::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3633,7 +3633,7 @@ namespace jvm {
 		return 163;
 	}
 
-	uint32_t OPINFOif_icmpgt::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOif_icmpgt::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3656,7 +3656,7 @@ namespace jvm {
 		return 164;
 	}
 
-	uint32_t OPINFOif_icmple::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOif_icmple::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3679,7 +3679,7 @@ namespace jvm {
 		return 165;
 	}
 
-	uint32_t OPINFOif_acmpeq::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOif_acmpeq::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3702,7 +3702,7 @@ namespace jvm {
 		return 166;
 	}
 
-	uint32_t OPINFOif_acmpne::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOif_acmpne::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3725,7 +3725,7 @@ namespace jvm {
 		return 167;
 	}
 
-	uint32_t OPINFOgoto::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOgoto::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3753,7 +3753,7 @@ namespace jvm {
 		return 168;
 	}
 
-	uint32_t OPINFOjsr::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOjsr::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -3776,7 +3776,7 @@ namespace jvm {
 		return 169;
 	}
 
-	uint32_t OPINFOret::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOret::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = data[idx+1];
 		return 1;
 	}
@@ -3800,7 +3800,7 @@ namespace jvm {
 	}
 
 	// TODO: check later for correctness
-	uint32_t OPINFOtableswitch::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOtableswitch::fillParams (uint32_t idx, std::vector<u1>& data) {
 		uint32_t i = idx + 1;
 
 		i += (i % 4); // this jump is needed! A tableswitch is a variable-length instruction. Immediately after the tableswitch opcode, between zero and three bytes must act as padding, such that defaultbyte1 begins at an address that is a multiple of four bytes from the start of the current method (the opcode of its first instruction).
@@ -3832,7 +3832,7 @@ namespace jvm {
 	void OPINFOlookupswitch::printToStream(std::ostream& os, std::string& prefix) {
 		os << prefix << getName() << " " << defaultbyte << " " << npairs << " ";
 
-		for(const auto& sm_pair : pairs)
+		for(auto& sm_pair : pairs)
 			os << sm_pair.first << " ";
 
 		os << std::endl;
@@ -3847,7 +3847,7 @@ namespace jvm {
 	}
 
 	// TODO: check later for correctness
-	uint32_t OPINFOlookupswitch::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlookupswitch::fillParams (uint32_t idx, std::vector<u1>& data) {
 		uint32_t i = idx + 1;
 
 		i += (i % 4); // this jump is needed! A tableswitch is a variable-length instruction. Immediately after the tableswitch opcode, between zero and three bytes must act as padding, such that defaultbyte1 begins at an address that is a multiple of four bytes from the start of the current method (the opcode of its first instruction).
@@ -3887,7 +3887,7 @@ namespace jvm {
 		return 172;
 	}
 
-	uint32_t OPINFOireturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOireturn::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3909,7 +3909,7 @@ namespace jvm {
 		return 173;
 	}
 
-	uint32_t OPINFOlreturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOlreturn::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3931,7 +3931,7 @@ namespace jvm {
 		return 174;
 	}
 
-	uint32_t OPINFOfreturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOfreturn::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3953,7 +3953,7 @@ namespace jvm {
 		return 175;
 	}
 
-	uint32_t OPINFOdreturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOdreturn::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3975,7 +3975,7 @@ namespace jvm {
 		return 176;
 	}
 
-	uint32_t OPINFOareturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOareturn::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -3997,7 +3997,7 @@ namespace jvm {
 		return 177;
 	}
 
-	uint32_t OPINFOreturn::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOreturn::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -4019,7 +4019,7 @@ namespace jvm {
 		return 178;
 	}
 
-	uint32_t OPINFOgetstatic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOgetstatic::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4042,7 +4042,7 @@ namespace jvm {
 		return 179;
 	}
 
-	uint32_t OPINFOputstatic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOputstatic::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4065,7 +4065,7 @@ namespace jvm {
 		return 180;
 	}
 
-	uint32_t OPINFOgetfield::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOgetfield::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4088,7 +4088,7 @@ namespace jvm {
 		return 181;
 	}
 
-	uint32_t OPINFOputfield::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOputfield::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4111,7 +4111,7 @@ namespace jvm {
 		return 182;
 	}
 
-	uint32_t OPINFOinvokevirtual::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOinvokevirtual::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4134,7 +4134,7 @@ namespace jvm {
 		return 183;
 	}
 
-	uint32_t OPINFOinvokespecial::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOinvokespecial::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4157,7 +4157,7 @@ namespace jvm {
 		return 184;
 	}
 
-	uint32_t OPINFOinvokestatic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOinvokestatic::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4180,7 +4180,7 @@ namespace jvm {
 		return 185;
 	}
 
-	uint32_t OPINFOinvokeinterface::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOinvokeinterface::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		count = data[idx+3];
 
@@ -4211,7 +4211,7 @@ namespace jvm {
 		return 186;
 	}
 
-	uint32_t OPINFOinvokedynamic::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOinvokedynamic::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		if(!data[idx+3] || !data[idx+4]) {
 			throw JvmException("Invalid invokedynamic: the value of the last 2 arguments must be zero");
@@ -4237,7 +4237,7 @@ namespace jvm {
 		return 187;
 	}
 
-	uint32_t OPINFOnew::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOnew::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4260,7 +4260,7 @@ namespace jvm {
 		return 188;
 	}
 
-	uint32_t OPINFOnewarray::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOnewarray::fillParams (uint32_t idx, std::vector<u1>& data) {
 		atype = data[idx+1];
 		return 1;
 	}
@@ -4283,7 +4283,7 @@ namespace jvm {
 		return 189;
 	}
 
-	uint32_t OPINFOanewarray::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOanewarray::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4306,7 +4306,7 @@ namespace jvm {
 		return 190;
 	}
 
-	uint32_t OPINFOarraylength::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOarraylength::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -4328,7 +4328,7 @@ namespace jvm {
 		return 191;
 	}
 
-	uint32_t OPINFOathrow::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOathrow::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -4350,7 +4350,7 @@ namespace jvm {
 		return 192;
 	}
 
-	uint32_t OPINFOcheckcast::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOcheckcast::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4373,7 +4373,7 @@ namespace jvm {
 		return 193;
 	}
 
-	uint32_t OPINFOinstanceof::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOinstanceof::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4396,7 +4396,7 @@ namespace jvm {
 		return 194;
 	}
 
-	uint32_t OPINFOmonitorenter::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOmonitorenter::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -4418,7 +4418,7 @@ namespace jvm {
 		return 195;
 	}
 
-	uint32_t OPINFOmonitorexit::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOmonitorexit::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -4440,7 +4440,7 @@ namespace jvm {
 		return 196;
 	}
 
-	uint32_t OPINFOwide::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOwide::fillParams (uint32_t idx, std::vector<u1>& data) {
 		OPINFOiinc iinc;
 
 		opcode = data[idx + 1];
@@ -4473,7 +4473,7 @@ namespace jvm {
 		return 197;
 	}
 
-	uint32_t OPINFOmultianewarray::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOmultianewarray::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
 		dimensions = data[idx+3];
 
@@ -4501,7 +4501,7 @@ namespace jvm {
 		return 198;
 	}
 
-	uint32_t OPINFOifnull::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOifnull::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4524,7 +4524,7 @@ namespace jvm {
 		return 199;
 	}
 
-	uint32_t OPINFOifnonnull::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOifnonnull::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i2(data[idx+1], data[idx+2]);
 		return 2;
 	}
@@ -4547,7 +4547,7 @@ namespace jvm {
 		return 200;
 	}
 
-	uint32_t OPINFOgoto_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOgoto_w::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i4(data[idx+1], data[idx+2], data[idx+3], data[idx+4]);
 		return 4;
 	}
@@ -4570,7 +4570,7 @@ namespace jvm {
 		return 201;
 	}
 
-	uint32_t OPINFOjsr_w::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOjsr_w::fillParams (uint32_t idx, std::vector<u1>& data) {
 		branchoffset = Converter::to_i4(data[idx+1], data[idx+2], data[idx+3], data[idx+4]);
 		return 4;
 	}
@@ -4593,7 +4593,7 @@ namespace jvm {
 		return 202;
 	}
 
-	uint32_t OPINFObreakpoint::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFObreakpoint::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -4615,7 +4615,7 @@ namespace jvm {
 		return 254;
 	}
 
-	uint32_t OPINFOimpdep1::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOimpdep1::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
@@ -4637,7 +4637,7 @@ namespace jvm {
 		return 255;
 	}
 
-	uint32_t OPINFOimpdep2::fillParams (const uint32_t idx, const std::vector<u1>& data) {
+	uint32_t OPINFOimpdep2::fillParams (uint32_t idx, std::vector<u1>& data) {
 		return 0;
 	}
 
