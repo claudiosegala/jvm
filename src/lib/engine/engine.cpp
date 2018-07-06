@@ -2379,7 +2379,8 @@ namespace jvm {
 	void Engine::exec_ret (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOret *>(info); // get data in class
 		auto &frame = fs.top();
-		auto newPC  = frame.variables.get4(data->index);
+
+		auto newPC  = frame.variables.get4(data->index); // remove the next PC of type returnAddress
 
 		frame.PC = newPC.ui4;
 	}
@@ -2549,10 +2550,32 @@ namespace jvm {
 	void Engine::exec_invokestatic (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOinvokestatic *>(info); // get data in class
 		auto &frame = fs.top();
-		auto x = reinterpret_cast<CP_Methodref*>(frame.cl.constant_pool[data->index]);
-		auto k = findMethod(*x);
+		auto &cp = frame.cl.constant_pool;
 
-		Frame newFrame(k.classLoader, k.method);
+		auto methodRef = reinterpret_cast<CP_Methodref*>(cp[data->index]); // get the method info from constant pool
+		auto &classInfo = cp[methodRef->class_index] -> as<CP_Class>();
+		auto className = cp[classInfo.name_index]-> toString(cp);
+		auto &methodNameAndType = cp[methodRef->name_and_type_index] -> as<CP_NameAndType>();
+		auto methodName = cp[methodNameAndType.name_index] -> toString(cp);
+
+		if (methodName == "println" && className == "java/io/PrintStream") {
+			auto printStart = frame.operands.pop4();
+
+			//std::cout << print(printStart) << std::endl;
+
+			frame.PC += data->jmp + 1;
+			return;
+		}
+
+		if (methodName == "registerNatives") { // ignore registerNatives
+			frame.PC += data->jmp + 1;
+			return;
+		}
+
+		auto methodData = findMethod(*methodRef);
+
+		Frame newFrame(methodData.classLoader, methodData.method);
+
 		int i = 1;
 
 		while(!fs.top().operands.empty()) {
