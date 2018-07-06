@@ -63,3 +63,8 @@ union op8 {
 	uint64_t ull;
 	int64_t ll;
 };
+
+struct Data {
+	u1 type;
+	op4 value;
+};

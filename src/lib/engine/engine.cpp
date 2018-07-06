@@ -2645,12 +2645,14 @@ namespace jvm {
 	void Engine::exec_anewarray (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOanewarray *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 count_value = frame.operands.pop4();
-		CP_Entry* f =frame.cl.constant_pool[data->index];
+		auto count_value = frame.operands.pop4();
+		CP_Entry* f = frame.cl.constant_pool[data->index];
+
 		f = dynamic_cast<CP_Class*>(f);
 		if (f != nullptr) {
 
 		}
+
 		f = dynamic_cast<CP_Methodref*>(f);
 		if (f != nullptr) {
 
