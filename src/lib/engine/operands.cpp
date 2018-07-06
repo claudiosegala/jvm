@@ -20,7 +20,8 @@ namespace jvm {
 		Data high = top(); pop();
 		Data low  = top(); pop();
 
-		BigData bigData { .value = Converter::to_op8(low.value, high.value) };
+		auto res = Converter::to_op8(low.value, high.value);
+		BigData bigData { .type = low.type, .value =  res };
 
 		return bigData;
 	}

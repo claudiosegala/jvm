@@ -33,6 +33,8 @@ namespace jvm {
 		 */
 		void execute();
 
+		std::string path;
+
 	private:
 
 		std::vector<Execution> exec;	///> The set of instantiators to the instruction

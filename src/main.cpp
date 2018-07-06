@@ -84,6 +84,8 @@ int main (int argc, char *argv[ ]) {
 
 		if (isToRun) {
 			jvm::Engine engine(cl);
+			auto index = filename.find_last_of("/\\");
+			engine.path = filename.substr(0, index + 1);
 			engine.execute();
 		}
 
