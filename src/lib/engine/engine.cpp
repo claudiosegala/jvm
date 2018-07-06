@@ -539,7 +539,7 @@ namespace jvm {
 		auto res_float = dynamic_cast<CP_Float*>(k);
 
 		if (res_float != nullptr) {
-			op4 res { .ui4 = res_float->_bytes };
+			op4 res { .ui4 = res_float->_bytes};
 			frame.operands.push4(T_FLOAT, res);
 			frame.PC += data->jmp + 1;
 			return;
@@ -547,8 +547,16 @@ namespace jvm {
 
 		auto res_int = dynamic_cast<CP_Integer*>(k);
 		if (res_int != nullptr) {
-			op4 res { .ui4 = res_float->_bytes };
+			op4 res { .ui4 = res_int->_bytes };
 			frame.operands.push4(T_INT, res);
+			frame.PC += data->jmp + 1;
+			return;
+		}
+
+		auto res_str = dynamic_cast<CP_String*>(k);
+		if (res_str != nullptr) {
+			op4 res { .ui4 = data->index };
+			frame.operands.push4(T_CHAR, res);
 			frame.PC += data->jmp + 1;
 		} else{
 			std::cout <<"Error in ldc" << std::endl;
@@ -2538,6 +2546,11 @@ namespace jvm {
 			auto to_print = frame.operands.pop4();
 			auto print_type = to_print.type;
 			auto print_value = to_print.value;
+			if(print_type == T_CHAR){
+				auto str_addr = reinterpret_cast<CP_String *>(cp[print_value.ui4]);
+				std::string str = reinterpret_cast<CP_Utf8 *>(cp[str_addr->string_index])->toString(cp);
+				std::cout << str << std::endl;
+			}
 			switch(print_type) {
 				case T_INT:
 					std::cout << print_value.i4<< std::endl;
@@ -2545,14 +2558,13 @@ namespace jvm {
 				case T_FLOAT:
 					std::cout << print_value.f<< std::endl;
 					break;
-				case T_CHAR:
-					std::cout << (char)print_value.ui1<< std::endl;
-					break;
 				case T_BOOL:
 					if(print_value.ui1 == 1)
 						std::cout << "true"<< std::endl;
 					else if(print_value.ui1 == 0)
 						std::cout << "false"<< std::endl;
+					break;
+				case T_CHAR:
 					break;
 				default:
 					throw JvmException("Type not recognized");
