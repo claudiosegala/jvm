@@ -299,6 +299,7 @@ namespace jvm {
 
 			(this ->* executor)(instruction.get());                  // Access the instruction and execute it
 		}
+		std::cout <<"Execução concluída" << std::endl;
 	}
 
 	void Engine::run_clinit () {
@@ -2692,13 +2693,15 @@ namespace jvm {
 			auto to_print = frame.operands.pop4();
 			auto print_type = to_print.type;
 			auto print_value = to_print.value;
+			double db;
 			if(print_type == T_STRING){
 				auto str_addr = reinterpret_cast<CP_String *>(cp[print_value.ui4]);
 				std::string str = reinterpret_cast<CP_Utf8 *>(cp[str_addr->string_index])->toString(cp);
 				std::cout << str << std::endl;
 			}
 			if(print_type == T_DOUBLE){
-				double db = static_cast<u8>(frame.operands.pop4().value.ui4 << 4 || to_print.value.ui4);
+				auto aux = Converter::to_op8(frame.operands.pop4().value, to_print.value);
+				db = aux.lf;
 			}
 			switch(print_type) {
 				case T_INT:
@@ -2716,7 +2719,7 @@ namespace jvm {
 				case T_STRING:
 					break;
 				case T_DOUBLE:
-//					std::cout << db << std::endl;
+					std::cout << db << std::endl;
 					break;
 				default:
 					throw JvmException("Type not recognized");
