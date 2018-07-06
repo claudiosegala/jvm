@@ -2553,10 +2553,11 @@ namespace jvm {
 		auto &cp = frame.cl.constant_pool;
 
 		auto methodRef = reinterpret_cast<CP_Methodref*>(cp[data->index]); // get the method info from constant pool
-		auto &classInfo = cp[methodRef->class_index] -> as<CP_Class>();
-		auto className = cp[classInfo.name_index]-> toString(cp);
-		auto &methodNameAndType = cp[methodRef->name_and_type_index] -> as<CP_NameAndType>();
+		auto &classInfo = cp[methodRef->class_index]->as<CP_Class>();
+		auto className = cp[classInfo.name_index]->toString(cp);
+		auto &methodNameAndType = cp[methodRef->name_and_type_index]->as<CP_NameAndType>();
 		auto methodName = cp[methodNameAndType.name_index] -> toString(cp);
+		auto methodDescriptor = cp[methodNameAndType.descriptor_index] -> toString(cp);
 
 		if (methodName == "println" && className == "java/io/PrintStream") {
 			auto printStart = frame.operands.pop4();
@@ -2567,28 +2568,63 @@ namespace jvm {
 			return;
 		}
 
-		if (methodName == "registerNatives") { // ignore registerNatives
+		if (methodName == "registerNatives" && className == "java/lang/Object") { // ignore registerNatives
 			frame.PC += data->jmp + 1;
 			return;
+		}
+
+		if (className.find("java/") == 0) { // calling something that start with java/, this should not happen
+			throw JvmException("Invalid call to" + className);
 		}
 
 		auto methodData = findMethod(*methodRef);
 
 		Frame newFrame(methodData.classLoader, methodData.method);
 
-		int i = 1;
+		auto nargs = getArgumentsSize(methodDescriptor);
+		std::stack<op4> args;
+		for (u2 i = 0; i < nargs; i++) {
+			auto value = frame.operands.pop4();
+			args.push(value);
+		}
 
-		while(!fs.top().operands.empty()) {
-			auto resvalue = frame.operands.pop4();
-			newFrame.variables.set(i,resvalue.ui4);
-			i++;
+		for (u2 i = 1; i <= nargs; i++) {
+			auto value = args.top(); args.pop();
+			newFrame.variables.set(i, value);
 		}
 
 		fs.push(newFrame);
 
 		frame.PC += data->jmp + 1;
+	}
 
-//		throw JvmException("Not Implemented!");
+	u4 Engine::getArgumentsSize (std::string descriptor) {
+		u4 nargs = 0;
+
+		for (u2 i = 1; descriptor[i] != ')'; i++) {
+			switch (descriptor[i]) {
+				case 'D': // double-precision floating-point value
+				case 'J': // long integer
+					nargs += 2;
+					break;
+				case '[':
+					nargs++;
+					while(descriptor[++i] != '['); // jump description of how much dimentions it is
+					if (descriptor[i] == 'L') { // if array of type L
+						while(descriptor[++i] != ';');
+					}
+					break;
+				case 'L': // an instance of class ClassName
+					nargs++;
+					while(descriptor[++i] != ';'); // jump the name of the class
+					break;
+				default:
+					nargs++;
+					break;
+			}
+ 		}
+
+		return nargs;
 	}
 
 	// TODO: finish this function
