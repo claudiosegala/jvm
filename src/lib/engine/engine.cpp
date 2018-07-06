@@ -577,14 +577,8 @@ namespace jvm {
 		    frame.operands.push4(T_FLOAT, value);
 	    } else if (k->getTag() == String /* String */) {
 		    auto cp_str = k->as<CP_String>();
-		    auto aux = frame.cl.constant_pool[cp_str.string_index];
-		    auto cp_utf8 = aux->as<CP_Utf8>();
-		    auto str = cp_utf8.toString(frame.cl.constant_pool);
 
-		    for (auto c : str) {
-			    op4 ch{.ui1 = (u1) c };
-			    frame.operands.push4(T_CHAR, ch);
-		    }
+			frame.operands.push4(T_STRING, cp_str.string_index );
 
 
 		    frame.PC += data->jmp + 1;
@@ -2687,8 +2681,7 @@ namespace jvm {
 			auto print_value = to_print.value;
 			double db;
 			if(print_type == T_STRING){
-				auto str_addr = reinterpret_cast<CP_String *>(cp[print_value.ui4]);
-				std::string str = reinterpret_cast<CP_Utf8 *>(cp[str_addr->string_index])->toString(cp);
+				std::string str = reinterpret_cast<CP_String *>(cp[print_value.ui4])->toString(cp);
 				std::cout << str << std::endl;
 			}
 			if(print_type == T_DOUBLE){
