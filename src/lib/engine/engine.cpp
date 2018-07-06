@@ -1438,8 +1438,8 @@ namespace jvm {
 	void Engine::exec_isub (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOisub *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
+		auto value1 = frame.operands.pop4();
 
 		op4 res { .i4 = value1.value.i4 - value2.value.i4 };
 
@@ -1452,8 +1452,8 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOlsub *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
+		auto value1 = frame.operands.pop8();
 		op8 res { .ll = value1.value.ll - value2.value.ll };
 
 		frame.operands.push8(T_LONG, res);
@@ -1464,8 +1464,8 @@ namespace jvm {
 	void Engine::exec_fsub (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfsub *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
+		auto value1 = frame.operands.pop4();
 
 		op4 res { .f = value1.value.f - value2.value.f };
 		frame.operands.push4(T_FLOAT, res);
@@ -1475,8 +1475,8 @@ namespace jvm {
 	void Engine::exec_dsub (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdsub *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
+		auto value1 = frame.operands.pop8();
 
 		op8 res { .lf = value1.value.lf - value2.value.lf };
 		frame.operands.push8(T_DOUBLE, res);
@@ -1486,8 +1486,8 @@ namespace jvm {
 	void Engine::exec_imul (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOimul *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
+		auto value1 = frame.operands.pop4();
 
 		op4 res { .i4 = value1.value.i4*value2.value.i4 };
 		frame.operands.push4(T_INT, res);
@@ -1498,8 +1498,8 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOlmul *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
+		auto value1 = frame.operands.pop8();
 		op8 res { .ll = value1.value.ll*value2.value.ll };
 
 		frame.operands.push8(T_LONG, res);
@@ -1511,8 +1511,8 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOfmul *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
+		auto value1 = frame.operands.pop4();
 		op4 res { .f = value1.value.f*value2.value.f };
 
 		frame.operands.push4(T_FLOAT, res);
@@ -1524,8 +1524,8 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOdmul *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
+		auto value1 = frame.operands.pop8();
 		op8 res { .lf = value1.value.lf*value2.value.lf };
 
 		frame.operands.push8(T_DOUBLE, res);
@@ -1537,8 +1537,8 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOidiv *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
+		auto value1 = frame.operands.pop4();
 
 		if (value2.value.i4 == 0) {
 			throw JvmException("ArithmeticException");
@@ -1555,8 +1555,8 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOldiv *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
+		auto value1 = frame.operands.pop8();
 
 		if (value2.value.ll == 0) {
 			throw JvmException("ArithmeticException");
@@ -1573,8 +1573,13 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOfdiv *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
+		auto value1 = frame.operands.pop4();
+
+		if (value2.value.f == 0) {
+			throw JvmException("ArithmeticException");
+		}
+
 		op4 res { .f = value1.value.f / value2.value.f };
 
 		frame.operands.push4(T_FLOAT, res);
@@ -1586,8 +1591,13 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOddiv *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
+		auto value1 = frame.operands.pop8();
+
+		if (value2.value.lf == 0) {
+			throw JvmException("ArithmeticException");
+		}
+
 		op8 res { .lf = value1.value.lf / value2.value.lf };
 
 		frame.operands.push8(T_DOUBLE, res);
@@ -1599,8 +1609,8 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOirem *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
+		auto value1 = frame.operands.pop4();
 
 		if (value2.value.i4 == 0) {
 			throw JvmException("ArithmeticException");
@@ -1617,8 +1627,8 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOlrem *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
+		auto value1 = frame.operands.pop8();
 
 		if (value2.value.ll == 0) {
 			throw JvmException("ArithmeticException");
@@ -1634,10 +1644,16 @@ namespace jvm {
 	void Engine::exec_frem (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfrem *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value1 = frame.operands.pop4();
+
 		auto value2 = frame.operands.pop4();
+		auto value1 = frame.operands.pop4();
+
+		if (value2.value.f == 0) {
+			throw JvmException("ArithmeticException");
+		}
 
 		op4 res { .f = std::fmod(value1.value.f, value2.value.f) };
+
 		frame.operands.push4(T_FLOAT, res);
 		frame.PC += data->jmp + 1;
 	}
@@ -1645,8 +1661,13 @@ namespace jvm {
 	void Engine::exec_drem (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdrem *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value1 = frame.operands.pop8();
+
 		auto value2 = frame.operands.pop8();
+		auto value1 = frame.operands.pop8();
+
+		if (value2.value.lf == 0) {
+			throw JvmException("ArithmeticException");
+		}
 
 		op8 res { .lf = fmod(value1.value.lf, value2.value.lf) };
 		frame.operands.push8(T_DOUBLE, res);
@@ -1658,7 +1679,7 @@ namespace jvm {
 		auto &frame = fs.top();
 		auto value = frame.operands.pop4();
 
-		op4 res { .i4 = (~value.value.i4)+1 };
+		op4 res { .i4 = -value.value.i4 };
 		frame.operands.push4(T_INT, res);
 		frame.PC += data->jmp + 1;
 	}
@@ -1668,7 +1689,7 @@ namespace jvm {
 		auto &frame = fs.top();
 		auto value = frame.operands.pop8();
 
-		op8 res { .ll = (~value.value.ll)+1 };
+		op8 res { .ll = -value.value.ll };
 		frame.operands.push8(T_LONG, res);
 		frame.PC += data->jmp + 1;
 	}
@@ -1693,12 +1714,13 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: verificar operações bitwise com signed
 	void Engine::exec_ishl (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOishl *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
+		auto value1 = frame.operands.pop4();
 		op4 res { .ui4 = value1.value.ui4 << (value2.value.ui4 & 0x1f) };
 
 		frame.operands.push4(T_INT, res);
@@ -1706,12 +1728,13 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: verificar operações bitwise com signed
 	void Engine::exec_lshl (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlshl *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
+		auto value1 = frame.operands.pop8();
 		op8 res { .ll = value1.value.ll << (value2.value.ll & 0x3f) };
 
 		frame.operands.push8(T_LONG, res);
@@ -1719,12 +1742,13 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: verificar operações bitwise com signed
 	void Engine::exec_ishr (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOishr *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
+		auto value1 = frame.operands.pop4();
 		op4 res { .ui4 = value1.value.ui4 >> (value2.value.ui4 & 0x1f) };
 
 		frame.operands.push4(T_INT, res);
@@ -1732,12 +1756,13 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: verificar operações bitwise com signed
 	void Engine::exec_lshr (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlshr *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
+		auto value1 = frame.operands.pop8();
 		op8 res { .ll = value1.value.ll >> (value2.value.ll & 0x3f) };
 
 		frame.operands.push8(T_LONG, res);
@@ -1745,53 +1770,67 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: verificar operações bitwise com signed
+	// TODO: conferir a condição if(res.i4 < 0) se deveria ser if(value1.value.i4 < 0)
 	void Engine::exec_iushr (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiushr *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
-		auto s      = value2.value.ui4 & 0x1f;
-		op4 res { .ui4 = (value1.value.ui4 >> s) + (2 << (~s)) };
+		auto value1 = frame.operands.pop4();
+		auto s      = value2.value.i4 & 0x1f;
+		op4 res { .i4 = value1.value.i4 >> s};
+
+		if(res.i4 < 0) {
+			res.i4 = value1.value.i4 + (2 << (~s));
+		}
 
 		frame.operands.push4(T_INT, res);
 
 		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: verificar operações bitwise com signed
+	// TODO: conferir a condição if(res.ll < 0) se deveria ser if(value1.value.ll < 0)
 	void Engine::exec_lushr (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlushr *>(info); // get data in class
 		auto &frame = fs.top();
 
+		auto value2 = frame.operands.pop4();
 		auto value1 = frame.operands.pop8();
-		auto value2 = frame.operands.pop8();
-		auto s      = value2.value.ll & 0x3f;
-		op8 res { .ll = (value1.value.ll >> s) + (2L << (~s)) };
+		auto s      = value2.value.i4 & 0x3f;
+		op8 res { .ll = value1.value.ll >> s};
+
+		if(res.ll < 0) {
+			res.ll = value1.value.ll + (2L << (~s));
+		}
 
 		frame.operands.push8(T_LONG, res);
 
 		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: verificar operações bitwise com signed
 	void Engine::exec_iand (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiand *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
-		op4 res { .ui4 = value1.value.ui4 & value2.value.ui4 };
+		auto value1 = frame.operands.pop4();
+		op4 res { .i4 = value1.value.i4 & value2.value.i4 };
 
 		frame.operands.push4(T_INT, res);
 
 		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: verificar operações bitwise com signed
 	void Engine::exec_land (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOland *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
+		auto value1 = frame.operands.pop8();
 		op8 res { .ll = value1.value.ll & value2.value.ll };
 
 		frame.operands.push8(T_LONG, res);
@@ -1799,25 +1838,27 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: verificar operações bitwise com signed
 	void Engine::exec_ior (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOior *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
-		op4 res { .ui4 = value1.value.ui4 | value2.value.ui4 };
+		auto value1 = frame.operands.pop4();
+		op4 res { .i4 = value1.value.i4 | value2.value.i4 };
 
 		frame.operands.push4(T_INT, res);
 
 		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: verificar operações bitwise com signed
 	void Engine::exec_lor (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlor *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
+		auto value1 = frame.operands.pop8();
 		op8 res { .ll = value1.value.ll | value2.value.ll };
 
 		frame.operands.push8(T_LONG, res);
@@ -1825,23 +1866,25 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: verificar operações bitwise com signed
 	void Engine::exec_ixor (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOixor *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
-		op4 res { .ui4 = value1.value.ui4 ^ value2.value.ui4 };
+		auto value1 = frame.operands.pop4();
+		op4 res { .i4 = value1.value.i4 ^ value2.value.i4 };
 
 		frame.operands.push4(T_INT, res);
 		frame.PC += data->jmp + 1;
 	}
 
+	// TODO: verificar operações bitwise com signed
 	void Engine::exec_lxor (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlxor *>(info); // get data in class
 		auto &frame = fs.top();
-		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
+		auto value1 = frame.operands.pop8();
 
 		op8 res { .ll = value1.value.ll ^ value2.value.ll };
 		frame.operands.push8(T_LONG, res);
