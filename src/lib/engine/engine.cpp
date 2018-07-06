@@ -2367,14 +2367,13 @@ namespace jvm {
 		frame.PC = static_cast<u4>(static_cast<i4>(frame.PC) + data->branchoffset);
 	}
 
-	// TODO: finish this function
 	void Engine::exec_jsr (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOjsr *>(info); // get data in class
 		auto &frame = fs.top();
 
-		frame.PC += data->jmp + 1;
+		frame.operands.push4(frame.PC + data->jmp + 1); // insert address of the next instruction as type ReturnAddress
 
-		throw JvmException("Not Implemented!");
+		frame.PC = static_cast<u4>(static_cast<i4>(frame.PC) + data->branchoffset); // jump to procedure
 	}
 
 	void Engine::exec_ret (InstructionInfo * info) {
@@ -2770,9 +2769,9 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOjsr_w *>(info); // get data in class
 		auto &frame = fs.top();
 
-		frame.operands.push4(frame.PC + info->jmp);
+		frame.operands.push4(frame.PC + data->jmp + 1); // insert address of the next instruction as type ReturnAddress
 
-		frame.PC = static_cast<u4>(static_cast<i4>(frame.PC) + data->branchoffset);
+		frame.PC = static_cast<u4>(static_cast<i4>(frame.PC) + data->branchoffset); // jump to procedure
 	}
 
 	void Engine::exec_breakpoint (InstructionInfo * info) {
