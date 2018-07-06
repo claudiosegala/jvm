@@ -86,7 +86,7 @@ namespace jvm {
 	public:
 		virtual ~CP_Entry() = default;
 
-		inline virtual CP_TAGS getTag() = 0;
+		virtual CP_TAGS getTag() = 0;
 
 		virtual void printToStream(std::ostream &os, jvm::ConstantPool &cp) = 0;
 
@@ -108,7 +108,7 @@ namespace jvm {
 	struct CP_Class : public CP_Entry {
 		explicit CP_Class(Reader& reader);
 
-		inline CP_TAGS getTag() override;
+		CP_TAGS getTag() override;
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
@@ -125,7 +125,7 @@ namespace jvm {
 
 		~CP_Fieldref() override = default;
 
-		inline CP_TAGS getTag() override;
+		CP_TAGS getTag() override;
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
@@ -142,7 +142,7 @@ namespace jvm {
 	struct CP_Methodref : public CP_Entry {
 		explicit CP_Methodref(Reader& reader);
 
-		inline CP_TAGS getTag() override;
+		CP_TAGS getTag() override;
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
@@ -159,7 +159,7 @@ namespace jvm {
 	struct CP_InterfaceMethodref : public CP_Entry {
 		explicit CP_InterfaceMethodref(Reader& reader);
 
-		inline CP_TAGS getTag() override;
+		CP_TAGS getTag() override;
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
@@ -176,7 +176,7 @@ namespace jvm {
 	struct CP_String : public CP_Entry {
 		explicit CP_String(Reader& reader);
 
-		inline CP_TAGS getTag() override;
+		CP_TAGS getTag() override;
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
@@ -191,7 +191,7 @@ namespace jvm {
 	struct CP_Integer : public CP_Entry {
 		explicit CP_Integer(Reader& reader);
 
-		inline CP_TAGS getTag() override;
+		CP_TAGS getTag() override;
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
@@ -206,7 +206,7 @@ namespace jvm {
 	struct CP_Float : public CP_Entry {
 		explicit CP_Float(Reader& reader);
 
-		inline CP_TAGS getTag() override;
+		CP_TAGS getTag() override;
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
@@ -221,7 +221,7 @@ namespace jvm {
 	struct CP_Long : public CP_Entry {
 		explicit CP_Long(Reader& reader);
 
-		inline CP_TAGS getTag() override;
+		CP_TAGS getTag() override;
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
@@ -238,7 +238,7 @@ namespace jvm {
 	struct CP_Double : public CP_Entry {
 		explicit CP_Double(Reader& reader);
 
-		inline CP_TAGS getTag() override;
+		CP_TAGS getTag() override;
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
@@ -255,7 +255,7 @@ namespace jvm {
 	struct CP_NameAndType : public CP_Entry {
 		explicit CP_NameAndType(Reader& reader);
 
-		inline CP_TAGS getTag() override;
+		CP_TAGS getTag() override;
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
@@ -274,7 +274,7 @@ namespace jvm {
 
 		~CP_Utf8() override;
 
-		inline CP_TAGS getTag() override;
+		CP_TAGS getTag() override;
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
@@ -297,7 +297,7 @@ namespace jvm {
 	struct CP_MethodHandle : public CP_Entry {
 		explicit CP_MethodHandle(Reader& reader);
 
-		inline CP_TAGS getTag() override;
+		CP_TAGS getTag() override;
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
@@ -314,7 +314,7 @@ namespace jvm {
 	struct CP_MethodType : public CP_Entry {
 		explicit CP_MethodType(Reader& reader);
 
-		inline CP_TAGS getTag() override;
+		CP_TAGS getTag() override;
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
@@ -329,7 +329,7 @@ namespace jvm {
 	struct CP_InvokeDynamic : public CP_Entry {
 		explicit CP_InvokeDynamic(Reader& reader);
 
-		inline CP_TAGS getTag() override;
+		CP_TAGS getTag() override;
 
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
