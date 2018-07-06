@@ -42,6 +42,7 @@
 #define T_INT     10
 #define T_LONG    11
 #define T_RET     12
+#define T_STRING  69
 
 
 typedef uint8_t  u1;

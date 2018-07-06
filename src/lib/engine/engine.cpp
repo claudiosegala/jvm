@@ -556,7 +556,7 @@ namespace jvm {
 		auto res_str = dynamic_cast<CP_String*>(k);
 		if (res_str != nullptr) {
 			op4 res { .ui4 = data->index };
-			frame.operands.push4(T_CHAR, res);
+			frame.operands.push4(T_STRING, res);
 			frame.PC += data->jmp + 1;
 		} else{
 			std::cout <<"Error in ldc" << std::endl;
@@ -2589,7 +2589,7 @@ namespace jvm {
 			auto to_print = frame.operands.pop4();
 			auto print_type = to_print.type;
 			auto print_value = to_print.value;
-			if(print_type == T_CHAR){
+			if(print_type == T_STRING){
 				auto str_addr = reinterpret_cast<CP_String *>(cp[print_value.ui4]);
 				std::string str = reinterpret_cast<CP_Utf8 *>(cp[str_addr->string_index])->toString(cp);
 				std::cout << str << std::endl;
@@ -2607,7 +2607,7 @@ namespace jvm {
 					else if(print_value.ui1 == 0)
 						std::cout << "false"<< std::endl;
 					break;
-				case T_CHAR:
+				case T_STRING:
 					break;
 				default:
 					throw JvmException("Type not recognized");
