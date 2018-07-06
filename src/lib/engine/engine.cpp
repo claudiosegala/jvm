@@ -312,35 +312,39 @@ namespace jvm {
 	std::pair<ClassLoader, MethodInfo> Engine::findMethod(CP_Methodref &ref) {
 		auto &currentClass = fs.top().cl;
 		auto &constantPool = currentClass.constant_pool;
+
 		auto &classInfo = constantPool[ref.class_index] -> as<CP_Class>();
 		auto &nameAndType = constantPool[ref.name_and_type_index] -> as<CP_NameAndType>();
-		std::string name = constantPool[nameAndType.name_index] -> toString(constantPool);
-		std::string descriptor = constantPool[nameAndType.descriptor_index] -> toString(constantPool);
+		auto name = constantPool[nameAndType.name_index] -> toString(constantPool);
+		auto descriptor = constantPool[nameAndType.descriptor_index] -> toString(constantPool);
+
 		auto& methodClass = findClass(classInfo);
-		auto pair = methodClass.methods.find(name + descriptor);
-		if(pair != methodClass.methods.end()) {
-			auto& method = pair->second;
-			return std::make_pair(methodClass, method);
+		auto methodKey = std::string(name + descriptor);
+
+		if (methodClass.methods.count(methodKey) == 0) {
+			throw JvmException("Method with" + name + "and descritor" + descriptor + " not found!");
 		}
-		throw JvmException("Method " + name + " not found");
+
+		return std::make_pair(methodClass, methodClass.methods[methodKey]);
 	}
 
 	const ClassLoader & Engine::findClass(CP_Class &classInfo) {
 		auto &cl = fs.top().cl;
 		auto &cp = cl.constant_pool;
-		std::string className = cp[classInfo.name_index]-> toString(cp);
-		auto pair = JavaClasses.find(className);
-		if(pair != JavaClasses.end())
-			return pair->second; // Class is loaded
-		// Class is not loaded, we'll find the corresponding .class file
+		auto className = cp[classInfo.name_index]-> toString(cp);
+
+		if (JavaClasses.count(className) > 0) {  // If class was already loaded, return
+			return JavaClasses[className];
+		}
+
+		// Find the corresponding .class file and load
+
 		ClassLoader newClass;
-		newClass.read("../samples/"+className+".class"); // Load the correct class
-		JavaClasses.insert({className, newClass}); // Add new class to the map
-		pair = JavaClasses.find(className);
-		pair->second.show();
-		if(pair != JavaClasses.end())
-			return pair->second; // Class is loaded
-		throw JvmException("Not able to load" + className + ".class");
+
+		newClass.read("../samples/" + className + ".class"); // Load the correct class
+		JavaClasses.insert({ className, newClass }); // Add new class to the map
+
+		return JavaClasses[className];
 	}
 
 	void Engine::exec_nop (InstructionInfo * info) {
@@ -353,18 +357,19 @@ namespace jvm {
 	void Engine::exec_aconst_null (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOaconst_null *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.ui4 = 0;
+
+		op4 res { .ui4 = 0 };
+
 		frame.operands.push4(res);
 		frame.PC += data->jmp + 1;
-
-
 	}
 
 	void Engine::exec_iconst_m1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiconst_m1 *>(info); // get data in class
 		auto &frame = fs.top();
+
 		op4 res = {.i4 = -1};
+
 		frame.operands.push4(res);
 		frame.PC += data->jmp + 1;
 	}
@@ -372,8 +377,9 @@ namespace jvm {
 	void Engine::exec_iconst_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiconst_0 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.ui4 = 0;
+
+		op4 res { .ui4 = 0 };
+
 		frame.operands.push4(res);
 		frame.PC += data->jmp + 1;
 	}
@@ -381,8 +387,9 @@ namespace jvm {
 	void Engine::exec_iconst_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiconst_1 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.ui4 = 1;
+
+		op4 res { .ui4 = 1 };
+
 		frame.operands.push4(res);
 		frame.PC += data->jmp + 1;
 	}
@@ -390,8 +397,9 @@ namespace jvm {
 	void Engine::exec_iconst_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiconst_2 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.ui4 = 2;
+
+		op4 res { .ui4 = 2 };
+
 		frame.operands.push4(res);
 		frame.PC += data->jmp + 1;
 	}
@@ -399,8 +407,9 @@ namespace jvm {
 	void Engine::exec_iconst_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiconst_3 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.ui4 = 3;
+
+		op4 res { .ui4 = 3 };
+
 		frame.operands.push4(res);
 		frame.PC += data->jmp + 1;
 	}
@@ -408,8 +417,9 @@ namespace jvm {
 	void Engine::exec_iconst_4 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiconst_4 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.ui4 = 4;
+
+		op4 res { .ui4 = 4 };
+
 		frame.operands.push4(res);
 		frame.PC += data->jmp + 1;
 	}
@@ -417,8 +427,9 @@ namespace jvm {
 	void Engine::exec_iconst_5 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiconst_5 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.ui4 = 5;
+
+		op4 res { .ui4 = 5 };
+
 		frame.operands.push4(res);
 		frame.PC += data->jmp + 1;
 
@@ -427,8 +438,9 @@ namespace jvm {
 	void Engine::exec_lconst_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlconst_0 *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 res;
-		res.ull = 0;
+
+		op8 res { .ull = 0 };
+
 		frame.operands.push8(res);
 		frame.PC += data->jmp + 1;
 	}
@@ -436,8 +448,9 @@ namespace jvm {
 	void Engine::exec_lconst_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlconst_1 *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 res;
-		res.ull = 1;
+
+		op8 res { .ull = 1 };
+
 		frame.operands.push8(res);
 		frame.PC += data->jmp + 1;
 	}
@@ -472,8 +485,9 @@ namespace jvm {
 	void Engine::exec_dconst_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdconst_0 *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 res;
-		res.lf = 0.0;
+
+		op8 res { .lf = 0.0 };
+
 		frame.operands.push8(res);
 		frame.PC += data->jmp + 1;
 	}
@@ -481,8 +495,9 @@ namespace jvm {
 	void Engine::exec_dconst_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdconst_1 *>(info); // get data in class
 		auto &frame = fs.top();
-		op8 res;
-		res.lf = 1.0;
+
+		op8 res { .lf = 1.0 };
+
 		frame.operands.push8(res);
 		frame.PC += data->jmp + 1;
 	}
@@ -1092,7 +1107,7 @@ namespace jvm {
 
 		throw JvmException("Not Implemented!");
 	}
-	
+
 	void Engine::exec_astore_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOastore_1 *>(info); // get data in class
 		auto &frame = fs.top();
@@ -2069,8 +2084,9 @@ namespace jvm {
 		auto &frame = fs.top();
 		op8 longvalue1 = frame.operands.pop8();
 		op8 longvalue2 = frame.operands.pop8();
-		op8 res;
-		res.ll = longvalue1.ll - longvalue2.ll;
+
+		op8 res { .ll = longvalue1.ll - longvalue2.ll };
+
 		if (res.ll > 0) {
 			frame.operands.push4(1);
 		} else if(res.ll == 0) {
