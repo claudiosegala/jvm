@@ -328,7 +328,7 @@ namespace jvm {
 		return std::make_pair(methodClass, methodClass.methods[methodKey]);
 	}
 
-	const ClassLoader & Engine::findClass(CP_Class &classInfo) {
+	const ClassLoader& Engine::findClass(CP_Class &classInfo) {
 		auto &cl = fs.top().cl;
 		auto &cp = cl.constant_pool;
 		auto className = cp[classInfo.name_index]-> toString(cp);
@@ -458,8 +458,7 @@ namespace jvm {
 	void Engine::exec_fconst_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfconst_0 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.f = 0.0;
+		op4 res { .f = 0.0 };
 		frame.operands.push4(res);
 		frame.PC += data->jmp + 1;
 	}
@@ -467,8 +466,7 @@ namespace jvm {
 	void Engine::exec_fconst_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfconst_1 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.f = 1.0;
+		op4 res { .f = 1.0 };
 		frame.operands.push4(res);
 		frame.PC += data->jmp + 1;
 	}
@@ -476,8 +474,7 @@ namespace jvm {
 	void Engine::exec_fconst_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfconst_2 *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.f = 2.0;
+		op4 res { .f = 2.0 };
 		frame.operands.push4(res);
 		frame.PC += data->jmp + 1;
 	}
@@ -505,8 +502,7 @@ namespace jvm {
 	void Engine::exec_bipush (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFObipush *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.i1 = data->byte;
+		op4 res { .i1 = data->byte };
 		frame.operands.push4(res);
 		frame.PC += data->jmp + 1;
 	}
@@ -514,8 +510,7 @@ namespace jvm {
 	void Engine::exec_sipush (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOsipush *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 res;
-		res.i2 = data->value;
+		op4 res { .i2 = data->value };
 		frame.operands.push4(res);
 		frame.PC += data->jmp + 1;
 	}
@@ -532,8 +527,9 @@ namespace jvm {
 			frame.PC += data->jmp + 1;
 			return;
 		}
+
 		auto res_int = dynamic_cast<CP_Integer*>(k);
-		if(res_int != nullptr) {
+		if (res_int != nullptr) {
 			res.ui4 = res_float->_bytes;
 			frame.operands.push4(res);
 			frame.PC += data->jmp + 1;
@@ -550,13 +546,14 @@ namespace jvm {
 		op4 res;
 		auto k = frame.cl.constant_pool[data->index];
 		auto res_float = dynamic_cast<CP_Float*>(k);
-		if(res_float != nullptr) {
+		if (res_float != nullptr) {
 			res.ui4 = res_float->_bytes;
 			frame.operands.push4(res);
 			frame.PC += data->jmp + 1;
 		}
+
 		auto res_int = dynamic_cast<CP_Integer*>(k);
-		if(res_int != nullptr){
+		if (res_int != nullptr) {
 			res.ui4 = res_int->_bytes;
 			frame.operands.push4(res);
 			frame.PC += data->jmp + 1;
@@ -573,7 +570,7 @@ namespace jvm {
 
 		op4 res1, res2;
 
-		if(res_double != nullptr) {
+		if (res_double != nullptr) {
 			res1.ui4 = res_double->low_bytes;
 			res2.ui4 = res_double->high_bytes;
 			frame.operands.push4(res1);
@@ -583,7 +580,7 @@ namespace jvm {
 
 		auto res_long = dynamic_cast<CP_Long*>(k);
 
-		if(res_long != nullptr){
+		if (res_long != nullptr) {
 			res1.ui4 = res_long->low_bytes;
 			res2.ui4 = res_long->high_bytes;
 			frame.operands.push4(res1);
@@ -2089,9 +2086,9 @@ namespace jvm {
 
 		if (res.ll > 0) {
 			frame.operands.push4(1);
-		} else if(res.ll == 0) {
+		} else if (res.ll == 0) {
 			frame.operands.push4(0);
-		} else if(res.ll < 0) {
+		} else if (res.ll < 0) {
 			frame.operands.push4(-1);
 		}
 		frame.PC += data->jmp + 1;
@@ -2107,15 +2104,15 @@ namespace jvm {
 		op4 resvalue;
 		resvalue.f = floatvalue1.f - floatvalue2.f;
 
-		if(std::isnan(floatvalue1.f)| std::isnan(floatvalue2.f)) {
+		if (std::isnan(floatvalue1.f)| std::isnan(floatvalue2.f)) {
 			frame.operands.push4(-1);
 		}
 
 		if (resvalue.f > 0) {
 			frame.operands.push4(1);
-		} else if(resvalue.f == 0) {
+		} else if (resvalue.f == 0) {
 			frame.operands.push4(0);
-		} else if(resvalue.f < 0) {
+		} else if (resvalue.f < 0) {
 			frame.operands.push4(-1);
 		}
 
@@ -2132,15 +2129,15 @@ namespace jvm {
 		op4 floatvalue2 = frame.operands.pop4();
 		op4 resvalue;
 		resvalue.f = floatvalue1.f - floatvalue2.f;
-		if(std::isnan(floatvalue1.f)| std::isnan(floatvalue2.f)) {
+		if (std::isnan(floatvalue1.f)| std::isnan(floatvalue2.f)) {
 			frame.operands.push4(1);
 		}
 
 		if (resvalue.f > 0) {
 			frame.operands.push4(1);
-		} else if(resvalue.f == 0) {
+		} else if (resvalue.f == 0) {
 			frame.operands.push4(0);
-		} else if(resvalue.f < 0) {
+		} else if (resvalue.f < 0) {
 			frame.operands.push4(-1);
 		}
 
@@ -2158,15 +2155,15 @@ namespace jvm {
 
 		op8 resvalue { .lf = floatvalue1.lf - floatvalue2.lf };
 
-		if(std::isnan(floatvalue1.lf)| std::isnan(floatvalue2.lf)) {
+		if (std::isnan(floatvalue1.lf)| std::isnan(floatvalue2.lf)) {
 			frame.operands.push4(-1);
 		}
 
 		if (resvalue.lf > 0) {
 			frame.operands.push4(1);
-		} else if(resvalue.lf == 0) {
+		} else if (resvalue.lf == 0) {
 			frame.operands.push4(0);
-		} else if(resvalue.lf < 0) {
+		} else if (resvalue.lf < 0) {
 			frame.operands.push4(-1);
 		}
 
@@ -2183,15 +2180,15 @@ namespace jvm {
 		op8 floatvalue2 = frame.operands.pop8();
 		op8 resvalue;
 		resvalue.lf = floatvalue1.lf - floatvalue2.lf;
-		if(std::isnan(floatvalue1.lf)| std::isnan(floatvalue2.lf)) {
+		if (std::isnan(floatvalue1.lf)| std::isnan(floatvalue2.lf)) {
 			frame.operands.push4(1);
 		}
 
 		if (resvalue.lf > 0) {
 			frame.operands.push4(1);
-		} else if(resvalue.lf == 0) {
+		} else if (resvalue.lf == 0) {
 			frame.operands.push4(0);
-		} else if(resvalue.lf < 0) {
+		} else if (resvalue.lf < 0) {
 			frame.operands.push4(-1);
 		}
 
@@ -2468,7 +2465,7 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOreturn *>(info); // get data in class
 		auto &frame = fs.top();
 		fs.pop();
-		if(fs.empty()) throw JvmException("Execução finalizada com sucesso.");
+		if (fs.empty()) throw JvmException("Execução finalizada com sucesso.");
 		frame.PC += data->jmp + 1;
 	}
 
@@ -2606,49 +2603,49 @@ namespace jvm {
 		auto arraytam = frame.operands.pop4();
 		auto type = data->atype;
 		auto vector_ptr = mem.size();
-		if(type == 4) {
+		if (type == 4) {
 			bool * val = new bool[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
 			frame.operands.push4(res);
-		} else if(type == 5) {
+		} else if (type == 5) {
 			char * val = new char[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
 			frame.operands.push4(res);
-		} else if(type == 6) {
+		} else if (type == 6) {
 			float * val = new float[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
 			frame.operands.push4(res);
-		} else if(type == 7) {
+		} else if (type == 7) {
 			double * val = new double[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
 			frame.operands.push4(res);
-		} else if(type == 8) {
+		} else if (type == 8) {
 			u1 * val = new u1[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
 			frame.operands.push4(res);
-		} else if(type == 9) {
+		} else if (type == 9) {
 			short * val = new short[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
 			frame.operands.push4(res);
-		} else if(type == 10) {
+		} else if (type == 10) {
 			int * val = new int[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
 			res.ui4 = vector_ptr;
 			frame.operands.push4(res);
-		} else if(type == 11) {
+		} else if (type == 11) {
 			long * val = new long[arraytam.ui4];
 			mem.push_back(val);
 			op4 res;
@@ -2668,12 +2665,11 @@ namespace jvm {
 		op4 count_value = frame.operands.pop4();
 		CP_Entry* f =frame.cl.constant_pool[data->index];
 		f = dynamic_cast<CP_Class*>(f);
-		if(f != nullptr)
-		{
+		if (f != nullptr) {
 
 		}
 		f = dynamic_cast<CP_Methodref*>(f);
-		if(f != nullptr){
+		if (f != nullptr) {
 
 		}
 
@@ -2689,7 +2685,7 @@ namespace jvm {
 		op4 arrayref = frame.operands.pop4();
 		auto ARP = mem[arrayref.ui4];
 		op4 arraylength;
-		arraylength.ui4 = (sizeof(ARP)/sizeof(ARP[0]));
+		//arraylength.ui4 = (sizeof(ARP)/sizeof(ARP[0]));
 		frame.operands.push4(arraylength.ui4);
 		frame.PC += data->jmp + 1;
 
@@ -2759,7 +2755,7 @@ namespace jvm {
 		auto &frame = fs.top();
 		auto ref = frame.operands.pop4();
 
-		if(ref.f == 0) {
+		if (ref.f == 0) {
 			frame.PC = static_cast<u4>(static_cast<i4>(frame.PC) + data->branchoffset);
 		} else {
 			frame.PC += data->jmp + 1;
@@ -2771,7 +2767,7 @@ namespace jvm {
 		auto &frame = fs.top();
 		auto ref = frame.operands.pop4();
 
-		if(ref.f != 0) {
+		if (ref.f != 0) {
 			frame.PC = static_cast<u4>(static_cast<i4>(frame.PC) + data->branchoffset);
 		} else {
 			frame.PC += data->jmp + 1;
