@@ -2504,9 +2504,9 @@ namespace jvm {
 		auto methodDescriptor = cp[methodNameAndType.descriptor_index] -> toString(cp);
 
 		if (methodName == "println" && className == "java/io/PrintStream") {
-			auto printStart = frame.operands.pop4();
+			auto to_print = frame.operands.pop4().value.ui4;
 
-			//std::cout << print(printStart) << std::endl;
+			std::cout << to_print << std::endl;
 
 			frame.PC += data->jmp + 1;
 			return;
