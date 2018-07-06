@@ -1,8 +1,0 @@
-<map id="jvm::Frame" name="jvm::Frame">
-<area shape="rect" id="node2" href="$classjvm_1_1Operands.html" title="jvm::Operands" alt="" coords="489,15,595,41"/>
-<area shape="rect" id="node4" href="$classjvm_1_1MethodInfo.html" title="jvm::MethodInfo" alt="" coords="484,128,600,155"/>
-<area shape="rect" id="node5" href="$classjvm_1_1AttributeInfo.html" title="jvm::AttributeInfo" alt="" coords="220,129,343,156"/>
-<area shape="rect" id="node7" href="$classjvm_1_1ClassLoader.html" title="jvm::ClassLoader" alt="" coords="480,77,604,104"/>
-<area shape="rect" id="node8" href="$classjvm_1_1ConstantPool.html" title="jvm::ConstantPool" alt="" coords="216,56,347,83"/>
-<area shape="rect" id="node10" href="$classjvm_1_1Variables.html" title="jvm::Variables" alt="" coords="489,179,595,205"/>
-</map>

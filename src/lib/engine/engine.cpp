@@ -2035,7 +2035,7 @@ namespace jvm {
 		auto longvalue2 = frame.operands.pop8();
 
 		op8 aux { .ll = longvalue1.value.ll - longvalue2.value.ll };
-		BigData res { .value = aux };
+		BigData res { .type = T_LONG, .value = aux };
 
 		if (res.value.ll > 0) {
 			frame.operands.push4(T_INT, 1);
