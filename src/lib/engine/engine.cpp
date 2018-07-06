@@ -655,21 +655,24 @@ namespace jvm {
 		auto data = reinterpret_cast<OPINFOldc *>(info); // get data in class
 		auto &frame = fs.top();
 		auto k = frame.cl.constant_pool[data->index];
-		if (k->getTag() == Long /* Integer */) {
-			auto long_cp = k->as<CP_Long>();
-			op4 value1{.i4 = static_cast<i4>(long_cp.high_bytes)};
-			op4 value2{.i4 = static_cast<i4>(long_cp.low_bytes)};
-			op8 resvalue {.ll = value1.i4 << 32 | value2.i4};
-			frame.operands.push8(T_LONG,resvalue.ll);
 
-		} else if (k->getTag() == Double /* Double */) {
+		if (k->getTag() == Long) {
+			auto long_cp = k->as<CP_Long>();
+			op4 value1 {.ui4 = static_cast<u4>(long_cp.low_bytes)};
+			op4 value2 {.ui4 = static_cast<u4>(long_cp.high_bytes)};
+
+			auto res = Converter::to_op8(value1, value2);
+			frame.operands.push8(T_LONG, res);
+		} else if (k->getTag() == Double) {
 			auto double_cp = k->as<CP_Double>();
-			op4 value1 {.ui4 = static_cast<float>(double_cp.high_bytes)};
-			op4 value2 {.ui4 = static_cast<float>(double_cp.low_bytes)};
-			op8 resvalue {.lf = value1.ui4 << 32 | value2.ui4 };
-			frame.operands.push8(T_DOUBLE,resvalue.lf);
-			frame.PC += data->jmp + 1;
+			op4 value1 { .ui4 = static_cast<u4>(double_cp.low_bytes) };
+			op4 value2 { .ui4 = static_cast<u4>(double_cp.high_bytes) };
+
+			auto res = Converter::to_op8(value1, value2);
+			frame.operands.push8(T_DOUBLE, res);
 		}
+
+		frame.PC += data->jmp + 1;
 	}
 	void Engine::exec_iload (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiload *>(info); // get data in class
