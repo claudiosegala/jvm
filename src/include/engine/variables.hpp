@@ -29,42 +29,42 @@ namespace jvm {
 		 * @param idx must be a valid index of the variables vector
 		 * @return op4 value stored at index idx
 		 */
-		op4 get4(u2);
+		op4 get4(u4);
 
 		/**
 		 * Gets a value of the variables vector given it's index
 		 * @param idx must be a valid index of the variables vector
 		 * @return op8 value stored at index idx
 		 */
-		op8 get8(u2);
+		op8 get8(u4);
 
 		/**
 		 * Sets value in the variables vector given a valid index
 		 * @param idx must be a valid index of the variables vector
 		 * @return op4 value to be stored at index idx
 		 */
-		void set(u2, op4);
+		void set(u4, op4);
 
 		/**
 		 * Sets value in the variables vector given a valid index
 		 * @param idx must be a valid index of the variables vector
 		 * @return u4 value to be stored at index idx
 		 */
-		void set(u2, u4);
+		void set(u4, u4);
 
 		/**
 		 * Sets value in the variables vector given a valid index
 		 * @param idx must be a valid index of the variables vector
 		 * @return op8 value to be stored at index idx
 		 */
-		void set(u2, op8);
+		void set(u4, op8);
 
 		/**
 		 * Sets value in the variables vector given a valid index
 		 * @param idx must be a valid index of the variables vector
 		 * @return u8 value to be stored at index idx
 		 */
-		void set(u2, u8);
+		void set(u4, u8);
 
 	private:
 

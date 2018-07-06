@@ -1895,180 +1895,209 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOiinc *>(info); // get data in class
 		auto &frame = fs.top();
 		auto index = frame.operands.pop4();
-		auto valor = frame.operands.pop4();
+		auto value = frame.operands.pop4();
+		auto currentValue = frame.variables.get4(index.value.ui4);
 
-		frame.variables.set(index.value.i2,valor.value);
+		op4 newValue { .i4 = currentValue.i4 + value.value.i4 };
+
+		frame.variables.set(index.value.ui4, newValue);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_i2l (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOi2l *>(info); // get data in class
 		auto &frame = fs.top();
-		auto intValue = frame.operands.pop4();
+		auto value = frame.operands.pop4();
 
-		frame.operands.push8(T_LONG, static_cast<i8>(intValue.value.i4));
+		assert(value.type == T_INT);
+
+		op8 res { .ll = static_cast<i8>(value.value.i4) };
+
+		frame.operands.push8(T_LONG, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_i2f (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOi2f *>(info); // get data in class
 		auto &frame = fs.top();
-		auto intValue = frame.operands.pop4();
+		auto value = frame.operands.pop4();
 
-		frame.operands.push4(T_FLOAT, static_cast<float>(intValue.value.i4));
+		assert(value.type == T_INT);
+
+		op4 res { .f = static_cast<float>(value.value.i4) };
+
+		frame.operands.push4(T_FLOAT, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_i2d (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOi2d *>(info); // get data in class
 		auto &frame = fs.top();
-		auto intValue = frame.operands.pop4();
+		auto value = frame.operands.pop4();
 
-		frame.operands.push8(T_DOUBLE, static_cast<double>(intValue.value.i4));
+		assert(value.type == T_INT);
+
+		op8 res { .lf = static_cast<double>(value.value.i4) };
+
+		frame.operands.push8(T_DOUBLE, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_l2i (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOl2i *>(info); // get data in class
 		auto &frame = fs.top();
-		auto longValue = frame.operands.pop8();
+		auto value = frame.operands.pop8();
 
-		op4 intValue { .i4 = static_cast<i4>(0x00000000FFFFFFFF & longValue.value.ll) };
-		frame.operands.push4(T_INT, intValue);
+		assert(value.type == T_LONG);
+
+		op4 res { .i4 = static_cast<i4>(value.value.ll) };
+
+		frame.operands.push4(T_INT, res);
 		frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_l2f (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOl2f *>(info); // get data in class
 		auto &frame = fs.top();
-		auto longvalue = frame.operands.pop8();
+		auto value = frame.operands.pop8();
 
-		op4 floatvalue { .f = static_cast<float>(longvalue.value.ll) };
-		frame.operands.push4(T_FLOAT, floatvalue);
+		assert(value.type == T_LONG);
+
+		op4 res { .f = static_cast<float>(value.value.ll) };
+
+		frame.operands.push4(T_FLOAT, res);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_l2d (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOl2d *>(info); // get data in class
 		auto &frame = fs.top();
-		auto longvalue = frame.operands.pop8();
+		auto value = frame.operands.pop8();
 
-		op8 doublevalue { .lf = static_cast<double>(longvalue.value.ll) };
+		assert(value.type == T_LONG);
+
+		op8 res { .lf = static_cast<double>(value.value.ll) };
+
+		frame.operands.push8(T_DOUBLE, res);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_f2i (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOf2i *>(info); // get data in class
 		auto &frame = fs.top();
-		auto floatvalue = frame.operands.pop4();
+		auto value = frame.operands.pop4();
 
-		op4 intvalue { .i4 = static_cast<int32_t>(floatvalue.value.f) };
-		frame.operands.push4(T_INT, intvalue);
+		assert(value.type == T_FLOAT);
+
+		op4 res { .i4 = static_cast<int32_t>(value.value.f) };
+
+		frame.operands.push4(T_INT, res);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_f2l (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOf2l *>(info); // get data in class
 		auto &frame = fs.top();
-		auto floatvalue = frame.operands.pop4();
+		auto value = frame.operands.pop4();
 
-		op8 longvalue { .ll = (long long) static_cast<double>(floatvalue.value.f) };
-		frame.operands.push8(T_LONG, longvalue);
+		assert(value.type == T_FLOAT);
+
+		op8 res { .ll = (i8) static_cast<double>(value.value.f) };
+
+		frame.operands.push8(T_LONG, res);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_f2d (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOf2d *>(info); // get data in class
 		auto &frame = fs.top();
-		auto  floatvalue = frame.operands.pop4();
+		auto value = frame.operands.pop4();
 
-		op8 doublevalue { .lf = static_cast<double>(floatvalue.value.f) };
-		frame.operands.push8(T_DOUBLE, doublevalue.lf);
+		assert(value.type == T_FLOAT);
+
+		op8 res { .lf = static_cast<double>(value.value.f) };
+
+		frame.operands.push8(T_DOUBLE, res);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_d2i (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOd2i *>(info); // get data in class
 		auto &frame = fs.top();
-		auto doublevalue = frame.operands.pop8();
-		auto intvalue = static_cast<int32_t>(doublevalue.value.lf);
+		auto value = frame.operands.pop8();
 
-		frame.operands.push4(T_INT, intvalue);
+		assert(value.type == T_DOUBLE);
+
+		op4 res { .i4 = static_cast<int32_t>(value.value.lf) };
+
+		frame.operands.push4(T_INT, res);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_d2l (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOd2l *>(info); // get data in class
 		auto &frame = fs.top();
-		auto doublevalue = frame.operands.pop8();
-		op8 longvalue;
-		longvalue.ll = static_cast<long>(doublevalue.value.lf);
-		frame.operands.push8(T_LONG, longvalue);
+		auto value = frame.operands.pop8();
+
+		assert(value.type == T_DOUBLE);
+
+		op8 res { .ll = static_cast<i8>(value.value.lf) };
+
+		frame.operands.push8(T_LONG, res);
 
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_d2f (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOd2f *>(info); // get data in class
 		auto &frame = fs.top();
-		auto doublevalue = frame.operands.pop8();
+		auto value = frame.operands.pop8();
 
-		op4 floatvalue;
-		floatvalue.f = static_cast<float>(doublevalue.value.lf);
+		assert(value.type == T_DOUBLE);
+
+		op4 res { .f = static_cast<float>(value.value.lf) };
+
+		frame.operands.push4(T_FLOAT, res);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_i2b (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOi2b *>(info); // get data in class
 		auto &frame = fs.top();
-		auto intvalue = frame.operands.pop4();
+		auto value = frame.operands.pop4();
 
-		op4 bytevalue { .i1 = static_cast<int8_t>(intvalue.value.i1) };
-		frame.operands.push4(T_BYTE, bytevalue);
+		assert(value.type == T_INT);
+
+		op4 res { .i1 = static_cast<int8_t>(value.value.i1) };
+
+		frame.operands.push4(T_BYTE, res);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_i2c (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOi2c *>(info); // get data in class
 		auto &frame = fs.top();
-		auto intvalue = frame.operands.pop4();
+		auto value = frame.operands.pop4();
 
-		op4 comput { .i1 = static_cast<int8_t>(intvalue.value.i4) };
+		assert(value.type == T_INT);
 
+		op4 res { .i1 = static_cast<int8_t>(value.value.i4) };
+
+		frame.operands.push4(T_CHAR, res);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_i2s (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOi2s *>(info); // get data in class
 		auto &frame = fs.top();
-		auto intvalue = frame.operands.pop4();
+		auto value = frame.operands.pop4();
 
-		op4 shortvalue { .i2 = static_cast<int16_t>(intvalue.value.i4) };
+		assert(value.type == T_INT);
+
+		op4 res { .i2 = static_cast<int16_t>(value.value.i4) };
+
+		frame.operands.push4(T_SHORT, res);
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_lcmp (InstructionInfo * info) {
@@ -2389,6 +2418,8 @@ namespace jvm {
 
 		auto newPC  = frame.variables.get4(data->index); // remove the next PC of type returnAddress
 
+		//assert(newPC.type == T_REF);
+
 		frame.PC = newPC.ui4;
 	}
 
@@ -2547,10 +2578,28 @@ namespace jvm {
 		auto methodDescriptor = cp[methodNameAndType.descriptor_index] -> toString(cp);
 
 		if (methodName == "println" && className == "java/io/PrintStream") {
-			auto to_print = frame.operands.pop4().value.ui4;
-
-			std::cout << to_print << std::endl;
-
+			auto to_print = frame.operands.pop4();
+			auto print_type = to_print.type;
+			auto print_value = to_print.value;
+			switch(print_type) {
+				case T_INT:
+					std::cout << print_value.i4<< std::endl;
+					break;
+				case T_FLOAT:
+					std::cout << print_value.f<< std::endl;
+					break;
+				case T_CHAR:
+					std::cout << (char)print_value.ui1<< std::endl;
+					break;
+				case T_BOOL:
+					if(print_value.ui1 == 1)
+						std::cout << "true"<< std::endl;
+					else if(print_value.ui1 == 0)
+						std::cout << "false"<< std::endl;
+					break;
+				default:
+					throw JvmException("Type not recognized");
+			}
 			frame.PC += data->jmp + 1;
 			return;
 		}
@@ -2698,10 +2747,17 @@ namespace jvm {
 
 	// TODO: finish this function
 	void Engine::exec_new (InstructionInfo * info) {
-		auto data   = reinterpret_cast<OPINFOnew *>(info); // get data in class
+		auto data   = reinterpret_cast<OPINFOinvokestatic *>(info); // get data in class
 		auto &frame = fs.top();
+		auto &cp = frame.cl.constant_pool;
 
-		frame.PC += data->jmp + 1;
+		auto classInfo = reinterpret_cast<CP_Class*>(cp[data->index]); // get the method info from constant pool
+		auto className = cp[classInfo->name_index]->toString(cp);
+		if (className == "java/lang/StringBuilder") {
+			frame.PC += data->jmp + 1;
+			throw JvmException("Not Implemented String Builder!");
+			return;
+		}
 
 		throw JvmException("Not Implemented!");
 	}
@@ -2769,6 +2825,7 @@ namespace jvm {
 		throw JvmException("Not Implemented!");
 	}
 
+	// TODO: finish this function
 	void Engine::exec_arraylength (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOarraylength *>(info); // get data in class
 		auto &frame = fs.top();
@@ -2840,25 +2897,32 @@ namespace jvm {
 		throw JvmException("Not Implemented!");
 	}
 
+	// TODO: check if this checking on null is correct (i think we will need to see the heap)
 	void Engine::exec_ifnull (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifnull *>(info); // get data in class
 		auto &frame = fs.top();
 		auto ref = frame.operands.pop4();
 
-		if (ref.value.f == 0) {
+		assert(ref.type == T_REF);
+
+		if (ref.value.ui4 == 0) {
 			frame.PC = static_cast<u4>(static_cast<i4>(frame.PC) + data->branchoffset);
 		} else {
 			frame.PC += data->jmp + 1;
 		}
 	}
 
+	// TODO: check if this checking on null is correct (i think we will need to see the heap)
 	void Engine::exec_ifnonnull (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOifnonnull *>(info); // get data in class
 		auto &frame = fs.top();
 		auto ref = frame.operands.pop4();
 
-		if (ref.value.f != 0) {
-			frame.PC = static_cast<u4>(static_cast<i4>(frame.PC) + data->branchoffset);
+		assert(ref.type == T_REF);
+
+		if (ref.value.ui4 != 0) { // if not null
+			auto newPC = static_cast<i4>(frame.PC) + data->branchoffset;
+			frame.PC = static_cast<u4>(newPC);
 		} else {
 			frame.PC += data->jmp + 1;
 		}
