@@ -989,7 +989,6 @@ namespace jvm {
 
 		throw JvmException("Not Implemented!");
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT INT TYPE
 	void Engine::exec_istore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOistore *>(info); // get data in class
 		auto &frame = fs.top();
@@ -997,7 +996,7 @@ namespace jvm {
 		frame.variables.set(data->index, value.value);
 		frame.PC += data->jmp + 1;
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT LONG TYPE
+
 	void Engine::exec_lstore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlstore *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1006,7 +1005,7 @@ namespace jvm {
 		frame.variables.set(data->index, value.value);
 		frame.PC += data->jmp + 1;
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT FLOAT TYPE
+
 	void Engine::exec_fstore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfstore *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1016,7 +1015,7 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT DOUBLE TYPE
+
 	void Engine::exec_dstore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdstore *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1026,7 +1025,7 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT REFERENCE TYPE
+
 	void Engine::exec_astore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOastore *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1036,7 +1035,7 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT INT TYPE
+
 	void Engine::exec_istore_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOistore_0 *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1045,7 +1044,7 @@ namespace jvm {
 		frame.variables.set(0, value.value);
 		frame.PC += data->jmp + 1;
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT INT TYPE
+
 	void Engine::exec_istore_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOistore_1 *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1054,7 +1053,7 @@ namespace jvm {
 		frame.variables.set(1, value.value);
 		frame.PC += data->jmp + 1;
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT INT TYPE
+
 	void Engine::exec_istore_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOistore_2 *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1063,7 +1062,7 @@ namespace jvm {
 		frame.variables.set(2, value.value);
 		frame.PC += data->jmp + 1;
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT INT TYPE
+
 	void Engine::exec_istore_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOistore_3 *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1072,7 +1071,7 @@ namespace jvm {
 		frame.variables.set(3, value.value);
 		frame.PC += data->jmp + 1;
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT INT TYPE
+
 	void Engine::exec_lstore_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlstore_0 *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1081,7 +1080,7 @@ namespace jvm {
 		frame.variables.set(0, value.value);
 		frame.PC += data->jmp + 1;
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT LONG TYPE
+
 	void Engine::exec_lstore_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlstore_1 *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1090,7 +1089,7 @@ namespace jvm {
 		frame.variables.set(1, value.value);
 		frame.PC += data->jmp + 1;
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT LONG TYPE
+
 	void Engine::exec_lstore_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlstore_2 *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1099,7 +1098,7 @@ namespace jvm {
 		frame.variables.set(2, value.value);
 		frame.PC += data->jmp + 1;
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT LONG TYPE
+
 	void Engine::exec_lstore_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlstore_3 *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1108,7 +1107,7 @@ namespace jvm {
 		frame.variables.set(3, value.value);
 		frame.PC += data->jmp + 1;
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT FLOAT TYPE
+
 	void Engine::exec_fstore_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfstore_0 *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1118,7 +1117,7 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT FLOAT TYPE
+
 	void Engine::exec_fstore_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfstore_1 *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1128,7 +1127,7 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT FLOAT TYPE
+
 	void Engine::exec_fstore_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfstore_2 *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1138,7 +1137,7 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT FLOAT TYPE
+
 	void Engine::exec_fstore_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfstore_3 *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1148,7 +1147,7 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT DOUBLE TYPE
+
 	void Engine::exec_dstore_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdstore_0 *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1158,7 +1157,7 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT DOUBLE TYPE
+
 	void Engine::exec_dstore_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdstore_2 *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1167,7 +1166,7 @@ namespace jvm {
 		frame.variables.set(1, value.value);
 		frame.PC += data->jmp + 1;
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT DOUBLE TYPE
+
 	void Engine::exec_dstore_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdstore_2 *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1177,7 +1176,7 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT DOUBLE TYPE
+
 	void Engine::exec_dstore_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdstore_3 *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1187,7 +1186,7 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT REFERENCE TYPE
+
 	void Engine::exec_astore_0 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOastore_0 *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1197,7 +1196,7 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT REFERENCE TYPE
+
 	void Engine::exec_astore_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOastore_1 *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1207,7 +1206,7 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT REFERENCE TYPE
+
 	void Engine::exec_astore_2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOastore_2 *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1217,7 +1216,7 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT REFERENCE TYPE
+
 	void Engine::exec_astore_3 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOastore_3 *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1226,7 +1225,7 @@ namespace jvm {
 		frame.variables.set(3, objectref.value);
 		frame.PC += data->jmp + 1;
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT INT TYPE
+
 	void Engine::exec_iastore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiastore *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1238,7 +1237,7 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT LONG TYPE
+
 	void Engine::exec_lastore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlastore *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1249,7 +1248,7 @@ namespace jvm {
 		frame.variables.set(index.value.ui2, value.value);
 		frame.PC += data->jmp + 1;
 	}
-	// TODO VERIFY THIS INSTRUCTION PUT FLOAT TYPE
+
 	void Engine::exec_fastore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfastore *>(info); // get data in class
 		auto &frame = fs.top();
