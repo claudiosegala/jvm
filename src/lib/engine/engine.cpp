@@ -2668,10 +2668,9 @@ namespace jvm {
 	void Engine::exec_arraylength (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOarraylength *>(info); // get data in class
 		auto &frame = fs.top();
-		op4 arrayref = frame.operands.pop4();
-		auto ARP = mem[arrayref.ui4];
-		op4 arraylength;
-		arraylength.ui4 = (sizeof(ARP)/sizeof(ARP[0]));
+		auto arrayref = frame.operands.pop4();
+		auto ARP = mem.
+		op4 arraylength { .ui4 =(sizeof(ARP)/sizeof(*ARP+ 0)) };
 		frame.operands.push4(arraylength.ui4);
 		frame.PC += data->jmp + 1;
 
