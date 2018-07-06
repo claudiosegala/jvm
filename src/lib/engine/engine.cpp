@@ -1364,14 +1364,12 @@ namespace jvm {
 		throw JvmException("Not Implemented!");
 	}
 
-	// TODO: finish this function
 	void Engine::exec_pop2 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOpop2 *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value = frame.operands.pop8();
 
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_dup (InstructionInfo * info) {
@@ -1432,8 +1430,6 @@ namespace jvm {
 		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
-
-		throw JvmException("Not Implemented!");
 	}
 
 	void Engine::exec_swap (InstructionInfo * info) {
