@@ -2480,7 +2480,16 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOgetstatic *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = reinterpret_cast<CP_Fieldref*>(frame.cl.constant_pool[data->index]);
-		auto ref = value->class_index;
+		auto classname = frame.cl.constant_pool[value->class_index]->toString(frame.cl.constant_pool);
+		auto name_type = reinterpret_cast<CP_NameAndType*>(frame.cl.constant_pool[value->name_and_type_index]);
+		auto signature = frame.cl.constant_pool[name_type->name_index]->toString(frame.cl.constant_pool) +
+							frame.cl.constant_pool[name_type->descriptor_index]->toString(frame.cl.constant_pool);
+
+		//Ignoring print to stream
+		if (classname == "java/lang/System" && signature == "outLjava/io/PrintStream;") {
+			frame.PC += data->jmp + 1;
+			return;
+		}
 
 
 		frame.PC += data->jmp + 1;
