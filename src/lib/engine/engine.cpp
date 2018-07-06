@@ -2553,7 +2553,7 @@ namespace jvm {
 		auto x = reinterpret_cast<CP_Methodref*>(frame.cl.constant_pool[data->index]);
 		auto k = findMethod(*x);
 
-		Frame newFrame(k.first,k.second);
+		Frame newFrame(k.classLoader, k.method);
 		int i = 1;
 
 		while(!fs.top().operands.empty()) {
