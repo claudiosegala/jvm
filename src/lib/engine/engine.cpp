@@ -3,7 +3,7 @@
 
 namespace jvm {
 
-	Engine::Engine (ClassLoader &cl) : PC(0) {
+	Engine::Engine (ClassLoader &cl) {
 		exec = {
 				&Engine::exec_nop,               // 0
 				&Engine::exec_aconst_null,       // 1
@@ -287,12 +287,12 @@ namespace jvm {
 		//run_init();
 		Frame frame(First_cl,method);
 		fs.push(frame);
-		auto& codes = method.attributes.Codes[0]->code; // Getting the method's executable code
 		while (true) { // This will exit when instruction 'return' is executed
 			if(fs.empty())
-				throw JvmException("Fim inesperado da aplicação, não a frames restantes");
-			PC = fs.top().PC;
-			auto instruction = codes[PC];
+				throw JvmException("Fim inesperado da aplicação, não há frames restantes");
+			auto curFrame = fs.top();
+			auto& codes = curFrame.mt.attributes.Codes[0]->code; // Getting the method's executable code
+			auto instruction = codes[curFrame.PC];
 			auto opcode = instruction->getOpCode();
 			auto executor = getExecutor(opcode);
 			(this ->* executor)(instruction.get());
@@ -335,6 +335,7 @@ namespace jvm {
 		newClass.read("../samples/"+className+".class"); // Load the correct class
 		JavaClasses.insert({className, newClass}); // Add new class to the map
 		pair = JavaClasses.find(className);
+		pair->second.show();
 		if(pair != JavaClasses.end())
 			return pair->second; // Class is loaded
 		throw JvmException("Not able to load" + className + ".class");
@@ -2534,16 +2535,16 @@ namespace jvm {
 		auto x = reinterpret_cast<CP_Methodref*>(frame.cl.constant_pool[data->index]);
 		auto k = findMethod(*x);
 
-		Frame l(k.first,k.second);
+		Frame newFrame(k.first,k.second);
 		int i = 1;
 
 		while(!fs.top().operands.empty()) {
 			auto resvalue = frame.operands.pop4();
-			l.variables.set(i,resvalue.ui4);
+			newFrame.variables.set(i,resvalue.ui4);
 			i++;
 		}
 
-		fs.push(l);
+		fs.push(newFrame);
 
 		frame.PC += data->jmp + 1;
 

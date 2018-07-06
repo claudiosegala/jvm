@@ -8,17 +8,27 @@ namespace jvm {
 
 	class CodeInfo : public std::unordered_map<int, std::shared_ptr<InstructionInfo>> {
 	public:
-		void interpret(std::vector<u1> &);
-
-		void printToStream(std::ostream &, std::string &);
-
-	private:
-		//> The set of instantiators to the instruction
-		static const InstructionInfoInstantiator instruction_set[256];
 
 		/**
 		 * Given an opcode, it will get the right instruction
-		 * @params u1 The opcode
+		 * @params data vector of bytes to be interpreted
+		 */
+		void interpret(std::vector<u1> &);
+
+		/**
+		 * Print the content of the class
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
+		 */
+		void printToStream(std::ostream &, std::string &);
+
+	private:
+		
+		static const InstructionInfoInstantiator instruction_set[256];	///> The set of instantiators to the instruction
+
+		/**
+		 * Given an opcode, it will get the right instruction
+		 * @params u1 the opcode
 		 * @return the shared pointer to the instruction
 		 */
 		std::shared_ptr<InstructionInfo> getInstr(const u1 &);

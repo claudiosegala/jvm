@@ -11,27 +11,21 @@ namespace jvm {
 	class Frame {
 	public:
 		/**
-		* Constructor Default
-		*/
+		 * Constructor Default
+		 */
 		Frame(ClassLoader&, MethodInfo&);
 
-		//> Operands Stack
-		Operands operands;
+		Operands operands;	///> Operands Stack
 
-		//> Local Variables Vector
-		Variables variables;
+		Variables variables;	///> Local Variables Vector
 
-		//> The returned value
-		u4 Return_value;
+		u4 Return_value;	///> The returned value
 
-		//>Frame PC
-		u4 PC;
+		u4 PC;	///>Frame PC
 
-		//> Class loader reference
-		const ClassLoader& cl;
+		const ClassLoader& cl;	///> Class loader reference
 
-		//> Method info reference
-		const MethodInfo& mt;
+		const MethodInfo& mt;	///> Method info reference
 	};
 
 }

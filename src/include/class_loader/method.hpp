@@ -20,33 +20,48 @@ namespace jvm {
 		MethodInfo() = default;
 
 		/**
-		 * Reader
+		 * MethodInfo's constructor that calls the method Read(), reading all of the cp entries
+		 * @param reader a reference to the class file reader
+		 * @param cp reference to the constant pool
+		 * @see Read()
 		 */
 		explicit MethodInfo(Reader &, ConstantPool &cp);
 
 		/**
 		 * Print the content of the class
-		 * @param
-		 * @param
+		 * @param os used to output data
+		 * @param cp reference to the constant pool
+		 * @param prefix string to be printed before the method
 		 */
 		void PrintToStream(std::ostream &, ConstantPool &, const std::string &prefix);
 
 		/**
 		 * Read from a file
-		 * @param
+		 * @param reader a reference to the class file reader
+		 * @param cp reference to the constant pool
 		 */
 		void Read(Reader &, ConstantPool &cp);
 
+		/**
+		 * Retrieves the name of the method
+		 * @param reader a reference to the class file reader
+		 * @return std::string name of the method
+		 */
 		std::string getName(ConstantPool &cp);
 
+		/**
+		 * Retrieves the descriptor
+		 * @param cp reference to the constant pool
+		 * @return std::string descriptor of the method
+		 */
 		std::string getDescriptor(ConstantPool &cp);
 
 	private:
 
 		/**
-		 * Print the content the flags of the method
-		 * @param
-		 * @param
+		 * Prints the flags of the method
+		 * @param os used to output data
+		 * @param flag code that represents a flag
 		 */
 		void PrintFlags(std::ostream &, uint32_t);
 	};

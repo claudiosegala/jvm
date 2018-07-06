@@ -7,38 +7,49 @@ namespace jvm {
 
 	class InstructionInfo {
 	protected:
+
+		/**
+		 * Default constructor
+		 */
 		InstructionInfo() = default;
 
 	public:
-		//> Jumping bytes
-		uint32_t jmp;
+
+		uint32_t jmp;	///> Number of bytes of the arguments read
 
 		template <class T>
 		static std::shared_ptr<InstructionInfo> instantiate() {
 			return std::make_shared<T>();
 		}
 
+		/**
+		 * Default destructor
+		 */
 		virtual ~InstructionInfo() = default;
 
 		/**
 		 * Print in the stream the name
+		 * @param std::ostream& Console output, std::string& String to be printed
 		 */
 		virtual void printToStream(std::ostream &, std::string &) = 0;
 
 		/**
 		 * Fill the params of this class
+		 * @param const uint32_t Index of the data vector, const std::vector<u1>& Reference to the data vector
 		 */
 		virtual uint32_t fillParams(const uint32_t, const std::vector<u1> &) = 0;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		virtual std::string getName() = 0;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		virtual uint32_t getOpCode() = 0;
+		virtual u1 getOpCode() = 0;
 
 	};
 
@@ -46,597 +57,764 @@ namespace jvm {
 	class OPINFOnop : public InstructionInfo { // 0x00 -- 00
 	public:
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOnop();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * No params for this instruction
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOaconst_null : public InstructionInfo { // 0x01 -- 01
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOaconst_null();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * operand stack ... → ..., null, opcode byte1, byte2 The immediate unsigned byte1 and byte2 values are assembled into an intermediate short where the value of the short is (byte1 << 8) | byte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiconst_m1 : public InstructionInfo { // 0x02 -- 02
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOiconst_m1();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Operand stack ... → ..., <i>
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiconst_0 : public InstructionInfo { // 0x03 -- 03
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOiconst_0();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Operand Stack ... → ..., <i>
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiconst_1 : public InstructionInfo { // 0x04 -- 04
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOiconst_1();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Operand Stack... → ..., <i>
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiconst_2 : public InstructionInfo { // 0x05 -- 05
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOiconst_2();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 *Operand Stack ... → ..., <i>
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiconst_3 : public InstructionInfo { // 0x06 -- 06
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOiconst_3();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 *Operand Stack  ... → ..., <i>
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiconst_4 : public InstructionInfo { // 0x07 -- 07
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOiconst_4();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 *Operand Stack ... → ..., <i>
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiconst_5 : public InstructionInfo { // 0x08 -- 08
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOiconst_5();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 *Operand Stack  ... → ..., <i>
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlconst_0 : public InstructionInfo { // 0x09 -- 09
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlconst_0();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Operand Stack  ... → ..., <i>
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlconst_1 : public InstructionInfo { // 0x0A -- 10
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlconst_1();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 *OpStack ... → ..., <l> ,
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfconst_0 : public InstructionInfo { // 0x0B -- 11
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfconst_0();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ... → ..., <f>
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfconst_1 : public InstructionInfo { // 0x0C -- 12
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfconst_1();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ... → ..., <f>
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfconst_2 : public InstructionInfo { // 0x0D -- 13
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfconst_2();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ... → ..., <f>
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdconst_0 : public InstructionInfo { // 0x0E -- 14
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdconst_0();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ... → ..., <f>
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdconst_1 : public InstructionInfo { // 0x0F -- 15
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdconst_1();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ... → ..., <f>
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFObipush : public InstructionInfo { // 0x10 -- 16
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFObipush();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Operand Stack  ... → ..., <i> , byte
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i1 byte; ///< Byte to be pushed as an integer to the stack
 	};
 
 	class OPINFOsipush : public InstructionInfo { // 0x11 -- 17
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOsipush();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Operand Stack ... → ..., value , The immediate unsigned byte1 and byte2 values are assembled into an intermediate short where the value of the short is (byte1 << 8) | byte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 value; ///< Short value to be pushed onto the stack
 	};
 
 	class OPINFOldc : public InstructionInfo { // 0x12 -- 18
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOldc();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Operand Stack ... → ..., value , The index is an unsigned byte that must be a valid index into the run-time constant pool
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< Index in the constant pool
 	};
 
 	class OPINFOldc_w : public InstructionInfo { // 0x13 -- 19
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOldc_w();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ... → ..., value , indexbyte1 + indexbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index in the constant pool
 	};
 
 	class OPINFOldc2_w : public InstructionInfo { // 0x14 -- 20
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOldc2_w();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Operand Stack ... → ..., value , indexbyte1 indexbyte2 , the value of the index is calculated as (indexbyte1 << 8) | indexbyte2, run-time constant pool
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index in the constant pool
 	};
@@ -644,1850 +822,2374 @@ namespace jvm {
 	//Loads opcodes 0x15,21 -- 0x35,53
 	class OPINFOiload : public InstructionInfo { // 0x15 -- 21
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOiload();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ... → ..., value , The index is an unsigned byte into local variable array,
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< Index of the local variable
 	};
 
 	class OPINFOlload : public InstructionInfo { // 0x16 -- 22
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlload();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ... → ..., value, The index is an unsigned byte , local variable array
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< Index to the local variable
 	};
 
 	class OPINFOfload : public InstructionInfo { // 0x17 -- 23
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfload();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Op_stack ... → ..., value, The index is an unsigned byte that must be an index into the local variable array
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< Index of the local float variable
 	};
 
 	class OPINFOdload : public InstructionInfo { // 0x18 -- 24
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdload();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ... →..., value, The index is an unsigned byte. Both index and index+1 must be indices into the local variable array
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< Index to the local double variable
 	};
 
 	class OPINFOaload : public InstructionInfo { // 0x19 -- 25
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOaload();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack  ... → ..., objectref, The index is an unsigned byte that must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< index of the reference to the local variable to be loaded
 	};
 
 	class OPINFOiload_0 : public InstructionInfo { // 0x1A -- 26
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOiload_0();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiload_1 : public InstructionInfo { // 0x1B -- 27
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOiload_1();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiload_2 : public InstructionInfo { // 0x1C -- 28
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOiload_2();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiload_3 : public InstructionInfo { // 0x1D -- 29
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOiload_3();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlload_0 : public InstructionInfo { // 0x1E -- 30
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlload_0();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlload_1 : public InstructionInfo { // 0x1F -- 31
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlload_1();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlload_2 : public InstructionInfo { // 0x20 -- 32
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlload_2();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlload_3 : public InstructionInfo { // 0x21 -- 33
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlload_3();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ... → ..., value , The <n> must be an index into the local variable array
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfload_0 : public InstructionInfo { // 0x22 -- 34
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfload_0();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ... → ..., value , The <n> must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfload_1 : public InstructionInfo { // 0x23 -- 35
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfload_1();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 *  OpStack ... → ..., value , The <n> must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfload_2 : public InstructionInfo { // 0x24 -- 36
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfload_2();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 *  OpStack ... → ..., value , The <n> must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfload_3 : public InstructionInfo { // 0x25 -- 37
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfload_3();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 *  OpStack ... → ..., value , The <n> must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdload_0 : public InstructionInfo { // 0x26 -- 38
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdload_0();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ... → ..., value, Both <n> and <n>+1 must be indices into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdload_1 : public InstructionInfo { // 0x27 -- 39
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdload_1();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ... → ..., value, Both <n> and <n>+1 must be indices into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdload_2 : public InstructionInfo { // 0x28 -- 40
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdload_2();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ... → ..., value, Both <n> and <n>+1 must be indices into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdload_3 : public InstructionInfo { // 0x29 -- 41
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdload_3();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ... → ..., value, Both <n> and <n>+1 must be indices into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOaload_0 : public InstructionInfo { // 0x2A -- 42
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOaload_0();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ... → ..., objectref,The <n> must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOaload_1 : public InstructionInfo { // 0x2B -- 43
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOaload_1();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ... → ..., objectref,The <n> must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOaload_2 : public InstructionInfo { // 0x2C -- 44
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOaload_2();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ... → ..., objectref,The <n> must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOaload_3 : public InstructionInfo { // 0x2D -- 45
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOaload_3();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ... → ..., objectref,The <n> must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiaload : public InstructionInfo { // 0x2E -- 46
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOiaload();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack..., arrayref, index → ..., value,The <n> must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlaload : public InstructionInfo { // 0x2F -- 47
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlaload();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., arrayref, index → ..., value ,The <n> must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfaload : public InstructionInfo { // 0x30 -- 48
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfaload();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., arrayref, index → ..., value , The arrayref must be of type reference and must refer to an array whose components are of type float
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdaload : public InstructionInfo { // 0x31 -- 49
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdaload();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., arrayref, index → ..., value , The arrayref must be of type reference and must refer to an array whose components are of type double.
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOaaload : public InstructionInfo { // 0x32 -- 50
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOaaload();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., arrayref, index → ..., value , The arrayref must be of type reference and must refer to an array whose components are of type reference
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFObaload : public InstructionInfo { // 0x33 -- 51
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFObaload();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., arrayref, index → ..., value , The arrayref must be of type reference and must refer to an array whose components are of type byte or of type boolean
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOcaload : public InstructionInfo { // 0x34 -- 52
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOcaload();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., arrayref, index → ..., value , The arrayref must be of type reference and must refer to an array whose components are of type char. The index must be of type int
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOsaload : public InstructionInfo { // 0x35 -- 53
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOsaload();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., arrayref, index → ..., value , The arrayref must be of type reference and must refer to an array whose components are of type short.
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	//Stores 0x36,54 -> 0x56,86
 	class OPINFOistore : public InstructionInfo { // 0x36 -- 54
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOistore();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., value → ... , The index is an unsigned byte that must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< Index to the local variable
 	};
 
 	class OPINFOlstore : public InstructionInfo { // 0x37 -- 55
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlstore();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., value → ... , The index is an unsigned byte. Both index and index+1 must be indices into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< Index to the local variable
 	};
 
 	class OPINFOfstore : public InstructionInfo { // 0x38 -- 56
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfstore();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., value → ... , The index is an unsigned byte that must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< Index of the local float variable
 	};
 
 	class OPINFOdstore : public InstructionInfo { // 0x39 -- 57
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdstore();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., value → ... , The index is an unsigned byte. Both index and index+1 must be indices into the local variable array of the current frame
 
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< Index to the local double variable
 	};
 
 	class OPINFOastore : public InstructionInfo { // 0x3A -- 58
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOastore();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., objectref → ... , The index is an unsigned byte that must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< Index of the local variable that will store the reference
 	};
 
 	class OPINFOistore_0 : public InstructionInfo { // 0x3B -- 59
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOistore_0();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., value → ... , The <n> must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOistore_1 : public InstructionInfo { // 0x3C -- 60
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOistore_1();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., value → ... , The <n> must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOistore_2 : public InstructionInfo { // 0x3D -- 61
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOistore_2();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value → ...
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOistore_3 : public InstructionInfo { // 0x3E -- 62
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOistore_3();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value → ... , The <n> must be an index into the local variable array of the current frame.
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlstore_0 : public InstructionInfo { // 0x3F -- 63
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlstore_0();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlstore_1 : public InstructionInfo { // 0x40 -- 64
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlstore_1();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlstore_2 : public InstructionInfo { // 0x41 -- 65
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlstore_2();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlstore_3 : public InstructionInfo { // 0x42 -- 66
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlstore_3();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfstore_0 : public InstructionInfo { // 0x43 -- 67
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfstore_0();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., value → ... , The <n> must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfstore_1 : public InstructionInfo { // 0x44 -- 68
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfstore_1();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., value → ... , The <n> must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfstore_2 : public InstructionInfo { // 0x45 -- 69
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfstore_2();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., value → ... , The <n> must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfstore_3 : public InstructionInfo { // 0x46 -- 70
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfstore_3();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., value → ... , The <n> must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdstore_0 : public InstructionInfo { // 0x47 -- 71
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdstore_0();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdstore_1 : public InstructionInfo { // 0x48 -- 72
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdstore_1();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdstore_2 : public InstructionInfo { // 0x49 -- 73
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdstore_2();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdstore_3 : public InstructionInfo { // 0x4A -- 74
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdstore_3();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., value → ... , Both <n> and <n>+1 must be indices into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOastore_0 : public InstructionInfo { // 0x4B -- 75
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOastore_0();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * ..., objectref → ... , The <n> must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOastore_1 : public InstructionInfo { // 0x4C -- 76
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOastore_1();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * ..., objectref → ... , The <n> must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOastore_2 : public InstructionInfo { // 0x4D -- 77
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOastore_2();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., objectref → ... , The <n> must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOastore_3 : public InstructionInfo { // 0x4E -- 78
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOastore_3();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., objectref → ... , The <n> must be an index into the local variable array of the current frame
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiastore : public InstructionInfo { // 0x4F -- 79
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOiastore();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., arrayref, index, value →... , The arrayref must be of type reference and must refer to an array whose components are of type int. Both index and value must be of type int
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlastore : public InstructionInfo { // 0x50 -- 80
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlastore();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., arrayref, index, value → ...
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfastore : public InstructionInfo { // 0x51 -- 81
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfastore();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., arrayref, index, value → ... , The arrayref must be of type reference and must refer to an array whose components are of type float. The index must be of type int
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdastore : public InstructionInfo { // 0x52 -- 82
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdastore();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., arrayref, index, value → ... , The arrayref must be of type reference and must refer to an array whose components are of type double
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOaastore : public InstructionInfo { // 0x53 -- 83
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOaastore();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., arrayref, index, value → ... , The arrayref must be of type reference and must refer to an array whose components are of type reference
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFObastore : public InstructionInfo { // 0x54 -- 84
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFObastore();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., arrayref, index, value → ... , The arrayref must be of type reference and must refer to an array whose components are of type byte or of type boolean. The index and the value must both be of type int.
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOcastore : public InstructionInfo { // 0x55 -- 85
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOcastore();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * * OpStack ..., arrayref, index, value → ...
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOsastore : public InstructionInfo { // 0x56 -- 86
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOsastore();
 
@@ -2498,311 +3200,397 @@ namespace jvm {
 
 		/**
 		 * OpStack ..., arrayref, index, value → ... , The arrayref must be of type reference and must refer to an array whose components are of type short. Both index and value must be of type int.
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	// Stack 0x57,87 -> 0x5F,95
 	class OPINFOpop : public InstructionInfo { // 0x57 -- 87
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOpop();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., value → ... , Pop the top value from the operand stack.
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOpop2 : public InstructionInfo { // 0x58 -- 88
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOpop2();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack Form 1: ..., value2, value1 → ... ,  where each of value1 and value2 is a value of a category 1 computional type
 		 * OpStack Form 2: ..., value → ... , where value is a value of a category 2 computational type
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdup : public InstructionInfo { // 0x59 -- 89
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdup();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., value → ..., value, value ,
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdup_x1 : public InstructionInfo { // 0x5A -- 90
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdup_x1();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack ..., value2, value1 → ..., value1, value2, value1 , Duplicate the top value on the operand stack and insert the duplicated value two values down in the operand stack.
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdup_x2 : public InstructionInfo { // 0x5B -- 91
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdup_x2();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack Form 1: ..., value3, value2, value1 → ..., value1, value3, value2, value1 , where value1, value2, and value3 are all values of a category 1 computational type
 		 * OpStack Form 2: ..., value2, value1 → ..., value1, value2, value1 , where value1 is a value of a category 1 computational type and value2 is a value of a category 2 computational type
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdup2 : public InstructionInfo { // 0x5C -- 92
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdup2();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack Form 1: ..., value2, value1 → ..., value2, value1, value2, value1 ,where both value1 and value2 are values of a category 1 computational type
 		 * OpStack Form 2: ..., value → ..., value, value where value is a value of a category 2 computational type
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdup2_x1 : public InstructionInfo { // 0x5D -- 93
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdup2_x1();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * OpStack Form 1: ..., value3, value2, value1 → ..., value2, value1, value3, value2, value1 , where value1, value2, and value3 are all values of a category 1 computational type
 		 * OpStack Form 2: ..., value2, value1 → ..., value1, value2, value1 , where value1 is a value of a category 2 computational type and value2 is a value of a category 1 computational type
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdup2_x2 : public InstructionInfo { // 0x5E -- 94
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdup2_x2();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack Form 1: ..., value4, value3, value2, value1 → ..., value2, value1, value4, value3, value2, value1 , where value1, value2, value3, and value4 are all values of a category 1 computational type,
 		 * Opstack Form 2: ..., value3, value2, value1 → ..., value1, value3, value2, value1
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOswap : public InstructionInfo { // 0x5F -- 95
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOswap();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value2, value1 → ..., value1, value2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	// Math 0x60,96 -> 0x84,132
 	class OPINFOiadd : public InstructionInfo { // 0x60 -- 96
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOiadd();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOladd : public InstructionInfo { // 0x61 -- 97
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOladd();
 
@@ -2813,136 +3601,174 @@ namespace jvm {
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfadd : public InstructionInfo { // 0x62 -- 98
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfadd();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack  ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdadd : public InstructionInfo { // 0x63 -- 99
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdadd();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOisub : public InstructionInfo { // 0x64 -- 100
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOisub();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlsub : public InstructionInfo { // 0x65 -- 101
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlsub();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfsub : public InstructionInfo { // 0x66 -- 102
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfsub();
 
@@ -2953,858 +3779,1103 @@ namespace jvm {
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdsub : public InstructionInfo { // 0x67 -- 103
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdsub();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack  ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOimul : public InstructionInfo { // 0x68 -- 104
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOimul();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlmul : public InstructionInfo { // 0x69 -- 105
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlmul();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfmul : public InstructionInfo { // 0x6A -- 106
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfmul();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdmul : public InstructionInfo { // 0x6B -- 107
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdmul();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result pop2 for each value
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOidiv : public InstructionInfo { // 0x6C -- 108
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOidiv();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOldiv : public InstructionInfo { // 0x6D -- 109
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOldiv();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfdiv : public InstructionInfo { // 0x6E -- 110
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfdiv();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOddiv : public InstructionInfo { // 0x6F -- 111
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOddiv();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOirem : public InstructionInfo { // 0x70 -- 112
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOirem();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack  ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlrem : public InstructionInfo { // 0x71 -- 113
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlrem();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack  ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfrem : public InstructionInfo { // 0x72 -- 114
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfrem();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdrem : public InstructionInfo { // 0x73 -- 115
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdrem();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOineg : public InstructionInfo { // 0x74 -- 116
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOineg();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack  ..., value →..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlneg : public InstructionInfo { // 0x75 -- 117
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlneg();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfneg : public InstructionInfo { // 0x76 -- 118
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfneg();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack  ..., value → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdneg : public InstructionInfo { // 0x77 -- 119
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdneg();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack  ..., value → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOishl : public InstructionInfo { // 0x78 -- 120
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOishl();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlshl : public InstructionInfo { // 0x79 -- 121
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlshl();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOishr : public InstructionInfo { // 0x7A -- 122
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOishr();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlshr : public InstructionInfo { // 0x7B -- 123
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlshr();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiushr : public InstructionInfo { // 0x7C -- 124
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOiushr();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlushr : public InstructionInfo { // 0x7D -- 125
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlushr();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiand : public InstructionInfo { // 0x7E -- 126
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOiand();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 →..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOland : public InstructionInfo { // 0x7F -- 127
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOland();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOior : public InstructionInfo { // 0x80 -- 128
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOior();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlor : public InstructionInfo { // 0x81 --129
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlor();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 →..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOixor : public InstructionInfo { // 0x82 -- 130
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOixor();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlxor : public InstructionInfo { // 0x83 -- 131
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlxor();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOiinc : public InstructionInfo { // 0x84 -- 132
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOiinc();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack -> no changes, int index int const
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index;		///< Index of the local variable
 		i1 constant;	///< Value to be incremented to the local variable
@@ -3813,981 +4884,1253 @@ namespace jvm {
 	//Conversations 0x85,133 -> 0x93,147
 	class OPINFOi2l : public InstructionInfo { // 0x85 -- 133
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOi2l();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOi2f : public InstructionInfo { // 0x86 -- 134
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOi2f();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack  ..., value →..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOi2d : public InstructionInfo { // 0x87 -- 135
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOi2d();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value →..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOl2i : public InstructionInfo { // 0x88 -- 136
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOl2i();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value →..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOl2f : public InstructionInfo { // 0x89 -- 137
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOl2f();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value →..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOl2d : public InstructionInfo { // 0x8A -- 138
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOl2d();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value →..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOf2i : public InstructionInfo { // 0x8B -- 139
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOf2i();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack  ..., value → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOf2l : public InstructionInfo { // 0x8C -- 140
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOf2l();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOf2d : public InstructionInfo { // 0x8D -- 141
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOf2d();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value →..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOd2i : public InstructionInfo { // 0x8E -- 142
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOd2i();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 *  Opstack ..., value → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOd2l : public InstructionInfo { // 0x8F -- 143
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOd2l();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOd2f : public InstructionInfo { // 0x90 -- 144
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOd2f();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOi2b : public InstructionInfo { // 0x91 -- 145
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOi2b();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value →..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOi2c : public InstructionInfo { // 0x92 -- 146
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOi2c();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOi2s : public InstructionInfo { // 0x93 -- 147
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOi2s();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value →..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	// Comparisons 0x94,148 -> 0xA6,166
 	class OPINFOlcmp : public InstructionInfo { // 0x94 -- 148
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlcmp();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack  ..., value1, value2 → ..., result , if value1 > value2 push 1 , if value2 > value1 push -1 if value1 == value2 push 0
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfcmpl : public InstructionInfo { // 0x95 -- 149
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfcmpl();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack  ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfcmpg : public InstructionInfo { // 0x96 -- 150
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfcmpg();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdcmpl : public InstructionInfo { // 0x97 -- 151
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdcmpl();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdcmpg : public InstructionInfo { // 0x98 -- 152
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdcmpg();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack  ..., value1, value2 →..., result
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOifeq : public InstructionInfo { // 0x99 -- 153
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOifeq();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value → ..., branchbyte1 + branchbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPINFOifne : public InstructionInfo { // 0x9A -- 154
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOifne();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value → ..., branchbyte1 + branchbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPINFOiflt : public InstructionInfo { // 0x9B -- 155
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOiflt();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value → ..., branchbyte1 + branchbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPINFOifge : public InstructionInfo { // 0x9C -- 156
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOifge();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value → ..., branchbyte1 + branchbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPINFOifgt : public InstructionInfo { // 0x9D -- 157
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOifgt();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value → ..., branchbyte1 + branchbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPINFOifle : public InstructionInfo { // 0x9E -- 158
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOifle();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value → ..., branchbyte1 + branchbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPINFOif_icmpeq : public InstructionInfo { // 0x9F -- 159
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOif_icmpeq();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value → ..., branchbyte1 + branchbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPINFOif_icmpne : public InstructionInfo { // 0xA0 -- 160
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOif_icmpne();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ...,branchbyte1 + branchbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPINFOif_icmplt : public InstructionInfo { // 0xA1 - 161
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOif_icmplt();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 →... , branchbyte1 + branchbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPINFOif_icmpge : public InstructionInfo { // 0xA2 -- 162
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOif_icmpge();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 →... , branchbyte1 + branchbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPINFOif_icmpgt : public InstructionInfo { // 0xA3 -- 163
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOif_icmpgt();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 →... , branchbyte1 + branchbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPINFOif_icmple : public InstructionInfo { // 0xA4 -- 164
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOif_icmple();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ... , branchbyte1 + branchbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPINFOif_acmpeq : public InstructionInfo { // 0xA5 -- 165
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOif_acmpeq();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ... , branchbyte1 branchbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPINFOif_acmpne : public InstructionInfo { // 0xA6 -- 166
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOif_acmpne();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value1, value2 → ... ,  branchbyte1 + branchbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
@@ -4795,103 +6138,130 @@ namespace jvm {
 	//Control 0xA7,167 -> 0xB1,177
 	class OPINFOgoto : public InstructionInfo { // 0xA7 -- 167
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOgoto();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack no change , branchbyte1 + branchbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPINFOjsr : public InstructionInfo { // 0xA8 -- 168
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOjsr();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ... → ..., address , branchbyte1 + branchbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to a subroutine
 	};
 
 	class OPINFOret : public InstructionInfo { // 0xA9 -- 169
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOret();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack no change
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 index; ///< Index to the local variable
 	};
 
 	class OPINFOtableswitch : public InstructionInfo { // 0xAA -- 170
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOtableswitch();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
@@ -4911,18 +6281,23 @@ namespace jvm {
 		 *  highbyte3
 		 *  highbyte4
 		 *   jump offsets...
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		//> default
 		i4 defaultbyte;
@@ -4939,13 +6314,16 @@ namespace jvm {
 
 	class OPINFOlookupswitch : public InstructionInfo { // 0xAB -- 171
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlookupswitch();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
@@ -4961,18 +6339,23 @@ namespace jvm {
 		 * npairs3
 		 * npairs4
 		 *  match-offset pairs...
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		//> default
 		i4 defaultbyte;
@@ -4986,409 +6369,521 @@ namespace jvm {
 
 	class OPINFOireturn : public InstructionInfo { // 0xAC -- 172
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOireturn();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value → [empty]
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOlreturn : public InstructionInfo { // 0xAD -- 173
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOlreturn();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value → [empty]
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOfreturn : public InstructionInfo { // 0xAE -- 174
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOfreturn();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value → [empty]
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOdreturn : public InstructionInfo { // 0xAF -- 175
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOdreturn();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value → [empty]
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOareturn : public InstructionInfo { // 0xB0 -- 176
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOareturn();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., objectref → [empty]
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOreturn : public InstructionInfo { // 0xB1 -- 177
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOreturn();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ... → [empty]
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	//References 0xB2,178 -> 0xC3,195
 	class OPINFOgetstatic : public InstructionInfo { // 0xB2 -- 178
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOgetstatic();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., → ..., value,indexbyte1 + indexbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index to the field reference in the constant pool
 	};
 
 	class OPINFOputstatic : public InstructionInfo { // 0xB3 -- 179
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOputstatic();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value → ... ,indexbyte1 + indexbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index in the constant pool to the field reference
 	};
 
 	class OPINFOgetfield : public InstructionInfo { // 0xB4 -- 180
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOgetfield();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 *Opstack ..., objectref → ..., value ,indexbyte1 + indexbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index to the field reference in the constant pool
 	};
 
 	class OPINFOputfield : public InstructionInfo { // 0xB5 -- 181
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOputfield();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., objectref, value → ... , indexbyte1 + indexbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index in the constant pool to the field reference
 	};
 
 	class OPINFOinvokevirtual : public InstructionInfo { // 0xB6 -- 182
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOinvokevirtual();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., objectref, [arg1, [arg2 ...]] → ... , indexbyte1 + indexbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index in the constant pool to the method reference
 	};
 
 	class OPINFOinvokespecial : public InstructionInfo { // 0xB7 -- 183
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOinvokespecial();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., objectref, [arg1, [arg2 ...]] → ... , indexbyte1 + indexbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index in the constant pool to the method reference
 	};
 
 	class OPINFOinvokestatic : public InstructionInfo { // 0xB8 -- 184
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOinvokestatic();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., [arg1, [arg2 ...]] → ...
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index in the constant pool to the method reference
 	};
 
 	class OPINFOinvokeinterface : public InstructionInfo { // 0xB9 -- 185
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOinvokeinterface();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., objectref, [arg1, [arg2 ...]] → ... , indexbyte1 + indexbyte2 , count , 0
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index;	///< Index in the constant pool to the interface method
 		u1 count;	///< Count operand that must not be zero
@@ -5396,306 +6891,389 @@ namespace jvm {
 
 	class OPINFOinvokedynamic : public InstructionInfo { // 0xBA - - 186
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOinvokedynamic();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., [arg1, [arg2 ...]] → ...
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index in the constant pool
 	};
 
 	class OPINFOnew : public InstructionInfo { // 0xBB -- 187
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOnew();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ... → ..., objectref indexbyte1 + indexbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index in the constant pool to the class reference
 	};
 
 	class OPINFOnewarray : public InstructionInfo { // 0xBC -- 188
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOnewarray();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., count → ..., arrayref , atype
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u1 atype; ///< Code that indicates the type of array to create
 	};
 
 	class OPINFOanewarray : public InstructionInfo { // 0xBD -- 189
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOanewarray();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opcode ..., count → ..., arrayref , indexbyte1 + indexbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< index of the reference to the class that identifies the component type
 	};
 
 	class OPINFOarraylength : public InstructionInfo { // 0xBE -- 190
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOarraylength();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., arrayref →..., length
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOathrow : public InstructionInfo { // 0xBF -- 191
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOathrow();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., objectref → objectref
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOcheckcast : public InstructionInfo { // 0xC0 -- 192
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOcheckcast();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., objectref → ..., objectref ,  indexbyte1 + indexbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index of the class reference in the constant pool
 	};
 
 	class OPINFOinstanceof : public InstructionInfo { // 0xC1 -- 193
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOinstanceof();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., objectref → ..., result, indexbyte1 + indexbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index to the class reference in the constant pool
 	};
 
 	class OPINFOmonitorenter : public InstructionInfo { // 0xC2 -- 194
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOmonitorenter();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., objectref → ...
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	class OPINFOmonitorexit : public InstructionInfo { // 0xC3 -- 195
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOmonitorexit();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., objectref → ...
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	//Extended 0xC4,196 -> 0xC9,201
 	class OPINFOwide : public InstructionInfo { // 0xC4 -- 196
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOwide();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
@@ -5706,18 +7284,23 @@ namespace jvm {
 		 * indexbyte2
 		 * constbyte1
 		 * constbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		//> the opcode to execute wide
 		u1 opcode;
@@ -5731,13 +7314,16 @@ namespace jvm {
 
 	class OPINFOmultianewarray : public InstructionInfo { // 0xC5 -- 197
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOmultianewarray();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
@@ -5746,18 +7332,23 @@ namespace jvm {
 		 * indexbyte1
 		 * indexbyte2
 		 * dimensions
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		u2 index; ///< Index in the constant pool
 		u1 dimensions; // Number of dimensions of the array to be created, must be greater than or equal to 1
@@ -5765,121 +7356,153 @@ namespace jvm {
 
 	class OPINFOifnull : public InstructionInfo { // 0xC6 -- 198
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOifnull();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ..., value → ... , branchbyte1 + branchbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPINFOifnonnull : public InstructionInfo { // 0xC7 -- 199
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOifnonnull();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack  ..., value → ...,branchbyte1 + branchbyte2
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i2 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPINFOgoto_w : public InstructionInfo { // 0xC8 -- 200
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOgoto_w();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack no changes
 		 * branchbyte1 + branchbyte2 + branchbyte3 + branchbyte4
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i4 branchoffset; ///< Offset to the next instruction
 	};
 
 	class OPINFOjsr_w : public InstructionInfo { // 0xC9 -- 201
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOjsr_w();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * Opstack ... → ..., address , branchbyte1 + branchbyte2 + branchbyte3 + branchbyte4
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 
 		i4 branchoffset; ///< Offset to a subroutine
 	};
@@ -5893,30 +7516,38 @@ namespace jvm {
 	 */
 	class OPINFObreakpoint : public InstructionInfo { // 0xca -- 202
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFObreakpoint();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * No params for this intrsuction
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	/**
@@ -5927,30 +7558,38 @@ namespace jvm {
 	 */
 	class OPINFOimpdep1 : public InstructionInfo { // 0xFE -- 254
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOimpdep1();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * No params for this instruction
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 	/**
@@ -5961,30 +7600,38 @@ namespace jvm {
 	 */
 	class OPINFOimpdep2 : public InstructionInfo { // 0xFF -- 255
 	public:
+
 		/**
-		 * Constructor
+		 * Default constructor
 		 */
 		OPINFOimpdep2();
 
 		/**
 		 * Print in the stream the name
+		 * @param os used to output data
+		 * @param prefix string to be printed before the opcodes
 		 */
 		void printToStream(std::ostream &, std::string &) override;
 
 		/**
 		 * No params for this instruction
+		 * @param idx index to the data vector
+		 * @param data vector of bytes containing the arguments
+		 * @return unsigned int number of arguments read
 		 */
 		uint32_t fillParams(const uint32_t, const std::vector<u1> &) override;
 
 		/**
 		 * Get the name of the class
+		 * @return string name of the class
 		 */
 		std::string getName() override;
 
 		/**
 		 * Get the OpCode of the class
+		 * @return unsigned int the opcode
 		 */
-		uint32_t getOpCode() override;
+		u1 getOpCode() override;
 	};
 
 };
