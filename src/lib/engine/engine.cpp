@@ -2358,11 +2358,12 @@ namespace jvm {
 
 	void Engine::exec_ireturn (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOireturn *>(info); // get data in class
-		auto &frame = fs.top(); fs.pop();
+		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
 
 		auto returnValue = frame.operands.pop4();
+		fs.pop();
 		auto &frameInvoker = fs.top();
 
 		frameInvoker.operands.push4(T_INT, returnValue.value);
@@ -2370,11 +2371,12 @@ namespace jvm {
 
 	void Engine::exec_lreturn (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlreturn *>(info); // get data in class
-		auto &frame = fs.top(); fs.pop();
+		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
 
 		auto returnValue = frame.operands.pop8();
+		fs.pop();
 		auto &frameInvoker = fs.top();
 
 		frameInvoker.operands.push8(T_LONG, returnValue.value);
@@ -2382,11 +2384,12 @@ namespace jvm {
 
 	void Engine::exec_freturn (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfreturn *>(info); // get data in class
-		auto &frame = fs.top(); fs.pop();
+		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
 
 		auto returnValue = frame.operands.pop4();
+		fs.pop();
 		auto &frameInvoker = fs.top();
 
 		frameInvoker.operands.push4(T_FLOAT, returnValue.value);
@@ -2394,11 +2397,12 @@ namespace jvm {
 
 	void Engine::exec_dreturn (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOdreturn *>(info); // get data in class
-		auto &frame = fs.top(); fs.pop();
+		auto &frame = fs.top();
 
 		frame.PC += data->jmp + 1;
 
 		auto returnValue = frame.operands.pop8();
+		fs.pop();
 		auto &frameInvoker = fs.top();
 
 		frameInvoker.operands.push8(T_DOUBLE, returnValue.value);
@@ -2464,26 +2468,56 @@ namespace jvm {
 		throw JvmException("Not Implemented!");
 	}
 
+	// TODO: finish this function
 	void Engine::exec_invokevirtual (InstructionInfo * info) {
-		auto data   = reinterpret_cast<OPINFOinvokevirtual *>(info); // get data in class
+		auto data   = reinterpret_cast<OPINFOinvokestatic *>(info); // get data in class
 		auto &frame = fs.top();
-		auto objectref = frame.operands.pop4();
-		auto x = reinterpret_cast<CP_Methodref*>(frame.cl.constant_pool[data->index]);
-		CP_Class* cl;
-		auto k = findMethod(*x);
-		Frame l(k.classLoader, k.method);
-		int i = 1;
+		auto &cp = frame.cl.constant_pool;
 
-		while(!fs.top().operands.empty()) {
-			auto resvalue = frame.operands.pop4();
-			l.variables.set(i, resvalue.value.ui4);
-			i++;
+		auto methodRef = reinterpret_cast<CP_Methodref*>(cp[data->index]); // get the method info from constant pool
+		auto &classInfo = cp[methodRef->class_index]->as<CP_Class>();
+		auto className = cp[classInfo.name_index]->toString(cp);
+		auto &methodNameAndType = cp[methodRef->name_and_type_index]->as<CP_NameAndType>();
+		auto methodName = cp[methodNameAndType.name_index] -> toString(cp);
+		auto methodDescriptor = cp[methodNameAndType.descriptor_index] -> toString(cp);
+
+		if (methodName == "println" && className == "java/io/PrintStream") {
+			auto printStart = frame.operands.pop4();
+
+			//std::cout << print(printStart) << std::endl;
+
+			frame.PC += data->jmp + 1;
+			return;
 		}
 
-		fs.push(l);
+		if (methodName == "registerNatives" && className == "java/lang/Object") { // ignore registerNatives
+			frame.PC += data->jmp + 1;
+			return;
+		}
+
+		if (className.find("java/") == 0) { // calling something that start with java/, this should not happen
+			throw JvmException("Invalid call to" + className);
+		}
+
+		auto methodData = findMethod(*methodRef);
+
+		Frame newFrame(methodData.classLoader, methodData.method);
+
+		auto nargs = getArgumentsSize(methodDescriptor);
+		std::stack<op4> args;
+		for (u2 i = 0; i < nargs; i++) {
+			auto value = frame.operands.pop4();
+			args.push(value.value);
+		}
+
+		for (u2 i = 0; i < nargs; i++) {
+			auto value = args.top(); args.pop();
+			newFrame.variables.set(i, value);
+		}
+
+		fs.push(newFrame);
 
 		frame.PC += data->jmp + 1;
-
 		throw JvmException("Not Implemented!");
 	}
 
@@ -2538,7 +2572,7 @@ namespace jvm {
 			args.push(value.value);
 		}
 
-		for (u2 i = 1; i <= nargs; i++) {
+		for (u2 i = 0; i < nargs; i++) {
 			auto value = args.top(); args.pop();
 			newFrame.variables.set(i, value);
 		}
