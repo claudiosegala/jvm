@@ -71,9 +71,11 @@ union op8 {
 struct Data {
 	u1 type;
 	op4 value;
+	u4 tam;
 };
 
 struct BigData {
 	u1 type;
 	op8 value;
+	u4 tam;
 };
