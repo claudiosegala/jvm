@@ -1727,75 +1727,79 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: verificar operações bitwise com signed
 	void Engine::exec_ishl (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOishl *>(info); // get data in class
 		auto &frame = fs.top();
 
 		auto value2 = frame.operands.pop4();
 		auto value1 = frame.operands.pop4();
-		op4 res { .ui4 = value1.value.ui4 << (value2.value.ui4 & 0x1f) };
+
+		op4 aux { .ui4 = 0x1f };
+		op4 res { .i4 = value1.value.i4 << (value2.value.ui4 & aux.ui4) };
 
 		frame.operands.push4(T_INT, res);
 
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: verificar operações bitwise com signed
 	void Engine::exec_lshl (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlshl *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value2 = frame.operands.pop8();
+		auto value2 = frame.operands.pop4();
 		auto value1 = frame.operands.pop8();
-		op8 res { .ll = value1.value.ll << (value2.value.ll & 0x3f) };
+
+		op4 aux { .ui4 = 0x3f };
+		op8 res { .ll = value1.value.ll << (value2.value.ui4 & aux.ui4) };
 
 		frame.operands.push8(T_LONG, res);
 
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: verificar operações bitwise com signed
 	void Engine::exec_ishr (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOishr *>(info); // get data in class
 		auto &frame = fs.top();
 
 		auto value2 = frame.operands.pop4();
 		auto value1 = frame.operands.pop4();
-		op4 res { .ui4 = value1.value.ui4 >> (value2.value.ui4 & 0x1f) };
+
+		op4 aux { .ui4 = 0x1f };
+		op4 res { .i4 = value1.value.i4 >> (value2.value.ui4 & aux.ui4) };
 
 		frame.operands.push4(T_INT, res);
 
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: verificar operações bitwise com signed
 	void Engine::exec_lshr (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlshr *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value2 = frame.operands.pop8();
+		auto value2 = frame.operands.pop4();
 		auto value1 = frame.operands.pop8();
-		op8 res { .ll = value1.value.ll >> (value2.value.ll & 0x3f) };
+
+		op4 aux { .ui4 = 0x3f };
+		op8 res { .ll = value1.value.ll >> (value2.value.ui4 & aux.ui4) };
 
 		frame.operands.push8(T_LONG, res);
 
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: verificar operações bitwise com signed
-	// TODO: conferir a condição if(res.i4 < 0) se deveria ser if(value1.value.i4 < 0)
 	void Engine::exec_iushr (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiushr *>(info); // get data in class
 		auto &frame = fs.top();
 
 		auto value2 = frame.operands.pop4();
 		auto value1 = frame.operands.pop4();
-		auto s      = value2.value.i4 & 0x1f;
-		op4 res { .i4 = value1.value.i4 >> s};
+
+		op4 aux { .ui4 = 0x1f };
+		op4 s   { .ui4 = value2.value.ui4 & aux.ui4 };
+		op4 res { .ui4 = value1.value.ui4 >> s.ui4 };
 
 		if(res.i4 < 0) {
-			res.i4 = value1.value.i4 + (2 << (~s));
+			res.i4 = value1.value.i4 + (2 << (~s.ui4));
 		}
 
 		frame.operands.push4(T_INT, res);
@@ -1803,19 +1807,19 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: verificar operações bitwise com signed
-	// TODO: conferir a condição if(res.ll < 0) se deveria ser if(value1.value.ll < 0)
 	void Engine::exec_lushr (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlushr *>(info); // get data in class
 		auto &frame = fs.top();
 
 		auto value2 = frame.operands.pop4();
 		auto value1 = frame.operands.pop8();
-		auto s      = value2.value.i4 & 0x3f;
-		op8 res { .ll = value1.value.ll >> s};
+
+		op4 aux { .ui4 = 0x3f };
+		op4 s   { .ui4 = value2.value.ui4 & aux.ui4 };
+		op8 res { .ull = value1.value.ull >> s.ui4};
 
 		if(res.ll < 0) {
-			res.ll = value1.value.ll + (2L << (~s));
+			res.ll = value1.value.ll + (2L << (~s.ui4));
 		}
 
 		frame.operands.push8(T_LONG, res);
@@ -1823,7 +1827,6 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: verificar operações bitwise com signed
 	void Engine::exec_iand (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiand *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1837,7 +1840,6 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: verificar operações bitwise com signed
 	void Engine::exec_land (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOland *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1851,7 +1853,6 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: verificar operações bitwise com signed
 	void Engine::exec_ior (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOior *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1865,7 +1866,6 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: verificar operações bitwise com signed
 	void Engine::exec_lor (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlor *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1879,7 +1879,6 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: verificar operações bitwise com signed
 	void Engine::exec_ixor (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOixor *>(info); // get data in class
 		auto &frame = fs.top();
@@ -1892,7 +1891,6 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
-	// TODO: verificar operações bitwise com signed
 	void Engine::exec_lxor (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlxor *>(info); // get data in class
 		auto &frame = fs.top();
