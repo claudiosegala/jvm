@@ -75,7 +75,9 @@ namespace jvm {
 		for (auto pair : code) {
 			auto instr = pair.second;
 			auto prefix2 = prefix + "\t";
-			instr->printToStream(os, prefix2, cp);
+			auto fakeprefix = std::string("");
+			os << prefix2 << pair.first << ": ";
+			instr->printToStream(os, fakeprefix, cp);
 		}
 	}
 
