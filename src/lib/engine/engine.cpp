@@ -1284,9 +1284,10 @@ namespace jvm {
 	void Engine::exec_sastore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOsastore *>(info); // get data in class
 		auto &frame = fs.top();
-		auto arrayref = frame.operands.pop4();
-		auto index = frame.operands.pop4();
 		auto value = frame.operands.pop4();
+		auto index = frame.operands.pop4();
+		auto arrayref = frame.operands.pop4();
+
 
 		frame.variables.set(index.value.i2,value.value);
 		frame.PC += data->jmp + 1;
@@ -1411,9 +1412,8 @@ namespace jvm {
 	void Engine::exec_ladd (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOladd *>(info); // get data in class
 		auto &frame = fs.top();
-
-		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
+		auto value1 = frame.operands.pop8();
 
 		op8 res { .ll = value1.value.ll + value2.value.ll };
 
@@ -1425,9 +1425,8 @@ namespace jvm {
 	void Engine::exec_fadd (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOfadd *>(info); // get data in class
 		auto &frame = fs.top();
-
-		auto value1 = frame.operands.pop4();
 		auto value2 = frame.operands.pop4();
+		auto value1 = frame.operands.pop4();
 		op4 res { .f = value1.value.f + value2.value.f };
 
 		frame.operands.push4(T_FLOAT, res);
@@ -1439,8 +1438,8 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOdadd *>(info); // get data in class
 		auto &frame = fs.top();
 
-		auto value1 = frame.operands.pop8();
 		auto value2 = frame.operands.pop8();
+		auto value1 = frame.operands.pop8();
 
 		op8 res { .lf = value1.value.lf + value2.value.lf };
 
@@ -1908,13 +1907,9 @@ namespace jvm {
 	void Engine::exec_iinc (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOiinc *>(info); // get data in class
 		auto &frame = fs.top();
-		auto index = frame.operands.pop4();
-		auto value = frame.operands.pop4();
-		auto currentValue = frame.variables.get4(index.value.ui4);
-
-		op4 newValue { .i4 = currentValue.i4 + value.value.i4 };
-
-		frame.variables.set(index.value.ui4, newValue);
+	    auto value = frame.variables.get4(data->index);
+	    value.i4 += data->constant;
+	   frame.variables.set(data->index,value.ui4);
 		frame.PC += data->jmp + 1;
 	}
 
