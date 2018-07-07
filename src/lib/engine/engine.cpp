@@ -561,8 +561,6 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
-
-	// TODO: remove this frame.PC repeated
 	void Engine::exec_ldc (InstructionInfo * info) {
 		auto data = reinterpret_cast<OPINFOldc *>(info); // get data in class
 		auto &frame = fs.top();
@@ -571,21 +569,18 @@ namespace jvm {
 			auto int_cp = k->as<CP_Integer>();
 			op4 value{.i4 = static_cast<i4>(int_cp._bytes) };
 			frame.operands.push4(T_INT, value);
-			frame.PC += data->jmp + 1;
-			return;
 		} else if (k->getTag() == Float /* Float */) {
 			auto float_cp = k->as<CP_Float>();
 			op4 value{.f = static_cast<float>(float_cp._bytes) };
 			frame.operands.push4(T_FLOAT, value);
-			frame.PC += data->jmp + 1;
-			return;
 		} else if (k->getTag() == String /* String */) {
 			auto cp_str = k->as<CP_String>();
 			frame.operands.push4(T_STRING, cp_str.string_index );
-			frame.PC += data->jmp + 1;
-			return;
+		} else {
+			throw JvmException("Error on ldc!");
 		}
-		std::cout <<"Error in ldc" << std::endl;
+
+		frame.PC += data->jmp + 1;
 	}
 
 
@@ -597,23 +592,21 @@ namespace jvm {
 		auto k = frame.cl.constant_pool[data->index];
 		if (k->getTag() == Integer /* Integer */) {
 			auto int_cp = k->as<CP_Integer>();
-			op4 value{.i4 = static_cast<i4>(int_cp._bytes) };
+			op4 value{.i4 = static_cast<i4>(int_cp._bytes)};
 			frame.operands.push4(T_INT, value);
-			frame.PC += data->jmp + 1;
-			return;
 		} else if (k->getTag() == Float /* Float */) {
 			auto float_cp = k->as<CP_Float>();
-			op4 value{.f = static_cast<float>(float_cp._bytes) };
+			op4 value{.f = static_cast<float>(float_cp._bytes)};
 			frame.operands.push4(T_FLOAT, value);
-			frame.PC += data->jmp + 1;
-			return;
 		} else if (k->getTag() == String /* String */) {
 			auto cp_str = k->as<CP_String>();
-			frame.operands.push4(T_STRING, cp_str.string_index );
-			frame.PC += data->jmp + 1;
-			return;
+			frame.operands.push4(T_STRING, cp_str.string_index);
+		}else{
+			std::cout <<"Error in ldc_w" << std::endl;
 		}
-		std::cout <<"Error in ldc_w" << std::endl;
+
+		frame.PC += data->jmp + 1;
+
 	}
 	void Engine::exec_ldc2_w (InstructionInfo * info) {
 
@@ -2534,7 +2527,7 @@ namespace jvm {
 		fs.pop();
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_getstatic (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOgetstatic *>(info); // get data in class
 		auto &frame = fs.top();
@@ -2560,6 +2553,7 @@ namespace jvm {
 	void Engine::exec_putstatic (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOputstatic *>(info); // get data in class
 		auto &frame = fs.top();
+
 
 		frame.PC += data->jmp + 1;
 
@@ -2873,9 +2867,7 @@ namespace jvm {
 	void Engine::exec_checkcast (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOcheckcast *>(info); // get data in class
 		auto &frame = fs.top();
-
 		frame.PC += data->jmp + 1;
-
 		throw JvmException("Not Implemented!");
 	}
 
