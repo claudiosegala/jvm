@@ -7,7 +7,6 @@ namespace jvm {
 
 	class Operands : public std::stack<Data> {
 	private:
-		u2 size = 0; ///< Current size of the operands stack
 		u2 maxSize = 0;	///< Maximum size of the operands stack
 	public:
 
