@@ -570,13 +570,13 @@ namespace jvm {
 	    auto k = frame.cl.constant_pool[data->index];
 	    if (k->getTag() == Integer /* Integer */) {
 		    auto int_cp = k->as<CP_Integer>();
-		    op4 value{.i4 = static_cast<i4>(int_cp._bytes) };
+		    op4 value{ .ui4 = int_cp._bytes };
 		    frame.operands.push4(T_INT, value);
 			frame.PC += data->jmp + 1;
 			return;
 	    } else if (k->getTag() == Float /* Float */) {
 		    auto float_cp = k->as<CP_Float>();
-		    op4 value{.f = static_cast<float>(float_cp._bytes) };
+		    op4 value{ .ui4 = float_cp._bytes };
 		    frame.operands.push4(T_FLOAT, value);
 			frame.PC += data->jmp + 1;
 			return;
