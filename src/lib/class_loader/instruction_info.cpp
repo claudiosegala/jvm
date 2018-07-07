@@ -2870,7 +2870,7 @@ namespace jvm {
 	}
 
 	u1 OPINFOlor::getOpCode() {
-		return 29;
+		return 129;
 	}
 
 	uint32_t OPINFOlor::fillParams (uint32_t idx, std::vector<u1>& data) {

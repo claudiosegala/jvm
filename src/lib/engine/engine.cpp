@@ -1804,6 +1804,7 @@ namespace jvm {
 		auto &frame = fs.top();
 		auto value2 = frame.operands.pop4();
 		auto value1 = frame.operands.pop4();
+
 		op4 res { .i4 = value1.value.i4 | value2.value.i4 };
 
 		frame.operands.push4(T_INT, res);
@@ -1816,6 +1817,7 @@ namespace jvm {
 		auto &frame = fs.top();
 		auto value2 = frame.operands.pop8();
 		auto value1 = frame.operands.pop8();
+
 		op8 res { .ll = value1.value.ll | value2.value.ll };
 
 		frame.operands.push8(T_LONG, res);
@@ -1828,6 +1830,7 @@ namespace jvm {
 		auto &frame = fs.top();
 		auto value2 = frame.operands.pop4();
 		auto value1 = frame.operands.pop4();
+
 		op4 res { .i4 = value1.value.i4 ^ value2.value.i4 };
 
 		frame.operands.push4(T_INT, res);
@@ -1841,6 +1844,7 @@ namespace jvm {
 		auto value1 = frame.operands.pop8();
 
 		op8 res { .ll = value1.value.ll ^ value2.value.ll };
+
 		frame.operands.push8(T_LONG, res);
 		frame.PC += data->jmp + 1;
 	}
@@ -1849,7 +1853,9 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOiinc *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get4(data->index);
+
 		value.i4 += data->constant;
+
 		frame.variables.set(data->index,value.ui4);
 		frame.PC += data->jmp + 1;
 	}
@@ -2598,20 +2604,23 @@ namespace jvm {
 			auto print_type = to_print.type;
 			auto print_value = to_print.value;
 			double db;
+
 			if(print_type == T_STRING){
 				std::string str = reinterpret_cast<CP_String *>(cp[print_value.ui4])->toString(cp);
 				std::cout << str << std::endl;
 			}
+
 			if(print_type == T_DOUBLE){
 				auto aux = Converter::to_op8(frame.operands.pop4().value, to_print.value);
 				db = aux.lf;
 			}
+
 			switch(print_type) {
 				case T_INT:
-					std::cout << print_value.i4<< std::endl;
+					std::cout << print_value.i4 << std::endl;
 					break;
 				case T_FLOAT:
-					std::cout << print_value.f<< std::endl;
+					std::cout << print_value.f << std::endl;
 					break;
 				case T_BOOL:
 					if(print_value.ui1 == 1)
