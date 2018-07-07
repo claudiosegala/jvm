@@ -562,25 +562,28 @@ namespace jvm {
 	}
 
 	void Engine::exec_ldc (InstructionInfo * info) {
-		auto data = reinterpret_cast<OPINFOldc *>(info); // get data in class
-		auto &frame = fs.top();
-		auto k = frame.cl.constant_pool[data->index];
-		if (k->getTag() == Integer /* Integer */) {
-			auto int_cp = k->as<CP_Integer>();
-			op4 value{ .ui4 = int_cp._bytes };
-			frame.operands.push4(T_INT, value);
-		} else if (k->getTag() == Float /* Float */) {
-			auto float_cp = k->as<CP_Float>();
-			op4 value { .ui4 = float_cp._bytes };
-			frame.operands.push4(T_FLOAT, value);
-		} else if (k->getTag() == String /* String */) {
-			auto cp_str = k->as<CP_String>();
+	    auto data = reinterpret_cast<OPINFOldc *>(info); // get data in class
+	    auto &frame = fs.top();
+	    auto k = frame.cl.constant_pool[data->index];
+	    if (k->getTag() == Integer /* Integer */) {
+		    auto int_cp = k->as<CP_Integer>();
+		    op4 value{.i4 = static_cast<i4>(int_cp._bytes) };
+		    frame.operands.push4(T_INT, value);
+			frame.PC += data->jmp + 1;
+			return;
+	    } else if (k->getTag() == Float /* Float */) {
+		    auto float_cp = k->as<CP_Float>();
+		    op4 value{.f = static_cast<float>(float_cp._bytes) };
+		    frame.operands.push4(T_FLOAT, value);
+			frame.PC += data->jmp + 1;
+			return;
+	    } else if (k->getTag() == String /* String */) {
+		    auto cp_str = k->as<CP_String>();
 			frame.operands.push4(T_STRING, cp_str.string_index );
-		} else {
-			throw JvmException("Error on ldc!");
-		}
-
-		frame.PC += data->jmp + 1;
+			frame.PC += data->jmp + 1;
+			return;
+	    }
+		throw JvmException("Error on ldc!");
 	}
 
 
@@ -593,10 +596,14 @@ namespace jvm {
 			auto int_cp = k->as<CP_Integer>();
 			op4 value{ .ui4 = int_cp._bytes };
 			frame.operands.push4(T_INT, value);
+			frame.PC += data->jmp + 1;
+			return;
 		} else if (k->getTag() == Float /* Float */) {
 			auto float_cp = k->as<CP_Float>();
 			op4 value{ .ui4 = float_cp._bytes };
 			frame.operands.push4(T_FLOAT, value);
+			frame.PC += data->jmp + 1;
+			return;
 		} else if (k->getTag() == String /* String */) {
 			auto cp_str = k->as<CP_String>();
 			frame.operands.push4(T_STRING, cp_str.string_index);
@@ -2526,7 +2533,7 @@ namespace jvm {
 		fs.pop();
 	}
 
-
+	// TODO: finish this function
 	void Engine::exec_getstatic (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOgetstatic *>(info); // get data in class
 		auto &frame = fs.top();
@@ -2599,6 +2606,7 @@ namespace jvm {
 
 			op8 db;
 
+			long lng;
 			if(print_type == T_STRING){
 				std::string str = reinterpret_cast<CP_String *>(cp[print_value.ui4])->toString(cp);
 				std::cout << str << std::endl;
@@ -2614,6 +2622,10 @@ namespace jvm {
 				db.ll = aux.ll;
 			}
 
+			if(print_type == T_LONG){
+				auto aux = Converter::to_op8(frame.operands.pop4().value, to_print.value);
+				lng = aux.ll;
+			}
 			switch(print_type) {
 				case T_INT:
 					std::cout << print_value.i4 << std::endl;
@@ -2634,6 +2646,9 @@ namespace jvm {
 					break;
 				case T_LONG:
 					std::cout << db.ll << std::endl;
+					break;
+				case T_LONG:
+					std::cout << lng << std::endl;
 					break;
 				default:
 					throw JvmException("Type not recognized");
