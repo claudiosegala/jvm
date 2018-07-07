@@ -567,11 +567,11 @@ namespace jvm {
 		auto k = frame.cl.constant_pool[data->index];
 		if (k->getTag() == Integer /* Integer */) {
 			auto int_cp = k->as<CP_Integer>();
-			op4 value{.i4 = static_cast<i4>(int_cp._bytes) };
+			op4 value{ .ui4 = int_cp._bytes };
 			frame.operands.push4(T_INT, value);
 		} else if (k->getTag() == Float /* Float */) {
 			auto float_cp = k->as<CP_Float>();
-			op4 value{.f = static_cast<float>(float_cp._bytes) };
+			op4 value { .ui4 = float_cp._bytes };
 			frame.operands.push4(T_FLOAT, value);
 		} else if (k->getTag() == String /* String */) {
 			auto cp_str = k->as<CP_String>();
@@ -586,23 +586,22 @@ namespace jvm {
 
 	// TODO: remove this frame.PC repeated
 	void Engine::exec_ldc_w (InstructionInfo * info) {
-
 		auto data = reinterpret_cast<OPINFOldc *>(info); // get data in class
 		auto &frame = fs.top();
 		auto k = frame.cl.constant_pool[data->index];
 		if (k->getTag() == Integer /* Integer */) {
 			auto int_cp = k->as<CP_Integer>();
-			op4 value{.i4 = static_cast<i4>(int_cp._bytes)};
+			op4 value{ .ui4 = int_cp._bytes };
 			frame.operands.push4(T_INT, value);
 		} else if (k->getTag() == Float /* Float */) {
 			auto float_cp = k->as<CP_Float>();
-			op4 value{.f = static_cast<float>(float_cp._bytes)};
+			op4 value{ .ui4 = float_cp._bytes };
 			frame.operands.push4(T_FLOAT, value);
 		} else if (k->getTag() == String /* String */) {
 			auto cp_str = k->as<CP_String>();
 			frame.operands.push4(T_STRING, cp_str.string_index);
 		}else{
-			std::cout <<"Error in ldc_w" << std::endl;
+			throw JvmException("Error in ldc_w");
 		}
 
 		frame.PC += data->jmp + 1;
