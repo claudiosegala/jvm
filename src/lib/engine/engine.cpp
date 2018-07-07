@@ -570,49 +570,22 @@ namespace jvm {
 		    auto int_cp = k->as<CP_Integer>();
 		    op4 value{.i4 = static_cast<i4>(int_cp._bytes) };
 		    frame.operands.push4(T_INT, value);
-
+			frame.PC += data->jmp + 1;
+			return;
 	    } else if (k->getTag() == Float /* Float */) {
 		    auto float_cp = k->as<CP_Float>();
 		    op4 value{.f = static_cast<float>(float_cp._bytes) };
 		    frame.operands.push4(T_FLOAT, value);
+			frame.PC += data->jmp + 1;
+			return;
 	    } else if (k->getTag() == String /* String */) {
 		    auto cp_str = k->as<CP_String>();
-
 			frame.operands.push4(T_STRING, cp_str.string_index );
-
-
-		    frame.PC += data->jmp + 1;
+			frame.PC += data->jmp + 1;
+			return;
 	    }
-    }
-//		auto data   = reinterpret_cast<OPINFOldc *>(info); // get data in class
-//		auto &frame = fs.top();
-//		auto k = frame.cl.constant_pool[data->index];
-//		auto res_float = dynamic_cast<CP_Float*>(k);
-//
-//		if (res_float != nullptr) {
-//			op4 res { .ui4 = res_float->_bytes};
-//			frame.operands.push4(T_FLOAT, res);
-//			frame.PC += data->jmp + 1;
-//			return;
-//		}
-//
-//		auto res_int = dynamic_cast<CP_Integer*>(k);
-//		if (res_int != nullptr) {
-//			op4 res { .ui4 = res_int->_bytes };
-//			frame.operands.push4(T_INT, res);
-//			frame.PC += data->jmp + 1;
-//			return;
-//		}
-//
-//		auto res_str = dynamic_cast<CP_String*>(k);
-//		if (res_str != nullptr) {
-//			op4 res { .ui4 = data->index };
-//			frame.operands.push4(T_STRING, res);
-//			frame.PC += data->jmp + 1;
-//		} else{
-//			std::cout <<"Error in ldc" << std::endl;
-//		}
-//	}
+		std::cout <<"Error in ldc" << std::endl;
+	}
 
 
 	void Engine::exec_ldc_w (InstructionInfo * info) {
@@ -624,25 +597,21 @@ namespace jvm {
 			auto int_cp = k->as<CP_Integer>();
 			op4 value{.i4 = static_cast<i4>(int_cp._bytes) };
 			frame.operands.push4(T_INT, value);
-
+			frame.PC += data->jmp + 1;
+			return;
 		} else if (k->getTag() == Float /* Float */) {
 			auto float_cp = k->as<CP_Float>();
 			op4 value{.f = static_cast<float>(float_cp._bytes) };
 			frame.operands.push4(T_FLOAT, value);
+			frame.PC += data->jmp + 1;
+			return;
 		} else if (k->getTag() == String /* String */) {
 			auto cp_str = k->as<CP_String>();
-			auto aux = frame.cl.constant_pool[cp_str.string_index];
-			auto cp_utf8 = aux->as<CP_Utf8>();
-			auto str = cp_utf8.toString(frame.cl.constant_pool);
-
-			for (auto c : str) {
-				op4 ch{.ui1 = (u1) c };
-				frame.operands.push4(T_CHAR, ch);
-			}
-
-
+			frame.operands.push4(T_STRING, cp_str.string_index );
 			frame.PC += data->jmp + 1;
+			return;
 		}
+		std::cout <<"Error in ldc_w" << std::endl;
 	}
 	void Engine::exec_ldc2_w (InstructionInfo * info) {
 
