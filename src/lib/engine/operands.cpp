@@ -58,6 +58,10 @@ namespace jvm {
 
 		push(data1);
 		push(data2);
+
+		if (size() > maxSize) {
+			throw JvmException("Maximum operands stack exceeded");
+		}
 	}
 
 	void Operands::push8(u1 type, op8 value) {
