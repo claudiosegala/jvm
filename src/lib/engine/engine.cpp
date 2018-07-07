@@ -2603,8 +2603,7 @@ namespace jvm {
 			auto to_print = frame.operands.pop4();
 			auto print_type = to_print.type;
 			auto print_value = to_print.value;
-
-			op8 db;
+			double db;
 
 			long lng;
 			if(print_type == T_STRING){
@@ -2614,12 +2613,7 @@ namespace jvm {
 
 			if(print_type == T_DOUBLE){
 				auto aux = Converter::to_op8(frame.operands.pop4().value, to_print.value);
-				db.lf = aux.lf;
-			}
-
-			if(print_type == T_LONG){
-				auto aux = Converter::to_op8(frame.operands.pop4().value, to_print.value);
-				db.ll = aux.ll;
+				db = aux.lf;
 			}
 
 			if(print_type == T_LONG){
@@ -2642,10 +2636,7 @@ namespace jvm {
 				case T_STRING:
 					break;
 				case T_DOUBLE:
-					std::cout << db.lf << std::endl;
-					break;
-				case T_LONG:
-					std::cout << db.ll << std::endl;
+					std::cout << db << std::endl;
 					break;
 				case T_LONG:
 					std::cout << lng << std::endl;
