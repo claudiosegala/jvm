@@ -327,6 +327,9 @@ namespace jvm {
 	ClassAndMethod Engine::findMethod(CP_Class &classInfo, std::string &methodKey) {
 		auto &currentClass = fs.top().cl;
 		auto &constantPool = currentClass.constant_pool;
+		if (classInfo.toString(constantPool) == "java/lang/Object") {
+			throw JvmException("Method " + methodKey + " not found!");
+		}
 		auto &methodClass = findClass(classInfo);
 		auto pair = methodClass.methods.find(methodKey);
 
