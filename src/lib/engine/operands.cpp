@@ -9,18 +9,19 @@ namespace jvm {
 			throw JvmException("Not enough operands on stack");
 		}
 		auto data = top(); pop();
-		size--;
 		return data;
 	}
 
 	BigData Operands::pop8() {
+		if (size() < 2) {
+			throw JvmException("Not enough operands on stack");
+		}
+
 		Data high = top(); pop();
 		Data low  = top(); pop();
 
 		auto res = Converter::to_op8(low.value, high.value);
 		BigData bigData { .type = low.type, .value =  res };
-
-		size--;
 
 		return bigData;
 	}
@@ -29,25 +30,21 @@ namespace jvm {
 		op4 bytes = { .ui4 = value };
 		Data data = { .type = type, .value = bytes };
 
-		size++;
+		push(data);
 
-		if (size > maxSize) {
+		if (size() > maxSize) {
 			throw JvmException("Maximum operands stack exceeded");
 		}
-
-		push(data);
 	}
 
 	void Operands::push4(u1 type, op4 value) {
 		Data data = { .type = type, .value = value };
 
-		size++;
+		push(data);
 
-		if (size > maxSize) {
+		if (size() > maxSize) {
 			throw JvmException("Maximum operands stack exceeded");
 		}
-
-		push(data);
 	}
 
 	void Operands::push8(u1 type, u8 value) {
@@ -58,12 +55,6 @@ namespace jvm {
 
 		Data data1 { .type = type, .value = low_bytes };
 		Data data2 { .type = type, .value = high_bytes };
-
-		size++;
-
-		if (size > maxSize) {
-			throw JvmException("Maximum operands stack exceeded");
-		}
 
 		push(data1);
 		push(data2);
@@ -77,14 +68,12 @@ namespace jvm {
 		Data data1 { .type = type, .value = low };
 		Data data2 { .type = type, .value = high };
 
-		size++;
-
-		if (size > maxSize) {
-			throw JvmException("Maximum operands stack size exceeded");
-		}
-
 		push(data1);
 		push(data2);
+
+		if (size() > maxSize) {
+			throw JvmException("Maximum operands stack size exceeded");
+		}
 	}
 
 	void Operands::setSize(u2 size) {
