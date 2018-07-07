@@ -2587,7 +2587,7 @@ namespace jvm {
 		fs.pop();
 	}
 
-	// TODO: finish this function
+
 	void Engine::exec_getstatic (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOgetstatic *>(info); // get data in class
 		auto &frame = fs.top();
@@ -2613,6 +2613,7 @@ namespace jvm {
 	void Engine::exec_putstatic (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOputstatic *>(info); // get data in class
 		auto &frame = fs.top();
+
 
 		frame.PC += data->jmp + 1;
 
@@ -2923,9 +2924,7 @@ namespace jvm {
 	void Engine::exec_checkcast (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOcheckcast *>(info); // get data in class
 		auto &frame = fs.top();
-
 		frame.PC += data->jmp + 1;
-
 		throw JvmException("Not Implemented!");
 	}
 
