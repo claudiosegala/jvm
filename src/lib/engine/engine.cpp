@@ -2615,7 +2615,11 @@ namespace jvm {
 				auto aux = Converter::to_op8(frame.operands.pop4().value, to_print.value);
 				db = aux.lf;
 			}
-			
+
+			if(print_type == T_LONG){
+				auto aux = Converter::to_op8(frame.operands.pop4().value, to_print.value);
+				lng = aux.ll;
+			}
 			switch(print_type) {
 				case T_INT:
 					std::cout << print_value.i4 << std::endl;
@@ -2633,6 +2637,9 @@ namespace jvm {
 					break;
 				case T_DOUBLE:
 					std::cout << db << std::endl;
+					break;
+				case T_LONG:
+					std::cout << lng << std::endl;
 					break;
 				default:
 					throw JvmException("Type not recognized");
