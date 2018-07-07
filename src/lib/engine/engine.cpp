@@ -2596,7 +2596,8 @@ namespace jvm {
 			auto to_print = frame.operands.pop4();
 			auto print_type = to_print.type;
 			auto print_value = to_print.value;
-			double db;
+
+			op8 db;
 
 			if(print_type == T_STRING){
 				std::string str = reinterpret_cast<CP_String *>(cp[print_value.ui4])->toString(cp);
@@ -2605,7 +2606,12 @@ namespace jvm {
 
 			if(print_type == T_DOUBLE){
 				auto aux = Converter::to_op8(frame.operands.pop4().value, to_print.value);
-				db = aux.lf;
+				db.lf = aux.lf;
+			}
+
+			if(print_type == T_LONG){
+				auto aux = Converter::to_op8(frame.operands.pop4().value, to_print.value);
+				db.ll = aux.ll;
 			}
 
 			switch(print_type) {
@@ -2624,7 +2630,10 @@ namespace jvm {
 				case T_STRING:
 					break;
 				case T_DOUBLE:
-					std::cout << db << std::endl;
+					std::cout << db.lf << std::endl;
+					break;
+				case T_LONG:
+					std::cout << db.ll << std::endl;
 					break;
 				default:
 					throw JvmException("Type not recognized");
