@@ -20,7 +20,7 @@ namespace jvm {
 		auto res = Converter::to_op8(low.value, high.value);
 		BigData bigData { .type = low.type, .value =  res };
 
-		size--;
+		size -=2 ;
 
 		return bigData;
 	}
@@ -59,7 +59,7 @@ namespace jvm {
 		Data data1 { .type = type, .value = low_bytes };
 		Data data2 { .type = type, .value = high_bytes };
 
-		size++;
+		size +=2 ;
 
 		if (size > maxSize) {
 			throw JvmException("Maximum operands stack exceeded");
@@ -77,7 +77,7 @@ namespace jvm {
 		Data data1 { .type = type, .value = low };
 		Data data2 { .type = type, .value = high };
 
-		size++;
+		size +=2 ;
 
 		if (size > maxSize) {
 			throw JvmException("Maximum operands stack size exceeded");
