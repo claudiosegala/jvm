@@ -2513,24 +2513,32 @@ namespace jvm {
 		frame.PC = newPC.ui4;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_tableswitch (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOtableswitch *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value = frame.operands.pop4(); // get index
 
-		frame.PC += data->jmp + 1;
+		assert(value.type == T_INT);
 
-		throw JvmException("Not Implemented!");
+		if (value.value.i4 < data->low || value.value.i4 > data->high) {
+			frame.PC += data->defaultbyte;
+		}
+
+		frame.PC += data->jumpOffsets[value.value.i4 - data->low];
 	}
 
-	// TODO: finish this function
 	void Engine::exec_lookupswitch (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlookupswitch *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value = frame.operands.pop4(); // get key
 
-		frame.PC += data->jmp + 1;
+		assert(value.type == T_INT);
 
-		throw JvmException("Not Implemented!");
+		if (data->pairs.count(value.value.i4) > 0) {
+			frame.PC += data->pairs[value.value.i4];
+		} else {
+			frame.PC += data->defaultbyte;
+		}
 	}
 
 	void Engine::exec_ireturn (InstructionInfo * info) {
