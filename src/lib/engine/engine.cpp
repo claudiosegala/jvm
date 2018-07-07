@@ -561,7 +561,6 @@ namespace jvm {
 		frame.PC += data->jmp + 1;
 	}
 
-
 	void Engine::exec_ldc (InstructionInfo * info) {
 	    auto data = reinterpret_cast<OPINFOldc *>(info); // get data in class
 	    auto &frame = fs.top();
@@ -584,35 +583,36 @@ namespace jvm {
 			frame.PC += data->jmp + 1;
 			return;
 	    }
-		std::cout <<"Error in ldc" << std::endl;
+		throw JvmException("Error on ldc!");
 	}
 
 
 	// TODO: remove this frame.PC repeated
 	void Engine::exec_ldc_w (InstructionInfo * info) {
-
 		auto data = reinterpret_cast<OPINFOldc *>(info); // get data in class
 		auto &frame = fs.top();
 		auto k = frame.cl.constant_pool[data->index];
 		if (k->getTag() == Integer /* Integer */) {
 			auto int_cp = k->as<CP_Integer>();
-			op4 value{.i4 = static_cast<i4>(int_cp._bytes) };
+			op4 value{ .ui4 = int_cp._bytes };
 			frame.operands.push4(T_INT, value);
 			frame.PC += data->jmp + 1;
 			return;
 		} else if (k->getTag() == Float /* Float */) {
 			auto float_cp = k->as<CP_Float>();
-			op4 value{.f = static_cast<float>(float_cp._bytes) };
+			op4 value{ .ui4 = float_cp._bytes };
 			frame.operands.push4(T_FLOAT, value);
 			frame.PC += data->jmp + 1;
 			return;
 		} else if (k->getTag() == String /* String */) {
 			auto cp_str = k->as<CP_String>();
-			frame.operands.push4(T_STRING, cp_str.string_index );
-			frame.PC += data->jmp + 1;
-			return;
+			frame.operands.push4(T_STRING, cp_str.string_index);
+		}else{
+			throw JvmException("Error in ldc_w");
 		}
-		std::cout <<"Error in ldc_w" << std::endl;
+
+		frame.PC += data->jmp + 1;
+
 	}
 	void Engine::exec_ldc2_w (InstructionInfo * info) {
 
