@@ -570,55 +570,22 @@ namespace jvm {
 		    auto int_cp = k->as<CP_Integer>();
 		    op4 value{.i4 = static_cast<i4>(int_cp._bytes) };
 		    frame.operands.push4(T_INT, value);
-
+			frame.PC += data->jmp + 1;
+			return;
 	    } else if (k->getTag() == Float /* Float */) {
 		    auto float_cp = k->as<CP_Float>();
 		    op4 value{.f = static_cast<float>(float_cp._bytes) };
 		    frame.operands.push4(T_FLOAT, value);
+			frame.PC += data->jmp + 1;
+			return;
 	    } else if (k->getTag() == String /* String */) {
 		    auto cp_str = k->as<CP_String>();
-		    auto aux = frame.cl.constant_pool[cp_str.string_index];
-		    auto cp_utf8 = aux->as<CP_Utf8>();
-		    auto str = cp_utf8.toString(frame.cl.constant_pool);
-
-		    for (auto c : str) {
-			    op4 ch{.ui1 = (u1) c };
-			    frame.operands.push4(T_CHAR, ch);
-		    }
-
-
-		    frame.PC += data->jmp + 1;
+			frame.operands.push4(T_STRING, cp_str.string_index );
+			frame.PC += data->jmp + 1;
+			return;
 	    }
-    }
-//		auto data   = reinterpret_cast<OPINFOldc *>(info); // get data in class
-//		auto &frame = fs.top();
-//		auto k = frame.cl.constant_pool[data->index];
-//		auto res_float = dynamic_cast<CP_Float*>(k);
-//
-//		if (res_float != nullptr) {
-//			op4 res { .ui4 = res_float->_bytes};
-//			frame.operands.push4(T_FLOAT, res);
-//			frame.PC += data->jmp + 1;
-//			return;
-//		}
-//
-//		auto res_int = dynamic_cast<CP_Integer*>(k);
-//		if (res_int != nullptr) {
-//			op4 res { .ui4 = res_int->_bytes };
-//			frame.operands.push4(T_INT, res);
-//			frame.PC += data->jmp + 1;
-//			return;
-//		}
-//
-//		auto res_str = dynamic_cast<CP_String*>(k);
-//		if (res_str != nullptr) {
-//			op4 res { .ui4 = data->index };
-//			frame.operands.push4(T_STRING, res);
-//			frame.PC += data->jmp + 1;
-//		} else{
-//			std::cout <<"Error in ldc" << std::endl;
-//		}
-//	}
+		std::cout <<"Error in ldc" << std::endl;
+	}
 
 
 	void Engine::exec_ldc_w (InstructionInfo * info) {
@@ -630,25 +597,21 @@ namespace jvm {
 			auto int_cp = k->as<CP_Integer>();
 			op4 value{.i4 = static_cast<i4>(int_cp._bytes) };
 			frame.operands.push4(T_INT, value);
-
+			frame.PC += data->jmp + 1;
+			return;
 		} else if (k->getTag() == Float /* Float */) {
 			auto float_cp = k->as<CP_Float>();
 			op4 value{.f = static_cast<float>(float_cp._bytes) };
 			frame.operands.push4(T_FLOAT, value);
+			frame.PC += data->jmp + 1;
+			return;
 		} else if (k->getTag() == String /* String */) {
 			auto cp_str = k->as<CP_String>();
-			auto aux = frame.cl.constant_pool[cp_str.string_index];
-			auto cp_utf8 = aux->as<CP_Utf8>();
-			auto str = cp_utf8.toString(frame.cl.constant_pool);
-
-			for (auto c : str) {
-				op4 ch{.ui1 = (u1) c };
-				frame.operands.push4(T_CHAR, ch);
-			}
-
-
+			frame.operands.push4(T_STRING, cp_str.string_index );
 			frame.PC += data->jmp + 1;
+			return;
 		}
+		std::cout <<"Error in ldc_w" << std::endl;
 	}
 	void Engine::exec_ldc2_w (InstructionInfo * info) {
 
@@ -2519,24 +2482,32 @@ namespace jvm {
 		frame.PC = newPC.ui4;
 	}
 
-	// TODO: finish this function
 	void Engine::exec_tableswitch (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOtableswitch *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value = frame.operands.pop4(); // get index
 
-		frame.PC += data->jmp + 1;
+		assert(value.type == T_INT);
 
-		throw JvmException("Not Implemented!");
+		if (value.value.i4 < data->low || value.value.i4 > data->high) {
+			frame.PC += data->defaultbyte;
+		}
+
+		frame.PC += data->jumpOffsets[value.value.i4 - data->low];
 	}
 
-	// TODO: finish this function
 	void Engine::exec_lookupswitch (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOlookupswitch *>(info); // get data in class
 		auto &frame = fs.top();
+		auto value = frame.operands.pop4(); // get key
 
-		frame.PC += data->jmp + 1;
+		assert(value.type == T_INT);
 
-		throw JvmException("Not Implemented!");
+		if (data->pairs.count(value.value.i4) > 0) {
+			frame.PC += data->pairs[value.value.i4];
+		} else {
+			frame.PC += data->defaultbyte;
+		}
 	}
 
 	void Engine::exec_ireturn (InstructionInfo * info) {
@@ -2694,8 +2665,7 @@ namespace jvm {
 			auto print_value = to_print.value;
 			double db;
 			if(print_type == T_STRING){
-				auto str_addr = reinterpret_cast<CP_String *>(cp[print_value.ui4]);
-				std::string str = reinterpret_cast<CP_Utf8 *>(cp[str_addr->string_index])->toString(cp);
+				std::string str = reinterpret_cast<CP_String *>(cp[print_value.ui4])->toString(cp);
 				std::cout << str << std::endl;
 			}
 			if(print_type == T_DOUBLE){
