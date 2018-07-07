@@ -117,14 +117,14 @@ Collaboration diagram for jvm::OPINFObipush:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aefb04f4ca6528871d65e0b24f89745e7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classjvm_1_1OPINFObipush.html#aefb04f4ca6528871d65e0b24f89745e7">OPINFObipush</a> ()</td></tr>
 <tr class="separator:aefb04f4ca6528871d65e0b24f89745e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadf99677e5dde3ded00c36bb63d5efc0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classjvm_1_1OPINFObipush.html#aadf99677e5dde3ded00c36bb63d5efc0">printToStream</a> (std::ostream &amp;, std::string &amp;) override</td></tr>
-<tr class="separator:aadf99677e5dde3ded00c36bb63d5efc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7685e89a28e6d281b09a215d8bdd8810"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classjvm_1_1OPINFObipush.html#a7685e89a28e6d281b09a215d8bdd8810">fillParams</a> (uint32_t, std::vector&lt; u1 &gt; &amp;) override</td></tr>
-<tr class="separator:a7685e89a28e6d281b09a215d8bdd8810"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac665a369d05ee23c495b4b1e6039649e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classjvm_1_1OPINFObipush.html#ac665a369d05ee23c495b4b1e6039649e">printToStream</a> (std::ostream &amp;, std::string &amp;, <a class="el" href="classjvm_1_1ConstantPool.html">ConstantPool</a> &amp;) override</td></tr>
+<tr class="separator:ac665a369d05ee23c495b4b1e6039649e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3f1a0bb707905acfdcd3625d1dce63c"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classjvm_1_1OPINFObipush.html#ac3f1a0bb707905acfdcd3625d1dce63c">fillParams</a> (uint32_t, std::vector&lt; u1 &gt; &amp;) override</td></tr>
+<tr class="separator:ac3f1a0bb707905acfdcd3625d1dce63c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45a807e8730dfc143060c374092f3670"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classjvm_1_1OPINFObipush.html#a45a807e8730dfc143060c374092f3670">getName</a> () override</td></tr>
 <tr class="separator:a45a807e8730dfc143060c374092f3670"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2950765796689ab0ccb3748b9d432534"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classjvm_1_1OPINFObipush.html#a2950765796689ab0ccb3748b9d432534">getOpCode</a> () override</td></tr>
-<tr class="separator:a2950765796689ab0ccb3748b9d432534"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae16806587b4420b5fa472d24300c8700"><td class="memItemLeft" align="right" valign="top">u1&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classjvm_1_1OPINFObipush.html#ae16806587b4420b5fa472d24300c8700">getOpCode</a> () override</td></tr>
+<tr class="separator:ae16806587b4420b5fa472d24300c8700"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classjvm_1_1InstructionInfo"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classjvm_1_1InstructionInfo')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classjvm_1_1InstructionInfo.html">jvm::InstructionInfo</a></td></tr>
 <tr class="memitem:a0dfbe2aa4b0f8b3989da6298d949bba8 inherit pub_methods_classjvm_1_1InstructionInfo"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classjvm_1_1InstructionInfo.html#a0dfbe2aa4b0f8b3989da6298d949bba8">~InstructionInfo</a> ()=default</td></tr>
 <tr class="separator:a0dfbe2aa4b0f8b3989da6298d949bba8 inherit pub_methods_classjvm_1_1InstructionInfo"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -173,7 +173,7 @@ template&lt;class T &gt; </td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a7685e89a28e6d281b09a215d8bdd8810"></a>
+<a class="anchor" id="ac3f1a0bb707905acfdcd3625d1dce63c"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -214,7 +214,7 @@ template&lt;class T &gt; </td></tr>
 <dl class="section return"><dt>Returns</dt><dd>unsigned int number of arguments read </dd></dl>
 <p></em></p>
 
-<p>Implements <a class="el" href="classjvm_1_1InstructionInfo.html#a0b3e2aad727e484a26f137420ff88d4f">jvm::InstructionInfo</a>.</p>
+<p>Implements <a class="el" href="classjvm_1_1InstructionInfo.html#a663aceb61ff874ecb3b62684963cc7bc">jvm::InstructionInfo</a>.</p>
 
 </div>
 </div>
@@ -244,7 +244,7 @@ template&lt;class T &gt; </td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2950765796689ab0ccb3748b9d432534"></a>
+<a class="anchor" id="ae16806587b4420b5fa472d24300c8700"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -252,7 +252,7 @@ template&lt;class T &gt; </td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t jvm::OPINFObipush::getOpCode </td>
+          <td class="memname">u1 jvm::OPINFObipush::getOpCode </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -266,11 +266,11 @@ template&lt;class T &gt; </td></tr>
 </div><div class="memdoc">
 <p>Get the OpCode of the class </p><dl class="section return"><dt>Returns</dt><dd>unsigned int the opcode </dd></dl>
 
-<p>Implements <a class="el" href="classjvm_1_1InstructionInfo.html#a96258d3dfc5cbf70d79936dd324c416a">jvm::InstructionInfo</a>.</p>
+<p>Implements <a class="el" href="classjvm_1_1InstructionInfo.html#a9cf8e17432a8335d5e6beb7cbffea45f">jvm::InstructionInfo</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="aadf99677e5dde3ded00c36bb63d5efc0"></a>
+<a class="anchor" id="ac665a369d05ee23c495b4b1e6039649e"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -287,7 +287,13 @@ template&lt;class T &gt; </td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>prefix</em>&#160;</td>
+          <td class="paramname"><em>prefix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classjvm_1_1ConstantPool.html">ConstantPool</a> &amp;&#160;</td>
+          <td class="paramname"><em>cl</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -309,7 +315,7 @@ template&lt;class T &gt; </td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classjvm_1_1InstructionInfo.html#a47e400ea42083bf640497bb82ea28074">jvm::InstructionInfo</a>.</p>
+<p>Implements <a class="el" href="classjvm_1_1InstructionInfo.html#ad3f527efb8570a2a7ee879382c4a1f40">jvm::InstructionInfo</a>.</p>
 
 </div>
 </div>
