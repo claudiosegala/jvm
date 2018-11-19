@@ -1,5 +1,7 @@
 # Stuff
 .idea
+*.html
+*.png
 
 # Prerequisites
 *.d
