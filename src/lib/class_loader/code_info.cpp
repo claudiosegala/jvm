@@ -287,15 +287,6 @@ namespace jvm {
 		auto newPrefix = prefix + "\t";
 
 		os << prefix << "Opcodes:" << std::endl;
-
-//		for (auto pair : *this) {
-//			auto ptr = pair.second;
-//			auto instr = ptr.get();
-//
-//			if (instr != nullptr) {
-//				instr->printToStream(os, newPrefix);
-//			}
-//		}
 	}
 
 };

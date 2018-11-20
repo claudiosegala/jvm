@@ -105,7 +105,7 @@ namespace jvm {
 	/**
 	 * CP_Class entry to the constant pool
 	 */
-	struct CP_Class : public CP_Entry {
+	struct CP_Class final : public CP_Entry {
 		explicit CP_Class(Reader& reader);
 
 		CP_TAGS getTag() override;
@@ -120,7 +120,7 @@ namespace jvm {
 	/**
 	 * CP_Fieldref entry to the constant pool
 	 */
-	struct CP_Fieldref : public CP_Entry {
+	struct CP_Fieldref final : public CP_Entry {
 		explicit CP_Fieldref(Reader& reader);
 
 		~CP_Fieldref() override = default;
@@ -139,7 +139,7 @@ namespace jvm {
 	/**
 	 * CP_Methodref entry to the constant pool
 	 */
-	struct CP_Methodref : public CP_Entry {
+	struct CP_Methodref final : public CP_Entry {
 		explicit CP_Methodref(Reader& reader);
 
 		CP_TAGS getTag() override;
@@ -156,7 +156,7 @@ namespace jvm {
 	/**
 	 * CP_InterfaceMethodref entry to the constant pool
 	 */
-	struct CP_InterfaceMethodref : public CP_Entry {
+	struct CP_InterfaceMethodref final : public CP_Entry {
 		explicit CP_InterfaceMethodref(Reader& reader);
 
 		CP_TAGS getTag() override;
@@ -173,7 +173,7 @@ namespace jvm {
 	/**
 	 * CP_String entry to the constant pool
 	 */
-	struct CP_String : public CP_Entry {
+	struct CP_String final : public CP_Entry {
 		explicit CP_String(Reader& reader);
 
 		CP_TAGS getTag() override;
@@ -188,7 +188,7 @@ namespace jvm {
 	/**
 	 * CP_Integer entry to the constant pool
 	 */
-	struct CP_Integer : public CP_Entry {
+	struct CP_Integer final : public CP_Entry {
 		explicit CP_Integer(Reader& reader);
 
 		CP_TAGS getTag() override;
@@ -203,7 +203,7 @@ namespace jvm {
 	/**
 	 * CP_Float entry to the constant pool
 	 */
-	struct CP_Float : public CP_Entry {
+	struct CP_Float final : public CP_Entry {
 		explicit CP_Float(Reader& reader);
 
 		CP_TAGS getTag() override;
@@ -218,7 +218,7 @@ namespace jvm {
 	/**
 	 * CP_Long entry to the constant pool
 	 */
-	struct CP_Long : public CP_Entry {
+	struct CP_Long final : public CP_Entry {
 		explicit CP_Long(Reader& reader);
 
 		CP_TAGS getTag() override;
@@ -235,7 +235,7 @@ namespace jvm {
 	/**
 	 * CP_Double entry to the constant pool
 	 */
-	struct CP_Double : public CP_Entry {
+	struct CP_Double final : public CP_Entry {
 		explicit CP_Double(Reader& reader);
 
 		CP_TAGS getTag() override;
@@ -252,7 +252,7 @@ namespace jvm {
 	/**
 	 * CP_NameAnsType entry to the constant pool
 	 */
-	struct CP_NameAndType : public CP_Entry {
+	struct CP_NameAndType final : public CP_Entry {
 		explicit CP_NameAndType(Reader& reader);
 
 		CP_TAGS getTag() override;
@@ -269,7 +269,7 @@ namespace jvm {
 	/**
 	 * CP_Utf8 entry to the constant pool
 	 */
-	struct CP_Utf8 : public CP_Entry {
+	struct CP_Utf8 final : public CP_Entry {
 		explicit CP_Utf8(Reader& reader);
 
 		~CP_Utf8() override;
@@ -294,7 +294,7 @@ namespace jvm {
 	/**
 	 * CP_MethodHandle entry to the constant pool
 	 */
-	struct CP_MethodHandle : public CP_Entry {
+	struct CP_MethodHandle final : public CP_Entry {
 		explicit CP_MethodHandle(Reader& reader);
 
 		CP_TAGS getTag() override;
@@ -311,7 +311,7 @@ namespace jvm {
 	/**
 	 * CP_MethodType entry to the constant pool
 	 */
-	struct CP_MethodType : public CP_Entry {
+	struct CP_MethodType final : public CP_Entry {
 		explicit CP_MethodType(Reader& reader);
 
 		CP_TAGS getTag() override;
@@ -326,7 +326,7 @@ namespace jvm {
 	/**
 	 * CP_InvokeDYnamic entry to the constant pool
 	 */
-	struct CP_InvokeDynamic : public CP_Entry {
+	struct CP_InvokeDynamic final : public CP_Entry {
 		explicit CP_InvokeDynamic(Reader& reader);
 
 		CP_TAGS getTag() override;
