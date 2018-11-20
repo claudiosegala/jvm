@@ -47,21 +47,21 @@ namespace jvm {
 
 	std::shared_ptr<CP_Entry> ConstantPool::getNextEntry(Reader &reader, uint8_t tag) {
 		switch (tag) {
-			case CP_TAGS::Class:			  return std::make_shared<CP_Class>(reader);
-			case CP_TAGS::FieldRef:		   return std::make_shared<CP_Fieldref>(reader);
-			case CP_TAGS::MethodRef:		  return std::make_shared<CP_Methodref>(reader);
+			case CP_TAGS::Class:              return std::make_shared<CP_Class>(reader);
+			case CP_TAGS::FieldRef:           return std::make_shared<CP_Fieldref>(reader);
+			case CP_TAGS::MethodRef:          return std::make_shared<CP_Methodref>(reader);
 			case CP_TAGS::InterfaceMethodRef: return std::make_shared<CP_InterfaceMethodref>(reader);
-			case CP_TAGS::String:			 return std::make_shared<CP_String>(reader);
-			case CP_TAGS::Integer:			return std::make_shared<CP_Integer>(reader);
-			case CP_TAGS::Float:			  return std::make_shared<CP_Float>(reader);
-			case CP_TAGS::Long:			   return std::make_shared<CP_Long>(reader);
-			case CP_TAGS::Double:			 return std::make_shared<CP_Double>(reader);
-			case CP_TAGS::NameAndType:		return std::make_shared<CP_NameAndType>(reader);
-			case CP_TAGS::Utf8:			   return std::make_shared<CP_Utf8>(reader);
-			case CP_TAGS::MethodHandle:	   return std::make_shared<CP_MethodHandle>(reader);
-			case CP_TAGS::MethodType:		 return std::make_shared<CP_MethodType>(reader);
-			case CP_TAGS::InvokeDynamic:	  return std::make_shared<CP_InvokeDynamic>(reader);
-			default:						  throw JvmException("Invalid Constant Pool Tag");
+			case CP_TAGS::String:             return std::make_shared<CP_String>(reader);
+			case CP_TAGS::Integer:            return std::make_shared<CP_Integer>(reader);
+			case CP_TAGS::Float:              return std::make_shared<CP_Float>(reader);
+			case CP_TAGS::Long:               return std::make_shared<CP_Long>(reader);
+			case CP_TAGS::Double:             return std::make_shared<CP_Double>(reader);
+			case CP_TAGS::NameAndType:        return std::make_shared<CP_NameAndType>(reader);
+			case CP_TAGS::Utf8:               return std::make_shared<CP_Utf8>(reader);
+			case CP_TAGS::MethodHandle:       return std::make_shared<CP_MethodHandle>(reader);
+			case CP_TAGS::MethodType:         return std::make_shared<CP_MethodType>(reader);
+			case CP_TAGS::InvokeDynamic:      return std::make_shared<CP_InvokeDynamic>(reader);
+			default:                          throw JvmException("Invalid Constant Pool Tag");
 		}
 	}
 

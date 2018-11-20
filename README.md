@@ -1,13 +1,6 @@
 # JVM
 A simple JVM made in C++11
 
-## Members
-+ Claudio Segala Rodrigues Silva Filho
-+ Lincoln Abreu Barbosa
-+ Luís Eduardo Luz Silva
-+ Nícolas Machado Schumacher
-+ Ricardo Arôso Mendes Kury
-
 ## Usage
 
 ```
