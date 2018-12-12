@@ -4,7 +4,7 @@
 
 namespace jvm {
 
-	typedef std::shared_ptr<InstructionInfo> (*InstructionInfoInstantiator)();
+	using InstructionInfoInstantiator = std::shared_ptr<InstructionInfo>;
 
 	class CodeInfo : public std::map<int, std::shared_ptr<InstructionInfo>, std::less<int>> {
 	public:

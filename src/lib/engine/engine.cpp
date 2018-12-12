@@ -294,7 +294,7 @@ namespace jvm {
 			auto curFrame = fs.top();
 			auto& codes = curFrame.mt.attributes.Codes[0]->code;     // Get the current method's executable code
 			auto instruction = codes[curFrame.PC];                   // Get the current instruction
-			auto opcode = instruction->getOpCode();                  // Got op-code of the instruction
+			auto opcode = instruction->opcode;                  // Got op-code of the instruction
 			auto executor = getExecutor(opcode);                     // Get pointer to instruction execution
 
 			(this ->* executor)(instruction.get());                  // Access the instruction and execute it
