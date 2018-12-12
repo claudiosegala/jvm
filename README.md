@@ -3,13 +3,21 @@ A simple JVM made in C++11
 
 ## Usage
 
+To build the project:
+
 ```
-cd jvm
+# inside JVM project folder
 mkdir out
 cd out
 cmake ..
 make
-./jvm "../../samples/double_aritmetica.class" > output.txt
+```
+
+To execute it:
+
+```
+# inside JVM project folder
+./jvm "./samples/double_aritmetica.class"
 ```
 
 ## Directory Organization
