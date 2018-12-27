@@ -16,7 +16,7 @@ namespace jvm {
 		ConstantPool constant_pool;                 ///< Vector of entries that are constants
 
 		uint16_t access_flags;                      ///< Mask of flags used to denote access permissions to and properties of this class or interface
-
+		
 		uint16_t this_class;                        ///< Index to the constant_pool wich entry is a CONSTANT_Class_info structure
 		uint16_t super_class;                       ///< Index to the direct superclass of this class. If zero, it must be the Object class
 

@@ -5,209 +5,209 @@ namespace jvm {
 
 	Engine::Engine (ClassLoader &cl) {
 		exec = {
-				&Engine::exec_nop,               // 0
-				&Engine::exec_aconst_null,       // 1
-				&Engine::exec_iconst_m1,         // 2
-				&Engine::exec_iconst_0,          // 3
-				&Engine::exec_iconst_1,          // 4
-				&Engine::exec_iconst_2,          // 5
-				&Engine::exec_iconst_3,          // 6
-				&Engine::exec_iconst_4,          // 7
-				&Engine::exec_iconst_5,          // 8
-				&Engine::exec_lconst_0,          // 9
-				&Engine::exec_lconst_1,          // 10
-				&Engine::exec_fconst_0,          // 11
-				&Engine::exec_fconst_1,          // 12
-				&Engine::exec_fconst_2,          // 13
-				&Engine::exec_dconst_0,          // 14
-				&Engine::exec_dconst_1,          // 15
-				&Engine::exec_bipush,            // 16
-				&Engine::exec_sipush,            // 17
-				&Engine::exec_ldc,               // 18
-				&Engine::exec_ldc_w,             // 19
-				&Engine::exec_ldc2_w,            // 20
-				&Engine::exec_iload,             // 21
-				&Engine::exec_lload,             // 22
-				&Engine::exec_fload,             // 23
-				&Engine::exec_dload,             // 24
-				&Engine::exec_aload,             // 25
-				&Engine::exec_iload_0,           // 26
-				&Engine::exec_iload_1,           // 27
-				&Engine::exec_iload_2,           // 28
-				&Engine::exec_iload_3,           // 29
-				&Engine::exec_lload_0,           // 30
-				&Engine::exec_lload_1,           // 31
-				&Engine::exec_lload_2,           // 32
-				&Engine::exec_lload_3,           // 33
-				&Engine::exec_fload_0,           // 34
-				&Engine::exec_fload_1,           // 35
-				&Engine::exec_fload_2,           // 36
-				&Engine::exec_fload_3,           // 37
-				&Engine::exec_dload_0,           // 38
-				&Engine::exec_dload_1,           // 39
-				&Engine::exec_dload_2,           // 40
-				&Engine::exec_dload_3,           // 41
-				&Engine::exec_aload_0,           // 42
-				&Engine::exec_aload_1,           // 43
-				&Engine::exec_aload_2,           // 44
-				&Engine::exec_aload_3,           // 45
-				&Engine::exec_iaload,            // 46
-				&Engine::exec_laload,            // 47
-				&Engine::exec_faload,            // 48
-				&Engine::exec_daload,            // 49
-				&Engine::exec_aaload,            // 50
-				&Engine::exec_baload,            // 51
-				&Engine::exec_caload,            // 52
-				&Engine::exec_saload,            // 53
-				&Engine::exec_istore,            // 54
-				&Engine::exec_lstore,            // 55
-				&Engine::exec_fstore,            // 56
-				&Engine::exec_dstore,            // 57
-				&Engine::exec_astore,            // 58
-				&Engine::exec_istore_0,          // 59
-				&Engine::exec_istore_1,          // 60
-				&Engine::exec_istore_2,          // 61
-				&Engine::exec_istore_3,          // 62
-				&Engine::exec_lstore_0,          // 63
-				&Engine::exec_lstore_1,          // 64
-				&Engine::exec_lstore_2,          // 65
-				&Engine::exec_lstore_3,          // 66
-				&Engine::exec_fstore_0,          // 67
-				&Engine::exec_fstore_1,          // 68
-				&Engine::exec_fstore_2,          // 69
-				&Engine::exec_fstore_3,          // 70
-				&Engine::exec_dstore_0,          // 71
-				&Engine::exec_dstore_1,          // 72
-				&Engine::exec_dstore_2,          // 73
-				&Engine::exec_dstore_3,          // 74
-				&Engine::exec_astore_0,          // 75
-				&Engine::exec_astore_1,          // 76
-				&Engine::exec_astore_2,          // 77
-				&Engine::exec_astore_3,          // 78
-				&Engine::exec_iastore,           // 79
-				&Engine::exec_lastore,           // 80
-				&Engine::exec_fastore,           // 81
-				&Engine::exec_dastore,           // 82
-				&Engine::exec_aastore,           // 83
-				&Engine::exec_bastore,           // 84
-				&Engine::exec_castore,           // 85
-				&Engine::exec_sastore,           // 86
-				&Engine::exec_pop,               // 87
-				&Engine::exec_pop2,              // 88
-				&Engine::exec_dup,               // 89
-				&Engine::exec_dup_x1,            // 90
-				&Engine::exec_dup_x2,            // 91
-				&Engine::exec_dup2,              // 92
-				&Engine::exec_dup2_x1,           // 93
-				&Engine::exec_dup2_x2,           // 94
-				&Engine::exec_swap,              // 95
-				&Engine::exec_iadd,              // 96
-				&Engine::exec_ladd,              // 97
-				&Engine::exec_fadd,              // 98
-				&Engine::exec_dadd,              // 99
-				&Engine::exec_isub,              // 100
-				&Engine::exec_lsub,              // 101
-				&Engine::exec_fsub,              // 102
-				&Engine::exec_dsub,              // 103
-				&Engine::exec_imul,              // 104
-				&Engine::exec_lmul,              // 105
-				&Engine::exec_fmul,              // 106
-				&Engine::exec_dmul,              // 107
-				&Engine::exec_idiv,              // 108
-				&Engine::exec_ldiv,              // 109
-				&Engine::exec_fdiv,              // 110
-				&Engine::exec_ddiv,              // 111
-				&Engine::exec_irem,              // 112
-				&Engine::exec_lrem,              // 113
-				&Engine::exec_frem,              // 114
-				&Engine::exec_drem,              // 115
-				&Engine::exec_ineg,              // 116
-				&Engine::exec_lneg,              // 117
-				&Engine::exec_fneg,              // 118
-				&Engine::exec_dneg,              // 119
-				&Engine::exec_ishl,              // 120
-				&Engine::exec_lshl,              // 121
-				&Engine::exec_ishr,              // 122
-				&Engine::exec_lshr,              // 123
-				&Engine::exec_iushr,             // 124
-				&Engine::exec_lushr,             // 125
-				&Engine::exec_iand,              // 126
-				&Engine::exec_land,              // 127
-				&Engine::exec_ior,               // 128
-				&Engine::exec_lor,               // 129
-				&Engine::exec_ixor,              // 130
-				&Engine::exec_lxor,              // 131
-				&Engine::exec_iinc,              // 132
-				&Engine::exec_i2l,               // 133
-				&Engine::exec_i2f,               // 134
-				&Engine::exec_i2d,               // 135
-				&Engine::exec_l2i,               // 136
-				&Engine::exec_l2f,               // 137
-				&Engine::exec_l2d,               // 138
-				&Engine::exec_f2i,               // 139
-				&Engine::exec_f2l,               // 140
-				&Engine::exec_f2d,               // 141
-				&Engine::exec_d2i,               // 142
-				&Engine::exec_d2l,               // 143
-				&Engine::exec_d2f,               // 144
-				&Engine::exec_i2b,               // 145
-				&Engine::exec_i2c,               // 146
-				&Engine::exec_i2s,               // 147
-				&Engine::exec_lcmp,              // 148
-				&Engine::exec_fcmpl,             // 149
-				&Engine::exec_fcmpg,             // 150
-				&Engine::exec_dcmpl,             // 151
-				&Engine::exec_dcmpg,             // 152
-				&Engine::exec_ifeq,              // 153
-				&Engine::exec_ifne,              // 154
-				&Engine::exec_iflt,              // 155
-				&Engine::exec_ifge,              // 156
-				&Engine::exec_ifgt,              // 157
-				&Engine::exec_ifle,              // 158
-				&Engine::exec_if_icmpeq,         // 159
-				&Engine::exec_if_icmpne,         // 160
-				&Engine::exec_if_icmplt,         // 161
-				&Engine::exec_if_icmpge,         // 162
-				&Engine::exec_if_icmpgt,         // 163
-				&Engine::exec_if_icmple,         // 164
-				&Engine::exec_if_acmpeq,         // 165
-				&Engine::exec_if_acmpne,         // 166
-				&Engine::exec_goto,              // 167
-				&Engine::exec_jsr,               // 168
-				&Engine::exec_ret,               // 169
-				&Engine::exec_tableswitch,       // 170
-				&Engine::exec_lookupswitch,      // 171
-				&Engine::exec_ireturn,           // 172
-				&Engine::exec_lreturn,           // 173
-				&Engine::exec_freturn,           // 174
-				&Engine::exec_dreturn,           // 175
-				&Engine::exec_areturn,           // 176
-				&Engine::exec_return,            // 177
-				&Engine::exec_getstatic,         // 178
-				&Engine::exec_putstatic,         // 179
-				&Engine::exec_getfield,          // 180
-				&Engine::exec_putfield,          // 181
-				&Engine::exec_invokevirtual,     // 182
-				&Engine::exec_invokespecial,     // 183
-				&Engine::exec_invokestatic,      // 184
-				&Engine::exec_invokeinterface,   // 185
-				&Engine::exec_invokedynamic,     // 186
-				&Engine::exec_new,               // 187
-				&Engine::exec_newarray,          // 188
-				&Engine::exec_anewarray,         // 189
-				&Engine::exec_arraylength,       // 190
-				&Engine::exec_athrow,            // 191
-				&Engine::exec_checkcast,         // 192
-				&Engine::exec_instanceof,        // 193
-				&Engine::exec_monitorenter,      // 194
-				&Engine::exec_monitorexit,       // 195
-				&Engine::exec_wide,              // 196
-				&Engine::exec_multianewarray,    // 197
-				&Engine::exec_ifnull,            // 198
-				&Engine::exec_ifnonnull,         // 199
-				&Engine::exec_goto_w,            // 200
-				&Engine::exec_jsr_w,             // 201
-				&Engine::exec_breakpoint,        // 202
+			&Engine::exec_nop,               // 0
+			&Engine::exec_aconst_null,       // 1
+			&Engine::exec_iconst_m1,         // 2
+			&Engine::exec_iconst_0,          // 3
+			&Engine::exec_iconst_1,          // 4
+			&Engine::exec_iconst_2,          // 5
+			&Engine::exec_iconst_3,          // 6
+			&Engine::exec_iconst_4,          // 7
+			&Engine::exec_iconst_5,          // 8
+			&Engine::exec_lconst_0,          // 9
+			&Engine::exec_lconst_1,          // 10
+			&Engine::exec_fconst_0,          // 11
+			&Engine::exec_fconst_1,          // 12
+			&Engine::exec_fconst_2,          // 13
+			&Engine::exec_dconst_0,          // 14
+			&Engine::exec_dconst_1,          // 15
+			&Engine::exec_bipush,            // 16
+			&Engine::exec_sipush,            // 17
+			&Engine::exec_ldc,               // 18
+			&Engine::exec_ldc_w,             // 19
+			&Engine::exec_ldc2_w,            // 20
+			&Engine::exec_iload,             // 21
+			&Engine::exec_lload,             // 22
+			&Engine::exec_fload,             // 23
+			&Engine::exec_dload,             // 24
+			&Engine::exec_aload,             // 25
+			&Engine::exec_iload_0,           // 26
+			&Engine::exec_iload_1,           // 27
+			&Engine::exec_iload_2,           // 28
+			&Engine::exec_iload_3,           // 29
+			&Engine::exec_lload_0,           // 30
+			&Engine::exec_lload_1,           // 31
+			&Engine::exec_lload_2,           // 32
+			&Engine::exec_lload_3,           // 33
+			&Engine::exec_fload_0,           // 34
+			&Engine::exec_fload_1,           // 35
+			&Engine::exec_fload_2,           // 36
+			&Engine::exec_fload_3,           // 37
+			&Engine::exec_dload_0,           // 38
+			&Engine::exec_dload_1,           // 39
+			&Engine::exec_dload_2,           // 40
+			&Engine::exec_dload_3,           // 41
+			&Engine::exec_aload_0,           // 42
+			&Engine::exec_aload_1,           // 43
+			&Engine::exec_aload_2,           // 44
+			&Engine::exec_aload_3,           // 45
+			&Engine::exec_iaload,            // 46
+			&Engine::exec_laload,            // 47
+			&Engine::exec_faload,            // 48
+			&Engine::exec_daload,            // 49
+			&Engine::exec_aaload,            // 50
+			&Engine::exec_baload,            // 51
+			&Engine::exec_caload,            // 52
+			&Engine::exec_saload,            // 53
+			&Engine::exec_istore,            // 54
+			&Engine::exec_lstore,            // 55
+			&Engine::exec_fstore,            // 56
+			&Engine::exec_dstore,            // 57
+			&Engine::exec_astore,            // 58
+			&Engine::exec_istore_0,          // 59
+			&Engine::exec_istore_1,          // 60
+			&Engine::exec_istore_2,          // 61
+			&Engine::exec_istore_3,          // 62
+			&Engine::exec_lstore_0,          // 63
+			&Engine::exec_lstore_1,          // 64
+			&Engine::exec_lstore_2,          // 65
+			&Engine::exec_lstore_3,          // 66
+			&Engine::exec_fstore_0,          // 67
+			&Engine::exec_fstore_1,          // 68
+			&Engine::exec_fstore_2,          // 69
+			&Engine::exec_fstore_3,          // 70
+			&Engine::exec_dstore_0,          // 71
+			&Engine::exec_dstore_1,          // 72
+			&Engine::exec_dstore_2,          // 73
+			&Engine::exec_dstore_3,          // 74
+			&Engine::exec_astore_0,          // 75
+			&Engine::exec_astore_1,          // 76
+			&Engine::exec_astore_2,          // 77
+			&Engine::exec_astore_3,          // 78
+			&Engine::exec_iastore,           // 79
+			&Engine::exec_lastore,           // 80
+			&Engine::exec_fastore,           // 81
+			&Engine::exec_dastore,           // 82
+			&Engine::exec_aastore,           // 83
+			&Engine::exec_bastore,           // 84
+			&Engine::exec_castore,           // 85
+			&Engine::exec_sastore,           // 86
+			&Engine::exec_pop,               // 87
+			&Engine::exec_pop2,              // 88
+			&Engine::exec_dup,               // 89
+			&Engine::exec_dup_x1,            // 90
+			&Engine::exec_dup_x2,            // 91
+			&Engine::exec_dup2,              // 92
+			&Engine::exec_dup2_x1,           // 93
+			&Engine::exec_dup2_x2,           // 94
+			&Engine::exec_swap,              // 95
+			&Engine::exec_iadd,              // 96
+			&Engine::exec_ladd,              // 97
+			&Engine::exec_fadd,              // 98
+			&Engine::exec_dadd,              // 99
+			&Engine::exec_isub,              // 100
+			&Engine::exec_lsub,              // 101
+			&Engine::exec_fsub,              // 102
+			&Engine::exec_dsub,              // 103
+			&Engine::exec_imul,              // 104
+			&Engine::exec_lmul,              // 105
+			&Engine::exec_fmul,              // 106
+			&Engine::exec_dmul,              // 107
+			&Engine::exec_idiv,              // 108
+			&Engine::exec_ldiv,              // 109
+			&Engine::exec_fdiv,              // 110
+			&Engine::exec_ddiv,              // 111
+			&Engine::exec_irem,              // 112
+			&Engine::exec_lrem,              // 113
+			&Engine::exec_frem,              // 114
+			&Engine::exec_drem,              // 115
+			&Engine::exec_ineg,              // 116
+			&Engine::exec_lneg,              // 117
+			&Engine::exec_fneg,              // 118
+			&Engine::exec_dneg,              // 119
+			&Engine::exec_ishl,              // 120
+			&Engine::exec_lshl,              // 121
+			&Engine::exec_ishr,              // 122
+			&Engine::exec_lshr,              // 123
+			&Engine::exec_iushr,             // 124
+			&Engine::exec_lushr,             // 125
+			&Engine::exec_iand,              // 126
+			&Engine::exec_land,              // 127
+			&Engine::exec_ior,               // 128
+			&Engine::exec_lor,               // 129
+			&Engine::exec_ixor,              // 130
+			&Engine::exec_lxor,              // 131
+			&Engine::exec_iinc,              // 132
+			&Engine::exec_i2l,               // 133
+			&Engine::exec_i2f,               // 134
+			&Engine::exec_i2d,               // 135
+			&Engine::exec_l2i,               // 136
+			&Engine::exec_l2f,               // 137
+			&Engine::exec_l2d,               // 138
+			&Engine::exec_f2i,               // 139
+			&Engine::exec_f2l,               // 140
+			&Engine::exec_f2d,               // 141
+			&Engine::exec_d2i,               // 142
+			&Engine::exec_d2l,               // 143
+			&Engine::exec_d2f,               // 144
+			&Engine::exec_i2b,               // 145
+			&Engine::exec_i2c,               // 146
+			&Engine::exec_i2s,               // 147
+			&Engine::exec_lcmp,              // 148
+			&Engine::exec_fcmpl,             // 149
+			&Engine::exec_fcmpg,             // 150
+			&Engine::exec_dcmpl,             // 151
+			&Engine::exec_dcmpg,             // 152
+			&Engine::exec_ifeq,              // 153
+			&Engine::exec_ifne,              // 154
+			&Engine::exec_iflt,              // 155
+			&Engine::exec_ifge,              // 156
+			&Engine::exec_ifgt,              // 157
+			&Engine::exec_ifle,              // 158
+			&Engine::exec_if_icmpeq,         // 159
+			&Engine::exec_if_icmpne,         // 160
+			&Engine::exec_if_icmplt,         // 161
+			&Engine::exec_if_icmpge,         // 162
+			&Engine::exec_if_icmpgt,         // 163
+			&Engine::exec_if_icmple,         // 164
+			&Engine::exec_if_acmpeq,         // 165
+			&Engine::exec_if_acmpne,         // 166
+			&Engine::exec_goto,              // 167
+			&Engine::exec_jsr,               // 168
+			&Engine::exec_ret,               // 169
+			&Engine::exec_tableswitch,       // 170
+			&Engine::exec_lookupswitch,      // 171
+			&Engine::exec_ireturn,           // 172
+			&Engine::exec_lreturn,           // 173
+			&Engine::exec_freturn,           // 174
+			&Engine::exec_dreturn,           // 175
+			&Engine::exec_areturn,           // 176
+			&Engine::exec_return,            // 177
+			&Engine::exec_getstatic,         // 178
+			&Engine::exec_putstatic,         // 179
+			&Engine::exec_getfield,          // 180
+			&Engine::exec_putfield,          // 181
+			&Engine::exec_invokevirtual,     // 182
+			&Engine::exec_invokespecial,     // 183
+			&Engine::exec_invokestatic,      // 184
+			&Engine::exec_invokeinterface,   // 185
+			&Engine::exec_invokedynamic,     // 186
+			&Engine::exec_new,               // 187
+			&Engine::exec_newarray,          // 188
+			&Engine::exec_anewarray,         // 189
+			&Engine::exec_arraylength,       // 190
+			&Engine::exec_athrow,            // 191
+			&Engine::exec_checkcast,         // 192
+			&Engine::exec_instanceof,        // 193
+			&Engine::exec_monitorenter,      // 194
+			&Engine::exec_monitorexit,       // 195
+			&Engine::exec_wide,              // 196
+			&Engine::exec_multianewarray,    // 197
+			&Engine::exec_ifnull,            // 198
+			&Engine::exec_ifnonnull,         // 199
+			&Engine::exec_goto_w,            // 200
+			&Engine::exec_jsr_w,             // 201
+			&Engine::exec_breakpoint,        // 202
 			nullptr,                         // 203
 			nullptr,                         // 204
 			nullptr,                         // 205
@@ -259,8 +259,8 @@ namespace jvm {
 			nullptr,                         // 251
 			nullptr,                         // 252
 			nullptr,                         // 253
-				&Engine::exec_impdep1,           // 254
-				&Engine::exec_impdep2            // 255
+			&Engine::exec_impdep1,           // 254
+			&Engine::exec_impdep2            // 255
 		};
 
 		auto name = cl.constant_pool[cl.this_class]->toString(cl.constant_pool);
@@ -274,8 +274,8 @@ namespace jvm {
 			return executor;
 		}
 
-			throw JvmException("Opcode with number " + std::to_string(opcode) + " does not exist!");
-		}
+		throw JvmException("Opcode with number " + std::to_string(opcode) + " does not exist!");
+	}
 
 	void Engine::execute () {
 		auto main_name = std::string("main([Ljava/lang/String;)V");
@@ -296,32 +296,24 @@ namespace jvm {
 		std::cout <<"Execução concluída" << std::endl;
 	}
 
-	void Engine::run_clinit () {
-		// Won't be needed
-	}
-
-	void Engine::run_init () {
-		// Won't be needed
-	}
-
-	ClassAndMethod Engine::findMethod(CP_Methodref &ref) {
-		auto &currentClass = fs.top().cl;
+	ClassAndMethod Engine::findMethod(CPMethodRef &ref) {
+		auto &currentClass = this->fs.top().cl;
 		auto &constantPool = currentClass.constant_pool;
 
-		auto &classInfo = constantPool[ref.class_index] -> as<CP_Class>();
-		auto &nameAndType = constantPool[ref.name_and_type_index] -> as<CP_NameAndType>();
+		auto &classInfo = constantPool[ref.class_index] -> as<CPClass>();
+		auto &nameAndType = constantPool[ref.name_and_type_index] -> as<CPNameAndType>();
 		auto name = constantPool[nameAndType.name_index] -> toString(constantPool);
 		auto descriptor = constantPool[nameAndType.descriptor_index] -> toString(constantPool);
 
 		std::string methodKey = name + descriptor;
 
-		return findMethod(classInfo, methodKey);
+		return this->findMethod(classInfo, methodKey);
 	}
 
-	ClassAndMethod Engine::findMethod(CP_Class &classInfo, std::string &methodKey) {
-		auto &currentClass = fs.top().cl;
+	ClassAndMethod Engine::findMethod(CPClass &classInfo, std::string &methodKey) {
 		const auto methodNotFound = JvmException("Method " + methodKey + " not found!");
 
+		auto &currentClass = this->fs.top().cl;
 		auto &constantPool = currentClass.constant_pool;
 		if (classInfo.toString(constantPool) == "java/lang/Object") {
 			throw methodNotFound;
@@ -333,14 +325,15 @@ namespace jvm {
 			if (methodClass.super_class == 0) {
 				throw methodNotFound;
 			}
+			auto& superClass = constantPool[methodClass.super_class]->as<CPClass>();
 			return this->findMethod(superClass, methodKey);
 		}
 
 		return {methodClass, pair->second};
 	}
 
-	ClassLoader & Engine::findClass(CP_Class &classInfo) {
-		auto &cl = fs.top().cl;
+	ClassLoader & Engine::findClass(CPClass &classInfo) {
+		auto &cl = this->fs.top().cl;
 		auto &cp = cl.constant_pool;
 		auto className = cp[classInfo.name_index]-> toString(cp);
 		return this->findClass(className);
@@ -560,54 +553,65 @@ namespace jvm {
 	    auto data = reinterpret_cast<OPINFOldc *>(info);
 	    auto &frame = this->fs.top();
 	    auto k = frame.cl.constant_pool[data->index];
-	    if (k->getTag() == Integer /* Integer */) {
-		    auto int_cp = k->as<CP_Integer>();
+		switch (k->tag) {
+		case INTEGER:
+		{
+		    auto int_cp = k->as<CPInteger>();
 		    op4 value{ .ui4 = int_cp._bytes };
 		    frame.operands.push4(T_INT, value);
-			frame.PC += data->jmp + 1;
-			return;
-	    } else if (k->getTag() == Float /* Float */) {
-		    auto float_cp = k->as<CP_Float>();
+			break;
+		}
+		case FLOAT:
+		{
+		    auto float_cp = k->as<CPFloat>();
 		    op4 value{ .ui4 = float_cp._bytes };
 		    frame.operands.push4(T_FLOAT, value);
-			frame.PC += data->jmp + 1;
-			return;
-	    } else if (k->getTag() == String /* String */) {
-		    auto cp_str = k->as<CP_String>();
+			break;
+		}
+		case STRING:
+		{
+		    auto cp_str = k->as<CPString>();
 			frame.operands.push4(T_STRING, cp_str.string_index );
-			frame.PC += data->jmp + 1;
-			return;
-	    }
-		throw JvmException("Error on ldc!");
+			break;
+		}
+		default:
+			throw JvmException("Error in ldc");
+		}
+
+		frame.PC += data->jmp + 1;
 	}
 
-
-	// TODO: remove this frame.PC repeated
 	void Engine::exec_ldc_w (InstructionInfo * info) {
 		auto data = reinterpret_cast<OPINFOldc *>(info);
 		auto &frame = this->fs.top();
 		auto k = frame.cl.constant_pool[data->index];
-		if (k->getTag() == Integer /* Integer */) {
-			auto int_cp = k->as<CP_Integer>();
+
+		switch (k->tag) {
+		case INTEGER:
+		{
+			auto int_cp = k->as<CPInteger>();
 			op4 value{ .ui4 = int_cp._bytes };
 			frame.operands.push4(T_INT, value);
-			frame.PC += data->jmp + 1;
-			return;
-		} else if (k->getTag() == Float /* Float */) {
-			auto float_cp = k->as<CP_Float>();
+			break;
+		}
+		case FLOAT:
+		{
+			auto float_cp = k->as<CPFloat>();
 			op4 value{ .ui4 = float_cp._bytes };
 			frame.operands.push4(T_FLOAT, value);
-			frame.PC += data->jmp + 1;
-			return;
-		} else if (k->getTag() == String /* String */) {
-			auto cp_str = k->as<CP_String>();
+			break;
+		}
+		case STRING:
+		{
+			auto cp_str = k->as<CPString>();
 			frame.operands.push4(T_STRING, cp_str.string_index);
-		}else{
+			break;
+		}
+		default:
 			throw JvmException("Error in ldc_w");
 		}
 
 		frame.PC += data->jmp + 1;
-
 	}
 	void Engine::exec_ldc2_w (InstructionInfo * info) {
 
@@ -615,20 +619,26 @@ namespace jvm {
 		auto &frame = this->fs.top();
 		auto k = frame.cl.constant_pool[data->index];
 
-		if (k->getTag() == Long) {
-			auto long_cp = k->as<CP_Long>();
+		switch(k->tag){
+		case LONG:{
+			auto long_cp = k->as<CPLong>();
 			op4 value1 {.ui4 = static_cast<u4>(long_cp.low_bytes)};
 			op4 value2 {.ui4 = static_cast<u4>(long_cp.high_bytes)};
 
 			auto res = Converter::to_op8(value1, value2);
 			frame.operands.push8(T_LONG, res);
-		} else if (k->getTag() == Double) {
-			auto double_cp = k->as<CP_Double>();
+			break;
+		}
+		case DOUBLE:{
+			auto double_cp = k->as<CPDouble>();
 			op4 value1 { .ui4 = static_cast<u4>(double_cp.low_bytes) };
 			op4 value2 { .ui4 = static_cast<u4>(double_cp.high_bytes) };
 
 			auto res = Converter::to_op8(value1, value2);
 			frame.operands.push8(T_DOUBLE, res);
+		}
+		// default:
+		// 	throw JvmException("Error in ldc2_w");
 		}
 
 		frame.PC += data->jmp + 1;
@@ -2500,8 +2510,9 @@ namespace jvm {
 	void Engine::exec_getstatic (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOgetstatic *>(info);
 		auto &frame = this->fs.top();
+		auto value = reinterpret_cast<CPFieldRef*>(frame.cl.constant_pool[data->index]);
 		auto classname = frame.cl.constant_pool[value->class_index]->toString(frame.cl.constant_pool);
-		auto name_type = reinterpret_cast<CP_NameAndType*>(frame.cl.constant_pool[value->name_and_type_index]);
+		auto name_type = reinterpret_cast<CPNameAndType*>(frame.cl.constant_pool[value->name_and_type_index]);
 		auto name = frame.cl.constant_pool[name_type->name_index]->toString(frame.cl.constant_pool);
 		auto descriptor = frame.cl.constant_pool[name_type->descriptor_index]->toString(frame.cl.constant_pool);
 		auto signature = name + descriptor;
@@ -2554,10 +2565,10 @@ namespace jvm {
 		auto &frame = this->fs.top();
 		auto &cp = frame.cl.constant_pool;
 
-		auto methodRef = reinterpret_cast<CP_Methodref*>(cp[data->index]); // get the method info from constant pool
-		auto &classInfo = cp[methodRef->class_index]->as<CP_Class>();
+		auto methodRef = reinterpret_cast<CPMethodRef*>(cp[data->index]); // get the method info from constant pool
+		auto &classInfo = cp[methodRef->class_index]->as<CPClass>();
 		auto className = cp[classInfo.name_index]->toString(cp);
-		auto &methodNameAndType = cp[methodRef->name_and_type_index]->as<CP_NameAndType>();
+		auto &methodNameAndType = cp[methodRef->name_and_type_index]->as<CPNameAndType>();
 		auto methodName = cp[methodNameAndType.name_index] -> toString(cp);
 		auto methodDescriptor = cp[methodNameAndType.descriptor_index] -> toString(cp);
 
@@ -2569,7 +2580,7 @@ namespace jvm {
 
 			long lng;
 			if(print_type == T_STRING){
-				std::string str = reinterpret_cast<CP_String *>(cp[print_value.ui4])->toString(cp);
+				std::string str = reinterpret_cast<CPString *>(cp[print_value.ui4])->toString(cp);
 				std::cout << str << std::endl;
 			}
 
@@ -2657,10 +2668,10 @@ namespace jvm {
 		auto &frame = this->fs.top();
 		auto &cp = frame.cl.constant_pool;
 
-		auto methodRef = reinterpret_cast<CP_Methodref*>(cp[data->index]); // get the method info from constant pool
-		auto &classInfo = cp[methodRef->class_index]->as<CP_Class>();
+		auto methodRef = reinterpret_cast<CPMethodRef*>(cp[data->index]); // get the method info from constant pool
+		auto &classInfo = cp[methodRef->class_index]->as<CPClass>();
 		auto className = cp[classInfo.name_index]->toString(cp);
-		auto &methodNameAndType = cp[methodRef->name_and_type_index]->as<CP_NameAndType>();
+		auto &methodNameAndType = cp[methodRef->name_and_type_index]->as<CPNameAndType>();
 		auto methodName = cp[methodNameAndType.name_index] -> toString(cp);
 		auto methodDescriptor = cp[methodNameAndType.descriptor_index] -> toString(cp);
 
@@ -2720,7 +2731,7 @@ namespace jvm {
 		auto &frame = this->fs.top();
 		auto &cp = frame.cl.constant_pool;
 
-		auto classInfo = reinterpret_cast<CP_Class*>(cp[data->index]); // get the method info from constant pool
+		auto classInfo = reinterpret_cast<CPClass*>(cp[data->index]); // get the method info from constant pool
 		auto className = cp[classInfo->name_index]->toString(cp);
 		if (className == "java/lang/StringBuilder") {
 			frame.PC += data->jmp + 1;
@@ -2787,18 +2798,11 @@ namespace jvm {
 		arr->size = value.value.ui4;
 		arr->array = new i4[value.value.ui4];
 
-		auto cl = dynamic_cast<CP_Class*>(cpRef);
-		if (cl != nullptr) { // array of type Class
+		if (dynamic_cast<CPClass*>(cpRef) != nullptr) { // array of type Class
 			arr->type = T_OBJ;
-		}
-
-		auto mr = dynamic_cast<CP_Methodref*>(cpRef);
-		if (mr != nullptr) { // array of type method ref
+		} else if (dynamic_cast<CPMethodRef*>(cpRef) != nullptr) { // array of type method ref
 			arr->type = T_METHOD;
-		}
-
-		auto ir = dynamic_cast<CP_InterfaceMethodref*>(cpRef);
-		if (ir != nullptr) { // array of type interface ref
+		} else if (dynamic_cast<CPInterfaceMethodRef*>(cpRef) != nullptr) { // array of type interface ref
 			arr->type = T_INTERFACE;
 		}
 

@@ -6,26 +6,26 @@
 
 namespace jvm {
 
-	enum CP_TAGS : uint8_t {
-		Class              = 7,
-		FieldRef           = 9,
-		MethodRef          = 10,
-		InterfaceMethodRef = 11,
-		String             = 8,
-		Integer	           = 3,
-		Float              = 4,
-		Long               = 5,
-		Double             = 6,
-		NameAndType        = 12,
-		Utf8               = 1,
-		MethodHandle       = 15,
-		MethodType         = 16,
-		InvokeDynamic      = 18
+	enum CPTAGS : uint8_t {
+		UTF8                 = 1,
+		INTEGER	             = 3,
+		FLOAT                = 4,
+		LONG                 = 5,
+		DOUBLE               = 6,
+		CLASS                = 7,
+		STRING               = 8,
+		FIELD_REF            = 9,
+		METHOD_REF           = 10,
+		INTERFACE_METHOD_REF = 11,
+		NAME_AND_TYPE        = 12,
+		METHOD_HANDLE        = 15,
+		METHOD_TYPE          = 16,
+		INVOKE_DYNAMIC       = 18
 	};
 
-	class CP_Entry;
+	class CPEntry;
 
-	class ConstantPool : public std::vector<std::shared_ptr<CP_Entry>> {
+	class ConstantPool : public std::vector<std::shared_ptr<CPEntry>> {
 	public:
 	
 		/**
@@ -62,7 +62,7 @@ namespace jvm {
 		/**
 		 * 
 		 */
-		CP_Entry* operator[](size_type index) ;
+		CPEntry* operator[](size_type index) ;
 
 	private:
 
@@ -70,274 +70,185 @@ namespace jvm {
 		 * Gets the next entry of the ConstantPool wich must be of the kind of the given tag
 		 * @param reader a reference to the class file reader
 		 * @param tag an identifyer of the cp_info's kind
-		 * @return Pointer to the next CP_Entry according to the given tag
+		 * @return Pointer to the next CPEntry according to the given tag
 		 * @throw Exception when invalid tag's value
 		 */
-		std::shared_ptr<CP_Entry> getNextEntry(Reader &reader, uint8_t tag);
+		std::shared_ptr<CPEntry> getNextEntry(Reader &reader, uint8_t tag);
 	};
 
 	/**
-	 * Converts entry to CP_Utf8 and prints it to os.
-	 * Throws exception if entry is not CP_Utf8
+	 * Converts entry to CPUtf8 and prints it to os.
+	 * Throws exception if entry is not CPUtf8
 	 */
-	std::ostream& operator<< (std::ostream& os, CP_Entry& entry);
+	std::ostream& operator<< (std::ostream& os, CPEntry& entry);
 
-	class CP_Entry {
-	public:
-		virtual ~CP_Entry() = default;
+	struct CPEntry {
+		const CPTAGS tag;
 
-		virtual CP_TAGS getTag() = 0;
+		virtual ~CPEntry();
 
 		virtual void printToStream(std::ostream &os, jvm::ConstantPool &cp) = 0;
 
 		virtual std::string toString(ConstantPool &cp) = 0;
 
 		template<class T> T& as() {
-			auto toReturn = dynamic_cast<T*>(this);
-			if (toReturn == nullptr) {
-				throw JvmException("Invalid CP_Entry cast");
-			}
-
-			return *toReturn;
+		auto toReturn = dynamic_cast<T*>(this);
+		if (toReturn == nullptr) {
+			throw JvmException("Invalid CPEntry cast");
 		}
+
+		return *toReturn;
+	}
+
+	protected:
+		CPEntry(CPTAGS _tag);
 	};
 
+	#define INNER_CONST_POOL_CLASS(name)\
+	explicit name (Reader& reader);\
+	void printToStream(std::ostream& os, ConstantPool& cp) override;\
+	std::string toString(ConstantPool& cp) override;
+
 	/**
-	 * CP_Class entry to the constant pool
+	 * CPClass entry to the constant pool
 	 */
-	struct CP_Class final : public CP_Entry {
-		explicit CP_Class(Reader& reader);
-
-		CP_TAGS getTag() override;
-
-		void printToStream(std::ostream &os, ConstantPool &cp) override;
-
-		std::string toString(ConstantPool &cp) override;
-
+	struct CPClass final : public CPEntry {
 		uint16_t name_index;
+		
+		INNER_CONST_POOL_CLASS(CPClass)
 	};
 
 	/**
-	 * CP_Fieldref entry to the constant pool
+	 * CPFieldRef entry to the constant pool
 	 */
-	struct CP_Fieldref final : public CP_Entry {
-		explicit CP_Fieldref(Reader& reader);
-
-		~CP_Fieldref() override = default;
-
-		CP_TAGS getTag() override;
-
-		void printToStream(std::ostream &os, ConstantPool &cp) override;
-
-		std::string toString(ConstantPool &cp) override;
-
+	struct CPFieldRef final : public CPEntry {
 		uint16_t class_index;
-
 		uint16_t name_and_type_index;
+
+		INNER_CONST_POOL_CLASS(CPFieldRef)
 	};
 
 	/**
-	 * CP_Methodref entry to the constant pool
+	 * CPMethodRef entry to the constant pool
 	 */
-	struct CP_Methodref final : public CP_Entry {
-		explicit CP_Methodref(Reader& reader);
-
-		CP_TAGS getTag() override;
-
-		void printToStream(std::ostream &os, ConstantPool &cp) override;
-
-		std::string toString(ConstantPool &cp) override;
-
+	struct CPMethodRef final : public CPEntry {
 		uint16_t class_index;
-
 		uint16_t name_and_type_index;
+
+		INNER_CONST_POOL_CLASS(CPMethodRef)
 	};
 
 	/**
-	 * CP_InterfaceMethodref entry to the constant pool
+	 * CPInterfaceMethodRef entry to the constant pool
 	 */
-	struct CP_InterfaceMethodref final : public CP_Entry {
-		explicit CP_InterfaceMethodref(Reader& reader);
-
-		CP_TAGS getTag() override;
-
-		void printToStream(std::ostream &os, ConstantPool &cp) override;
-
-		std::string toString(ConstantPool &cp) override;
-
+	struct CPInterfaceMethodRef final : public CPEntry {
 		uint16_t class_index;
-
 		uint16_t name_and_class_index;
+
+		INNER_CONST_POOL_CLASS(CPInterfaceMethodRef)
 	};
 
 	/**
-	 * CP_String entry to the constant pool
+	 * CPString entry to the constant pool
 	 */
-	struct CP_String final : public CP_Entry {
-		explicit CP_String(Reader& reader);
-
-		CP_TAGS getTag() override;
-
-		void printToStream(std::ostream &os, ConstantPool &cp) override;
-
-		std::string toString(ConstantPool &cp) override;
-
+	struct CPString final : public CPEntry {
 		uint16_t string_index;
+
+		INNER_CONST_POOL_CLASS(CPString)
 	};
 
 	/**
-	 * CP_Integer entry to the constant pool
+	 * CPInteger entry to the constant pool
 	 */
-	struct CP_Integer final : public CP_Entry {
-		explicit CP_Integer(Reader& reader);
-
-		CP_TAGS getTag() override;
-
-		void printToStream(std::ostream &os, ConstantPool &cp) override;
-
-		std::string toString(ConstantPool &cp) override;
-
+	struct CPInteger final : public CPEntry {
 		uint32_t _bytes;
+
+		INNER_CONST_POOL_CLASS(CPInteger)
 	};
 
 	/**
-	 * CP_Float entry to the constant pool
+	 * CPFloat entry to the constant pool
 	 */
-	struct CP_Float final : public CP_Entry {
-		explicit CP_Float(Reader& reader);
-
-		CP_TAGS getTag() override;
-
-		void printToStream(std::ostream &os, ConstantPool &cp) override;
-
-		std::string toString(ConstantPool &cp) override;
-
+	struct CPFloat final : public CPEntry {
 		uint32_t _bytes;
+
+		INNER_CONST_POOL_CLASS(CPFloat)
 	};
 
 	/**
-	 * CP_Long entry to the constant pool
+	 * CPLong entry to the constant pool
 	 */
-	struct CP_Long final : public CP_Entry {
-		explicit CP_Long(Reader& reader);
-
-		CP_TAGS getTag() override;
-
-		void printToStream(std::ostream &os, ConstantPool &cp) override;
-
-		std::string toString(ConstantPool &cp) override;
-
+	struct CPLong final : public CPEntry {
 		uint32_t high_bytes;
-
 		uint32_t low_bytes;
+
+		INNER_CONST_POOL_CLASS(CPLong)
 	};
 
 	/**
-	 * CP_Double entry to the constant pool
+	 * CPDouble entry to the constant pool
 	 */
-	struct CP_Double final : public CP_Entry {
-		explicit CP_Double(Reader& reader);
-
-		CP_TAGS getTag() override;
-
-		void printToStream(std::ostream &os, ConstantPool &cp) override;
-
-		std::string toString(ConstantPool &cp) override;
-
+	struct CPDouble final : public CPEntry {
 		uint32_t high_bytes;
-
 		uint32_t low_bytes;
+		
+		INNER_CONST_POOL_CLASS(CPDouble)
 	};
 
 	/**
-	 * CP_NameAnsType entry to the constant pool
+	 * CPNameAndType entry to the constant pool
 	 */
-	struct CP_NameAndType final : public CP_Entry {
-		explicit CP_NameAndType(Reader& reader);
-
-		CP_TAGS getTag() override;
-
-		void printToStream(std::ostream &os, ConstantPool &cp) override;
-
-		std::string toString(ConstantPool &cp) override;
-
+	struct CPNameAndType final : public CPEntry {
 		uint16_t name_index;
-
 		uint16_t descriptor_index;
+
+		INNER_CONST_POOL_CLASS(CPNameAndType)
 	};
 
 	/**
-	 * CP_Utf8 entry to the constant pool
+	 * CPUtf8 entry to the constant pool
 	 */
-	struct CP_Utf8 final : public CP_Entry {
-		explicit CP_Utf8(Reader& reader);
+	struct CPUtf8 final : public CPEntry {
+		uint16_t _length;
+		uint8_t *_bytes;
 
-		~CP_Utf8() override;
-
-		CP_TAGS getTag() override;
-
-		void printToStream(std::ostream &os, ConstantPool &cp) override;
+		INNER_CONST_POOL_CLASS(CPUtf8)
 
 		std::string toString() ;
-
-		std::string toString(ConstantPool &cp) override;
-
-		uint16_t _length;
-
-		uint8_t *_bytes;
+		~CPUtf8() override;
 	};
 
-	std::ostream& operator<< (std::ostream&, CP_Utf8&);
-	bool operator== (std::string&, CP_Utf8&);
-	bool operator== (CP_Utf8&, std::string&);
+	std::ostream& operator<< (std::ostream&, CPUtf8&);
+	bool operator== (std::string&, CPUtf8&);
+	bool operator== (CPUtf8&, std::string&);
 
 	/**
-	 * CP_MethodHandle entry to the constant pool
+	 * CPMethodHandle entry to the constant pool
 	 */
-	struct CP_MethodHandle final : public CP_Entry {
-		explicit CP_MethodHandle(Reader& reader);
-
-		CP_TAGS getTag() override;
-
-		void printToStream(std::ostream &os, ConstantPool &cp) override;
-
-		std::string toString(ConstantPool &cp) override;
-
+	struct CPMethodHandle final : public CPEntry {
 		uint8_t reference_kind;
-
 		uint16_t reference_index;
+
+		INNER_CONST_POOL_CLASS(CPMethodHandle)
 	};
 
 	/**
-	 * CP_MethodType entry to the constant pool
+	 * CPMethodType entry to the constant pool
 	 */
-	struct CP_MethodType final : public CP_Entry {
-		explicit CP_MethodType(Reader& reader);
-
-		CP_TAGS getTag() override;
-
-		void printToStream(std::ostream &os, ConstantPool &cp) override;
-
-		std::string toString(ConstantPool &cp) override;
-
+	struct CPMethodType final : public CPEntry {
 		uint16_t descriptor_index;
+
+		INNER_CONST_POOL_CLASS(CPMethodType)
 	};
 
 	/**
-	 * CP_InvokeDYnamic entry to the constant pool
+	 * CPInvokeDYnamic entry to the constant pool
 	 */
-	struct CP_InvokeDynamic final : public CP_Entry {
-		explicit CP_InvokeDynamic(Reader& reader);
-
-		CP_TAGS getTag() override;
-
-		void printToStream(std::ostream &os, ConstantPool &cp) override;
-
-		std::string toString(ConstantPool &cp) override;
-
+	struct CPInvokeDynamic final : public CPEntry {
 		uint16_t bootstrap_method_attr_index;
-
 		uint16_t name_and_type_index;
+
+		INNER_CONST_POOL_CLASS(CPInvokeDynamic)
 	};
 
 }

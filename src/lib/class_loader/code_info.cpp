@@ -281,8 +281,8 @@ namespace jvm {
 			return instrInstantiator;
 		}
 
-			throw JvmException("Opcode with number " + std::to_string(opcode) + " does not exist!");
-		}
+		throw JvmException("Opcode with number " + std::to_string(opcode) + " does not exist!");
+	}
 
 	void CodeInfo::printToStream(std::ostream &os, std::string &prefix) {
 		auto newPrefix = prefix + "\t";

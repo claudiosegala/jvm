@@ -33,8 +33,8 @@ namespace jvm  {
     }
 
     void MethodInfo::PrintToStream(std::ostream &os, ConstantPool &cp, const std::string &prefix) {
-        auto& name = cp[name_index]->as<CP_Utf8>();
-        auto& descriptor = cp[descriptor_index]->as<CP_Utf8>();
+        auto& name = cp[name_index]->as<CPUtf8>();
+        auto& descriptor = cp[descriptor_index]->as<CPUtf8>();
 
         os << name << " (" << name_index << ")" << std::endl;
         os << "\t\tDescriptor: " << descriptor << " (" << descriptor_index << ")" << std::endl;

@@ -67,11 +67,11 @@ namespace jvm {
 		 */
 		void run_init();
 
-		ClassAndMethod findMethod(CP_Methodref &ref);
+		ClassAndMethod findMethod(CPMethodRef &ref);
 
-		ClassAndMethod findMethod(CP_Class &classInfo, std::string &nameAndDescriptor);
+		ClassAndMethod findMethod(CPClass &classInfo, std::string &nameAndDescriptor);
 
-		ClassLoader& findClass(CP_Class &classInfo);
+		ClassLoader& findClass(CPClass &classInfo);
 
 		ClassLoader& findClass(std::string& class_name);
 
