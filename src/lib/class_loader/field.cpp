@@ -11,10 +11,7 @@ namespace jvm {
 
 		if (flag == 0) {
 			std::cout << "\t\t\t -o-" << std::endl;
-			return;
-		}
-
-		{
+		} else {
 			using namespace jvm::fields;
 
 			if (flag & Flags::PUBLIC)     std::cout << "\t\t\tPublic"     << std::endl;

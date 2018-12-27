@@ -113,5 +113,4 @@ namespace jvm {
 		std::string dest = convert.to_bytes(source);
 		return dest;
 	}
-
 }

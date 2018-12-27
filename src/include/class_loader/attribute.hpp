@@ -45,12 +45,6 @@ namespace jvm {
 		AttrEntry() = default;
 
 	public:
-
-		/**
-		 * Default destructor
-		 */
-		virtual ~AttrEntry() = default;
-
 		/**
 		 * Prints this attribute entry to the console
 		 * @param os used to output data
@@ -62,12 +56,9 @@ namespace jvm {
 	};
 
 	struct AttrCode final : public AttrEntry {
-		typedef struct {
-			u2 start_pc;
-			u2 end_pc;
-			u2 handler_pc;
-			u2 catch_type;
-		} exception_table_entry;
+		struct exception_table_entry {
+			u2 start_pc, end_pc, handler_pc, catch_type;
+		};
 
 		u2 max_stack;
 		u2 max_locals;

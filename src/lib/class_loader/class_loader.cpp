@@ -31,25 +31,16 @@ namespace jvm {
 	void ClassLoader::read_methods (Reader &file) {
 		methods_count = file.getNextHalfWord();
 
-		if (methods_count == 0) {
-			return;
-		}
-
 		for (int i = 0; i < methods_count; ++i) {
 			MethodInfo currentMethod(file, constant_pool);
 			auto name = currentMethod.getName(constant_pool);
 			auto descriptor = currentMethod.getDescriptor(constant_pool);
 			methods.insert({name + descriptor, currentMethod});
 		}
-
 	}
 
 	void ClassLoader::read_fields (Reader &file) {
 		fields_count = file.getNextHalfWord();
-
-		if (fields_count == 0) {
-			return;
-		}
 
 		for (int i = 0; i < fields_count; ++i) {
 			fields.emplace_back(file, constant_pool);
@@ -58,10 +49,6 @@ namespace jvm {
 
 	void ClassLoader::read_interfaces (Reader &file) {
 		interfaces_count = file.getNextHalfWord();
-
-		if (interfaces_count == 0) {
-			return;
-		}
 
 		for (int i = 0; i < interfaces_count; ++i) {
 			interfaces.emplace_back(file);
@@ -77,11 +64,9 @@ namespace jvm {
 	void ClassLoader::read_cp (Reader& file) {
 		cp_count = (uint16_t)(file.getNextHalfWord() - 1);
 
-		if (cp_count <= 0) {
-			return;
+		if (cp_count > 0) {
+			constant_pool.fill(file, cp_count);
 		}
-
-		constant_pool.fill(file, cp_count);
 	}
 
 	void ClassLoader::read_version (Reader& file) {
@@ -94,12 +79,7 @@ namespace jvm {
 		auto flag = (uint32_t) access_flags;
 		std::cout << "Access Flags:" << std::endl;
 
-		if (flag == 0) {
-			std::cout << "\t -o-" << std::endl;
-			return;
-		}
-
-		{
+		if (flag) {
 			using namespace jvm::_class;
 
 			if (flag & Flags::PUBLIC)     std::cout << "\tPublic"     << std::endl;
@@ -115,6 +95,8 @@ namespace jvm {
 			if (flag & Flags::SYNTHETIC)  std::cout << "\tSynthetic"  << std::endl;
 			if (flag & Flags::ANNOTATION) std::cout << "\tAnnotation" << std::endl;
 			if (flag & Flags::ENUM)       std::cout << "\tEnum"       << std::endl;
+		} else {
+			std::cout << "\t -o-" << std::endl;
 		}
 	}
 
@@ -125,49 +107,43 @@ namespace jvm {
 	void ClassLoader::print_methods () {
 		std::cout << "Methods Count: " << methods_count << std::endl;
 
-		if (methods_count == 0) {
-			return;
-		}
+		if (methods_count) {
+			std::cout << "Methods:";
 
-		std::cout << "Methods:";
-
-		auto i = 0;
-		for (auto& item : methods) {
-			auto& method = item.second;
-			std::cout << std::endl << "\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
-			method.PrintToStream(std::cout, constant_pool, "");
+			auto i = 0;
+			for (auto& item : methods) {
+				auto& method = item.second;
+				std::cout << std::endl << "\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
+				method.PrintToStream(std::cout, constant_pool, "");
+			}
 		}
 	}
 
 	void ClassLoader::print_fields () {
 		std::cout << "Fields Count: " << fields_count << std::endl;
 
-		if (fields_count == 0) {
-			return;
-		}
+		if (fields_count) {
+			std::cout << "Fields:";
 
-		std::cout << "Fields:";
-
-		auto i = 0;
-		for (auto& field : fields) {
-			std::cout << std::endl << "\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
-			field.PrintToStream(std::cout, constant_pool);
+			auto i = 0;
+			for (auto& field : fields) {
+				std::cout << std::endl << "\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
+				field.PrintToStream(std::cout, constant_pool);
+			}
 		}
 	}
 
 	void ClassLoader::print_interfaces () {
 		std::cout << "Interfaces Count: " << interfaces_count << std::endl;
 
-		if (interfaces_count == 0) {
-			return;
-		}
+		if (interfaces_count) {
+			std::cout << "Interfaces:";
 
-		std::cout << "Interfaces:";
-
-		auto i = 0;
-		for (auto& interface : interfaces) {
-			std::cout << std::endl << "\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
-			interface.PrintToStream(std::cout, constant_pool);
+			auto i = 0;
+			for (auto& interface : interfaces) {
+				std::cout << std::endl << "\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
+				interface.PrintToStream(std::cout, constant_pool);
+			}
 		}
 	}
 
@@ -179,26 +155,23 @@ namespace jvm {
 	}
 
 	void ClassLoader::print_super_class () {
-		if (super_class == 0) {
-			std::cout << "Object" << std::endl;
-		} else {
+		if (super_class) {
 			CPEntry* value = constant_pool[super_class];
 			std::cout << "Super Class:"<< std::endl;
 			std::cout << "\t";
 			value->printToStream(std::cout, constant_pool);
+		} else {
+			std::cout << "Object" << std::endl;
 		}
 	}
 
 	void ClassLoader::print_cp () {
 		std::cout << "Constant Pool Count: " << cp_count << std::endl;
 
-		if (cp_count == 0) {
-			return;
+		if (cp_count) {
+			std::cout << "Constant Pool:";
+			constant_pool.printToStream(std::cout);
 		}
-
-		std::cout << "Constant Pool:";
-
-		constant_pool.printToStream(std::cout);
 	}
 
 	void ClassLoader::print_version () {
@@ -219,5 +192,4 @@ namespace jvm {
 		print_methods();
 		print_attributes();
 	}
-
 }

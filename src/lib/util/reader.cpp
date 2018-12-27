@@ -44,12 +44,10 @@ namespace jvm {
 	uint16_t Reader::getNextHalfWord() {
 		uint16_t result = 0;
 		for (auto i = 0; i < 2; i++) {
-			int32_t byte = bytes[index + i];
-			byte <<= (BYTESIZE * (1 - i));
+			int32_t byte = bytes[index++];
+			byte <<= (BYTESIZE * (2 - 1 - i));
 			result |= byte;
 		}
-
-		index += 2;
 
 		return result;
 	}
@@ -57,12 +55,10 @@ namespace jvm {
 	uint32_t Reader::getNextWord() {
 		uint32_t result = 0;
 		for (auto i = 0; i < 4; i++) {
-			int32_t byte = bytes[index + i];
-			byte <<= (BYTESIZE * (3 - i));
+			int32_t byte = bytes[index++];
+			byte <<= (BYTESIZE * (4 - 1 - i));
 			result |= byte;
 		}
-
-		index += 4;
 
 		return result;
 	}
