@@ -5,7 +5,7 @@
 #include "util/converter.hpp"
 
 #define OPINFO_DECL(name)\
-class OPINFO ## name : public InstructionInfo {\
+class OPINFO ## name final : public InstructionInfo {\
 public:\
 	OPINFO ## name ();\
 };
@@ -57,35 +57,35 @@ namespace jvm {
 	OPINFO_DECL(dconst_0)
 	OPINFO_DECL(dconst_1)
 
-	class OPINFObipush : public InstructionInfo {
+	class OPINFObipush final : public InstructionInfo {
 	public:
 		i1 byte; ///< Byte to be pushed as an integer to the stack
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(bipush)
 	};
 
-	class OPINFOsipush : public InstructionInfo {
+	class OPINFOsipush final : public InstructionInfo {
 	public:
 		i2 value; ///< Short value to be pushed onto the stack
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(sipush)
 	};
 
-	class OPINFOldc : public InstructionInfo {
+	class OPINFOldc final : public InstructionInfo {
 	public:
 		u1 index; ///< Index in the constant pool
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(ldc)
 	};
 
-	class OPINFOldc_w : public InstructionInfo {
+	class OPINFOldc_w final : public InstructionInfo {
 	public:
 		u2 index; ///< Index in the constant pool
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(ldc_w)
 	};
 
-	class OPINFOldc2_w : public InstructionInfo {
+	class OPINFOldc2_w final : public InstructionInfo {
 	public:
 		u2 index; ///< Index in the constant pool
 
@@ -93,35 +93,35 @@ namespace jvm {
 	};
 
 	//Loads opcodes 0x15,21 -- 0x35,53
-	class OPINFOiload : public InstructionInfo {
+	class OPINFOiload final : public InstructionInfo {
 	public:
 		u1 index; ///< Index of the local variable
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(iload)
 	};
 
-	class OPINFOlload : public InstructionInfo {
+	class OPINFOlload final : public InstructionInfo {
 	public:
 		u1 index; ///< Index to the local variable
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(lload)
 	};
 
-	class OPINFOfload : public InstructionInfo {
+	class OPINFOfload final : public InstructionInfo {
 	public:
 		u1 index; ///< Index of the local float variable
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(fload)
 	};
 
-	class OPINFOdload : public InstructionInfo {
+	class OPINFOdload final : public InstructionInfo {
 	public:
 		u1 index; ///< Index to the local double variable
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(dload)
 	};
 
-	class OPINFOaload : public InstructionInfo {
+	class OPINFOaload final : public InstructionInfo {
 	public:
 		u1 index; ///< index of the reference to the local variable to be loaded
 
@@ -158,35 +158,35 @@ namespace jvm {
 	OPINFO_DECL(saload)
 
 	//Stores 0x36,54 -> 0x56,86
-	class OPINFOistore : public InstructionInfo {
+	class OPINFOistore final : public InstructionInfo {
 	public:
 		u1 index; ///< Index to the local variable
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(istore)
 	};
 
-	class OPINFOlstore : public InstructionInfo {
+	class OPINFOlstore final : public InstructionInfo {
 	public:
 		u1 index; ///< Index to the local variable
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(lstore)
 	};
 
-	class OPINFOfstore : public InstructionInfo {
+	class OPINFOfstore final : public InstructionInfo {
 	public:
 		u1 index; ///< Index of the local float variable
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(fstore)
 	};
 
-	class OPINFOdstore : public InstructionInfo {
+	class OPINFOdstore final : public InstructionInfo {
 	public:
 		u1 index; ///< Index to the local double variable
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(dstore)
 	};
 
-	class OPINFOastore : public InstructionInfo {
+	class OPINFOastore final : public InstructionInfo {
 	public:
 		u1 index; ///< Index of the local variable that will store the reference
 
@@ -271,7 +271,7 @@ namespace jvm {
 	OPINFO_DECL(ixor)
 	OPINFO_DECL(lxor)
 
-	class OPINFOiinc : public InstructionInfo {
+	class OPINFOiinc final : public InstructionInfo {
 	public:
 		u1 index;       ///< Index of the local variable
 		i1 constant;    ///< Value to be incremented to the local variable
@@ -303,98 +303,98 @@ namespace jvm {
 	OPINFO_DECL(dcmpl)
 	OPINFO_DECL(dcmpg)
 
-	class OPINFOifeq : public InstructionInfo {
+	class OPINFOifeq final : public InstructionInfo {
 	public:
 		i2 branchoffset; ///< Offset to the next instruction
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(ifeq)
 	};
 
-	class OPINFOifne : public InstructionInfo {
+	class OPINFOifne final : public InstructionInfo {
 	public:
 		i2 branchoffset; ///< Offset to the next instruction
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(ifne)
 	};
 
-	class OPINFOiflt : public InstructionInfo {
+	class OPINFOiflt final : public InstructionInfo {
 	public:
 		i2 branchoffset; ///< Offset to the next instruction
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(iflt)
 	};
 
-	class OPINFOifge : public InstructionInfo {
+	class OPINFOifge final : public InstructionInfo {
 	public:
 		i2 branchoffset; ///< Offset to the next instruction
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(ifge)
 	};
 
-	class OPINFOifgt : public InstructionInfo {
+	class OPINFOifgt final : public InstructionInfo {
 	public:
 		i2 branchoffset; ///< Offset to the next instruction
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(ifgt)
 	};
 
-	class OPINFOifle : public InstructionInfo {
+	class OPINFOifle final : public InstructionInfo {
 	public:
 		i2 branchoffset; ///< Offset to the next instruction
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(ifle)
 	};
 
-	class OPINFOif_icmpeq : public InstructionInfo {
+	class OPINFOif_icmpeq final : public InstructionInfo {
 	public:
 		i2 branchoffset; ///< Offset to the next instruction
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(if_icmpeq)
 	};
 
-	class OPINFOif_icmpne : public InstructionInfo {
+	class OPINFOif_icmpne final : public InstructionInfo {
 	public:
 		i2 branchoffset; ///< Offset to the next instruction
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(if_icmpne)
 	};
 
-	class OPINFOif_icmplt : public InstructionInfo {
+	class OPINFOif_icmplt final : public InstructionInfo {
 	public:
 		i2 branchoffset; ///< Offset to the next instruction
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(if_icmplt)
 	};
 
-	class OPINFOif_icmpge : public InstructionInfo {
+	class OPINFOif_icmpge final : public InstructionInfo {
 	public:
 		i2 branchoffset; ///< Offset to the next instruction
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(if_icmpge)
 	};
 
-	class OPINFOif_icmpgt : public InstructionInfo {
+	class OPINFOif_icmpgt final : public InstructionInfo {
 	public:
 		i2 branchoffset; ///< Offset to the next instruction
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(if_icmpgt)
 	};
 
-	class OPINFOif_icmple : public InstructionInfo {
+	class OPINFOif_icmple final : public InstructionInfo {
 	public:
 		i2 branchoffset; ///< Offset to the next instruction
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(if_icmple)
 	};
 
-	class OPINFOif_acmpeq : public InstructionInfo {
+	class OPINFOif_acmpeq final : public InstructionInfo {
 	public:
 		i2 branchoffset; ///< Offset to the next instruction
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(if_acmpeq)
 	};
 
-	class OPINFOif_acmpne : public InstructionInfo {
+	class OPINFOif_acmpne final : public InstructionInfo {
 	public:
 		i2 branchoffset; ///< Offset to the next instruction
 
@@ -402,28 +402,28 @@ namespace jvm {
 	};
 
 	//Control 0xA7,167 -> 0xB1,177
-	class OPINFOgoto : public InstructionInfo {
+	class OPINFOgoto final : public InstructionInfo {
 	public:
 		i2 branchoffset; ///< Offset to the next instruction
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(goto)
 	};
 
-	class OPINFOjsr : public InstructionInfo {
+	class OPINFOjsr final : public InstructionInfo {
 	public:
 		i2 branchoffset; ///< Offset to a subroutine
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(jsr)
 	};
 
-	class OPINFOret : public InstructionInfo {
+	class OPINFOret final : public InstructionInfo {
 	public:
 		u1 index; ///< Index to the local variable
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(ret)
 	};
 
-	class OPINFOtableswitch : public InstructionInfo {
+	class OPINFOtableswitch final : public InstructionInfo {
 	public:
 		i4 defaultbyte;              //> default
 		i4 low;                      //> low
@@ -433,7 +433,7 @@ namespace jvm {
 		OPINFO_PARTIAL_DECL_OVERRIDE(tableswitch)
 	};
 
-	class OPINFOlookupswitch : public InstructionInfo {
+	class OPINFOlookupswitch final : public InstructionInfo {
 	public:
 		i4 defaultbyte;         //> default
 		i4 npairs;              //> qtd of pairs
@@ -450,56 +450,56 @@ namespace jvm {
 	OPINFO_DECL(return)
 
 	//References 0xB2,178 -> 0xC3,195
-	class OPINFOgetstatic : public InstructionInfo {
+	class OPINFOgetstatic final : public InstructionInfo {
 	public:
 		u2 index; ///< Index to the field reference in the constant pool
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(getstatic)
 	};
 
-	class OPINFOputstatic : public InstructionInfo {
+	class OPINFOputstatic final : public InstructionInfo {
 	public:
 		u2 index; ///< Index in the constant pool to the field reference
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(putstatic)
 	};
 
-	class OPINFOgetfield : public InstructionInfo {
+	class OPINFOgetfield final : public InstructionInfo {
 	public:
 		u2 index; ///< Index to the field reference in the constant pool
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(getfield)
 	};
 
-	class OPINFOputfield : public InstructionInfo {
+	class OPINFOputfield final : public InstructionInfo {
 	public:
 		u2 index; ///< Index in the constant pool to the field reference
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(putfield)
 	};
 
-	class OPINFOinvokevirtual : public InstructionInfo {
+	class OPINFOinvokevirtual final : public InstructionInfo {
 	public:
 		u2 index; ///< Index in the constant pool to the method reference
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(invokevirtual)
 	};
 
-	class OPINFOinvokespecial : public InstructionInfo {
+	class OPINFOinvokespecial final : public InstructionInfo {
 	public:
 		u2 index; ///< Index in the constant pool to the method referenc
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(invokespecial)
 	};
 
-	class OPINFOinvokestatic : public InstructionInfo {
+	class OPINFOinvokestatic final : public InstructionInfo {
 	public:
 		u2 index; ///< Index in the constant pool to the method reference
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(invokestatic)
 	};
 
-	class OPINFOinvokeinterface : public InstructionInfo {
+	class OPINFOinvokeinterface final : public InstructionInfo {
 	public:
 		u2 index;  ///< Index in the constant pool to the interface method
 		u1 count;  ///< Count operand that must not be zero
@@ -507,28 +507,28 @@ namespace jvm {
 		OPINFO_PARTIAL_DECL_OVERRIDE(invokeinterface)
 	};
 
-	class OPINFOinvokedynamic : public InstructionInfo {
+	class OPINFOinvokedynamic final : public InstructionInfo {
 	public:
 		u2 index; ///< Index in the constant pool
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(invokedynamic)
 	};
 
-	class OPINFOnew : public InstructionInfo {
+	class OPINFOnew final : public InstructionInfo {
 	public:
 		u2 index; ///< Index in the constant pool to the class reference
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(new)
 	};
 
-	class OPINFOnewarray : public InstructionInfo {
+	class OPINFOnewarray final : public InstructionInfo {
 	public:
 		u1 atype; ///< Code that indicates the type of array to create
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(newarray)
 	};
 
-	class OPINFOanewarray : public InstructionInfo {
+	class OPINFOanewarray final : public InstructionInfo {
 	public:
 		u2 index; ///< index of the reference to the class that identifies the component type
 
@@ -538,14 +538,14 @@ namespace jvm {
 	OPINFO_DECL(arraylength)
 	OPINFO_DECL(athrow)
 
-	class OPINFOcheckcast : public InstructionInfo {
+	class OPINFOcheckcast final : public InstructionInfo {
 	public:
 		u2 index; ///< Index of the class reference in the constant pool
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(checkcast)
 	};
 
-	class OPINFOinstanceof : public InstructionInfo {
+	class OPINFOinstanceof final : public InstructionInfo {
 	public:
 		u2 index; ///< Index to the class reference in the constant pool
 
@@ -556,7 +556,7 @@ namespace jvm {
 	OPINFO_DECL(monitorexit)
 
 	//Extended 0xC4,196 -> 0xC9,201
-	class OPINFOwide : public InstructionInfo {
+	class OPINFOwide final : public InstructionInfo {
 	public:
 		u1 targetOpcode; //> the opcode to execute wide
 		u2 index;        //> index
@@ -565,7 +565,7 @@ namespace jvm {
 		OPINFO_PARTIAL_DECL_OVERRIDE(wide)
 	};
 
-	class OPINFOmultianewarray : public InstructionInfo {
+	class OPINFOmultianewarray final : public InstructionInfo {
 	public:
 		u2 index;      ///> Index in the constant pool
 		u1 dimensions; ///> Number of dimensions of the array to be created, must be greater than or equal to 1
@@ -573,28 +573,28 @@ namespace jvm {
 		OPINFO_PARTIAL_DECL_OVERRIDE(multianewarray)
 	};
 
-	class OPINFOifnull : public InstructionInfo {
+	class OPINFOifnull final : public InstructionInfo {
 	public:
 		i2 branchoffset; ///< Offset to the next instruction
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(ifnull)
 	};
 
-	class OPINFOifnonnull : public InstructionInfo {
+	class OPINFOifnonnull final : public InstructionInfo {
 	public:
 		i2 branchoffset; ///< Offset to the next instruction
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(ifnonnull)
 	};
 
-	class OPINFOgoto_w : public InstructionInfo {
+	class OPINFOgoto_w final : public InstructionInfo {
 	public:
 		i4 branchoffset; ///< Offset to the next instruction
 
 		OPINFO_PARTIAL_DECL_OVERRIDE(goto_w)
 	};
 
-	class OPINFOjsr_w : public InstructionInfo {
+	class OPINFOjsr_w final : public InstructionInfo {
 	public:
 		i4 branchoffset; ///< Offset to a subroutine
 
