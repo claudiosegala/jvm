@@ -11,8 +11,6 @@ namespace jvm {
     };
 
     class Commander {
-        std::vector<std::string> _commands;
-
     public:
         static CommandState parse(const std::vector<std::string>& commands);
     

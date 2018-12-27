@@ -4,6 +4,26 @@ namespace jvm {
 
 	ClassLoader::ClassLoader() = default;
 
+	ClassLoader::ClassLoader (const std::string& path) {
+		this->read(path);
+	}
+
+	void ClassLoader::read (const std::string& filename) {
+		auto file = Reader();
+
+		file.open(filename);
+
+		read_version(file);
+		read_cp(file);
+		read_flags(file);
+		read_interfaces(file);
+		read_fields(file);
+		read_methods(file);
+		read_attributes(file);
+
+		file.close();
+	}
+
 	void ClassLoader::read_attributes (Reader &file) {
 		attributes.fill(file, constant_pool);
 	}
@@ -68,26 +88,6 @@ namespace jvm {
 		magic_number = MAGIC_NUMBER;
 		min_version = file.getNextHalfWord();
 		max_version = file.getNextHalfWord();
-	}
-
-	/**
-	 * Reads all the class file
-	 * @param file The file to extract the data
-	 */
-	void ClassLoader::read (std::basic_string<char> filename) {
-		auto file = Reader();
-
-		file.open(filename);
-
-		read_version(file);
-		read_cp(file);
-		read_flags(file);
-		read_interfaces(file);
-		read_fields(file);
-		read_methods(file);
-		read_attributes(file);
-
-		file.close();
 	}
 
 	void ClassLoader::print_class_flags() {

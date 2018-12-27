@@ -1,19 +1,6 @@
 #include "engine/variables.hpp"
 
 namespace jvm {
-
-	// TODO: implement this
-//	Variables::Variables(uint32_t n) {
-//		vec = new op4[n];
-//	}
-
-	Variables::Variables() {}
-
-	Variables::~Variables() {
-		// TODO: implement this
-		//delete[] vec;
-	}
-
 	op4 Variables::get4(u4 idx) {
 		return vec[idx];
 	}

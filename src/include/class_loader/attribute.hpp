@@ -46,11 +46,6 @@ namespace jvm {
 
 	public:
 
-		template<class T>
-		static std::shared_ptr<AttrEntry> instantiate(Reader &reader, ConstantPool &cp) {
-			return std::make_shared<T>(reader, cp);
-		}
-
 		/**
 		 * Default destructor
 		 */
@@ -66,7 +61,7 @@ namespace jvm {
 
 	};
 
-	struct AttrCode : public AttrEntry {
+	struct AttrCode final : public AttrEntry {
 		typedef struct {
 			u2 start_pc;
 			u2 end_pc;
@@ -85,13 +80,13 @@ namespace jvm {
 		void printToStream(std::ostream &ostream, ConstantPool &pool, std::string &prefix) override;
 	};
 
-	struct AttrConstantValue : public AttrEntry {
+	struct AttrConstantValue final : public AttrEntry {
 		u2 constantvalue_index;
 		AttrConstantValue(Reader &reader, ConstantPool &cp);
 		void printToStream(std::ostream &ostream, ConstantPool &pool, std::string &prefix) override;
 	};
 
-	struct AttrExceptions : public AttrEntry {
+	struct AttrExceptions final : public AttrEntry {
 		std::vector<u2> exception_index_table;
 		AttrExceptions(Reader &reader, ConstantPool &cp);
 		void printToStream(std::ostream &os, ConstantPool &pool, std::string &prefix) override;

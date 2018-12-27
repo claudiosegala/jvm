@@ -277,13 +277,12 @@ namespace jvm {
 
 	InstructionInfoInstantiator CodeInfo::getInstr(u1 &opcode) {
 		auto instrInstantiator = instruction_set[opcode];
-
-		if (not instrInstantiator) {
-			throw JvmException("Opcode with number " + std::to_string(opcode) + " does not exist!");
+		if (instrInstantiator) {
+			return instrInstantiator;
 		}
 
-		return instrInstantiator;
-	}
+			throw JvmException("Opcode with number " + std::to_string(opcode) + " does not exist!");
+		}
 
 	void CodeInfo::printToStream(std::ostream &os, std::string &prefix) {
 		auto newPrefix = prefix + "\t";

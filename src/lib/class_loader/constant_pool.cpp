@@ -10,9 +10,6 @@ namespace jvm {
 	}
 
 	ConstantPool::~ConstantPool() {
-//		for (auto& entry : *this) {
-//			delete entry;
-//		}
 	}
 
 	void ConstantPool::fill(Reader &reader, size_type cp_count) {

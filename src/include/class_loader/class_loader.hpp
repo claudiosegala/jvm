@@ -9,35 +9,27 @@ namespace jvm {
 	class ClassLoader {
 	public:
 		uint32_t magic_number;                      ///< Identifies that this is a class file format
-
 		uint16_t min_version;                       ///< Minor version of this class file
-
 		uint16_t max_version;                       ///< Major version of this class filez
 
 		uint16_t cp_count;                          ///< Number of entries in the constant_pool entity plus one
-
 		ConstantPool constant_pool;                 ///< Vector of entries that are constants
 
 		uint16_t access_flags;                      ///< Mask of flags used to denote access permissions to and properties of this class or interface
 
 		uint16_t this_class;                        ///< Index to the constant_pool wich entry is a CONSTANT_Class_info structure
-
 		uint16_t super_class;                       ///< Index to the direct superclass of this class. If zero, it must be the Object class
 
 		uint16_t interfaces_count;                  ///< Number of direct superinterfaces of this class or interface type
-
 		std::vector<jvm::InterfaceInfo> interfaces; ///< Vector of direct superinterface of this class or interface type, in the left-to-right order
 
 		uint16_t fields_count;                      ///< Number of FieldInfo in the fields entity
-
 		std::vector<jvm::FieldInfo> fields;         ///< Vector of fields that are declared by this class or interface
 
 		uint16_t methods_count;                     ///< Number of MethodInfo in the methods entity
-
 		std::unordered_map<std::string, MethodInfo> methods;       ///< Vector of all MethodInfo structures declared by this class or interface type
 		
 		uint16_t attributes_count;                  ///< Number of AttributeInfo in the attributes entity
-
 		jvm::AttributeInfo attributes;              ///< Vector of AttributeInfo structures
 
 		/**
@@ -46,9 +38,16 @@ namespace jvm {
 		ClassLoader ();
 
 		/**
-		 * Reads all the class file
+		 * Constructor that reads all the class file
+		 * @param file The file to extract the data
 		 */
-		void read (std::basic_string<char>);
+		ClassLoader (const std::string& path);
+
+		/**
+		 * Reads all the class file
+		 * @param file The file to extract the data
+		 */
+		void read (const std::string&);
 
 		/**
 		 * Prints the whole class file to the console

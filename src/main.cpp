@@ -10,8 +10,7 @@ int main (int argc, char *argv[ ]) {
 	try {
 		jvm::CommandState state = jvm::Commander::parse(commands);
 
-		jvm::ClassLoader cl;
-		cl.read(state.filename);
+		jvm::ClassLoader cl(state.filename);
 
 		if (state.shouldDescribe) {
 			cl.show();

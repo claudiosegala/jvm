@@ -1,7 +1,7 @@
 #pragma once
 
 #include "base.hpp"
-#include "frames_stack.hpp"
+#include "frame.hpp"
 #include "class_loader/class_loader.hpp"
 
 namespace jvm {
@@ -36,14 +36,14 @@ namespace jvm {
 		std::string path;
 
 	private:
-
 		std::vector<Execution> exec;	///> The set of instantiators to the instruction
 
 		std::unordered_map<std::string, ClassLoader> JavaClasses;	///> Reference to .class that will be executed first
 
 		std::string Entry_class_name;	///> Name of .class that will be executed first
 
-		FramesStack fs;	///> Frame Stack
+		typedef std::stack<Frame> FrameStack;
+		FrameStack fs;	///> Frame Stack
 
 		std::vector<void*> mem;	///> Engine heap mem
 

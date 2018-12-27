@@ -8,17 +8,6 @@ namespace jvm {
 	class Variables {
 	public:
 		/**
-		 * Constructor
-		 */
-		//Variables(uint32_t);
-		Variables();
-
-		/**
-		 * Destructor
-		 */
-		~Variables();
-
-		/**
 		 * Sets the maximum size of the variables vector
 		 * @param size
 		 */
@@ -67,12 +56,7 @@ namespace jvm {
 		void set(u4, u8);
 
 	private:
-
 		std::vector<op4> vec;	///> Array of op4
-
-		// TODO: implement this
-		//> Array of op4
-		// op4* vec;
 	};
 
 }

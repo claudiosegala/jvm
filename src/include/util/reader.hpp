@@ -25,7 +25,7 @@ namespace jvm {
 		* @param  filename The name of the .class we are opening
 		* @see isValid()
 		*/
-		void open(std::string &filename);
+		void open(const std::string &filename);
 
 		/**
 		* Close the .class file
