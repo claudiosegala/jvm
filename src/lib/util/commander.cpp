@@ -13,8 +13,6 @@ namespace jvm {
                 exit(0);
             } else if (command == "--describe" || command == "-d") {
                 state.shouldDescribe = true;
-            } else if (command == "--execute" || command == "-r") {
-                state.shouldRun = true;
             } else if (state.filename.empty()) {
                 state.filename = command;
             } else {
@@ -22,13 +20,14 @@ namespace jvm {
             }
         }
 
+
+        if (!state.shouldDescribe) {
+            Commander::whatShouldDo(state);
+        }
+        
         // Deal with missing commands
         if (state.filename.empty()) {
             state.filename = Commander::get_name();
-        }
-
-        if (!(state.shouldDescribe || state.shouldRun)) {
-            Commander::whatShouldDo(state);
         }
 
         return state;
@@ -36,7 +35,6 @@ namespace jvm {
 
     void Commander::show_help() {
         std::cout << "  -d, --describe => descrevem o .class\n";
-        std::cout << "  -r, --execute  => executa o código descrito no .class\n";
         std::cout << "  -h, --help     => descrevem os comandos válidos\n";
     }
 
@@ -55,8 +53,6 @@ namespace jvm {
         do {
             std::cout << "Escolha uma das opcoes abaixo:" << std::endl;
             std::cout << "1) Se deseja que o(s) .class seja(m) lido(s)" << std::endl;
-            std::cout << "2) Se deseja que seja rodado o código" << std::endl;
-            std::cout << "3) Se deseja fazer ambos" << std::endl;
             std::cout << "0) Se deseja sair" << std::endl;
             std::cout << "Eu escolho: ";
 
@@ -69,16 +65,9 @@ namespace jvm {
                 case 1:
                     state.shouldDescribe = true;
                     break;
-                case 2:
-                    state.shouldRun = true;
-                    break;
-                case 3:
-                    state.shouldDescribe = true;
-                    state.shouldRun = true;
-                    break;
                 default:
-                    std::cout << "Cara... Você tinha um trabalho, escolher entre 4 números..." << std::endl;
+                    std::cout << "Cara... Você tinha um trabalho, escolher entre 2 números..." << std::endl;
             }
-        } while (op < 0 || op > 3);
+        } while (op < 0 || op > 1);
     }
 }

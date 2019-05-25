@@ -18,17 +18,12 @@ set(SOURCES
     src/lib/util/reader.cpp
     src/lib/util/converter.cpp
     src/lib/util/commander.cpp
-    src/lib/engine/frame.cpp
-    src/lib/engine/operands.cpp
-    src/lib/engine/variables.cpp
     src/lib/class_loader/class_loader.cpp
     src/lib/class_loader/constant_pool.cpp
     src/lib/class_loader/interface.cpp
     src/lib/class_loader/attribute.cpp
     src/lib/class_loader/method.cpp
     src/lib/class_loader/field.cpp
-    src/lib/engine/engine.cpp
-    src/lib/engine/frames_stack.cpp
     src/include/class_loader/code_info.hpp
     src/include/class_loader/instruction_info.hpp
     src/lib/class_loader/code_info.cpp
