@@ -1,5 +1,5 @@
 # JVM
-A simple JVM made in C++11
+A simple Java Bytecode Reader made in C++11
 
 ## Usage
 
