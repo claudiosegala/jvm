@@ -70,13 +70,14 @@ namespace jvm {
 	}
 
 	void ClassLoader::read_cp (Reader& file) {
-		cp_count = (uint16_t)(file.getNextHalfWord());
+		cp_count = (uint16_t)(file.getNextHalfWord() - 1);
 
 		if (cp_count <= 0) {
 			return;
 		}
 
-		constant_pool.fill(file, cp_count - 1);
+		constant_pool.fill(file, cp_count);
+		cp_count ++;
 	}
 
 	void ClassLoader::read_version (Reader& file) {
