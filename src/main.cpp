@@ -1,7 +1,6 @@
 #include "class_loader/class_loader.hpp"
 #include "util/JvmException.hpp"
 #include "util/commander.hpp"
-#include "include/class_loader/class_loader.hpp"
 
 int main (int argc, char *argv[ ]) {
 

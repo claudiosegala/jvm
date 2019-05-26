@@ -316,7 +316,8 @@ namespace jvm {
 		auto& nam1 = name1->as<CP_Utf8>();
 		auto& nam2 = name2->as<CP_Utf8>();
 
-		os << nam1 << ": " << nam2 << std::endl;
+		os << "Name and Type \n";
+		os << "\t\t" << nam1 << ": " << nam2 << std::endl;
 	}
 
 	std::string CP_NameAndType::toString(ConstantPool &cp) {
@@ -378,7 +379,8 @@ namespace jvm {
 	}
 
 	void CP_Class::printToStream(std::ostream &os, ConstantPool &cp) {
-		os << toString(cp) << std::endl;
+		os << "Class \n";
+		os << "\t\t" << toString(cp) << std::endl;
 	}
 
 	std::string CP_Class::toString(ConstantPool &cp) {

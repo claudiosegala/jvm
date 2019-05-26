@@ -16,26 +16,17 @@ namespace jvm {
 		}
 
 		/**
-		 * Note: O unordered map adiciona o novo item no inicio, como não é fácil
-		 * fazer um iterator decrescente, preferi inverter a ordem.
+		 * Note: O unordered map bagunça a ordem dependendo da implementação!
+		 * Não confie que foi a ordem de inserção!!!!
 		 *
 		 * TODO: Substituir o unordered_map para aumentar compatibilidade
 		 */
-		std::unordered_map<std::string, MethodInfo> methods_buff;
-
-		for (int i = 0; i < methods_count; ++i) {
-			MethodInfo currentMethod(file, constant_pool);
-			auto name = currentMethod.getName(constant_pool);
-			auto descriptor = currentMethod.getDescriptor(constant_pool);
-			methods_buff.insert({name + descriptor, currentMethod});
-		}
-
-		for (auto& item : methods_buff) {
-			auto& method = item.second;
-			auto name = method.getName(constant_pool);
-			auto descriptor = method.getDescriptor(constant_pool);
-			methods.insert({name + descriptor, method});
-		}
+        for (int i = 0; i < methods_count; ++i) {
+            MethodInfo currentMethod(file, constant_pool);
+            auto name = currentMethod.getName(constant_pool);
+            auto descriptor = currentMethod.getDescriptor(constant_pool);
+            methods.insert({name + descriptor, currentMethod});
+        }
 
 	}
 
@@ -147,8 +138,15 @@ namespace jvm {
 
 		std::cout << "Methods:";
 
+        std::map<std::uint16_t, MethodInfo> methods_buff;
+        for (auto& item : methods) {
+            auto& currentMethod = item.second;
+            uint16_t position = currentMethod.name_index;
+            methods_buff.insert({position, currentMethod});
+        }
+
 		auto i = 0;
-		for (auto& item : methods) {
+		for (auto& item : methods_buff) {
 			auto& method = item.second;
 			std::cout << std::endl << "\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
 			method.PrintToStream(std::cout, constant_pool, "");
