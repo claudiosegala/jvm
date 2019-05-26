@@ -1,6 +1,6 @@
-#include <vector>
-#include <string>
+#pragma once
 
+#include "base.hpp"
 #include "JvmException.hpp"
 
 namespace jvm {

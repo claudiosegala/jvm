@@ -1,8 +1,5 @@
 #include "util/commander.hpp"
 
-#include <iostream>
-#include <cstdlib>
-
 namespace jvm {
     CommandState Commander::parse(const std::vector<std::string>& commands) {
         CommandState state = {0};
