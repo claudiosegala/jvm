@@ -24,8 +24,6 @@ set(SOURCES
     src/lib/class_loader/attribute.cpp
     src/lib/class_loader/method.cpp
     src/lib/class_loader/field.cpp
-    src/include/class_loader/code_info.hpp
-    src/include/class_loader/instruction_info.hpp
     src/lib/class_loader/code_info.cpp
     src/lib/class_loader/instruction_info.cpp
 )

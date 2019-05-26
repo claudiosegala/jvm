@@ -23,6 +23,10 @@ namespace jvm {
 				auto constantValuePtr = std::make_shared<AttrConstantValue>(reader, cp);
 				ConstValues.push_back(constantValuePtr);
 				push_back(constantValuePtr);
+			}else if (name == "SourceFile") {
+				auto SourceFilePtr = std::make_shared<AttrSourceFile>(reader, cp);
+				SourceFile.push_back(SourceFilePtr);
+				push_back(SourceFilePtr);
 			} else {
 				// In this case, the attribute is of a type we won't read
 				// Add a nullptr and skip the attribute's bytes
@@ -99,5 +103,13 @@ namespace jvm {
 
 	void AttrExceptions::printToStream(std::ostream &os, ConstantPool &pool, std::string &prefix) {
 		os << prefix << "Exception (count: " << exception_index_table.size() << ")" << std::endl;
+	}
+
+	AttrSourceFile::AttrSourceFile(Reader &reader, ConstantPool &cp) {
+		sourcefile_index = reader.getNextHalfWord();
+	}
+
+	void AttrSourceFile::printToStream(std::ostream &os, ConstantPool &cp, std::string &prefix) {
+		os << prefix << "Source File: " << cp[sourcefile_index]->toString(cp) << std::endl;
 	}
 }

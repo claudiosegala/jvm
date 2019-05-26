@@ -9,6 +9,7 @@ namespace jvm {
 	struct AttrCode;
 	struct AttrConstantValue;
 	struct AttrExceptions;
+	struct AttrSourceFile;
 
 	/**
 	 * Maps a string to a function that returns an instance of the corresponding attribute
@@ -21,6 +22,7 @@ namespace jvm {
 		std::vector<std::shared_ptr<AttrCode>> Codes;	///< Vector of the attribute code
 		std::vector<std::shared_ptr<AttrConstantValue>> ConstValues; ///< Vector of the constant values
 		std::vector<std::shared_ptr<AttrExceptions>> Exceptions; ///< Vector of the exceptions
+		std::vector<std::shared_ptr<AttrSourceFile>> SourceFile; ///< Vector of the SourceFile (only 1)
 
 		/**
 		 * Fills this attribute entry's members
@@ -95,5 +97,11 @@ namespace jvm {
 		std::vector<u2> exception_index_table;
 		AttrExceptions(Reader &reader, ConstantPool &cp);
 		void printToStream(std::ostream &os, ConstantPool &pool, std::string &prefix) override;
+	};
+
+	struct AttrSourceFile : public AttrEntry {
+		u2 sourcefile_index;
+		AttrSourceFile(Reader &reader, ConstantPool &cp);
+		void printToStream(std::ostream &ostream, ConstantPool &pool, std::string &prefix) override;
 	};
 }

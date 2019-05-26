@@ -15,11 +15,26 @@ namespace jvm {
 			return;
 		}
 
+		/**
+		 * Note: O unordered map adiciona o novo item no inicio, como não é fácil
+		 * fazer um iterator decrescente, preferi inverter a ordem.
+		 *
+		 * TODO: Substituir o unordered_map para aumentar compatibilidade
+		 */
+		std::unordered_map<std::string, MethodInfo> methods_buff;
+
 		for (int i = 0; i < methods_count; ++i) {
 			MethodInfo currentMethod(file, constant_pool);
 			auto name = currentMethod.getName(constant_pool);
 			auto descriptor = currentMethod.getDescriptor(constant_pool);
-			methods.insert({name + descriptor, currentMethod});
+			methods_buff.insert({name + descriptor, currentMethod});
+		}
+
+		for (auto& item : methods_buff) {
+			auto& method = item.second;
+			auto name = method.getName(constant_pool);
+			auto descriptor = method.getDescriptor(constant_pool);
+			methods.insert({name + descriptor, method});
 		}
 
 	}
@@ -55,13 +70,13 @@ namespace jvm {
 	}
 
 	void ClassLoader::read_cp (Reader& file) {
-		cp_count = (uint16_t)(file.getNextHalfWord() - 1);
+		cp_count = (uint16_t)(file.getNextHalfWord());
 
 		if (cp_count <= 0) {
 			return;
 		}
 
-		constant_pool.fill(file, cp_count);
+		constant_pool.fill(file, cp_count - 1);
 	}
 
 	void ClassLoader::read_version (Reader& file) {

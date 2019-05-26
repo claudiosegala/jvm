@@ -1,6 +1,7 @@
 #include "class_loader/class_loader.hpp"
 #include "util/JvmException.hpp"
 #include "util/commander.hpp"
+#include "include/class_loader/class_loader.hpp"
 
 int main (int argc, char *argv[ ]) {
 
@@ -13,7 +14,14 @@ int main (int argc, char *argv[ ]) {
 		cl.read(state.filename);
 
 		if (state.shouldDescribe) {
-			cl.show();
+		    if(cl.min_version>51) {
+                std::cout << "O .class lido não é compatível com java7, deseja ler mesmo assim? (S/N)\n";
+                char op;
+                std::cin >> op;
+                if(op == 'S' || op == 's')
+                    cl.show();
+            } else
+			    cl.show();
 		}
 
 	} catch (const jvm::JvmException& e) {
