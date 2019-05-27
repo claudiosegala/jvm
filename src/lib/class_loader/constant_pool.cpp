@@ -182,8 +182,8 @@ namespace jvm {
 	}
 
 	void CP_Float::printToStream(std::ostream &os, ConstantPool &cp) {
-		os << "Float" << std::endl;
-		os << "\t\t" << toString(cp) << std::endl;
+		os << "Float_info" << std::endl;
+		os << "\t\t\t" << toString(cp) << std::endl;
 	}
 
 	std::string CP_Float::toString(ConstantPool &cp) {
@@ -196,8 +196,8 @@ namespace jvm {
 	}
 
 	void CP_Long::printToStream(std::ostream &os, ConstantPool &cp) {
-		os << "Long" << std::endl;
-		os << "\t\t" << toString(cp) << std::endl;
+		os << "Long_info" << std::endl;
+		os << "\t\t\t" << toString(cp) << std::endl;
 	}
 
 	std::string CP_Long::toString(ConstantPool &cp) {
@@ -213,8 +213,8 @@ namespace jvm {
 	}
 
 	void CP_Double::printToStream(std::ostream &os, ConstantPool &cp) {
-		os << "Double" << std::endl;
-		os << "\t\t" << toString(cp) << std::endl;
+		os << "Double_info" << std::endl;
+		os << "\t\t\t" << toString(cp) << std::endl;
 	}
 
 	std::string CP_Double::toString(ConstantPool &cp) {
@@ -280,10 +280,10 @@ namespace jvm {
 	}
 
 	void CP_String::printToStream(std::ostream &os, ConstantPool &cp) {
-			os << "String" << std::endl;
+			os << "String_info" << std::endl;
 			CP_Entry* name1 = cp[string_index];
 			auto& nam1 = name1->as<CP_Utf8>();
-			os << "\t\t" << nam1 << std::endl;
+			os << "\t\t\t" << nam1 << std::endl;
 	}
 
 	std::string CP_String::toString(ConstantPool &cp) {
@@ -297,8 +297,8 @@ namespace jvm {
 	}
 
 	void CP_Integer::printToStream(std::ostream &os, ConstantPool &cp) {
-		os << "Integer" << std::endl;
-		os << "\t\t" << toString(cp) << std::endl;
+		os << "Integer_info" << std::endl;
+		os << "\t\t\t" << toString(cp) << std::endl;
 	}
 
 	std::string CP_Integer::toString(ConstantPool &cp) {
@@ -316,8 +316,8 @@ namespace jvm {
 		auto& nam1 = name1->as<CP_Utf8>();
 		auto& nam2 = name2->as<CP_Utf8>();
 
-		os << "Name and Type \n";
-		os << "\t\t" << nam1 << ": " << nam2 << std::endl;
+		os << "NameAndType_info" << std::endl;
+		os << "\t\t\t" << nam1 << ": " << nam2 << std::endl;
 	}
 
 	std::string CP_NameAndType::toString(ConstantPool &cp) {
@@ -360,8 +360,8 @@ namespace jvm {
 	}
 
 	void CP_Utf8::printToStream(std::ostream &os, ConstantPool &cp) {
-		os << "UTF-8" << std::endl;
-		os << "\t\t" << *this << std::endl;
+		os << "Utf8_info" << std::endl;
+		os << "\t\t\t" << *this << std::endl;
 	}
 
 	std::string CP_Utf8::toString(ConstantPool &cp) {
@@ -379,8 +379,8 @@ namespace jvm {
 	}
 
 	void CP_Class::printToStream(std::ostream &os, ConstantPool &cp) {
-		os << "Class \n";
-		os << "\t\t" << toString(cp) << std::endl;
+		os << "Class_info" << std::endl;
+		os << "\t\t\t" << toString(cp) << std::endl;
 	}
 
 	std::string CP_Class::toString(ConstantPool &cp) {
