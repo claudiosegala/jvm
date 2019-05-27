@@ -10,6 +10,7 @@ namespace jvm {
 	struct AttrConstantValue;
 	struct AttrExceptions;
 	struct AttrSourceFile;
+	struct AttrLineNumberTable;
 
 	/**
 	 * Maps a string to a function that returns an instance of the corresponding attribute
@@ -23,6 +24,7 @@ namespace jvm {
 		std::vector<std::shared_ptr<AttrConstantValue>> ConstValues; ///< Vector of the constant values
 		std::vector<std::shared_ptr<AttrExceptions>> Exceptions; ///< Vector of the exceptions
 		std::vector<std::shared_ptr<AttrSourceFile>> SourceFile; ///< Vector of the SourceFile (only 1)
+		std::vector<std::shared_ptr<AttrLineNumberTable>> LineNumberTable; ///< Vector of the LineNumberTable
 
 		/**
 		 * Fills this attribute entry's members
@@ -102,6 +104,19 @@ namespace jvm {
 	struct AttrSourceFile : public AttrEntry {
 		u2 sourcefile_index;
 		AttrSourceFile(Reader &reader, ConstantPool &cp);
+		void printToStream(std::ostream &ostream, ConstantPool &pool, std::string &prefix) override;
+	};
+
+	struct AttrLineNumberTable : public AttrEntry {
+		u2 line_number_table_length;
+		typedef struct {
+			u2 start_pc;
+			u2 line_number;
+		} line_number_table_entry;
+
+		std::vector<line_number_table_entry> line_number_table;
+
+		AttrLineNumberTable(Reader &reader, ConstantPool &cp);
 		void printToStream(std::ostream &ostream, ConstantPool &pool, std::string &prefix) override;
 	};
 }

@@ -1,3 +1,4 @@
+#include <class_loader/attribute.hpp>
 #include "class_loader/attribute.hpp"
 
 namespace jvm {
@@ -27,6 +28,10 @@ namespace jvm {
 				auto SourceFilePtr = std::make_shared<AttrSourceFile>(reader, cp);
 				SourceFile.push_back(SourceFilePtr);
 				push_back(SourceFilePtr);
+			}else if (name == "LineNumberTable") {
+				auto LineNumberTablePtr = std::make_shared<AttrLineNumberTable>(reader, cp);
+				LineNumberTable.push_back(LineNumberTablePtr);
+				push_back(LineNumberTablePtr);
 			} else {
 				// In this case, the attribute is of a type we won't read
 				// Add a nullptr and skip the attribute's bytes
@@ -113,4 +118,24 @@ namespace jvm {
 	void AttrSourceFile::printToStream(std::ostream &os, ConstantPool &cp, std::string &prefix) {
 		os << prefix << "Source File: " << cp[sourcefile_index]->toString(cp) << std::endl;
 	}
+
+    AttrLineNumberTable::AttrLineNumberTable(Reader &reader, ConstantPool &cp) {
+        line_number_table_length = reader.getNextHalfWord();
+        for (int i = 0; i < line_number_table_length; i++) {
+			line_number_table_entry item;
+            item.start_pc = reader.getNextHalfWord();
+            item.line_number = reader.getNextHalfWord();
+			line_number_table.push_back(item);
+        }
+    }
+
+    void AttrLineNumberTable::printToStream(std::ostream &os, ConstantPool &cp, std::string &prefix) {
+        os << prefix << "LineNumberTable:" << std::endl;
+		os << prefix << "\t" << "Nr:\t|start_pc\t|line_number " << std::endl;
+        for (int i = 0; i < line_number_table_length; i++) {
+			line_number_table_entry item = line_number_table.at(i);
+            auto prefix2 = prefix + "\t";
+            os << prefix2 << i << "\t|" << item.start_pc << "\t\t\t|"<< item.line_number << std::endl;
+        }
+    }
 }
