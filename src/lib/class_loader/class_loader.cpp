@@ -1,4 +1,5 @@
 #include "class_loader/class_loader.hpp"
+#include "util/JvmException.hpp"
 
 namespace jvm {
 
@@ -72,7 +73,7 @@ namespace jvm {
 	}
 
 	void ClassLoader::read_version (Reader& file) {
-		magic_number = MAGIC_NUMBER;
+		magic_number = file.getNextWord();
 		min_version = file.getNextHalfWord();
 		max_version = file.getNextHalfWord();
 	}
@@ -87,6 +88,11 @@ namespace jvm {
 		file.open(filename);
 
 		read_version(file);
+
+		if (magic_number != MAGIC_NUMBER) {
+			throw JvmException("This file isn't a valid .class file");
+		}
+
 		read_cp(file);
 		read_flags(file);
 		read_interfaces(file);

@@ -10,11 +10,6 @@ namespace jvm {
 		return len;
 	}
 
-	bool Reader::isValid() {
-		auto firstWord = getNextWord();
-		return (firstWord == MAGIC_NUMBER);
-	}
-
 	void Reader::open(std::string &filename) {
 		index = 0;
 
@@ -30,10 +25,6 @@ namespace jvm {
 		// read the file to memory
 		for (auto i = 0; !_class.eof(); i++) {
 			_class.read((char*) &bytes[i], 1);
-		}
-
-		if (!isValid()) {
-			throw JvmException("This file isn't a valid .class file");
 		}
 	}
 
