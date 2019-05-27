@@ -83,6 +83,7 @@ namespace jvm {
 			os << prefix2 << pair.first << ": ";
 			instr->printToStream(os, fakeprefix, cp);
 		}
+		attributes.printToStream(os, cp, "\t\t");
 	}
 
 	AttrConstantValue::AttrConstantValue(Reader &reader, ConstantPool &cp) {
