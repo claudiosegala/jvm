@@ -240,8 +240,8 @@ namespace jvm {
 	}
 
 	void ClassLoader::print_version () {
-		std::cout << "Min Version: " << min_version << std::endl;
-		std::cout << "Max Version: " << max_version << std::endl;
+		std::cout << "Min Version: " << min_version << " (" << JavaVersions[min_version] << ")" << std::endl;
+		std::cout << "Max Version: " << max_version << " (" << JavaVersions[max_version] << ")" << std::endl;
 	}
 
 	void ClassLoader::show () {
