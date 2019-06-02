@@ -8,6 +8,8 @@ namespace jvm {
 
 	class ClassLoader {
 	public:
+		std::basic_string<char> filename;			///< The filename loaded as .class
+
 		uint32_t magic_number;                      ///< Identifies that this is a class file format
 
 		uint16_t min_version;                       ///< Minor version of this class file

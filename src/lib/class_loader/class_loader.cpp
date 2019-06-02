@@ -82,14 +82,19 @@ namespace jvm {
 	 * Reads all the class file
 	 * @param file The file to extract the data
 	 */
-	void ClassLoader::read (std::basic_string<char> filename) {
+	void ClassLoader::read (std::basic_string<char> name) {
 		auto file = Reader();
+
+		filename = name;
+		if(filename.find(".class") == -1)
+			filename = filename.append(".class");
 
 		file.open(filename);
 
 		read_version(file);
 
 		if (magic_number != MAGIC_NUMBER) {
+			file.close();
 			throw JvmException("This file isn't a valid .class file");
 		}
 
@@ -101,6 +106,19 @@ namespace jvm {
 		read_attributes(file);
 
 		file.close();
+
+		auto Source_File_attr = attributes.SourceFile[0];
+		std::string sourceName = constant_pool[Source_File_attr->sourcefile_index]->toString(constant_pool);
+		std::string className;
+		if(filename.find_last_of("/") != -1)
+			className = filename.substr(filename.find_last_of("/") + 1);
+		else if (filename.find_last_of("\\") != -1 )
+			className = filename.substr(filename.find_last_of("\\") + 1);
+		else
+			className = filename;
+		if(sourceName.compare(0, sourceName.size() -5, className.substr(0, className.size() - 6))){
+			throw jvm::JvmException("The names of the class file "+ className +" and source file "+ sourceName +" don't match!");
+		}
 	}
 
 	void ClassLoader::print_class_flags() {

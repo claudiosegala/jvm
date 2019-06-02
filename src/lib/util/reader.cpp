@@ -16,7 +16,7 @@ namespace jvm {
 		_class.open(filename, std::ios::binary);
 
 		if (!_class.is_open()) {
-			throw JvmException("Couldn't open file");
+			throw JvmException("Couldn't open file " + filename);
 		}
 
 		// reserve in memory the space needed for the file
