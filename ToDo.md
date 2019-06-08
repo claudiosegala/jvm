@@ -7,10 +7,10 @@
 - [X] Validar source name
 - [ ] Add missing attributes
   - [ ] Critical for JVM
-    - [ ] ConstantValue - Java 1.0.2
-    - [ ] Code - Java 1.0.2
+    - [X] ConstantValue - Java 1.0.2
+    - [X] Code - Java 1.0.2
     - [ ] StackMapTable - Java 6
-    - [ ] Exceptions - Java 1.0.2
+    - [X] Exceptions - Java 1.0.2
     - [ ] BootstrapMethods - Java 7
   - [ ] Critical for Java SE
     - [ ] InnerClasses - Java 1.1
@@ -26,7 +26,7 @@
     - [ ] AnnotationDefault - Java 5
     - [ ] MethodParameters - Java 8
   - [ ] Not critical for anyone
-    - [ ] SourceFile - Java 1.0.2
+    - [X] SourceFile - Java 1.0.2
     - [ ] SourceDebugExtension - Java 5
     - [ ] LineNumberTable - Java 1.0.2
     - [ ] LocalVariableTable - Java 1.0.2
