@@ -11,11 +11,8 @@ namespace jvm {
 	struct AttrExceptions;
 	struct AttrSourceFile;
 	struct AttrLineNumberTable;
-<<<<<<< HEAD
 	struct AttrLocalVariableTable;
-=======
 	struct AttrBootstrapMethods;
->>>>>>> ac931c533aa0f1cf482d13bcdeeea796eb0b8c69
 
 	/**
 	 * Maps a string to a function that returns an instance of the corresponding attribute
@@ -30,12 +27,8 @@ namespace jvm {
 		std::vector<std::shared_ptr<AttrExceptions>> Exceptions; ///< Vector of the exceptions
 		std::vector<std::shared_ptr<AttrSourceFile>> SourceFile; ///< Vector of the SourceFile (only 1)
 		std::vector<std::shared_ptr<AttrLineNumberTable>> LineNumberTable; ///< Vector of the LineNumberTable
-<<<<<<< HEAD
 		std::vector<std::shared_ptr<AttrLocalVariableTable>> LocalVariableTable;// < Vector of LocalVariables
-
-=======
-        std::vector<std::shared_ptr<AttrBootstrapMethods>> BootstrapMethods; ///< Vector of the BootstrapMethods
->>>>>>> ac931c533aa0f1cf482d13bcdeeea796eb0b8c69
+		std::vector<std::shared_ptr<AttrBootstrapMethods>> BootstrapMethods; ///< Vector of the BootstrapMethods
 		/**
 		 * Fills this attribute entry's members
 		 * @param reader a reference to the class file reader
@@ -129,7 +122,6 @@ namespace jvm {
 		AttrLineNumberTable(Reader &reader, ConstantPool &cp);
 		void printToStream(std::ostream &ostream, ConstantPool &pool, std::string &prefix) override;
 	};
-<<<<<<< HEAD
 
 	struct AttrLocalVariableTable : public AttrEntry {
     u2 local_variable_table_length;
@@ -145,18 +137,18 @@ namespace jvm {
 
 		AttrLocalVariableTable(Reader &reader, ConstantPool &cp);
 		void printToStream(std::ostream &ostream, ConstantPool &pool, std::string &prefix) override;
-=======
+	};
+	
 	struct AttrBootstrapMethods : public AttrEntry {
-	    u2 num_bootstrap_methods;
-	    typedef struct {
-	        u2 bootstrap_method_ref;
-	        u2 num_bootstrap_arguments;
-	        std::vector<u2> bootstrap_arguments;
-	    } bootstrap_methods_entry;
+			u2 num_bootstrap_methods;
+			typedef struct {
+					u2 bootstrap_method_ref;
+					u2 num_bootstrap_arguments;
+					std::vector<u2> bootstrap_arguments;
+			} bootstrap_methods_entry;
 
-	    std::vector<bootstrap_methods_entry> bootstrap_methods;
-	    AttrBootstrapMethods(Reader &reader, ConstantPool &cp);
-	    void printToStream(std::ostream &ostream, ConstantPool &pool, std::string &prefix) override;
->>>>>>> ac931c533aa0f1cf482d13bcdeeea796eb0b8c69
+			std::vector<bootstrap_methods_entry> bootstrap_methods;
+			AttrBootstrapMethods(Reader &reader, ConstantPool &cp);
+			void printToStream(std::ostream &ostream, ConstantPool &pool, std::string &prefix) override;
 	};
 }
