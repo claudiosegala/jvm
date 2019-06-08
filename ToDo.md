@@ -1,4 +1,4 @@
-TODO:
+### TODO:
 - [ ] allow flag to run from command without interaction (silent?)
 - [ ] java version
 - [ ] fix print name and type --DONE
