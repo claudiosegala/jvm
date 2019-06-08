@@ -8,7 +8,7 @@ namespace jvm {
 		reserve(attr_count);
 		while(attr_count--) {
 			auto name_index = reader.getNextHalfWord();
-			auto attr_length = reader.getNextWord();
+			auto attr_length = reader.getNextWord(); // only used to skip if not implemented
 			auto name = cp[name_index]->toString(cp);
 
 			// instantiate the attribute and initialize with data from reader
@@ -32,7 +32,12 @@ namespace jvm {
 				auto LineNumberTablePtr = std::make_shared<AttrLineNumberTable>(reader, cp);
 				LineNumberTable.push_back(LineNumberTablePtr);
 				push_back(LineNumberTablePtr);
+			} else if(name == "LocalVariableTable") {
+				auto LocalVariableTablePtr = std::make_shared<AttrLocalVariableTable>(reader, cp);
+				LocalVariableTable.push_back(LocalVariableTablePtr);
+				push_back(LocalVariableTablePtr);
 			} else {
+				std::cout << "Skipped: " << name << std::endl;
 				// In this case, the attribute is of a type we won't read
 				// Add a nullptr and skip the attribute's bytes
 				emplace_back();
@@ -53,7 +58,8 @@ namespace jvm {
 			}
 		}
 	}
-
+	
+	// ============= CODE =============
 	AttrCode::AttrCode(Reader &reader, ConstantPool &cp) {
 		max_stack = reader.getNextHalfWord();
 		max_locals = reader.getNextHalfWord();
@@ -90,15 +96,20 @@ namespace jvm {
 		}
 		attributes.printToStream(os, cp, "\t\t");
 	}
+	// ==================================
 
+	// =========CONSTANT VALUE===========
 	AttrConstantValue::AttrConstantValue(Reader &reader, ConstantPool &cp) {
 		constantvalue_index = reader.getNextHalfWord();
 	}
 
 	void AttrConstantValue::printToStream(std::ostream &os, ConstantPool &cp, std::string &prefix) {
 		os << prefix << "Constant Value: " << cp[constantvalue_index]->toString(cp) << std::endl;
-	}
 
+	}
+	// =================================
+
+	// ============= EXCEPTIONS =============
 	AttrExceptions::AttrExceptions(Reader &reader, ConstantPool &cp) {
 		auto count = reader.getNextHalfWord();
 		exception_index_table.reserve(count);
@@ -110,7 +121,9 @@ namespace jvm {
 	void AttrExceptions::printToStream(std::ostream &os, ConstantPool &pool, std::string &prefix) {
 		os << prefix << "Exception (count: " << exception_index_table.size() << ")" << std::endl;
 	}
+	// =======================================
 
+	// ============= SOURCE FILE =============
 	AttrSourceFile::AttrSourceFile(Reader &reader, ConstantPool &cp) {
 		sourcefile_index = reader.getNextHalfWord();
 	}
@@ -118,24 +131,58 @@ namespace jvm {
 	void AttrSourceFile::printToStream(std::ostream &os, ConstantPool &cp, std::string &prefix) {
 		os << prefix << "Source File: " << cp[sourcefile_index]->toString(cp) << std::endl;
 	}
+	// =======================================
 
-    AttrLineNumberTable::AttrLineNumberTable(Reader &reader, ConstantPool &cp) {
-        line_number_table_length = reader.getNextHalfWord();
-        for (u2 i = 0; i < line_number_table_length; i++) {
-			line_number_table_entry item;
-            item.start_pc = reader.getNextHalfWord();
-            item.line_number = reader.getNextHalfWord();
-			line_number_table.push_back(item);
-        }
-    }
+	// ============= LINE NUMBER TABLE =============
+	AttrLineNumberTable::AttrLineNumberTable(Reader &reader, ConstantPool &cp) {
+			line_number_table_length = reader.getNextHalfWord();
+			for (u2 i = 0; i < line_number_table_length; i++) {
+					line_number_table_entry item;
+					item.start_pc = reader.getNextHalfWord();
+					item.line_number = reader.getNextHalfWord();
+					line_number_table.push_back(item);
+			}
+	}
 
-    void AttrLineNumberTable::printToStream(std::ostream &os, ConstantPool &cp, std::string &prefix) {
-        os << prefix << "LineNumberTable:" << std::endl;
-		os << prefix << "\t" << "Nr:\t|start_pc\t|line_number " << std::endl;
-        for (u2 i = 0; i < line_number_table_length; i++) {
-			line_number_table_entry item = line_number_table.at(i);
-            auto prefix2 = prefix + "\t";
-            os << prefix2 << i << "\t|" << item.start_pc << "\t\t\t|"<< item.line_number << std::endl;
-        }
-    }
+	void AttrLineNumberTable::printToStream(std::ostream &os, ConstantPool &cp, std::string &prefix) {
+			os << prefix << "LineNumberTable:" << std::endl;
+			os << prefix << "\t" << "Nr\t|start_pc\t|line_number " << std::endl;
+			for (u2 i = 0; i < line_number_table_length; i++) {
+					line_number_table_entry item = line_number_table.at(i);
+					auto prefix2 = prefix + "\t";
+					os << prefix2 << i << "\t|" << item.start_pc << "\t\t\t|"<< item.line_number << std::endl;
+			}
+	}
+	// =============================================
+	
+	// =========== LOCAL VARIABLE TABLE ============
+	AttrLocalVariableTable::AttrLocalVariableTable(Reader &reader, ConstantPool &cp) {
+		local_variable_table_length = reader.getNextHalfWord();
+		for(u2 i = 0; i < local_variable_table_length; i++) {
+			local_variable_table_entry item;
+			item.start_pc = reader.getNextHalfWord();
+			item.length = reader.getNextHalfWord();
+			item.name_index = reader.getNextHalfWord();
+			item.descriptor_index = reader.getNextHalfWord();
+			item.index = reader.getNextHalfWord();
+
+			local_variable_table.push_back(item);
+		}
+	}
+
+	void AttrLocalVariableTable::printToStream(std::ostream &os, ConstantPool &cp, std::string &prefix) {
+		os << prefix << "LocalVariableTable:" << std::endl;
+		os << prefix << "\t" << 
+			"Nr\t|start_pc\t|length\t|name\t\t|descriptor\t\t\t|index " << std::endl;
+
+		for(u2 i = 0; i < local_variable_table_length; i++) {
+			local_variable_table_entry item = local_variable_table.at(i);
+			auto prefix2 = prefix + '\t';
+			os << prefix2 << i << "\t|" << item.start_pc << "\t\t|" << item.length << "\t|" <<
+				cp[item.name_index]->toString(cp) << "\t\t|" << cp[item.descriptor_index]->toString(cp) << "\t\t|" << item.index << std::endl;
+		}
+	}
+
+	
+	// =============================================
 }
