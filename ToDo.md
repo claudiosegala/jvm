@@ -6,4 +6,29 @@
 - [ ] Dereference on code attribute print
 - [X] Validar source name
 - [ ] Add missing attributes
-  - [ ] 
+  - [ ] Critical for JVM
+    - [ ] ConstantValue - Java 1.0.2
+    - [ ] Code - Java 1.0.2
+    - [ ] StackMapTable - Java 6
+    - [ ] Exceptions - Java 1.0.2
+    - [ ] BootstrapMethods - Java 7
+  - [ ] Critical for Java SE
+    - [ ] InnerClasses - Java 1.1
+    - [ ] EnclosingMethod - Java 5
+    - [ ] Synthetic - Java 1.1
+    - [ ] Signature - Java 5
+    - [ ] RuntimeVisibleAnnotations - Java 5
+    - [ ] RuntimeInvisibleAnnotations - Java 5
+    - [ ] RuntimeVisibleParameterAnnotations - Java 5
+    - [ ] RuntimeInvisibleParameterAnnotations - Java 5
+    - [ ] RuntimeVisibleTypeAnnotations - Java 8
+    - [ ] RuntimeInvisibleTypeAnnotations - Java 8
+    - [ ] AnnotationDefault - Java 5
+    - [ ] MethodParameters - Java 8
+  - [ ] Not critical for anyone
+    - [ ] SourceFile - Java 1.0.2
+    - [ ] SourceDebugExtension - Java 5
+    - [ ] LineNumberTable - Java 1.0.2
+    - [ ] LocalVariableTable - Java 1.0.2
+    - [ ] LocalVariableTypeTable - Java 5
+    - [ ] Deprecated - Java 1.1
