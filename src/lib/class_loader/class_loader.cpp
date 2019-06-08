@@ -212,8 +212,8 @@ namespace jvm {
 	void ClassLoader::print_this_class () {
 		CP_Entry* value = constant_pool[this_class];
 		std::cout << "Classes:"<< std::endl;
-		std::cout << "\t";
-		value->printToStream(std::cout, constant_pool);
+		std::cout << "\t#";
+        std::cout << this_class << " " << value->toString(constant_pool) << std::endl;
 	}
 
 	void ClassLoader::print_super_class () {
@@ -222,8 +222,8 @@ namespace jvm {
 		} else {
 			CP_Entry* value = constant_pool[super_class];
 			std::cout << "Super Class:"<< std::endl;
-			std::cout << "\t";
-			value->printToStream(std::cout, constant_pool);
+			std::cout << "\t#";
+			std::cout << super_class << " " << value->toString(constant_pool) << std::endl;
 		}
 	}
 

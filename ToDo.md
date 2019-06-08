@@ -1,9 +1,9 @@
 ### TODO:
 - [ ] Allow flag to run from command without interaction (silent?)
-- [ ] Java version
-- [ ] Fix print name and type --DONE
+- [X] Java version
+- [X] Fix print name and type
 - [ ] Add missing references to print
 - [ ] Dereference on code attribute print
-- [ ] Validar source name -- DONE
+- [X] Validar source name
 - [ ] Add missing attributes
-    - [ ] 
+  - [ ] 
