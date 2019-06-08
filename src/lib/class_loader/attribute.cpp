@@ -32,10 +32,17 @@ namespace jvm {
 				auto LineNumberTablePtr = std::make_shared<AttrLineNumberTable>(reader, cp);
 				LineNumberTable.push_back(LineNumberTablePtr);
 				push_back(LineNumberTablePtr);
+<<<<<<< HEAD
 			} else if(name == "LocalVariableTable") {
 				auto LocalVariableTablePtr = std::make_shared<AttrLocalVariableTable>(reader, cp);
 				LocalVariableTable.push_back(LocalVariableTablePtr);
 				push_back(LocalVariableTablePtr);
+=======
+			}else if (name == "BootstrapMethods") {
+			    auto BootstrapMethodsPtr = std::make_shared<AttrBootstrapMethods>(reader, cp);
+			    BootstrapMethods.push_back(BootstrapMethodsPtr);
+			    push_back(BootstrapMethodsPtr);
+>>>>>>> ac931c533aa0f1cf482d13bcdeeea796eb0b8c69
 			} else {
 				std::cout << "Skipped: " << name << std::endl;
 				// In this case, the attribute is of a type we won't read
@@ -183,6 +190,56 @@ namespace jvm {
 		}
 	}
 
+<<<<<<< HEAD
 	
 	// =============================================
+=======
+    AttrLineNumberTable::AttrLineNumberTable(Reader &reader, ConstantPool &cp) {
+        line_number_table_length = reader.getNextHalfWord();
+        for (u2 i = 0; i < line_number_table_length; i++) {
+			line_number_table_entry item;
+            item.start_pc = reader.getNextHalfWord();
+            item.line_number = reader.getNextHalfWord();
+			line_number_table.push_back(item);
+        }
+    }
+
+    void AttrLineNumberTable::printToStream(std::ostream &os, ConstantPool &cp, std::string &prefix) {
+        os << prefix << "LineNumberTable:" << std::endl;
+		os << prefix << "\t" << "Nr:\t|start_pc\t|line_number " << std::endl;
+        for (u2 i = 0; i < line_number_table_length; i++) {
+			line_number_table_entry item = line_number_table.at(i);
+            auto prefix2 = prefix + "\t";
+            os << prefix2 << i << "\t|" << item.start_pc << "\t\t\t|"<< item.line_number << std::endl;
+        }
+    }
+
+    AttrBootstrapMethods::AttrBootstrapMethods(Reader &reader, ConstantPool &cp) {
+	    num_bootstrap_methods = reader.getNextHalfWord();
+        for (u2 i = 0; i < num_bootstrap_methods; ++i) {
+            bootstrap_methods_entry item;
+            item.bootstrap_method_ref = reader.getNextHalfWord();
+            item.num_bootstrap_arguments = reader.getNextHalfWord();
+            for(u2 j = 0; j < num_bootstrap_methods; j++){
+                item.bootstrap_arguments.push_back(reader.getNextHalfWord());
+            }
+            bootstrap_methods.push_back(item);
+        }
+	}
+
+	void AttrBootstrapMethods::printToStream(std::ostream &os, jvm::ConstantPool &cp, std::string &prefix) {
+	    os << prefix << "BootstrapMethods:" << std::endl;
+	    os << prefix << "\t" << "Nr:\t|Bootstrap Method\t|Arguments " << std::endl;
+	    for (u2 i = 0; i < num_bootstrap_methods; i++){
+	        bootstrap_methods_entry item = bootstrap_methods.at(i);
+	        auto prefix2 = prefix + "\t";
+	        os << prefix2 << i << "\t|" << cp[item.bootstrap_method_ref]->toString(cp) << "\t|" << cp[item.bootstrap_arguments[0]]->toString(cp) << std::endl;
+	        if(item.num_bootstrap_arguments){
+	            for(u2 j = 1; j < item.num_bootstrap_arguments ; j++){
+                    os << prefix2 << "\t\t\t|" << cp[item.bootstrap_arguments[0]]->toString(cp) << std::endl;
+                }
+	        }
+	    }
+	}
+>>>>>>> ac931c533aa0f1cf482d13bcdeeea796eb0b8c69
 }
