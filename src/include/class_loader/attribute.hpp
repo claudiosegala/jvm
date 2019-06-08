@@ -11,6 +11,7 @@ namespace jvm {
 	struct AttrExceptions;
 	struct AttrSourceFile;
 	struct AttrLineNumberTable;
+	struct AttrLocalVariableTypeTable;
 
 	/**
 	 * Maps a string to a function that returns an instance of the corresponding attribute
@@ -25,7 +26,7 @@ namespace jvm {
 		std::vector<std::shared_ptr<AttrExceptions>> Exceptions; ///< Vector of the exceptions
 		std::vector<std::shared_ptr<AttrSourceFile>> SourceFile; ///< Vector of the SourceFile (only 1)
 		std::vector<std::shared_ptr<AttrLineNumberTable>> LineNumberTable; ///< Vector of the LineNumberTable
-
+		std::vector<std::shared_ptr<AttrLocalVariableTypeTable>> LocalVariableTypeTable; ///< Vector of the LineNumberTable
 		/**
 		 * Fills this attribute entry's members
 		 * @param reader a reference to the class file reader
@@ -117,6 +118,22 @@ namespace jvm {
 		std::vector<line_number_table_entry> line_number_table;
 
 		AttrLineNumberTable(Reader &reader, ConstantPool &cp);
+		void printToStream(std::ostream &ostream, ConstantPool &pool, std::string &prefix) override;
+	};
+
+	struct AttrLocalVariableTypeTable : public AttrEntry {
+		u2 local_variable_type_table_length;
+		typedef struct {
+			u2 start_pc;
+	        u2 length;
+	        u2 name_index;
+	        u2 signature_index;
+	        u2 index;
+		} local_variable_type_table_entry;
+
+		std::vector<local_variable_type_table_entry> local_variable_type_table;
+
+		AttrLocalVariableTypeTable(Reader &reader, ConstantPool &cp);
 		void printToStream(std::ostream &ostream, ConstantPool &pool, std::string &prefix) override;
 	};
 }

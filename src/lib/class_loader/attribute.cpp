@@ -129,7 +129,7 @@ namespace jvm {
         }
     }
 
-    void AttrLineNumberTable::printToStream(std::ostream &os, ConstantPool &cp, std::string &prefix) {
+    void AttrLineNumberTable::printToStream(std::ostream &os, ConstantPool &cp, std::string &prefix){
         os << prefix << "LineNumberTable:" << std::endl;
 		os << prefix << "\t" << "Nr:\t|start_pc\t|line_number " << std::endl;
         for (u2 i = 0; i < line_number_table_length; i++) {
@@ -138,4 +138,27 @@ namespace jvm {
             os << prefix2 << i << "\t|" << item.start_pc << "\t\t\t|"<< item.line_number << std::endl;
         }
     }
+
+	AttrLocalVariableTypeTable::AttrLocalVariableTypeTable(Reader &reader, ConstantPool &cp) {
+        local_variable_type_table_length = reader.getNextHalfWord();
+        for (u2 i = 0; i < local_variable_type_table_length; i++) {
+			local_variable_type_table_entry item;
+            item.start_pc = reader.getNextHalfWord();
+            item.length = reader.getNextHalfWord();
+			item.name_index = reader.getNextHalfWord();
+			item.signature_index = reader.getNextHalfWord();
+			item.index = reader.getNextHalfWord();
+			local_variable_type_table.push_back(item);
+        }
+    }
+
+	void AttrLocalVariableTypeTable::printToStream(std::ostream &os, ConstantPool &cp,std::string &prefix ){
+		os <<prefix << "LocalVariableTypeTable:" << std::endl;
+		for(u2 i=0;i < local_variable_type_table_length; i++){
+			local_variable_type_table_entry item = local_variable_type_table.at(i);
+			auto prefix2 = prefix + "\t";
+			os << prefix2 << i << "\t" << item.start_pc << "\t\t\t ->" << item.length << "\t\t\t ->" << item.name_index << "\t\t\t ->"
+				<< item.signature_index << "\t\t\t ->" <<item.index << std::endl;
+		}
+	}
 }
