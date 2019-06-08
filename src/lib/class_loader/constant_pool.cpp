@@ -146,10 +146,8 @@ namespace jvm {
 		auto _class = cp[class_index];
 		auto _name_and_type = cp[name_and_type_index];
 		os << "Field Reference" << std::endl;
-		os << "\t\tClass name:\t#" << class_index << " ";
-		_class->printToStream(os, cp);
-		os << "\t\tName and Type:\t#" << name_and_type_index << " ";
-		_name_and_type->printToStream(os, cp);
+		os << "\t\tClass name:\t#" << class_index << " " << _class->toString(cp) << std::endl;
+		os << "\t\tName and Type:\t#" << name_and_type_index << " " << _name_and_type->toString(cp) << std::endl;
 	}
 
 	std::string CP_Fieldref::toString(ConstantPool &cp) {
@@ -166,10 +164,8 @@ namespace jvm {
 		auto _class = cp[class_index];
 		auto _nameAndType = cp[name_and_type_index];
 		os << "Method Reference" << std::endl;
-		os << "\t\tClass name:\t#" << class_index << " ";
-		_class->printToStream(os, cp);
-		os << "\t\tName and type:\t#" << name_and_type_index << " ";
-		_nameAndType->printToStream(os, cp);
+		os << "\t\tClass name:\t#" << class_index << " " <<	_class->toString(cp) << std::endl;
+		os << "\t\tName and type:\t#" << name_and_type_index << " " <<_nameAndType->toString(cp) << std::endl;
 	}
 
 	std::string CP_Methodref::toString(ConstantPool &cp) {
@@ -265,8 +261,8 @@ namespace jvm {
 		auto& nam2 = name2->as<CP_Utf8>();
 
 		os << "Interface Method Reference" << std::endl;
-		os << "\tClass name: " << nam1 << std::endl;
-		os << "\tName and type: " << nam2 << std::endl;
+		os << "\tClass name:\t#" << class_index << nam1 << std::endl;
+		os << "\tName and type:\t#" << name_and_class_index << nam2 << std::endl;
 	}
 
 	std::string CP_InterfaceMethodref::toString(ConstantPool &cp) {
@@ -283,7 +279,7 @@ namespace jvm {
 			os << "String_info" << std::endl;
 			CP_Entry* name1 = cp[string_index];
 			auto& nam1 = name1->as<CP_Utf8>();
-			os << "\t\t\t" << nam1 << std::endl;
+			os << "\t\t\t#" << string_index << " " << nam1 << std::endl;
 	}
 
 	std::string CP_String::toString(ConstantPool &cp) {
@@ -317,12 +313,14 @@ namespace jvm {
 		auto& nam2 = name2->as<CP_Utf8>();
 
 		os << "NameAndType_info" << std::endl;
-		os << "\t\t\t" << nam1 << ": " << nam2 << std::endl;
+		os << "\t\t\t#" << name_index << " " << nam1 << ":\t#" << descriptor_index << " " << nam2 << std::endl;
 	}
 
 	std::string CP_NameAndType::toString(ConstantPool &cp) {
 		CP_Entry* name1 = cp[name_index];
+		CP_Entry* name2 = cp[descriptor_index];
 		auto& nam1 = name1->as<CP_Utf8>();
+		auto& nam2 = name2->as<CP_Utf8>();
 		return nam1.toString(cp);
 	}
 
@@ -337,8 +335,8 @@ namespace jvm {
 		auto& nam1 = name1->as<CP_Utf8>();
 		auto& nam2 = name2->as<CP_Utf8>();
 		os << "InvokeDynamic" << std::endl;
-		os << "\t\tBootstrap_method: " << nam1 <<std::endl;
-		os << "\t\tName and Type: " << nam2 <<std::endl;
+		os << "\t\tBootstrap_method:\t#" << bootstrap_method_attr_index << " " << nam1 <<std::endl;
+		os << "\t\tName and Type:\t#" << name_and_type_index << " " << nam2 <<std::endl;
 	}
 
 	std::string CP_InvokeDynamic::toString(ConstantPool &cp) {
@@ -380,7 +378,7 @@ namespace jvm {
 
 	void CP_Class::printToStream(std::ostream &os, ConstantPool &cp) {
 		os << "Class_info" << std::endl;
-		os << "\t\t\t" << toString(cp) << std::endl;
+		os << "\t\t\t#" << name_index << " " << toString(cp) << std::endl;
 	}
 
 	std::string CP_Class::toString(ConstantPool &cp) {
