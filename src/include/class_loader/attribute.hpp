@@ -14,6 +14,7 @@ namespace jvm {
 	struct AttrLocalVariableTable;
 	struct AttrBootstrapMethods;
 	struct AttrLocalVariableTypeTable;
+	struct AttrDeprecated;
 
 	/**
 	 * Maps a string to a function that returns an instance of the corresponding attribute
@@ -31,6 +32,7 @@ namespace jvm {
 		std::vector<std::shared_ptr<AttrLocalVariableTable>> LocalVariableTable;// < Vector of LocalVariables
 		std::vector<std::shared_ptr<AttrBootstrapMethods>> BootstrapMethods; ///< Vector of the BootstrapMethods
 		std::vector<std::shared_ptr<AttrLocalVariableTypeTable>> LocalVariableTypeTable;
+		std::vector<std::shared_ptr<AttrDeprecated>> Deprecated;
 		/**
 		 * Fills this attribute entry's members
 		 * @param reader a reference to the class file reader
@@ -168,5 +170,9 @@ namespace jvm {
 		AttrLocalVariableTypeTable(Reader &reader, ConstantPool &cp);
 		void printToStream(std::ostream &ostream, ConstantPool &pool, std::string &prefix) override;
 	};
-	
+
+	struct AttrDeprecated : public AttrEntry {
+    //não mostra nada
+	};
+
 }

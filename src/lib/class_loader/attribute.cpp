@@ -40,6 +40,14 @@ namespace jvm {
 				auto BootstrapMethodsPtr = std::make_shared<AttrBootstrapMethods>(reader, cp);
 				BootstrapMethods.push_back(BootstrapMethodsPtr);
 				push_back(BootstrapMethodsPtr);
+			}else if (name == "LocalVariableTypeTable") {
+					auto LocalVariableTypeTablePtr = std::make_shared<AttrLocalVariableTypeTable>(reader, cp);
+					LocalVariableTypeTable.push_back(LocalVariableTypeTablePtr);
+					push_back(LocalVariableTypeTablePtr);
+			/*}else if (name == "Deprecated") {
+					auto DeprecatedPtr = std::make_shared<AttrDeprecated>(reader, cp);
+					DeprecatedPtr.push_back(DeprecatedPtr);
+					push_back(DeprecatedPtr);*/
 			} else {
 				std::cout << "Skipped: " << name << std::endl;
 				// In this case, the attribute is of a type we won't read
@@ -235,8 +243,11 @@ namespace jvm {
 		for(u2 i=0;i < local_variable_type_table_length; i++){
 			local_variable_type_table_entry item = local_variable_type_table.at(i);
 			auto prefix2 = prefix + "\t";
-			os << prefix2 << i << "\t" << item.start_pc << "\t\t\t ->" << item.length << "\t\t\t ->" << item.name_index << "\t\t\t ->"
-				<< item.signature_index << "\t\t\t ->" <<item.index << std::endl;
+			os << prefix2 << i << "\t" << item.start_pc << "\t\t\t ->" << item.length << "\t\t\t ->" << cp[item.name_index]->toString(cp) << "\t\t\t ->"
+				<<  cp[item.signature_index]->toString(cp)<< "\t\t\t ->" <<item.index << std::endl;
 		}
 	}
+
+
+
 }

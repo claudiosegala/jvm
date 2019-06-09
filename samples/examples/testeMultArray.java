@@ -5,8 +5,8 @@ class testeMultArray{
 	static float[][] vetfloat;
 	static double[][] vetdouble;
 
-	static void printint(int[][] val){
-		int i,j;	
+	@Deprecated static void printint(int[][] val){
+		int i,j;
 		for(i=0; i<2; i++){
 			for(j=0;j<2;j++){
 				System.out.println(val[i][j]);
@@ -15,7 +15,7 @@ class testeMultArray{
 	}
 
 	static void printlong(long[][] val){
-		int i,j;	
+		int i,j;
 		for(i=0; i<2; i++){
 			for(j=0;j<2;j++){
 				System.out.println(val[i][j]);
@@ -24,7 +24,7 @@ class testeMultArray{
 	}
 
 	static void printbyte(byte[][] val){
-		int i,j;	
+		int i,j;
 		for(i=0; i<2; i++){
 			for(j=0;j<2;j++){
 				System.out.println(val[i][j]);
@@ -33,7 +33,7 @@ class testeMultArray{
 	}
 
 	static void printfloat(float[][] val){
-		int i,j;	
+		int i,j;
 		for(i=0; i<2; i++){
 			for(j=0;j<2;j++){
 				System.out.println(val[i][j]);
@@ -41,8 +41,8 @@ class testeMultArray{
 		}
 	}
 
-	static void printdouble(double[][] val){	
-		int i,j;	
+	static void printdouble(double[][] val){
+		int i,j;
 		for(i=0; i<2; i++){
 			for(j=0;j<2;j++){
 				System.out.println(val[i][j]);
@@ -51,7 +51,7 @@ class testeMultArray{
 	}
 
 	public static void main(String[] args){
-		
+
 		vetint = new int[2][2];
 		vetlong  = new long[2][2];
 		vetfloat = new float[2][2];
