@@ -238,4 +238,5 @@ namespace jvm {
 			os << prefix2 << i << "\t" << item.start_pc << "\t\t\t ->" << item.length << "\t\t\t ->" << item.name_index << "\t\t\t ->"
 				<< item.signature_index << "\t\t\t ->" <<item.index << std::endl;
 		}
+	}
 }
