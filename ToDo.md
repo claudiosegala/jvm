@@ -5,6 +5,10 @@
 - [ ] Add missing references to print
 - [ ] Dereference on code attribute print
 - [X] Validar source name
+- [ ] Fix CP entries
+  - [ ] MethodHandle
+  - [ ] InterfaceMethodRef
+  - [ ] InvokeDynamic
 - [ ] Add missing attributes
   - [ ] Critical for JVM
     - [X] ConstantValue - Java 1.0.2
