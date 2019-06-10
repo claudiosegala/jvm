@@ -4194,9 +4194,8 @@ namespace jvm {
 		if(!count)
 			throw JvmException("Invalid invokeinterface: the value of count must not be zero");
 
-		if(!data[idx+4])
+		if(data[idx+4] != 0)
 			throw JvmException("Invalid invokeinterface: the value of the last argument must be zero");
-
 		return 4;
 	}
 
@@ -4220,10 +4219,10 @@ namespace jvm {
 
 	uint32_t OPINFOinvokedynamic::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
-		if(!data[idx+3] || !data[idx+4]) {
+		if(data[idx+3] != 0 || data[idx+4] != 0) {
 			throw JvmException("Invalid invokedynamic: the value of the last 2 arguments must be zero");
 		}
-		return 4;
+        return 4;
 	}
 
 

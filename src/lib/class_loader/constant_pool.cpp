@@ -225,11 +225,14 @@ namespace jvm {
 	}
 
 	void CP_MethodHandle::printToStream(std::ostream &os, ConstantPool &cp) {
-		CP_Entry* name1  = cp[reference_index];
-		auto& nam1 = name1->as<CP_MethodHandle>();
 		os << "Method Handle" << std::endl;
-		os << "\tReference Kind: " << CP_MethodHandle::toString(cp);
-		os << "\tReference: " << nam1.reference_index << std::endl;
+//		os << "\tReference Kind: " << CP_MethodHandle::toString(cp);
+		os << "\tReference: " << reference_index << std::endl;
+//		CP_Entry* name1  = cp[reference_index];
+//		auto& nam1 = name1->as<CP_MethodHandle>();
+		os << "Method Handle Broken" << std::endl;
+//		os << "\tReference Kind: " << CP_MethodHandle::toString(cp);
+//		os << "\tReference: " << nam1.reference_index << std::endl;
 	}
 
 	std::string CP_MethodHandle::toString(ConstantPool &cp) {
@@ -255,14 +258,17 @@ namespace jvm {
 	}
 
 	void CP_InterfaceMethodref::printToStream(std::ostream &os, ConstantPool &cp) {
-		CP_Entry* name1 = cp[class_index];
-		CP_Entry* name2 = cp[name_and_class_index];
-		auto& nam1 = name1->as<CP_Utf8>();
-		auto& nam2 = name2->as<CP_Utf8>();
-
 		os << "Interface Method Reference" << std::endl;
-		os << "\tClass name:\t#" << class_index << nam1 << std::endl;
-		os << "\tName and type:\t#" << name_and_class_index << nam2 << std::endl;
+		os << "\tClass name:\t#" << class_index  << std::endl;
+		os << "\tName and type:\t#" << name_and_class_index << std::endl;
+//		CP_Entry* name1 = cp[class_index];
+//		CP_Entry* name2 = cp[name_and_class_index];
+//		auto& nam1 = name1->as<CP_Utf8>();
+//		auto& nam2 = name2->as<CP_Utf8>();
+
+		os << "Interface Method Reference Broken" << std::endl;
+//		os << "\tClass name:\t#" << class_index << nam1 << std::endl;
+//		os << "\tName and type:\t#" << name_and_class_index << nam2 << std::endl;
 	}
 
 	std::string CP_InterfaceMethodref::toString(ConstantPool &cp) {
@@ -330,13 +336,16 @@ namespace jvm {
 	}
 
 	void CP_InvokeDynamic::printToStream(std::ostream &os, ConstantPool &cp) {
-		CP_Entry* name1 = cp[bootstrap_method_attr_index];
-		CP_Entry* name2 = cp[name_and_type_index];
-		auto& nam1 = name1->as<CP_Utf8>();
-		auto& nam2 = name2->as<CP_Utf8>();
 		os << "InvokeDynamic" << std::endl;
-		os << "\t\tBootstrap_method:\t#" << bootstrap_method_attr_index << " " << nam1 <<std::endl;
-		os << "\t\tName and Type:\t#" << name_and_type_index << " " << nam2 <<std::endl;
+		os << "\t\tBootstrap_method:\t#" << bootstrap_method_attr_index << " " <<std::endl;
+		os << "\t\tName and Type:\t#" << name_and_type_index << " " << std::endl;
+		//CP_Entry* name1 = cp[bootstrap_method_attr_index];
+		//CP_Entry* name2 = cp[name_and_type_index];
+		//auto& nam1 = name1->as<CP_Utf8>();
+		//auto& nam2 = name2->as<CP_Utf8>();
+		os << "InvokeDynamic Broken" << std::endl;
+		//os << "\t\tBootstrap_method:\t#" << bootstrap_method_attr_index << " " << nam1 <<std::endl;
+		//os << "\t\tName and Type:\t#" << name_and_type_index << " " << nam2 <<std::endl;
 	}
 
 	std::string CP_InvokeDynamic::toString(ConstantPool &cp) {

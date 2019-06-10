@@ -82,3 +82,6 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 /jvm_teste/Jvm_teste/nbproject/private/
+/samples/Java8/Lambda_Expression/nbproject/private/
+/samples/Java8/Lambda_Expression/build/
+/samples/Java8/Lambda_Expression/dist/
