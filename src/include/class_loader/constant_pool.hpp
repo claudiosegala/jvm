@@ -167,7 +167,7 @@ namespace jvm {
 
 		uint16_t class_index;
 
-		uint16_t name_and_class_index;
+		uint16_t name_and_type_index;
 	};
 
 	/**
@@ -302,6 +302,8 @@ namespace jvm {
 		void printToStream(std::ostream &os, ConstantPool &cp) override;
 
 		std::string toString(ConstantPool &cp) override;
+
+		std::string get_ref(ConstantPool &cp);
 
 		uint8_t reference_kind;
 

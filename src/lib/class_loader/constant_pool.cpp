@@ -151,8 +151,9 @@ namespace jvm {
 	}
 
 	std::string CP_Fieldref::toString(ConstantPool &cp) {
+		auto _class = cp[class_index];
 		auto _nameAndType = cp[name_and_type_index];
-		return _nameAndType->toString(cp);
+		return _class->toString(cp)+"/"+_nameAndType->toString(cp);
 	}
 
 	CP_Methodref::CP_Methodref(Reader &reader) {
@@ -169,8 +170,9 @@ namespace jvm {
 	}
 
 	std::string CP_Methodref::toString(ConstantPool &cp) {
+		auto _class = cp[class_index];
 		auto _nameAndType = cp[name_and_type_index];
-		return _nameAndType->toString(cp);
+		return _class->toString(cp)+"/"+_nameAndType->toString(cp);
 	}
 
 	CP_Float::CP_Float(Reader &reader) {
@@ -225,56 +227,87 @@ namespace jvm {
 	}
 
 	void CP_MethodHandle::printToStream(std::ostream &os, ConstantPool &cp) {
-		os << "Method Handle" << std::endl;
-//		os << "\tReference Kind: " << CP_MethodHandle::toString(cp);
-		os << "\tReference: " << reference_index << std::endl;
-//		CP_Entry* name1  = cp[reference_index];
-//		auto& nam1 = name1->as<CP_MethodHandle>();
-		os << "Method Handle Broken" << std::endl;
-//		os << "\tReference Kind: " << CP_MethodHandle::toString(cp);
-//		os << "\tReference: " << nam1.reference_index << std::endl;
+        os << "Method Handle" << std::endl;
+        os << "\t\tReference Kind: " << CP_MethodHandle::get_ref(cp);
+        os << "\t\tReference: #" << reference_index << "\t";
+	    CP_Entry* name  = cp[reference_index];
+		switch (reference_kind) {
+            case 1 ... 4:
+                os << name->as<CP_Fieldref>().toString(cp) << std::endl;
+                break;
+		    case 5:
+            case 8:
+                os << name->as<CP_Methodref>().toString(cp) << std::endl;
+                break;
+            case 6:
+            case 7:
+                try {
+                    os << name->as<CP_Methodref>().toString(cp) << std::endl;
+                }catch (const jvm::JvmException& e) {
+                    os << name->as<CP_InterfaceMethodref>().toString(cp) << std::endl;
+                }
+                break;
+            case 9:
+                os << name->as<CP_InterfaceMethodref>().toString(cp) << std::endl;
+                break;
+		    default: os << "Undefined MethodHandle" << std::to_string(reference_kind) << std::endl;
+        }
+	}
+
+	std::string CP_MethodHandle::get_ref(ConstantPool &cp) {
+		switch(reference_kind) {
+			case 0x01: return "REF_getField";
+			case 0x02: return "REF_getStatic";
+			case 0x03: return "REF_putField";
+			case 0x04: return "REF_putStatic";
+			case 0x05: return "REF_invokeVirtual";
+			case 0x06: return "REF_invokeStatic";
+			case 0x07: return "REF_invokeSpecial";
+			case 0x08: return "REF_newInvokeSpecial";
+			case 0x09: return "REF_invokeInterface";
+			default:   return "REF_Unknown";
+		}
 	}
 
 	std::string CP_MethodHandle::toString(ConstantPool &cp) {
-		CP_Entry* name1  = cp[reference_index];
-		auto& nam1 = name1->as<CP_MethodHandle>();
-		switch(nam1.reference_kind) {
-			case 0x01: return "REF_getField\n";
-			case 0x02: return "REF_getStatic\n";
-			case 0x03: return "REF_putField\n";
-			case 0x04: return "REF_putStatic\n";
-			case 0x05: return "REF_invokeVirtual\n";
-			case 0x06: return "REF_invokeStatic\n";
-			case 0x07: return "REF_invokeSpecial\n";
-			case 0x08: return "REF_newInvokeSpecial\n";
-			case 0x09: return "REF_invokeInterface\n";
-			default:   return "REF_Unknown\n";
+		CP_Entry* name  = cp[reference_index];
+		switch (reference_kind) {
+			case 1 ... 4:
+				return name->as<CP_Fieldref>().toString(cp);
+			case 5:
+			case 8:
+				return name->as<CP_Methodref>().toString(cp);
+			case 6:
+			case 7:
+				try {
+					return name->as<CP_Methodref>().toString(cp);
+				} catch (const jvm::JvmException &e) {
+					return name->as<CP_InterfaceMethodref>().toString(cp);
+				}
+			case 9:
+				return name->as<CP_InterfaceMethodref>().toString(cp);
+			default:
+				"Undefined MethodHandle:" + std::to_string(reference_kind);
 		}
 	}
 
 	CP_InterfaceMethodref::CP_InterfaceMethodref(Reader &reader) {
 		class_index = reader.getNextHalfWord();
-		name_and_class_index = reader.getNextHalfWord();
+		name_and_type_index = reader.getNextHalfWord();
 	}
 
 	void CP_InterfaceMethodref::printToStream(std::ostream &os, ConstantPool &cp) {
+		auto _class = cp[class_index];
+        auto _nameAndType = cp[name_and_type_index];
 		os << "Interface Method Reference" << std::endl;
-		os << "\tClass name:\t#" << class_index  << std::endl;
-		os << "\tName and type:\t#" << name_and_class_index << std::endl;
-//		CP_Entry* name1 = cp[class_index];
-//		CP_Entry* name2 = cp[name_and_class_index];
-//		auto& nam1 = name1->as<CP_Utf8>();
-//		auto& nam2 = name2->as<CP_Utf8>();
-
-		os << "Interface Method Reference Broken" << std::endl;
-//		os << "\tClass name:\t#" << class_index << nam1 << std::endl;
-//		os << "\tName and type:\t#" << name_and_class_index << nam2 << std::endl;
+		os << "\t\tClass name:\t#" << class_index << " " <<	_class->toString(cp) << std::endl;
+        os << "\t\tName and type:\t#" << name_and_type_index << " " <<_nameAndType->toString(cp) << std::endl;
 	}
 
 	std::string CP_InterfaceMethodref::toString(ConstantPool &cp) {
-		CP_Entry* name2 = cp[name_and_class_index];
-		auto& nam2 = name2->as<CP_Utf8>();
-		return nam2.toString(cp);
+		auto _class = cp[class_index];
+		auto _nameAndType = cp[name_and_type_index];
+		return _class->toString(cp)+"/"+_nameAndType->toString(cp);
 	}
 
 	CP_String::CP_String(Reader &reader) {
@@ -327,7 +360,7 @@ namespace jvm {
 		CP_Entry* name2 = cp[descriptor_index];
 		auto& nam1 = name1->as<CP_Utf8>();
 		auto& nam2 = name2->as<CP_Utf8>();
-		return nam1.toString(cp);
+		return nam1.toString(cp)+nam2.toString(cp);
 	}
 
 	CP_InvokeDynamic::CP_InvokeDynamic(Reader &reader) {
@@ -336,22 +369,26 @@ namespace jvm {
 	}
 
 	void CP_InvokeDynamic::printToStream(std::ostream &os, ConstantPool &cp) {
+		CP_Entry* name2 = cp[name_and_type_index];
+		auto& nam2 = name2->as<CP_NameAndType>();
 		os << "InvokeDynamic" << std::endl;
-		os << "\t\tBootstrap_method:\t#" << bootstrap_method_attr_index << " " <<std::endl;
-		os << "\t\tName and Type:\t#" << name_and_type_index << " " << std::endl;
-		//CP_Entry* name1 = cp[bootstrap_method_attr_index];
-		//CP_Entry* name2 = cp[name_and_type_index];
-		//auto& nam1 = name1->as<CP_Utf8>();
-		//auto& nam2 = name2->as<CP_Utf8>();
-		os << "InvokeDynamic Broken" << std::endl;
-		//os << "\t\tBootstrap_method:\t#" << bootstrap_method_attr_index << " " << nam1 <<std::endl;
-		//os << "\t\tName and Type:\t#" << name_and_type_index << " " << nam2 <<std::endl;
+		os << "\t\tBootstrap_method:\t#" << bootstrap_method_attr_index;
+		if(bootstrap_method_attr_index!=0) { //Is it not none?
+			CP_Entry* name1 = cp[bootstrap_method_attr_index];
+			auto& nam1 = name1->as<CP_Utf8>();
+			os << " " << nam1 << std::endl;
+		}
+		os << "\t\tName and Type:\t#" << name_and_type_index << " " << nam2.toString(cp) <<std::endl;
 	}
 
 	std::string CP_InvokeDynamic::toString(ConstantPool &cp) {
-		CP_Entry* name1 = cp[bootstrap_method_attr_index];
-		auto& nam1 = name1->as<CP_Utf8>();
-		return nam1.toString(cp);
+		std::string buff = "";
+		if(bootstrap_method_attr_index!=0) { //Is it not none?
+			auto name1 = cp[bootstrap_method_attr_index];
+			buff = name1->toString(cp) + " ";
+		}
+		auto _nameAndType = cp[name_and_type_index];
+		return buff+_nameAndType->toString(cp);
 	}
 
 	CP_Utf8::CP_Utf8(Reader &reader) {

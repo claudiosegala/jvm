@@ -185,12 +185,12 @@ namespace jvm {
 	void AttrLocalVariableTable::printToStream(std::ostream &os, ConstantPool &cp, std::string &prefix) {
 		os << prefix << "LocalVariableTable:" << std::endl;
 		os << prefix << "\t" <<
-			"Nr\t|start_pc\t|length\t|name\t\t|descriptor\t\t\t|index " << std::endl;
+			"Nr\t|start_pc\t|length\t|name\t\t\t|descriptor\t\t\t\t|index " << std::endl;
 
 		for(u2 i = 0; i < local_variable_table_length; i++) {
 			local_variable_table_entry item = local_variable_table.at(i);
 			auto prefix2 = prefix + '\t';
-			os << prefix2 << i << "\t|" << item.start_pc << "\t\t|" << item.length << "\t|" <<
+			os << prefix2 << i << "\t|" << item.start_pc << "\t\t\t|" << item.length << "\t\t|" <<
 				cp[item.name_index]->toString(cp) << "\t\t|" << cp[item.descriptor_index]->toString(cp) << "\t\t|" << item.index << std::endl;
 		}
 	}
@@ -212,14 +212,14 @@ namespace jvm {
 
 	void AttrBootstrapMethods::printToStream(std::ostream &os, jvm::ConstantPool &cp, std::string &prefix) {
 	    os << prefix << "BootstrapMethods:" << std::endl;
-	    os << prefix << "\t" << "Nr:\t|Bootstrap Method\t|Arguments " << std::endl;
+	    os << prefix << "\t" << "Nr:\t|Bootstrap Method\t\t\t\t|Arguments " << std::endl;
 	    for (u2 i = 0; i < num_bootstrap_methods; i++){
 	        bootstrap_methods_entry item = bootstrap_methods.at(i);
 	        auto prefix2 = prefix + "\t";
-	        os << prefix2 << i << "\t|" << cp[item.bootstrap_method_ref]->toString(cp) << "\t|" << cp[item.bootstrap_arguments[0]]->toString(cp) << std::endl;
+	        os << prefix2 << i << "\t|" << cp[item.bootstrap_method_ref]->toString(cp) << "\t\t\t\t|" << cp[item.bootstrap_arguments[0]]->toString(cp) << std::endl;
 	        if(item.num_bootstrap_arguments){
 	            for(u2 j = 1; j < item.num_bootstrap_arguments ; j++){
-                    os << prefix2 << "\t\t\t|" << cp[item.bootstrap_arguments[0]]->toString(cp) << std::endl;
+                    os << prefix2 << "\t\t\t\t\t\t\t\t\t|" << cp[item.bootstrap_arguments[0]]->toString(cp) << std::endl;
                 }
 	        }
 	    }
