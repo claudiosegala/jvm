@@ -282,6 +282,19 @@ namespace jvm {
 		auto main_name = std::string("main([Ljava/lang/String;)V");
 		auto cl = JavaClasses[Entry_class_name];
 		auto mt = cl.methods[main_name]; //HARD-CODED SEARCH FOR MAIN, do not modify without notifying others
+		if (cl.cp_count > mt.descriptor_index && mt.descriptor_index != 0 || cl.cp_count > mt.name_index && mt.name_index != 0) {
+            if (cl.constant_pool[mt.name_index]->toString(cl.constant_pool).compare("main")) {
+                std::cout << "Entrypoint main([Ljava/lang/String;)V not found on " <<
+                          cl.filename << std::endl;
+                return;
+            }
+        }else{
+			std::cout << "Entrypoint main([Ljava/lang/String;)V not found on " <<
+					  cl.filename << std::endl;
+			return;
+		}
+
+        std::cout <<"Iniciando execução" << std::endl;
 
 		// run_clinit();
 		// run_init();

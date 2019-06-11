@@ -116,9 +116,17 @@ namespace jvm {
 			className = filename.substr(filename.find_last_of("\\") + 1);
 		else
 			className = filename;
-		if(sourceName.compare(0, sourceName.size() -5, className.substr(0, className.size() - 6))){
-			throw jvm::JvmException("The names of the class file "+ className +" and source file "+ sourceName +" don't match!");
-		}
+		if(sourceName.compare(0, sourceName.size() -5, className.substr(0, className.size() - 6))) {
+            if (className.find('$') < className.size()) {
+                if (sourceName.compare(0, sourceName.size() - 5, className.substr(0, className.find('$')))) {
+                    throw jvm::JvmException(
+                            "The names of the class file " + className + " and source file " + sourceName +
+                            " don't match!");
+                }
+            } else throw jvm::JvmException(
+                        "The names of the class file " + className + " and source file " + sourceName +
+                        " don't match!");
+        }
 	}
 
 	void ClassLoader::print_class_flags() {
