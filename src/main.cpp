@@ -1,4 +1,5 @@
 #include "class_loader/class_loader.hpp"
+#include "engine/engine.hpp"
 #include "util/JvmException.hpp"
 #include "util/commander.hpp"
 
@@ -22,6 +23,14 @@ int main (int argc, char *argv[ ]) {
             } else
 			    cl.show();
 		}
+
+
+        if (state.shouldRun) {
+            jvm::Engine engine(cl);
+            auto index = state.filename.find_last_of("/\\");
+            engine.path = state.filename.substr(0, index + 1);
+            engine.execute();
+        }
 
 	} catch (const jvm::JvmException& e) {
 		std::cout << e.what() << std::endl;

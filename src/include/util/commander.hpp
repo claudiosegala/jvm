@@ -1,11 +1,12 @@
-#pragma once
+#include <vector>
+#include <string>
 
-#include "base.hpp"
 #include "JvmException.hpp"
 
 namespace jvm {
     struct CommandState {
         bool shouldDescribe;
+        bool shouldRun;
         std::string filename;
     };
 
@@ -14,7 +15,7 @@ namespace jvm {
 
     public:
         static CommandState parse(const std::vector<std::string>& commands);
-    
+
     private:
         /*
          * Show help information about the CLI.
