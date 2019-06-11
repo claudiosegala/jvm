@@ -1,4 +1,5 @@
 #include "class_loader/class_loader.hpp"
+#include "util/JvmException.hpp"
 
 namespace jvm {
 
@@ -15,12 +16,18 @@ namespace jvm {
 			return;
 		}
 
-		for (int i = 0; i < methods_count; ++i) {
-			MethodInfo currentMethod(file, constant_pool);
-			auto name = currentMethod.getName(constant_pool);
-			auto descriptor = currentMethod.getDescriptor(constant_pool);
-			methods.insert({name + descriptor, currentMethod});
-		}
+		/**
+		 * Note: O unordered map bagunça a ordem dependendo da implementação!
+		 * Não confie que foi a ordem de inserção!!!!
+		 *
+		 * TODO: Substituir o unordered_map para aumentar compatibilidade
+		 */
+        for (int i = 0; i < methods_count; ++i) {
+            MethodInfo currentMethod(file, constant_pool);
+            auto name = currentMethod.getName(constant_pool);
+            auto descriptor = currentMethod.getDescriptor(constant_pool);
+            methods.insert({name + descriptor, currentMethod});
+        }
 
 	}
 
@@ -62,10 +69,11 @@ namespace jvm {
 		}
 
 		constant_pool.fill(file, cp_count);
+		cp_count ++;
 	}
 
 	void ClassLoader::read_version (Reader& file) {
-		magic_number = MAGIC_NUMBER;
+		magic_number = file.getNextWord();
 		min_version = file.getNextHalfWord();
 		max_version = file.getNextHalfWord();
 	}
@@ -74,12 +82,22 @@ namespace jvm {
 	 * Reads all the class file
 	 * @param file The file to extract the data
 	 */
-	void ClassLoader::read (std::basic_string<char> filename) {
+	void ClassLoader::read (std::basic_string<char> name) {
 		auto file = Reader();
+
+		filename = name;
+		if(filename.find(".class") == -1)
+			filename = filename.append(".class");
 
 		file.open(filename);
 
 		read_version(file);
+
+		if (magic_number != MAGIC_NUMBER) {
+			file.close();
+			throw JvmException("This file isn't a valid .class file");
+		}
+
 		read_cp(file);
 		read_flags(file);
 		read_interfaces(file);
@@ -88,6 +106,19 @@ namespace jvm {
 		read_attributes(file);
 
 		file.close();
+
+		auto Source_File_attr = attributes.SourceFile[0];
+		std::string sourceName = constant_pool[Source_File_attr->sourcefile_index]->toString(constant_pool);
+		std::string className;
+		if(filename.find_last_of("/") != -1)
+			className = filename.substr(filename.find_last_of("/") + 1);
+		else if (filename.find_last_of("\\") != -1 )
+			className = filename.substr(filename.find_last_of("\\") + 1);
+		else
+			className = filename;
+		if(sourceName.compare(0, sourceName.size() -5, className.substr(0, className.size() - 6))){
+			throw jvm::JvmException("The names of the class file "+ className +" and source file "+ sourceName +" don't match!");
+		}
 	}
 
 	void ClassLoader::print_class_flags() {
@@ -131,8 +162,15 @@ namespace jvm {
 
 		std::cout << "Methods:";
 
+        std::map<std::uint16_t, MethodInfo> methods_buff;
+        for (auto& item : methods) {
+            auto& currentMethod = item.second;
+            uint16_t position = currentMethod.name_index;
+            methods_buff.insert({position, currentMethod});
+        }
+
 		auto i = 0;
-		for (auto& item : methods) {
+		for (auto& item : methods_buff) {
 			auto& method = item.second;
 			std::cout << std::endl << "\t[" << std::setfill('0') << std::setw(2) << ++i << "] ";
 			method.PrintToStream(std::cout, constant_pool, "");
@@ -174,8 +212,8 @@ namespace jvm {
 	void ClassLoader::print_this_class () {
 		CP_Entry* value = constant_pool[this_class];
 		std::cout << "Classes:"<< std::endl;
-		std::cout << "\t";
-		value->printToStream(std::cout, constant_pool);
+		std::cout << "\t#";
+        std::cout << this_class << " " << value->toString(constant_pool) << std::endl;
 	}
 
 	void ClassLoader::print_super_class () {
@@ -184,8 +222,8 @@ namespace jvm {
 		} else {
 			CP_Entry* value = constant_pool[super_class];
 			std::cout << "Super Class:"<< std::endl;
-			std::cout << "\t";
-			value->printToStream(std::cout, constant_pool);
+			std::cout << "\t#";
+			std::cout << super_class << " " << value->toString(constant_pool) << std::endl;
 		}
 	}
 
@@ -202,8 +240,8 @@ namespace jvm {
 	}
 
 	void ClassLoader::print_version () {
-		std::cout << "Min Version: " << min_version << std::endl;
-		std::cout << "Max Version: " << max_version << std::endl;
+		std::cout << "Min Version: " << min_version << " (" << JavaVersions[min_version] << ")" << std::endl;
+		std::cout << "Max Version: " << max_version << " (" << JavaVersions[max_version] << ")" << std::endl;
 	}
 
 	void ClassLoader::show () {

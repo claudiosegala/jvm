@@ -15,7 +15,7 @@ namespace jvm {
 
     public:
         static CommandState parse(const std::vector<std::string>& commands);
-    
+
     private:
         /*
          * Show help information about the CLI.

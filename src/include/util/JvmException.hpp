@@ -1,6 +1,6 @@
 #pragma once
 
-#include <stdexcept>
+#include "base.hpp"
 
 namespace jvm {
 	class JvmException : public std::runtime_error {

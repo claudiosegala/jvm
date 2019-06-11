@@ -14,15 +14,23 @@ int main (int argc, char *argv[ ]) {
 		cl.read(state.filename);
 
 		if (state.shouldDescribe) {
-			cl.show();
+		    if(cl.min_version>52) {
+                std::cout << "O .class lido não é compatível com java8, deseja ler mesmo assim? (S/N)\n";
+                char op;
+                std::cin >> op;
+                if(op == 'S' || op == 's')
+                    cl.show();
+            } else
+			    cl.show();
 		}
 
-		if (state.shouldRun) {
-			jvm::Engine engine(cl);
-			auto index = state.filename.find_last_of("/\\");
-			engine.path = state.filename.substr(0, index + 1);
-			engine.execute();
-		}
+
+        if (state.shouldRun) {
+            jvm::Engine engine(cl);
+            auto index = state.filename.find_last_of("/\\");
+            engine.path = state.filename.substr(0, index + 1);
+            engine.execute();
+        }
 
 	} catch (const jvm::JvmException& e) {
 		std::cout << e.what() << std::endl;
