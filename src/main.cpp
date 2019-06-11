@@ -13,17 +13,17 @@ int main (int argc, char *argv[ ]) {
 		jvm::ClassLoader cl;
 		cl.read(state.filename);
 
-		if (state.shouldDescribe) {
-		    if(cl.min_version>52) {
-                std::cout << "O .class lido não é compatível com java8, deseja ler mesmo assim? (S/N)\n";
-                char op;
-                std::cin >> op;
-                if(op == 'S' || op == 's')
-                    cl.show();
-            } else
-			    cl.show();
+		if(cl.min_version>52) {
+			std::cout << "O .class lido não é compatível com java8, deseja ler mesmo assim? (S/N)\n";
+			char op;
+			std::cin >> op;
+			if (op == 'n' || op == 'N')
+				return 0;
 		}
 
+		if (state.shouldDescribe) {
+		    cl.show();
+		}
 
         if (state.shouldRun) {
             jvm::Engine engine(cl);
