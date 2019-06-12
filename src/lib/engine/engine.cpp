@@ -894,7 +894,7 @@ namespace jvm {
 		frame.operands.push4(T_FLOAT, value.f);
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		throw JvmException("faload not implemented!");
 	}
 
 	// TODO VERIFY THIS INSTRUCTION
@@ -910,7 +910,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		throw JvmException("daload not implemented!");
 	}
 
 	// TODO VERIFY THIS INSTRUCTION
@@ -925,7 +925,7 @@ namespace jvm {
 		frame.operands.push4(T_ARRAY, value.ui4);
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		throw JvmException("aaload not implemented!");
 	}
 
 	// TODO: finish this function
@@ -940,7 +940,7 @@ namespace jvm {
 		frame.operands.push4(T_BYTE, value);
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		throw JvmException("baload not implemented!");
 	}
 
 	// TODO: finish this function
@@ -955,7 +955,7 @@ namespace jvm {
 		frame.operands.push4(T_BYTE, value);
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		throw JvmException("caload not implemented!");
 	}
 	// TODO VERIFY THIS INSTRUCTION
 	void Engine::exec_saload (InstructionInfo * info) {
@@ -969,7 +969,7 @@ namespace jvm {
 		frame.operands.push4(T_LONG, value.i2);
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		throw JvmException("saload not implemented!");
 	}
 	void Engine::exec_istore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOistore *>(info); // get data in class
@@ -2568,7 +2568,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		throw JvmException("getstatic not implemented!");
 	}
 
 	// TODO: finish this function
@@ -2579,7 +2579,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		throw JvmException("putstatic not implemented!");
 	}
 
 	// TODO: finish this function
@@ -2589,7 +2589,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		throw JvmException("getfield not implemented!");
 	}
 
 	// TODO: finish this function
@@ -2599,7 +2599,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		throw JvmException("putfield not implemented!");
 	}
 
 	// TODO: finish this function
@@ -2692,7 +2692,7 @@ namespace jvm {
 		fs.push(newFrame);
 
 		frame.PC += data->jmp + 1;
-		// throw JvmException("Not Implemented!");
+		throw JvmException("invokevirtual not implemented!");
 	}
 
 	// TODO: finish this function
@@ -2702,7 +2702,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		throw JvmException("invokespecial not implemented!");
 	}
 
 	// TODO: verify corretude
@@ -2755,7 +2755,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		throw JvmException("invokeinterface not implemented!");
 	}
 
 	// TODO: finish this function
@@ -2765,7 +2765,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		throw JvmException("invokedynamic not implemented!");
 	}
 
 	// TODO: finish this function
@@ -2782,7 +2782,7 @@ namespace jvm {
 			return;
 		}
 
-		// throw JvmException("Not Implemented!");
+		throw JvmException("new not implemented!");
 	}
 
 	// TODO: verificar corretude
@@ -2832,6 +2832,7 @@ namespace jvm {
 
 		frame.operands.push4(T_ARRAY, res);
 		frame.PC += data->jmp + 1;
+		throw JvmException("newarray not implemented!");
 	}
 
 	// TODO: need to set array to null and corretude
@@ -2869,6 +2870,7 @@ namespace jvm {
 
 		frame.operands.push4(T_ARRAY, res);
 		frame.PC += data->jmp + 1;
+		throw JvmException("anewarray not implemented!");
 	}
 
 	void Engine::exec_arraylength (InstructionInfo * info) {
@@ -2890,7 +2892,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		throw JvmException("athrow not implemented!");
 	}
 
 	// TODO: finish this function
@@ -2898,7 +2900,7 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOcheckcast *>(info); // get data in class
 		auto &frame = fs.top();
 		frame.PC += data->jmp + 1;
-		// throw JvmException("Not Implemented!");
+		throw JvmException("checkcast not implemented!");
 	}
 
 	// TODO: finish this function
@@ -2908,14 +2910,16 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		throw JvmException("instanceof not implemented!");
 	}
 
 	void Engine::exec_monitorenter (InstructionInfo * info) {
+		throw JvmException("monitorenter not implemented!");
 		// This JVM does not have support for multiple threads
 	}
 
 	void Engine::exec_monitorexit (InstructionInfo * info) {
+		throw JvmException("monitorexit not implemented!");
 		// This JVM does not have support for multiple threads
 	}
 
@@ -2926,7 +2930,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		throw JvmException("wide not implemented!");
 	}
 
 	// TODO: finish this function
@@ -2936,7 +2940,7 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		throw JvmException("multianewarray not implemented!");
 	}
 
 	void Engine::exec_ifnull (InstructionInfo * info) {
@@ -2985,14 +2989,17 @@ namespace jvm {
 	}
 
 	void Engine::exec_breakpoint (InstructionInfo * info) {
+		throw JvmException("breakpoint not implemented!");
 		// This JVM will not need reserved instructions for debuggers or back door
 	}
 
 	void Engine::exec_impdep1 (InstructionInfo * info) {
+		throw JvmException("impdepl not implemented!");
 		// This JVM will not need reserved instructions for debuggers or back door
 	}
 
 	void Engine::exec_impdep2 (InstructionInfo * info) {
+		throw JvmException("impdep2 not implemented!");
 		// This JVM will not need reserved instructions for debuggers or back door
 	}
 
