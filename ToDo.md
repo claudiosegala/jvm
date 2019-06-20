@@ -32,3 +32,31 @@
     - [ ] LocalVariableTable - Java 1.0.2
     - [ ] LocalVariableTypeTable - Java 5
     - [ ] Deprecated - Java 1.1
+- [ ] Finish engine instructions
+  - [ ] exec_aconst_null - verify if the type match
+  - [ ] exec_ldc_w - remove this frame.PC repeated
+  - [ ] exec_laload - verify this instruction
+  - [ ] exec_faload - verify this instruction
+  - [ ] exec_daload - verify this instruction
+  - [ ] exec_aaload - verify this instruction
+  - [ ] exec_baload
+  - [ ] exec_caload
+  - [ ] exec_saload - verify this instruction
+  - [ ] exec_getstatic
+  - [ ] exec_putstatic
+  - [ ] exec_getfield
+  - [ ] exec_putfield
+  - [ ] exec_invokevirtual
+  - [ ] exec_invokespecial
+  - [ ] exec_invokestatic
+  - [ ] exec_invokeinterface
+  - [ ] exec_invokedynamic
+  - [ ] exec_new
+  - [ ] exec_newarray - verificar corretude
+  - [ ] exec_anewarray - need to set array to null and corretude
+  - [ ] exec_athrow
+  - [ ] exec_checkcast
+  - [ ] exec_instanceof
+  - [ ] exec_wide
+  - [ ] exec_multianewarray
+- [ ] FrameStack Implementation?
