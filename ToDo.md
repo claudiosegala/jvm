@@ -59,4 +59,4 @@
   - [ ] exec_instanceof
   - [ ] exec_wide
   - [ ] exec_multianewarray
-- [ ] FrameStack Implementation?
+- [ ] Memory Heap Implementation / global stack
