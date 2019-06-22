@@ -60,3 +60,5 @@
   - [ ] exec_wide
   - [ ] exec_multianewarray
 - [ ] Memory Heap Implementation / global stack
+- [ ] run_init()
+- [ ] run_clinit()
