@@ -3,14 +3,17 @@
 #mude a pasta para rodar os arquivos de
 cmake .. && make &&
 ##
-FOLDER="../samples/tests/Engine/"
+FOLDER="../samples/tests/Engine"
+
 if [ -d "../compair" ]; then rm -Rf ../compair; fi
 mkdir ../compair
-for file in ../samples/tests/Engine/*; do
+
+for file in $FOLDER/*; do
   filename=$(basename $file .class)
-  printf "\nArquivo $file:\n"
-  mkdir ../compair/$filename
-  ./jvm "$file" -d &>> ../compair/$filename/leitor-exibidor.txt
-  ./jvm "$file" -r -v &>> ../compair/$filename/sb.txt
-  java -cp $FOLDER $filename &>> ../compair/$filename/oracle.txt
+  cmppath=../compair/$filename
+  printf "\nArquivo $filename:\n"
+  mkdir $cmppath
+  ./jvm "$file" -d &>> $cmppath/leitor-exibidor.txt
+  ./jvm "$file" -r -v &>> $cmppath/sb.txt
+  java -cp $FOLDER $filename &>> $cmppath/oracle.txt
 done
