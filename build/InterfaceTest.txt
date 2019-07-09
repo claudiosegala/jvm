@@ -1,0 +1,10 @@
+Type not recognized
+Test
+125
+After cast
+250
+Type not recognized
+Test
+125
+After cast
+250

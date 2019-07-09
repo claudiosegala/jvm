@@ -1,0 +1,40 @@
+Numero inteiro
+1
+Numero long
+2
+Numero ponto flutuante
+3.0
+Numero precisao dupla
+4.0
+Byte
+12
+Char
+a
+Short
+10
+Boolean
+true
+int dentro do objeto o
+1
+Array 1, 2, 3 ?
+2
+Numero inteiro
+1
+Numero long
+2
+Numero ponto flutuante
+3.0
+Numero precisao dupla
+4.0
+Byte
+12
+Char
+a
+Short
+10
+Boolean
+true
+int dentro do objeto o
+1
+Array 1, 2, 3 ?
+2

@@ -1,0 +1,14 @@
+Maximum operands stack exceeded
+3
+5.0
+-30000
+-51.54
+42
+42.0
+Maximum operands stack exceeded
+3
+5.0
+-30000
+-51.54
+42
+42.0

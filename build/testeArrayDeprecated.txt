@@ -1,0 +1,4 @@
+Maximum operands stack exceeded
+Error: Could not find or load main class testeArrayDeprecated
+Maximum operands stack exceeded
+Error: Could not find or load main class testeArrayDeprecated

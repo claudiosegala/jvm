@@ -1,0 +1,3 @@
+Couldn't open file ../samples/tests/Engine/java/util/Scanner.class
+Entre com o primeiro inteiro: Couldn't open file ../samples/tests/Engine/java/util/Scanner.class
+Entre com o primeiro inteiro: 

@@ -1,0 +1,14 @@
+Maximum operands stack exceeded
+calling m from A
+1
+calling m from B
+2
+calling m from B
+2
+Maximum operands stack exceeded
+calling m from A
+1
+calling m from B
+2
+calling m from B
+2

@@ -1,0 +1,4 @@
+The names of the class file AbstractClassDemo.class and source file AbstractClass.java don't match!
+Error: Could not find or load main class AbstractClassDemo
+The names of the class file AbstractClassDemo.class and source file AbstractClass.java don't match!
+Error: Could not find or load main class AbstractClassDemo

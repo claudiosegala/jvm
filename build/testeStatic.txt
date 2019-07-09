@@ -1,0 +1,14 @@
+Not enough operands on stack
+22
+Teste
+3.68
+3
+5.8
+33.640003
+Not enough operands on stack
+22
+Teste
+3.68
+3
+5.8
+33.640003

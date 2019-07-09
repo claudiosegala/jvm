@@ -1,0 +1,1204 @@
+
+Cartas de 
+Not enough operands on stack
+Adam
+Bob
+Charlie
+Daniel
+As
+As
+As
+As
+As
+As
+As
+As
+As
+As
+As
+As
+As
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+
+Cartas de 
+Adam
+
+
+Rei
+ de 
+Espadas
+As
+ de 
+Paus
+Dois
+ de 
+Paus
+Tres
+ de 
+Paus
+Quatro
+ de 
+Paus
+Cinco
+ de 
+Paus
+Seis
+ de 
+Paus
+Sete
+ de 
+Paus
+Oito
+ de 
+Paus
+Nove
+ de 
+Paus
+Dez
+ de 
+Paus
+Valete
+ de 
+Paus
+Dama
+ de 
+Paus
+
+Cartas de 
+Bob
+
+
+Rei
+ de 
+Paus
+As
+ de 
+Ouros
+Dois
+ de 
+Ouros
+Tres
+ de 
+Ouros
+Quatro
+ de 
+Ouros
+Cinco
+ de 
+Ouros
+Seis
+ de 
+Ouros
+Sete
+ de 
+Ouros
+Oito
+ de 
+Ouros
+Nove
+ de 
+Ouros
+Dez
+ de 
+Ouros
+Valete
+ de 
+Ouros
+Dama
+ de 
+Ouros
+
+Cartas de 
+Charlie
+
+
+Rei
+ de 
+Ouros
+As
+ de 
+Copas
+Dois
+ de 
+Copas
+Tres
+ de 
+Copas
+Quatro
+ de 
+Copas
+Cinco
+ de 
+Copas
+Seis
+ de 
+Copas
+Sete
+ de 
+Copas
+Oito
+ de 
+Copas
+Nove
+ de 
+Copas
+Dez
+ de 
+Copas
+Valete
+ de 
+Copas
+Dama
+ de 
+Copas
+
+Cartas de 
+Daniel
+
+
+Rei
+ de 
+Copas
+As
+ de 
+Espadas
+Dois
+ de 
+Espadas
+Tres
+ de 
+Espadas
+Quatro
+ de 
+Espadas
+Cinco
+ de 
+Espadas
+Seis
+ de 
+Espadas
+Sete
+ de 
+Espadas
+Oito
+ de 
+Espadas
+Nove
+ de 
+Espadas
+Dez
+ de 
+Espadas
+Valete
+ de 
+Espadas
+Dama
+ de 
+Espadas
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Rei
+ de 
+Bob
+ jogou 
+Rei
+ de 
+Charlie
+ jogou 
+Rei
+ de 
+Daniel
+ jogou 
+As
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+As
+ de 
+Bob
+ jogou 
+As
+ de 
+Charlie
+ jogou 
+As
+ de 
+Daniel
+ jogou 
+Rei
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Dois
+ de 
+Bob
+ jogou 
+Dois
+ de 
+Charlie
+ jogou 
+Dois
+ de 
+Daniel
+ jogou 
+Dois
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Tres
+ de 
+Bob
+ jogou 
+Tres
+ de 
+Charlie
+ jogou 
+Tres
+ de 
+Daniel
+ jogou 
+Tres
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Quatro
+ de 
+Bob
+ jogou 
+Quatro
+ de 
+Charlie
+ jogou 
+Quatro
+ de 
+Daniel
+ jogou 
+Quatro
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Cinco
+ de 
+Bob
+ jogou 
+Cinco
+ de 
+Charlie
+ jogou 
+Cinco
+ de 
+Daniel
+ jogou 
+Cinco
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Seis
+ de 
+Bob
+ jogou 
+Seis
+ de 
+Charlie
+ jogou 
+Seis
+ de 
+Daniel
+ jogou 
+Seis
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Sete
+ de 
+Bob
+ jogou 
+Sete
+ de 
+Charlie
+ jogou 
+Sete
+ de 
+Daniel
+ jogou 
+Sete
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Oito
+ de 
+Bob
+ jogou 
+Oito
+ de 
+Charlie
+ jogou 
+Oito
+ de 
+Daniel
+ jogou 
+Oito
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Nove
+ de 
+Bob
+ jogou 
+Nove
+ de 
+Charlie
+ jogou 
+Nove
+ de 
+Daniel
+ jogou 
+Nove
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Dez
+ de 
+Bob
+ jogou 
+Dez
+ de 
+Charlie
+ jogou 
+Dez
+ de 
+Daniel
+ jogou 
+Dez
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Valete
+ de 
+Bob
+ jogou 
+Valete
+ de 
+Charlie
+ jogou 
+Valete
+ de 
+Daniel
+ jogou 
+Valete
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Dama
+ de 
+Bob
+ jogou 
+Dama
+ de 
+Charlie
+ jogou 
+Dama
+ de 
+Daniel
+ jogou 
+Dama
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Pontuacao dos jogadores.
+
+Adam
+ =  
+364
+Bob
+ =  
+0
+Charlie
+ =  
+0
+Daniel
+ =  
+0
+
+Cartas de 
+Not enough operands on stack
+Adam
+Bob
+Charlie
+Daniel
+As
+As
+As
+As
+As
+As
+As
+As
+As
+As
+As
+As
+As
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+
+Cartas de 
+Adam
+
+
+Rei
+ de 
+Espadas
+As
+ de 
+Paus
+Dois
+ de 
+Paus
+Tres
+ de 
+Paus
+Quatro
+ de 
+Paus
+Cinco
+ de 
+Paus
+Seis
+ de 
+Paus
+Sete
+ de 
+Paus
+Oito
+ de 
+Paus
+Nove
+ de 
+Paus
+Dez
+ de 
+Paus
+Valete
+ de 
+Paus
+Dama
+ de 
+Paus
+
+Cartas de 
+Bob
+
+
+Rei
+ de 
+Paus
+As
+ de 
+Ouros
+Dois
+ de 
+Ouros
+Tres
+ de 
+Ouros
+Quatro
+ de 
+Ouros
+Cinco
+ de 
+Ouros
+Seis
+ de 
+Ouros
+Sete
+ de 
+Ouros
+Oito
+ de 
+Ouros
+Nove
+ de 
+Ouros
+Dez
+ de 
+Ouros
+Valete
+ de 
+Ouros
+Dama
+ de 
+Ouros
+
+Cartas de 
+Charlie
+
+
+Rei
+ de 
+Ouros
+As
+ de 
+Copas
+Dois
+ de 
+Copas
+Tres
+ de 
+Copas
+Quatro
+ de 
+Copas
+Cinco
+ de 
+Copas
+Seis
+ de 
+Copas
+Sete
+ de 
+Copas
+Oito
+ de 
+Copas
+Nove
+ de 
+Copas
+Dez
+ de 
+Copas
+Valete
+ de 
+Copas
+Dama
+ de 
+Copas
+
+Cartas de 
+Daniel
+
+
+Rei
+ de 
+Copas
+As
+ de 
+Espadas
+Dois
+ de 
+Espadas
+Tres
+ de 
+Espadas
+Quatro
+ de 
+Espadas
+Cinco
+ de 
+Espadas
+Seis
+ de 
+Espadas
+Sete
+ de 
+Espadas
+Oito
+ de 
+Espadas
+Nove
+ de 
+Espadas
+Dez
+ de 
+Espadas
+Valete
+ de 
+Espadas
+Dama
+ de 
+Espadas
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Rei
+ de 
+Bob
+ jogou 
+Rei
+ de 
+Charlie
+ jogou 
+Rei
+ de 
+Daniel
+ jogou 
+As
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+As
+ de 
+Bob
+ jogou 
+As
+ de 
+Charlie
+ jogou 
+As
+ de 
+Daniel
+ jogou 
+Rei
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Dois
+ de 
+Bob
+ jogou 
+Dois
+ de 
+Charlie
+ jogou 
+Dois
+ de 
+Daniel
+ jogou 
+Dois
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Tres
+ de 
+Bob
+ jogou 
+Tres
+ de 
+Charlie
+ jogou 
+Tres
+ de 
+Daniel
+ jogou 
+Tres
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Quatro
+ de 
+Bob
+ jogou 
+Quatro
+ de 
+Charlie
+ jogou 
+Quatro
+ de 
+Daniel
+ jogou 
+Quatro
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Cinco
+ de 
+Bob
+ jogou 
+Cinco
+ de 
+Charlie
+ jogou 
+Cinco
+ de 
+Daniel
+ jogou 
+Cinco
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Seis
+ de 
+Bob
+ jogou 
+Seis
+ de 
+Charlie
+ jogou 
+Seis
+ de 
+Daniel
+ jogou 
+Seis
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Sete
+ de 
+Bob
+ jogou 
+Sete
+ de 
+Charlie
+ jogou 
+Sete
+ de 
+Daniel
+ jogou 
+Sete
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Oito
+ de 
+Bob
+ jogou 
+Oito
+ de 
+Charlie
+ jogou 
+Oito
+ de 
+Daniel
+ jogou 
+Oito
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Nove
+ de 
+Bob
+ jogou 
+Nove
+ de 
+Charlie
+ jogou 
+Nove
+ de 
+Daniel
+ jogou 
+Nove
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Dez
+ de 
+Bob
+ jogou 
+Dez
+ de 
+Charlie
+ jogou 
+Dez
+ de 
+Daniel
+ jogou 
+Dez
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Valete
+ de 
+Bob
+ jogou 
+Valete
+ de 
+Charlie
+ jogou 
+Valete
+ de 
+Daniel
+ jogou 
+Valete
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Dama
+ de 
+Bob
+ jogou 
+Dama
+ de 
+Charlie
+ jogou 
+Dama
+ de 
+Daniel
+ jogou 
+Dama
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Pontuacao dos jogadores.
+
+Adam
+ =  
+364
+Bob
+ =  
+0
+Charlie
+ =  
+0
+Daniel
+ =  
+0

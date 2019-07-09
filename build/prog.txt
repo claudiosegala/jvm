@@ -1,0 +1,10 @@
+Not enough operands on stack
+subclassestr da subclasse
+subclassestr da subclasse
+str da subclasse
+str da superclasse
+Not enough operands on stack
+subclassestr da subclasse
+subclassestr da subclasse
+str da subclasse
+str da superclasse

@@ -1,0 +1,4 @@
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/IsaacLopinho.class
+Error: Could not find or load main class IsaacLopinho
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/IsaacLopinho.class
+Error: Could not find or load main class IsaacLopinho

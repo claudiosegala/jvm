@@ -1,0 +1,8 @@
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/Conta.class
+Error: Main method not found in class Conta, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/Conta.class
+Error: Main method not found in class Conta, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
