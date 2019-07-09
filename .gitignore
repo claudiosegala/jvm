@@ -88,3 +88,6 @@ fabric.properties
 /samples/java/Lambda_Expression/nbproject/private/
 /samples/java/Lambda_Expression/build/
 tests-result-one.txt
+compair/
+tests-result.txt
+
