@@ -294,7 +294,8 @@ namespace jvm {
 			return;
 		}
 
-        std::cout <<"Iniciando execução" << std::endl;
+        if(this->shouldDebug)
+            std::cout <<"Iniciando execução" << std::endl;
 
 		// run_clinit();
 		// run_init();
@@ -308,13 +309,14 @@ namespace jvm {
 			auto& codes = curFrame.mt.attributes.Codes[0]->code;     // Get the current method's executable code
 			auto instruction = codes[curFrame.PC];                   // Get the current instruction
 			auto opcode = instruction->getOpCode();                  // Got op-code of the instruction
-			int op = opcode;
-			std::cout << std::hex << std::showbase << op << std::endl;
+			//int op = opcode;
+			//std::cout << std::hex << std::showbase << op << std::endl;
 			auto executor = getExecutor(opcode);                     // Get pointer to instruction execution
 
 			(this ->* executor)(instruction.get());                  // Access the instruction and execute it
 		}
-		std::cout <<"Execução concluída" << std::endl;
+        if(this->shouldDebug)
+            std::cout <<"Execução concluída" << std::endl;
 	}
 
 	void Engine::run_clinit () {
@@ -2808,7 +2810,8 @@ namespace jvm {
 		u2 Class_name_index = classInfo->name_index;
 		frame.operands.push4(T_REF, Class_name_index);
 		frame.PC += data->jmp + 1;
-		//throw JvmException("new not implemented!");
+		//if(this->shouldDebug)
+		//	throw JvmException("new not implemented!");
 	}
 
 	// TODO: verificar corretude

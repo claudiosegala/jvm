@@ -36,6 +36,7 @@ int main (int argc, char *argv[ ]) {
 
 	} catch (const jvm::JvmException& e) {
 		std::cout << e.what() << std::endl;
+        //std::cout << "Execução interrompida" << std::endl;
 	}
 
 	return 0;
