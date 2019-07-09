@@ -4245,7 +4245,7 @@ namespace jvm {
 
 	uint32_t OPINFOnew::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
-		return index;
+		return 2;
 	}
 
 

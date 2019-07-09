@@ -9,7 +9,6 @@ if(BUILD_32)
     # Targeting 32-bit systems
     set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -m32)
     set(CMAKE_C_FLAGS ${CMAKE_C_FLAGS} -m32)
-    set(CMAKE_C_FLAGS ${CMAKE_C_FLAGS} -g)
 endif(BUILD_32)
 
 include_directories("src/include")
@@ -29,7 +28,6 @@ set(SOURCES
         src/lib/class_loader/method.cpp
         src/lib/class_loader/field.cpp
         src/lib/engine/engine.cpp
-        src/lib/engine/jvm_objects.cpp
         src/lib/engine/frames_stack.cpp
         src/lib/class_loader/code_info.cpp
         src/lib/class_loader/instruction_info.cpp
