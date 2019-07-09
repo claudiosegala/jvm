@@ -7,6 +7,7 @@ namespace jvm {
     struct CommandState {
         bool shouldDescribe;
         bool shouldRun;
+        bool shouldDebug;
         std::string filename;
     };
 

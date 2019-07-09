@@ -15,6 +15,8 @@ namespace jvm {
                 state.shouldDescribe = true;
             } else if (command == "--execute" || command == "-r") {
                 state.shouldRun = true;
+            } else if (command == "--verbose" || command == "-v") {
+                state.shouldDebug = true;
             } else if (state.filename.empty()) {
                 state.filename = command;
             } else {
@@ -37,6 +39,7 @@ namespace jvm {
     void Commander::show_help() {
         std::cout << "  -d, --describe => descrevem o .class\n";
         std::cout << "  -r, --execute  => executa o código descrito no .class\n";
+        std::cout << "  -v, --verbose  => habilita print de debugs\n";
         std::cout << "  -h, --help     => descrevem os comandos válidos\n";
     }
 

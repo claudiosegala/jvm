@@ -72,6 +72,8 @@ namespace jvm {
 		 */
 		void show ();
 
+		bool shouldDebug = false;
+
 	private:
 		/**
 		 * Prints interfaces count and it's content to the console if it's not null

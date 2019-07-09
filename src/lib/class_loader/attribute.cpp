@@ -49,7 +49,8 @@ namespace jvm {
 					DeprecatedPtr.push_back(DeprecatedPtr);
 					push_back(DeprecatedPtr);*/
 			} else {
-				std::cout << "Skipped: " << name << std::endl;
+				if(cp.shouldDebug)
+					std::cout << "Skipped: " << name << std::endl;
 				// In this case, the attribute is of a type we won't read
 				// Add a nullptr and skip the attribute's bytes
 				emplace_back();

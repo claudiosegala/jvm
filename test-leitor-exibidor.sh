@@ -5,5 +5,5 @@ cmake .. && make &&
 for file in ../samples/tests/Leitor-Exibidor/*; do
   printf "\nArquivo $file:\n" 
   printf "\nArquivo $file:\n" &>> ../result-leitor-exibidor.txt
-  ./jvm "$file" -d &>> ../result-leitor-exibidor.txt
+  ./jvm "$file" -d -v &>> ../result-leitor-exibidor.txt
 done

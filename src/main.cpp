@@ -11,6 +11,7 @@ int main (int argc, char *argv[ ]) {
 		jvm::CommandState state = jvm::Commander::parse(commands);
 
 		jvm::ClassLoader cl;
+        cl.shouldDebug = state.shouldDebug;
 		cl.read(state.filename);
 
 		if(cl.min_version>52) {
@@ -29,6 +30,7 @@ int main (int argc, char *argv[ ]) {
             jvm::Engine engine(cl);
             auto index = state.filename.find_last_of("/\\");
             engine.path = state.filename.substr(0, index + 1);
+			engine.shouldDebug = state.shouldDebug;
             engine.execute();
         }
 

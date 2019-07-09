@@ -34,6 +34,7 @@ namespace jvm {
 		void execute();
 
 		std::string path;
+		bool shouldDebug = false;
 
 	private:
 

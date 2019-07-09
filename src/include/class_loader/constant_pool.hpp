@@ -64,6 +64,8 @@ namespace jvm {
 		 */
 		CP_Entry* operator[](size_type index) ;
 
+		bool shouldDebug = false;
+
 	private:
 
 		/**

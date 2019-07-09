@@ -6,5 +6,5 @@ for file in ../samples/tests/Engine/*; do
   printf "\nArquivo $file:\n" 
   printf "\nArquivo $file:\n" &>> ../tests-result.txt
   #./jvm "$file" -d &>> ../tests-result.txt
-  ./jvm "$file" -r &>> ../tests-result.txt
+  ./jvm "$file" -r -v &>> ../tests-result.txt
 done

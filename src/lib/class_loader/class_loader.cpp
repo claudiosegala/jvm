@@ -103,6 +103,7 @@ namespace jvm {
 		read_interfaces(file);
 		read_fields(file);
 		read_methods(file);
+		constant_pool.shouldDebug = this->shouldDebug;
 		read_attributes(file);
 
 		file.close();
