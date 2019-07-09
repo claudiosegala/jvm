@@ -66,6 +66,7 @@ union op4 {
 	int16_t i2;
 	int32_t i4;
 	float f;
+	void *p;
 };
 
 union op8 {

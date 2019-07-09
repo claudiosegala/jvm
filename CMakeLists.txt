@@ -29,6 +29,7 @@ set(SOURCES
         src/lib/class_loader/method.cpp
         src/lib/class_loader/field.cpp
         src/lib/engine/engine.cpp
+        src/lib/engine/jvm_objects.cpp
         src/lib/engine/frames_stack.cpp
         src/lib/class_loader/code_info.cpp
         src/lib/class_loader/instruction_info.cpp

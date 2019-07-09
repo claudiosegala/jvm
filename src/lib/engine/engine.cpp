@@ -308,6 +308,8 @@ namespace jvm {
 			auto& codes = curFrame.mt.attributes.Codes[0]->code;     // Get the current method's executable code
 			auto instruction = codes[curFrame.PC];                   // Get the current instruction
 			auto opcode = instruction->getOpCode();                  // Got op-code of the instruction
+			int op = opcode;
+			std::cout << std::hex << std::showbase << op << std::endl;
 			auto executor = getExecutor(opcode);                     // Get pointer to instruction execution
 
 			(this ->* executor)(instruction.get());                  // Access the instruction and execute it
@@ -357,14 +359,14 @@ namespace jvm {
 		return {methodClass, pair->second};
 	}
 
-	ClassLoader & Engine::findClass(CP_Class &classInfo) {
+	ClassLoader& Engine::findClass(CP_Class &classInfo) {
 		auto &cl = fs.top().cl;
 		auto &cp = cl.constant_pool;
 		auto className = cp[classInfo.name_index]-> toString(cp);
 		return findClass(className);
 	}
 
-	ClassLoader &Engine::findClass(std::string &className) {
+	ClassLoader& Engine::findClass(std::string &className) {
 		if (JavaClasses.count(className) > 0) {  // If class was already loaded, return
 			return JavaClasses[className];
 		}
@@ -2699,9 +2701,8 @@ namespace jvm {
 	void Engine::exec_invokespecial (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOinvokespecial *>(info); // get data in class
 		auto &frame = fs.top();
-
+		
 		frame.PC += data->jmp + 1;
-
 		throw JvmException("invokespecial not implemented!");
 	}
 
@@ -2769,8 +2770,12 @@ namespace jvm {
 	}
 
 	// TODO: finish this function
+	//Notes:
+	//The new instruction does not completely create a new instance; 
+	//instance creation is not completed until an instance initialization 
+	//method (§2.9) has been invoked on the uninitialized instance.
 	void Engine::exec_new (InstructionInfo * info) {
-		auto data   = reinterpret_cast<OPINFOinvokestatic *>(info); // get data in class
+		auto data   = reinterpret_cast<OPINFOnew *>(info); // get data in class
 		auto &frame = fs.top();
 		auto &cp = frame.cl.constant_pool;
 
@@ -2781,8 +2786,15 @@ namespace jvm {
 			throw JvmException("Not Implemented String Builder!");
 			return;
 		}
-
-		throw JvmException("new not implemented!");
+		ClassLoader cl = findClass(className);
+		ClassInstance *ins = new ClassInstance(cl);
+		//Verificar se o type está correto
+		Data op;
+		op.type = T_REF;
+		op.value.p = ins;
+		frame.operands.push(op);
+		frame.PC += data->jmp + 1;
+		//throw JvmException("new not implemented!");
 	}
 
 	// TODO: verificar corretude
