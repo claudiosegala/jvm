@@ -309,8 +309,10 @@ namespace jvm {
 			auto& codes = curFrame.mt.attributes.Codes[0]->code;     // Get the current method's executable code
 			auto instruction = codes[curFrame.PC];                   // Get the current instruction
 			auto opcode = instruction->getOpCode();                  // Got op-code of the instruction
-			//int op = opcode;
-			//std::cout << std::hex << std::showbase << op << std::endl;
+            if(this->shouldDebug) {
+                int op = opcode;
+                //std::cout << std::hex << std::showbase << op << std::endl;
+            }
 			auto executor = getExecutor(opcode);                     // Get pointer to instruction execution
 
 			(this ->* executor)(instruction.get());                  // Access the instruction and execute it
@@ -2637,7 +2639,7 @@ namespace jvm {
 
 			long lng;
 			if(print_type == T_STRING){
-				std::string str = reinterpret_cast<CP_String *>(cp[print_value.ui4])->toString(cp);
+				std::string str = reinterpret_cast<CP_Utf8 *>(cp[print_value.ui4])->toString(cp);
 				std::cout << str << std::endl;
 			}
 

@@ -13,8 +13,10 @@ namespace jvm {
                 exit(0);
             } else if (command == "--describe" || command == "-d") {
                 state.shouldDescribe = true;
+                state.fast_run = true;
             } else if (command == "--execute" || command == "-r") {
                 state.shouldRun = true;
+                state.fast_run = true;
             } else if (command == "--verbose" || command == "-v") {
                 state.shouldDebug = true;
             } else if (state.filename.empty()) {

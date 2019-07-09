@@ -8,6 +8,7 @@ namespace jvm {
         bool shouldDescribe;
         bool shouldRun;
         bool shouldDebug;
+        bool fast_run;
         std::string filename;
     };
 

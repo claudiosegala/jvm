@@ -14,9 +14,11 @@ int main (int argc, char *argv[ ]) {
         cl.shouldDebug = state.shouldDebug;
 		cl.read(state.filename);
 
-		if(cl.min_version>52) {
-			std::cout << "O .class lido não é compatível com java8, deseja ler mesmo assim? (S/N)\n";
+		if(cl.max_version>52) {
+			std::cout << "O .class lido não é compatível com java8 (max_version 52), deseja ler mesmo assim? (S/N)\n";
 			char op;
+            if(state.fast_run)
+                return 0;
 			std::cin >> op;
 			if (op == 'n' || op == 'N')
 				return 0;
