@@ -2,6 +2,7 @@
 
 #include "base.hpp"
 #include "frames_stack.hpp"
+#include "jvm_objects.hpp"
 #include "class_loader/class_loader.hpp"
 
 namespace jvm {

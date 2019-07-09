@@ -87,3 +87,4 @@ fabric.properties
 /samples/Java8/Lambda_Expression/dist/
 /samples/java/Lambda_Expression/nbproject/private/
 /samples/java/Lambda_Expression/build/
+tests-result-one.txt
