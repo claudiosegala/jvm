@@ -10,7 +10,7 @@ for file in ../samples/tests/Engine/*; do
   filename=$(basename $file .class)
   printf "\nArquivo $file:\n"
   mkdir ../compair/$filename
-  ./jvm "$file" -d &>> ../compair/$filename/tests-result.txt
-  ./jvm "$file" -r -v &>> ../compair/$filename/$filename.txt
+  ./jvm "$file" -d &>> ../compair/$filename/leitor-exibidor.txt
+  ./jvm "$file" -r -v &>> ../compair/$filename/sb.txt
   java -cp $FOLDER $filename &>> ../compair/$filename/oracle.txt
 done
