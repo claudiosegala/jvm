@@ -2,7 +2,6 @@
 
 #include "base.hpp"
 #include "frames_stack.hpp"
-#include "jvm_objects.hpp"
 #include "class_loader/class_loader.hpp"
 
 namespace jvm {
@@ -41,7 +40,7 @@ namespace jvm {
 
 		std::vector<Execution> exec;	///> The set of instantiators to the instruction
 
-		std::unordered_map<std::string, ClassLoader> JavaClasses;	///> Reference to .class that will be executed first
+		std::unordered_map<std::string, ClassLoader> JavaClasses;	///> Reference to .classes that will be executed
 
 		std::string Entry_class_name;	///> Name of .class that will be executed first
 

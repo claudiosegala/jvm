@@ -2793,21 +2793,20 @@ namespace jvm {
 		auto &frame = fs.top();
 		auto &cp = frame.cl.constant_pool;
 
-		auto classInfo = reinterpret_cast<CP_Class*>(cp[data->index]); // get the method info from constant pool
+		auto classInfo = reinterpret_cast<CP_Class*>(cp[data->index]); // get the class info from constant pool
+
 		auto className = cp[classInfo->name_index]->toString(cp);
 		if (className == "java/lang/StringBuilder") {
 			frame.PC += data->jmp + 1;
-			throw JvmException("Not Implemented String Builder!");
+            if(this->shouldDebug)
+                throw JvmException("Not Implemented String Builder!");
 			return;
 		}
 
 		ClassLoader cl = findClass(className);
-		ClassInstance *ins = new ClassInstance(cl);
-		//Verificar se o type está correto
-		Data op;
-		op.type = T_REF;
-		op.value.p = ins;
-		frame.operands.push(op);
+		//TODO initialize the class
+		u2 Class_name_index = classInfo->name_index;
+		frame.operands.push4(T_REF, Class_name_index);
 		frame.PC += data->jmp + 1;
 		//throw JvmException("new not implemented!");
 	}
