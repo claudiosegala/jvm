@@ -15,7 +15,7 @@ namespace jvm {
 	struct AttrBootstrapMethods;
 	struct AttrLocalVariableTypeTable;
 	struct AttrDeprecated;
-
+	struct AttrInnerClasses;
 	/**
 	 * Maps a string to a function that returns an instance of the corresponding attribute
 	 */
@@ -33,6 +33,7 @@ namespace jvm {
 		std::vector<std::shared_ptr<AttrBootstrapMethods>> BootstrapMethods; ///< Vector of the BootstrapMethods
 		std::vector<std::shared_ptr<AttrLocalVariableTypeTable>> LocalVariableTypeTable;
 		std::vector<std::shared_ptr<AttrDeprecated>> Deprecated;
+		std::vector<std::shared_ptr<AttrInnerClasses>> InClasses;
 		/**
 		 * Fills this attribute entry's members
 		 * @param reader a reference to the class file reader
@@ -172,7 +173,24 @@ namespace jvm {
 	};
 
 	struct AttrDeprecated : public AttrEntry {
-    //não mostra nada
+    	//não mostra nada
+		//u4 deprecated_length;
+		AttrDeprecated(Reader &reader, ConstantPool &cp);
+		void printToStream(std::ostream &ostream, ConstantPool &pool, std::string &prefix) override;
 	};
 
+	struct AttrInnerClasses : public AttrEntry {
+		u2 number_of_classes;
+		typedef struct{
+			u2 inner_class_info_index;
+        	u2 outer_class_info_index;
+        	u2 inner_name_index;
+        	u2 inner_class_access_flags;
+		} inner_classes_entry;
+
+		std::vector<inner_classes_entry> inner_classes;
+
+		AttrInnerClasses(Reader &reader, ConstantPool &cp);
+		void printToStream(std::ostream &ostream, ConstantPool &pool, std::string &prefix) override;
+	};
 }

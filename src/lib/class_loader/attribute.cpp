@@ -41,13 +41,17 @@ namespace jvm {
 				BootstrapMethods.push_back(BootstrapMethodsPtr);
 				push_back(BootstrapMethodsPtr);
 			}else if (name == "LocalVariableTypeTable") {
-					auto LocalVariableTypeTablePtr = std::make_shared<AttrLocalVariableTypeTable>(reader, cp);
-					LocalVariableTypeTable.push_back(LocalVariableTypeTablePtr);
-					push_back(LocalVariableTypeTablePtr);
-			/*}else if (name == "Deprecated") {
-					auto DeprecatedPtr = std::make_shared<AttrDeprecated>(reader, cp);
-					DeprecatedPtr.push_back(DeprecatedPtr);
-					push_back(DeprecatedPtr);*/
+				auto LocalVariableTypeTablePtr = std::make_shared<AttrLocalVariableTypeTable>(reader, cp);
+				LocalVariableTypeTable.push_back(LocalVariableTypeTablePtr);
+				push_back(LocalVariableTypeTablePtr);
+			}else if (name == "Deprecated") {
+				auto DeprecatedPtr = std::make_shared<AttrDeprecated>(reader, cp);
+				Deprecated.push_back(DeprecatedPtr);
+				push_back(DeprecatedPtr);
+			}else if (name == "InnerClasses") {
+				auto InnerClassesPtr = std::make_shared<AttrInnerClasses>(reader, cp);
+				InClasses.push_back(InnerClassesPtr);
+				push_back(InnerClassesPtr);
 			} else {
 				if(cp.shouldDebug)
 					std::cout << "Skipped: " << name << std::endl;
@@ -249,6 +253,36 @@ namespace jvm {
 		}
 	}
 
+//Deprecated
+	AttrDeprecated::AttrDeprecated(Reader &reader, ConstantPool &cp){
+		//deprecated_length = reader.getNextWord();
+		//null
+	}
+	void AttrDeprecated::printToStream(std::ostream &os, ConstantPool &cp,std::string &prefix){
+		os << prefix << "Deprecated" << std::endl;
+	}
 
+// InnerClasses
+	AttrInnerClasses::AttrInnerClasses(Reader &reader, ConstantPool &cp){
+		number_of_classes = reader.getNextHalfWord();
+		for (u2 i = 0; i < number_of_classes; i++) {
+			inner_classes_entry item;
+            item.inner_class_info_index = reader.getNextHalfWord();
+            item.outer_class_info_index = reader.getNextHalfWord();
+			item.inner_name_index = reader.getNextHalfWord();
+			item.inner_class_access_flags= reader.getNextHalfWord();
+			inner_classes.push_back(item);
+        }
+	}
+	void AttrInnerClasses::printToStream(std::ostream &os, ConstantPool &cp,std::string &prefix ){
+		os <<prefix << "Inner Classes:" << std::endl;
+		os << prefix << "\t" << "Nr:\t\t|InnerClass\t\t\t\t|OuterClass\t\t\t\t|InnerName\t\t\t\t|Access Flags " << std::endl;
+		for(u2 i=0;i < number_of_classes; i++){
+			inner_classes_entry item = inner_classes.at(i);
+			auto prefix2 = prefix + "\t";
+			os << prefix2 << i << "\t\t\t" << cp[item.inner_class_info_index]->toString(cp) << "\t\t\t ->" << cp[item.outer_class_info_index]->toString(cp) << "\t\t\t ->" << cp[item.inner_name_index]->toString(cp) << "\t\t\t ->"
+				<< item.inner_class_access_flags << std::endl;
+		}
+	}
 
 }
