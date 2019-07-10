@@ -52,6 +52,10 @@ namespace jvm {
 				auto InnerClassesPtr = std::make_shared<AttrInnerClasses>(reader, cp);
 				InClasses.push_back(InnerClassesPtr);
 				push_back(InnerClassesPtr);
+			}else if (name == "Synthetic") {
+				auto SyntheticPtr = std::make_shared<AttrSynthetic>(reader, cp);
+				Synt.push_back(SyntheticPtr);
+				push_back(SyntheticPtr);
 			} else {
 				if(cp.shouldDebug)
 					std::cout << "Skipped: " << name << std::endl;
@@ -280,9 +284,17 @@ namespace jvm {
 		for(u2 i=0;i < number_of_classes; i++){
 			inner_classes_entry item = inner_classes.at(i);
 			auto prefix2 = prefix + "\t";
-			os << prefix2 << i << "\t\t\t" << cp[item.inner_class_info_index]->toString(cp) << "\t\t\t ->" << cp[item.outer_class_info_index]->toString(cp) << "\t\t\t ->" << cp[item.inner_name_index]->toString(cp) << "\t\t\t ->"
+			os << prefix2 << i << "\t\t\t| " << cp[item.inner_class_info_index]->toString(cp) << "\t\t\t| " << cp[item.outer_class_info_index]->toString(cp) << "\t\t\t| " << cp[item.inner_name_index]->toString(cp) << "\t\t\t| "
 				<< item.inner_class_access_flags << std::endl;
 		}
 	}
+//Synthetic
+		AttrSynthetic::AttrSynthetic(Reader &reader, ConstantPool &cp){
+			//null
+		}
+		void AttrSynthetic::printToStream(std::ostream &os, ConstantPool &cp,std::string &prefix){
+			os << prefix << "Synthetic" << std::endl;
+		}
+
 
 }
