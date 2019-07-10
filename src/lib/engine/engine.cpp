@@ -311,7 +311,7 @@ namespace jvm {
 			auto opcode = instruction->getOpCode();                  // Got op-code of the instruction
             if(this->shouldDebug) {
                 int op = opcode;
-                //std::cout << std::hex << std::showbase << op << std::endl;
+                std::cout << std::hex << std::showbase << op << std::endl;
             }
 			auto executor = getExecutor(opcode);                     // Get pointer to instruction execution
 
@@ -945,7 +945,16 @@ namespace jvm {
 		auto arrayref = frame.operands.pop4();
 		uint8_t * ARP = static_cast<uint8_t*>(mem[arrayref.value.i4]);
 		op4 value;
-		value.ui1 = static_cast<uint8_t>(ARP[index.value.i4]);
+		if(ARP == nullptr){
+			throw JvmException("NullPointerException");
+		}
+		try{
+			value.ui1 = static_cast<uint8_t>(ARP[index.value.i4]);
+		}
+		catch(const std::exception& e){
+			throw JvmException("ArrayIndexOutOfBoundsException");
+		}
+		std::cout << std::dec << value.ui1;
 		frame.operands.push4(T_BYTE, value);
 		frame.PC += data->jmp + 1;
 
@@ -2863,8 +2872,8 @@ namespace jvm {
 
 		frame.operands.push4(T_ARRAY, res);
 		frame.PC += data->jmp + 1;
-		if(this->shouldDebug)
-			throw JvmException("newarray not implemented!");
+		//if(this->shouldDebug)
+			//throw JvmException("newarray not implemented!");
 	}
 
 	// TODO: need to set array to null and corretude
