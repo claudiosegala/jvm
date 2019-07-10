@@ -297,12 +297,12 @@ namespace jvm {
         if(this->shouldDebug)
             std::cout <<"Iniciando execução" << std::endl;
 
-		// run_clinit();
-		// run_init();
-
 		Frame frame(cl, mt);                                         // Create first frame
 
 		fs.push(frame);                                              // Init first frame in JVM
+
+        run_clinit();
+        run_init();
 
 		while (not fs.empty()) {                                     // This will exit when instruction 'return' is executed
 			auto curFrame = fs.top();
@@ -311,7 +311,7 @@ namespace jvm {
 			auto opcode = instruction->getOpCode();                  // Got op-code of the instruction
             if(this->shouldDebug) {
                 int op = opcode;
-                std::cout << std::hex << std::showbase << op << std::endl;
+                //std::cout << std::hex << std::showbase << op << std::endl;
             }
 			auto executor = getExecutor(opcode);                     // Get pointer to instruction execution
 
@@ -322,12 +322,38 @@ namespace jvm {
 	}
 
 	void Engine::run_clinit () {
-		// Won't be needed
-	}
+        auto main_name = std::string("<clinit>()V");
+        auto cl = JavaClasses[Entry_class_name];
+        auto mt = cl.methods[main_name]; //HARD-CODED SEARCH FOR MAIN, do not modify without notifying others
+        if (cl.cp_count > mt.descriptor_index && mt.descriptor_index != 0 || cl.cp_count > mt.name_index && mt.name_index != 0) {
+            if (cl.constant_pool[mt.name_index]->toString(cl.constant_pool).compare("main")) {
+                return;
+            }
+        }else{
+            return;
+        }
+
+        Frame frame(cl, mt);                                         // Create first frame
+
+        fs.push(frame);
+    }
 
 	void Engine::run_init () {
-		// Won't be needed
-	}
+        auto main_name = std::string("<init>()V");
+        auto cl = JavaClasses[Entry_class_name];
+        auto mt = cl.methods[main_name]; //HARD-CODED SEARCH FOR MAIN, do not modify without notifying others
+        if (cl.cp_count > mt.descriptor_index && mt.descriptor_index != 0 || cl.cp_count > mt.name_index && mt.name_index != 0) {
+            if (cl.constant_pool[mt.name_index]->toString(cl.constant_pool).compare("main")) {
+                return;
+            }
+        }else{
+            return;
+        }
+
+        Frame frame(cl, mt);                                         // Create first frame
+
+        fs.push(frame);
+    }
 
 	ClassAndMethod Engine::findMethod(CP_Methodref &ref) {
 		auto &currentClass = fs.top().cl;
@@ -2588,10 +2614,26 @@ namespace jvm {
 			return;
 		}
 
+		auto Classloader = findClass(classname);
+		auto fields = Classloader.fields;
+		jvm::FieldInfo a;
+		for(int i = 0; i< fields.size(); i++){
+			std::string name = Classloader.constant_pool[fields.at(i).name_index]->toString(Classloader.constant_pool);
+			if(name == name){
+				if(descriptor == "B" || descriptor == "C" || descriptor == "Z" || descriptor == "S" || descriptor == "I" || descriptor == "J"){
+					frame.operands.push4(T_INT,	fields.at(i).value.i4);
+				}else if(descriptor == "F" || descriptor == "D"){
+					frame.operands.push4(T_FLOAT, fields.at(i).value.f);
+				}
+			}
+		}
+
+
+
 		frame.PC += data->jmp + 1;
 
-		if(this->shouldDebug)
-			throw JvmException("getstatic not implemented!");
+		//if(this->shouldDebug)
+		//	throw JvmException("getstatic not implemented!");
 	}
 
 	// TODO: finish this function
@@ -2599,11 +2641,34 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOputstatic *>(info); // get data in class
 		auto &frame = fs.top();
 
+		auto value = frame.operands.pop4();
+
+		auto &cp = frame.cl.constant_pool;
+		auto FieldRef = reinterpret_cast<CP_Fieldref*>(cp[data->index]); // get the method info from constant pool
+		auto className = cp[FieldRef->class_index]->toString(cp);
+		auto &FieldNameAndType = cp[FieldRef->name_and_type_index]->as<CP_NameAndType>();
+		auto FieldName = cp[FieldNameAndType.name_index] -> toString(cp);
+		auto FieldType = cp[FieldNameAndType.descriptor_index] -> toString(cp);
+
+		auto Classloader = findClass(className);
+		auto fields = Classloader.fields;
+		jvm::FieldInfo a;
+		for(int i = 0; i< fields.size(); i++){
+			std::string name = Classloader.constant_pool[fields.at(i).name_index]->toString(Classloader.constant_pool);
+			if(name == FieldName){
+				if(FieldType == "B" || FieldType == "C" || FieldType == "Z" || FieldType == "S" || FieldType == "I" || FieldType == "J"){
+					frame.cl.fields.at(i).value.i4 = value.value.i4;
+				}else if(FieldType == "F" || FieldType == "D"){
+					frame.cl.fields.at(i).value.f = value.value.f;
+				}
+			}
+		}
+
 
 		frame.PC += data->jmp + 1;
 
-		if(this->shouldDebug)
-			throw JvmException("putstatic not implemented!");
+		//if(this->shouldDebug)
+		//	throw JvmException("putstatic not implemented!");
 	}
 
 	// TODO: finish this function
