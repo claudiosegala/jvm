@@ -4,6 +4,9 @@
 
 namespace jvm {
 
+	/**
+	 * Converter is responsible for converting between multiple data formats.
+	 */
 	class Converter {
 	public:
 

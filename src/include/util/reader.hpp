@@ -4,6 +4,9 @@
 
 namespace jvm {
 
+	/** 
+	 *  Manages the process of reading all bytes from a .class file.
+	 */
 	class Reader {
 	private:
 		std::ifstream _class;       ///< Stream with the .class file

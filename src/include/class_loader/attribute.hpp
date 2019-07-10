@@ -16,11 +16,15 @@ namespace jvm {
 	struct AttrLocalVariableTypeTable;
 	struct AttrDeprecated;
 	struct AttrInnerClasses;
+	struct AttrSynthetic;
 	/**
 	 * Maps a string to a function that returns an instance of the corresponding attribute
 	 */
 	typedef std::map<std::string, std::shared_ptr<AttrEntry>(*)(Reader&, ConstantPool&)> AttributeMap;
 
+	/**
+	 *  Stores information about a JVM attribute.
+	 */
 	class AttributeInfo : public std::vector<std::shared_ptr<AttrEntry>> {
 	public:
 
@@ -34,6 +38,7 @@ namespace jvm {
 		std::vector<std::shared_ptr<AttrLocalVariableTypeTable>> LocalVariableTypeTable;
 		std::vector<std::shared_ptr<AttrDeprecated>> Deprecated;
 		std::vector<std::shared_ptr<AttrInnerClasses>> InClasses;
+		std::vector<std::shared_ptr<AttrSynthetic>> Synt;
 		/**
 		 * Fills this attribute entry's members
 		 * @param reader a reference to the class file reader
@@ -193,4 +198,11 @@ namespace jvm {
 		AttrInnerClasses(Reader &reader, ConstantPool &cp);
 		void printToStream(std::ostream &ostream, ConstantPool &pool, std::string &prefix) override;
 	};
+
+
+	struct AttrSynthetic : public AttrEntry {
+		AttrSynthetic(Reader &reader, ConstantPool &cp);
+		void printToStream(std::ostream &ostream, ConstantPool &pool, std::string &prefix) override;
+	};
+
 }

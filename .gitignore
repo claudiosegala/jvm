@@ -93,3 +93,6 @@ tests-result.txt
 
 /samples/java/new_teste/nbproject/private/
 /samples/java/new_teste/build/
+
+# doxygen
+html/

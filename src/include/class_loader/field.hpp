@@ -4,6 +4,9 @@
 
 namespace jvm {
 
+	/**
+	 * Represents a JVM field.
+	 */
 	class FieldInfo {
 	public:
 		/**

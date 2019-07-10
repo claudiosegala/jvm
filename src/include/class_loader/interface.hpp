@@ -4,6 +4,9 @@
 
 namespace jvm {
 
+	/**
+	 * Stores information about a specific interface.
+	 */
 	class InterfaceInfo {
 	public:
 		uint16_t info; ///< An index in the constant pool

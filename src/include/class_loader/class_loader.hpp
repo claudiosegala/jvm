@@ -6,6 +6,9 @@
 
 namespace jvm {
 
+	/**
+	 * Class responsible for opening, reading and loading a .class file into memory. Parses and extracts all fields as specified by Oracle's Manual.
+	 */
 	class ClassLoader {
 	public:
 		std::basic_string<char> filename;			///< The filename loaded as .class
