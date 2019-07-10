@@ -16,6 +16,21 @@ namespace jvm {
 		 */
 		uint16_t name_index;
 
+		//TODO THIS IS NOT RIGHT, BUT IT WORKS FOR SIMPLE CLASSES
+
+		union field_value {
+			uint8_t ui1;
+			uint16_t ui2;
+			uint32_t ui4;
+			int8_t i1;
+			int16_t i2;
+			int32_t i4;
+			float f;
+			double d;
+		};
+
+		field_value value;
+
 		/**
 		 * Type of a class, instance, or local variable
 		 */
