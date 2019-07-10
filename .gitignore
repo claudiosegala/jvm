@@ -91,3 +91,5 @@ tests-result-one.txt
 compair/
 tests-result.txt
 
+# doxygen
+html/
