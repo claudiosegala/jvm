@@ -4,6 +4,10 @@
 #include "JvmException.hpp"
 
 namespace jvm {
+
+    /**
+     * Stores the current state of execution of the JVM.
+     */
     struct CommandState {
         bool shouldDescribe;
         bool shouldRun;
@@ -12,6 +16,9 @@ namespace jvm {
         std::string filename;
     };
 
+    /**
+     *  Manages the state of exection.
+     */
     class Commander {
         std::vector<std::string> _commands;
 

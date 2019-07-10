@@ -22,6 +22,9 @@ namespace jvm {
 	 */
 	typedef std::map<std::string, std::shared_ptr<AttrEntry>(*)(Reader&, ConstantPool&)> AttributeMap;
 
+	/**
+	 *  Stores information about a JVM attribute.
+	 */
 	class AttributeInfo : public std::vector<std::shared_ptr<AttrEntry>> {
 	public:
 

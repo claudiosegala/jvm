@@ -25,6 +25,9 @@ namespace jvm {
 
 	class CP_Entry;
 
+	/**
+	 * Stores all JVM constant pool fields. Exposes a set of functions to manipulate the field and print them.
+	 */
 	class ConstantPool : public std::vector<std::shared_ptr<CP_Entry>> {
 	public:
 	

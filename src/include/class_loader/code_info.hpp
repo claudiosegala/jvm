@@ -6,6 +6,9 @@ namespace jvm {
 
 	typedef std::shared_ptr<InstructionInfo> (*InstructionInfoInstantiator)();
 
+	/**
+	 * Stores information about a code field, links to an instruction op code.
+	 */
 	class CodeInfo : public std::map<int, std::shared_ptr<InstructionInfo>, std::less<int>> {
 	public:
 

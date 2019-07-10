@@ -5,6 +5,9 @@
 
 namespace jvm {
 
+	/**
+	 * Stores JVM variables.
+	 */
 	class Variables {
 	public:
 		/**

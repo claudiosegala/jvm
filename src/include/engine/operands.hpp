@@ -5,6 +5,9 @@
 
 namespace jvm {
 
+	/**
+	 * Represents the JVM operand stack.
+	 */
 	class Operands : public std::stack<Data> {
 	private:
 		u2 maxSize = 0;	///< Maximum size of the operands stack

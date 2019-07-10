@@ -6,6 +6,9 @@
 
 namespace jvm {
 
+	/**
+	 * Stores info about a instruction. Each instruction will inherit from InstructionInfo and implement its spefic features and implementation details.
+	 */
 	class InstructionInfo {
 	protected:
 
