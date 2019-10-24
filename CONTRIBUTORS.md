@@ -4,7 +4,10 @@
 + Luís Eduardo Luz Silva
 + Nícolas Machado Schumacher
 + Ricardo Arôso Mendes Kury
-+ Andrey Mazépas
 
 # Contributors
 + torq
++ Andrey Mazépas
++ Danilo Santos
++ Victor Landim
++ Marcelo Giordano
