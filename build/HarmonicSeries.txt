@@ -1,4 +1,0 @@
-The names of the class file HarmonicSeries.class and source file Harmonica.java don't match!
-3.597739657143682
-The names of the class file HarmonicSeries.class and source file Harmonica.java don't match!
-3.597739657143682

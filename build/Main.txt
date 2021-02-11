@@ -1,4 +1,0 @@
-Couldn't open file ../samples/tests/Engine/helloworld/IsaacLopinho.class
-Error: Could not find or load main class Main
-Couldn't open file ../samples/tests/Engine/helloworld/IsaacLopinho.class
-Error: Could not find or load main class Main

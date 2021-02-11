@@ -1,4 +1,0 @@
-Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/Lambda_Expression$GreetingService.class
-Error: Could not find or load main class Lambda_Expression$GreetingService
-Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/Lambda_Expression$GreetingService.class
-Error: Could not find or load main class Lambda_Expression$GreetingService

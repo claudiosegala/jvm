@@ -1,8 +1,0 @@
-Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/superclasse.class
-Error: Main method not found in class superclasse, please define the main method as:
-   public static void main(String[] args)
-or a JavaFX application class must extend javafx.application.Application
-Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/superclasse.class
-Error: Main method not found in class superclasse, please define the main method as:
-   public static void main(String[] args)
-or a JavaFX application class must extend javafx.application.Application

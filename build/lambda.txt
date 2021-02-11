@@ -1,4 +1,0 @@
-Not enough operands on stack
-Error: Could not find or load main class lambda
-Not enough operands on stack
-Error: Could not find or load main class lambda

@@ -1,2 +1,0 @@
-The names of the class file SubClassRewriteDemo.class and source file RewriteDemo.java don't match!
-The names of the class file SubClassRewriteDemo.class and source file RewriteDemo.java don't match!

@@ -1,6 +1,0 @@
-Not enough operands on stack
--1
--2.0
-Not enough operands on stack
--1
--2.0
