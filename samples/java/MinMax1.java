@@ -3,7 +3,6 @@ import java.util.Scanner;
 /*
  * "Ler 3 números inteiros da entrada, imprimir o menor e o maior"
  *
- * Autor: Jacques Sauvé
  */
 
 public class MinMax1 {
