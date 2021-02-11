@@ -90,6 +90,7 @@ fabric.properties
 tests-result-one.txt
 compair/
 tests-result.txt
+build/
 
 /samples/java/new_teste/nbproject/private/
 /samples/java/new_teste/build/
