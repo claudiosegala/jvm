@@ -8,6 +8,9 @@ namespace jvm {
 
 	class ClassLoader;
 
+	/**
+	 *  JVM's frame. Stores operands, variables, return value, current program counter and references to both the classloader and methodinfo.
+	 */
 	class Frame {
 	public:
 		/**

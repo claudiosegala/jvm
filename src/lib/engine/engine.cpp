@@ -282,33 +282,78 @@ namespace jvm {
 		auto main_name = std::string("main([Ljava/lang/String;)V");
 		auto cl = JavaClasses[Entry_class_name];
 		auto mt = cl.methods[main_name]; //HARD-CODED SEARCH FOR MAIN, do not modify without notifying others
+		if (cl.cp_count > mt.descriptor_index && mt.descriptor_index != 0 || cl.cp_count > mt.name_index && mt.name_index != 0) {
+            if (cl.constant_pool[mt.name_index]->toString(cl.constant_pool).compare("main")) {
+                std::cout << "Entrypoint main([Ljava/lang/String;)V not found on " <<
+                          cl.filename << std::endl;
+                return;
+            }
+        }else{
+			std::cout << "Entrypoint main([Ljava/lang/String;)V not found on " <<
+					  cl.filename << std::endl;
+			return;
+		}
 
-		// run_clinit();
-		// run_init();
+        if(this->shouldDebug)
+            std::cout <<"Iniciando execução" << std::endl;
 
 		Frame frame(cl, mt);                                         // Create first frame
 
 		fs.push(frame);                                              // Init first frame in JVM
+
+        run_clinit();
+        run_init();
 
 		while (not fs.empty()) {                                     // This will exit when instruction 'return' is executed
 			auto curFrame = fs.top();
 			auto& codes = curFrame.mt.attributes.Codes[0]->code;     // Get the current method's executable code
 			auto instruction = codes[curFrame.PC];                   // Get the current instruction
 			auto opcode = instruction->getOpCode();                  // Got op-code of the instruction
+            if(this->shouldDebug) {
+                int op = opcode;
+                //std::cout << std::hex << std::showbase << op << std::endl;
+            }
 			auto executor = getExecutor(opcode);                     // Get pointer to instruction execution
 
 			(this ->* executor)(instruction.get());                  // Access the instruction and execute it
 		}
-		std::cout <<"Execução concluída" << std::endl;
+        if(this->shouldDebug)
+            std::cout <<"Execução concluída" << std::endl;
 	}
 
 	void Engine::run_clinit () {
-		// Won't be needed
-	}
+        auto main_name = std::string("<clinit>()V");
+        auto cl = JavaClasses[Entry_class_name];
+        auto mt = cl.methods[main_name]; //HARD-CODED SEARCH FOR MAIN, do not modify without notifying others
+        if (cl.cp_count > mt.descriptor_index && mt.descriptor_index != 0 || cl.cp_count > mt.name_index && mt.name_index != 0) {
+            if (cl.constant_pool[mt.name_index]->toString(cl.constant_pool).compare("main")) {
+                return;
+            }
+        }else{
+            return;
+        }
+
+        Frame frame(cl, mt);                                         // Create first frame
+
+        fs.push(frame);
+    }
 
 	void Engine::run_init () {
-		// Won't be needed
-	}
+        auto main_name = std::string("<init>()V");
+        auto cl = JavaClasses[Entry_class_name];
+        auto mt = cl.methods[main_name]; //HARD-CODED SEARCH FOR MAIN, do not modify without notifying others
+        if (cl.cp_count > mt.descriptor_index && mt.descriptor_index != 0 || cl.cp_count > mt.name_index && mt.name_index != 0) {
+            if (cl.constant_pool[mt.name_index]->toString(cl.constant_pool).compare("main")) {
+                return;
+            }
+        }else{
+            return;
+        }
+
+        Frame frame(cl, mt);                                         // Create first frame
+
+        fs.push(frame);
+    }
 
 	ClassAndMethod Engine::findMethod(CP_Methodref &ref) {
 		auto &currentClass = fs.top().cl;
@@ -344,14 +389,14 @@ namespace jvm {
 		return {methodClass, pair->second};
 	}
 
-	ClassLoader & Engine::findClass(CP_Class &classInfo) {
+	ClassLoader& Engine::findClass(CP_Class &classInfo) {
 		auto &cl = fs.top().cl;
 		auto &cp = cl.constant_pool;
 		auto className = cp[classInfo.name_index]-> toString(cp);
 		return findClass(className);
 	}
 
-	ClassLoader &Engine::findClass(std::string &className) {
+	ClassLoader& Engine::findClass(std::string &className) {
 		if (JavaClasses.count(className) > 0) {  // If class was already loaded, return
 			return JavaClasses[className];
 		}
@@ -820,14 +865,15 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOaload_0 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get4(0);
-		frame.operands.push4(T_ARRAY, value);
+		frame.operands.push4(T_REF, value);
+        frame.PC += data->jmp + 1;
 	}
 
 	void Engine::exec_aload_1 (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOaload_1 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get4(1);
-		frame.operands.push4(T_ARRAY, value);
+		frame.operands.push4(T_REF, value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -835,7 +881,7 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOaload_2 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get4(2);
-		frame.operands.push4(T_ARRAY, value);
+		frame.operands.push4(T_REF, value);
 		frame.PC += data->jmp + 1;
 	}
 
@@ -843,7 +889,7 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOaload_3 *>(info); // get data in class
 		auto &frame = fs.top();
 		auto value = frame.variables.get4(3);
-		frame.operands.push4(T_ARRAY, value);
+		frame.operands.push4(T_REF, value);
 		frame.PC += data->jmp + 1;
 
 	}
@@ -881,7 +927,8 @@ namespace jvm {
 		frame.operands.push4(T_FLOAT, value.f);
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		if(this->shouldDebug)
+			throw JvmException("faload not implemented!");
 	}
 
 	// TODO VERIFY THIS INSTRUCTION
@@ -897,7 +944,8 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		if(this->shouldDebug)
+			throw JvmException("daload not implemented!");
 	}
 
 	// TODO VERIFY THIS INSTRUCTION
@@ -912,7 +960,8 @@ namespace jvm {
 		frame.operands.push4(T_ARRAY, value.ui4);
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		if(this->shouldDebug)
+			throw JvmException("aaload not implemented!");
 	}
 
 	// TODO: finish this function
@@ -923,11 +972,21 @@ namespace jvm {
 		auto arrayref = frame.operands.pop4();
 		uint8_t * ARP = static_cast<uint8_t*>(mem[arrayref.value.i4]);
 		op4 value;
-		value.ui1 = static_cast<uint8_t>(ARP[index.value.i4]);
+		if(ARP == nullptr){
+			throw JvmException("NullPointerException");
+		}
+		try{
+			value.ui1 = static_cast<uint8_t>(ARP[index.value.i4]);
+		}
+		catch(const std::exception& e){
+			throw JvmException("ArrayIndexOutOfBoundsException");
+		}
+		std::cout << std::dec << value.ui1;
 		frame.operands.push4(T_BYTE, value);
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		if(this->shouldDebug)
+			throw JvmException("baload not implemented!");
 	}
 
 	// TODO: finish this function
@@ -942,7 +1001,8 @@ namespace jvm {
 		frame.operands.push4(T_BYTE, value);
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		if(this->shouldDebug)
+			throw JvmException("caload not implemented!");
 	}
 	// TODO VERIFY THIS INSTRUCTION
 	void Engine::exec_saload (InstructionInfo * info) {
@@ -956,7 +1016,8 @@ namespace jvm {
 		frame.operands.push4(T_LONG, value.i2);
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		if(this->shouldDebug)
+			throw JvmException("saload not implemented!");
 	}
 	void Engine::exec_istore (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOistore *>(info); // get data in class
@@ -2553,9 +2614,26 @@ namespace jvm {
 			return;
 		}
 
+		auto Classloader = findClass(classname);
+		auto fields = Classloader.fields;
+		jvm::FieldInfo a;
+		for(int i = 0; i< fields.size(); i++){
+			std::string name = Classloader.constant_pool[fields.at(i).name_index]->toString(Classloader.constant_pool);
+			if(name == name){
+				if(descriptor == "B" || descriptor == "C" || descriptor == "Z" || descriptor == "S" || descriptor == "I" || descriptor == "J"){
+					frame.operands.push4(T_INT,	fields.at(i).value.i4);
+				}else if(descriptor == "F" || descriptor == "D"){
+					frame.operands.push4(T_FLOAT, fields.at(i).value.f);
+				}
+			}
+		}
+
+
+
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		//if(this->shouldDebug)
+		//	throw JvmException("getstatic not implemented!");
 	}
 
 	// TODO: finish this function
@@ -2563,10 +2641,34 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOputstatic *>(info); // get data in class
 		auto &frame = fs.top();
 
+		auto value = frame.operands.pop4();
+
+		auto &cp = frame.cl.constant_pool;
+		auto FieldRef = reinterpret_cast<CP_Fieldref*>(cp[data->index]); // get the method info from constant pool
+		auto className = cp[FieldRef->class_index]->toString(cp);
+		auto &FieldNameAndType = cp[FieldRef->name_and_type_index]->as<CP_NameAndType>();
+		auto FieldName = cp[FieldNameAndType.name_index] -> toString(cp);
+		auto FieldType = cp[FieldNameAndType.descriptor_index] -> toString(cp);
+
+		auto Classloader = findClass(className);
+		auto fields = Classloader.fields;
+		jvm::FieldInfo a;
+		for(int i = 0; i< fields.size(); i++){
+			std::string name = Classloader.constant_pool[fields.at(i).name_index]->toString(Classloader.constant_pool);
+			if(name == FieldName){
+				if(FieldType == "B" || FieldType == "C" || FieldType == "Z" || FieldType == "S" || FieldType == "I" || FieldType == "J"){
+					frame.cl.fields.at(i).value.i4 = value.value.i4;
+				}else if(FieldType == "F" || FieldType == "D"){
+					frame.cl.fields.at(i).value.f = value.value.f;
+				}
+			}
+		}
+
 
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		//if(this->shouldDebug)
+		//	throw JvmException("putstatic not implemented!");
 	}
 
 	// TODO: finish this function
@@ -2574,9 +2676,33 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOgetfield *>(info); // get data in class
 		auto &frame = fs.top();
 
+		auto ref = frame.operands.pop4().value.ui4;
+
+		auto &cp = frame.cl.constant_pool;
+		auto FieldRef = reinterpret_cast<CP_Fieldref*>(cp[data->index]); // get the method info from constant pool
+		auto className = cp[FieldRef->class_index]->toString(cp);
+		auto &FieldNameAndType = cp[FieldRef->name_and_type_index]->as<CP_NameAndType>();
+		auto FieldName = cp[FieldNameAndType.name_index] -> toString(cp);
+		auto FieldType = cp[FieldNameAndType.descriptor_index] -> toString(cp);
+
+		auto Classloader = findClass(className);
+		auto fields = Classloader.fields;
+		jvm::FieldInfo a;
+		for(int i = 0; i< fields.size(); i++){
+			std::string name = Classloader.constant_pool[fields.at(i).name_index]->toString(Classloader.constant_pool);
+			if(name == FieldName){
+				if(FieldType == "B" || FieldType == "C" || FieldType == "Z" || FieldType == "S" || FieldType == "I" || FieldType == "J"){
+					frame.operands.push4(T_INT,	fields.at(i).value.i4);
+				}else if(FieldType == "F" || FieldType == "D"){
+					frame.operands.push4(T_FLOAT, fields.at(i).value.f);
+				}
+			}
+		}
+
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		//if(this->shouldDebug)
+		//throw JvmException("getfield not implemented!");
 	}
 
 	// TODO: finish this function
@@ -2584,9 +2710,34 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOputfield *>(info); // get data in class
 		auto &frame = fs.top();
 
+        auto value = frame.operands.pop4();
+        auto ref = frame.operands.pop4().value.ui4;
+
+        auto &cp = frame.cl.constant_pool;
+        auto FieldRef = reinterpret_cast<CP_Fieldref*>(cp[data->index]); // get the method info from constant pool
+        auto className = cp[FieldRef->class_index]->toString(cp);
+        auto &FieldNameAndType = cp[FieldRef->name_and_type_index]->as<CP_NameAndType>();
+        auto FieldName = cp[FieldNameAndType.name_index] -> toString(cp);
+		auto FieldType = cp[FieldNameAndType.descriptor_index] -> toString(cp);
+
+        auto Classloader = findClass(className);
+        auto fields = Classloader.fields;
+        jvm::FieldInfo a;
+        for(int i = 0; i< fields.size(); i++){
+            std::string name = Classloader.constant_pool[fields.at(i).name_index]->toString(Classloader.constant_pool);
+            if(name == FieldName){
+            	if(FieldType == "B" || FieldType == "C" || FieldType == "Z" || FieldType == "S" || FieldType == "I" || FieldType == "J"){
+					frame.cl.fields.at(i).value.i4 = value.value.i4;
+            	}else if(FieldType == "F" || FieldType == "D"){
+					frame.cl.fields.at(i).value.f = value.value.f;
+            	}
+            }
+        }
+
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		//if(this->shouldDebug)
+			//throw JvmException("putfield not implemented!");
 	}
 
 	// TODO: finish this function
@@ -2610,7 +2761,7 @@ namespace jvm {
 
 			long lng;
 			if(print_type == T_STRING){
-				std::string str = reinterpret_cast<CP_String *>(cp[print_value.ui4])->toString(cp);
+				std::string str = reinterpret_cast<CP_Utf8 *>(cp[print_value.ui4])->toString(cp);
 				std::cout << str << std::endl;
 			}
 
@@ -2666,12 +2817,12 @@ namespace jvm {
 
 		auto nargs = getArgumentsSize(methodDescriptor);
 		std::stack<op4> args;
-		for (u2 i = 0; i < nargs; i++) {
+		for (u2 i = 0; i <= nargs; i++) {
 			auto value = frame.operands.pop4();
 			args.push(value.value);
 		}
 
-		for (u2 i = 0; i < nargs; i++) {
+		for (u2 i = 0; i <= nargs; i++) {
 			auto value = args.top(); args.pop();
 			newFrame.variables.set(i, value);
 		}
@@ -2679,17 +2830,68 @@ namespace jvm {
 		fs.push(newFrame);
 
 		frame.PC += data->jmp + 1;
-		// throw JvmException("Not Implemented!");
+		//if(this->shouldDebug)
+		//	throw JvmException("invokevirtual not implemented!");
 	}
 
 	// TODO: finish this function
 	void Engine::exec_invokespecial (InstructionInfo * info) {
 		auto data   = reinterpret_cast<OPINFOinvokespecial *>(info); // get data in class
 		auto &frame = fs.top();
+        auto &cp = frame.cl.constant_pool;
+
+        auto methodRef = reinterpret_cast<CP_Methodref*>(cp[data->index]); // get the method info from constant pool
+        auto &classInfo = cp[methodRef->class_index]->as<CP_Class>();
+        auto className = cp[classInfo.name_index]->toString(cp);
+        auto &methodNameAndType = cp[methodRef->name_and_type_index]->as<CP_NameAndType>();
+        auto methodName = cp[methodNameAndType.name_index] -> toString(cp);
+        auto methodDescriptor = cp[methodNameAndType.descriptor_index] -> toString(cp);
+
+        if (methodName == "<init>" && className == "java/lang/Object") { // ignore registerNatives
+            frame.operands.pop4();
+            frame.PC += data->jmp + 1;
+            return;
+        }
+
+        if (className.find("java/") == 0) { // calling something that start with java/, this should not happen
+            throw JvmException("Invalid call to" + className);
+        }
+
+        auto methodData = findMethod(*methodRef);
+
+        if(methodData.method.access_flags == jvm::methods::PROTECTED){
+            if(this->shouldDebug)
+                throw JvmException("invokespecial of PROTECTED METHOD not implemented!");
+        }else if(methodData.method.access_flags == jvm::methods::SYNCHRONIZED){
+            if(this->shouldDebug)
+                throw JvmException("invokespecial of SYNCHRONIZED METHOD not implemented!");
+
+        }else if(methodData.method.access_flags == jvm::methods::NATIVE){
+            if(this->shouldDebug)
+                throw JvmException("invokespecial of NATIVE METHOD not implemented!");
+
+        }else{
+
+        }
+
+        Frame newFrame(methodData.classLoader, methodData.method);
+
+        auto nargs = getArgumentsSize(methodDescriptor);
+        std::stack<op4> args;
+        for (u2 i = 0; i <= nargs; i++) {
+            auto value = frame.operands.pop4();
+            args.push(value.value);
+        }
+
+        for (u2 i = 0; i <= nargs; i++) {
+            auto value = args.top(); args.pop();
+            newFrame.variables.set(i, value);
+        }
+
+        fs.push(newFrame);
 
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
 	}
 
 	// TODO: verify corretude
@@ -2742,7 +2944,8 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		if(this->shouldDebug)
+			throw JvmException("invokeinterface not implemented!");
 	}
 
 	// TODO: finish this function
@@ -2752,24 +2955,37 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		if(this->shouldDebug)
+			throw JvmException("invokedynamic not implemented!");
 	}
 
 	// TODO: finish this function
+	//Notes:
+	//The new instruction does not completely create a new instance; 
+	//instance creation is not completed until an instance initialization 
+	//method (§2.9) has been invoked on the uninitialized instance.
 	void Engine::exec_new (InstructionInfo * info) {
-		auto data   = reinterpret_cast<OPINFOinvokestatic *>(info); // get data in class
+		auto data   = reinterpret_cast<OPINFOnew *>(info); // get data in class
 		auto &frame = fs.top();
 		auto &cp = frame.cl.constant_pool;
 
-		auto classInfo = reinterpret_cast<CP_Class*>(cp[data->index]); // get the method info from constant pool
+		auto classInfo = reinterpret_cast<CP_Class*>(cp[data->index]); // get the class info from constant pool
+
 		auto className = cp[classInfo->name_index]->toString(cp);
 		if (className == "java/lang/StringBuilder") {
 			frame.PC += data->jmp + 1;
-			throw JvmException("Not Implemented String Builder!");
+            if(this->shouldDebug)
+                throw JvmException("Not Implemented String Builder!");
 			return;
 		}
 
-		// throw JvmException("Not Implemented!");
+		ClassLoader cl = findClass(className);
+		//TODO initialize the class
+		u2 Class_name_index = classInfo->name_index;
+		frame.operands.push4(T_REF, Class_name_index);
+		frame.PC += data->jmp + 1;
+		//if(this->shouldDebug)
+		//	throw JvmException("new not implemented!");
 	}
 
 	// TODO: verificar corretude
@@ -2819,6 +3035,8 @@ namespace jvm {
 
 		frame.operands.push4(T_ARRAY, res);
 		frame.PC += data->jmp + 1;
+		//if(this->shouldDebug)
+			//throw JvmException("newarray not implemented!");
 	}
 
 	// TODO: need to set array to null and corretude
@@ -2856,6 +3074,8 @@ namespace jvm {
 
 		frame.operands.push4(T_ARRAY, res);
 		frame.PC += data->jmp + 1;
+		if(this->shouldDebug)
+			throw JvmException("anewarray not implemented!");
 	}
 
 	void Engine::exec_arraylength (InstructionInfo * info) {
@@ -2877,7 +3097,8 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		if(this->shouldDebug)
+			throw JvmException("athrow not implemented!");
 	}
 
 	// TODO: finish this function
@@ -2885,7 +3106,8 @@ namespace jvm {
 		auto data   = reinterpret_cast<OPINFOcheckcast *>(info); // get data in class
 		auto &frame = fs.top();
 		frame.PC += data->jmp + 1;
-		// throw JvmException("Not Implemented!");
+		if(this->shouldDebug)
+			throw JvmException("checkcast not implemented!");
 	}
 
 	// TODO: finish this function
@@ -2895,14 +3117,19 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		if(this->shouldDebug)
+			throw JvmException("instanceof not implemented!");
 	}
 
 	void Engine::exec_monitorenter (InstructionInfo * info) {
+		if(this->shouldDebug)
+			throw JvmException("monitorenter not implemented!");
 		// This JVM does not have support for multiple threads
 	}
 
 	void Engine::exec_monitorexit (InstructionInfo * info) {
+		if(this->shouldDebug)
+			throw JvmException("monitorexit not implemented!");
 		// This JVM does not have support for multiple threads
 	}
 
@@ -2913,7 +3140,8 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		if(this->shouldDebug)
+			throw JvmException("wide not implemented!");
 	}
 
 	// TODO: finish this function
@@ -2923,7 +3151,8 @@ namespace jvm {
 
 		frame.PC += data->jmp + 1;
 
-		// throw JvmException("Not Implemented!");
+		if(this->shouldDebug)
+			throw JvmException("multianewarray not implemented!");
 	}
 
 	void Engine::exec_ifnull (InstructionInfo * info) {
@@ -2972,14 +3201,20 @@ namespace jvm {
 	}
 
 	void Engine::exec_breakpoint (InstructionInfo * info) {
+		if(this->shouldDebug)
+			throw JvmException("breakpoint not implemented!");
 		// This JVM will not need reserved instructions for debuggers or back door
 	}
 
 	void Engine::exec_impdep1 (InstructionInfo * info) {
+		if(this->shouldDebug)
+			throw JvmException("impdepl not implemented!");
 		// This JVM will not need reserved instructions for debuggers or back door
 	}
 
 	void Engine::exec_impdep2 (InstructionInfo * info) {
+		if(this->shouldDebug)
+			throw JvmException("impdep2 not implemented!");
 		// This JVM will not need reserved instructions for debuggers or back door
 	}
 

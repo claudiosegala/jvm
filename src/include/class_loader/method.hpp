@@ -4,6 +4,9 @@
 
 namespace jvm {
 
+	/**
+	 * Stores information about a specific method.
+	 */
 	class MethodInfo {
 	public:
 		uint16_t access_flags;                 ///< Access permission to and properties of this field

@@ -1,0 +1,2537 @@
+
+***********************************************
+
+*** AbstractClass jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/AbstractClass.class
+
+*** AbstractClass oracle:
+Error: Main method not found in class AbstractClass, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** AbstractClassDemo jvm:
+The names of the class file AbstractClassDemo.class and source file AbstractClass.java don't match!
+
+*** AbstractClassDemo oracle:
+Error: Could not find or load main class AbstractClassDemo
+
+***********************************************
+
+*** ArrayMultDemo jvm:
+
+*** ArrayMultDemo oracle:
+
+***********************************************
+
+*** ArrayUniDemo jvm:
+Not enough operands on stack
+
+*** ArrayUniDemo oracle:
+
+INTEIRO
+1
+2
+4
+3
+5
+3
+6
+7
+8
+
+LONG
+1
+2
+4
+3
+5
+3
+6
+7
+8
+
+FLOAT
+1.0
+2.0
+4.0
+3.0
+5.0
+3.0
+6.0
+7.0
+8.0
+
+DOUBLE
+1.0
+2.0
+4.0
+3.0
+5.0
+3.0
+6.0
+7.0
+8.0
+
+SHORT
+1
+2
+4
+3
+5
+3
+6
+7
+8
+
+***********************************************
+
+*** Atributo_Classe jvm:
+O .class lido não é compatível com java8 (max_version 52), deseja ler mesmo assim? (S/N)
+
+*** Atributo_Classe oracle:
+Error: A JNI error has occurred, please check your installation and try again
+Exception in thread "main" java.lang.UnsupportedClassVersionError: Atributo_Classe has been compiled by a more recent version of the Java Runtime (class file version 54.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:468)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:74)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:369)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)
+
+***********************************************
+
+*** Atributo_Instancia jvm:
+O .class lido não é compatível com java8 (max_version 52), deseja ler mesmo assim? (S/N)
+
+*** Atributo_Instancia oracle:
+Error: A JNI error has occurred, please check your installation and try again
+Exception in thread "main" java.lang.UnsupportedClassVersionError: Atributo_Instancia has been compiled by a more recent version of the Java Runtime (class file version 54.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:468)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:74)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:369)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)
+
+***********************************************
+
+*** AttributeClassDemo jvm:
+The names of the class file AttributeClassDemo.class and source file Atributo_Classe.java don't match!
+
+*** AttributeClassDemo oracle:
+Error: A JNI error has occurred, please check your installation and try again
+Exception in thread "main" java.lang.UnsupportedClassVersionError: AttributeClassDemo has been compiled by a more recent version of the Java Runtime (class file version 54.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:468)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:74)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:369)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)
+
+***********************************************
+
+*** AttributeInstDemo jvm:
+The names of the class file AttributeInstDemo.class and source file Atributo_Instancia.java don't match!
+
+*** AttributeInstDemo oracle:
+Error: A JNI error has occurred, please check your installation and try again
+Exception in thread "main" java.lang.UnsupportedClassVersionError: AttributeInstDemo has been compiled by a more recent version of the Java Runtime (class file version 54.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:468)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:74)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:369)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)
+
+***********************************************
+
+*** AttributesDemo jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/AttributesDemo.class
+
+*** AttributesDemo oracle:
+Error: Main method not found in class AttributesDemo, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** Belote jvm:
+
+Cartas de 
+Not enough operands on stack
+
+*** Belote oracle:
+Adam
+Bob
+Charlie
+Daniel
+As
+As
+As
+As
+As
+As
+As
+As
+As
+As
+As
+As
+As
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Dois
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Tres
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+Quatro
+
+Cartas de 
+Adam
+
+
+Rei
+ de 
+Espadas
+As
+ de 
+Paus
+Dois
+ de 
+Paus
+Tres
+ de 
+Paus
+Quatro
+ de 
+Paus
+Cinco
+ de 
+Paus
+Seis
+ de 
+Paus
+Sete
+ de 
+Paus
+Oito
+ de 
+Paus
+Nove
+ de 
+Paus
+Dez
+ de 
+Paus
+Valete
+ de 
+Paus
+Dama
+ de 
+Paus
+
+Cartas de 
+Bob
+
+
+Rei
+ de 
+Paus
+As
+ de 
+Ouros
+Dois
+ de 
+Ouros
+Tres
+ de 
+Ouros
+Quatro
+ de 
+Ouros
+Cinco
+ de 
+Ouros
+Seis
+ de 
+Ouros
+Sete
+ de 
+Ouros
+Oito
+ de 
+Ouros
+Nove
+ de 
+Ouros
+Dez
+ de 
+Ouros
+Valete
+ de 
+Ouros
+Dama
+ de 
+Ouros
+
+Cartas de 
+Charlie
+
+
+Rei
+ de 
+Ouros
+As
+ de 
+Copas
+Dois
+ de 
+Copas
+Tres
+ de 
+Copas
+Quatro
+ de 
+Copas
+Cinco
+ de 
+Copas
+Seis
+ de 
+Copas
+Sete
+ de 
+Copas
+Oito
+ de 
+Copas
+Nove
+ de 
+Copas
+Dez
+ de 
+Copas
+Valete
+ de 
+Copas
+Dama
+ de 
+Copas
+
+Cartas de 
+Daniel
+
+
+Rei
+ de 
+Copas
+As
+ de 
+Espadas
+Dois
+ de 
+Espadas
+Tres
+ de 
+Espadas
+Quatro
+ de 
+Espadas
+Cinco
+ de 
+Espadas
+Seis
+ de 
+Espadas
+Sete
+ de 
+Espadas
+Oito
+ de 
+Espadas
+Nove
+ de 
+Espadas
+Dez
+ de 
+Espadas
+Valete
+ de 
+Espadas
+Dama
+ de 
+Espadas
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Rei
+ de 
+Bob
+ jogou 
+Rei
+ de 
+Charlie
+ jogou 
+Rei
+ de 
+Daniel
+ jogou 
+As
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+As
+ de 
+Bob
+ jogou 
+As
+ de 
+Charlie
+ jogou 
+As
+ de 
+Daniel
+ jogou 
+Rei
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Dois
+ de 
+Bob
+ jogou 
+Dois
+ de 
+Charlie
+ jogou 
+Dois
+ de 
+Daniel
+ jogou 
+Dois
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Tres
+ de 
+Bob
+ jogou 
+Tres
+ de 
+Charlie
+ jogou 
+Tres
+ de 
+Daniel
+ jogou 
+Tres
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Quatro
+ de 
+Bob
+ jogou 
+Quatro
+ de 
+Charlie
+ jogou 
+Quatro
+ de 
+Daniel
+ jogou 
+Quatro
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Cinco
+ de 
+Bob
+ jogou 
+Cinco
+ de 
+Charlie
+ jogou 
+Cinco
+ de 
+Daniel
+ jogou 
+Cinco
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Seis
+ de 
+Bob
+ jogou 
+Seis
+ de 
+Charlie
+ jogou 
+Seis
+ de 
+Daniel
+ jogou 
+Seis
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Sete
+ de 
+Bob
+ jogou 
+Sete
+ de 
+Charlie
+ jogou 
+Sete
+ de 
+Daniel
+ jogou 
+Sete
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Oito
+ de 
+Bob
+ jogou 
+Oito
+ de 
+Charlie
+ jogou 
+Oito
+ de 
+Daniel
+ jogou 
+Oito
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Nove
+ de 
+Bob
+ jogou 
+Nove
+ de 
+Charlie
+ jogou 
+Nove
+ de 
+Daniel
+ jogou 
+Nove
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Dez
+ de 
+Bob
+ jogou 
+Dez
+ de 
+Charlie
+ jogou 
+Dez
+ de 
+Daniel
+ jogou 
+Dez
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Valete
+ de 
+Bob
+ jogou 
+Valete
+ de 
+Charlie
+ jogou 
+Valete
+ de 
+Daniel
+ jogou 
+Valete
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Adam
+ comecou jogando
+
+As cartas jogadas foram: 
+Adam
+ jogou 
+Dama
+ de 
+Bob
+ jogou 
+Dama
+ de 
+Charlie
+ jogou 
+Dama
+ de 
+Daniel
+ jogou 
+Dama
+ de 
+
+
+
+Adam
+ Ganhou a rodada
+
+
+Pontuacao dos jogadores.
+
+Adam
+ =  
+364
+Bob
+ =  
+0
+Charlie
+ =  
+0
+Daniel
+ =  
+0
+
+***********************************************
+
+*** CLASSE2 jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/CLASSE2.class
+
+*** CLASSE2 oracle:
+Error: Main method not found in class CLASSE2, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** Carta jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/Carta.class
+
+*** Carta oracle:
+Error: Main method not found in class Carta, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** CaseDemo jvm:
+Invalid tableswitch
+
+*** CaseDemo oracle:
+Domingo
+
+***********************************************
+
+*** CondicionalDemo jvm:
+5
+menor que 10
+
+*** CondicionalDemo oracle:
+5
+menor que 10
+
+***********************************************
+
+*** Conta jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/Conta.class
+
+*** Conta oracle:
+Error: Main method not found in class Conta, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** CountWheat jvm:
+1
+3
+7
+15
+Not enough operands on stack
+
+*** CountWheat oracle:
+1
+3
+7
+15
+
+31
+63
+127
+255
+
+511
+1023
+2047
+4095
+
+8191
+16383
+32767
+65535
+
+131071
+262143
+524287
+1048575
+
+2097151
+4194303
+8388607
+16777215
+
+33554431
+67108863
+134217727
+268435455
+
+536870911
+1073741823
+2147483647
+-1
+
+-1
+-1
+-1
+-1
+
+-1
+-1
+-1
+-1
+
+-1
+-1
+-1
+-1
+
+-1
+-1
+-1
+-1
+
+-1
+-1
+-1
+-1
+
+-1
+-1
+-1
+-1
+
+-1
+-1
+-1
+-1
+
+-1
+-1
+-1
+-1
+
+All done!
+
+***********************************************
+
+*** Demo jvm:
+Maximum operands stack exceeded
+
+*** Demo oracle:
+display2 method
+display3 method
+
+***********************************************
+
+*** DoubleDemo jvm:
+5.4
+3.5
+8.9
+1.9
+1.54286
+18.9
+1.9
+1
+1
+1
+5
+5.4
+
+*** DoubleDemo oracle:
+5.4
+3.5
+8.9
+1.9000000000000004
+1.542857142857143
+18.900000000000002
+1.9000000000000004
+1.0
+1.0
+1.0
+5.0
+5.4
+
+***********************************************
+
+*** Example1 jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/Example1.class
+
+*** Example1 oracle:
+Error: Main method not found in class Example1, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** Example2 jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/Example2.class
+
+*** Example2 oracle:
+Error: Main method not found in class Example2, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** Example3 jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/Example3.class
+
+*** Example3 oracle:
+Error: Main method not found in class Example3, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** Example4 jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/Example4.class
+
+*** Example4 oracle:
+Error: Main method not found in class Example4, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** Example5 jvm:
+The names of the class file Example5.class and source file Example3.java don't match!
+
+*** Example5 oracle:
+Error: Could not find or load main class Example5
+
+***********************************************
+
+*** Exemplo jvm:
+Couldn't open file ../samples/tests/Engine/java/util/Scanner.class
+
+*** Exemplo oracle:
+Percorrendo o ArrayList (usando o índice)
+Posição 0- Juca Bala;11 1111-1111
+Posição 1- Marcos Paqueta;22 2222-2222
+Posição 2- Maria Antonieta;33 3333-3333
+Posição 3- Antônio Conselheiro;44 4444-4444
+
+Informe a posição a ser excluída:
+
+***********************************************
+
+*** Fibonacci jvm:
+Serie De Fibonacci: 
+1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+89
+144
+
+*** Fibonacci oracle:
+Serie De Fibonacci: 
+1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+89
+144
+
+***********************************************
+
+*** FloatDemo jvm:
+3.14
+6.28
+9.42
+-3.14
+0.5
+19.7192
+1
+1
+1
+3.14
+
+*** FloatDemo oracle:
+3.14
+6.28
+9.42
+-3.14
+0.5
+19.719202
+1.0
+1.0
+1.0
+3.14
+
+***********************************************
+
+*** FooCorporation jvm:
+O salario calculado foi de:
+Maximum operands stack exceeded
+
+*** FooCorporation oracle:
+Exception in thread "main" java.lang.NoClassDefFoundError: Empregado
+	at FooCorporation.<init>(FooCorporation.java:4)
+	at FooCorporation.main(FooCorporation.java:39)
+Caused by: java.lang.ClassNotFoundException: Empregado
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:382)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 2 more
+
+***********************************************
+
+*** ForDemo jvm:
+0
+1
+2
+3
+4
+5
+
+*** ForDemo oracle:
+0
+1
+2
+3
+4
+5
+
+***********************************************
+
+*** FuncInterface jvm:
+The names of the class file FuncInterface.class and source file lambda.java don't match!
+
+*** FuncInterface oracle:
+Error: Main method not found in class FuncInterface, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** Goto jvm:
+5
+6
+7
+8
+9
+
+*** Goto oracle:
+5
+6
+7
+8
+9
+
+***********************************************
+
+*** HarmonicSeries jvm:
+The names of the class file HarmonicSeries.class and source file Harmonica.java don't match!
+
+*** HarmonicSeries oracle:
+3.597739657143682
+
+***********************************************
+
+*** Harmonica jvm:
+3.59774
+
+*** Harmonica oracle:
+Error: Could not find or load main class Harmonica
+
+***********************************************
+
+*** Hello jvm:
+Hello World!
+
+*** Hello oracle:
+Hello World!
+
+***********************************************
+
+*** HelloWorld jvm:
+Hello, World
+
+*** HelloWorld oracle:
+Hello, World
+
+***********************************************
+
+*** InheritanceDemo jvm:
+
+*** InheritanceDemo oracle:
+
+***********************************************
+
+*** InnerClass jvm:
+Hello World!
+
+*** InnerClass oracle:
+Hello World!
+
+***********************************************
+
+*** IntegerDemo jvm:
+5
+3
+8
+2
+1
+15
+2
+2
+1
+1
+5
+5
+
+*** IntegerDemo oracle:
+5
+3
+8
+2
+1
+15
+2
+2
+1
+1
+5
+5
+
+***********************************************
+
+*** InterfaceDemo jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/InterfaceDemo.class
+
+*** InterfaceDemo oracle:
+Error: Main method not found in class InterfaceDemo, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** InterfaceTest$MyClass jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/InterfaceTest$MyClass.class
+
+*** InterfaceTest$MyClass oracle:
+Error: Main method not found in class InterfaceTest$MyClass, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** InterfaceTest$MyInterface jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/InterfaceTest$MyInterface.class
+
+*** InterfaceTest$MyInterface oracle:
+Error: Main method not found in class InterfaceTest$MyInterface, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** InterfaceTest jvm:
+Type not recognized
+
+*** InterfaceTest oracle:
+Test
+125
+After cast
+250
+
+***********************************************
+
+*** IsaacLopinho jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/IsaacLopinho.class
+
+*** IsaacLopinho oracle:
+Error: Could not find or load main class IsaacLopinho
+
+***********************************************
+
+*** Jogador jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/Jogador.class
+
+*** Jogador oracle:
+Error: Main method not found in class Jogador, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** Jvm_teste jvm:
+Resultado
+42
+
+*** Jvm_teste oracle:
+Resultado
+42
+
+***********************************************
+
+*** Lambda_Expression$GreetingService jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/Lambda_Expression$GreetingService.class
+
+*** Lambda_Expression$GreetingService oracle:
+Error: Could not find or load main class Lambda_Expression$GreetingService
+
+***********************************************
+
+*** Lambda_Expression jvm:
+Not enough operands on stack
+
+*** Lambda_Expression oracle:
+Error: Could not find or load main class Lambda_Expression
+
+***********************************************
+
+*** LogicosDemo jvm:
+2
+0
+
+*** LogicosDemo oracle:
+2
+0
+
+***********************************************
+
+*** LongDemo jvm:
+5
+8
+2
+1
+15
+2
+6
+8
+5
+5
+5
+
+*** LongDemo oracle:
+5
+8
+2
+1
+15
+2
+6
+8
+5
+5
+5
+
+***********************************************
+
+*** Main jvm:
+Couldn't open file ../samples/tests/Engine/helloworld/IsaacLopinho.class
+
+*** Main oracle:
+Error: Could not find or load main class Main
+
+***********************************************
+
+*** MainOnly jvm:
+
+*** MainOnly oracle:
+
+***********************************************
+
+*** Main_1 jvm:
+Not enough operands on stack
+
+*** Main_1 oracle:
+Saldo da conta:0 e' 100.0
+Saldo da conta:0 e' 100.5
+Saldo da conta:1 e' 50.0
+
+***********************************************
+
+*** MethodDynamicDemo jvm:
+The names of the class file MethodDynamicDemo.class and source file MetodosDinamicos.java don't match!
+
+*** MethodDynamicDemo oracle:
+Error: A JNI error has occurred, please check your installation and try again
+Exception in thread "main" java.lang.UnsupportedClassVersionError: MethodDynamicDemo has been compiled by a more recent version of the Java Runtime (class file version 54.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:468)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:74)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:369)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)
+
+***********************************************
+
+*** MethodStaticDemo jvm:
+The names of the class file MethodStaticDemo.class and source file Static.java don't match!
+
+*** MethodStaticDemo oracle:
+Error: A JNI error has occurred, please check your installation and try again
+Exception in thread "main" java.lang.UnsupportedClassVersionError: MethodStaticDemo has been compiled by a more recent version of the Java Runtime (class file version 54.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:468)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:74)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:369)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)
+
+***********************************************
+
+*** MetodosDinamicos jvm:
+O .class lido não é compatível com java8 (max_version 52), deseja ler mesmo assim? (S/N)
+
+*** MetodosDinamicos oracle:
+Error: A JNI error has occurred, please check your installation and try again
+Exception in thread "main" java.lang.UnsupportedClassVersionError: MetodosDinamicos has been compiled by a more recent version of the Java Runtime (class file version 54.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:468)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:74)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:369)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)
+
+***********************************************
+
+*** MinMax1 jvm:
+Couldn't open file ../samples/tests/Engine/java/util/Scanner.class
+
+*** MinMax1 oracle:
+Entre com o primeiro inteiro: 
+***********************************************
+
+*** PolDemo jvm:
+The names of the class file PolDemo.class and source file Polimorfismo.java don't match!
+
+*** PolDemo oracle:
+Error: Could not find or load main class PolDemo
+
+***********************************************
+
+*** Polimorfismo jvm:
+Hello, World!!!
+Segunda funcao
+Primeira funcao
+
+*** Polimorfismo oracle:
+Hello, World!!!
+Segunda funcao
+Primeira funcao
+
+***********************************************
+
+*** Poupanca jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/Poupanca.class
+
+*** Poupanca oracle:
+Error: Main method not found in class Poupanca, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** PrintDemo jvm:
+Type not recognized
+
+*** PrintDemo oracle:
+OLAR, TESTANDO PRINT
+
+***********************************************
+
+*** Recursao jvm:
+10
+11
+12
+13
+14
+
+*** Recursao oracle:
+10
+11
+12
+13
+14
+
+***********************************************
+
+*** RewriteDemo jvm:
+The names of the class file SubClassRewriteDemo.class and source file RewriteDemo.java don't match!
+
+*** RewriteDemo oracle:
+
+***********************************************
+
+*** Sample jvm:
+Magic Number
+
+*** Sample oracle:
+Magic Number
+
+***********************************************
+
+*** ShortDemo jvm:
+5
+3
+8
+2
+1
+15
+2
+1
+1
+1
+5
+5
+
+*** ShortDemo oracle:
+5
+3
+8
+2
+1
+15
+2
+1
+1
+1
+5
+5
+
+***********************************************
+
+*** SourceName jvm:
+The names of the class file SourceName.class and source file Jvm_teste.java don't match!
+
+*** SourceName oracle:
+Error: A JNI error has occurred, please check your installation and try again
+Exception in thread "main" java.lang.UnsupportedClassVersionError: SourceName has been compiled by a more recent version of the Java Runtime (class file version 52.52), this version of the Java Runtime only recognizes class file versions up to 52.0
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:468)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:74)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:369)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)
+
+***********************************************
+
+*** Static jvm:
+O .class lido não é compatível com java8 (max_version 52), deseja ler mesmo assim? (S/N)
+
+*** Static oracle:
+Error: A JNI error has occurred, please check your installation and try again
+Exception in thread "main" java.lang.UnsupportedClassVersionError: Static has been compiled by a more recent version of the Java Runtime (class file version 54.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:468)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:74)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:369)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)
+
+***********************************************
+
+*** StringDemo jvm:
+Type not recognized
+
+*** StringDemo oracle:
+OLAR, TESTANDO STRING
+OLAR, TESTANDO STRINGFalae manin
+Length: 21
+
+***********************************************
+
+*** SubClassRewriteDemo jvm:
+The names of the class file SubClassRewriteDemo.class and source file RewriteDemo.java don't match!
+
+*** SubClassRewriteDemo oracle:
+Error: Main method not found in class SubClassRewriteDemo, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** SubclassMethod$InnerClass jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/SubclassMethod$InnerClass.class
+
+*** SubclassMethod$InnerClass oracle:
+10
+20
+10
+30
+10
+-20
+-2
+-20
+
+***********************************************
+
+*** SubclassMethod jvm:
+Type not recognized
+
+*** SubclassMethod oracle:
+10
+20
+10
+30
+10
+-20
+-2
+-20
+
+***********************************************
+
+*** SuperClassInheritanceDemo jvm:
+The names of the class file SuperClassInheritanceDemo.class and source file InheritanceDemo.java don't match!
+
+*** SuperClassInheritanceDemo oracle:
+Error: Main method not found in class SuperClassInheritanceDemo, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** SuperClassRewriteDemo jvm:
+The names of the class file SuperClassRewriteDemo.class and source file RewriteDemo.java don't match!
+
+*** SuperClassRewriteDemo oracle:
+Error: Main method not found in class SuperClassRewriteDemo, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** TestInvokeVirtual$A jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/TestInvokeVirtual$A.class
+
+*** TestInvokeVirtual$A oracle:
+Error: Main method not found in class TestInvokeVirtual$A, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** TestInvokeVirtual$B jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/TestInvokeVirtual$B.class
+
+*** TestInvokeVirtual$B oracle:
+Error: Main method not found in class TestInvokeVirtual$B, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** TestInvokeVirtual jvm:
+Maximum operands stack exceeded
+
+*** TestInvokeVirtual oracle:
+calling m from A
+1
+calling m from B
+2
+calling m from B
+2
+
+***********************************************
+
+*** Teste jvm:
+10
+15
+25
+7
+foo
+
+*** Teste oracle:
+10
+15
+25
+7
+foo
+
+***********************************************
+
+*** TesteSwitch jvm:
+Invalid tableswitch
+
+*** TesteSwitch oracle:
+Error: Main method not found in class TesteSwitch, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** UmNome jvm:
+OOOOOOooooo o bixo vindo
+
+*** UmNome oracle:
+Error: Could not find or load main class UmNome
+
+***********************************************
+
+*** cafebabe jvm:
+This file isn't a valid .class file
+
+*** cafebabe oracle:
+Error: A JNI error has occurred, please check your installation and try again
+Exception in thread "main" java.lang.ClassFormatError: Incompatible magic value 1297780736 in class file cafebabe
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:468)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:74)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:369)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)
+
+***********************************************
+
+*** double_aritmetica jvm:
+233.11
+-36.63
+13249.6
+0.728405
+-98.24
+36.63
+
+*** double_aritmetica oracle:
+233.11
+-36.63000000000001
+13249.6288
+0.7284051308667605
+-98.24
+36.63000000000001
+
+***********************************************
+
+*** double_cast jvm:
+100.6
+100
+100
+
+*** double_cast oracle:
+100.6
+100
+100
+
+***********************************************
+
+*** double_logico jvm:
+2
+1
+0
+
+*** double_logico oracle:
+2.0
+1.0
+0
+
+***********************************************
+
+*** float_aritmetica jvm:
+120.7
+80.1
+2038.12
+4.94581
+-100.4
+19.2
+
+*** float_aritmetica oracle:
+120.7
+80.100006
+2038.12
+4.945813
+-100.4
+19.200005
+
+***********************************************
+
+*** float_cast jvm:
+42.42
+100.6
+100
+100
+
+*** float_cast oracle:
+42.42
+100.5999984741211
+100
+100
+
+***********************************************
+
+*** float_logico jvm:
+1.34251e+06
+0
+0
+-1
+-1
+diferente
+
+*** float_logico oracle:
+1342512.1
+0.0
+0.0
+-1.0
+-1.0
+diferente
+
+***********************************************
+
+*** int_aritmetica jvm:
+130
+70
+3000
+3
+-100
+10
+4
+400
+25
+39
+1073741823
+
+*** int_aritmetica oracle:
+130
+70
+3000
+3
+-100
+10
+4
+400
+25
+-25
+1073741823
+
+***********************************************
+
+*** int_cast jvm:
+254
+254
+254
+Type not recognized
+
+*** int_cast oracle:
+254.0
+254.0
+254
+þ
+-2
+254
+-254.0
+-254.0
+-254
+＂
+2
+-254
+
+***********************************************
+
+*** lambda jvm:
+Not enough operands on stack
+
+*** lambda oracle:
+Error: Could not find or load main class lambda
+
+***********************************************
+
+*** long_aritmetica jvm:
+120
+80
+2000
+5
+-100
+0
+4
+400
+25
+1073741823
+
+*** long_aritmetica oracle:
+120
+80
+2000
+5
+-100
+0
+4
+400
+25
+1073741823
+
+***********************************************
+
+*** long_cast jvm:
+-268435457
+65535
+-2.68435e+08
+-268435457
+268435457
+65535
+2.68435e+08
+268435457
+
+*** long_cast oracle:
+-268435457
+-1
+-2.68435456E8
+-268435457
+268435457
+-1
+2.68435456E8
+268435457
+
+***********************************************
+
+*** long_load jvm:
+0
+1000000
+0
+1
+
+*** long_load oracle:
+30
+1000000
+0
+1
+
+***********************************************
+
+*** long_logico jvm:
+0
+1
+1
+0
+1
+0
+0
+
+*** long_logico oracle:
+0
+1
+1
+0
+1
+0
+0
+
+***********************************************
+
+*** lookupswitch jvm:
+200
+200
+0
+1
+200
+
+*** lookupswitch oracle:
+200
+-1
+0
+1
+200
+
+***********************************************
+
+*** method_test jvm:
+5
+65.7
+-400000000
+
+*** method_test oracle:
+5
+65.7
+-400000000
+
+***********************************************
+
+*** multi jvm:
+Maximum operands stack exceeded
+
+*** multi oracle:
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+0.0
+2.0
+4.0
+6.0
+8.0
+10.0
+12.0
+14.0
+16.0
+18.0
+20.0
+22.0
+0
+1
+2
+1
+2
+3
+2
+3
+4
+3
+4
+5
+1
+2
+3
+2
+3
+4
+3
+4
+5
+4
+5
+6
+2
+3
+4
+3
+4
+5
+4
+5
+6
+5
+6
+7
+3
+4
+5
+4
+5
+6
+5
+6
+7
+6
+7
+8
+4
+5
+6
+5
+6
+7
+6
+7
+8
+7
+8
+9
+
+***********************************************
+
+*** objeto jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/objeto.class
+
+*** objeto oracle:
+Error: Main method not found in class objeto, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** objeto_teste jvm:
+Maximum operands stack exceeded
+
+*** objeto_teste oracle:
+3
+5.0
+-30000
+-51.54
+42
+42.0
+
+***********************************************
+
+*** prog jvm:
+Not enough operands on stack
+
+*** prog oracle:
+subclassestr da subclasse
+subclassestr da subclasse
+str da subclasse
+str da superclasse
+
+***********************************************
+
+*** short jvm:
+The names of the class file short.class and source file Main.java don't match!
+
+*** short oracle:
+Error: Could not find or load main class short
+
+***********************************************
+
+*** short_aritmetica jvm:
+120
+80
+2000
+5
+-100
+0
+4
+400
+25
+
+*** short_aritmetica oracle:
+120
+80
+2000
+5
+-100
+0
+4
+400
+25
+
+***********************************************
+
+*** short_cast jvm:
+255
+255
+255
+255
+255
+255
+255
+255
+
+*** short_cast oracle:
+255
+255.0
+255.0
+255
+255
+255.0
+255.0
+255
+
+***********************************************
+
+*** short_load jvm:
+3
+100
+0
+1
+
+*** short_load oracle:
+30
+100
+0
+1
+
+***********************************************
+
+*** static_test jvm:
+Not enough operands on stack
+
+*** static_test oracle:
+-1
+-2.0
+
+***********************************************
+
+*** subclasse jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/subclasse.class
+
+*** subclasse oracle:
+Error: Main method not found in class subclasse, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** superclasse jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/superclasse.class
+
+*** superclasse oracle:
+Error: Main method not found in class superclasse, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** tableswitch jvm:
+Invalid tableswitch
+
+*** tableswitch oracle:
+-1
+0
+1
+2
+-1
+
+***********************************************
+
+*** testeArray jvm:
+Maximum operands stack exceeded
+
+*** testeArray oracle:
+10
+10
+10
+10
+10
+15
+15
+15
+15
+15
+20
+20
+20
+20
+20
+25.0
+25.0
+25.0
+25.0
+25.0
+30.0
+30.0
+30.0
+30.0
+30.0
+
+***********************************************
+
+*** testeArrayDeprecated jvm:
+Maximum operands stack exceeded
+
+*** testeArrayDeprecated oracle:
+Error: Could not find or load main class testeArrayDeprecated
+
+***********************************************
+
+*** testeChaMetObj jvm:
+Maximum operands stack exceeded
+
+*** testeChaMetObj oracle:
+Int variavel
+2
+Int array unidimencional
+2
+Int arraymultidimensional
+4
+Long variavel
+4
+Long array unidimencional
+4
+Long arraymultidimensional
+8
+Float variavel
+4.0
+Float array unidimencional
+8.0
+Float arraymultidimensional
+16.0
+Double variavel
+5.0
+Double array unidimencional
+10.0
+Double arraymultidimensional
+20.0
+
+***********************************************
+
+*** testeChaObj jvm:
+
+*** testeChaObj oracle:
+Numero inteiro
+1
+Numero long
+2
+Numero ponto flutuante
+3.0
+Numero precisao dupla
+4.0
+Byte
+12
+Char
+a
+Short
+10
+Boolean
+true
+int dentro do objeto o
+1
+Array 1, 2, 3 ?
+2
+
+***********************************************
+
+*** testeLogArit jvm:
+Passou >
+Passou <
+Passou ==
+Passou <=
+Passou !(<=)
+Agora com long
+Passou >
+Passou <
+Passou ==
+Passou <=
+Passou !(<=)
+Agora com float
+Passou >
+Passou <
+Passou ==
+Passou <=
+Passou !(<=)
+Agora com double
+Passou >
+1
+Passou <
+Passou ==
+Passou <=
+Passou !(<=)
+
+*** testeLogArit oracle:
+Passou >
+Passou <
+Passou ==
+Passou <=
+Passou !(<=)
+Agora com long
+Passou >
+Passou <
+Passou ==
+Passou <=
+Passou !(<=)
+Agora com float
+Passou >
+Passou <
+Passou ==
+Passou <=
+Passou !(<=)
+Agora com double
+Passou >
+true
+Passou <
+Passou ==
+Passou <=
+Passou !(<=)
+
+***********************************************
+
+*** testeMetObj jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/testeMetObj.class
+
+*** testeMetObj oracle:
+Error: Main method not found in class testeMetObj, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** testeMultArray jvm:
+Maximum operands stack exceeded
+
+*** testeMultArray oracle:
+10
+10
+10
+10
+15
+15
+15
+15
+20
+20
+20
+20
+25.0
+25.0
+25.0
+25.0
+30.0
+30.0
+30.0
+30.0
+
+***********************************************
+
+*** testeObj jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/testeObj.class
+
+*** testeObj oracle:
+Error: Main method not found in class testeObj, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** testeStatic jvm:
+Not enough operands on stack
+
+*** testeStatic oracle:
+22
+Teste
+3.68
+3
+5.8
+33.640003
+
+***********************************************
+
+*** vect jvm:
+Entrypoint main([Ljava/lang/String;)V not found on ../samples/tests/Engine/vect.class
+
+*** vect oracle:
+Error: Main method not found in class vect, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+***********************************************
+
+*** vetor jvm:
+Not enough operands on stack
+
+*** vetor oracle:
+100000
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+2.0
+3.0
+-5.0
+
+-5
+3
+6426246
+-433242
+
+2.0
+3.0
+-5.0
+
+-2
+4
+0
+
+a
+0
+)
+
+15
+1000
+-2
+
+
+***********************************************
+
+*** vetor2-Eclipses jvm:
+The names of the class file vetor2-Eclipses.class and source file vetor2.java don't match!
+
+*** vetor2-Eclipses oracle:
+Error: Could not find or load main class vetor2-Eclipses
+
+***********************************************
+
+*** vetor2-java6 jvm:
+The names of the class file vetor2-java6.class and source file vetor2.java don't match!
+
+*** vetor2-java6 oracle:
+Error: Could not find or load main class vetor2-java6

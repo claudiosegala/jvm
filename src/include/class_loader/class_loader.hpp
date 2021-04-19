@@ -6,9 +6,29 @@
 
 namespace jvm {
 
+	/**
+	 * Class responsible for opening, reading and loading a .class file into memory. Parses and extracts all fields as specified by Oracle's Manual.
+	 */
 	class ClassLoader {
 	public:
+		std::basic_string<char> filename;			///< The filename loaded as .class
+
 		uint32_t magic_number;                      ///< Identifies that this is a class file format
+
+        std::map<std::uint16_t, std::string> JavaVersions = {
+            {46, "Java 1.2"} ,
+            {47, "Java 1.3"} ,
+            {48, "Java 1.4"} ,
+            {49, "Java SE 5"} ,
+            {50, "Java SE 6"} ,
+            {51, "Java SE 7"} ,
+            {52, "Java SE 8"} ,
+            {53, "Java SE 9"} ,
+            {54, "Java SE 10"} ,
+            {55, "Java SE 11"} ,
+            {56, "Java SE 12"} ,
+            {57, "Java SE 13"}
+        };
 
 		uint16_t min_version;                       ///< Minor version of this class file
 
@@ -54,6 +74,8 @@ namespace jvm {
 		 * Prints the whole class file to the console
 		 */
 		void show ();
+
+		bool shouldDebug = false;
 
 	private:
 		/**

@@ -1,0 +1,64 @@
+### TODO:
+- [X] Allow flag to run from command without interaction (silent?)
+- [X] Java version
+- [X] Fix print name and type
+- [ ] Add missing references to print
+- [ ] Dereference on code attribute print
+- [X] Validar source name
+- [ ] Add missing attributes
+  - [ ] Critical for JVM
+    - [X] ConstantValue - Java 1.0.2
+    - [X] Code - Java 1.0.2
+    - [ ] StackMapTable - Java 6
+    - [X] Exceptions - Java 1.0.2
+    - [ ] BootstrapMethods - Java 7
+  - [ ] Critical for Java SE
+    - [ ] InnerClasses - Java 1.1
+    - [ ] EnclosingMethod - Java 5
+    - [ ] Synthetic - Java 1.1
+    - [ ] Signature - Java 5
+    - [ ] RuntimeVisibleAnnotations - Java 5
+    - [ ] RuntimeInvisibleAnnotations - Java 5
+    - [ ] RuntimeVisibleParameterAnnotations - Java 5
+    - [ ] RuntimeInvisibleParameterAnnotations - Java 5
+    - [ ] RuntimeVisibleTypeAnnotations - Java 8
+    - [ ] RuntimeInvisibleTypeAnnotations - Java 8
+    - [ ] AnnotationDefault - Java 5
+    - [ ] MethodParameters - Java 8
+  - [ ] Not critical for anyone
+    - [X] SourceFile - Java 1.0.2
+    - [ ] SourceDebugExtension - Java 5
+    - [ ] LineNumberTable - Java 1.0.2
+    - [ ] LocalVariableTable - Java 1.0.2
+    - [ ] LocalVariableTypeTable - Java 5
+    - [ ] Deprecated - Java 1.1
+- [ ] Finish engine instructions
+  - [ ] exec_aconst_null - verify if the type match
+  - [ ] exec_ldc_w - remove this frame.PC repeated
+  - [ ] exec_laload - verify this instruction
+  - [ ] exec_faload - verify this instruction
+  - [ ] exec_daload - verify this instruction
+  - [ ] exec_aaload - verify this instruction
+  - [ ] exec_baload
+  - [ ] exec_caload
+  - [ ] exec_saload - verify this instruction
+  - [ ] exec_getstatic
+  - [ ] exec_putstatic
+  - [ ] exec_getfield
+  - [ ] exec_putfield
+  - [ ] exec_invokevirtual
+  - [ ] exec_invokespecial
+  - [ ] exec_invokestatic
+  - [ ] exec_invokeinterface
+  - [ ] exec_invokedynamic
+  - [ ] exec_new
+  - [ ] exec_newarray - verificar corretude
+  - [ ] exec_anewarray - need to set array to null and corretude
+  - [ ] exec_athrow
+  - [ ] exec_checkcast
+  - [ ] exec_instanceof
+  - [ ] exec_wide
+  - [ ] exec_multianewarray
+- [ ] Memory Heap Implementation / global stack
+- [ ] run_init()
+- [ ] run_clinit()

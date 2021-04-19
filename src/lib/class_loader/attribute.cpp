@@ -1,3 +1,4 @@
+#include <class_loader/attribute.hpp>
 #include "class_loader/attribute.hpp"
 
 namespace jvm {
@@ -7,7 +8,7 @@ namespace jvm {
 		reserve(attr_count);
 		while(attr_count--) {
 			auto name_index = reader.getNextHalfWord();
-			auto attr_length = reader.getNextWord();
+			auto attr_length = reader.getNextWord(); // only used to skip if not implemented
 			auto name = cp[name_index]->toString(cp);
 
 			// instantiate the attribute and initialize with data from reader
@@ -23,7 +24,41 @@ namespace jvm {
 				auto constantValuePtr = std::make_shared<AttrConstantValue>(reader, cp);
 				ConstValues.push_back(constantValuePtr);
 				push_back(constantValuePtr);
+			}else if (name == "SourceFile") {
+				auto SourceFilePtr = std::make_shared<AttrSourceFile>(reader, cp);
+				SourceFile.push_back(SourceFilePtr);
+				push_back(SourceFilePtr);
+			}else if (name == "LineNumberTable") {
+				auto LineNumberTablePtr = std::make_shared<AttrLineNumberTable>(reader, cp);
+				LineNumberTable.push_back(LineNumberTablePtr);
+				push_back(LineNumberTablePtr);
+			} else if(name == "LocalVariableTable") {
+				auto LocalVariableTablePtr = std::make_shared<AttrLocalVariableTable>(reader, cp);
+				LocalVariableTable.push_back(LocalVariableTablePtr);
+				push_back(LocalVariableTablePtr);
+			}else if (name == "BootstrapMethods") {
+				auto BootstrapMethodsPtr = std::make_shared<AttrBootstrapMethods>(reader, cp);
+				BootstrapMethods.push_back(BootstrapMethodsPtr);
+				push_back(BootstrapMethodsPtr);
+			}else if (name == "LocalVariableTypeTable") {
+				auto LocalVariableTypeTablePtr = std::make_shared<AttrLocalVariableTypeTable>(reader, cp);
+				LocalVariableTypeTable.push_back(LocalVariableTypeTablePtr);
+				push_back(LocalVariableTypeTablePtr);
+			}else if (name == "Deprecated") {
+				auto DeprecatedPtr = std::make_shared<AttrDeprecated>(reader, cp);
+				Deprecated.push_back(DeprecatedPtr);
+				push_back(DeprecatedPtr);
+			}else if (name == "InnerClasses") {
+				auto InnerClassesPtr = std::make_shared<AttrInnerClasses>(reader, cp);
+				InClasses.push_back(InnerClassesPtr);
+				push_back(InnerClassesPtr);
+			}else if (name == "Synthetic") {
+				auto SyntheticPtr = std::make_shared<AttrSynthetic>(reader, cp);
+				Synt.push_back(SyntheticPtr);
+				push_back(SyntheticPtr);
 			} else {
+				if(cp.shouldDebug)
+					std::cout << "Skipped: " << name << std::endl;
 				// In this case, the attribute is of a type we won't read
 				// Add a nullptr and skip the attribute's bytes
 				emplace_back();
@@ -45,6 +80,7 @@ namespace jvm {
 		}
 	}
 
+	// ============= CODE =============
 	AttrCode::AttrCode(Reader &reader, ConstantPool &cp) {
 		max_stack = reader.getNextHalfWord();
 		max_locals = reader.getNextHalfWord();
@@ -79,16 +115,22 @@ namespace jvm {
 			os << prefix2 << pair.first << ": ";
 			instr->printToStream(os, fakeprefix, cp);
 		}
+		attributes.printToStream(os, cp, "\t\t");
 	}
+	// ==================================
 
+	// =========CONSTANT VALUE===========
 	AttrConstantValue::AttrConstantValue(Reader &reader, ConstantPool &cp) {
 		constantvalue_index = reader.getNextHalfWord();
 	}
 
 	void AttrConstantValue::printToStream(std::ostream &os, ConstantPool &cp, std::string &prefix) {
 		os << prefix << "Constant Value: " << cp[constantvalue_index]->toString(cp) << std::endl;
-	}
 
+	}
+	// =================================
+
+	// ============= EXCEPTIONS =============
 	AttrExceptions::AttrExceptions(Reader &reader, ConstantPool &cp) {
 		auto count = reader.getNextHalfWord();
 		exception_index_table.reserve(count);
@@ -100,4 +142,159 @@ namespace jvm {
 	void AttrExceptions::printToStream(std::ostream &os, ConstantPool &pool, std::string &prefix) {
 		os << prefix << "Exception (count: " << exception_index_table.size() << ")" << std::endl;
 	}
+	// =======================================
+
+	// ============= SOURCE FILE =============
+	AttrSourceFile::AttrSourceFile(Reader &reader, ConstantPool &cp) {
+		sourcefile_index = reader.getNextHalfWord();
+	}
+
+	void AttrSourceFile::printToStream(std::ostream &os, ConstantPool &cp, std::string &prefix) {
+		os << prefix << "Source File: " << cp[sourcefile_index]->toString(cp) << std::endl;
+	}
+	// =======================================
+
+	// ============= LINE NUMBER TABLE =============
+	AttrLineNumberTable::AttrLineNumberTable(Reader &reader, ConstantPool &cp) {
+			line_number_table_length = reader.getNextHalfWord();
+			for (u2 i = 0; i < line_number_table_length; i++) {
+					line_number_table_entry item;
+					item.start_pc = reader.getNextHalfWord();
+					item.line_number = reader.getNextHalfWord();
+					line_number_table.push_back(item);
+			}
+	}
+
+	void AttrLineNumberTable::printToStream(std::ostream &os, ConstantPool &cp, std::string &prefix) {
+			os << prefix << "LineNumberTable:" << std::endl;
+			os << prefix << "\t" << "Nr\t|start_pc\t|line_number " << std::endl;
+			for (u2 i = 0; i < line_number_table_length; i++) {
+					line_number_table_entry item = line_number_table.at(i);
+					auto prefix2 = prefix + "\t";
+					os << prefix2 << i << "\t|" << item.start_pc << "\t\t\t|"<< item.line_number << std::endl;
+			}
+	}
+	// =============================================
+
+	// =========== LOCAL VARIABLE TABLE ============
+	AttrLocalVariableTable::AttrLocalVariableTable(Reader &reader, ConstantPool &cp) {
+		local_variable_table_length = reader.getNextHalfWord();
+		for(u2 i = 0; i < local_variable_table_length; i++) {
+			local_variable_table_entry item;
+			item.start_pc = reader.getNextHalfWord();
+			item.length = reader.getNextHalfWord();
+			item.name_index = reader.getNextHalfWord();
+			item.descriptor_index = reader.getNextHalfWord();
+			item.index = reader.getNextHalfWord();
+
+			local_variable_table.push_back(item);
+		}
+	}
+
+	void AttrLocalVariableTable::printToStream(std::ostream &os, ConstantPool &cp, std::string &prefix) {
+		os << prefix << "LocalVariableTable:" << std::endl;
+		os << prefix << "\t" <<
+			"Nr\t|start_pc\t|length\t|name\t\t\t|descriptor\t\t\t\t|index " << std::endl;
+
+		for(u2 i = 0; i < local_variable_table_length; i++) {
+			local_variable_table_entry item = local_variable_table.at(i);
+			auto prefix2 = prefix + '\t';
+			os << prefix2 << i << "\t|" << item.start_pc << "\t\t\t|" << item.length << "\t\t|" <<
+				cp[item.name_index]->toString(cp) << "\t\t|" << cp[item.descriptor_index]->toString(cp) << "\t\t|" << item.index << std::endl;
+		}
+	}
+
+	// =============================================
+
+    AttrBootstrapMethods::AttrBootstrapMethods(Reader &reader, ConstantPool &cp) {
+	    num_bootstrap_methods = reader.getNextHalfWord();
+        for (u2 i = 0; i < num_bootstrap_methods; ++i) {
+            bootstrap_methods_entry item;
+            item.bootstrap_method_ref = reader.getNextHalfWord();
+            item.num_bootstrap_arguments = reader.getNextHalfWord();
+            for(u2 j = 0; j < num_bootstrap_methods; j++){
+                item.bootstrap_arguments.push_back(reader.getNextHalfWord());
+            }
+            bootstrap_methods.push_back(item);
+        }
+	}
+
+	void AttrBootstrapMethods::printToStream(std::ostream &os, jvm::ConstantPool &cp, std::string &prefix) {
+	    os << prefix << "BootstrapMethods:" << std::endl;
+	    os << prefix << "\t" << "Nr:\t|Bootstrap Method\t\t\t\t|Arguments " << std::endl;
+	    for (u2 i = 0; i < num_bootstrap_methods; i++){
+	        bootstrap_methods_entry item = bootstrap_methods.at(i);
+	        auto prefix2 = prefix + "\t";
+	        os << prefix2 << i << "\t|" << cp[item.bootstrap_method_ref]->toString(cp) << "\t\t\t\t|" << cp[item.bootstrap_arguments[0]]->toString(cp) << std::endl;
+	        if(item.num_bootstrap_arguments){
+	            for(u2 j = 1; j < item.num_bootstrap_arguments ; j++){
+                    os << prefix2 << "\t\t\t\t\t\t\t\t\t|" << cp[item.bootstrap_arguments[0]]->toString(cp) << std::endl;
+                }
+	        }
+	    }
+	}
+// LOCALVARIABLETYPETABLE --- não testado
+	AttrLocalVariableTypeTable::AttrLocalVariableTypeTable(Reader &reader, ConstantPool &cp) {
+        local_variable_type_table_length = reader.getNextHalfWord();
+        for (u2 i = 0; i < local_variable_type_table_length; i++) {
+			local_variable_type_table_entry item;
+            item.start_pc = reader.getNextHalfWord();
+            item.length = reader.getNextHalfWord();
+			item.name_index = reader.getNextHalfWord();
+			item.signature_index = reader.getNextHalfWord();
+			item.index = reader.getNextHalfWord();
+			local_variable_type_table.push_back(item);
+        }
+    }
+
+	void AttrLocalVariableTypeTable::printToStream(std::ostream &os, ConstantPool &cp,std::string &prefix ){
+		os <<prefix << "LocalVariableTypeTable:" << std::endl;
+		for(u2 i=0;i < local_variable_type_table_length; i++){
+			local_variable_type_table_entry item = local_variable_type_table.at(i);
+			auto prefix2 = prefix + "\t";
+			os << prefix2 << i << "\t" << item.start_pc << "\t\t\t ->" << item.length << "\t\t\t ->" << cp[item.name_index]->toString(cp) << "\t\t\t ->"
+				<<  cp[item.signature_index]->toString(cp)<< "\t\t\t ->" <<item.index << std::endl;
+		}
+	}
+
+//Deprecated
+	AttrDeprecated::AttrDeprecated(Reader &reader, ConstantPool &cp){
+		//deprecated_length = reader.getNextWord();
+		//null
+	}
+	void AttrDeprecated::printToStream(std::ostream &os, ConstantPool &cp,std::string &prefix){
+		os << prefix << "Deprecated" << std::endl;
+	}
+
+// InnerClasses
+	AttrInnerClasses::AttrInnerClasses(Reader &reader, ConstantPool &cp){
+		number_of_classes = reader.getNextHalfWord();
+		for (u2 i = 0; i < number_of_classes; i++) {
+			inner_classes_entry item;
+            item.inner_class_info_index = reader.getNextHalfWord();
+            item.outer_class_info_index = reader.getNextHalfWord();
+			item.inner_name_index = reader.getNextHalfWord();
+			item.inner_class_access_flags= reader.getNextHalfWord();
+			inner_classes.push_back(item);
+        }
+	}
+	void AttrInnerClasses::printToStream(std::ostream &os, ConstantPool &cp,std::string &prefix ){
+		os <<prefix << "Inner Classes:" << std::endl;
+		os << prefix << "\t" << "Nr:\t\t|InnerClass\t\t\t\t|OuterClass\t\t\t\t|InnerName\t\t\t\t|Access Flags " << std::endl;
+		for(u2 i=0;i < number_of_classes; i++){
+			inner_classes_entry item = inner_classes.at(i);
+			auto prefix2 = prefix + "\t";
+			os << prefix2 << i << "\t\t\t| " << cp[item.inner_class_info_index]->toString(cp) << "\t\t\t| " << cp[item.outer_class_info_index]->toString(cp) << "\t\t\t| " << cp[item.inner_name_index]->toString(cp) << "\t\t\t| "
+				<< item.inner_class_access_flags << std::endl;
+		}
+	}
+//Synthetic
+		AttrSynthetic::AttrSynthetic(Reader &reader, ConstantPool &cp){
+			//null
+		}
+		void AttrSynthetic::printToStream(std::ostream &os, ConstantPool &cp,std::string &prefix){
+			os << prefix << "Synthetic" << std::endl;
+		}
+
+
 }

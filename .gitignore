@@ -81,3 +81,19 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+/jvm_teste/Jvm_teste/nbproject/private/
+/samples/Java8/Lambda_Expression/nbproject/private/
+/samples/Java8/Lambda_Expression/build/
+/samples/Java8/Lambda_Expression/dist/
+/samples/java/Lambda_Expression/nbproject/private/
+/samples/java/Lambda_Expression/build/
+tests-result-one.txt
+compair/
+tests-result.txt
+build/
+
+/samples/java/new_teste/nbproject/private/
+/samples/java/new_teste/build/
+
+# doxygen
+html/

@@ -4123,7 +4123,14 @@ namespace jvm {
 	}
 
 	void OPINFOinvokespecial::printToStream(std::ostream& os, std::string& prefix, ConstantPool& cl) {
-		os << prefix << getName() << " " << index << std::endl;
+		auto Method_ref = (CP_Methodref*) cl[index];
+		auto _class = (CP_Class*) cl[Method_ref->class_index];
+		auto& class_name = cl[_class->name_index]->as<CP_Utf8>();
+		auto name_and_type = (CP_NameAndType*) cl[Method_ref->name_and_type_index];
+		auto& name = cl[name_and_type->name_index]->as<CP_Utf8>();
+		auto& type = cl[name_and_type->descriptor_index]->as<CP_Utf8>();
+
+		os << prefix << getName() << " " << index << " \"" << class_name << "/" << name << type << "\"" << std::endl;
 	}
 
 	std::string OPINFOinvokespecial::getName () {
@@ -4187,9 +4194,8 @@ namespace jvm {
 		if(!count)
 			throw JvmException("Invalid invokeinterface: the value of count must not be zero");
 
-		if(!data[idx+4])
+		if(data[idx+4] != 0)
 			throw JvmException("Invalid invokeinterface: the value of the last argument must be zero");
-
 		return 4;
 	}
 
@@ -4213,10 +4219,10 @@ namespace jvm {
 
 	uint32_t OPINFOinvokedynamic::fillParams (uint32_t idx, std::vector<u1>& data) {
 		index = Converter::to_u2(data[idx+1], data[idx+2]);
-		if(!data[idx+3] || !data[idx+4]) {
+		if(data[idx+3] != 0 || data[idx+4] != 0) {
 			throw JvmException("Invalid invokedynamic: the value of the last 2 arguments must be zero");
 		}
-		return 4;
+        return 4;
 	}
 
 

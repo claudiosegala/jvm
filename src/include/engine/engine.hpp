@@ -34,12 +34,13 @@ namespace jvm {
 		void execute();
 
 		std::string path;
+		bool shouldDebug = false;
 
 	private:
 
 		std::vector<Execution> exec;	///> The set of instantiators to the instruction
 
-		std::unordered_map<std::string, ClassLoader> JavaClasses;	///> Reference to .class that will be executed first
+		std::unordered_map<std::string, ClassLoader> JavaClasses;	///> Reference to .classes that will be executed
 
 		std::string Entry_class_name;	///> Name of .class that will be executed first
 

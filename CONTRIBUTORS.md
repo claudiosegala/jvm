@@ -7,3 +7,7 @@
 
 # Contributors
 + torq
++ Andrey Mazépas
++ Danilo Santos
++ Victor Landim
++ Marcelo Giordano
